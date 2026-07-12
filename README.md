@@ -20,7 +20,7 @@ Status: **building** · Round-1 idea deadline **Jul 12 2026, 23:59 IST** · fina
 Incumbents *extract* obligations; Indian tools are *checklists* — **nobody closes the auditable loop on
 live SEBI text.** We win as the **security-compliance closed loop for a SEBI stock broker**: real
 scan-evidence bound to real obligations, over a regulator-grade audit trail — reskinned from three things
-we already built (**redink** compliance engine · **AISHA** agentic security platform · real **VAPT** audits).
+we already built (**redink** compliance engine · **Walrus Securitas** agentic security platform · real **VAPT** audits).
 
 ## Layout
 ```

@@ -14,5 +14,5 @@
 
 ### Beyond cash
 - Finals showcased at **Global Fintech Fest 2026** — biggest fintech stage in India; a shortlist alone is a
-  strong AISHA/RegTech reference, pre-product.
+  strong Walrus Securitas/RegTech reference, pre-product.
 - Direct exposure to SEBI's jury panel + market infrastructure institutions.

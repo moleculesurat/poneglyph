@@ -33,7 +33,7 @@ Centre, Mumbai). **Registration is OPEN.** Round-1 idea submission closes **Jul 
 > *"Turn SEBI's regulatory text into structured, machine-actionable, auditable compliance logic
 > for market intermediaries."*
 
-**Why this one (AISHA fit):** PS2 is RegTech/compliance-automation — squarely AISHA's lane
+**Why this one (Walrus Securitas fit):** PS2 is RegTech/compliance-automation — squarely Walrus Securitas's lane
 (GenAI + auditable compliance + adversarial rigor). It's the only PS of the four where my
 purple-team + compliance background and a frontier-AI build loop are a *direct* weapon, not a
 stretch. Core unsolved problem = bridging unstructured human-readable regulation → structured

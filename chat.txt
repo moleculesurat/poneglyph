@@ -1,0 +1,773 @@
+check where we stand what ps we chsoe answer mw inshort bullet lines
+
+  Listed 1 directory
+
+Quick status:
+
+- PS chosen: PS2 — Agentic Compliance (SEBI TechSprint, GFF 2026)
+- Product: "Poneglyph" — agentic engine that turns the SEBI Master Circular for Stock Brokers into a living obligation register: extract obligations → map to controls → bind live evidence (real security scans) → flag gaps → diff amendments; tamper-evident audit trail + deterministic verifier
+- Positioning: Walrus Securitas reskin of your existing agentic security-evidence + redink compliance loop; open-source the obligation ontology, paid engine (open-core SaaS for small/mid brokers, RIAs, PMs)
+- Docs in repo: round1-idea.md (form-ready draft), STRATEGY.md, WIN-PLAN.md, PROJECT.md — all modified, uncommitted
+- ⚠️ Deadline: Round-1 submission due TOMORROW — Jul 12 2026, 23:59 IST
+- Still to fill in the form: your city, verify LinkedIn handle, decide solo vs. Gayatri on team
+
+Want me to sweep round1-idea.md for remaining [FILL] gaps so it's copy-paste ready?
+
+✻ Churned for 17s
+
+❯ understand the problem statement and tell me what type of compliances it is there are multiple types of compliances: finance, security, or some other, Some type of compliance has even checked if you have washroom, fire hazard, or height of desk chair. check from Indian perspective and sebi perspective ultrathink walrus is for cyber compaience i think not this
+
+  Read 1 file, listed 1 directory
+
+You're right — and this distinction matters for how we pitch. Here's the breakdown.
+
+The compliance taxonomy (Indian perspective)
+
+┌───────────────────────┬───────────────────────────────┬─────────────────────────────────────────────────────────┐
+│         Type          │         Regulator/La      Example checks                      │
+├───────────────────────┼───────────────────────────────┼─────────────────────────────────────────────────────────┤
+│ Labour & workplace    │ Factories Act, Shopsnking water, fire extinguishers,          │
+│ safety                │ Establishments Act, OSH Code, │ seating/ergonomics — this is the "washroom & chair      │
+│                       │  Fire NOC           ance you mentioned                        │
+├───────────────────────┼───────────────────────────────┼─────────────────────────────────────────────────────────┤
+│ Corporate/statutory   │ Companies Act, MCA/R, annual filings, registers               │
+├───────────────────────┼───────────────────────────────┼─────────────────────────────────────────────────────────┤
+│ Tax                   │ GST, Income Tax     e-invoicing                               │
+├───────────────────────┼───────────────────────────────┼─────────────────────────────────────────────────────────┤
+│ Financial-sector      │ SEBI, RBI, IRDAI, PFent-fund segregation, KYC, reporting,     │
+│ regulatory            │                               │ conduct                                                 │
+├───────────────────────┼───────────────────────────────────────────────────────────────┤
+│ Cyber/InfoSec         │ CERT-In directions, SEBI      │ VAPT, system audit, incident reporting — Walrus's home  │
+│                       │ CSCRF, ISO 27001, SO                                          │
+├───────────────────────┼───────────────────────────────┼─────────────────────────────────────────────────────────┤
+│ Data protection       │ DPDP Act 2023       h notification                            │
+└───────────────────────┴───────────────────────────────┴─────────────────────────────────────────────────────────┘
+
+What PS2 actually is
+
+PS2 is financial-sector regulatory compliance (RegTech/GRC), NOT cyber compliance. The PDF is explicit: SEBI
+circulars/master circulars carrying obligations (brokers, AMCs, RTAs, investment advisers,depositories), and it suggests working with the Master Circular for Stock Brokers or Investment Advisers.
+
+What that master circular actually contains, roughly by weight:
+
+- Client dealings — segregation of client funds/securities, running account settlement, margin collection & reporting
+- Registration & governance — net worth, fit-aternal audit
+- Conduct — KYC/AML, advertisement code, brokerage limits
+- Investor protection — grievance redressal (S
+- Books, records & reporting to exchanges/SEBI
+- Cyber security & system audit — one chapter,hing
+
+So it's conduct + operational + financial + recyber as a minority slice. No washrooms, nochair heights — that's labour law, a completely different regulator.
+
+What this means for the pitch
+
+Your instinct is correct: Walrus = cyber compliance; PS2 = securities regulatory compliance. Two implications:
+
+1. The engine transfers, the domain doesn't. The machinery (extract obligations → map to controls → bind evidence →
+audit trail → diff amendments) is domain-agnos claim: "we built this loop for cybercompliance; regulatory text is text, we're pointing the same engine at SEBI."
+2. Don't over-lean on cyber in the demo. The cs "live evidence from real security scans" aheadline. That only covers the cyber chapter — for the other ~90% (client-fund segregation, margin reporting, KYC),
+evidence is documents, exchange reports, ledgefrom SEBI will notice if the demo only shineson the one chapter that happens to match our existing product. Cyber-evidence should be positioned as one evidence
+connector (the most automated one), with documbinding demonstrated for the mainstreamobligations.
+
+Want me to rework the round1-idea.md description to reframe it this way before tomorrow's deadline?
+
+✻ Crunched for 51s
+
+❯ you wanted to rework but before that It should be clear that what will be our new idea. First tell me what is the
+  problem in simple andeasy words tell me what st problem they listed in the pdf exactly
+
+Here's exactly what the PDF says, in plain wor
+
+The problem (as SEBI states it)
+
+SEBI keeps issuing circulars, master circularslines. Each one carries obligations for marketintermediaries (stockbrokers, depositories, AMCs, RTAs, investment advisers, MIIs). This creates two related problems:
+
+1. Translating new rules into action — when SEBI issues or amends a rule, someone has to read it, interpret it, figure
+out which of the firm's processes it affects, y this is manual: lawyers, compliance teams,circular-by-circular tracking. Result: slow adoption, uneven implementation, and different firms interpreting the same
+rule differently.
+2. Managing ongoing compliance — compliance teams must track all existing obligations, map each obligation to evidence
+that it's being fulfilled, keep audit trails,  SEBI inspectors find them. This is manual,labor-heavy, and small firms with tiny compliance teams have the most gaps.
+
+Root cause (their exact framing): regulation exists as unstructured human-readable text, but compliance systems need
+structured, machine-actionable rules. Turning grammable, auditable compliance logic is "thecore unsolved problem."
+
+What they want built (desired outcome)
+
+A tech solution that bridges regulatory text → operational compliance action. It must:
+
+- Demonstrably reduce the time between SEBI issuing a rule and the firm acting on it, OR materially improve the
+efficiency, accuracy, and auditability of comp
+- Pick a specific intermediary category (e.g., stockbroker) and a specific regulatory corpus
+- Demonstrate it on at least one concrete regu
+
+Suggested corpus
+
+They explicitly suggest using SEBI's publicly  for stockbrokers and/or investment advisers.
+                                                                                                                     That's the whole PDF — they don't list any sol; the "agentic" part is only in the title. Inone line: "SEBI rules are text humans read; make a system that turns them into trackable, evidenced, auditable       checklists that update themselves when rules c
+                                                                                                                     Ready to define the reworked idea on top of th
+                                                                                                                       Baked for 15s
+                                                                                                                       Tip: You're reading a PDF file directly — ican just paste the URL and Claude will fetchit, saving you the file-read step. → Paste the URL instead of the file path
+❯ is the compliance agent for company or is it for sebi to check companies are complient or not usin the aget ?? think clearly and should we do it both ways ??
+                                                                                                                       Short answer: the PS is written for the compan), but the smartest build gives SEBI a windowinto it. Let me untangle it.
+What the PDF actually asks for
+Both challenges in the PDF are described from the intermediary's seat:
+- Challenge 1: a firm interpreting a new SEBI rule and updating its own workflows                                    - Challenge 2: "compliance teams at intermediaations, binding evidence, fixing gaps "beforethey become regulatory findings"
+So the primary user is unambiguously the stockbroker/IA's compliance team. This is RegTech (tools for the regulated  entity), not SupTech (tools for the supervisor
+                                                                                                                     But there's a second seat at the table
+                                                                                                                     Notice who's running this hackathon and the tance." SEBI's own pain shows in the PS too —"divergent interpretations across similarly situated intermediaries" is a regulator's complaint, not a broker's. And audit/inspection time, the two sides literallye firm proves compliance, SEBI verifies it.
+                                                                                                                     Should we do both? Yes — but asymmetrically
+                                                                                                                     Building two full products is scope suicide bee:
+                                                                                                                     1. Primary product: intermediary-facing (exacter's compliance team gets the obligationregister, evidence binding, gap alerts, amendment diffs.                                                             2. Bonus: an "Inspector View" — a read-only re data. A SEBI inspector clicks any control →walks back to the exact clause → sees the evidence and the tamper-evident trail. This is nearly free to build (it's tsame data, different lens) but it hits the jududging you are the people who'd use thatscreen. It also answers "divergent interpretations" — if many firms use the same open obligation ontology, SEBI gets standardized, comparable compliance across theme.
+
+So the pitch line becomes: "One obligation graer manages compliance through one, SEBIverifies it through the other." Same engine, no extra scope, and it converts a company tool into an ecosystem play —
+which is what a regulator-run hackathon actual
+
+That's my recommendation for the reworked idearaft the new idea description around it?
+
+✻ Crunched for 21s
+
+❯ Save Whatever we talked with, the reason why wsimple and short manner, I do not want longexplanation "/Users/atrey/Desktop/code/hackathons/sebi-techsprint-gff-2026/WIN-PLAN.md" Once you save this
+  requirement, then we will discuss what we have
+
+  Read 1 file
+
+Saved. Appended a "Reframe (Jul 12 discussion)on to WIN-PLAN.md with 6 short bullets:
+
+1. PS2 = financial-regulatory compliance, not ial, ~10% cyber)
+2. De-center the cyber hero-slice — cyber evidence is just one connector
+3. Engine transfers, domain doesn't (honest cl
+4. Primary user = the intermediary's compliance team (RegTech)
+5. Add a read-only "Inspector View" for SEBI —
+6. Pitch: "One obligation graph, two windows"
+
+Ready to discuss what we build.
+
+✻ Churned for 36s
+
+❯ okay now tell me what we have to build, mcp ? a tight scema for all type of financials, a web app next js on top,
+  scraper tool for sebi notification, AI brain cn effect thecompany or not, but these are myjust random ideas you have do thinking r your own, and fetch real such scenarios from sebi website or from news
+  article or perosnal experiencs of regulation onow.
+  more latest more good.
+  ultrathink
+  dont Start multiple agents to do research, you can do it alone. if you start so many agent it will eat up tokens
+
+Let me first grab real, recent SEBI regulatory-change scenarios from the web, then lay out the build.
+
+⏺ Web Search("SEBI circular 2026 stock brokers new compliance requirement change")
+Did 1 search in 9s
+
+Two goldmine scenarios found — one from 9 daysn that fresh amendment.
+                                                                                                                     Fetch(https://www.corplawupdates.in/updates/seies-trading-members-2026)
+Received 252.9KB (200 OK)
+Both research and thinking done. Here's the build, anchored to real scenarios that are live right now.
+The demo scenarios (fetched, real, fresh)
+1. 🔥 The hero: CUSPA amendment — 9 days old. On Jul 3, 2026 SEBI amended Para 46 of the Master Circular for Stock Brokers (circular HO/38/11/(9)2026-MIRSD-POD/I clients' unpaid securities. Brokers now must:open a dedicated CUSPA pledgee account, auto-pledge without client instruction, notify clients by email/SMS on pledcreation, cap payment window at 5 trading days6, daily reconciliation, extension requests by6PM on day 5. Phased deadlines: parts effective 3 months after exchange guidelines (due early Aug 2026), parts 6 mofrom Jul 3. This is the perfect diff demo: oldter circular) vs. new Para 46 → our enginediffs, extracts ~10 new obligations, maps them to broker controls, spawns remediation tasks with the real deadlinesEvery broker in India is scrambling on this to it.
+2. The backdrop: Stock Brokers Regulations, 2026 — in Jan 2026 SEBI replaced the entire 1992 regulations. New      obligations: resident designated director (182window), mandatory compliance officer,best-execution + trade-to-client-code mapping, fraud/market-abuse surveillance systems, cash-payment prohibitions. Shows the engine handles a full-corpus replace tweak.
+3. The cyber connector: CSCRF — the one chapter where evidence = live Walrus scans. One slide, not the headline.
+What we build (your ideas were right — here's the assembled version)
+1. The Obligation Schema (the foundation — build first). One tight JSON schema for any SEBI obligation: obligation_isource {circular_no, para, clause_text, char_omediary_type, conditions} · type (one-time /ongoing / periodic / event-driven) · deadline · required_evidence spec · mapped_control · status · hash. This is the"open SEBI obligation ontology" we open-sourceeads/writes this schema.
+                                                                                                                    2. Scraper + watcher. Poll SEBI's circulars liew circulars/amendments, pull the PDF, convertto clause-anchored text. Small, boring, essential.
+3. The AI brain (two agents + one verifier).                                                                        - Applicability agent: "does this circular affno/partial with cited reasoning (your "does itaffect the company" idea).                                                                                          - Extraction/diff agent: extracts obligations to exact clause; on amendment, diffs againstthe prior register and touches only changed obligations.                                                            - Deterministic verifier: rules-as-code checkstations must resolve, deadlines must parse,applicability must match registry) — the "don't trust the LLM alone" trust layer.
+4. Evidence binding (three connector types). (a) Document — upload board resolution/policy PDF, hashed + timestamped(b) Data check — e.g., "CUSPA account exists,"shows SMS sent," reconciliation report present; (c) Live scan — Walrus, for the cyber chapter only. Gap → auto-remediation task with owner + SLA from the circular'sreal deadline.
+                                                                                                                    5. Next.js web app — two windows. Broker view:heat-map, deadline timeline (the CUSPA phaseddeadlines render beautifully here), remediation queue. Inspector View: read-only — click any control → walk back to exact clause → evidence → hash-chained audit t
+                                                                                                                    6. MCP server (the "agentic" cherry). Expose tget_obligations, check_compliance_status,explain_mapping) so any AI agent — the broker's or SEBI's — can query compliance state programmatically. Cheap to buon our schema, and it makes "agentic complianc
+                                                                                                                    Build order: schema → extraction+verifier on oo demo) → web app → evidence connectors →scraper → MCP. If time runs short we cut from the tail, never the head.
+The demo script writes itself: "SEBI amended Para 46 nine days ago. Watch Poneglyph ingest it live, tell this brokerexactly what changed, what to do, by when — anify every claim back to the clause."
+                                                                                                                    Sources: SEBI Stock Brokers Regulations 2026 (gal/regulations/jan-2026/securities-and-exchange-board-of-india-stock-brokers-regulations-2026_98974.html) · Mondaq analysis (https://www.mondaq.com/india/securiti1763746/sebi-stock-brokers-regulations-2026-go-and-new-business-opportunities) · CUSPAamendment summary (https://www.corplawupdates.in/updates/sebi-circular-unpaid-securities-trading-members-2026) · MasCircular Jun 2025(https://www.teamleaseregtech.com/updates/article/43634/sebi-issued-master-circular-for-stock-brokers/)
+✻ Churned for 1m 19s
+❯ So that means we will have agents based on enw regulation new agent will come into picture and start analyssys of thnew amendment if it is follwoed or not, and ifo amke it happen, is this good plan or it can fail in rela world scenario of huge data and comnaies liek tata ?? should we build this only with harnesses, And in future, we can worry about how we can ingest lent run on a lot of data.
+  But asking you architecturally that if it is a good idea or not, and is it something that other companies follow or not? search online for best agentic engines buustry standard paperclip ro google or stripe i suppose they opensourcsed there agentic wokring ecosystem, but it is for development i want to know in these type ofcomplex use case what companies have done to idont Start multiple agents to do research, you can do it alone. if you start so many agent it will eat up tokens ultrathink
+Let me research how industry actually builds agentic systems for compliance-grade use cases.
+⏺ Web Search("agentic AI architecture best practices Anthropic "building effective agents" workflows vs agents                  deterministic orchestration producti
+Did 1 search in 8s
+Good question to stop on, because your phrasing — "a new agent comes into the picture per regulation" — is the one pI'd correct. The industry answer is clear, andifferent shape.
+                                                                                                                    What the industry actually does
+                                                                                                                    Norm Ai is the closest company on earth to oury compliance agents; raised $120M+ Series C,backed by Citi and Bain Capital Ventures, used by asset managers). Their architecture:
+- Regulations are compiled into decision trees / executable logic ("rules as code") by a proprietary language — the regulation becomes a structure, not a prompt.
+- LLM agents traverse that structure step-by-step against an artifact, like a compliance officer walking a checklist- They don't build a bespoke agent per regulatce workflow archetypes": ~a dozen reusablemodule types that any regulation gets mapped onto. New regulation = new data flowing through existing archetypes, nonew code/agents.
+                                                                                                                    Anthropic's "Building Effective Agents" (the i for this) draws the key line: workflows (LLMcalls orchestrated through predefined code paths) vs agents (LLM decides its own path). Their explicit guidance for production: use the simplest architecture thatrkflow with LLM steps beats a free-roamingmulti-agent system; every step must be inspectable; autonomous agents compound errors and cost. (Stripe/Google's agent
+toolkits — Stripe Agent SDK, Google ADK — follministic orchestration, LLM only where judgment is needed.)
+
+So: is your plan good?
+
+The instinct is right, the framing needs one fix. Not "new regulation → new agent." Instead:
+
+New regulation → new job through a fixed pipeline. The pipeline is deterministic code (the harness): watch →
+applicability check → extract to schema → veriawn tasks. Inside it, two steps are LLM-powered (applicability, extraction/mapping) — ephemeral workers with one tight job, whose output is checked by the
+deterministic verifier before anything enters stance dies after the run; the schema is thepermanent thing, agents are stateless labor.
+
+This is exactly the Norm Ai + Anthropic pattern, and it's also the only architecture a regulator will trust — every run
+is replayable, every decision inspectable, no
+
+Does it survive Tata-scale?
+
+Yes, because with this shape, scale is a borinnot an AI problem:
+
+- Huge data volume = a queue. 10,000 circularseline runs — embarrassingly parallel, each runis small (one circular, one persona). Add workers, not architecture.
+- Huge company (Tata: many entities, many intethe applies_to field in the schema fans onecircular out to N entity-registers. Same pipeline, more rows.
+- What actually fails at scale is the free-roanding errors, unbounded token cost,undebuggable decisions. Which is precisely why we don't build that.
+
+So your call is correct: build the harness-based version now, treat mass-ingestion as a future queue/infra problem.
+That's not a compromise for the hackathon — itAi made with $120M.
+
+One addition for enterprise credibility: a humte — agent proposes obligation mappings,verifier checks, compliance officer approves before the register updates. Norm and every serious deployment has this;
+full autonomy on day one is how you fail a Tat
+
+Sources: Anthropic — Building Effective Agentsm/research/building-effective-agents) · Norm Ai platform (https://www.norm.ai/platform/) · Norm Ai Series C
+(https://www.under30ceo.com/compliance-softwarn Capital Ventures on Norm(https://baincapitalventures.com/insight/norm-ai-is-using-ai-to-clean-up-the-sludge-of-regulatory-compliance/) · Citi
+Ventures on Norm (https://www.citi.com/venturee/investing-in-norm-ai.html)
+
+✻ Cooked for 1m 13s
+
+❯ /model
+  ⎿  Kept model as Fable 5
+
+❯ /effort
+  ⎿  Set effort level to ultracode (this sessionrkflow orchestration
+
+❯ Okay. Looks good. Let's start building it. Butnot building tool we building only frontend
+    sandbox for it.
+    now we need a dummy copnay for it we can usede/ventures/walrus-securitas/walrus-hq
+    And for all the data on which we will show that the agents are running or already ran, all the data could be
+    simulated based on... if I made my company w
+    If you need ui inspo use same walrus sec braning ui, it is good, check the linkedin post code to undetand ui big
+    type, dual text, fonts, tect colror gradientent.
+    We will even give the option of MCP. So using it user cna ask any questions, and ther efor sebi also we will host
+  mcp
+    so company can send it over so sebi can check eveything using it agenticly.
+    plan out all the tabs all the features.
+    a specific tab to shwo latets scraper agent running and what it got latest.
+    As this is a sandbox Everything is clickablectable but not actionale, and on top bor thin
+    stirp we will write this is a sandbox env made on elictic simalted data ultrathink
+
+Let me first study the Walrus HQ codebase — especially the LinkedIn post code — to absorb the branding language before
+planning the sandbox.
+
+  Read 1 file, listed 3 directories
+
+Brand system captured. Let me grab the patternplus company facts for the simulated data.
+
+  Read 2 files, listed 1 directory
+
+⏺ Write(BUILD-PLAN.md)
+Wrote 99 lines to BUILD-PLAN.md
+# BUILD-PLAN — Poneglyph Sandbox (front
+_What we're building for PS2: a **frontend sandbox** of the Poneglyph agentic-compliance engine. No real
+/ redirectable, **nothing is actionablex" toast or play a simulation)._
+
+
+- **Demo tenant (dummy company):** **Walrus Securitas Broking Ltd** — a fictionalized, "public" version o
+ BSE, non-QSB, ~12,000 clients — the ex the PS names). Simulated facts seeded f
+rom walrus-hq (team, incorporation) + invented broker ops data.                                                  ff scenario) + SB Regulations 2026 + CSe connector).
+en obligati                                                                                                      … +129 lines
+                                                                                                                          Plan saved to BUILD-PLAN.md. Here's the shape
+                                                                                                                        Poneglyph Sandbox — the plan
+                                                                                                                        Frame: Frontend-only Next.js sandbox. Demo tenking Ltd — your company fictionalized as asmall SEBI-registered stock broker (INZ reg no., NSE+BSE member, ~12k clients — literally the "smaller intermediary"    the PS names). All data simulated, seeded from strip on every page: SANDBOX — REALISTICSIMULATED DATA · NOTHING IS ACTIONABLE. Sim-clock pinned to Jul 2026 so the "SEBI amended this 9 days ago" demo stays   fresh forever.
+                                                                                                                        Brand: straight port of your graphics engine —with Host Grotesk gradient accents, Azeret Mono labels, orange #fe5301 single loud note, dot-grid + wash + grain, marked-cards with plus-corners, reticle ticks. The    product looks like your LinkedIn posts became
+                                                                                                                        One killer mechanic: a persona toggle in the t view ↔ read-only SEBI Inspector view. "Oneobligation graph, two windows," live in the UI.
+The 9 tabs:
+1. Overview — posture score, status tiles, CUSPA phased-deadline timeline, gap heat-map                                 2. Watchtower — your scraper tab: animated terolling sebi.gov.in, latest catches withapplicability verdicts ("affects us? YES — here's why, clause cited"), the Jul 3 CUSPA circular as the hero catch       3. Obligation Register — the core table, ~22 oexact clause text + control + evidence spec +hash; clause viewer with marker-highlight; human-approval UI on pending rows                                            4. Amendment Diff — the hero: old Para 46 vs n10 delta-obligations animate in, untouched ones grey out, tasks spawn with real deadlines                                                                               5. Evidence Vault — 3 connector types: documenus scans (cyber chapter only — one connector,not the headline); everything hashed, timestamped, clause-backlinked                                                    6. Remediation — task queue with real CUSPA ta
+7. Agent Console — the glass box: replayable run traces, verifier checks, "why this mapping?" explainability            8. Audit Trail — hash-chained log with an anim
+9. MCP — endpoint + tool schemas + copy-paste client config, a scripted playground chat showing tool calls, and "Share  with SEBI" — inspector-scoped read-only MCP to
+                                                                                                                        Build order: schema + data files first (they dntology deliverable) → shell + brand port →Register → Diff → Watchtower → the rest. Cut from the tail, never the head.
+Two calls I made — flag if you disagree: the dummy broker is named Walrus Securitas Broking Ltd (keeps your brand, fits the stockbroker persona the PS demands), and tackathon repo (poneglyph/).
+
+Say go and I scaffold.
+
+✻ Cogitated for 3m 15s
+
+
+ you made it but i think liek a real saas you should have made it with side bar menu and not top bar, think it liek a real saa sproeduct, and under profile there can be dropdown to shitch form broker to inspector a dahsboard a scraper tab a agent tab and proper slug mangement on top of each page swhoing the routes ultrathink
+
+Fair call — a real SaaS reads as sidebar + breadcrumbs + profile menu, not a marketing-style top bar. Refactoring the shell now: left sidebar with grouped nav (Oversight / Compliance / Engine), profile block at the bottom with a dropdown that holds the Broker ↔ Inspector switch, and a sticky header with route breadcrumbs + slug on every page. Pages themselves stay untouched.
+
+⏺ Write(poneglyph/lib/nav.ts)
+Added 29 lines, removed 12 lines
+export interface NavTab {
+export type NavGroup = "Oversight" | "Compliance" | "Engine" | "Inspection";
+
+export interface NavItem {
+  href: string;
+  label: string;
+  group: NavGroup;
+  /** shown to inspector persona too */
+  inspector: boolean;
+}
+
+export const NAV_TABS: NavTab[] = [
+  { href: "/", label: "Overview", inspector: false },
+  { href: "/watchtower", label: "Watchtower", inspector: false },
+  { href: "/register", label: "Register", inspector: true },
+  { href: "/amendments", label: "Amendments", inspector: true },
+  { href: "/evidence", label: "Evidence", inspector: true },
+  { href: "/remediation", label: "Remediation", inspector: false },
+  { href: "/agents", label: "Agent Console", inspector: false },
+  { href: "/audit", label: "Audit Trail", inspector: true },
+  { href: "/mcp", label: "MCP", inspector: true },
+export const NAV_ITEMS: NavItem[] = [
+  { href: "/", label: "Dashboard", group: "Oversight", inspector: false },
+  { href: "/watchtower", label: "Watchtower · Scraper", group: "Oversight", inspector: false },
+  { href: "/register", label: "Obligation Register", group: "Compliance", inspector: true },
+  { href: "/amendments", label: "Amendments", group: "Compliance", inspector: true },
+  { href: "/evidence", label: "Evidence Vault", group: "Compliance", inspector: true },
+  { href: "/remediation", label: "Remediation", group: "Compliance", inspector: false },
+  { href: "/agents", label: "Agent Console", group: "Engine", inspector: false },
+  { href: "/audit", label: "Audit Trail", group: "Engine", inspector: true },
+  { href: "/mcp", label: "MCP Surface", group: "Engine", inspector: true },
+];
+
+/** inspector persona's landing page */
+export const INSPECTOR_HOME = "/inspector";
+
+export const INSPECTOR_ITEM: NavItem = {
+  href: INSPECTOR_HOME,
+  label: "Inspection Session",
+  group: "Inspection",
+  inspector: true,
+};
+
+/** breadcrumb for a pathname: [group, label] */
+export function findCrumb(pathname: string): { group: string; label: string } {
+  if (pathname === INSPECTOR_HOME) return { group: "Inspection", label: "Session" };
+  const item = NAV_ITEMS.find((t) => t.href === pathname);
+  if (item) return { group: item.group, label: item.label };
+  return { group: "Oversight", label: "Dashboard" };
+}
+
+⏺ Update(poneglyph/app/globals.css)
+Added 123 lines
+  word-break: break-all;
+}
+
+/* ── App shell: sidebar + content column ─────────────────────────────── */
+.app-row { display: flex; align-items: stretch; }
+
+.sidebar {
+  width: 238px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  border-right: 1.5px solid var(--ink-10);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 55;
+}
+
+.content-col { flex: 1; min-width: 0; }
+
+.side-group {
+  padding: 20px 18px 7px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+
+.side-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px 9px 17px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  border-left: 3px solid transparent;
+  transition: background 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
+}
+.side-item:hover { background: var(--paper); color: var(--ink); }
+.side-item[data-active="true"] {
+  color: var(--ink);
+  background: var(--neutral);
+  border-left-color: var(--orange);
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-top: 1.5px solid var(--ink-10);
+  text-align: left;
+  transition: background 0.12s ease;
+}
+.profile-btn:hover { background: var(--paper); }
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.avatar[data-tone="inspector"] { background: var(--orange); }
+
+.menu-pop {
+  position: absolute;
+  bottom: 66px;
+  left: 10px;
+  right: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--ink-10);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px -18px rgba(20, 20, 23, 0.28);
+  overflow: hidden;
+  z-index: 70;
+}
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 12.5px;
+  transition: background 0.12s ease;
+}
+.menu-item:hover { background: var(--paper); }
+
+.crumb-sep { color: var(--ink-20); margin: 0 8px; }
+
+.hamburger { display: none; }
+
+@media (max-width: 920px) {
+  .hamburger { display: inline-flex; }
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    height: auto;
+    transform: translateX(-102%);
+    transition: transform 0.2s ease;
+    box-shadow: 0 20px 60px rgba(20, 20, 23, 0.22);
+  }
+  .sidebar[data-open="true"] { transform: none; }
+}
+
+/* focus visibility */
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 3px; }
+
+
+⏺ Write(poneglyph/components/AppShell.tsx)
+Wrote 263 lines to poneglyph/components/AppShell.tsx
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { usePersona, type Persona } from "@/components/persona";
+import { useSandboxToast } from "@/components/toast";
+import { NAV_ITEMS, INSPECTOR_ITEM, INSPECTOR_HOME, findCrumb, type NavGroup } from "@/lib/nav";
+import { tenant } from "@/data/tenant";
+… +259 lines
+
+⏺ Update(poneglyph/app/layout.tsx)
+Added 1 line, removed 1 line
+import "./globals.css";
+import { PersonaProvider } from "@/components/persona";
+import { ToastProvider } from "@/components/toast";
+import { Chrome } from "@/components/Chrome";
+import { AppShell } from "@/components/AppShell";
+
+const aleo = Aleo({
+  variable: "--font-aleo",
+
+⏺ Update(poneglyph/app/layout.tsx)
+Added 1 line, removed 2 lines
+        <div className="dotgrid" />
+        <PersonaProvider>
+          <ToastProvider>
+            <Chrome />
+            <main className="shell">{children}</main>
+            <AppShell>{children}</AppShell>
+          </ToastProvider>
+        </PersonaProvider>
+        <div className="grain" />
+
+  Read 4 files, ran 3 shell commands
+
+⏺ Update(poneglyph/README.md)
+Added 1 line, removed 1 line
+
+## What's inside
+
+One obligation graph, two windows — toggle **Broker ↔ SEBI Inspector** in the top bar.
+One obligation graph, two windows — switch **Broker ↔ SEBI Inspector** from the profile menu at the bott
+om of the sidebar. The shell is a real-SaaS layout: grouped sidebar nav (Oversight / Compliance / Engine
+), breadcrumbs + route slug in the sticky header, tenant card, profile dropdown.
+
+| Tab | What it shows |
+|-----|---------------|
+
+⏺ Update(poneglyph/DESIGN.md)
+Added 1 line
+- `useSandboxToast()` from `components/toast` for disabled actions; `Cta` already does this by default.
+- `usePersona()` from `components/persona` → `"broker" | "inspector"`. Hide approve/reject-style broker
+controls when inspector.
+- Imports use `@/` alias. Icons: none installed — use typographic marks (→ ✓ ✕ ◆ ▸) sparingly.
+- App shell (`components/AppShell.tsx`): left sidebar with grouped nav (Oversight / Compliance / Engine,
+ from `lib/nav.ts`), tenant card, bottom profile block whose dropdown holds the Broker ↔ Inspector switc
+h; content column has a sticky header with breadcrumbs (`group / label`) + route-slug chip. Pages render
+ inside `main.shell` unchanged.
+
+## Data contract (exact export names; typed by `lib/schema.ts`)
+
+
+Done — Poneglyph now reads like a real SaaS product. Rebuilt, verified, zero console errors, running at localhost:4173.
+
+What changed:
+
+- Sidebar replaces the top bar — brand block up top, then the tenant card (Walrus Securitas Broking Ltd · INZ000247319 · NSE + BSE), then grouped nav in mono caps: Oversight (Dashboard, Watchtower · Scraper), Compliance (Obligation Register, Amendments, Evidence Vault, Remediation), Engine (Agent Console, Audit Trail, MCP Surface). Active item gets the orange left bar. Collapses to a hamburger slide-over under 920px.
+- Profile block with dropdown at the sidebar bottom — a "View as" section switches Broker compliance (Priya Nair · full console) ↔ SEBI Inspector (R. Menon · read-only) with an orange active dot, plus Account settings / Sign out (sandbox toasts). The avatar and identity change with persona — inspector gets an orange avatar and the tenant card flips to "● UNDER INSPECTION."
+- Breadcrumbs + slug on every page — sticky header now shows Compliance / Amendments with a mono /amendments route chip, Inspection / Session · /inspector, etc., with the read-only chip and sim-today on the right.
+- Inspector mode reshapes the whole shell: nav filters to Inspection + Register/Amendments/Evidence/Audit/MCP, header shows READ-ONLY.
+
+Verified with Playwright: dropdown opens, persona switch routes to /inspector and back, breadcrumbs track every route, mobile hamburger works, build green, no console errors. Old Overview is renamed Dashboard to match the SaaS framing.
+
+One layout habit to note for the demo: the pages still keep their big serif headlines under the breadcrumb header, so each screen reads product-chrome-first, editorial-second — the Walrus brand survives the SaaS-ification intact.
+
+✻ Baked for 7m 42s
+
+❯ Register by chapter when we click any of the think in dahsbaord under "Register by chapter" and it rediret to /registr the thing we clicked on should be auto set in filter dont you think so ?? and the timeline you made is really really sexy, ind a way to make it scrolabe horizontally for more data if there, uring demo i csn scroll and hsow thing, you can find a open source repo or lib that does that cleanly ultrathink even for slug use soem lib liek shadcn maybe, thye are not clickable, and on every page the heading is like marketing terms make it stight forward what it is there on page, if you need indpo then check saas i was buildin to learn about saas ui /Users/atrey/Desktop/code/work/jobs/unitpay/platform
+
+Good calls, all four. Quick recon first — the unitpay platform for SaaS-UI patterns and the register page's filter internals — then I'll wire it all.
+
+  Read 2 files, listed 2 directories, ran 2 shell commands
+
+⏺ Write(poneglyph/app/DeadlineRunway.tsx)
+Wrote 182 lines to poneglyph/app/DeadlineRunway.tsx
+"use client";
+
+/* Deadline runway — horizontally draggable timeline (embla-carousel,
+   dragFree). Milestones derive from live data: every remediation-task due
+   date plus the CUSPA regime anchors. Wide inner canvas; drag during a
+   demo to walk the next 200+ days. */
+
+import Link from "next/link";
+import useEmblaCarousel from "embla-carousel-react";
+import { tasks } from "@/data/tasks";
+… +173 lines
+
+Now wiring the dashboard: swap in the draggable runway, deep-link every heat-map element, and make the heading literal.
+
+⏺ Update(poneglyph/app/globals.css)
+Added 15 lines
+
+.crumb-sep { color: var(--ink-20); margin: 0 8px; }
+
+.crumbs { display: flex; align-items: center; flex-wrap: wrap; list-style: none; margin: 0; padding: 0;
+ }
+.crumb-link { color: var(--ink-40); transition: color 0.12s ease; font-size: 12.5px; }
+.crumb-link:hover { color: var(--ink); }
+.slug-chip { cursor: copy; transition: border-color 0.12s ease, color 0.12s ease; }
+.slug-chip:hover { border-color: var(--ink-40); color: var(--ink); }
+
+/* ── Deadline runway (draggable) ──────────────────────────────────────── */
+.runway-viewport { cursor: grab; }
+.runway-viewport:active { cursor: grabbing; }
+.runway-fade {
+  position: absolute; top: 0; bottom: 0; width: 46px; pointer-events: none;
+}
+.runway-fade[data-side="left"]  { left: 0;  background: linear-gradient(90deg, var(--white), transparen
+t); }
+.runway-fade[data-side="right"] { right: 0; background: linear-gradient(270deg, var(--white), transpare
+nt); }
+
+.hamburger { display: none; }
+
+@media (max-width: 920px) {
+
+⏺ API Error: Unable to connect to API (ECONNRESET)
+
+✻ Cooked for 15m 32s
+
+❯ continue
+
+❯ /effort
+  ⎿  Set effort level to ultracode (this session only): xhigh + dynamic workflow orchestration
+
+❯ continue
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 1 line
+import Link from "next/link";
+import { PageHead, StatTile, MarkedCard, Chip, StatusChip, Hairline, Cta } from "@/components/ui";
+import { DashField } from "@/components/DashField";
+import { DeadlineRunway } from "@/app/DeadlineRunway";
+import { obligations } from "@/data/obligations";
+import { catches } from "@/data/watchtower";
+import { runs } from "@/data/runs";
+
+⏺ Update(poneglyph/app/page.tsx)
+Removed 11 lines
+
+const chapters = [...new Set(obligations.map((o) => o.clause.chapter))];
+
+/* timeline: fixed window sim-today → Feb 2027 */
+const T0 = Date.parse("2026-07-12");
+const T1 = Date.parse("2027-02-01");
+const pos = (iso: string) => `${(((Date.parse(iso) - T0) / (T1 - T0)) * 100).toFixed(1)}%`;
+const MILESTONES = [
+  { at: "2026-08-02", label: "Exchange operational guidelines due", n: "30d from circular" },
+  { at: "2026-08-20", label: "VAPT closure re-validation", n: "OBL-SB-021" },
+  { at: "2026-11-02", label: "CUSPA phase 1 — paras 46.1–46.11", n: "7 obligations" },
+  { at: "2027-01-03", label: "CUSPA phase 2 — paras 46.12–46.14", n: "2 obligations" },
+];
+
+const STATUS_CELL: Record<ObligationStatus, React.CSSProperties> = {
+  met: { background: "var(--ink-10)" },
+  "at-risk": { background: "var(--orange-soft)", boxShadow: "inset 0 0 0 1.5px var(--orange)" },
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 4 lines, removed 6 lines
+  return (
+    <>
+      <PageHead
+        eyebrow={`Compliance command · ${tenant.name}`}
+        eyebrow={`${tenant.name} · ${tenant.sebiRegNo}`}
+        title={
+          <>
+            Every obligation, walked back{" "}
+            <span className="accent grad">to the clause.</span>
+            Compliance <span className="accent grad">Dashboard</span>
+          </>
+        }
+        sub={
+          <>
+            The live obligation register for one SEBI-registered stock broker — extracted from the
+            Master Circular by agents, verified deterministically, evidenced continuously.{" "}
+            <b>Orange means something needs you.</b>
+            Register posture, upcoming deadlines and the latest regulatory events for one
+            SEBI-registered stock broker. <b>Orange means something needs you.</b>
+          </>
+        }
+        right={<Cta variant="ghost">Export register</Cta>}
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 3 lines, removed 43 lines
+      {/* ── deadline runway ── */}
+      <section style={{ marginBottom: 34 }}>
+        <div className="row between" style={{ marginBottom: 14 }}>
+          <span className="eyebrow">Deadline runway — next 200 days</span>
+          <span className="eyebrow">Deadline runway — every open due date, drag to scroll</span>
+          <span className="mono-label dim">sim-today {tenant.simToday}</span>
+        </div>
+        <MarkedCard pad={26}>
+          <div style={{ position: "relative", height: 168, margin: "6px 8px 0" }}>
+            {/* baseline */}
+            <div style={{ position: "absolute", left: 0, right: 0, top: 82, height: 2, background: "var
+(--ink-10)" }} />
+            {/* today */}
+            <div style={{ position: "absolute", left: 0, top: 64, bottom: 12 }}>
+              <div style={{ width: 2, height: 38, background: "var(--ink)" }} />
+              <span className="mono-label" style={{ fontSize: 9.5, position: "absolute", top: 42, left:
+ 0, whiteSpace: "nowrap" }}>
+                today
+              </span>
+            </div>
+            {MILESTONES.map((m, i) => (
+              <div key={m.at} style={{ position: "absolute", left: pos(m.at), top: 0, bottom: 0 }}>
+                {/* connector from marker to its label row */}
+                <div
+                  style={{
+                    position: "absolute", left: -1, width: 2,
+                    top: i % 2 ? 94 : 46, height: i % 2 ? 14 : 30,
+                    background: "var(--ink-10)",
+                  }}
+                />
+                <div
+                  style={{
+                    position: "absolute", top: i % 2 ? 112 : 0,
+                    transform: i === MILESTONES.length - 1 ? "translateX(-88%)" : "translateX(-50%)",
+                    textAlign: i === MILESTONES.length - 1 ? "right" : "center",
+                    width: 175,
+                  }}
+                >
+                  <div className="small" style={{ fontWeight: 600, fontSize: 11.5, lineHeight: 1.3 }}>{
+m.label}</div>
+                  <div className="mono-label dim" style={{ fontSize: 9, marginTop: 2 }}>{m.at} · {m.n}<
+/div>
+                </div>
+                <div
+                  style={{
+                    position: "absolute", top: 77, left: -6, width: 12, height: 12,
+                    borderRadius: "50%", background: "var(--white)",
+                    border: "3px solid var(--orange)",
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        <MarkedCard pad={14}>
+          <DeadlineRunway />
+        </MarkedCard>
+      </section>
+
+
+Now the deep-links on the heat-map, legend, and pending chips:
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 2 lines, removed 2 lines
+                return (
+                  <div key={ch}>
+                    <div className="row between" style={{ marginBottom: 6 }}>
+                      <Link href="/register" className="small" style={{ fontWeight: 500 }}>
+                      <Link href={`/register?chapter=${ch}`} className="small" style={{ fontWeight: 500
+ }}>
+                        {CHAPTER_TITLES[ch]}
+                      </Link>
+                      <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+
+                      {rows.map((o) => (
+                        <Link
+                          key={o.id}
+                          href="/register"
+                          href={`/register?chapter=${ch}&id=${o.id}`}
+                          title={`${o.id} — ${o.title} (${o.status})`}
+                          style={{
+                            width: 22, height: 14, borderRadius: 3, display: "block",
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 2 lines, removed 2 lines
+              <Hairline />
+              <div className="row wrap" style={{ gap: 14 }}>
+                {(["met", "at-risk", "gap", "pending-review"] as const).map((s) => (
+                  <span key={s} className="row" style={{ gap: 6 }}>
+                  <Link key={s} href={`/register?status=${s}`} className="row" style={{ gap: 6 }}>
+                    <span style={{ width: 14, height: 10, borderRadius: 2, ...STATUS_CELL[s] }} />
+                    <span className="mono-label dim" style={{ fontSize: 9.5 }}>{s}</span>
+                  </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+⏺ Update(poneglyph/app/page.tsx)
+Added 1 line, removed 1 line
+                {obligations
+                  .filter((o) => o.status === "pending-review")
+                  .map((o) => (
+                    <Link key={o.id} href="/register">
+                    <Link key={o.id} href={`/register?id=${o.id}`}>
+                      <StatusChip status={o.status} />
+                    </Link>
+                  ))}
