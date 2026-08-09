@@ -23,6 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/amendments", label: "Amendments", group: "Compliance", inspector: true },
   { href: "/evidence", label: "Evidence Vault", group: "Compliance", inspector: true },
   { href: "/remediation", label: "Remediation", group: "Compliance", inspector: false },
+  { href: "/live", label: "Live Pipeline", group: "Engine", inspector: false },
   { href: "/agents", label: "Agent Console", group: "Engine", inspector: false },
   { href: "/audit", label: "Audit Trail", group: "Engine", inspector: true },
   { href: "/mcp", label: "MCP Surface", group: "Engine", inspector: true },

@@ -44,6 +44,7 @@ const STATUS_LABEL: Record<ObligationStatus, string> = {
   "at-risk": "At risk",
   gap: "Gap",
   "pending-review": "Pending review",
+  rejected: "Rejected",
 };
 
 const STATUSES: ObligationStatus[] = ["met", "at-risk", "gap", "pending-review"];

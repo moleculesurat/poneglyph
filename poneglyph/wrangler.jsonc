@@ -1,13 +1,19 @@
 {
   // Poneglyph — SEBI TechSprint PS2 (Agentic Compliance).
-  // Assets-only Worker: the whole app is a static export (see next.config.ts),
-  // so there is no Worker script — Cloudflare serves ./out from the edge.
+  //
+  // The app is a static export (see next.config.ts) and is still served from
+  // ./out at the edge. The Worker added here does NOT sit in front of it: it
+  // owns exactly one prefix, /api/*, and every other path goes straight to
+  // the asset worker as before — see `run_worker_first` below.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "poneglyph",
   // pinned: the login has access to three accounts, so leaving this out
   // would let a deploy land in the wrong one. This is Techgenie2050's.
   "account_id": "777fee71deb9d31e8b98d14bba962ff8",
-  "compatibility_date": "2026-08-09",
+  "compatibility_date": "2026-08-08",
+  // the API runs on Web Crypto, fetch and KV only — no Node built-ins, so
+  // nodejs_compat is deliberately absent.
+  "main": "worker/index.ts",
   // keep the *.workers.dev URL alive alongside the custom domain — declaring
   // `routes` disables it by default, and it is a useful fallback link.
   "workers_dev": true,
@@ -17,11 +23,24 @@
   "routes": [
     { "pattern": "poneglyph.walrussecuritas.com", "custom_domain": true }
   ],
+  // one sandbox per visitor, keyed by the pg_sid cookie: sess:<sid> holds the
+  // hash chain and the register delta, run:<sid>:<runId> holds a live run.
+  "kv_namespaces": [
+    { "binding": "PONEGLYPH_STATE", "id": "07e8da45f72b47c7bc3b9b29d4dd8634" }
+  ],
   "assets": {
     "directory": "./out",
+    // lets the Worker hand any non-API request back to the static site
+    "binding": "ASSETS",
     // exported build emits /route/index.html; serve /route and /route/ alike
     "html_handling": "auto-trailing-slash",
     // Next writes 404.html on export
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+    // THE LOAD-BEARING LINE. Only /api/* reaches the Worker script; every
+    // other request is handled by the asset worker exactly as it was before
+    // `main` existed, so html_handling and the 404 page keep working and a
+    // bug in the API cannot take the site down.
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true }
 }

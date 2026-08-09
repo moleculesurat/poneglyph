@@ -43,3 +43,7 @@ next-env.d.ts
 # static export
 out/
 .wrangler/
+
+# cloudflare worker local secrets
+.dev.vars
+.dev.vars.*
