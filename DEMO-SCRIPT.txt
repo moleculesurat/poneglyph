@@ -2,7 +2,10 @@
  PONEGLYPH — DEMO SCRIPT + CRASH COURSE (for Gayatri)
  SEBI TechSprint @ GFF 2026 · Problem Statement 2: "Agentic Compliance"
  Round 2 — working prototype
- To run it:  cd poneglyph && npm run dev  →  http://localhost:3000
+ LIVE:       https://poneglyph.walrussecuritas.com
+ Fallback:   https://poneglyph.techgenie2050.workers.dev
+ Local:      cd poneglyph && npm run dev   (NOT `npm start` — the build is
+             a static export, so `next start` no longer applies)
 =======================================================================
 
 How to use this file:

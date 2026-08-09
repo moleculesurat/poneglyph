@@ -2,6 +2,10 @@
 
 **From regulatory text to operational action.** A frontend sandbox of Poneglyph, an agentic compliance engine for SEBI market intermediaries — built for **SEBI Securities Market TechSprint PS2 (Agentic Compliance)**.
 
+### ▶ Live: **[poneglyph.walrussecuritas.com](https://poneglyph.walrussecuritas.com)**
+
+<sub>Fallback: [poneglyph.techgenie2050.workers.dev](https://poneglyph.techgenie2050.workers.dev) · served as a static export from Cloudflare's edge — no server runtime, no cold starts.</sub>
+
 SEBI circulars are the poneglyphs: the true text is public, and almost nobody can read all of it. The engine reads it, grounds every obligation to a paragraph, and keeps reading as the law changes.
 
 > **Sandbox — explorable, not actionable.** Every surface expands, filters, replays and deep-links. No button writes anything: action controls fire the sandbox toast. The sim-clock is pinned to **2026-07-12**, so "SEBI amended Para 46 nine days ago" stays true forever.
