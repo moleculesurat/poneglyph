@@ -5,9 +5,20 @@ import type { EvidenceArtifact } from "@/lib/schema";
    register (data/obligations.ts). Three kinds:
      document   — uploaded artifacts (connector: manual-upload)
      data-check — connector-run queries against live systems of record
-     live-scan  — Walrus scan engine probes (connector: walrus-scan)
+     live-scan  — Poneglyph scan engine probes (connector: poneglyph-scan)
    Every artifact is content-hashed and carries its own history timeline.
-   All facts fictional; sim "today" = 2026-07-12.
+
+   REAL vs SIMULATED — the tenant is Angel One Limited, a real listed entity:
+     · Compliance posture (met/gap), artifact bodies, hashes, connector runs and
+       history timelines are SIMULATED and are NOT assertions about Angel One.
+     · Specimen documents are redacted: no member identity, participant id or
+       portal acknowledgement reference is invented.
+     · Where a real public figure exists it is used verbatim WITH provenance and
+       marked as real in-line (see EV-001 net worth, from the XBRL filing).
+   EV-001…EV-020 back the base and CUSPA registers. EV-021…EV-024 were captured
+   against the corpus-completion obligations RUN-049 raised over Parts IV, V, VI
+   and IX — the chapters the first extraction never reached.
+   Sim "today" = 2026-07-12.
    ══════════════════════════════════════════════════════════════════════ */
 
 export const evidence: EvidenceArtifact[] = [
@@ -17,7 +28,7 @@ export const evidence: EvidenceArtifact[] = [
     kind: "document",
     title: "Net worth certificate — H2 FY26 (Oct 2025 – Mar 2026)",
     description:
-      "CA-certified net worth certificate for the half-year ended 31 Mar 2026, computed per the L.C. Gupta method, with NSE and BSE portal acknowledgement receipts appended.",
+      "Net-worth evidence for the half-year ended 31 Mar 2026. The certificate wrapper is a simulated specimen; the net-worth figure it reports is the entity's real filed figure, sourced from its XBRL filing.",
     connector: "manual-upload",
     obligationIds: ["OBL-SB-001"],
     capturedAt: "2026-04-21T11:42:00+05:30",
@@ -29,7 +40,7 @@ export const evidence: EvidenceArtifact[] = [
     detail: {
       docPages: 6,
       docExcerpt:
-        "…we certify that the net worth of Walrus Securitas Broking Ltd (SEBI Reg. No. INZ000247319) as on 31 March 2026, computed in accordance with the method prescribed by the Dr. L.C. Gupta Committee, stands at ₹9.84 crore, which exceeds the minimum net worth prescribed for a stock broker with the firm's activity profile. Acknowledgement: NSE ENIT ref NW/2026/H2/48291, filed 20-Apr-2026; BSE ref BEFS-NW-26-11374, filed 20-Apr-2026.",
+        "[Simulated specimen — certificate body illustrative; member identity and portal acknowledgement references redacted in the sandbox.] …we certify that the net worth of the member as on 31 March 2026, computed in accordance with the method prescribed by the Dr. L.C. Gupta Committee, is not less than the minimum prescribed for a stock broker with the firm's activity profile. ¶ REAL FIGURE, NOT SIMULATED — reported net worth (total equity), FY2025-26 standalone: ₹6,201.98 crore (prior year ₹5,597.87 crore, +10.79%). Source: reconciled XBRL filing, NSE/BSE. This is the figure the obligation is tested against.",
     },
   },
   {
@@ -109,7 +120,7 @@ export const evidence: EvidenceArtifact[] = [
     detail: {
       docPages: 3,
       docExcerpt:
-        "This is to confirm that Walrus Securitas Broking Ltd (SEBI Reg. No. INZ000247319) is enrolled on the SMART ODR portal as a market participant with identifier MP-STK-08834, effective 10-Apr-2026. Dispute references initiated against the participant will be routed to the registered escalation contact (compliance@walrussecuritas.com). Website disclosure verified: ODR link published on the investor-grievance page with the prescribed text.",
+        "[Simulated specimen — member identity, participant identifier and escalation contact redacted in the sandbox.] This is to confirm that the member is enrolled on the SMART ODR portal as a market participant, effective 10-Apr-2026. Dispute references initiated against the participant are routed to the registered escalation contact on record. Website disclosure verified: ODR link published on the investor-grievance page with the prescribed text.",
     },
   },
   {
@@ -173,6 +184,76 @@ export const evidence: EvidenceArtifact[] = [
     },
   },
 
+  {
+    id: "EV-022",
+    kind: "document",
+    title: "Quarterly return — shareholding, directors and constitution (quarter ended 30 Jun 2026)",
+    description:
+      "Return of changes in shareholding, directorships and constitution for the quarter ended 30 June 2026, filed with both recognised stock exchanges inside the fifteen-day window. The prior-approval limb of Part V — OBL-SB-027 — is not evidenced by this artifact and stays unbound.",
+    connector: "manual-upload",
+    obligationIds: ["OBL-SB-028"],
+    capturedAt: "2026-07-10T14:20:00+05:30",
+    hash: "c50fa2794e1b",
+    history: [
+      { at: "2026-07-10T14:20:00+05:30", event: "captured", hash: "c50fa2794e1b" },
+      { at: "2026-07-10T14:26:00+05:30", event: "bound to OBL-SB-028", hash: "c50fa2794e1b" },
+    ],
+    detail: {
+      docPages: 7,
+      docExcerpt:
+        "[Simulated specimen — return body illustrative; member identity, signatory details and portal acknowledgement references redacted in the sandbox.] Return of change in shareholding, directors and constitution for the quarter ended 30-Jun-2026, submitted to both recognised stock exchanges on 10-Jul-2026 — five days inside the fifteen-day period running from quarter end. Constitution: unchanged, public limited company incorporated in India. Directorships: the changes recorded in the quarter are carried in the schedule to the return. ¶ REAL, NOT SIMULATED — the entity is listed and its quarterly shareholding pattern is a public exchange filing: ISIN INE732I01021, NSE: ANGELONE, BSE: 543235. Source: the listed-entity filing bundle held as DOC-015. The shareholding table itself is not reproduced here; what the engine records is that the return was filed and when, not the holdings it carries.",
+    },
+  },
+  {
+    id: "EV-023",
+    kind: "document",
+    title: "FATCA and CRS registration record with account due-diligence procedure",
+    description:
+      "Registration and classification record under the India–US Inter-Governmental Agreement and the Multilateral Competent Authority Agreement, with the due-diligence procedure applied at account opening and the collation of reportable accounts for the annual cycle. Drawn from the source document DOC-016; no identification number is reproduced.",
+    connector: "manual-upload",
+    obligationIds: ["OBL-SB-029"],
+    capturedAt: "2026-04-23T10:55:00+05:30",
+    hash: "e2470bd6a913",
+    history: [
+      { at: "2026-04-23T10:55:00+05:30", event: "captured", hash: "e2470bd6a913" },
+      { at: "2026-04-23T11:02:00+05:30", event: "bound to OBL-SB-029", hash: "e2470bd6a913" },
+    ],
+    detail: {
+      docPages: 8,
+      docExcerpt:
+        "[Simulated specimen — registration body illustrative; the Global Intermediary Identification Number, member identity and portal references are redacted in the sandbox, and no identifier is generated to stand in for them.] Classification on record: Reporting Financial Institution under the Inter-Governmental Agreement between India and the United States of America (Model 1), reporting under the Multilateral Competent Authority Agreement. §2 Due diligence — self-certification is captured within the account opening kit at onboarding; the prescribed indicia are applied to new accounts at capture and to pre-existing accounts on the review cycle, with the outcome recorded against the account. §4 Reporting — accounts identified as reportable are collated and filed in the prescribed format on the annual cycle. Registration validity held on file: 01-Apr-2026 to 31-Mar-2027 (source document DOC-016).",
+    },
+  },
+  {
+    id: "EV-024",
+    kind: "document",
+    title: "Conflicts of interest policy v3.0 with register and disclosure record",
+    description:
+      "Board-approved conflicts of interest policy covering research, distribution, proprietary trading and employee dealing, bundled with the conflicts register and the record of disclosures made to clients where a conflict could not be avoided. The policy's document record DOC-019 is still held at `received` — parsed, awaiting the compliance officer's sign-off.",
+    connector: "manual-upload",
+    obligationIds: ["OBL-SB-031"],
+    capturedAt: "2026-07-01T09:15:00+05:30",
+    hash: "4e73d1b8025f",
+    history: [
+      {
+        at: "2026-05-07T09:38:00+05:30",
+        event: "captured — policy v3.0 with the register as at 30-Apr-2026",
+        hash: "b0f52c8471ea",
+      },
+      { at: "2026-05-07T09:44:00+05:30", event: "bound to OBL-SB-031", hash: "b0f52c8471ea" },
+      {
+        at: "2026-07-01T09:15:00+05:30",
+        event: "refreshed — register extract rolled to the quarter ended 30-Jun-2026",
+        hash: "4e73d1b8025f",
+      },
+    ],
+    detail: {
+      docPages: 26,
+      docExcerpt:
+        "[Simulated specimen — register entries illustrative; client identities, covered-person names and counterparty names redacted in the sandbox.] Conflicts of interest policy v3.0, approved by the board on 24-Apr-2026 (source document DOC-019). §2 Scope: research, distribution, proprietary trading and employee dealing. §5: where a conflict cannot be avoided it shall be disclosed to the client before the service is provided, and the disclosure recorded against the client file. Register extract for the quarter ended 30-Jun-2026: 6 conflicts declared — 4 managed by information barrier, 1 by recusal of the covered person, 1 disclosed to the affected clients ahead of execution, with the disclosure record retained in each case. Employee dealing: pre-clearance procedure in operation; the FY27 attestation cycle is open.",
+    },
+  },
+
   /* ── Data checks ───────────────────────────────────────────────────── */
   {
     id: "EV-003",
@@ -232,7 +313,7 @@ export const evidence: EvidenceArtifact[] = [
     ],
     detail: {
       checkQuery:
-        "GET /clearing/v2/upstreaming/confirmations?member=INZ000247319&from=2026-04-01&to=2026-07-11",
+        "GET /clearing/v2/upstreaming/confirmations?member=INZ000161534&from=2026-04-01&to=2026-07-11",
       checkResult:
         "68 of 68 trading days confirmed upstreamed by 09:00 next day. Latest: 11-Jul-2026 — ₹40.91 Cr upstreamed to NCL (ref NCL/UPS/2026/193/07741); residual float ₹0.36 Cr within the permitted operational threshold. 0 late confirmations in the period. PASS.",
     },
@@ -295,7 +376,7 @@ export const evidence: EvidenceArtifact[] = [
     ],
     detail: {
       checkQuery:
-        "GET /margin/v3/reporting/acks?member=INZ000247319&segment=ALL&from=2026-04-01&to=2026-07-11",
+        "GET /margin/v3/reporting/acks?member=INZ000161534&segment=ALL&from=2026-04-01&to=2026-07-11",
       checkResult:
         "68 of 68 trading days reported by T+5 with exchange acknowledgement. Short-collection instances in the period: 14 (0.02% of client-days); penalty debited to the firm in all 14, none passed to clients. Latest ack: NSE MRG/ACK/2026/193/33108 dt. 11-Jul-2026. PASS.",
     },
@@ -337,7 +418,7 @@ export const evidence: EvidenceArtifact[] = [
     ],
     detail: {
       checkQuery:
-        "GET /scores/v2/complaints?member=INZ000247319&status=open · GET https://walrussecuritas.com/investor-charter (snapshot + checksum)",
+        "GET /scores/v2/complaints?member=INZ000161534&status=open · GET <tenant>/investor-charter (snapshot + checksum)",
       checkResult:
         "SCORES: 3 complaints open, oldest aged 9 days; 22 resolved FY27 YTD, avg resolution 11.4 days, 0 beyond 21 days. Website: investor charter present (last updated 04-Apr-2026), monthly complaint disclosure current through Jun-2026, page checksum matches prior snapshot. PASS.",
     },
@@ -347,14 +428,19 @@ export const evidence: EvidenceArtifact[] = [
     kind: "data-check",
     title: "Records retention config + ECN dispatch SLA",
     description:
-      "Archival system retention-policy verification (5-year preservation, WORM storage, integrity sampling) combined with the contract-note dispatch log measured against the 24-hour SLA.",
+      "Archival system retention-policy verification (5-year preservation, WORM storage, integrity sampling) combined with the contract-note dispatch log measured against the 24-hour SLA. RUN-049 re-used the same capture for the Part IV electronic-contract-note duty: the signature-validity sample and the preservation policy are what that obligation tests. The signing certificate in use lapses on 14-Aug-2026, beyond the window this check covers, and no renewal evidence has been captured — which is why the obligation is carried at risk on an artifact that itself passed.",
     connector: "backoffice-api",
-    obligationIds: ["OBL-SB-018", "OBL-SB-019"],
+    obligationIds: ["OBL-SB-018", "OBL-SB-019", "OBL-SB-024"],
     capturedAt: "2026-06-25T07:55:00+05:30",
     hash: "3a5d90c7f2e8",
     history: [
       { at: "2026-06-25T07:55:00+05:30", event: "captured", hash: "3a5d90c7f2e8" },
       { at: "2026-06-25T07:56:00+05:30", event: "bound to OBL-SB-018, OBL-SB-019", hash: "3a5d90c7f2e8" },
+      {
+        at: "2026-07-11T10:20:00+05:30",
+        event: "bound to OBL-SB-024 — binding extended by RUN-049, artifact body unchanged",
+        hash: "3a5d90c7f2e8",
+      },
     ],
     detail: {
       checkQuery:
@@ -385,14 +471,14 @@ export const evidence: EvidenceArtifact[] = [
     },
   },
 
-  /* ── Live scans (Walrus scan engine) ───────────────────────────────── */
+  /* ── Live scans (Poneglyph scan engine) ────────────────────────────── */
   {
     id: "EV-015",
     kind: "live-scan",
     title: "VAPT — trading & back-office perimeter",
     description:
       "Vulnerability assessment and penetration test across the trading front-end, back-office APIs and admin plane. Two medium findings remain open pending re-test (TSK-009); closure re-validation scheduled.",
-    connector: "walrus-scan",
+    connector: "poneglyph-scan",
     obligationIds: ["OBL-SB-021"],
     capturedAt: "2026-05-20T02:10:00+05:30",
     hash: "0c8e2f9a61d4",
@@ -401,7 +487,7 @@ export const evidence: EvidenceArtifact[] = [
       { at: "2026-06-24T02:15:00+05:30", event: "re-verified — 5 of 7 findings closed on re-scan; 2 medium remain open", hash: "0c8e2f9a61d4" },
     ],
     detail: {
-      scanTool: "walrus-scan v2.4 (VAPT profile: OWASP ASVS L2 + network layer)",
+      scanTool: "poneglyph-scan v2.4 (VAPT profile: OWASP ASVS L2 + network layer)",
       scanFindings:
         "Initial sweep 20-May-2026: 7 findings — 0 critical, 1 high (session fixation on legacy admin login), 4 medium, 2 low. Re-verification 24-Jun-2026: high finding CLOSED (legacy login decommissioned), 3 medium and 2 low CLOSED on re-scan. OPEN: WS-2026-0412 (medium — TLS 1.1 accepted on back-office reporting endpoint), WS-2026-0418 (medium — verbose stack traces on internal API error path). Re-test scheduled under TSK-009, due 20-Aug-2026.",
     },
@@ -412,7 +498,7 @@ export const evidence: EvidenceArtifact[] = [
     title: "Log retention & MFA posture scan — critical systems",
     description:
       "Automated posture scan verifying 180-day log retention across critical systems and multi-factor authentication enforcement on every privileged and remote-access path.",
-    connector: "walrus-scan",
+    connector: "poneglyph-scan",
     obligationIds: ["OBL-SB-023"],
     capturedAt: "2026-07-01T03:05:00+05:30",
     hash: "8d47a1c5e29f",
@@ -421,9 +507,38 @@ export const evidence: EvidenceArtifact[] = [
       { at: "2026-07-01T03:05:00+05:30", event: "refreshed — monthly scheduled scan", hash: "8d47a1c5e29f" },
     ],
     detail: {
-      scanTool: "walrus-scan v2.4 (posture profile: log-retention + IAM)",
+      scanTool: "poneglyph-scan v2.4 (posture profile: log-retention + IAM)",
       scanFindings:
         "Log retention: 14 of 14 critical systems shipping to the central SIEM; oldest retained event 196 days (requirement ≥180); retention lock verified on the storage tier. MFA: 41 of 41 privileged accounts enforce TOTP or hardware key; VPN and bastion require MFA; 0 legacy exemptions found. Break-glass accounts: 2, both vaulted with dual-approval checkout. PASS — no findings.",
+    },
+  },
+  {
+    id: "EV-021",
+    kind: "live-scan",
+    title: "Order gateway risk-gate probe — DMA and smart order routing",
+    description:
+      "Configuration probe of every order-entry path carrying direct market access or smart-order-routed flow, testing that each terminates on the risk management system and that the price, quantity and exposure checks cannot be bypassed, with a synthetic order-flow trace to confirm the gate is live rather than merely configured.",
+    connector: "poneglyph-scan",
+    obligationIds: ["OBL-SB-026"],
+    capturedAt: "2026-07-04T02:35:00+05:30",
+    hash: "7b3ce0f19d24",
+    history: [
+      {
+        at: "2026-06-06T02:30:00+05:30",
+        event: "captured — first probe of the DMA and SOR paths",
+        hash: "2e91a4d70cb8",
+      },
+      {
+        at: "2026-07-04T02:35:00+05:30",
+        event: "refreshed — monthly scheduled probe, gateway set re-enumerated",
+        hash: "7b3ce0f19d24",
+      },
+    ],
+    detail: {
+      scanTool:
+        "poneglyph-scan v2.4 (profile: order-gateway configuration + synthetic order-flow trace)",
+      scanFindings:
+        "Gateways enumerated: 9 order-entry endpoints — 4 direct market access sessions, 3 smart-order-routing sessions, 2 internal dealing sessions. All 9 resolve to the risk management gateway; 0 endpoints reach an exchange session directly. Check set asserted on each path: price band, single-order quantity and client exposure limit — 9 of 9 enforce all three, with the bypass flag disabled at configuration level and held under change control. Synthetic order-flow trace, 240 probe orders across the 7 client-facing sessions: 240 of 240 evaluated by the risk management system before release, 6 correctly rejected at the price-band check, 0 released unchecked. PASS — no findings.",
     },
   },
 ];

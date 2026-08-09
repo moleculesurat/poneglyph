@@ -16,6 +16,12 @@ const counts = obligations.reduce(
 const baseCount = obligations.filter((o) => o.clause.circularId === "MC-SB-2025").length;
 const deltaCount = obligations.length - baseCount;
 
+/* the open gaps split by the circular that raised them — the Jul 3
+   amendment carries most of them, the corpus-completion pass the rest */
+const gaps = obligations.filter((o) => o.status === "gap");
+const gapsFromAmendment = gaps.filter((o) => o.clause.circularId !== "MC-SB-2025").length;
+const gapsFromMaster = gaps.length - gapsFromAmendment;
+
 const CROSS_LINKS = [
   { href: "/evidence", label: "Evidence vault" },
   { href: "/remediation", label: "Remediation queue" },
@@ -60,7 +66,7 @@ export default function RegisterPage() {
           label="Open gaps"
           value={counts.gap ?? 0}
           accent
-          hint="all six from the Jul 3 amendment"
+          hint={`${gapsFromAmendment} from the Jul 3 amendment · ${gapsFromMaster} from the Master Circular`}
         />
         <StatTile
           label="Pending review"

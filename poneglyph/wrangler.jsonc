@@ -1,0 +1,27 @@
+{
+  // Poneglyph — SEBI TechSprint PS2 (Agentic Compliance).
+  // Assets-only Worker: the whole app is a static export (see next.config.ts),
+  // so there is no Worker script — Cloudflare serves ./out from the edge.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "poneglyph",
+  // pinned: the login has access to three accounts, so leaving this out
+  // would let a deploy land in the wrong one. This is Techgenie2050's.
+  "account_id": "777fee71deb9d31e8b98d14bba962ff8",
+  "compatibility_date": "2026-08-09",
+  // keep the *.workers.dev URL alive alongside the custom domain — declaring
+  // `routes` disables it by default, and it is a useful fallback link.
+  "workers_dev": true,
+  "preview_urls": true,
+  // custom domain — Cloudflare creates and manages the DNS record itself,
+  // so nothing needs adding by hand in the zone.
+  "routes": [
+    { "pattern": "poneglyph.walrussecuritas.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./out",
+    // exported build emits /route/index.html; serve /route and /route/ alike
+    "html_handling": "auto-trailing-slash",
+    // Next writes 404.html on export
+    "not_found_handling": "404-page"
+  }
+}

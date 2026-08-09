@@ -1,7 +1,7 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   Evidence vault explorer — filterable card grid over the 20 artifacts,
+   Evidence vault explorer — filterable card grid over the 24 artifacts,
    with per-card expandable kind-specific detail + history timeline.
    All facts come from data/evidence.ts; sim-today is pinned in data.
    ══════════════════════════════════════════════════════════════════════ */

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Poneglyph">
+  <!-- Glyph-stone: a hewn monolith, tapered, its top-right corner broken away.
+       The incised rule-marks are punched out of the slab (fill-rule evenodd) —
+       carved script, still unread. -->
+  <path fill="#141417" fill-rule="evenodd" d="M12 5 H29 L38 11 L42 44 H7 Z M14.5 11.5 H33 V15 H14.5 Z M13.5 19.5 H35.5 V23 H13.5 Z M11.5 35.5 H34 V39 H11.5 Z"/>
+  <!-- The decoded line — the one the engine has read. -->
+  <rect x="12.5" y="27.5" width="12.5" height="3.5" fill="#fe5301"/>
+</svg>

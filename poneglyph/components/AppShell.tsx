@@ -6,7 +6,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePersona, type Persona } from "@/components/persona";
 import { useSandboxToast } from "@/components/toast";
-import { NAV_ITEMS, INSPECTOR_ITEM, INSPECTOR_HOME, findCrumb, type NavGroup } from "@/lib/nav";
+import {
+  NAV_ITEMS,
+  INSPECTOR_ITEM,
+  INSPECTOR_HOME,
+  BROKER_HOME,
+  ENTRY_GATE,
+  findCrumb,
+  type NavGroup,
+} from "@/lib/nav";
 import { tenant } from "@/data/tenant";
 
 const GROUP_ORDER: NavGroup[] = ["Inspection", "Oversight", "Compliance", "Engine"];
@@ -50,6 +58,40 @@ export function AppShell({ children }: { children: ReactNode }) {
     };
   }, [menuOpen]);
 
+  /* The sandbox declaration rides above everything, gate included — it is
+     the first sentence a judge reads and it must never be conditional. */
+  const sandboxStrip = (
+    <div
+      style={{
+        background: "var(--ink)",
+        color: "rgba(255,255,255,0.85)",
+        padding: "7px 18px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 12,
+        position: "relative",
+        zIndex: 56,
+      }}
+    >
+      <span style={{ width: 18, height: 8, borderRadius: 2, background: "var(--orange)", flex: "none" }} />
+      <span className="mono-label" style={{ fontSize: 10, letterSpacing: "0.12em" }}>
+        Sandbox environment — realistic simulated data · everything is explorable, nothing is actionable
+      </span>
+    </div>
+  );
+
+  /* ── entry gate: full-bleed, no sidebar, no breadcrumb header ──
+     "/" is the cover of the product, not a console route. */
+  if (pathname === ENTRY_GATE) {
+    return (
+      <>
+        {sandboxStrip}
+        {children}
+      </>
+    );
+  }
+
   const items = persona === "inspector"
     ? [INSPECTOR_ITEM, ...NAV_ITEMS.filter((t) => t.inspector)]
     : NAV_ITEMS;
@@ -60,7 +102,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     : findCrumb(pathname);
   /* group crumb lands on the first page of that group for this persona */
   const groupHome = items.find((i) => i.group === crumb.group)?.href
-    ?? (persona === "inspector" ? INSPECTOR_HOME : "/");
+    ?? (persona === "inspector" ? INSPECTOR_HOME : BROKER_HOME);
 
   const copyRoute = () => {
     const done = () => toast(`Route copied — ${pathname}`);
@@ -78,7 +120,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const switchPersona = (p: Persona) => {
     if (p !== persona) {
       setPersona(p);
-      router.push(p === "inspector" ? INSPECTOR_HOME : "/");
+      router.push(p === "inspector" ? INSPECTOR_HOME : BROKER_HOME);
     }
     setMenuOpen(false);
   };
@@ -86,41 +128,29 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <>
       {/* ── sandbox strip ── */}
-      <div
-        style={{
-          background: "var(--ink)",
-          color: "rgba(255,255,255,0.85)",
-          padding: "7px 18px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 12,
-          position: "relative",
-          zIndex: 56,
-        }}
-      >
-        <span style={{ width: 18, height: 8, borderRadius: 2, background: "var(--orange)", flex: "none" }} />
-        <span className="mono-label" style={{ fontSize: 10, letterSpacing: "0.12em" }}>
-          Sandbox environment — realistic simulated data · everything is explorable, nothing is actionable
-        </span>
-      </div>
+      {sandboxStrip}
 
       <div className="app-row">
         {/* ── sidebar ── */}
         <aside className="sidebar" data-open={sideOpen}>
           {/* brand */}
           <Link
-            href={persona === "inspector" ? INSPECTOR_HOME : "/"}
+            href={persona === "inspector" ? INSPECTOR_HOME : BROKER_HOME}
             className="row"
             style={{ gap: 11, padding: "16px 16px 14px", borderBottom: "1.5px solid var(--ink-10)" }}
           >
-            <Image src="/walrus-mark.png" alt="Walrus Securitas" width={30} height={30} priority />
-            <span className="stack" style={{ gap: 2 }}>
-              <span className="mono-label" style={{ fontSize: 13, letterSpacing: "0.14em" }}>
+            {/* unoptimized: the image optimizer refuses SVG unless dangerouslyAllowSVG
+                is set in next.config, and an SVG needs no optimizing */}
+            <Image src="/poneglyph-mark.svg" alt="Poneglyph" width={30} height={30} priority unoptimized />
+            <span className="stack" style={{ gap: 3 }}>
+              <span className="mono-label" style={{ fontSize: 13.5, letterSpacing: "0.17em" }}>
                 Poneglyph
               </span>
-              <span className="mono-label dim" style={{ fontSize: 8.5 }}>
-                by Walrus <b style={{ color: "var(--orange)", fontWeight: 500 }}>Securitas</b>
+              <span
+                className="mono-label dim"
+                style={{ fontSize: 8, letterSpacing: "0.2em", textTransform: "lowercase" }}
+              >
+                agentic compliance
               </span>
             </span>
           </Link>

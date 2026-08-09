@@ -21,16 +21,24 @@ export type EvidenceKind = "document" | "data-check" | "live-scan";
 
 export type TaskStatus = "open" | "in-progress" | "done" | "overdue";
 
+/** Register chapters. Each rolls up to one Part (I–X) of the SEBI Master
+    Circular for Stock Brokers — see `lib/domains.ts` for the mapping. */
 export type ChapterKey =
-  | "registration"
-  | "client-dealings"
-  | "unpaid-securities"
-  | "margin"
-  | "supervision"
-  | "grievance"
-  | "books-records"
-  | "advertisement"
-  | "cyber";
+  | "registration" // Part I
+  | "supervision" // Part II — incl. system audit + QSB
+  | "client-dealings" // Part III
+  | "margin" // Part III
+  | "unpaid-securities" // Part III — Para 46 / CUSPA
+  | "technology" // Part IV — ECN, IBT, DMA, algo
+  | "cyber" // Part IV — CSCRF
+  | "change-control" // Part V
+  | "fatca" // Part VI
+  | "grievance" // Part VII — SCORES, ODR
+  | "default" // Part VIII
+  | "advertisement" // Part IX
+  | "books-records" // Part IX
+  | "outsourcing" // Part IX — outsourcing + conflicts of interest
+  | "reporting"; // Part X
 
 /* ── Regulatory corpus ─────────────────────────────────────────────── */
 
@@ -128,7 +136,7 @@ export interface EvidenceArtifact {
   kind: EvidenceKind;
   title: string;
   description: string;
-  connector: string; // "manual-upload" | "depository-api" | "walrus-scan" …
+  connector: string; // "manual-upload" | "depository-api" | "poneglyph-scan" …
   obligationIds: string[];
   capturedAt: string;
   hash: string;
@@ -262,4 +270,220 @@ export interface McpTool {
   inputSchema: string; // pretty-printed JSON schema
   exampleCall: string;
   exampleResult: string;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   ONBOARDING — how a real firm enters the register.
+
+   The engine cannot know a firm's obligations until it knows the firm.
+   Onboarding produces an EntityProfile; the profile drives applicability
+   (which Parts bind this firm), which drives the document requirements,
+   which drive what the engine can actually verify. Nothing is assumed:
+   every fact carries provenance, and every requested document says which
+   clause made us ask for it.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/** Parts I–X of the Master Circular. Titles live in `lib/domains.ts`. */
+export type SebiPart = "I" | "II" | "III" | "IV" | "V" | "VI" | "VII" | "VIII" | "IX" | "X";
+
+/** CSCRF grades a regulated entity by size; the grade sets cyber depth. */
+export type CscrfGrade = "self-certification" | "basic" | "mid-size" | "qualified" | "mii";
+
+/** A business line the firm runs. Each unlocks a different obligation set —
+    this is why two brokers with the same licence owe different things. */
+export type BusinessSegment =
+  | "equity-cash"
+  | "equity-derivatives"
+  | "currency-derivatives"
+  | "commodity-derivatives"
+  | "debt-segment"
+  | "depository-participant"
+  | "research-analyst"
+  | "investment-adviser"
+  | "portfolio-manager"
+  | "mutual-fund-distribution"
+  | "margin-trading-facility"
+  | "algo-trading"
+  | "internet-trading";
+
+/** Where a fact came from. `filing` and `exchange` are externally verifiable;
+    `declared` is the firm's own word until a document backs it. */
+export type ProvenanceKind = "filing" | "exchange" | "document" | "declared" | "derived";
+
+export interface EntityFact {
+  key: string;
+  label: string;
+  /** display value, already formatted */
+  value: string;
+  /** raw rupee amount where the fact is monetary */
+  rupees?: number;
+  provenance: ProvenanceKind;
+  /** the exact source — a filing, a registry, an uploaded document id */
+  source: string;
+  asOf: string;
+  /** true only where the fact is drawn from a public, checkable source */
+  verified: boolean;
+}
+
+export interface RegistrationLine {
+  category: string; // "Stock Broker", "Depository Participant", "Research Analyst"
+  authority: string; // "SEBI", "NSE", "BSE", "CDSL"
+  number: string; // masked in the sandbox — never a fabricated live number
+  masked: boolean;
+}
+
+export interface EntityProfile {
+  id: string;
+  legalName: string;
+  shortName: string;
+  /** public market identity, where the firm is listed */
+  isin?: string;
+  tickers?: { exchange: string; symbol: string }[];
+  listed: boolean;
+  incorporatedIn: string;
+  intermediaryTypes: IntermediaryType[];
+  segments: BusinessSegment[];
+  exchanges: string[];
+  depositories: string[];
+  registrations: RegistrationLine[];
+  /** every profile fact, with provenance */
+  facts: EntityFact[];
+  /** designation outcomes computed from the facts above */
+  qsb: boolean;
+  qsbBasis: string[];
+  cscrfGrade: CscrfGrade;
+  cscrfBasis: string;
+  /** Parts of the Master Circular this profile makes binding */
+  applicableParts: SebiPart[];
+  /** Parts explicitly ruled out, with the reason — the "no" matters as much */
+  excludedParts: { part: SebiPart; reason: string }[];
+}
+
+/* ── Document management ───────────────────────────────────────────── */
+
+export type DocumentStatus =
+  | "required" // asked for, not yet supplied
+  | "received" // supplied, not yet parsed/verified
+  | "verified" // parsed and accepted
+  | "expired" // supplied but past its refresh cadence
+  | "waived"; // not applicable to this firm, with a reason
+
+export type DocumentCategory =
+  | "constitutional" // incorporation, MoA/AoA, shareholding
+  | "registration" // SEBI/exchange/depository certificates
+  | "policy" // board-approved policies and SOPs
+  | "financial" // audited accounts, net worth certificates
+  | "audit" // system audit, internal audit, VAPT reports
+  | "operational" // reconciliations, registers, client records
+  | "governance"; // board minutes, committee constitutions
+
+/** A document the engine asks for, and the clause that made it ask. */
+export interface DocumentRequirement {
+  id: string; // "DOC-REQ-014"
+  name: string;
+  description: string;
+  category: DocumentCategory;
+  part: SebiPart;
+  chapter: ChapterKey;
+  /** what in the entity profile triggered this ask — the "why are you asking me this" answer */
+  triggeredBy: string;
+  /** the clause behind the ask */
+  clauseRef?: { circularId: string; para: string; excerpt: string };
+  mandatory: boolean;
+  /** obligations this document lets the engine verify once supplied */
+  unlocks: string[];
+  acceptedFormats: string[];
+  /** how often it must be refreshed, where the circular says so */
+  refreshCadence?: string;
+}
+
+export interface ExtractedField {
+  field: string;
+  value: string;
+  confidence: number; // 0–1
+  /** page/section the value was read from */
+  locator?: string;
+}
+
+export interface CompanyDocument {
+  id: string; // "DOC-021"
+  /** the requirement this answers; absent ⇒ volunteered by the firm */
+  requirementId?: string;
+  name: string;
+  category: DocumentCategory;
+  status: DocumentStatus;
+  fileName?: string;
+  pages?: number;
+  uploadedAt?: string;
+  uploadedBy?: string;
+  /** validity window, where the document expires */
+  validFrom?: string;
+  validUntil?: string;
+  hash?: string;
+  /** what the engine read out of it — this is how the tool "learns" the firm */
+  extracted: ExtractedField[];
+  /** obligations this document now supports */
+  supportsObligations: string[];
+  /** reason, when status is `waived` */
+  waivedReason?: string;
+  notes?: string;
+}
+
+/* ── Onboarding session ────────────────────────────────────────────── */
+
+export type OnboardingStepKey =
+  | "identify" // who is this entity
+  | "segments" // what business lines does it run
+  | "designation" // QSB / CSCRF grade determination
+  | "scope" // which Parts bind it
+  | "documents" // collect what the engine needs
+  | "activate"; // build the register
+
+export type OnboardingStepStatus = "done" | "active" | "pending";
+
+export interface OnboardingStep {
+  key: OnboardingStepKey;
+  title: string;
+  blurb: string;
+  status: OnboardingStepStatus;
+  /** one-line summary of the outcome, shown once done */
+  outcome?: string;
+  /** the agent's reasoning for this step, replayable like any pipeline run */
+  trace?: TraceStep[];
+}
+
+/** A question the engine asks the firm during onboarding. Answers here
+    change which obligations and documents apply — the opinionated part. */
+export interface OnboardingQuestion {
+  id: string;
+  step: OnboardingStepKey;
+  question: string;
+  /** why the engine needs to know — always shown, never a bare form field */
+  why: string;
+  kind: "single" | "multi" | "text" | "number";
+  options?: { value: string; label: string; implies?: string }[];
+  /** the engine's pre-filled answer from public data, if it could infer one */
+  prefilled?: string;
+  prefilledSource?: string;
+  answer?: string;
+  /** obligations/documents this answer switches on */
+  unlocks?: string[];
+}
+
+export interface OnboardingSession {
+  id: string;
+  entityId: string;
+  startedAt: string;
+  completedAt?: string;
+  mode: "opinionated" | "blank";
+  steps: OnboardingStep[];
+  questions: OnboardingQuestion[];
+  /** headline counts produced by the run */
+  result: {
+    partsApplicable: number;
+    partsExcluded: number;
+    obligationsMapped: number;
+    documentsRequested: number;
+    documentsReceived: number;
+  };
 }

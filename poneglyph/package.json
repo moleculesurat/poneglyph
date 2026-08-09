@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "preview": "npx serve out -l 3000",
+    "deploy": "next build && npx wrangler deploy",
+    "deploy:preview": "next build && npx wrangler versions upload"
   },
   "dependencies": {
     "embla-carousel-react": "^8.6.0",

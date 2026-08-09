@@ -157,7 +157,7 @@ export const mcpTools: McpTool[] = [
     exampleResult: `{
   "artifacts": [
     {
-      "id": "EV-015", "kind": "live-scan", "connector": "walrus-scan",
+      "id": "EV-015", "kind": "live-scan", "connector": "poneglyph-scan",
       "title": "VAPT report + re-test verification",
       "boundTo": ["OBL-SB-021"],
       "hash": "sha256:…",

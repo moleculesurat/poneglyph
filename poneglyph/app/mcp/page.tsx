@@ -9,7 +9,7 @@ import type { McpTool } from "@/lib/schema";
 
 /* ── static surface facts ─────────────────────────────────────────────── */
 
-const ENDPOINT = "https://mcp.poneglyph.walrussecuritas.com/v1";
+const ENDPOINT = "https://mcp.poneglyph.dev/v1";
 
 const DESKTOP_CONFIG = `{
   "mcpServers": {

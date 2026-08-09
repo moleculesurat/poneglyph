@@ -3,6 +3,9 @@ import type { Obligation } from "@/lib/schema";
 /* ══════════════════════════════════════════════════════════════════════
    The obligation register — simulated, grounded to data/corpus.ts.
    OBL-SB-001…023: base register extracted from MC-SB-2025 (RUN-041).
+   OBL-SB-024…033: corpus-completion pass over the chapters of MC-SB-2025
+     that the first extraction did not reach — Parts IV (technology), V,
+     VI, IX (outsourcing & conduct) and X (RUN-049).
    OBL-SB-101…110: CUSPA delta extracted from CIRC-CUSPA-2026 (RUN-047).
    Status semantics: met · at-risk · gap · pending-review (awaiting the
    compliance officer's approval of an agent-proposed mapping).
@@ -21,8 +24,8 @@ export const obligations: Obligation[] = [
       para: "4.1",
       excerpt:
         "shall submit a net worth certificate, certified by a chartered accountant, to the stock exchange on a half-yearly basis",
-      charStart: 61,
-      charEnd: 178,
+      charStart: 76,
+      charEnd: 195,
     },
     type: "periodic",
     frequency: "half-yearly",
@@ -54,8 +57,8 @@ export const obligations: Obligation[] = [
       para: "5.2",
       excerpt:
         "shall appoint a qualified compliance officer who shall be responsible for monitoring compliance",
-      charStart: 25,
-      charEnd: 121,
+      charStart: 19,
+      charEnd: 114,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -86,8 +89,8 @@ export const obligations: Obligation[] = [
       para: "5.6",
       excerpt:
         "at least one designated director who is resident in India, having stayed in India for a total period of not less than one hundred and eighty-two days",
-      charStart: 38,
-      charEnd: 188,
+      charStart: 43,
+      charEnd: 192,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -121,7 +124,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "Client funds shall be segregated from the stock broker's own funds at all times",
       charStart: 0,
-      charEnd: 80,
+      charEnd: 79,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -153,7 +156,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "All client funds shall be upstreamed by the stock broker to the clearing corporations on an end-of-day basis",
       charStart: 0,
-      charEnd: 109,
+      charEnd: 108,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -185,7 +188,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "settlement of funds of the running account shall be done by the stock broker at least once within a gap of thirty or ninety days",
       charStart: 11,
-      charEnd: 140,
+      charEnd: 139,
     },
     type: "periodic",
     frequency: "30/90 days per client",
@@ -250,7 +253,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "No stock broker shall onboard a client without completing the Know Your Client process through a KYC Registration Agency",
       charStart: 0,
-      charEnd: 121,
+      charEnd: 120,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -281,8 +284,8 @@ export const obligations: Obligation[] = [
       para: "31.5",
       excerpt:
         "shall provide the facility of nomination to its clients in the prescribed format, or obtain a declaration of opt-out, for every trading and demat account",
-      charStart: 25,
-      charEnd: 177,
+      charStart: 19,
+      charEnd: 172,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -316,7 +319,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "shall collect upfront margins from clients in the manner prescribed and shall report instances of short-collection or non-collection",
       charStart: 14,
-      charEnd: 147,
+      charEnd: 146,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -347,8 +350,8 @@ export const obligations: Obligation[] = [
       para: "54.2",
       excerpt:
         "shall issue to each client a daily margin statement, in the prescribed format, disclosing the collateral deposited, collateral utilised and margin status",
-      charStart: 25,
-      charEnd: 179,
+      charStart: 19,
+      charEnd: 172,
     },
     type: "periodic",
     frequency: "daily",
@@ -381,7 +384,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "Margin requirements shall be computed on the basis of intra-day peak positions of the client",
       charStart: 0,
-      charEnd: 93,
+      charEnd: 92,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -414,8 +417,8 @@ export const obligations: Obligation[] = [
       para: "61.1",
       excerpt:
         "shall carry out a complete internal audit on a half-yearly basis by an independent qualified chartered accountant or company secretary",
-      charStart: 25,
-      charEnd: 159,
+      charStart: 19,
+      charEnd: 153,
     },
     type: "periodic",
     frequency: "half-yearly",
@@ -448,7 +451,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "shall carry out an inspection of such number of branches and authorised persons every year as prescribed",
       charStart: 14,
-      charEnd: 119,
+      charEnd: 118,
     },
     type: "periodic",
     frequency: "annual",
@@ -482,8 +485,8 @@ export const obligations: Obligation[] = [
       para: "71.1",
       excerpt:
         "shall resolve complaints received through the SEBI Complaints Redress System (SCORES) within twenty-one calendar days",
-      charStart: 25,
-      charEnd: 143,
+      charStart: 19,
+      charEnd: 136,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -514,8 +517,8 @@ export const obligations: Obligation[] = [
       para: "72.3",
       excerpt:
         "shall prominently display the Investor Charter and the data on complaints received and their disposal on its website",
-      charStart: 25,
-      charEnd: 142,
+      charStart: 19,
+      charEnd: 135,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -546,8 +549,8 @@ export const obligations: Obligation[] = [
       para: "73.1",
       excerpt:
         "shall enrol on the Online Dispute Resolution (ODR) portal and shall facilitate resolution of disputes",
-      charStart: 25,
-      charEnd: 127,
+      charStart: 19,
+      charEnd: 120,
     },
     type: "one-time",
     appliesTo: ["stock-broker"],
@@ -580,8 +583,8 @@ export const obligations: Obligation[] = [
       para: "81.1",
       excerpt:
         "shall maintain the books of account, records and documents prescribed under the rules and regulations for a minimum period of five years",
-      charStart: 25,
-      charEnd: 162,
+      charStart: 19,
+      charEnd: 155,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -612,8 +615,8 @@ export const obligations: Obligation[] = [
       para: "83.2",
       excerpt:
         "shall issue a contract note to each client for trades executed, in the prescribed format, within twenty-four hours",
-      charStart: 25,
-      charEnd: 140,
+      charStart: 19,
+      charEnd: 133,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -646,8 +649,8 @@ export const obligations: Obligation[] = [
       para: "91.1",
       excerpt:
         "shall be issued only after obtaining prior approval of the stock exchange. No advertisement shall contain any promise or guarantee of assured or risk-free return",
-      charStart: 92,
-      charEnd: 253,
+      charStart: 111,
+      charEnd: 272,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -688,9 +691,9 @@ export const obligations: Obligation[] = [
     appliesTo: ["stock-broker"],
     control: {
       id: "CTL-021",
-      name: "VAPT programme (Walrus)",
+      name: "VAPT programme",
       description:
-        "Annual VAPT executed via Walrus scan engine + manual test; findings tracked to closure with re-test evidence.",
+        "Annual VAPT executed via the Poneglyph scan engine + manual test; findings tracked to closure with re-test evidence.",
       owner: "Dev Khanna",
     },
     evidenceSpec: [
@@ -715,7 +718,7 @@ export const obligations: Obligation[] = [
       excerpt:
         "All cyber incidents and cyber attacks shall be reported to the stock exchange and to SEBI within six hours",
       charStart: 0,
-      charEnd: 107,
+      charEnd: 106,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -747,13 +750,13 @@ export const obligations: Obligation[] = [
       excerpt:
         "shall maintain logs of all critical systems for a rolling period of not less than one hundred and eighty days, and shall implement multi-factor authentication",
       charStart: 19,
-      charEnd: 178,
+      charEnd: 177,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
     control: {
       id: "CTL-023",
-      name: "Log retention + MFA enforcement (Walrus)",
+      name: "Log retention + MFA enforcement",
       description:
         "Central log store with 180d retention policy verified by scan; IdP policy mandates MFA on all critical-system users.",
       owner: "Dev Khanna",
@@ -768,6 +771,386 @@ export const obligations: Obligation[] = [
     hash: "3fa61d09c8be",
   },
 
+  /* ══ Corpus-completion pass — extracted by RUN-049 from MC-SB-2025 ═════
+     Parts IV (trading technology), V, VI, IX (outsourcing & conduct) and X.
+     Part VIII stays out of the register by determination, not by omission:
+     the default provisions bind only on a default event and are held under
+     a standing trigger watch — see the exclusion recorded in onboarding. */
+
+  /* ── Trading technology (Part IV) ──────────────────────────────────── */
+  {
+    id: "OBL-SB-024",
+    title: "Digitally signed electronic contract notes with delivery proof",
+    summary:
+      "Digitally sign every electronic contract note, deliver it to the client's recorded email address, and preserve the notes with proof of delivery; the signing certificate must remain valid at all times.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "technology",
+      para: "50.2",
+      excerpt:
+        "shall digitally sign each such contract note, deliver it to the electronic mail address recorded for the client, and preserve the notes together with the proof of delivery",
+      charStart: 61,
+      charEnd: 232,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-024",
+      name: "ECN signing certificate & delivery archive",
+      description:
+        "Post-trade batch signs each ECN with the organisational digital signature certificate and archives the note with its delivery receipt. The certificate in use lapses on 14-Aug-2026; renewal is scheduled but not yet evidenced, so the obligation is carried at risk.",
+      owner: "Dev Khanna",
+    },
+    evidenceSpec: [
+      {
+        kind: "data-check",
+        description:
+          "ECN dispatch log with signature validity on sampled notes and proof-of-delivery retention",
+      },
+    ],
+    evidenceIds: ["EV-014"],
+    status: "at-risk",
+    deadline: "2026-08-14",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "4d1ea60b7c93",
+  },
+  {
+    id: "OBL-SB-025",
+    title: "Exchange approval and unique identifier for every algorithm",
+    summary:
+      "No algorithm may be deployed without stock exchange approval and the unique identifier allotted to that strategy; an inventory of approved algorithms with the approvals obtained must be maintained.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "technology",
+      para: "62.1",
+      excerpt:
+        "No algorithm shall be deployed by a stock broker unless it has been approved by the stock exchange and tagged with the unique identifier allotted to that strategy",
+      charStart: 0,
+      charEnd: 162,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-025",
+      name: "Algorithm approval register",
+      description:
+        "Deployment gate requiring an exchange approval reference and allotted strategy identifier before a strategy goes live; inventory reconciled against the live strategy set.",
+      owner: "Dev Khanna",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Exchange approval letters per algorithm plus the live strategy inventory carrying the allotted unique identifiers (DOC-REQ-017)",
+      },
+    ],
+    evidenceIds: [],
+    status: "gap",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "5e2fb71c8da4",
+  },
+  {
+    id: "OBL-SB-026",
+    title: "Pre-trade risk checks on DMA and smart order routing",
+    summary:
+      "Every DMA-originated or smart-order-routed order must traverse the risk management system before release to the exchange; no order may bypass the prescribed price, quantity and exposure checks.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "technology",
+      para: "57.3",
+      excerpt:
+        "shall pass through the risk management system of the stock broker before release to the exchange, and no such order shall bypass the price, quantity and exposure checks",
+      charStart: 82,
+      charEnd: 250,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-026",
+      name: "Order gateway risk gate",
+      description:
+        "DMA and SOR sessions terminate on the RMS gateway; bypass routes disabled at configuration level and probed continuously by the scan engine.",
+      owner: "Dev Khanna",
+    },
+    evidenceSpec: [
+      {
+        kind: "live-scan",
+        description:
+          "Gateway configuration probe confirming no DMA/SOR path bypasses the price, quantity and exposure checks, with a sampled order-flow trace",
+      },
+    ],
+    evidenceIds: ["EV-021"],
+    status: "met",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "6f30c82d9eb5",
+  },
+
+  /* ── Change in status, constitution, control (Part V) ──────────────── */
+  {
+    id: "OBL-SB-027",
+    title: "Prior approval before any change in control",
+    summary:
+      "A change in control of the broker may not be given effect to without the prior approval of the Board, applied for in the manner set out before the change is acted upon.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "change-control",
+      para: "66.1",
+      excerpt:
+        "No change in control of a stock broker shall be given effect to except with the prior approval of the Board",
+      charStart: 0,
+      charEnd: 107,
+    },
+    type: "event-driven",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-027",
+      name: "Change-in-control approval gate",
+      description:
+        "Secretarial checklist blocks effect being given to any control transaction until the prior approval is on file; nil position attested each quarter where no change arises.",
+      owner: "Priya Nair",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Prior-approval application and the approval letter for any change in control, or the nil-change attestation for the period",
+      },
+    ],
+    evidenceIds: [],
+    status: "pending-review",
+    createdByRun: "RUN-049",
+    hash: "7a41d93eaf06",
+  },
+  {
+    id: "OBL-SB-028",
+    title: "Quarterly report of shareholding, directors and constitution",
+    summary:
+      "Report any change in shareholding, directors or constitution to the stock exchange within fifteen days of the end of the quarter in which it occurs, in the exchange's format.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "change-control",
+      para: "67.2",
+      excerpt:
+        "shall report to the stock exchange any change in its shareholding, directors or constitution within fifteen days of the end of the quarter",
+      charStart: 19,
+      charEnd: 157,
+    },
+    type: "periodic",
+    frequency: "quarterly",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-028",
+      name: "Constitutional change reporting cycle",
+      description:
+        "Secretarial calendar files the quarterly return with NSE and BSE within fifteen days of quarter end; acknowledgements archived against the filing.",
+      owner: "Rohan Iyer",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Quarterly shareholding, directorship and constitution return with the exchange submission acknowledgement",
+      },
+    ],
+    evidenceIds: ["EV-022"],
+    status: "met",
+    deadline: "2026-10-15",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "8b52ea4fb017",
+  },
+
+  /* ── FATCA (Part VI) ───────────────────────────────────────────────── */
+  {
+    id: "OBL-SB-029",
+    title: "FATCA/CRS registration and reportable-account due diligence",
+    summary:
+      "Register under the India–US Inter-Governmental Agreement and the Multilateral Competent Authority Agreement, and carry out the prescribed client due diligence and reporting of reportable accounts.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "fatca",
+      para: "69.1",
+      excerpt:
+        "shall register with the United States Internal Revenue Service under the Inter-Governmental Agreement between India and the United States of America and under the Multilateral Competent Authority Agreement",
+      charStart: 30,
+      charEnd: 235,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-029",
+      name: "FATCA/CRS due diligence procedure",
+      description:
+        "Registration and classification held on file; onboarding captures the self-certification and applies the prescribed indicia, with reportable accounts collated for the annual reporting cycle.",
+      owner: "Rohan Iyer",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Registration and classification record under the IGA and MCAA, with the account due-diligence procedure applied at onboarding",
+      },
+    ],
+    evidenceIds: ["EV-023"],
+    status: "met",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "9c63fb50c128",
+  },
+
+  /* ── Outsourcing & conduct (Part IX) ───────────────────────────────── */
+  {
+    id: "OBL-SB-030",
+    title: "Board-approved outsourcing policy with vendor register",
+    summary:
+      "Maintain a board-approved outsourcing policy and a register of activities outsourced and service providers engaged, reviewed by the board at least once a financial year; core activities and compliance functions may not be outsourced.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "outsourcing",
+      para: "82.1",
+      excerpt:
+        "shall put in place a policy on outsourcing approved by its board and shall maintain a register of the activities outsourced and of the service providers engaged",
+      charStart: 19,
+      charEnd: 179,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-030",
+      name: "Outsourcing governance",
+      description:
+        "Vendor onboarding routed through a materiality assessment against the core-activity carve-out; register maintained with the activity, provider and accountability owner for each arrangement.",
+      owner: "Priya Nair",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Board-approved outsourcing policy with the vendor register and confirmation that no core activity or compliance function is outsourced (DOC-REQ-023)",
+      },
+    ],
+    evidenceIds: [],
+    status: "gap",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "0d74ac61d239",
+  },
+  {
+    id: "OBL-SB-031",
+    title: "Conflicts of interest policy and client disclosure",
+    summary:
+      "Lay down policies and internal procedures to identify and avoid or manage conflicts of interest of the firm and its associated persons, and disclose to the client any conflict that cannot be avoided.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "outsourcing",
+      para: "84.1",
+      excerpt:
+        "shall lay down policies and internal procedures to identify and avoid, or to deal with, conflicts of interest",
+      charStart: 19,
+      charEnd: 128,
+    },
+    type: "ongoing",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-031",
+      name: "Conflicts register & employee dealing rules",
+      description:
+        "Policy covering research, distribution, proprietary trading and employee dealing; declared conflicts logged in a register with the mitigation applied and the disclosure made to the client.",
+      owner: "Priya Nair",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Board-approved conflicts of interest policy with the conflicts register and the record of disclosures made to clients",
+      },
+    ],
+    evidenceIds: ["EV-024"],
+    status: "met",
+    createdByRun: "RUN-049",
+    approvedBy: "Priya Nair",
+    hash: "1e85bd72e34a",
+  },
+
+  /* ── Reporting requirements (Part X) ───────────────────────────────── */
+  {
+    id: "OBL-SB-032",
+    title: "Consolidated quarterly report in Annexure-28 format",
+    summary:
+      "Submit the consolidated periodic report to the stock exchanges in the Annexure-28 format, covering the prescribed particulars, within fifteen days of the end of each quarter.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "reporting",
+      para: "93.1",
+      excerpt:
+        "shall submit to the stock exchanges the consolidated periodic report in the format specified at Annexure-28",
+      charStart: 19,
+      charEnd: 126,
+    },
+    type: "periodic",
+    frequency: "quarterly",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-032",
+      name: "Annexure-28 filing cycle",
+      description:
+        "Compliance calendar assembles the consolidated return from the net worth, margin, audit and grievance sources and files it within fifteen days of quarter end.",
+      owner: "Rohan Iyer",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Filed Annexure-28 consolidated return with the exchange submission acknowledgement (DOC-REQ-026)",
+      },
+    ],
+    evidenceIds: [],
+    status: "pending-review",
+    deadline: "2026-10-15",
+    createdByRun: "RUN-049",
+    hash: "2f96ce83f45b",
+  },
+  {
+    id: "OBL-SB-033",
+    title: "Annual system audit report submitted to the exchange",
+    summary:
+      "Submit the annual system audit report with management comments on its observations to the stock exchange within the specified timelines, and no later than 30 September following the close of the financial year.",
+    clause: {
+      circularId: "MC-SB-2025",
+      chapter: "reporting",
+      para: "93.4",
+      excerpt:
+        "The annual system audit report, together with the management comments on the observations made therein, shall be submitted to the stock exchange",
+      charStart: 0,
+      charEnd: 144,
+    },
+    type: "periodic",
+    frequency: "annual",
+    appliesTo: ["stock-broker"],
+    control: {
+      id: "CTL-033",
+      name: "System audit report filing",
+      description:
+        "Audit report routed for management comment on each open observation, then filed with the exchange ahead of the 30 September cut-off; filing acknowledgement archived.",
+      owner: "Dev Khanna",
+    },
+    evidenceSpec: [
+      {
+        kind: "document",
+        description:
+          "Annual system audit report with management comments and the exchange submission acknowledgement",
+      },
+    ],
+    evidenceIds: [],
+    status: "pending-review",
+    deadline: "2026-09-30",
+    createdByRun: "RUN-049",
+    hash: "30a7df9405c6",
+  },
+
   /* ══ CUSPA delta — extracted by RUN-047 from CIRC-CUSPA-2026 ═══════════ */
   {
     id: "OBL-SB-101",
@@ -780,8 +1163,8 @@ export const obligations: Obligation[] = [
       para: "46.1",
       excerpt:
         "shall open a separate demat account designated as the 'Client Unpaid Securities Pledgee Account' (CUSPA), tagged as such with the depository",
-      charStart: 27,
-      charEnd: 167,
+      charStart: 21,
+      charEnd: 161,
     },
     type: "one-time",
     appliesTo: ["stock-broker"],
@@ -813,8 +1196,8 @@ export const obligations: Obligation[] = [
       para: "46.2",
       excerpt:
         "followed by creation of an auto-pledge in favour of the trading member's CUSPA, without requiring any separate instruction or authorisation from the client",
-      charStart: 132,
-      charEnd: 287,
+      charStart: 145,
+      charEnd: 300,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -846,8 +1229,8 @@ export const obligations: Obligation[] = [
       para: "46.3",
       excerpt:
         "shall intimate the client through email and SMS, specifying the securities pledged, the amount outstanding, and the date by which the pledge shall be invoked or released",
-      charStart: 63,
-      charEnd: 232,
+      charStart: 66,
+      charEnd: 235,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],
@@ -911,8 +1294,8 @@ export const obligations: Obligation[] = [
       para: "46.5",
       excerpt:
         "where the pledge is not invoked, it shall be auto-released on the sixth trading day and the securities shall be free in the client's demat account",
-      charStart: 152,
-      charEnd: 298,
+      charStart: 172,
+      charEnd: 318,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -944,8 +1327,8 @@ export const obligations: Obligation[] = [
       para: "46.9",
       excerpt:
         "shall not be transferred or pledged, in any circumstance, to any bank or non-banking financial company",
-      charStart: 37,
-      charEnd: 140,
+      charStart: 29,
+      charEnd: 131,
     },
     type: "ongoing",
     appliesTo: ["stock-broker"],
@@ -1010,8 +1393,8 @@ export const obligations: Obligation[] = [
       para: "46.6",
       excerpt:
         "may request an extension of the invocation timeline from the stock exchange, in the manner specified, by six p.m. on the fifth trading day",
-      charStart: 55,
-      charEnd: 193,
+      charStart: 49,
+      charEnd: 187,
     },
     type: "event-driven",
     appliesTo: ["stock-broker"],

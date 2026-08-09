@@ -27,7 +27,7 @@ const azeret = Azeret_Mono({
 export const metadata: Metadata = {
   title: "Poneglyph — Agentic Compliance Sandbox",
   description:
-    "From regulatory text to operational action. A Walrus Securitas sandbox for SEBI TechSprint PS2 — simulated data, real architecture.",
+    "From regulatory text to operational action. An agentic compliance engine for SEBI market intermediaries — sandbox edition, simulated data, real architecture.",
 };
 
 export default function RootLayout({

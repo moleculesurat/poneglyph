@@ -1,14 +1,23 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   Register table — all 33 obligations, filterable by chapter / status /
-   type; each row expands into the full walk-back: summary → clause
-   excerpt → control → evidence → run → hash. Broker persona gets the
-   human-gate approve/reject pair on pending-review rows.
+   Register table — every obligation on the register, filterable by
+   SEBI Part / chapter / status / type. Each row expands into the full
+   walk-back: Part → chapter → clause → control → evidence → run → hash,
+   so an inspector can see which Part of the Master Circular an
+   obligation descends from without leaving the table.
 
-   Filters live in the URL (?chapter=&status=&type=&id=) so dashboard
-   heat-map cells, legend chips and pending-review chips deep-link into a
-   pre-filtered view; ?id= also expands that row and scrolls to it.
+   Part is the top of the hierarchy: the Master Circular for Stock
+   Brokers (SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2024/53) is organised into
+   Parts I–X, chapters roll up into Parts, clauses sit inside chapters.
+   The rollup and the labels come from `lib/domains.ts` — never redeclared
+   here.
+
+   Filters live in the URL (?part=&chapter=&status=&type=&id=) so
+   dashboard heat-map cells, legend chips and pending-review chips
+   deep-link into a pre-filtered view; ?id= also expands that row and
+   scrolls to it. Invalid values degrade to `all`; an incoherent
+   part+chapter pair drops the chapter and keeps the Part.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { useEffect, useMemo, useState } from "react";
@@ -18,27 +27,17 @@ import { Cta, KV, MarkedCard, StatusChip } from "@/components/ui";
 import { usePersona } from "@/components/persona";
 import { circulars } from "@/data/corpus";
 import { obligations } from "@/data/obligations";
+import { CHAPTER_LABEL, SEBI_DOMAINS, domainByPart, partLabel, partOf } from "@/lib/domains";
 import type {
   ChapterKey,
   Obligation,
   ObligationStatus,
   ObligationType,
+  SebiPart,
 } from "@/lib/schema";
 import { ClauseDrawer, HighlightedClause } from "./ClauseDrawer";
 
 /* ── static lookups ───────────────────────────────────────────────────── */
-
-const CHAPTER_LABEL: Record<ChapterKey, string> = {
-  registration: "Registration",
-  "client-dealings": "Client dealings",
-  "unpaid-securities": "Unpaid securities",
-  margin: "Margin",
-  supervision: "Supervision",
-  grievance: "Grievance",
-  "books-records": "Books & records",
-  advertisement: "Advertisement",
-  cyber: "Cyber (CSCRF)",
-};
 
 const STATUS_LABEL: Record<ObligationStatus, string> = {
   met: "Met",
@@ -50,13 +49,43 @@ const STATUS_LABEL: Record<ObligationStatus, string> = {
 const STATUSES: ObligationStatus[] = ["met", "at-risk", "gap", "pending-review"];
 const TYPES: ObligationType[] = ["one-time", "ongoing", "periodic", "event-driven"];
 
-const CHAPTERS = [...new Set(obligations.map((o) => o.clause.chapter))];
+/** canonical circular order — Part I first, chapters in the order the
+    Master Circular's Table of Contents carries them */
+const CHAPTER_ORDER: ChapterKey[] = SEBI_DOMAINS.flatMap((d) => d.chapters);
+
+const CHAPTERS = CHAPTER_ORDER.filter((ch) =>
+  obligations.some((o) => o.clause.chapter === ch)
+);
+
+/** every Part of the circular, with how much of the register descends
+    from it — a Part carrying nothing is shown, not hidden: the gap in
+    coverage is itself a finding */
+const PART_ROWS = SEBI_DOMAINS.map((d) => ({
+  part: d.part,
+  title: d.title,
+  count: obligations.filter((o) => partOf(o.clause.chapter) === d.part).length,
+}));
+
+const PARTS_MAPPED = PART_ROWS.filter((p) => p.count > 0).length;
+const EMPTY_PARTS = PART_ROWS.filter((p) => p.count === 0).map((p) => p.part);
+
+/** "Part VIII" / "Parts VIII and X" / "Parts V, VIII and X" — the empty
+    Parts named rather than counted, so the legend reads as a statement
+    about which chapters carry nothing and never as a bare number. */
+const EMPTY_PARTS_LABEL =
+  EMPTY_PARTS.length === 0
+    ? ""
+    : EMPTY_PARTS.length === 1
+      ? `Part ${EMPTY_PARTS[0]}`
+      : `Parts ${EMPTY_PARTS.slice(0, -1).join(", ")} and ${EMPTY_PARTS[EMPTY_PARTS.length - 1]}`;
 
 const STATUS_COUNTS = obligations.reduce(
   (acc, o) => ((acc[o.status] = (acc[o.status] ?? 0) + 1), acc),
   {} as Record<ObligationStatus, number>
 );
 
+const isPart = (v: string | null): v is SebiPart =>
+  v != null && SEBI_DOMAINS.some((d) => d.part === v);
 const isChapter = (v: string | null): v is ChapterKey => v != null && v in CHAPTER_LABEL;
 const isStatus = (v: string | null): v is ObligationStatus =>
   v != null && (STATUSES as string[]).includes(v);
@@ -124,9 +153,18 @@ export function RegisterTable() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const [part, setPart] = useState<SebiPart | "all">(() => {
+    const v = searchParams.get("part");
+    return isPart(v) ? v : "all";
+  });
   const [chapter, setChapter] = useState<ChapterKey | "all">(() => {
     const v = searchParams.get("chapter");
-    return isChapter(v) ? v : "all";
+    if (!isChapter(v)) return "all";
+    const p = searchParams.get("part");
+    /* an incoherent pair (?part=IV&chapter=margin) keeps the Part and
+       drops the chapter rather than showing an empty table */
+    if (isPart(p) && partOf(v) !== p) return "all";
+    return v;
   });
   const [status, setStatus] = useState<ObligationStatus | "all">(() => {
     const v = searchParams.get("status");
@@ -159,6 +197,7 @@ export function RegisterTable() {
   /* keep the URL in step with the filters, so any view is shareable */
   useEffect(() => {
     const params = new URLSearchParams();
+    if (part !== "all") params.set("part", part);
     if (chapter !== "all") params.set("chapter", chapter);
     if (status !== "all") params.set("status", status);
     if (type !== "all") params.set("type", type);
@@ -167,40 +206,113 @@ export function RegisterTable() {
     if (qs !== searchParams.toString()) {
       router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
     }
-  }, [chapter, status, type, expandedId, pathname, router, searchParams]);
+  }, [part, chapter, status, type, expandedId, pathname, router, searchParams]);
+
+  /* selecting a Part narrows the chapter row to that Part's chapters, and
+     clears a chapter that no longer belongs to the selection */
+  const selectPart = (next: SebiPart | "all") => {
+    setPart(next);
+    if (next !== "all" && chapter !== "all" && partOf(chapter) !== next) setChapter("all");
+  };
+  /* selecting a chapter pins its Part, so the hierarchy on screen always
+     reads Part → chapter and the shared URL carries both */
+  const selectChapter = (next: ChapterKey | "all") => {
+    setChapter(next);
+    if (next !== "all") setPart(partOf(next));
+  };
+
+  const visibleChapters = useMemo(
+    () => (part === "all" ? CHAPTERS : CHAPTERS.filter((ch) => partOf(ch) === part)),
+    [part]
+  );
 
   const rows = useMemo(
     () =>
       obligations.filter(
         (o) =>
+          (part === "all" || partOf(o.clause.chapter) === part) &&
           (chapter === "all" || o.clause.chapter === chapter) &&
           (status === "all" || o.status === status) &&
           (type === "all" || o.type === type)
       ),
-    [chapter, status, type]
+    [part, chapter, status, type]
   );
 
-  const filtersActive = chapter !== "all" || status !== "all" || type !== "all";
+  const filtersActive =
+    part !== "all" || chapter !== "all" || status !== "all" || type !== "all";
   const reset = () => {
+    setPart("all");
     setChapter("all");
     setStatus("all");
     setType("all");
   };
+
+  const selectedDomain = part === "all" ? undefined : domainByPart(part);
 
   return (
     <>
       {/* ── filters ── */}
       <MarkedCard pad={18} style={{ marginBottom: 18 }}>
         <div className="stack" style={{ gap: 12 }}>
-          <FilterRow label="chapter">
-            <FilterChip active={chapter === "all"} onClick={() => setChapter("all")}>
+          <FilterRow label="SEBI part">
+            <FilterChip active={part === "all"} onClick={() => selectPart("all")}>
               All
             </FilterChip>
-            {CHAPTERS.map((ch) => (
+            {PART_ROWS.map((p) =>
+              p.count > 0 ? (
+                <FilterChip
+                  key={p.part}
+                  active={part === p.part}
+                  onClick={() => selectPart(part === p.part ? "all" : p.part)}
+                >
+                  Part {p.part} · {p.count}
+                </FilterChip>
+              ) : (
+                <span
+                  key={p.part}
+                  className="chip"
+                  data-tone="pending"
+                  title={`Part ${p.part} · ${p.title} — no obligation extracted from this Part in the current corpus`}
+                  style={{ opacity: 0.5 }}
+                >
+                  Part {p.part} · 0
+                </span>
+              )
+            )}
+          </FilterRow>
+          <div className="row" style={{ gap: 8, alignItems: "baseline" }}>
+            <span className="mono-label dim" style={{ minWidth: 78, flex: "none" }} />
+            <span className="small dim60" style={{ maxWidth: "82ch" }}>
+              {selectedDomain ? (
+                <>
+                  <b>{partLabel(selectedDomain.part)}</b> · {selectedDomain.items} —{" "}
+                  {selectedDomain.blurb}
+                </>
+              ) : (
+                <>
+                  Master Circular for Stock Brokers, Parts I–X. {obligations.length} obligations
+                  map across {PARTS_MAPPED} of the {PART_ROWS.length} Parts.
+                  {EMPTY_PARTS_LABEL ? (
+                    <>
+                      {" "}
+                      {EMPTY_PARTS_LABEL} carries no obligation — excluded at onboarding as
+                      event-driven and held under a standing trigger watch, not left unextracted —
+                      and is shown dashed rather than hidden.
+                    </>
+                  ) : null}
+                </>
+              )}
+            </span>
+          </div>
+          <FilterRow label="chapter">
+            <FilterChip active={chapter === "all"} onClick={() => setChapter("all")}>
+              {part === "all" ? "All" : `All of Part ${part}`}
+            </FilterChip>
+            {visibleChapters.map((ch) => (
               <FilterChip
                 key={ch}
                 active={chapter === ch}
-                onClick={() => setChapter(chapter === ch ? "all" : ch)}
+                onClick={() => selectChapter(chapter === ch ? "all" : ch)}
               >
                 {CHAPTER_LABEL[ch]}
               </FilterChip>
@@ -264,7 +376,7 @@ export function RegisterTable() {
               <tr>
                 <th>ID</th>
                 <th>Obligation</th>
-                <th>Chapter</th>
+                <th>Chapter / Part</th>
                 <th>Type</th>
                 <th>Owner</th>
                 <th>Deadline</th>
@@ -299,6 +411,8 @@ export function RegisterTable() {
                       persona={persona}
                       onToggle={() => setExpandedId(open ? null : o.id)}
                       onViewClause={() => setClauseFor(o)}
+                      onFilterPart={selectPart}
+                      onFilterChapter={selectChapter}
                     />
                   );
                 })
@@ -321,15 +435,21 @@ function RegisterRow({
   persona,
   onToggle,
   onViewClause,
+  onFilterPart,
+  onFilterChapter,
 }: {
   o: Obligation;
   open: boolean;
   persona: "broker" | "inspector";
   onToggle: () => void;
   onViewClause: () => void;
+  onFilterPart: (part: SebiPart) => void;
+  onFilterChapter: (chapter: ChapterKey) => void;
 }) {
   const text = paraText(o);
   const chapterTitle = findChapter(o)?.title ?? CHAPTER_LABEL[o.clause.chapter];
+  const part = partOf(o.clause.chapter);
+  const domain = domainByPart(part);
   const attention = o.status !== "met";
 
   return (
@@ -364,6 +484,9 @@ function RegisterRow({
         </td>
         <td>
           <span className="small dim60">{CHAPTER_LABEL[o.clause.chapter]}</span>
+          <div className="mono-label dim" style={{ fontSize: 9.5, marginTop: 3 }}>
+            Part {part}
+          </div>
         </td>
         <td>
           <span className="mono-label">{o.type}</span>
@@ -399,11 +522,52 @@ function RegisterRow({
             <div className="stack" style={{ gap: 18 }}>
               <p style={{ fontSize: 13.5, lineHeight: 1.6, maxWidth: "82ch" }}>{o.summary}</p>
 
+              {/* Part → chapter → clause: where this obligation descends from */}
+              <div className="stack" style={{ gap: 8 }}>
+                <span className="mono-label dim">Descends from</span>
+                <div className="row wrap" style={{ gap: 8 }}>
+                  <button
+                    type="button"
+                    className="chip"
+                    data-tone="info"
+                    onClick={() => onFilterPart(part)}
+                    title={`Filter the register to ${partLabel(part)}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    Part {part}
+                  </button>
+                  <span className="dim" aria-hidden>
+                    →
+                  </span>
+                  <button
+                    type="button"
+                    className="chip"
+                    data-tone="info"
+                    onClick={() => onFilterChapter(o.clause.chapter)}
+                    title={`Filter the register to ${CHAPTER_LABEL[o.clause.chapter]}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {CHAPTER_LABEL[o.clause.chapter]}
+                  </button>
+                  <span className="dim" aria-hidden>
+                    →
+                  </span>
+                  <span className="chip" data-tone="info">
+                    para {o.clause.para}
+                  </span>
+                </div>
+                {domain ? (
+                  <span className="small dim60" style={{ maxWidth: "82ch" }}>
+                    <b>{partLabel(part)}</b> · {domain.items} — {domain.blurb}
+                  </span>
+                ) : null}
+              </div>
+
               {/* grounding clause */}
               <div className="panel pad" style={{ padding: "18px 22px" }}>
                 <div className="row between wrap" style={{ gap: 10 }}>
                   <span className="mono-label dim">
-                    {o.clause.circularId} · {chapterTitle} · para {o.clause.para}
+                    {o.clause.circularId} · Part {part} · {chapterTitle} · para {o.clause.para}
                   </span>
                   <button
                     type="button"

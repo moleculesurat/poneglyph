@@ -2,6 +2,9 @@ import Link from "next/link";
 import { PageHead, StatTile, MarkedCard, Chip, KV, Hairline } from "@/components/ui";
 import { DashField } from "@/components/DashField";
 import { obligations } from "@/data/obligations";
+import { evidence } from "@/data/evidence";
+import { auditEvents } from "@/data/audit";
+import { mcpTools } from "@/data/mcp";
 import { tenant } from "@/data/tenant";
 import type { ObligationStatus } from "@/lib/schema";
 import { InspectorMode } from "./InspectorMode";
@@ -42,8 +45,9 @@ const WALK_BACK = [
     name: "Evidence vault",
     title: "Check what actually satisfies each obligation",
     body:
-      "Twenty artifacts — documents, data-checks and live scans — each stamped with its connector of origin, capture time and content hash, and bound to the obligations it evidences. Where evidence is absent, the register shows a gap rather than a claim.",
-    foot: "20 artifacts · hashed · connector provenance on every item",
+      evidence.length +
+      " artifacts — documents, data-checks and live scans — each stamped with its connector of origin, capture time and content hash, and bound to the obligations it evidences. Where evidence is absent, the register shows a gap rather than a claim.",
+    foot: `${evidence.length} artifacts · hashed · connector provenance on every item`,
   },
   {
     step: "03",
@@ -51,8 +55,9 @@ const WALK_BACK = [
     name: "Audit trail",
     title: "Replay the record's entire history, hash by hash",
     body:
-      "Forty hash-chained events from first ingest (Jun 2025) to sim-today: every obligation created, evidence bound, mapping approved and amendment applied, with agent or human attribution. Run the chain verification yourself — a single altered event breaks the chain.",
-    foot: "40 events · GENESIS-anchored · agent + human actors attributed",
+      auditEvents.length +
+      " hash-chained events from first ingest (Jun 2025) to sim-today: every obligation created, evidence bound, mapping approved and amendment applied, with agent or human attribution. Run the chain verification yourself — a single altered event breaks the chain.",
+    foot: `${auditEvents.length} events · GENESIS-anchored · agent + human actors attributed`,
   },
   {
     step: "04",
@@ -60,8 +65,8 @@ const WALK_BACK = [
     name: "MCP interface",
     title: "Ask the register the same questions programmatically",
     body:
-      "A read-only, inspector-scoped MCP endpoint exposes seven query tools over the identical record this session renders — obligations, mappings, evidence, amendments, gaps. Your own tooling gets byte-for-byte the answers you see here.",
-    foot: "7 tools · read-only scope · same record, machine-readable",
+      `A read-only, inspector-scoped MCP endpoint exposes ${mcpTools.length} query tools over the identical record this session renders — obligations, mappings, evidence, amendments, gaps. Your own tooling gets byte-for-byte the answers you see here.`,
+    foot: `${mcpTools.length} tools · read-only scope · same record, machine-readable`,
   },
 ] as const;
 

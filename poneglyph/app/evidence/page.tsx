@@ -46,7 +46,7 @@ export default function EvidencePage() {
           value={nChecks}
           hint="connector queries against systems of record"
         />
-        <StatTile label="Live scans" value={nScans} hint="walrus-scan engine · re-run on schedule" />
+        <StatTile label="Live scans" value={nScans} hint="poneglyph-scan engine · re-run on schedule" />
         <StatTile
           label="Register coverage"
           value={`${evidenced} / ${obligations.length}`}

@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════════
-   Poneglyph — Walrus Securitas brand layer, product edition.
-   Ported from walrus-hq/graphic-designer/lib/{brand,patterns}.css —
-   same tokens as the social posts so feed and product read as one brand.
+   Poneglyph — design system. Single source of truth for the product:
+   tokens, type scale, surfaces, chips, tables, terminal and diff blocks.
+   Nothing outside this file declares a colour.
    White theme. Orange is the single loud note and strictly means
    "needs attention" everywhere in the product.
    ══════════════════════════════════════════════════════════════════════ */

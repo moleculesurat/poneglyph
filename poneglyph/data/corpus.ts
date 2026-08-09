@@ -158,6 +158,24 @@ export const masterCircular: Circular = {
       ],
     },
     {
+      key: "technology",
+      title: "Trading Technology — Contract Notes, Access & Algorithmic Trading",
+      paras: [
+        {
+          para: "50.2",
+          text: "Every stock broker issuing contract notes in electronic form shall digitally sign each such contract note, deliver it to the electronic mail address recorded for the client, and preserve the notes together with the proof of delivery for the period prescribed; the digital signature certificate used for such signing shall be valid at all times.",
+        },
+        {
+          para: "57.3",
+          text: "Orders originating through direct market access or routed by a smart order router shall pass through the risk management system of the stock broker before release to the exchange, and no such order shall bypass the price, quantity and exposure checks prescribed for that facility.",
+        },
+        {
+          para: "62.1",
+          text: "No algorithm shall be deployed by a stock broker unless it has been approved by the stock exchange and tagged with the unique identifier allotted to that strategy, and the stock broker shall maintain an inventory of the approved algorithms together with the approvals obtained.",
+        },
+      ],
+    },
+    {
       key: "cyber",
       title: "Cyber Security & System Audit (CSCRF)",
       paras: [
@@ -172,6 +190,70 @@ export const masterCircular: Circular = {
         {
           para: "103.2",
           text: "Regulated entities shall maintain logs of all critical systems for a rolling period of not less than one hundred and eighty days, and shall implement multi-factor authentication for all users accessing critical systems, in the manner set out in the framework.",
+        },
+      ],
+    },
+    {
+      key: "change-control",
+      title: "Change in Status, Constitution, Control & Affiliation",
+      paras: [
+        {
+          para: "66.1",
+          text: "No change in control of a stock broker shall be given effect to except with the prior approval of the Board, and the application for such approval shall be made in the manner set out before the proposed change is acted upon.",
+        },
+        {
+          para: "67.2",
+          text: "Every stock broker shall report to the stock exchange any change in its shareholding, directors or constitution within fifteen days of the end of the quarter in which the change occurs, in the format specified by the exchange.",
+        },
+      ],
+    },
+    {
+      key: "fatca",
+      title: "Foreign Accounts Tax Compliance Act Related Provisions",
+      paras: [
+        {
+          para: "69.1",
+          text: "Every registered intermediary shall register with the United States Internal Revenue Service under the Inter-Governmental Agreement between India and the United States of America and under the Multilateral Competent Authority Agreement, and shall carry out the client due diligence and reporting prescribed thereunder in the manner set out by the Central Board of Direct Taxes.",
+        },
+        {
+          para: "70.2",
+          text: "Every registered intermediary shall identify reportable accounts among its client accounts on the basis of the indicia prescribed, obtain self-certification from the client where required, and report the particulars of such accounts for each reporting year within the timelines specified.",
+        },
+      ],
+    },
+    {
+      key: "outsourcing",
+      title: "Outsourcing & Conflicts of Interest",
+      paras: [
+        {
+          para: "82.1",
+          text: "Every intermediary shall put in place a policy on outsourcing approved by its board and shall maintain a register of the activities outsourced and of the service providers engaged, which shall be placed before the board for review at least once in a financial year.",
+        },
+        {
+          para: "82.3",
+          text: "Core business activities and compliance functions of an intermediary shall not be outsourced, and the intermediary shall at all times remain accountable to the Board and to its clients for the activities outsourced, notwithstanding any arrangement with the service provider.",
+        },
+        {
+          para: "84.1",
+          text: "Every intermediary shall lay down policies and internal procedures to identify and avoid, or to deal with, conflicts of interest arising in the conduct of its business and in the conduct of its associated persons, and shall disclose to the client any conflict of interest that cannot be avoided.",
+        },
+      ],
+    },
+    {
+      key: "reporting",
+      title: "Reporting Requirements",
+      paras: [
+        {
+          para: "93.1",
+          text: "Every stock broker shall submit to the stock exchanges the consolidated periodic report in the format specified at Annexure-28, covering the particulars set out therein, within fifteen days of the end of each quarter.",
+        },
+        {
+          para: "93.4",
+          text: "The annual system audit report, together with the management comments on the observations made therein, shall be submitted to the stock exchange within the timelines specified by the exchange and in any case not later than the thirtieth day of September following the close of the financial year.",
+        },
+        {
+          para: "93.6",
+          text: "Every report submitted under this Part shall be complete and accurate in all material particulars and shall be certified by the compliance officer, and any revision to a report already submitted shall be filed along with the reasons for the revision.",
         },
       ],
     },

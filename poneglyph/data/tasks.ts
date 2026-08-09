@@ -111,11 +111,38 @@ export const tasks: RemediationTask[] = [
     obligationId: "OBL-SB-021",
     title: "VAPT re-test of 2 open medium findings",
     description:
-      "Remediate and re-test the two medium-severity findings left open from the last VAPT cycle, capture closure verification through the Walrus scan engine, and re-bind EV-015 so OBL-SB-021 returns to met before the 2026-08-20 closure re-validation deadline.",
+      "Remediate and re-test the two medium-severity findings left open from the last VAPT cycle, capture closure verification through the Poneglyph scan engine, and re-bind EV-015 so OBL-SB-021 returns to met before the 2026-08-20 closure re-validation deadline.",
     owner: "Dev Khanna",
     status: "in-progress",
     priority: "high",
     due: "2026-08-20",
     createdByRun: "RUN-044",
+  },
+
+  /* ── raised by the RUN-049 corpus pass — each closes a gap that exists
+     because its supporting document is still an open ask ─────────────── */
+  {
+    id: "TSK-010",
+    obligationId: "OBL-SB-025",
+    title: "Assemble the algorithm approval register",
+    description:
+      "Collect the exchange approval letter and allotted unique identifier for every live strategy, reconcile the inventory against the strategies actually deployed, and file both against DOC-REQ-017. Until that document arrives the deployment gate cannot be evidenced and OBL-SB-025 stays unverifiable — the control may well be running, but the engine reports what it can prove.",
+    owner: "Dev Khanna",
+    status: "open",
+    priority: "high",
+    due: "2026-09-15",
+    createdByRun: "RUN-049",
+  },
+  {
+    id: "TSK-011",
+    obligationId: "OBL-SB-030",
+    title: "Board-approved outsourcing policy + vendor register",
+    description:
+      "Place the outsourcing policy before the board for approval, attach the vendor register showing which activities are outsourced to whom, and confirm no principal activity has been outsourced. Filed against DOC-REQ-023, which is the open ask holding OBL-SB-030 at gap.",
+    owner: "Rohan Iyer",
+    status: "open",
+    priority: "medium",
+    due: "2026-10-15",
+    createdByRun: "RUN-049",
   },
 ];

@@ -18,7 +18,7 @@ interface TLine {
 function buildLines(run: PipelineRun, nextPoll: string, obligationCount: number): TLine[] {
   const lines: TLine[] = [
     { tone: "dim", text: `poneglyph watchtower — recorded session ${run.id} (sandbox replay, not a live poll)` },
-    { tone: "plain", text: "$ poneglyph watch --sources sebi.gov.in --interval 24h --tenant walrus-securitas-broking" },
+    { tone: "plain", text: "$ poneglyph watch --sources sebi.gov.in --interval 24h --tenant angel-one-limited" },
     {
       t: run.startedAt.slice(11, 19),
       tone: "plain",

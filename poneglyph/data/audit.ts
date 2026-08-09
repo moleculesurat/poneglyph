@@ -4,8 +4,10 @@ import type { AuditEvent } from "@/lib/schema";
    Append-only audit trail — hash-chained. Each event's hash is
    sha256(id|at|actor|action|subjectType|subjectId|detail|prevHash)
    truncated to 12 hex chars; each prevHash equals the previous event's
-   hash; AE-0001 anchors to "GENESIS". 40 events, Jun 2025 → Jul 2026.
-   The chain verifies end-to-end: 40 events, 0 breaks.
+   hash; AE-0001 anchors to "GENESIS". 56 events, Jun 2025 → Jul 2026.
+   The chain verifies end-to-end: 56 events, 0 breaks. Append-only —
+   AE-0041 onwards were added by the RUN-049 corpus-completion pass and
+   link to the then-tip fade0de1ecbe; no prior event was touched.
    ══════════════════════════════════════════════════════════════════════ */
 
 export const auditEvents: AuditEvent[] = [
@@ -148,7 +150,7 @@ export const auditEvents: AuditEvent[] = [
     action: "obligation.approved",
     subjectType: "obligation",
     subjectId: "OBL-SB-021",
-    detail: "Approved — VAPT programme accepted as the control; Walrus scan engine designated evidence source.",
+    detail: "Approved — VAPT programme accepted as the control; the Poneglyph scan engine designated evidence source.",
     hash: "e8dfb0db583f",
     prevHash: "a28b5621bc6a",
   },
@@ -291,7 +293,7 @@ export const auditEvents: AuditEvent[] = [
     action: "evidence.re-verified",
     subjectType: "evidence",
     subjectId: "EV-015",
-    detail: "Scheduled evidence re-check (RUN-042): Walrus scan re-run — 2 medium findings still open; at-risk status confirmed.",
+    detail: "Scheduled evidence re-check (RUN-042): Poneglyph scan re-run — 2 medium findings still open; at-risk status confirmed.",
     hash: "1b7feb16317a",
     prevHash: "297e3fbf64fd",
   },
@@ -302,7 +304,7 @@ export const auditEvents: AuditEvent[] = [
     action: "evidence.bound",
     subjectType: "evidence",
     subjectId: "EV-016",
-    detail: "Walrus config scan bound to OBL-SB-023 — log retention 180d verified, MFA coverage 100% of critical-system users.",
+    detail: "Poneglyph config scan bound to OBL-SB-023 — log retention 180d verified, MFA coverage 100% of critical-system users.",
     hash: "07877d95897f",
     prevHash: "1b7feb16317a",
   },
@@ -448,5 +450,202 @@ export const auditEvents: AuditEvent[] = [
     detail: "Daily poll of sebi.gov.in complete — no new instruments for stock brokers; register unchanged.",
     hash: "fade0de1ecbe",
     prevHash: "c58cd74de276",
+  },
+
+  /* ══ RUN-049 — corpus-completion pass over the unextracted Parts ═════
+     Onboarding bound nine Parts; the register only held what RUN-041 had
+     extracted. These events close that deficit. Part VIII is recorded as
+     considered and not extracted — the "no" is part of the glass box. */
+  {
+    id: "AE-0041",
+    at: "2026-07-12T08:14:39+05:30",
+    actor: "system:watchtower",
+    action: "corpus.ingested",
+    subjectType: "corpus",
+    subjectId: "MC-SB-2025",
+    detail:
+      "Corpus-completion parse of MC-SB-2025: 5 chapters normalised into the existing root — technology (Part IV, 3 paras), change-control (Part V, 2), fatca (Part VI, 2), outsourcing (Part IX, 3), reporting (Part X, 3). These Parts were bound at onboarding ONB-001 but held no extracted content. Triggered RUN-049.",
+    hash: "9a14e9dfe6b6",
+    prevHash: "fade0de1ecbe",
+  },
+  {
+    id: "AE-0042",
+    at: "2026-07-12T08:15:52+05:30",
+    actor: "agent:extraction",
+    action: "obligation.created",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-024",
+    detail:
+      "Digitally signed electronic contract notes with proof of delivery — grounded to MC-SB-2025 para 50.2, chars 61–232. Carried at-risk: the signing certificate lapses 2026-08-14 and renewal is unevidenced.",
+    hash: "7f95eeb532d2",
+    prevHash: "9a14e9dfe6b6",
+  },
+  {
+    id: "AE-0043",
+    at: "2026-07-12T08:16:04+05:30",
+    actor: "agent:extraction",
+    action: "obligation.created",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-025",
+    detail:
+      "Exchange approval and unique identifier for every algorithm — grounded to para 62.1. Opened as a gap: no approval letters or live strategy inventory on file.",
+    hash: "58a28df59ce3",
+    prevHash: "7f95eeb532d2",
+  },
+  {
+    id: "AE-0044",
+    at: "2026-07-12T08:16:37+05:30",
+    actor: "agent:extraction",
+    action: "obligation.created",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-027",
+    detail:
+      "Prior approval before any change in control — grounded to para 66.1. First register entry under Part V, which held none before this run.",
+    hash: "831ef4e30f30",
+    prevHash: "58a28df59ce3",
+  },
+  {
+    id: "AE-0045",
+    at: "2026-07-12T08:16:58+05:30",
+    actor: "agent:extraction",
+    action: "obligation.created",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-029",
+    detail:
+      "FATCA/CRS registration and reportable-account due diligence — grounded to para 69.1 with para 70.2 folded in as the reportable-account limb. First and only entry under Part VI.",
+    hash: "9b388010645a",
+    prevHash: "831ef4e30f30",
+  },
+  {
+    id: "AE-0046",
+    at: "2026-07-12T08:17:23+05:30",
+    actor: "agent:extraction",
+    action: "obligation.created",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-032",
+    detail:
+      "Consolidated quarterly report in Annexure-28 format — grounded to para 93.1, due 2026-10-15. Para 93.6 carried as a completeness-and-certification condition rather than a separate entry. 10 register entries created in this run in total (OBL-SB-024…033).",
+    hash: "55d0290fce69",
+    prevHash: "9b388010645a",
+  },
+  {
+    id: "AE-0047",
+    at: "2026-07-12T08:18:54+05:30",
+    actor: "agent:verifier",
+    action: "run.completed",
+    subjectType: "run",
+    subjectId: "RUN-049",
+    detail:
+      "Corpus-completion pass complete: 10 obligations created across Parts IV, V, VI, IX and X; verifier checks 5/5 passed; register now 43 entries covering 9 of the 10 Parts. Part VIII considered and deliberately not extracted — default provisions bind only on a default event and remain under a standing trigger watch. 3 entries (OBL-SB-027/032/033) routed to human gate — awaiting approval.",
+    hash: "8aadfa878d59",
+    prevHash: "55d0290fce69",
+  },
+  {
+    id: "AE-0048",
+    at: "2026-07-12T15:02:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-024",
+    detail:
+      "Approved with at-risk status accepted — mapping to para 50.2 is sound; the certificate expiry of 2026-08-14 is a control failure to remediate, not a mapping defect.",
+    hash: "625f0543ed2f",
+    prevHash: "8aadfa878d59",
+  },
+  {
+    id: "AE-0049",
+    at: "2026-07-12T15:09:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-025",
+    detail:
+      "Approved as a gap — algorithm approvals exist with the exchanges but are not held as a reconciled inventory; the gap is the evidence, not the duty.",
+    hash: "bfa7b620ab1f",
+    prevHash: "625f0543ed2f",
+  },
+  {
+    id: "AE-0050",
+    at: "2026-07-12T15:16:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-026",
+    detail:
+      "Approved — pre-trade risk gate on DMA and smart order routing confirmed against para 57.3; gateway configuration probe accepted as the standing evidence source.",
+    hash: "3bb6413d4496",
+    prevHash: "bfa7b620ab1f",
+  },
+  {
+    id: "AE-0051",
+    at: "2026-07-12T15:24:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-028",
+    detail:
+      "Approved — quarterly constitution return already filed on cycle; fifteen-day computation from quarter end verified against para 67.2.",
+    hash: "acf82afd5e71",
+    prevHash: "3bb6413d4496",
+  },
+  {
+    id: "AE-0052",
+    at: "2026-07-12T15:31:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-029",
+    detail:
+      "Approved — folding para 70.2 into the registration duty accepted: registration and reportable-account due diligence share one evidence surface and cannot be evidenced apart.",
+    hash: "6a71d6cd5a1f",
+    prevHash: "acf82afd5e71",
+  },
+  {
+    id: "AE-0053",
+    at: "2026-07-12T15:44:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-030",
+    detail:
+      "Approved as a gap — outsourcing arrangements are governed under contract but no board-approved policy or vendor register exists; core-activity carve-out from para 82.3 correctly folded into the entry.",
+    hash: "45b0460b13d7",
+    prevHash: "6a71d6cd5a1f",
+  },
+  {
+    id: "AE-0054",
+    at: "2026-07-12T15:52:00+05:30",
+    actor: "human:Priya Nair",
+    action: "obligation.approved",
+    subjectType: "obligation",
+    subjectId: "OBL-SB-031",
+    detail:
+      "Approved — seventh and last of the RUN-049 auto-approved mappings; OBL-SB-027, OBL-SB-032 and OBL-SB-033 remain pending my review.",
+    hash: "f3d29cf540f3",
+    prevHash: "45b0460b13d7",
+  },
+  {
+    id: "AE-0055",
+    at: "2026-07-12T15:54:12+05:30",
+    actor: "agent:extraction",
+    action: "task.created",
+    subjectType: "task",
+    subjectId: "TSK-010",
+    detail:
+      "Raised against OBL-SB-025 — the algorithm approval register cannot be evidenced while DOC-REQ-017 is an open ask. Due 2026-09-15, owner Dev Khanna.",
+    hash: "8e14a7b2c063",
+    prevHash: "f3d29cf540f3",
+  },
+  {
+    id: "AE-0056",
+    at: "2026-07-12T15:54:19+05:30",
+    actor: "agent:extraction",
+    action: "task.created",
+    subjectType: "task",
+    subjectId: "TSK-011",
+    detail:
+      "Raised against OBL-SB-030 — board-approved outsourcing policy and vendor register outstanding against DOC-REQ-023. Due 2026-10-15, owner Rohan Iyer.",
+    hash: "b70fd5c8194a",
+    prevHash: "8e14a7b2c063",
   },
 ];

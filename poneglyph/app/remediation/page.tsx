@@ -14,6 +14,7 @@ const overdueN = tasks.filter(
   (t) => t.status === "overdue" || t.due < tenant.simToday
 ).length;
 const fromCuspaRun = tasks.filter((t) => t.createdByRun === "RUN-047").length;
+const fromCorpusPass = tasks.filter((t) => t.createdByRun === "RUN-049").length;
 const earliestDue = tasks.map((t) => t.due).sort()[0];
 const unevidencedN = obligations.filter((o) => o.evidenceIds.length === 0).length;
 
@@ -29,10 +30,11 @@ export default function Remediation() {
         }
         sub={
           <>
-            Nine tasks in flight — seven raised by RUN-047 within minutes of the CUSPA amendment
-            landing, two older register findings still closing. Each one is chained task ←
-            obligation ← clause, so nothing in the queue exists without a paragraph of the
-            circular demanding it. <b>Orange means a date has slipped.</b>
+            {tasks.length} tasks in flight — {fromCuspaRun} raised by RUN-047 within minutes of
+            the CUSPA amendment landing, {fromCorpusPass} by the RUN-049 corpus pass, the rest
+            older register findings still closing. Each one is chained task ← obligation ←
+            clause, so nothing in the queue exists without a paragraph of the circular demanding
+            it. <b>Orange means a date has slipped.</b>
           </>
         }
         right={<Cta variant="ghost">Export queue</Cta>}

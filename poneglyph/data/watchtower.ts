@@ -4,7 +4,7 @@ import type { ScraperCatch } from "@/lib/schema";
    Watchtower — what the scraper caught on sebi.gov.in, newest first.
    Every applicability verdict is clause-level and cited: the agent reads
    the addressee line and operative text of the document, matches it
-   against the tenant's registrations (stock broker, INZ000247319, NSE/BSE,
+   against the tenant's registrations (stock broker, INZ000161534, NSE/BSE,
    no other SEBI registration), and writes down exactly why it applies,
    partially applies, or does not apply. Verdicts of "applies"/"partial"
    trigger a pipeline run; "not-applicable" is filed with reasons and
@@ -42,7 +42,7 @@ export const catches: ScraperCatch[] = [
     applicability: {
       verdict: "applies",
       reasoning:
-        "The circular is addressed to 'all trading members of stock exchanges' and amends Para 46 of the Master Circular for Stock Brokers (MC-SB-2025), which this register is built on. The tenant is a SEBI-registered stock broker (INZ000247319) and a trading member of NSE and BSE, so every operative paragraph binds. The substance is not cosmetic: it replaces the CUSA account-transfer regime with a pledge-based CUSPA mechanism — a new tagged pledgee demat account, auto-pledge on pay-out, mandatory client intimation, a hard five-trading-day payment window with day-six auto-release, and daily reconciliation. Every existing Para 46 mapping is stale as of this catch. Full re-map pipeline triggered.",
+        "The circular is addressed to 'all trading members of stock exchanges' and amends Para 46 of the Master Circular for Stock Brokers (MC-SB-2025), which this register is built on. The tenant is a SEBI-registered stock broker (INZ000161534) and a trading member of NSE and BSE, so every operative paragraph binds. The substance is not cosmetic: it replaces the CUSA account-transfer regime with a pledge-based CUSPA mechanism — a new tagged pledgee demat account, auto-pledge on pay-out, mandatory client intimation, a hard five-trading-day payment window with day-six auto-release, and daily reconciliation. Every existing Para 46 mapping is stale as of this catch. Full re-map pipeline triggered.",
       citedText:
         "Every trading member shall open a separate demat account designated as the 'Client Unpaid Securities Pledgee Account' (CUSPA), tagged as such with the depository, exclusively for taking a pledge of unpaid securities of clients.",
       confidence: 0.99,
@@ -61,7 +61,7 @@ export const catches: ScraperCatch[] = [
     applicability: {
       verdict: "not-applicable",
       reasoning:
-        "The circular is addressed to 'all Asset Management Companies (AMCs) and Association of Mutual Funds in India (AMFI)' and every operative clause is framed on the AMC — TER computation, scheme-level disclosure on AMC websites, and AMFI consolidation. The tenant holds a single SEBI registration as a stock broker (INZ000247319) and holds no AMC registration, sponsors no mutual fund, and acts as investment manager to no scheme. Distribution of mutual fund units by a broker does not attract any clause of this circular; the disclosure duty sits with the AMC. Filed without action — no run triggered, register untouched.",
+        "The circular is addressed to 'all Asset Management Companies (AMCs) and Association of Mutual Funds in India (AMFI)' and every operative clause is framed on the AMC — TER computation, scheme-level disclosure on AMC websites, and AMFI consolidation. The tenant holds a single SEBI registration as a stock broker (INZ000161534) and holds no AMC registration, sponsors no mutual fund, and acts as investment manager to no scheme. Distribution of mutual fund units by a broker does not attract any clause of this circular; the disclosure duty sits with the AMC. Filed without action — no run triggered, register untouched.",
       citedText:
         "All AMCs shall disclose the Total Expense Ratio of each scheme, on a daily basis, in the revised format set out in the Annexure, on their websites and on the AMFI website.",
       confidence: 0.98,
@@ -98,7 +98,7 @@ export const catches: ScraperCatch[] = [
     applicability: {
       verdict: "applies",
       reasoning:
-        "Gazette notification amending the SEBI (Stock Brokers) Regulations, 1992 — the parent regulation under which the tenant's certificate of registration (INZ000247319) is issued, so it binds by definition. The operative changes sit in the registration-and-governance chapter: the compliance officer's reporting line is fixed to the board rather than the managing director, and the designated-director residency test moves from a financial-year day-count to a rolling twelve-month day-count. Obligations OBL-SB-002 and OBL-SB-003 carry stale clause framing until re-mapped. The regulation commences on 2026-07-01 per its commencement clause; re-map run scheduled ahead of commencement rather than at notification.",
+        "Gazette notification amending the SEBI (Stock Brokers) Regulations, 1992 — the parent regulation under which the tenant's certificate of registration (INZ000161534) is issued, so it binds by definition. The operative changes sit in the registration-and-governance chapter: the compliance officer's reporting line is fixed to the board rather than the managing director, and the designated-director residency test moves from a financial-year day-count to a rolling twelve-month day-count. Obligations OBL-SB-002 and OBL-SB-003 carry stale clause framing until re-mapped. The regulation commences on 2026-07-01 per its commencement clause; re-map run scheduled ahead of commencement rather than at notification.",
       citedText:
         "at least one designated director who is resident in India, having stayed in India for a total period of not less than one hundred and eighty-two days during the preceding twelve months",
       confidence: 0.97,

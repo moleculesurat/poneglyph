@@ -1,7 +1,8 @@
 "use client";
 
-/* Seeded dash-field — port of walrus-hq patterns.js. Deterministic
-   (mulberry32) so SSR and client render identically. Decoration only. */
+/* Seeded dash-field — the Poneglyph incised-rule motif, rendered as broken
+   dashes. Deterministic (mulberry32) so SSR and client render identically.
+   Decoration only. */
 
 function mulberry32(seed: number) {
   let a = seed | 0;

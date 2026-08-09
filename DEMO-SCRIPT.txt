@@ -1,431 +1,622 @@
 =======================================================================
  PONEGLYPH — DEMO SCRIPT + CRASH COURSE (for Gayatri)
  SEBI TechSprint @ GFF 2026 · Problem Statement 2: "Agentic Compliance"
- To run the app:  cd poneglyph && npm run dev  →  http://localhost:3000
+ Round 2 — working prototype
+ To run it:  cd poneglyph && npm run dev  →  http://localhost:3000
 =======================================================================
 
 How to use this file:
-  PART 1 — read once, ~10 minutes. After this you understand the whole
-           project: the problem, the solution, and how we got here.
-  PART 2 — a ~1-minute demo script for every page. Each page has
-           WHY (one line), SHOW (what to click) and SAY (speak this).
+  PART 1 — read once, ~12 minutes. After this you understand the whole
+           project: the problem, the solution, and the one hard question
+           a judge will ask you.
+  PART 2 — a ~1-minute script for every screen. Each has WHY (one line),
+           SHOW (what to click) and SAY (speak this).
   PART 3 — the order to use when you only have 3 minutes (the video).
+
+WHAT CHANGED SINCE ROUND 1 — read this if you saw the old demo:
+  · The product is now just PONEGLYPH. No parent company, no other brand
+    anywhere. If you catch yourself saying another company name, stop.
+  · The demo company is no longer fictional. It is ANGEL ONE LIMITED, a
+    real listed stock broker — onboarded from its own public filings.
+    This is the single biggest upgrade, and Part 1 §4 tells you how to
+    talk about it safely.
+  · Two new screens: ENTITY ONBOARDING and the DOCUMENT VAULT.
+  · There is now a front door — the app opens on a choice screen, not
+    the dashboard. The dashboard moved to /dashboard.
+  · The register grew from 33 obligations to 43 and now spans 9 of the
+    10 Parts of SEBI's Master Circular.
 
 
 =======================================================================
- PART 1 — UNDERSTAND THE WHOLE THING IN 10 MINUTES
+ PART 1 — UNDERSTAND THE WHOLE THING
 =======================================================================
 
 1. THE PROBLEM (what SEBI's problem statement says, in plain words)
 -----------------------------------------------------------------------
-SEBI is the regulator of India's stock markets. It writes rules for
-"market intermediaries" — stock brokers, investment advisers, mutual
-funds, depositories. The rules arrive as PDF documents called
-CIRCULARS. A "master circular" is the big consolidated rulebook for
-one type of firm — the Master Circular for Stock Brokers is basically
-the entire rulebook a broker must follow.
+SEBI regulates India's stock markets. It writes rules for "market
+intermediaries" — stock brokers, investment advisers, mutual funds. The
+rules arrive as PDFs called CIRCULARS. A "master circular" is the big
+consolidated rulebook for one type of firm; the Master Circular for
+Stock Brokers is basically the entire rulebook a broker must follow.
 
-SEBI's own problem statement says there are two pains:
+SEBI's problem statement names two pains:
 
-  Pain 1 — when SEBI issues or changes a rule, a human has to read the
-  PDF, figure out whether it applies to their firm, figure out which
-  internal processes it touches, and update them. This is slow, manual
-  and different firms interpret the same rule differently.
+  Pain 1 — when SEBI issues or changes a rule, a human must read the
+  PDF, work out whether it applies to their firm, work out which
+  internal processes it touches, and update them. Slow, manual, and
+  different firms read the same rule differently.
 
   Pain 2 — compliance teams must track ALL existing obligations, keep
-  PROOF that each one is being fulfilled, and produce audit trails when
-  SEBI inspects them. Small firms with tiny compliance teams have the
-  most gaps.
+  PROOF each one is being fulfilled, and produce audit trails when SEBI
+  inspects. Small teams have the most gaps.
 
-The root cause, in SEBI's own framing: regulation is written as TEXT
-for humans, but compliance systems need STRUCTURED, machine-checkable
-rules. Bridging that gap is the "core unsolved problem."
+Root cause, in SEBI's own framing: regulation is written as TEXT for
+humans, but compliance systems need STRUCTURED, machine-checkable rules.
+Bridging that gap is the "core unsolved problem."
 
-They asked for: a tech solution that turns regulatory text into
-operational compliance action, demonstrated on one intermediary type
-and one rulebook. They even suggested the corpus: the Master Circular
-for Stock Brokers. That is exactly what we picked.
+They asked for a solution demonstrated on one intermediary type and one
+rulebook, and suggested the Master Circular for Stock Brokers. That is
+exactly what we picked.
 
 2. OUR SOLUTION — PONEGLYPH
 -----------------------------------------------------------------------
-(The name: in One Piece, poneglyphs are ancient stones carrying the
-true history, written in a script almost nobody can read. SEBI
-circulars are our poneglyphs — dense text only specialists can read.
-Our engine reads them.)
+(The name: in One Piece, poneglyphs are ancient stones carrying the true
+history, written in a script almost nobody can read. SEBI circulars are
+our poneglyphs — dense text only specialists can read. Our engine reads
+them.)
 
 One line: Poneglyph turns SEBI's rulebook into a living, self-updating
-to-do list for a broker — where every item can prove itself.
+to-do list for a specific broker — where every item can prove itself.
 
-The loop the engine runs, in order:
+The loop the engine runs:
 
+  ONBOARD    resolve the firm from public filings, work out what
+             business it actually runs, and compute which parts of the
+             rulebook bind IT specifically.
   WATCH      a scraper agent polls SEBI's website daily and catches
              every new circular.
-  DECIDE     an "applicability" agent reads each catch and rules:
-             does this bind OUR firm? yes / no / partially — with the
-             exact quoted clause as its reason.
-  EXTRACT    if it applies, an extraction agent pulls out each
-             OBLIGATION (a thing the firm must do), anchored to the
-             exact paragraph and line of the circular.
-  VERIFY     a deterministic checker (plain code, no AI) validates
-             every agent proposal: do the citations resolve? do the
-             deadlines parse? Nothing hallucinated gets through.
-  HUMAN GATE a human compliance officer approves before anything
-             enters the register. Agents propose; humans sign.
-  EVIDENCE   each obligation gets bound to PROOF: an uploaded document,
-             a data-check against another system, or a live security
-             scan. Everything is hashed and timestamped.
-  GAP → TASK if there is no proof, that's a GAP, and the engine spawns
-             a remediation task with an owner and a deadline taken
-             from the circular itself.
-  DIFF       when SEBI AMENDS a circular, the engine diffs old vs new
-             and re-maps ONLY what changed. This is the hero demo.
-  AUDIT      every single action is written to a hash-chained log —
-             each entry's fingerprint includes the previous entry's,
-             so tampering with history is mathematically visible.
+  DECIDE     an applicability agent rules whether each catch binds our
+             firm — yes / no / partly, quoting the clause that decides.
+  EXTRACT    an extraction agent pulls out each OBLIGATION, anchored to
+             the exact paragraph and character span of the circular.
+  VERIFY     a deterministic checker (plain code, no AI) validates every
+             proposal: do citations resolve? do deadlines parse?
+  HUMAN GATE a named compliance officer approves before anything enters
+             the register. Agents propose; humans sign.
+  EVIDENCE   each obligation binds to PROOF: an uploaded document, a
+             data-check against a system of record, or a live security
+             scan. Everything hashed and timestamped.
+  GAP → TASK no proof means a GAP, and the engine spawns a remediation
+             task with an owner and a deadline from the circular itself.
+  DIFF       when SEBI AMENDS, the engine diffs old vs new and re-maps
+             ONLY what changed.
+  AUDIT      every action lands in a hash-chained log — each entry's
+             fingerprint includes the previous one, so tampering with
+             history is mathematically visible.
 
-And the positioning line that wins the room:
+The positioning line that wins the room:
   "ONE OBLIGATION GRAPH, TWO WINDOWS." The broker's compliance team
-  manages compliance through one window. SEBI verifies it through the
+  manages compliance through one window. SEBI verifies through the
   other — a read-only Inspector view of the same data, plus an MCP
   endpoint so SEBI's own AI agents can query compliance directly
   instead of asking for screenshots.
 
-3. HOW WE GOT HERE (the research we did before building)
+3. THE THESIS THAT MAKES US DIFFERENT (say this at least twice)
 -----------------------------------------------------------------------
-Step 1 — We read the problem statement carefully and caught our own
-bias. Our company (Walrus Securitas) does CYBER security. But this PS
-is about FINANCIAL-regulatory compliance: the broker rulebook is ~90%
-client-money rules, margin rules, KYC, grievances — and only ~10%
-cyber. So we deliberately de-centred our cyber strength: live security
-scans became just ONE of three evidence connectors, not the headline.
-Honest claim we make: "the engine transfers, the domain doesn't — we
-built this loop for cyber compliance and pointed it at SEBI text."
+Everyone else builds a "circular → obligation table" chatbot. The
+register is the easy half. Here is the half nobody does:
 
-Step 2 — We decided who the user is. The PS is written from the
-broker's seat (RegTech). But a regulator is judging the hackathon, so
-we added the free second window: the read-only SEBI Inspector view.
-Same data, different lens.
+  TWO BROKERS HOLDING THE SAME LICENCE DO NOT OWE THE SAME THINGS.
 
-Step 3 — We researched real, fresh scenarios (web research, primary
-sources): on 3 July 2026 — nine days before our demo date — SEBI
-actually amended Para 46 of the Master Circular, replacing how brokers
-handle clients' unpaid securities with a pledge-based system called
-CUSPA. Every broker in India is scrambling on this right now. That
-became our hero scenario. Backdrop: SEBI also replaced the entire
-Stock Brokers Regulations in Jan 2026, so "rules changing under your
-feet" is a very live pain.
+A broker's obligations depend on what it actually IS — its size, its
+segments, its designations. Angel One runs margin trading, algo
+trading and a depository participant business, and its scale crosses
+the Qualified Stock Broker thresholds. A small broker with the same
+stock-broker licence and none of those things owes materially less.
 
-Step 4 — We researched how serious companies architect this, so a jury
-can't call it a toy. Norm Ai (a US company that raised $120M+ to build
-compliance agents for asset managers) compiles regulations into
-structured logic and lets agents walk that structure step-by-step.
-Anthropic's "Building Effective Agents" guidance says: in production,
-use a fixed pipeline with AI only at the judgment steps — never
-free-roaming agents — every step inspectable. That's exactly our
-architecture: NEW REGULATION = NEW JOB THROUGH A FIXED PIPELINE, not
-"new agent". The agents are disposable workers; the schema is the
+So Poneglyph does not start from a checklist. It starts from the FIRM.
+Onboarding builds an entity profile, the profile decides which Parts of
+the rulebook bind, and those Parts generate the document requests. Change
+the profile and the whole register changes underneath you. On screen:
+Angel One draws 26 document asks; a same-licence peer without QSB, MTF
+or algo trading would draw 22.
+
+If a judge remembers one sentence from you, make it that one.
+
+4. REAL vs SIMULATED — THE QUESTION YOU WILL BE ASKED
+-----------------------------------------------------------------------
+READ THIS TWICE. A judge will ask some version of: "That's a real listed
+company — are you saying Angel One is non-compliant?"
+
+The answer, calm and immediate:
+
+  "No — and the product is built so it can't say that. Angel One's
+   IDENTITY and FINANCIAL FACTS are real and every one carries the
+   filing it came from. Everything about compliance POSTURE — what's
+   met, what's a gap, the evidence, the tasks — is simulated and
+   labelled illustrative on every screen. We're showing the engine on a
+   real entity's public data. We are not making a claim about their
+   compliance."
+
+The app says this for you. The entry screen carries it, the onboarding
+page opens with a REAL / ILLUSTRATIVE split panel, and the black strip
+at the top of every screen never goes away.
+
+What is REAL (and you can invite anyone to check it):
+  · Angel One Limited, ISIN INE732I01021, NSE ANGELONE, BSE 543235
+  · Net worth ₹6,201.98 crore — total equity, FY2025-26 standalone,
+    from the XBRL results filed with the exchanges (prior year
+    ₹5,597.87 crore, so the growth is real too)
+  · Revenue ₹5,054.07 crore, same filing
+  · Client base 38.59 million (3.86 crore), June 2026 business update,
+    up 18.8% year on year
+  · NSE market share 14.79%
+
+What is DERIVED (we computed it, and we say so):
+  · ~6.76 million NSE active clients — 14.79% of NSE's 4.57 crore
+    active base. This is an ESTIMATE and the app labels it derived.
+    Note the distinction: total client base 38.59M is NOT the same as
+    active clients. The QSB framework counts ACTIVE clients. If a judge
+    catches that difference, they will be impressed that we did too.
+
+What is SIMULATED (say it without flinching):
+  · Every obligation status, every evidence artifact, every task, every
+    audit event, the onboarding narrative, and the contents of every
+    document. No inspection finding, penalty or violation is depicted.
+  · The compliance team (Priya Nair, Dev Khanna, Rohan Iyer) is our
+    sandbox's own cast, NOT Angel One employees.
+
+What we deliberately did NOT do — this is a strong answer if pressed:
+  · We never invented a registration number. Angel One's INZ000161534
+    is public because SEBI requires brokers to display it, and we hold
+    it as DECLARED — unverified — until the registration certificate is
+    supplied. Every other registration on the profile is MASKED.
+  · We never fabricated a net-worth certificate. The specimen document
+    in the evidence vault has its identity redacted, and the figure it
+    reports is the real filed one with its source attached.
+  · We never asserted the QSB designation. We COMPUTED it from public
+    parameters, marked it "computed · unconfirmed", and raised a
+    document request for the exchange's own designation letter.
+
+5. HOW WE GOT HERE (the research, if anyone asks)
+-----------------------------------------------------------------------
+Step 1 — We read the problem statement and caught our own bias. Our
+background is cybersecurity, but this PS is about FINANCIAL-regulatory
+compliance. The broker rulebook is overwhelmingly client-money, margin,
+KYC and grievance rules; cyber is one Part of ten. So we deliberately
+de-centred cyber: live security scans are ONE of three evidence
+connectors, not the headline.
+
+Step 2 — We went to the primary source. We read the actual Table of
+Contents of SEBI's Master Circular for Stock Brokers
+(SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2024/53) rather than trusting a
+summary — which matters, because a widely-mirrored PDF with a similar
+name is actually the DEBT circular, and an AI summary of it invented a
+plausible-looking broker index. Our taxonomy is the real ten Parts.
+
+Step 3 — We researched a live scenario. On 3 July 2026 SEBI amended
+Para 46 of the Master Circular, replacing how brokers handle clients'
+unpaid securities with a pledge-based system called CUSPA. Every broker
+in India is working through it right now. That is our hero scenario.
+
+Step 4 — We researched how serious companies architect this. Norm Ai
+(US, $100M+ raised, compliance agents for asset managers) compiles
+regulations into structured logic. Anthropic's "Building Effective
+Agents" guidance says: in production, use a fixed pipeline with AI only
+at the judgment steps — never free-roaming agents. That is exactly our
+architecture: A NEW REGULATION IS A NEW JOB THROUGH A FIXED PIPELINE,
+not a new agent. Agents are disposable workers; the schema is the
 permanent thing; a deterministic verifier checks everything; a human
-signs. This is also the only architecture a regulator will trust.
+signs. It is the only architecture a regulator can audit.
 
-Step 5 — For the hackathon we built a FRONTEND SANDBOX of the product:
-every screen, running on realistic simulated data. The demo company is
-"Walrus Securitas Broking Ltd" — a fictional small stock broker (SEBI
-reg no INZ000247319, member NSE + BSE) — exactly the "smaller
-intermediary with limited compliance resources" the PS names. The
-in-app clock is pinned to 12 July 2026, so "SEBI amended this nine
-days ago" stays true forever.
-
-4. WHAT'S REAL AND WHAT'S SIMULATED (say this confidently, never hide it)
+6. THE TEN PARTS (know these — it is our credibility)
 -----------------------------------------------------------------------
-- The regulatory scenario is REAL: the CUSPA amendment, its deadlines,
-  the Master Circular structure. Clause text is a close paraphrase of
-  public SEBI material, written for the demo.
-- The data is SIMULATED but realistic: 33 obligations, 20 evidence
-  artifacts, 9 tasks, 8 pipeline runs, 40 audit events, 6 scraper
-  catches — all hand-built to be internally consistent.
-- Everything is EXPLORABLE, nothing is ACTIONABLE: buttons that would
-  change data show a small "sandbox" toast instead. That's deliberate.
-- The black strip at the top of every page says it verbatim: "Sandbox
-  environment — realistic simulated data · everything is explorable,
-  nothing is actionable." Own it: the engine design is what we're
-  showing, not fake live data.
+SEBI's Master Circular for Stock Brokers is organised in ten Parts. Our
+register mirrors them exactly, with the verbatim titles:
 
-5. MINI GLOSSARY (words you'll say a lot)
+   I    Registration of Stock Brokers                    3 obligations
+   II   Supervision & Oversight (system audit, QSB)      2
+   III  Dealings with Client        (the biggest Part)  19
+   IV   Technology Related Provisions (CSCRF, algo)      6
+   V    Change in Status, Constitution, Control          2
+   VI   Foreign Accounts Tax Compliance Act              1
+   VII  Investor Grievance Redressal (SCORES, ODR)       3
+   VIII Default Related Provisions                       0  ← on purpose
+   IX   Miscellaneous (outsourcing, books, upstreaming)  5
+   X    Reporting Requirements                           2
+                                                       ─────
+                                                        43
+
+PART VIII SHOWS ZERO AND THAT IS A FEATURE. Default provisions bind only
+when a member actually defaults. The engine evaluated it, ruled it
+event-driven, and put it under a standing trigger watch — the reason is
+on the record. If a judge points at the zero, that is a gift:
+
+  "That zero is a decision, not a gap. Default provisions only bind on a
+   default event, so the engine excluded the Part and filed the reason.
+   An unexplained zero would be a hole — an explained one is the product
+   working."
+
+Two frameworks sit ACROSS the Parts and decide how heavily they land:
+  · CSCRF — Cybersecurity & Cyber Resilience Framework (Aug 2024),
+    graded by entity size.
+  · QSB — Qualified Stock Broker. SEBI loads high-impact brokers with
+    enhanced obligations because their failure would be systemic.
+    Parameters: active clients, client assets, trading volumes, end-of-
+    day margin obligations, plus proprietary volumes and compliance and
+    grievance scores added in 2024.
+
+7. MINI GLOSSARY
 -----------------------------------------------------------------------
 Circular        — a SEBI rule document (PDF).
 Master Circular — the consolidated rulebook for one firm type.
+Part            — one of the ten sections of that rulebook.
 Obligation      — one thing the firm must do, extracted from a clause.
 Control         — the firm's internal process that satisfies it.
 Evidence        — proof the control ran (document / data-check / scan).
+Document        — source material the engine LEARNS THE FIRM FROM.
+                  Not the same as evidence — see the Document Vault.
 Gap             — an obligation with no evidence. Orange in the UI.
 Remediation     — the task that closes a gap.
 Audit trail     — the append-only, hash-chained log of every action.
 Agentic         — AI agents doing multi-step work (read → decide → act).
 MCP             — Model Context Protocol; a standard port through which
                   any AI assistant can query a system. Ours is read-only.
-CUSPA           — "Client Unpaid Securities Pledgee Account". New rule:
-                  when a client hasn't fully paid for shares, the broker
-                  no longer moves them to its own account — they stay in
-                  the client's account, PLEDGED to the broker. Client
+QSB             — Qualified Stock Broker (see above).
+CSCRF           — SEBI's cybersecurity framework.
+CUSPA           — "Client Unpaid Securities Pledgee Account". The new
+                  rule: when a client hasn't fully paid for shares, the
+                  broker no longer moves them to its own account — they
+                  stay with the client, PLEDGED to the broker. Client
                   must be told by email/SMS; if unpaid after 5 trading
-                  days the pledge is released/disposed on day 6; daily
+                  days the pledge is released on day 6; daily
                   reconciliation required. This is the Para 46 amendment.
-VAPT / CSCRF    — security testing / SEBI's cybersecurity framework —
-                  the ONE chapter where our evidence is a live scan.
 
-Cast: Priya Nair is the broker's compliance officer (your login).
-R. Menon is the SEBI inspector (the other "account").
+Cast: Priya Nair is the compliance officer (your login).
+      R. Menon is the SEBI inspector (the other "account").
 
 
 =======================================================================
- PART 2 — PAGE-BY-PAGE DEMO SCRIPTS (~1 minute each)
+ PART 2 — SCREEN-BY-SCREEN SCRIPTS (~1 minute each)
 =======================================================================
 
-Rules for every page:
+Rules for every screen:
 - The golden sentence, repeat it shamelessly: "click anything, and it
   walks back to the exact line of the circular."
-- If a button shows the sandbox toast, smile and say "actionable in
-  the product, simulated here."
-- The date chip top-right says "sim-today 2026-07-12" — that's our
-  pinned demo date.
-- You can copy any page's route by clicking the small /route chip next
-  to the breadcrumbs (it toasts "Route copied").
+- If a button shows the sandbox toast, smile: "actionable in the
+  product, simulated here."
+- The date chip top-right says "sim-today 2026-07-12" — our pinned demo
+  date. It is why "SEBI amended this nine days ago" is always true.
+- You can copy any screen's route by clicking the small /route chip.
 
 -----------------------------------------------------------------------
-PAGE 1 · DASHBOARD  (/)
+SCREEN 0 · THE FRONT DOOR  (/)
+-----------------------------------------------------------------------
+WHY: in fifteen seconds, establish that this is a real engine pointed at
+a real company — not a mockup.
+
+SHOW: let the screen sit for a beat. Point at the two cards. Read the
+four figures on the left card. Then click "Open the entity profile."
+
+SAY: "This is Poneglyph. From regulatory text to operational action —
+the circular is the text, the register is the system. There are two ways
+in. On the right, start a new onboarding for any listed intermediary. On
+the left — and this is what I'll show you — a company we've already
+onboarded: Angel One Limited. A real, listed, SEBI-registered stock
+broker. Net worth six thousand two hundred crore, client base three
+point eight six crore, forty-three obligations across nine of the ten
+Parts of the rulebook. None of that was written for this demo — the
+engine read it out of Angel One's own filings and stamped every figure
+with the document it came from. And to be explicit, because it matters:
+the financial facts are real, everything about compliance posture is
+simulated and labelled illustrative. We're showing the engine on real
+public data, not making a claim about their compliance."
+
+-----------------------------------------------------------------------
+SCREEN 1 · ENTITY ONBOARDING  (/onboarding)  — THE NEW HERO
+-----------------------------------------------------------------------
+WHY: this is where the thesis lives. Spend real time here.
+
+SHOW: the REAL / ILLUSTRATIVE split panel at the top → the four fact
+tiles, hover the source line under each → the registrations table (six
+of seven masked) → expand step 03, DESIGNATION, and show the QSB scoring
+table → expand step 04, SCOPE, and show all ten Parts with the excluded
+one → scroll to the questions and open one to show the "why" → end on
+the last question, the free-text catch-all.
+
+SAY: "Onboarding is six steps, and every one of them is replayable.
+Step one resolved 'Angel One' to a legal person and its filings. Step
+two worked out what business it actually runs — and asked about what it
+couldn't see. Step three is my favourite: it COMPUTED the Qualified
+Stock Broker designation against SEBI's seven published parameters —
+here's the scoring table — and then marked it 'computed, unconfirmed'
+and raised a document request for the exchange's own designation letter.
+It doesn't assume. It derives, then asks.
+
+Step four turns that profile into scope: which of the ten Parts bind
+this firm. Nine of ten. The tenth — default provisions — was excluded,
+with the reason on the record, because those only bind when a member
+actually defaults.
+
+And look at the questions. Every one shows WHY it's being asked, and
+most arrive pre-filled from public data — the engine turns up already
+knowing and asks the human to CONFIRM, not to type. The last one is
+deliberately open: 'is there anything we didn't ask for?' Because a
+compliance officer knows things the filings don't say.
+
+Here's the whole point: twenty-six document requests, every one derived
+from this profile. A broker with the same licence but no QSB status, no
+margin trading and no algo desk would get twenty-two. Two brokers
+holding the same licence do not owe the same things."
+
+-----------------------------------------------------------------------
+SCREEN 2 · DOCUMENT VAULT  (/documents)  — THE OTHER NEW ONE
+-----------------------------------------------------------------------
+WHY: this is how the engine LEARNS the firm. Do not let it get confused
+with the Evidence Vault.
+
+SHOW: the status strip → the "open asks" section at the top → expand one
+required document and read its "why this was asked" → expand a verified
+one and show the extracted fields table with confidence scores → point
+out a low-confidence extraction → scroll to the two WAIVED ones and read
+a reason.
+
+SAY: "Two vaults, and the difference matters. The Evidence Vault holds
+proof that a control RAN. This one holds the source material the engine
+learns the firm FROM. One answers 'did you do it'. This one answers 'who
+are you'.
+
+Every requirement names the profile fact that made us ask. This one —
+the QSB designation letter — exists because the engine computed we cross
+the thresholds. This one exists because we detected an algo trading
+desk. The firm can always answer the only question that matters: why are
+you asking me for this?
+
+When a document arrives, the engine parses it into fields — with a
+confidence on each, and anything low-confidence routes to a human. This
+is a glass box, not a black one.
+
+And these two at the bottom are waived — documents we evaluated and
+decided NOT to ask for, with the reason filed. Portfolio management
+reporting: no PMS registration on the profile. That matters more than it
+looks. An unrecorded non-ask is indistinguishable from an oversight. An
+inspector can audit our silence the same way they audit our asks."
+
+-----------------------------------------------------------------------
+SCREEN 3 · DASHBOARD  (/dashboard)
 -----------------------------------------------------------------------
 WHY: the 30-second answer to "how compliant are we right now?"
 
-SHOW: point at the orange amendment alert on top → the four big
-numbers → then DRAG the deadline runway left (it scrolls sideways,
-this is the sexy bit — it runs out to January 2027) → then click one
-row of "Register by chapter"
-heat-map — it lands on the Register ALREADY FILTERED to that chapter.
+SHOW: the orange amendment alert → the headline numbers → DRAG the
+deadline runway sideways (it runs to January 2027) → click a Part in the
+heat-map to land in a filtered register.
 
-SAY: "This is the compliance officer's morning view. Thirty-three
-obligations tracked, twenty-one already proven with evidence, six open
-gaps — and every gap here is from one event: SEBI amended Para 46 nine
-days ago, and the system already caught it, re-mapped the register and
-queued the work. This timeline is every deadline the amendment
-created — I can drag through the next six months, out to January
-2027. And this
-heat-map is the rulebook by chapter — one click, and I'm inside the
-register, filtered to exactly those obligations."
+SAY: "This is the compliance officer's morning view. Forty-three
+obligations tracked, the register grouped by the ten Parts of the
+rulebook — and every open gap traces to one event: SEBI amended Para 46
+nine days ago, and the system already caught it, re-mapped the register
+and queued the work. This timeline is every deadline that amendment
+created; I can drag out to January 2027. One click on any Part drops me
+into the register filtered to exactly those obligations."
 
 -----------------------------------------------------------------------
-PAGE 2 · WATCHTOWER · SCRAPER  (/watchtower)
+SCREEN 4 · WATCHTOWER · SCRAPER  (/watchtower)
 -----------------------------------------------------------------------
 WHY: proof the system WATCHES SEBI so humans don't have to.
 
-SHOW: the terminal-style poll log at top (it replays the scraper
-run) → the CUSPA catch is featured right below it, already open, as
-"the catch that mattered" (verdict: APPLIES) — read one line of its
-reasoning → then, in the catch list further down, expand the mutual
-fund TER catch (verdict: NOT-APPLICABLE) for contrast.
+SHOW: the terminal poll log replaying → the CUSPA catch (verdict:
+APPLIES) with its cited reasoning → then expand the mutual fund TER
+catch (verdict: NOT-APPLICABLE) for contrast.
 
-SAY: "An agent polls SEBI's website every day. Here's what it caught.
-For each document, a second agent answers one question: does this bind
-US? — and it must quote the clause that decides it. This one, the
-unpaid-securities amendment: APPLIES — and it triggered the whole
-pipeline automatically. This one, a mutual fund circular: NOT
-APPLICABLE — it's addressed to asset management companies, and we hold
-no AMC registration. That 'no' matters as much as the 'yes' — the
-system files WHY it ignored something, so nothing is silently missed."
+SAY: "An agent polls SEBI's website every day. For each document a
+second agent answers one question — does this bind US? — and it must
+quote the clause that decides it. This one, the unpaid-securities
+amendment: APPLIES, and it triggered the whole pipeline automatically.
+This one, a mutual fund circular: NOT APPLICABLE — it's addressed to
+asset management companies and we hold no AMC registration. That 'no'
+matters as much as the 'yes'. The system files WHY it ignored something,
+so nothing is silently missed."
 
 -----------------------------------------------------------------------
-PAGE 3 · OBLIGATION REGISTER  (/register)  — the core
+SCREEN 5 · OBLIGATION REGISTER  (/register)  — the core
 -----------------------------------------------------------------------
-WHY: the rulebook, converted into 33 trackable rows. This IS the product.
+WHY: the rulebook, converted into 43 trackable rows.
 
-SHOW: click the filter chips (chapter / status / type) — note the URL
-updates, every filtered view is shareable → expand one row (good pick:
-OBL-SB-021, the VAPT one, filter chapter to "Cyber (CSCRF)") → inside:
-the quoted clause with the exact words highlighted → "read in context"
-opens the circular itself → the control, the evidence link, the hash →
-then filter status to "Pending review" and show the Approve / Reject
-buttons.
+SHOW: the SEBI PART filter — pick Part IV — note the URL updates and the
+Part's verbatim title appears → expand a row → the quoted clause with
+the exact span highlighted → "read in context" opens the circular →
+the control, the evidence link, the hash → filter status to "Pending
+review" and show the Approve / Reject pair.
 
-SAY: "Every row here is one obligation the law puts on this broker —
-extracted by an agent, and grounded: this is the actual paragraph, the
-highlighted words are the exact span the obligation came from. From
-this one row I can walk to the internal control that satisfies it, the
-evidence that proves it, and the hash that seals it. And these rows
-marked 'pending review' — an agent proposed them, but nothing enters
-this register until a human compliance officer approves. Agents
-propose, a verifier checks, a human signs."
+SAY: "Forty-three obligations, filterable by the ten Parts of the
+circular. Every row is one thing the law puts on this broker — extracted
+by an agent and GROUNDED: this is the actual paragraph, and the
+highlighted words are the exact character span the obligation came from.
+From one row I walk to the control that satisfies it, the evidence that
+proves it, and the hash that seals it. Every filtered view is a
+shareable URL.
+
+And these rows marked 'pending review' — an agent proposed them, but
+nothing enters this register until a human compliance officer approves.
+Agents propose. A verifier checks. A human signs."
 
 -----------------------------------------------------------------------
-PAGE 4 · AMENDMENTS  (/amendments)  — THE HERO. Spend the most time here.
+SCREEN 6 · AMENDMENTS  (/amendments)  — THE HERO. Most time here.
 -----------------------------------------------------------------------
 WHY: this is Pain #1 from the problem statement, solved on a real
 nine-days-old SEBI amendment.
 
-SHOW: the old-vs-new Para 46 redline (orange = changed) → the stat
-tiles: 10 obligations re-mapped, 23 untouched → scroll the delta
-list — each new obligation with its real phased deadline → point at
-the corpus lineage timeline on top.
+SHOW: the old-vs-new Para 46 redline (orange = changed) → the stat tiles
+→ scroll the delta list, each new obligation with its real phased
+deadline → the corpus lineage timeline on top.
 
 SAY: "Nine days ago SEBI rewrote how brokers handle shares a client
-hasn't paid for. Here's the old paragraph, here's the new one, and
-here's the machine-computed difference. From that diff, the engine
-extracted ten NEW obligations — open a pledge account, notify clients
-by SMS and email, reconcile daily — each with the deadline the
-circular itself sets, phased out to January 2027. And critically: the
-other twenty-three obligations were untouched, so nobody re-reviews
-the whole rulebook. This — a rule changing and the register moving by
-itself within hours — is the exact problem SEBI asked us to solve."
+hasn't paid for. Here's the old paragraph, here's the new one, here's
+the machine-computed difference. From that diff the engine extracted ten
+NEW obligations — open a pledge account, notify clients by SMS and
+email, reconcile daily — each with the deadline the circular itself
+sets, phased out to January 2027. And critically: the other
+thirty-three obligations were untouched, so nobody re-reviews the whole
+rulebook. A rule changing and the register moving by itself within
+hours — that is precisely what SEBI asked us to solve."
 
 -----------------------------------------------------------------------
-PAGE 5 · EVIDENCE VAULT  (/evidence)
+SCREEN 7 · EVIDENCE VAULT  (/evidence)
 -----------------------------------------------------------------------
 WHY: compliance you can't PROVE doesn't exist. This is Pain #2.
 
-SHOW: the three connector types across the grid: a DOCUMENT (the
-board resolution), a DATA-CHECK (the client-fund segregation check),
-a LIVE SCAN (the Walrus security scan) → open one artifact: hash,
-timestamp, the clause it proves, its re-verification history → then
-point at a CUSPA obligation in the orange GAP state — no evidence
-bound yet — and follow it to its remediation task.
+SHOW: the three connector types — a DOCUMENT, a DATA-CHECK, a LIVE SCAN
+→ open one artifact: hash, timestamp, the clause it proves, its
+re-verification history → then a gap obligation with no evidence, and
+follow it to its remediation task.
 
-SAY: "Every obligation needs proof, and proof comes in three flavours:
-documents you upload once, data-checks the system re-runs against
-other systems of record — like re-checking client-fund segregation
-against the exchange's own reports — and for the cybersecurity
-chapter, live scans from our own security engine, not screenshots.
-Every artifact is fingerprinted and timestamped, and re-verification
-appends to its history — so this is ongoing compliance, not a one-time
-checklist. And the new CUSPA obligations that have no proof yet —
-those are gaps, they're orange, and each one already has a task."
+SAY: "Proof comes in three flavours: documents you upload once,
+data-checks the system re-runs against other systems of record — like
+re-checking client-fund segregation against the exchange's own reports —
+and live scans for the cybersecurity Part, not screenshots. Every
+artifact is fingerprinted and timestamped, and re-verification appends
+to its history — so this is ongoing compliance, not a one-time
+checklist. The obligations with no proof yet are gaps, they're orange,
+and each one already has a task."
 
 -----------------------------------------------------------------------
-PAGE 6 · REMEDIATION  (/remediation)
+SCREEN 8 · REMEDIATION  (/remediation)
 -----------------------------------------------------------------------
 WHY: gaps don't sit in a report — they become work with owners and dates.
 
-SHOW: the task list → toggle list ↔ kanban → open one CUSPA task and
-trace the chain printed on the card: task ← obligation ← clause.
+SHOW: the task list → toggle list ↔ kanban → open a CUSPA task and trace
+the chain printed on the card: task ← obligation ← clause.
 
-SAY: "Nine tasks in flight — seven of them created by the pipeline
-within minutes of the amendment landing. Look at any card: it tells
-you which obligation it closes and which paragraph of the circular
-demands it — no task exists here without a line of law behind it. And
-every task is due BEFORE the circular's own phase deadline —
-front-loaded on purpose, so there's room to verify before SEBI's date
-arrives. The compliance officer stops being a PDF-reader and becomes
-someone who just clears a queue."
+SAY: "Eleven tasks in flight, seven created by the pipeline within minutes
+of the amendment landing. Any card tells you which obligation it closes
+and which paragraph of the circular demands it — no task exists here
+without a line of law behind it. And every task is due BEFORE the
+circular's own deadline, front-loaded so there's room to verify. The
+compliance officer stops being a PDF-reader and starts clearing a queue."
 
 -----------------------------------------------------------------------
-PAGE 7 · AGENT CONSOLE  (/agents)  — the trust page
+SCREEN 9 · AGENT CONSOLE  (/agents)  — the trust screen
 -----------------------------------------------------------------------
-WHY: kills the "can you trust an AI with compliance?" question before
-the jury asks it.
+WHY: kills "can you trust an AI with compliance?" before it's asked.
 
-SHOW: the run list (RUN-041 to 048) → open RUN-047, the amendment
-run → step through the replay: thought → action → observation → the
-five deterministic verifier checks, all green → the run status:
-"awaiting compliance-officer approval."
+SHOW: the run list → open RUN-047, the amendment run → step through the
+replay: thought → action → observation → the five deterministic verifier
+checks, all green → status: "awaiting compliance-officer approval."
 
-SAY: "Every pipeline run is recorded and replayable, step by step —
-what the agent read, what it decided, why. Then a verifier — plain
+SAY: "Every pipeline run is recorded and replayable, step by step — what
+the agent read, what it decided, why. Then a verifier — plain
 deterministic code, not AI — checks every proposal: citations must
-resolve to real clauses, deadlines must parse, applicability must
-match our registration. Five checks, five passes. And even then, the
-run is holding at the last gate: a human hasn't approved it yet. This
-is the architecture the serious players use — agents inside a fixed
-pipeline, never roaming free — because it's the only one a regulator
-can audit."
+resolve to real clauses, deadlines must parse, applicability must match
+our registration. Five checks, five passes. And even then the run is
+holding at the last gate, because a human hasn't approved it. Agents
+inside a fixed pipeline, never roaming free — it's the only architecture
+a regulator can audit."
 
 -----------------------------------------------------------------------
-PAGE 8 · AUDIT TRAIL  (/audit)
+SCREEN 10 · AUDIT TRAIL  (/audit)
 -----------------------------------------------------------------------
 WHY: for a regulator, the audit trail IS the product.
 
-SHOW: the chain of 40 events, each showing its hash AND the previous
-event's hash → click "Verify chain" and let the animation walk the
-chain → filter to one obligation to show its complete life story.
+SHOW: the chain of events, each showing its hash AND the previous hash →
+click "Verify chain" and let the animation walk it → filter to one
+obligation to show its complete life story.
 
-SAY: "Every action you've watched today — the catch, the extraction,
-the approval, the evidence binding — landed here as an event. Each
-event's fingerprint folds in the previous event's fingerprint, like a
-blockchain without the buzzword: change anything in history and every
-link after it visibly breaks. Watch — verify chain — intact. Filter to
-one obligation and you get its entire biography. Nothing here can be
-quietly edited. Tampering isn't prevented; it's unmissable."
+SAY: "Every action you've watched — the catch, the extraction, the
+approval, the evidence binding — landed here as an event. Each event's
+fingerprint folds in the previous one, like a blockchain without the
+buzzword: change anything in history and every link after it visibly
+breaks. Watch — verify chain — intact. Filter to one obligation and you
+get its entire biography. Nothing here can be quietly edited. Tampering
+isn't prevented; it's unmissable."
 
 -----------------------------------------------------------------------
-PAGE 9 · MCP SERVER  (/mcp)  — the "agentic" cherry
+SCREEN 11 · MCP SURFACE  (/mcp)  — the "agentic" cherry
 -----------------------------------------------------------------------
 WHY: compliance state as a machine-queryable service — for the broker's
 AI and for SEBI's.
 
-SHOW: the seven read-only tools → the playground: run the scripted
-chat "Are we compliant with the new CUSPA circular?" and let the tool
-calls render → then the "Share with SEBI" card: the inspector-scoped
-token.
+SHOW: the read-only tools → the playground: run the scripted chat "Are we
+compliant with the new CUSPA circular?" → then the "Share with SEBI"
+card and its inspector-scoped token.
 
-SAY: "The whole register is also a protocol. Seven read-only tools —
-any AI assistant can connect and ask, in plain language: are we
-compliant with the new CUSPA circular? Watch it call the
-compliance-status tool and build the answer, every claim traceable to
-a clause. And here's the
-part we love: instead of a data-room export, the broker hands SEBI a
-read-only token to this same endpoint — so the regulator's own agents
-can inspect compliance directly. Even the inspector's queries get
-appended to the audit chain. The inspection itself leaves a trail."
+SAY: "The whole register is also a protocol. Read-only tools — any AI
+assistant can connect and ask, in plain language, 'are we compliant with
+the new CUSPA circular?' Watch it call the compliance-status tool and
+build the answer, every claim traceable to a clause. And here's the part
+we love: instead of a data-room export, the broker hands SEBI a
+read-only token to this same endpoint, so the regulator's own agents can
+inspect compliance directly. Even the inspector's queries append to the
+audit chain. The inspection itself leaves a trail."
 
 -----------------------------------------------------------------------
-PAGE 10 · THE ACCOUNT SWITCH → INSPECTOR VIEW  — the mic-drop. Do it LAST.
+SCREEN 12 · THE ACCOUNT SWITCH → INSPECTOR  — the mic-drop. Do it LAST.
 -----------------------------------------------------------------------
 WHY: "one obligation graph, two windows" — made physical in one click.
 
-SHOW: click the profile block at the bottom of the sidebar (Priya
-Nair) → "View as" → SEBI Inspector → the whole app reshapes: orange
-avatar, "UNDER INSPECTION" on the tenant card, READ-ONLY chip in the
-header, the menu shrinks to what an inspector may see → from the
-inspection session, click any control and walk it back: clause →
-evidence → audit history → end on the panel that says "12
-intermediaries. One open ontology."
+SHOW: click the profile block at the bottom of the sidebar (Priya Nair)
+→ "View as" → SEBI Inspector → the app reshapes: orange avatar, "UNDER
+INSPECTION" on the tenant card, READ-ONLY chip in the header, the menu
+shrinks → from the inspection session, click any control and walk it
+back: clause → evidence → audit history → end on the ecosystem panel.
 
-SAY: "Everything so far was the broker's window. Now watch — I switch
-accounts to R. Menon, a SEBI inspector. Same data. Different lens.
-Read-only, and the interface itself enforces it — no approvals, no
-uploads. The inspector clicks any control and walks back to the exact
-clause, the evidence, and the tamper-evident history — an inspection
-that used to take a data-room and a week of email happens in three
-clicks. And because our obligation schema is open, imagine every
-broker on it: comparable compliance, no divergent interpretations —
-which is precisely the pain SEBI wrote into this problem statement.
-One obligation graph. Two windows."
+SAY: "Everything so far was the broker's window. Now watch — I switch to
+R. Menon, a SEBI inspector. Same data. Different lens. Read-only, and
+the interface itself enforces it — no approvals, no uploads. The
+inspector clicks any control and walks back to the exact clause, the
+evidence, and the tamper-evident history. An inspection that used to
+take a data-room and a week of email happens in three clicks. And
+because our obligation schema is open, imagine every broker on it:
+comparable compliance, no divergent interpretations — precisely the pain
+SEBI wrote into this problem statement. One obligation graph. Two
+windows."
 
 -----------------------------------------------------------------------
 CLOSING LINES (pick one, look at the camera/jury)
 -----------------------------------------------------------------------
-- "From regulatory text to operational action — that was the brief,
-  and you just watched it happen."
-- "Agents propose. A verifier checks. A human signs. A regulator can
-  see everything. That's agentic compliance done the trustworthy way."
+- "From regulatory text to operational action — that was the brief, and
+  you just watched it happen."
+- "Agents propose. A verifier checks. A human signs. A regulator can see
+  everything. That's agentic compliance done the trustworthy way."
+- "We didn't build a rulebook search engine. We built the thing that
+  knows two brokers with the same licence don't owe the same things."
 
 
 =======================================================================
- PART 3 — IF YOU ONLY HAVE 3 MINUTES (the submission video cut)
+ PART 3 — THE 3-MINUTE VIDEO CUT
 =======================================================================
-0:00–0:20  DASHBOARD — cold open on the amendment alert: "SEBI changed
-           the rules nine days ago. This broker's register has already
-           moved. Let me show you how." Drag the runway once.
-0:20–0:50  WATCHTOWER — the catch + APPLIES verdict with quoted clause;
-           flash the NOT-APPLICABLE one for contrast.
-0:50–1:30  AMENDMENTS — the hero. Old vs new Para 46 redline, 10
-           re-mapped / 23 untouched, deadlines from the circular.
-1:30–1:55  REGISTER — expand ONE row: highlighted clause → control →
+0:00–0:25  FRONT DOOR — open cold on the entry screen. "This is
+           Poneglyph. On the left, a real listed broker we've already
+           onboarded — Angel One. Every figure came out of their own
+           filings." Say the real-vs-simulated line ONCE, clearly, then
+           click into the entity profile.
+0:25–1:05  ONBOARDING — the REAL/ILLUSTRATIVE panel, the masked
+           registrations, then the QSB scoring table: "it computed the
+           designation, then asked for the exchange's letter rather than
+           assuming." End on: "twenty-six document asks, all derived —
+           a peer without QSB, MTF or algo gets twenty-two."
+1:05–1:25  DOCUMENT VAULT — one open ask and its "why this was asked",
+           one waived one and its reason. "An unrecorded non-ask is
+           indistinguishable from an oversight."
+1:25–2:05  AMENDMENTS — the hero. Old vs new Para 46 redline, ten
+           re-mapped / thirty-three untouched, deadlines from the
+           circular itself.
+2:05–2:25  REGISTER — expand ONE row: highlighted clause → control →
            evidence → hash. Golden sentence.
-1:55–2:20  AGENT CONSOLE — replay RUN-047, five verifier checks green,
+2:25–2:40  AGENT CONSOLE — replay RUN-047, five verifier checks green,
            "holding at the human gate."
-2:20–2:50  SWITCH TO INSPECTOR — the reshape, one walk-back, "one
-           obligation graph, two windows."
-2:50–3:00  MCP card + closing line + "open ontology" promise.
+2:40–3:00  SWITCH TO INSPECTOR — the reshape, one walk-back, "one
+           obligation graph, two windows." Closing line.
 
-Skip in the 3-min cut: Evidence, Remediation, Audit as standalone
-stops — they appear naturally inside the Register walk-back and the
-Inspector walk-back. If you get 5 minutes live, add Evidence (page 5)
-and Audit's "Verify chain" (page 8) — they land brilliantly in person.
+Skip in the 3-min cut: Dashboard, Watchtower, Evidence, Remediation,
+Audit and MCP as standalone stops — they appear inside the Register and
+Inspector walk-backs. If you get 5 minutes live, add Watchtower (the
+NOT-APPLICABLE contrast) and Audit's "Verify chain" — both land
+brilliantly in person.
+
+IF SOMETHING GOES WRONG ON CAMERA:
+- Wrong screen? Every screen stands alone. Just say what it is and move.
+- Asked something you don't know? "That's simulated in the sandbox —
+  the architecture is what we're showing." Then bridge to the thesis.
+- Asked about Angel One's real compliance? Part 1 §4, word for word.
+  Do not improvise that one.
 =======================================================================
