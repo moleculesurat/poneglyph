@@ -6,7 +6,7 @@
    Expanding a row opens the supplied document: provenance, validity, and
    the extracted fields with confidence and locator. Anything the parser
    read below 0.75 is shown as read and flagged, never quietly averaged
-   away — that is the glass box for document parsing.
+   away.
 
    Filters live in the URL (?part=&category=&status=&req=) so onboarding,
    the register and the inspector session can deep-link a filtered view;
@@ -135,8 +135,8 @@ function Meter({ v, low }: { v: number; low: boolean }) {
   );
 }
 
-/** The product's thesis, rendered on every row: the firm can always see
-    which fact about itself made the engine ask. Never collapsed. */
+/** Rendered on every row: the profile fact that produced the ask, so the
+    firm can always see the basis for the request. Never collapsed. */
 export function AskReason({ reason, tight = false }: { reason: string; tight?: boolean }) {
   return (
     <div
@@ -149,7 +149,7 @@ export function AskReason({ reason, tight = false }: { reason: string; tight?: b
       }}
     >
       <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-        why this was asked
+        basis for request
       </span>
       <p className="small" style={{ marginTop: 4, lineHeight: 1.55 }}>
         {reason}
@@ -183,7 +183,7 @@ export function ObligationLinks({ ids }: { ids: string[] }) {
   );
 }
 
-/* ── extraction table — the glass box for parsing ─────────────────────── */
+/* ── extraction output table ──────────────────────────────────────────── */
 
 function ExtractionRow({ f }: { f: ExtractedField }) {
   const low = f.confidence < REVIEW_THRESHOLD;
@@ -230,7 +230,7 @@ function Extractions({ d }: { d: CompanyDocument }) {
     <div className="stack" style={{ gap: 10 }}>
       <div className="row between wrap" style={{ gap: 10 }}>
         <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-          what the engine read — {d.extracted.length} fields
+          extraction output — {d.extracted.length} fields
         </span>
         <span className="mono-label dim" style={{ fontSize: 9.5 }}>
           {low > 0 ? (
@@ -635,7 +635,7 @@ export function DocumentExplorer() {
             reset filters ✕
           </button>
         ) : (
-          <span className="mono-label dim">expand a row to read what the parser took out of it</span>
+          <span className="mono-label dim">expand a row for the parsed document</span>
         )}
       </div>
 
@@ -729,7 +729,7 @@ export function VolunteerCta() {
   }
   return (
     <Cta toastMsg="Sandbox — volunteering a document is disabled in the demo">
-      Add a document we did not ask for
+      Submit an unrequested document
     </Cta>
   );
 }

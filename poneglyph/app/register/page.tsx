@@ -88,7 +88,7 @@ export default function RegisterPage() {
       <div style={{ marginTop: 34 }}>
         <Hairline />
         <div className="row between wrap" style={{ marginTop: 22, gap: 16 }}>
-          <span className="eyebrow">Continue the walk-back</span>
+          <span className="eyebrow">Traceability — related records</span>
           <div className="row wrap" style={{ gap: 22 }}>
             {CROSS_LINKS.map((l) => (
               <Link key={l.href} href={l.href} className="mono-label">

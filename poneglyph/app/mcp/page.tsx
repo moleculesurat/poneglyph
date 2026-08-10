@@ -87,10 +87,10 @@ export default function McpSurface() {
         }
         sub={
           <>
-            Seven read-only tools expose the obligation ontology over the Model Context
-            Protocol — the same register the tabs above render, spoken as a protocol. Any
-            MCP client can ask <b>&ldquo;are we compliant?&rdquo;</b> and walk the answer back
-            to a clause. No tool can write.
+            {mcpTools.length} read-only tools expose the obligation ontology over the Model Context
+            Protocol, against the same register the other routes render. An MCP client can query
+            compliance status and follow every answer back to the clause it cites.{" "}
+            <b>No tool can write.</b>
           </>
         }
       />
@@ -137,7 +137,7 @@ export default function McpSurface() {
       {/* ── tools ── */}
       <section style={{ marginBottom: 36 }}>
         <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
-          <span className="eyebrow">Seven tools over the ontology</span>
+          <span className="eyebrow">Tool catalogue — {mcpTools.length} read-only tools</span>
           <span className="mono-label dim">
             every example cites real register ids — OBL-SB-101, TSK-001, EV-015
           </span>
@@ -149,10 +149,10 @@ export default function McpSurface() {
         </div>
       </section>
 
-      {/* ── connect a client ── */}
+      {/* ── client configuration ── */}
       <section style={{ marginBottom: 36 }}>
         <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-          Connect a client
+          Client configuration
         </span>
         <div className="grid cols-2" style={{ alignItems: "start" }}>
           <MarkedCard pad={20}>
@@ -197,7 +197,7 @@ export default function McpSurface() {
       {/* ── playground ── */}
       <section style={{ marginBottom: 36 }}>
         <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
-          <span className="eyebrow">Playground — the CUSPA question, over the protocol</span>
+          <span className="eyebrow">Playground — recorded MCP session</span>
           <span className="mono-label dim">recorded 2026-07-12 · deterministic replay</span>
         </div>
         <MarkedCard pad={24}>
@@ -218,10 +218,10 @@ export default function McpSurface() {
         </p>
       </section>
 
-      {/* ── share with SEBI ── */}
+      {/* ── regulator access ── */}
       <section style={{ marginBottom: 36 }}>
         <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-          Share with SEBI
+          Regulator access — inspector-scoped token
         </span>
         <MarkedCard pad={24}>
           <div className="grid cols-2" style={{ alignItems: "start", gap: 26 }}>
@@ -231,14 +231,14 @@ export default function McpSurface() {
                 <Chip tone="info">read-only</Chip>
               </div>
               <div style={{ fontWeight: 600, fontSize: 16 }}>
-                Hand an inspector the endpoint, not a data-room export
+                Inspector-scoped access to the live register
               </div>
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                An inspector-scoped token grants the same seven tools against the same
-                register — no stale PDF bundle, no divergent copy of the truth. Every query
-                the inspector runs is appended to the audit chain, so the inspection itself
-                becomes part of the evidence. Revoke the token and access ends; the log of
-                what was asked remains.
+                An inspector-scoped token grants the same {mcpTools.length} tools against the same
+                register, so the inspector reads the live record rather than an exported copy.
+                Every query the inspector runs is appended to the audit chain, so the inspection
+                itself becomes part of the evidence. Revoking the token ends access; the log of
+                what was asked is retained.
               </p>
               <div className="row wrap" style={{ gap: 12 }}>
                 <Cta variant="orange" toastMsg="Sandbox — token issuance is disabled in the demo">
@@ -254,7 +254,9 @@ export default function McpSurface() {
               <KV k="token format">
                 <span className="mono-value">pgl_insp_&#8230;</span> — bearer, single tenant
               </KV>
-              <KV k="scope">7 read-only tools · no approve, no upload, no task edits</KV>
+              <KV k="scope">
+                {mcpTools.length} read-only tools · no approve, no upload, no task edits
+              </KV>
               <KV k="validity">30 days, revocable at any time from the console</KV>
               <KV k="access log">
                 every call appended to the{" "}

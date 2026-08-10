@@ -32,7 +32,7 @@ export default function EvidencePage() {
             Every obligation in the register points at the artifact that proves it — documents
             uploaded once, data-checks re-run against systems of record, live scans probing the
             perimeter. Each artifact is content-hashed, and every re-verification appends to its
-            history. <b>Orange means a bound obligation needs you.</b>
+            history. <b>Orange marks an artifact bound to an obligation that needs attention.</b>
           </>
         }
         right={<UploadCta />}
@@ -94,7 +94,7 @@ export default function EvidencePage() {
       {/* ── the vault ── */}
       <section>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">The vault — {evidence.length} artifacts</span>
+          <span className="eyebrow">Vault inventory — {evidence.length} artifacts</span>
           <span className="mono-label dim">sim-today {tenant.simToday}</span>
         </div>
         <EvidenceExplorer />
@@ -105,13 +105,13 @@ export default function EvidencePage() {
         <Hairline />
         <div className="row wrap" style={{ gap: 26, marginTop: 18 }}>
           <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            walk back to the register →
+            obligation register →
           </Link>
           <Link href="/audit" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            verify the hash chain →
+            hash-chained audit trail →
           </Link>
           <Link href="/remediation" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            close the gaps →
+            remediation queue →
           </Link>
         </div>
       </div>

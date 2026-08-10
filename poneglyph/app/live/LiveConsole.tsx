@@ -1,16 +1,12 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   The live console.
+   Live console.
 
-   Submit a clause, watch the pipeline run against it, watch the
-   deterministic verifier read the actual text, then approve or reject at
-   the gate and watch the register and the hash chain change.
-
-   Everything on this screen is a real HTTP call to the engine. When the
-   model is slow, this page says so and keeps counting; when the model
-   fails, this page shows the failure text and offers a retry. It never
-   shows a result that did not happen.
+   Source clause in → execution trace → deterministic verification →
+   authorisation gate → chain integrity. Every panel is backed by an HTTP
+   call to the engine. Slow calls keep counting; failed calls render the
+   failure text and a retry. No result is rendered that did not happen.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -105,9 +101,10 @@ function VerifierPanel({ run }: { run: LiveRunView }) {
       <div className="stack" style={{ gap: 16 }}>
         <div className="row between wrap" style={{ gap: 12 }}>
           <div className="stack" style={{ gap: 6 }}>
-            <span className="mono-label dim">03 · deterministic verifier</span>
+            <span className="mono-label dim">03 · deterministic verification</span>
             <h2 className="display" style={{ fontSize: 22 }}>
-              Five checks, <span className="accent grad">no model</span>
+              Verification <span className="accent grad">results</span>
+              {` — ${checks.length} deterministic checks`}
             </h2>
           </div>
           <span
@@ -140,15 +137,15 @@ function VerifierPanel({ run }: { run: LiveRunView }) {
             <Hairline dashed />
             <div className="stack" style={{ gap: 10 }}>
               <div className="row wrap between" style={{ gap: 10 }}>
-                <span className="mono-label dim">grounding, as measured</span>
+                <span className="mono-label dim">citation grounding — measured offsets</span>
                 <span className="mono-label dim" style={{ fontSize: 9.5 }}>
                   {run.input.circularId} para {run.input.para} · {run.input.clauseText.length} chars
                 </span>
               </div>
               <p className="small dim60" style={{ margin: 0, lineHeight: 1.6, maxWidth: "76ch" }}>
                 Each span below was located by an exact string search of the model&apos;s excerpt
-                inside the clause you submitted. The offsets are the result of that search. An
-                excerpt that does not occur verbatim has no offsets and fails the run.
+                inside the submitted clause. The offsets are the result of that search. An excerpt
+                that does not occur verbatim has no offsets and fails the run.
               </p>
               <div className="panel pad">
                 <HighlightedClause text={run.input.clauseText} spans={spans} />
@@ -241,7 +238,7 @@ function BeforeAfter({
             </>
           ) : (
             <span className="small dim">
-              Nothing yet. This side stays empty until a named officer clicks.
+              No decision recorded. This panel populates once a named officer approves or rejects.
             </span>
           )}
         </div>
@@ -324,20 +321,20 @@ function GateCard({
         {decided ? (
           <Notice>
             Decision recorded at the gate by {OFFICER.name}, {OFFICER.role}. The audit event above
-            was appended with a hash computed over its own content — verify the chain below and it
-            will be part of what recomputes.
+            was appended with a hash computed over its own content, and is included in the next
+            chain integrity verification.
           </Notice>
         ) : disabled ? (
           <Notice>
-            The gate is a broker control. Switch the persona back to Broker to decide this draft —
-            an inspector reads the register, they do not sign it.
+            The gate is a broker control. The inspector persona is read-only; switch to Broker to
+            record a decision on this draft.
           </Notice>
         ) : (
           <>
             <Notice tone="attention">
-              Nothing reaches the register except through this click. The pipeline holds every draft
-              at <span className="mono-value">pending-review</span> with no approver recorded, and
-              the gate is the only code in the engine that writes to the register.
+              The gate is the only code path in the engine that writes to the register. Every draft
+              is held at <span className="mono-value">pending-review</span> with no approver
+              recorded until a decision is taken here.
             </Notice>
             <div className="row wrap between" style={{ gap: 12 }}>
               <div className="row wrap" style={{ gap: 10 }}>
@@ -509,7 +506,7 @@ export function LiveConsole() {
           <div className="stack" style={{ gap: 6 }}>
             <span className="mono-label dim">01 · clause in</span>
             <h2 className="display" style={{ fontSize: 24 }}>
-              Give the engine <span className="accent grad">one paragraph</span>
+              Source clause <span className="accent grad">input</span>
             </h2>
           </div>
           <div className="row wrap" style={{ gap: 10 }}>
@@ -526,7 +523,7 @@ export function LiveConsole() {
               </>
             ) : (
               <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-                checking the engine…
+                checking engine health…
               </span>
             )}
           </div>
@@ -545,7 +542,7 @@ export function LiveConsole() {
             <div className="row wrap between" style={{ gap: 10 }}>
               <span className="mono-label dim">{preset.circularNumber}</span>
               <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-                {clauseText.length} characters · editable, paste any clause
+                {clauseText.length} characters · editable, accepts any clause text
               </span>
             </div>
 
@@ -633,11 +630,7 @@ export function LiveConsole() {
                   void start({ clauseText, para, chapter, circularId });
                 }}
               >
-                {starting
-                  ? "submitting…"
-                  : running
-                    ? "a run is already in flight"
-                    : "Run the pipeline"}
+                {starting ? "submitting…" : running ? "run in progress" : "Run the pipeline"}
               </Cta>
             </div>
           </div>
@@ -646,13 +639,13 @@ export function LiveConsole() {
         {submitError ? <Notice tone="attention">{submitError}</Notice> : null}
       </section>
 
-      {/* ── 02 · live trace ───────────────────────────────────────────── */}
+      {/* ── 02 · execution trace ──────────────────────────────────────── */}
       <section className="stack" style={{ gap: 18 }} ref={traceRef}>
         <div className="row between wrap" style={{ gap: 14 }}>
           <div className="stack" style={{ gap: 6 }}>
-            <span className="mono-label dim">02 · live trace</span>
+            <span className="mono-label dim">02 · pipeline execution log</span>
             <h2 className="display" style={{ fontSize: 24 }}>
-              The glass box, <span className="accent grad">unrehearsed</span>
+              Execution <span className="accent grad">trace</span>
             </h2>
           </div>
           {run ? (
@@ -669,11 +662,11 @@ export function LiveConsole() {
         {!run ? (
           <MarkedCard pad={22}>
             <div className="stack" style={{ gap: 10 }}>
-              <span className="mono-label dim">idle</span>
+              <span className="mono-label dim">no run recorded</span>
               <p className="small dim60" style={{ margin: 0, lineHeight: 1.7, maxWidth: "76ch" }}>
-                No run in this sandbox yet. Press <b>Run the pipeline</b> above and the trace will
-                fill in here step by step — watcher, applicability, extraction, verifier, gate — as
-                the Worker writes each one.
+                This sandbox has no run yet. <b>Run the pipeline</b> above starts one, and each step
+                — watcher, applicability, extraction, verifier, gate — appears here as the Worker
+                writes it.
               </p>
             </div>
           </MarkedCard>
@@ -737,30 +730,29 @@ export function LiveConsole() {
 
               {running ? (
                 <Notice>
-                  <b>Why this can take minutes.</b> The extraction model runs on free-tier capacity
-                  and it is a reasoning model, so most of its wall clock is spent on reasoning
-                  tokens before a single character of the answer is emitted. Successful calls
-                  measured in this sandbox have landed anywhere between a few seconds and two
-                  minutes forty-seven; one call reached the four-minute ceiling and returned nothing
-                  at all, and a concurrent second call was rejected by the provider within seconds.
-                  Calls are therefore serialised, one per sandbox, and timed out rather than left
-                  hanging. You can leave this page and come back — the run id is held in this tab
-                  and polling resumes.
+                  <b>Extraction latency — expected range.</b> The extraction model runs on free-tier
+                  capacity and is a reasoning model, so most of its wall clock is spent on reasoning
+                  tokens before the first character of the answer is emitted. Successful calls
+                  measured in this sandbox have completed between a few seconds and two minutes
+                  forty-seven; one call reached the four-minute ceiling and returned nothing, and a
+                  concurrent second call was rejected by the provider within seconds. Calls are
+                  therefore serialised, one per sandbox, and timed out rather than left hanging. The
+                  run id is held in this tab, so navigating away and returning resumes polling.
                 </Notice>
               ) : null}
 
               {run.status === "failed" ? (
                 <>
                   <Notice tone="attention">
-                    <b>The run failed and nothing was drafted.</b> {run.error}
+                    <b>Run failed — no obligation drafted.</b> {run.error}
                   </Notice>
                   <div className="row wrap" style={{ gap: 10 }}>
                     <Cta variant="ghost" onClick={() => void start(run.input)}>
                       Retry this clause
                     </Cta>
                     <span className="small dim60" style={{ lineHeight: 1.6 }}>
-                      A failed run is left on the record exactly as it happened. The engine will not
-                      substitute a plausible answer for one it did not get.
+                      A failed run is retained on the record as it occurred. The engine does not
+                      substitute a plausible answer for a result it did not receive.
                     </span>
                   </div>
                 </>
@@ -775,14 +767,14 @@ export function LiveConsole() {
       {/* ── 03 · verifier ─────────────────────────────────────────────── */}
       {run && run.verifierChecks.length > 0 ? <VerifierPanel run={run} /> : null}
 
-      {/* ── 04 · the human gate ───────────────────────────────────────── */}
+      {/* ── 04 · authorisation gate ───────────────────────────────────── */}
       {gateOpen && run ? (
         <section className="stack" style={{ gap: 18 }}>
           <div className="row between wrap" style={{ gap: 14 }}>
             <div className="stack" style={{ gap: 6 }}>
               <span className="mono-label dim">04 · human gate</span>
               <h2 className="display" style={{ fontSize: 24 }}>
-                The engine drafts. <span className="accent grad">A person signs.</span>
+                Authorisation <span className="accent grad">gate</span>
               </h2>
             </div>
             <div className="row wrap" style={{ gap: 10 }}>
@@ -810,16 +802,19 @@ export function LiveConsole() {
           {approved.length > 0 ? (
             <MarkedCard pad={22}>
               <div className="stack" style={{ gap: 12 }}>
-                <span className="mono-label dim">this session&apos;s live register</span>
+                <span className="mono-label dim">
+                  session register — {approved.length} entered through the gate
+                </span>
                 <p className="small dim60" style={{ margin: 0, lineHeight: 1.65, maxWidth: "76ch" }}>
                   {approved.length} obligation{approved.length === 1 ? "" : "s"} entered the register
-                  through the gate, carrying the approver&apos;s name. {approved.length === 1 ? "It opens" : "They open"} as{" "}
-                  {approved.length === 1 ? "a gap" : "gaps"} because no evidence is bound yet —
-                  recording a brand-new duty as met would be a claim the engine has no basis for.
-                  These rows live in your sandbox and are served by{" "}
-                  <span className="mono-value">/api/state</span>; the{" "}
-                  <Link href="/register">Obligation Register</Link> screen still shows the seeded
-                  corpus.
+                  through the gate, carrying the approver&apos;s name.{" "}
+                  {approved.length === 1 ? "It opens" : "They open"} as{" "}
+                  {approved.length === 1 ? "a gap" : "gaps"} because no evidence is bound yet;
+                  recording a newly drafted duty as met would be a claim the engine has no basis for.
+                  These rows are scoped to this sandbox and served by{" "}
+                  <span className="mono-value">/api/state</span>. The{" "}
+                  <Link href="/register">Obligation Register</Link> route continues to show the
+                  seeded corpus.
                 </p>
                 <Hairline dashed />
                 {approved.map((d) => (
@@ -835,8 +830,9 @@ export function LiveConsole() {
 
       {run && run.status === "completed" && run.proposed.length === 0 ? (
         <Notice>
-          The run closed at applicability. No obligation was drafted, no approval was offered, and no
-          model call was made — a cited no is the cheapest correct answer the engine can give.
+          <b>Applicability determination — clause not applicable.</b> The run closed at the
+          applicability agent, which recorded its citation in the trace above. No obligation was
+          drafted, no approval was offered and no model call was made.
         </Notice>
       ) : null}
 

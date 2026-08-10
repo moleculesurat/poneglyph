@@ -32,7 +32,7 @@ const WALK_BACK = [
     step: "01",
     href: "/register",
     name: "Obligation register",
-    title: "Read every obligation against the clause it came from",
+    title: "Every obligation against the clause it cites",
     body:
       "Each of the " +
       total +
@@ -43,7 +43,7 @@ const WALK_BACK = [
     step: "02",
     href: "/evidence",
     name: "Evidence vault",
-    title: "Check what actually satisfies each obligation",
+    title: "The artifacts that satisfy each obligation",
     body:
       evidence.length +
       " artifacts — documents, data-checks and live scans — each stamped with its connector of origin, capture time and content hash, and bound to the obligations it evidences. Where evidence is absent, the register shows a gap rather than a claim.",
@@ -53,7 +53,7 @@ const WALK_BACK = [
     step: "03",
     href: "/audit",
     name: "Audit trail",
-    title: "Replay the record's entire history, hash by hash",
+    title: "The complete event history, hash-chained",
     body:
       auditEvents.length +
       " hash-chained events from first ingest (Jun 2025) to sim-today: every obligation created, evidence bound, mapping approved and amendment applied, with agent or human attribution. Run the chain verification yourself — a single altered event breaks the chain.",
@@ -63,7 +63,7 @@ const WALK_BACK = [
     step: "04",
     href: "/mcp",
     name: "MCP interface",
-    title: "Ask the register the same questions programmatically",
+    title: "Programmatic queries over the same record",
     body:
       `A read-only, inspector-scoped MCP endpoint exposes ${mcpTools.length} query tools over the identical record this session renders — obligations, mappings, evidence, amendments, gaps. Your own tooling gets byte-for-byte the answers you see here.`,
     foot: `${mcpTools.length} tools · read-only scope · same record, machine-readable`,
@@ -84,10 +84,10 @@ export default function InspectorPage() {
         }
         sub={
           <>
-            You are reading the live obligation register of one SEBI-registered stock broker in a
-            read-only inspection session. The clause citations, evidence hashes and audit chain are
-            the record — <b>the prose is only navigation.</b> Nothing on this side of the session
-            can approve, edit or upload.
+            A read-only inspection session over the live obligation register of one
+            SEBI-registered stock broker. <b>The clause citations, evidence hashes and audit chain
+            are the record; the surrounding prose is navigation only.</b> Nothing on this side of
+            the session can approve, edit or upload.
           </>
         }
         right={
@@ -125,7 +125,7 @@ export default function InspectorPage() {
       {/* ── posture, computed from the register ── */}
       <section style={{ marginBottom: 34 }}>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Declared posture — computed, not asserted</span>
+          <span className="eyebrow">Declared posture — computed from the register</span>
           <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)" }}>
             full register →
           </Link>
@@ -145,7 +145,7 @@ export default function InspectorPage() {
             label="Open gaps — declared"
             value={counts.gap ?? 0}
             accent
-            hint="all from the Jul 3 amendment · shown, not smoothed over"
+            hint="all from the Jul 3 amendment · carried on the register as open"
           />
           <StatTile
             label="Human-approved mappings"
@@ -158,11 +158,11 @@ export default function InspectorPage() {
       {/* ── the walk-back ── */}
       <section style={{ marginBottom: 38 }}>
         <div className="row between" style={{ marginBottom: 6 }}>
-          <span className="eyebrow">Start the walk-back</span>
+          <span className="eyebrow">Traceability — {WALK_BACK.length} verification stops</span>
         </div>
         <p className="sub small" style={{ maxWidth: "72ch", marginBottom: 16 }}>
-          The inspection route runs claim → clause → evidence → history. Take the four stops in
-          order, or jump to whichever question you came with.
+          Each stop walks a stated position back to the record behind it: claim → clause → evidence
+          → history. The stops can be taken in order, or opened individually.
         </p>
         <div className="grid cols-2" style={{ alignItems: "stretch" }}>
           {WALK_BACK.map((w) => (
@@ -211,20 +211,18 @@ export default function InspectorPage() {
               }}
             />
             <div className="stack" style={{ position: "relative", gap: 14, maxWidth: "68ch" }}>
-              <span className="eyebrow">Beyond this tenant — the ecosystem view</span>
+              <span className="eyebrow">Cross-entity view — full deployment</span>
               <div className="display" style={{ fontSize: "clamp(24px, 2.6vw, 32px)" }}>
-                12 intermediaries. <span className="accent grad">One open ontology.</span>
+                12 intermediaries on{" "}
+                <span className="accent grad">one shared obligation ontology</span>
               </div>
               <p className="sub" style={{ fontSize: 14 }}>
                 This session covers one broker. In full deployment, every participating
                 intermediary — brokers, investment advisers, AMCs, RTAs, depository participants —
-                publishes its register to the same open obligation schema.{" "}
-                <b>
-                  The same question, asked of twelve firms, returns twelve comparable answers — and
-                  zero divergent interpretations of the same circular.
-                </b>{" "}
-                An inspection stops being a reconciliation of twelve private spreadsheets and
-                becomes a single query across the cohort.
+                publishes its register to the same open obligation schema. Because each register
+                cites the same clauses in the same structure, the answers returned by the cohort
+                are directly comparable, and an inspection is a single query across the cohort
+                rather than a reconciliation of twelve separate spreadsheets.
               </p>
               <div className="row wrap" style={{ gap: 8 }}>
                 <Chip tone="info">stock-broker × 4</Chip>

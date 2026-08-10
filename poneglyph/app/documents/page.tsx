@@ -58,12 +58,11 @@ export default function DocumentsPage() {
         }
         sub={
           <>
-            The Evidence Vault holds proof that a control <i>ran</i>. This holds the source material
-            the engine learns the firm <i>from</i> — {documentRequirements.length} requirements,
-            each naming the profile fact that made us ask and the clause behind the ask, each parsed
-            into the extractions that populate the entity profile and unlock obligations. One vault
-            is proof of doing; this one is knowledge of being.{" "}
-            <b>Orange means an ask is still open.</b>
+            The Evidence Vault holds proof that a control <i>ran</i>. This vault holds the source
+            material the engine learns the firm <i>from</i> — {documentRequirements.length}{" "}
+            requirements, each naming the profile fact that produced the ask and the clause behind
+            it, each parsed into the extractions that populate the entity profile and unlock
+            obligations. <b>Orange marks a requirement with nothing supplied against it.</b>
           </>
         }
         right={<AddDocumentCta />}
@@ -110,10 +109,11 @@ export default function DocumentsPage() {
           />
           <div className="grid cols-2" style={{ position: "relative", alignItems: "start" }}>
             <div className="stack" style={{ gap: 6 }}>
-              <span className="mono-label dim">Evidence vault — proof of doing</span>
+              <span className="mono-label dim">Evidence vault — proof a control ran</span>
               <p className="small" style={{ lineHeight: 1.6, maxWidth: "46ch" }}>
                 An artifact that shows a control <b>ran</b>: bound to an obligation,
-                content-hashed, re-verified on a schedule. It answers <i>did you do it</i>.
+                content-hashed, re-verified on a schedule. It records whether the control was
+                performed.
               </p>
               <Link
                 href="/evidence"
@@ -124,19 +124,21 @@ export default function DocumentsPage() {
               </Link>
             </div>
             <div className="stack" style={{ gap: 6 }}>
-              <span className="mono-label dim">Document vault — knowledge of being</span>
+              <span className="mono-label dim">
+                Document vault — source material for the entity profile
+              </span>
               <p className="small" style={{ lineHeight: 1.6, maxWidth: "46ch" }}>
                 The source material the engine <b>learns the firm from</b>: asked for during
                 onboarding, parsed into {EXTRACTED_TOTAL} fields across {PARSED_DOCS.length}{" "}
                 documents, feeding the entity profile that decides which obligations exist at all.
-                It answers <i>who are you</i>.
+                It records what the firm is.
               </p>
               <Link
                 href="/onboarding"
                 className="mono-label"
                 style={{ fontSize: 10, color: "var(--orange-deep)", marginTop: 2 }}
               >
-                see how the asks were generated →
+                entity onboarding — how the asks were derived →
               </Link>
             </div>
           </div>
@@ -173,7 +175,7 @@ export default function DocumentsPage() {
               </div>
             </div>
             <Link href="/register" className="cta" data-variant="orange">
-              See what is blocked <span className="arrow">→</span>
+              View the blocked obligations <span className="arrow">→</span>
             </Link>
           </div>
         </MarkedCard>
@@ -230,14 +232,14 @@ export default function DocumentsPage() {
       {/* ── what the engine chose not to ask for ── */}
       <section style={{ marginBottom: 34 }}>
         <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-          What the engine did not ask for — {notRaisedCount} filed non-asks
+          Evaluated and not raised — {notRaisedCount} filed non-asks
         </span>
         <MarkedCard pad={22}>
           <p className="small" style={{ lineHeight: 1.6, maxWidth: "92ch" }}>
             The registration scan walks every SEBI intermediary category and records the ones that
             produced no ask. An unrecorded non-ask is indistinguishable from an oversight, so each
             one is filed with the profile fact that made it unnecessary and is re-evaluated on every
-            profile change. An inspector can audit the silence the same way they audit the asks.
+            profile change. An inspector can audit the non-asks on the same basis as the asks.
           </p>
 
           <div className="grid cols-2" style={{ marginTop: 18, alignItems: "start" }}>
@@ -298,7 +300,7 @@ export default function DocumentsPage() {
       <section>
         <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
           <span className="eyebrow">
-            The requirement matrix — {documentRequirements.length} asks in circular order
+            Requirement matrix — {documentRequirements.length} asks in circular order
           </span>
           <span className="mono-label dim">
             {raisedCount} raised · {notRaisedCount} evaluated and not raised
@@ -332,8 +334,8 @@ export default function DocumentsPage() {
               below {REVIEW_THRESHOLD} — human review
             </div>
             <p className="small dim60" style={{ marginTop: 6, lineHeight: 1.55 }}>
-              Shown as read and flagged, never smoothed. The engine will not claim a control it
-              could not read cleanly.
+              Readings below the threshold are shown as extracted and flagged for review. The
+              engine will not claim a control it could not read cleanly.
             </p>
             <div className="stack" style={{ gap: 6, marginTop: 10 }}>
               {FLAGGED_EXTRACTIONS.map((f) => (
@@ -369,21 +371,23 @@ export default function DocumentsPage() {
       {/* ── volunteer a document ── */}
       <section style={{ marginTop: 34 }}>
         <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-          Volunteer a document
+          Volunteered documents
         </span>
         <MarkedCard pad={22}>
           <div className="row between wrap" style={{ gap: 18, alignItems: "flex-start" }}>
             <div className="stack" style={{ gap: 10, minWidth: 0, maxWidth: "72ch" }}>
               <div style={{ fontWeight: 600, fontSize: 14.5 }}>
-                The engine asks for what its rules say it should ask for. It will be incomplete.
+                Submission of a document outside the requirement matrix
               </div>
               <p className="small" style={{ lineHeight: 1.6 }}>
-                A board minute that changes a control, an exchange letter that resets a deadline, a
-                policy no clause named — the firm knows things the matrix does not. A volunteered
-                document runs the same path as a requested one: fields extracted with confidence and
-                locator, the entity profile updated only where the reading holds, and any obligation
-                the document implies raised as a <b>proposal into the human gate</b> rather than
-                written straight into the register. Nothing lands silently.
+                The engine asks for what its rules say it should ask for, and that set will be
+                incomplete: a board minute that changes a control, an exchange letter that resets a
+                deadline, a policy no clause named — the firm knows things the matrix does not. A
+                volunteered document runs the same path as a requested one: fields extracted with
+                confidence and locator, the entity profile updated only where the reading holds, and
+                any obligation the document implies raised as a{" "}
+                <b>proposal into the human gate</b> rather than written straight into the register.
+                No document reaches the register without passing that gate.
               </p>
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
                 {VOLUNTEERED.length === 0
@@ -399,7 +403,7 @@ export default function DocumentsPage() {
       {/* ── provenance discipline ── */}
       <section style={{ marginTop: 26 }}>
         <div className="panel pad">
-          <span className="mono-label dim">On what is real here</span>
+          <span className="mono-label dim">Provenance — real and simulated content on this page</span>
           <p className="small dim60" style={{ marginTop: 8, lineHeight: 1.6, maxWidth: "96ch" }}>
             {tenant.name} is a real, listed, SEBI-registered stock broker, and this is an
             illustrative onboarding of a public entity using public filings. The only extracted
@@ -419,16 +423,16 @@ export default function DocumentsPage() {
         <Hairline />
         <div className="row wrap" style={{ gap: 26, marginTop: 18 }}>
           <Link href="/onboarding" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            see where these asks came from →
+            entity onboarding — origin of these asks →
           </Link>
           <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            walk forward to the register →
+            obligation register →
           </Link>
           <Link href="/evidence" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            proof that the controls ran →
+            evidence vault — proof the controls ran →
           </Link>
           <Link href="/audit" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-            every parse, on the hash chain →
+            audit chain — every parse, hash-chained →
           </Link>
         </div>
       </div>

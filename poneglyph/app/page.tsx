@@ -12,7 +12,7 @@ import { SEBI_DOMAINS } from "@/lib/domains";
 /* ══════════════════════════════════════════════════════════════════════
    Entry gate — the cover of the product. Full-bleed: AppShell drops its
    sidebar and breadcrumb header for this one route, so everything here
-   lays itself out. Two ways in and nothing else competing.
+   lays itself out. Two entry paths and nothing else competing.
    ══════════════════════════════════════════════════════════════════════ */
 
 const netWorth = factOf("net-worth-fy26");
@@ -89,16 +89,16 @@ export default function EntryGate() {
         </div>
 
         <span className="mono-label dim60" style={{ fontSize: 10.5, letterSpacing: "0.16em" }}>
-          From regulatory text to operational action
+          Regulatory obligation management · sandbox environment
         </span>
 
-        {/* ── the line ────────────────────────────────────────────────── */}
+        {/* ── what the system is ──────────────────────────────────────── */}
         <h1
           className="display"
           style={{ fontSize: "clamp(30px, 4.6vw, 56px)", maxWidth: "19ch", margin: "22px 0 24px" }}
         >
-          The circular is the text.{" "}
-          <span className="accent grad">The register is the system.</span>
+          Agentic compliance engine for{" "}
+          <span className="accent grad">SEBI-registered intermediaries</span>
         </h1>
 
         <p className="sub" style={{ maxWidth: "70ch", fontSize: 15.5 }}>
@@ -115,15 +115,15 @@ export default function EntryGate() {
           <b style={{ color: "var(--ink)", fontWeight: 600 }}>
             Problem Statement 2, Agentic Compliance
           </b>
-          . What you are about to open is the frontend sandbox: the whole engine is walkable, and
-          nothing in it is actionable.
+          . This is the frontend sandbox: the whole engine is walkable, and nothing in it is
+          actionable.
         </p>
 
         <Hairline />
 
-        {/* ── the two ways in ─────────────────────────────────────────── */}
+        {/* ── mode selector ───────────────────────────────────────────── */}
         <div style={{ margin: "34px 0 20px" }}>
-          <Eyebrow>Two ways in</Eyebrow>
+          <Eyebrow>Entry paths</Eyebrow>
         </div>
 
         <div className="grid cols-2" style={{ alignItems: "start", gap: 22 }}>
@@ -132,7 +132,7 @@ export default function EntryGate() {
             <div className="stack" style={{ gap: 18 }}>
               <div className="row between wrap" style={{ gap: 10 }}>
                 <Chip tone="live">
-                  <span className="dot" data-pulse /> Start here
+                  <span className="dot" data-pulse /> Recommended path
                 </Chip>
                 <span className="mono-label dim" style={{ fontSize: 9.5 }}>
                   {angelOne.id} · session ONB-001
@@ -140,14 +140,15 @@ export default function EntryGate() {
               </div>
 
               <h2 className="display" style={{ fontSize: "clamp(23px, 2.6vw, 31px)" }}>
-                See the <span className="accent grad">Angel One</span> setup
+                Onboarded entity —{" "}
+                <span className="accent grad">{angelOne.legalName}</span>
               </h2>
 
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                {angelOne.legalName} is a real, listed, SEBI-registered stock broker, already
-                onboarded from its own public filings. Nothing below was written for the demo — the
-                engine resolved the entity, read the filed results and stamped every figure with the
-                document it came from before a single obligation was mapped.
+                A real, listed, SEBI-registered stock broker, already onboarded from its own public
+                filings. Nothing below was written for the demo — the engine resolved the entity,
+                read the filed results and stamped every figure with the document it came from
+                before a single obligation was mapped.
               </p>
 
               <div className="stack" style={{ gap: 0 }}>
@@ -185,7 +186,7 @@ export default function EntryGate() {
 
               <span className="small dim60">
                 Each figure carries its source on the entity profile — filing, exchange record,
-                declared input or our own arithmetic, labelled as such.
+                declared input or engine arithmetic, labelled as such.
               </span>
 
               <div className="row wrap" style={{ gap: 14 }}>
@@ -207,13 +208,13 @@ export default function EntryGate() {
               </div>
 
               <h2 className="display" style={{ fontSize: "clamp(23px, 2.6vw, 31px)" }}>
-                Start a <span className="accent grad">new onboarding</span>
+                New entity <span className="accent grad">onboarding</span>
               </h2>
 
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                Point the same six steps at any NSE- or BSE-listed intermediary. The engine resolves
-                the legal person, reads what public disclosure supports, and asks only about what it
-                cannot see.
+                The same {blankOnboarding.steps.length} steps run for any NSE- or BSE-listed
+                intermediary. The engine resolves the legal person, reads what public disclosure
+                supports, and asks only about what it cannot see.
               </p>
 
               <div className="row wrap" style={{ gap: 7 }}>
@@ -228,14 +229,15 @@ export default function EntryGate() {
                 Every ask is <b style={{ color: "var(--ink)", fontWeight: 600 }}>derived from the
                 entity profile</b>, never read off a checklist. A firm that declares different
                 segments gets a different scope, a different document list and a different register
-                from the same corpus. That is the whole thesis — two brokers holding the same licence
-                do not owe the same things.
+                from the same corpus. Applicability is computed from the profile rather than read
+                off the licence, so two brokers holding the same registration do not carry the same
+                obligations.
               </p>
 
               <EntryGateStart />
 
               <Link href="/onboarding" className="mono-label" style={{ color: "var(--orange-deep)", fontSize: 10 }}>
-                or walk the blank six-step template →
+                or open the blank {blankOnboarding.steps.length}-step template →
               </Link>
             </div>
           </MarkedCard>

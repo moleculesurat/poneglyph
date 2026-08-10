@@ -1,13 +1,14 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   The session's hash chain, verification, and the tamper demonstration.
+   Chain integrity — the session's hash chain, verification, and the
+   tamper test.
 
-   Nothing on this panel is animated theatre. "Verify chain" recomputes
-   SHA-256 over every event's own content in the Worker and compares it
-   with the stored digest; "Tamper" edits one event's detail text in
-   storage and leaves its hash alone, exactly as a database-level edit
-   would. The verifier is not told that anything happened.
+   Nothing on this panel is animated. "verify chain" recomputes SHA-256
+   over every event's own content in the Worker and compares it with the
+   stored digest. "tamper test" edits one event's detail text in storage
+   and leaves its stored hash unchanged, reproducing a database-level
+   edit; the verifier is not told that anything happened.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { useCallback, useEffect, useState } from "react";
@@ -241,7 +242,8 @@ export function ChainPanel({
         <div className="stack" style={{ gap: 6 }}>
           <span className="mono-label dim">05 · audit chain</span>
           <h2 className="display" style={{ fontSize: 24 }}>
-            Verify it, then <span className="accent grad">break it</span>
+            Chain <span className="accent grad">integrity</span>
+            {audit ? ` — ${audit.count} events, recomputed from content` : ""}
           </h2>
         </div>
         <div className="row wrap" style={{ gap: 8 }}>
@@ -252,9 +254,9 @@ export function ChainPanel({
             tone="orange"
             onClick={() => void doTamper()}
             disabled={busy !== null || events.length === 0}
-            title="Edits one event's detail text in storage and leaves its stored hash untouched."
+            title="Diagnostic: edits one event's detail text in storage and leaves its stored hash unchanged, reproducing a database-level edit."
           >
-            {busy === "tamper" ? "altering…" : "tamper with an event"}
+            {busy === "tamper" ? "editing record…" : "tamper test"}
           </MonoBtn>
           <MonoBtn onClick={() => void reset()} disabled={busy !== null}>
             {busy === "reset" ? "reseeding…" : "reset session"}
@@ -267,9 +269,10 @@ export function ChainPanel({
         <span className="mono-value">
           id | at | actor | action | subjectType | subjectId | detail | prevHash
         </span>
-        . Verification recomputes each one from the event&apos;s own content and compares it with
-        the stored digest, so no stored hash is ever taken on trust. That is why editing a record
-        cannot be hidden: the arithmetic no longer agrees with the text.
+        . Verification recomputes each digest from the event&apos;s own content and compares it with
+        the stored value, so no stored hash is taken on trust. The tamper test is the diagnostic for
+        that property: it edits a stored record without touching its stored hash, and verification
+        reports the mismatch it produces.
       </p>
 
       {error ? <Notice tone="attention">{error}</Notice> : null}
@@ -289,7 +292,7 @@ export function ChainPanel({
               <span className="stat-number tnum" style={{ fontSize: 30 }}>
                 {audit.seededCount}
               </span>
-              <span className="mono-label dim">seeded, re-hashed for real</span>
+              <span className="mono-label dim">seeded, re-hashed at seed time</span>
             </div>
           </MarkedCard>
           <MarkedCard pad={16}>
@@ -313,8 +316,9 @@ export function ChainPanel({
 
       {tamper ? (
         <Notice tone="attention">
-          {tamper.hint} Nothing else was touched, and{" "}
-          <span className="mono-value">/api/audit/verify</span> has not been told this happened.
+          {tamper.hint} No other record was modified, and{" "}
+          <span className="mono-value">/api/audit/verify</span> receives no signal that the edit
+          occurred — run it now and the mismatch is found by recomputation alone.
         </Notice>
       ) : null}
 
@@ -355,13 +359,12 @@ export function ChainPanel({
             </p>
             {!verdict.intact ? (
               <p className="small" style={{ margin: 0, lineHeight: 1.6, color: "var(--orange-deep)" }}>
-                The break lands on the event that was edited: its stored hash is no longer the
-                SHA-256 of its own content. The link into the next event still lines up, because
-                that event chains onto the stored hash — the verifier carries stored hashes forward
-                deliberately, so one edit reads as one precise break rather than a cascade down the
-                tail. Every entry after index {firstBreak} still names a predecessor whose recorded
-                content no longer produces the hash it claims. Reset the session to reseed a clean
-                chain.
+                The break is located at the event that was edited: its stored hash is no longer the
+                SHA-256 of its own content. The link into the next event still lines up, because that
+                event chains onto the stored hash — the verifier carries stored hashes forward
+                deliberately, so one edit reports as one precise break rather than a cascade down the
+                tail. Every entry after index {firstBreak} names a predecessor whose recorded content
+                no longer produces the hash it claims. Reset the session to reseed a clean chain.
               </p>
             ) : null}
           </div>

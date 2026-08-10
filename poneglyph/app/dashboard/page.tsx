@@ -72,7 +72,7 @@ export default function Overview() {
         sub={
           <>
             Register posture, upcoming deadlines and the latest regulatory events for one
-            SEBI-registered stock broker. <b>Orange means something needs you.</b>
+            SEBI-registered stock broker. <b>Orange marks an item requiring attention.</b>
           </>
         }
         right={<Cta variant="ghost">Export register</Cta>}
@@ -149,8 +149,10 @@ export default function Overview() {
       {/* ── deadline runway ── */}
       <section style={{ marginBottom: 34 }}>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Deadline runway — every open due date, drag to scroll</span>
-          <span className="mono-label dim">sim-today {tenant.simToday}</span>
+          <span className="eyebrow">Deadline runway — open due dates</span>
+          <span className="mono-label dim">
+            drag to scroll · sim-today {tenant.simToday}
+          </span>
         </div>
         <MarkedCard pad={14}>
           <DeadlineRunway />
@@ -229,7 +231,7 @@ export default function Overview() {
               <span className="small dim60">
                 {PART_GROUPS.length} of the circular&rsquo;s {SEBI_DOMAINS.length} Parts carry
                 obligations on this register. The other {SEBI_DOMAINS.length - PART_GROUPS.length}{" "}
-                are scoped, not forgotten —{" "}
+                carry none and are listed in the Part filter with their scope status —{" "}
                 <Link href="/register" style={{ color: "var(--orange-deep)" }}>
                   see the full Part filter →
                 </Link>
@@ -241,7 +243,7 @@ export default function Overview() {
         {/* ── watchtower feed ── */}
         <section>
           <div className="row between" style={{ marginBottom: 14 }}>
-            <span className="eyebrow">Latest from the Watchtower</span>
+            <span className="eyebrow">Watchtower — latest catches</span>
             <Link href="/watchtower" className="mono-label" style={{ color: "var(--orange-deep)" }}>
               live log →
             </Link>
@@ -279,7 +281,7 @@ export default function Overview() {
       {/* ── latest agent run ── */}
       <section>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Agent pipeline</span>
+          <span className="eyebrow">Agent pipeline — latest run</span>
           <Link href="/agents" className="mono-label" style={{ color: "var(--orange-deep)" }}>
             all runs →
           </Link>

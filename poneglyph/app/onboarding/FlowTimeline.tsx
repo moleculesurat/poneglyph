@@ -164,7 +164,7 @@ export function FlowTimeline({
     <>
       <div className="row between wrap" style={{ marginBottom: 14, gap: 12 }}>
         <span className="eyebrow">
-          Six steps, run once — every one of them replayable
+          Onboarding steps — {steps.length}, each with a replayable trace
         </span>
         <div className="row" style={{ gap: 8 }}>
           <span className="mono-label dim" style={{ fontSize: 9.5 }}>

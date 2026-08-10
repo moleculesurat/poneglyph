@@ -1,7 +1,7 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   TraceReplay — the glass box, replayable.
+   TraceReplay — replayable pipeline execution trace.
    Renders a PipelineRun's TraceSteps as a vertical timeline with agent
    badges and ReAct-style mono fields (thought / action / observation).
    Server-renders fully played-out; "Replay" rewinds to step 0 and plays

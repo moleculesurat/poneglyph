@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageHead, StatTile, MarkedCard, Chip, StatusChip, Hairline, Cta } from "@/components/ui";
 import { runs } from "@/data/runs";
 import { obligations } from "@/data/obligations";
+import { tenant } from "@/data/tenant";
 import { TraceReplay } from "./TraceReplay";
 import { RunsTable } from "./RunsTable";
 
@@ -17,22 +18,26 @@ const verifiedRuns = runs.filter((r) => r.verifierChecks.length > 0).length;
 
 const PIPELINE_ORDER = ["watcher", "applicability", "diff", "extraction", "verifier", "human gate"] as const;
 
+/* the named officer the gate waits on — read from the tenant record, never typed */
+const complianceOfficer =
+  tenant.team.find((m) => m.role === "Compliance Officer")?.name ?? "the compliance officer";
+
 const PRINCIPLES = [
   {
     n: "01",
     title: "Deterministic pipeline",
     body:
-      "The route is code, not conversation. Watcher to human gate, same order every run — replay any trace on this page and it walks the identical path.",
+      "The stage order is fixed in code rather than decided per run. Watcher to human gate, same order every run — replay any trace on this page and it walks the identical path.",
   },
   {
     n: "02",
     title: "Ephemeral LLM workers",
     body:
-      "Agents are spun up per document and destroyed with the run. Nothing learns in place, nothing accumulates hidden state, nothing drifts between runs.",
+      "Agents are spun up per document and destroyed with the run. No agent retains state between runs, so no hidden context accumulates and no behaviour drifts.",
   },
   {
     n: "03",
-    title: "Schema is permanent",
+    title: "Permanent schema",
     body:
       "Every output must land as a typed entry in the obligation ontology — clause ref, control, evidence spec, hash — or it does not land at all.",
   },
@@ -40,7 +45,7 @@ const PRINCIPLES = [
     n: "04",
     title: "Human gate",
     body:
-      "The pipeline drafts; it does not sign. Any mapping carrying material judgement is held at pending-review until a compliance officer approves it.",
+      "The pipeline produces drafts and records no approvals of its own. Any mapping carrying material judgement is held at pending-review until a compliance officer approves it.",
   },
 ];
 
@@ -48,7 +53,7 @@ export default function AgentsPage() {
   return (
     <>
       <PageHead
-        eyebrow="Agent pipeline · glass box"
+        eyebrow={`Pipeline execution log · ${tenant.name}`}
         title={
           <>
             Agent Run <span className="accent grad">Console</span>
@@ -56,10 +61,10 @@ export default function AgentsPage() {
         }
         sub={
           <>
-            Eight pipeline runs since first ingest, every one replayable to the step — thought,
-            action, observation. <b>Nothing enters the register unverified; nothing material enters
-            unsigned.</b> Explainability here is not a report generated after the fact — it is the
-            pipeline itself.
+            {runs.length} pipeline runs recorded since first ingest, every one replayable to the
+            step — thought, action, observation. <b>Every register entry is verified before it is
+            written, and every material entry carries a named approver.</b> The trace is produced
+            by the pipeline as it runs, not compiled into a report afterwards.
           </>
         }
         right={<Cta variant="ghost">Export run log</Cta>}
@@ -85,7 +90,7 @@ export default function AgentsPage() {
       {/* ── RUN-047 — the hero run ── */}
       <section style={{ marginBottom: 36 }}>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Latest pipeline — the CUSPA re-map</span>
+          <span className="eyebrow">Most recent run — {heroRun.id}, CUSPA amendment re-map</span>
           <Link href="/watchtower" className="mono-label" style={{ color: "var(--orange-deep)" }}>
             view the catch →
           </Link>
@@ -95,15 +100,15 @@ export default function AgentsPage() {
             <div className="stack" style={{ gap: 6 }}>
               <div className="row wrap" style={{ gap: 10 }}>
                 <Chip tone="live">
-                  <span className="dot" data-pulse /> latest pipeline
+                  <span className="dot" data-pulse /> latest run
                 </Chip>
                 <span className="mono-label dim">
                   {heroRun.id} · triggered by CATCH-005 · started 2026-07-03 11:42 IST
                 </span>
               </div>
               <div style={{ fontWeight: 600, fontSize: 15.5 }}>
-                CUSPA amendment re-map — end-to-end in {heroRun.durationSec} seconds, then stopped,
-                deliberately, at the human gate
+                CUSPA amendment re-map — {heroRun.durationSec} seconds end-to-end, then held at the
+                human gate
               </div>
               <span className="small dim60">
                 {heroRun.outputs.obligationsCreated.length} obligations extracted ·{" "}
@@ -120,7 +125,7 @@ export default function AgentsPage() {
             <TraceReplay run={heroRun} />
           </div>
 
-          {/* human-gate hold — the trust argument, stated plainly */}
+          {/* human-gate hold — what is held, and who it is held for */}
           <div
             className="panel"
             style={{ marginTop: 22, padding: "16px 20px", background: "var(--paper)" }}
@@ -131,8 +136,9 @@ export default function AgentsPage() {
                   Held at the human gate
                 </div>
                 <div className="small dim60" style={{ marginTop: 2 }}>
-                  Three mappings embed judgement the pipeline will not sign alone — a board-policy
-                  parameter, a prohibition, a discretionary SOP. They wait for Priya Nair.
+                  {heldObligations.length} mappings embed material judgement — a board-policy
+                  parameter, a prohibition, a discretionary SOP — and are held at pending-review
+                  for {complianceOfficer}, Compliance Officer.
                 </div>
               </div>
               <div className="row wrap" style={{ gap: 10 }}>
@@ -151,7 +157,7 @@ export default function AgentsPage() {
       {/* ── architecture placard ── */}
       <section style={{ marginBottom: 36 }}>
         <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-          Why the box stays glass
+          Pipeline architecture
         </span>
         <MarkedCard pad={26}>
           <div className="row wrap" style={{ gap: 10, marginBottom: 8 }}>
@@ -169,7 +175,7 @@ export default function AgentsPage() {
             ))}
           </div>
           <div className="mono-label dim" style={{ fontSize: 9.5, marginBottom: 20 }}>
-            one route · every run · replayable end-to-end
+            same stage order on every run · each step replayable
           </div>
           <Hairline />
           <div className="grid cols-4" style={{ marginTop: 20 }}>
@@ -203,8 +209,8 @@ export default function AgentsPage() {
       <Hairline />
       <div className="row between wrap" style={{ gap: 12, marginTop: 18 }}>
         <span className="small dim60">
-          Everything born in a run is visible downstream — the register names its run, the run names
-          its clause.
+          Every register entry names the run that created it, and every run names the clause it
+          read.
         </span>
         <div className="row wrap" style={{ gap: 18 }}>
           <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)" }}>

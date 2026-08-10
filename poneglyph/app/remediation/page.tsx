@@ -34,7 +34,7 @@ export default function Remediation() {
             the CUSPA amendment landing, {fromCorpusPass} by the RUN-049 corpus pass, the rest
             older register findings still closing. Each one is chained task ← obligation ←
             clause, so nothing in the queue exists without a paragraph of the circular demanding
-            it. <b>Orange means a date has slipped.</b>
+            it. <b>Orange marks a task past its due date.</b>
           </>
         }
         right={<Cta variant="ghost">Export queue</Cta>}
@@ -63,7 +63,7 @@ export default function Remediation() {
           accent={overdueN > 0}
           hint={
             overdueN > 0
-              ? "past due — clear these first"
+              ? `past due as of sim-today ${tenant.simToday}`
               : "nothing past due as of sim-today"
           }
         />
@@ -76,9 +76,9 @@ export default function Remediation() {
       <div className="panel pad" style={{ marginBottom: 36 }}>
         <div className="row between wrap" style={{ gap: 12 }}>
           <span className="small dim60" style={{ maxWidth: "68ch" }}>
-            {unevidencedN} obligations currently hold no bound evidence — this queue is the
-            closing motion. As each task completes, the artifact it produces is bound in the
-            evidence vault and the register entry moves off gap.
+            {unevidencedN} obligations currently hold no bound evidence, and this queue is how
+            they close. As each task completes, the artifact it produces is bound in the evidence
+            vault and the register entry moves off gap.
           </span>
           <Link href="/evidence" className="mono-label" style={{ color: "var(--orange-deep)" }}>
             evidence vault →

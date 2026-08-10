@@ -1,17 +1,16 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   QuestionDeck — the opinionated part, rendered honestly.
+   QuestionDeck — the elicitation record for the onboarding session.
 
-   Each card shows four things in a fixed order: the question, WHY the
-   engine needs to know (always visible — a compliance question without
-   its reason is a form field), what the engine had already worked out
+   Each card shows four things in a fixed order: the question, the basis
+   for asking it (always visible), what the engine had already worked out
    from public sources and where that came from, and what the confirmed
    answer switched on.
 
-   The filter is the argument: most of these arrived pre-filled. The
-   engine turns up knowing, and asks the human to confirm rather than to
-   type. The ones it could not pre-fill are left deliberately blank.
+   The filter splits the deck by origin: most questions arrived pre-filled
+   from public disclosure, and the human confirms rather than retypes. The
+   ones the engine could not pre-fill are left deliberately blank.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { useState } from "react";
@@ -90,14 +89,14 @@ export function QuestionDeck({
             all {questions.length}
           </FilterChip>
           <FilterChip active={filter === "prefilled"} onClick={() => setFilter("prefilled")}>
-            engine already knew {prefilled.length}
+            pre-filled {prefilled.length}
           </FilterChip>
           <FilterChip active={filter === "cold"} onClick={() => setFilter("cold")}>
             asked cold {cold.length}
           </FilterChip>
         </div>
         <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-          confirm, do not transcribe
+          source shown for every pre-filled answer
         </span>
       </div>
 
@@ -129,7 +128,7 @@ export function QuestionDeck({
                 maxWidth: "84ch",
               }}
             >
-              <span className="mono-label dim" style={{ fontSize: 9.5 }}>why we ask</span>
+              <span className="mono-label dim" style={{ fontSize: 9.5 }}>basis for question</span>
               <p className="small dim60" style={{ marginTop: 5, lineHeight: 1.62 }}>{q.why}</p>
             </div>
 

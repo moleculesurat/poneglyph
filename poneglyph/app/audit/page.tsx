@@ -39,7 +39,7 @@ export default function AuditPage() {
             Every action the system takes — ingest, extraction, approval, evidence binding — is
             appended here as an event whose hash folds in the previous event&rsquo;s hash. Nothing
             can be edited or deleted without breaking every link that follows.{" "}
-            <b>Tampering is not prevented; it is unmissable.</b>
+            <b>Any alteration is detectable by recomputing the chain.</b>
           </>
         }
         right={<Cta variant="ghost" toastMsg="Export is disabled in the sandbox.">Export chain</Cta>}

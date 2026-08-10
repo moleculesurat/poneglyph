@@ -203,7 +203,7 @@ export function TaskBoard() {
   return (
     <section style={{ marginBottom: 36 }}>
       <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
-        <span className="eyebrow">The queue — {tasks.length} tasks, none floating free</span>
+        <span className="eyebrow">Task queue — {tasks.length} tasks</span>
         <div className="row" style={{ gap: 8 }}>
           {(["list", "kanban"] as const).map((v) => (
             <button

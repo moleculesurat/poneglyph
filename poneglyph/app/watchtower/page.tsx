@@ -41,6 +41,10 @@ const sources = [...new Set(catches.map((c) => c.source))];
 const hero = catches.find((c) => c.id === "CATCH-005");
 const rest = catches.filter((c) => c.id !== "CATCH-005");
 
+/* the CUSPA amendment's footprint on the register — derived, never typed,
+   so the header line cannot drift from the data behind it */
+const cuspaRemapped = obligations.filter((o) => o.clause.circularId !== "MC-SB-2025").length;
+
 const appliesN = catches.filter((c) => c.applicability.verdict === "applies").length;
 const partialN = catches.filter((c) => c.applicability.verdict === "partial").length;
 const triggeredN = catches.filter((c) => c.triggeredRunId).length;
@@ -124,7 +128,8 @@ export default function Watchtower() {
           <>
             The Watchtower polls SEBI&rsquo;s circulars, regulations and press releases every 24
             hours, rules on applicability with clause-level citations, and hands anything that
-            binds a stock broker to the agent pipeline. <b>One catch re-mapped 10 obligations.</b>
+            binds a stock broker to the agent pipeline.{" "}
+            <b>CATCH-005 re-mapped {cuspaRemapped} obligations on the register.</b>
           </>
         }
       />
@@ -140,7 +145,7 @@ export default function Watchtower() {
       {/* ── live poll loop ── */}
       <section style={{ marginBottom: 36 }}>
         <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
-          <span className="eyebrow">The poll loop — latest session</span>
+          <span className="eyebrow">Poll loop — latest session</span>
           <span className="mono-label dim">
             last poll {fmt(pollRun.startedAt)} · next {nextPoll}
           </span>
@@ -174,7 +179,7 @@ export default function Watchtower() {
       {hero ? (
         <section style={{ marginBottom: 36 }}>
           <span className="eyebrow" style={{ marginBottom: 14, display: "inline-flex" }}>
-            The catch that mattered
+            Featured catch — {hero.id}
           </span>
           <MarkedCard pad={26}>
             <div className="stack" style={{ gap: 14 }}>

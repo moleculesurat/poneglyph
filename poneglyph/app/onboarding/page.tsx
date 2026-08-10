@@ -533,7 +533,7 @@ export default function Onboarding() {
       <section id="scope" style={{ margin: "30px 0 34px" }}>
         <div className="row between wrap" style={{ gap: 12, marginBottom: 8 }}>
           <span className="eyebrow">
-            What binds — the ten Parts of the Master Circular, walked one by one
+            Scope determination — {SEBI_DOMAINS.length} Parts of the Master Circular
           </span>
           <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)", fontSize: 10 }}>
             open the register →
@@ -669,18 +669,19 @@ export default function Onboarding() {
       {/* ══ 4 · the questions ═════════════════════════════════════════ */}
       <section id="questions" style={{ margin: "30px 0 34px" }}>
         <div className="row between wrap" style={{ gap: 12, marginBottom: 8 }}>
-          <span className="eyebrow">The questions the engine asked</span>
+          <span className="eyebrow">
+            Elicitation record — {deckQuestions.length} questions put to the firm
+          </span>
           <span className="mono-label dim" style={{ fontSize: 9.5 }}>
             {deckQuestions.filter((q) => q.prefilled).length} of {deckQuestions.length} arrived
             pre-filled
           </span>
         </div>
         <p className="sub" style={{ maxWidth: "80ch", marginBottom: 18 }}>
-          A question the firm has to type an answer to, that the engine could have looked up, is a
-          question that wastes the compliance officer&apos;s afternoon. Everything public is
-          pre-filled with its source attached; everything unseeable is asked cold and left blank
-          until a human answers it. Answers recorded here are the sandbox team&apos;s declarations,
-          not statements of fact about how the firm operates.
+          Anything supported by public disclosure is pre-filled with its source attached, so the
+          firm confirms rather than retypes. Anything the engine cannot see is asked cold and left
+          blank until a human answers it. Answers recorded here are the sandbox team&apos;s
+          declarations, not statements of fact about how the firm operates.
         </p>
         <QuestionDeck questions={deckQuestions} stepTitles={STEP_TITLES} />
 
@@ -695,7 +696,7 @@ export default function Onboarding() {
               />
               <div style={{ position: "relative" }}>
                 <div className="row wrap" style={{ gap: 10, marginBottom: 12 }}>
-                  <span className="eyebrow">The last question</span>
+                  <span className="eyebrow">Open declaration field</span>
                   <span className="mono-label dim" style={{ fontSize: 9.5 }}>{catchAll.id}</span>
                   <Chip tone="at-risk">asked cold</Chip>
                 </div>
@@ -751,12 +752,12 @@ export default function Onboarding() {
           </Link>
         </div>
         <p className="sub" style={{ maxWidth: "80ch", marginBottom: 18 }}>
-          Not a checklist — every requirement carries the profile fact that produced it, so the firm
-          can always answer the only question that matters: why are you asking me this. A broker on
-          the identical licence, without QSB designation, without MTF and without algorithmic order
-          flow, receives 22 of these {raisedAsks.length}; the four-document delta is the whole
-          thesis. Document records in this sandbox are illustrative — the one set of extracted
-          values that is real is the listed-entity filing bundle.
+          Every requirement carries the profile fact that produced it, so the basis for each ask is
+          on the record rather than assumed from a checklist. A broker on the identical licence,
+          without QSB designation, without MTF and without algorithmic order flow, receives 22 of
+          these {raisedAsks.length}; the four-document delta is produced by the entity profile, not
+          by the licence. Document records in this sandbox are illustrative — the one set of
+          extracted values that is real is the listed-entity filing bundle.
         </p>
 
         <MarkedCard pad={22}>
@@ -813,10 +814,10 @@ export default function Onboarding() {
 
           <div className="row wrap" style={{ gap: 12, marginTop: 18 }}>
             <Link href="/documents" className="cta" data-variant="orange">
-              Walk the {raisedAsks.length} asks <span className="arrow">→</span>
+              Open the {raisedAsks.length} asks <span className="arrow">→</span>
             </Link>
             <Link href="/register" className="cta" data-variant="ghost">
-              See the register they feed <span className="arrow">→</span>
+              Open the obligation register <span className="arrow">→</span>
             </Link>
           </div>
         </MarkedCard>

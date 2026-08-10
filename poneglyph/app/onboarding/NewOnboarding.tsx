@@ -43,14 +43,14 @@ export function NewOnboarding({ steps }: { steps: OnboardingStep[] }) {
     <div className="stack" style={{ gap: 18 }}>
       <div className="row between wrap" style={{ gap: 14 }}>
         <div className="stack" style={{ gap: 6 }}>
-          <span className="eyebrow">Start a new onboarding</span>
+          <span className="eyebrow">New entity onboarding</span>
           <h2 className="display" style={{ fontSize: "clamp(20px, 2.1vw, 26px)", maxWidth: "26ch" }}>
-            The same six steps, for <span className="accent grad">any other firm</span>
+            Onboarding template —{" "}
+            <span className="accent grad">any registered intermediary</span>
           </h2>
         </div>
         <span className="mono-label dim" style={{ fontSize: 9.5, maxWidth: "34ch", textTransform: "none", letterSpacing: "0.04em" }}>
-          One corpus, one ontology, one register per entity — the difference between two firms is
-          their profile, not their rulebook.
+          The corpus is identical for every firm; the register is computed from the entity profile.
         </span>
       </div>
 

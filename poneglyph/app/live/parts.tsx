@@ -1,10 +1,10 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   Small pieces shared by the live console and the chain panel.
+   Shared components for the live console and the chain integrity panel.
    Same visual language as app/agents/TraceReplay.tsx — agent badge,
    ReAct fields in mono, timeline node — so a live run and a seeded run
-   read identically. The only difference is that this one is happening.
+   render identically.
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { ReactNode } from "react";
@@ -143,9 +143,9 @@ export function StepCard({
 }
 
 /* ── Clause with the resolved spans marked ──────────────────────────────
-   The highlight is drawn from charStart/charEnd that the verifier MEASURED
-   with indexOf. If the offsets were asserted rather than computed, the
-   marker would land in the wrong place — which is the point of showing it. */
+   The highlight is drawn from charStart/charEnd measured by the verifier
+   with indexOf. Offsets asserted rather than computed would place the
+   marker on the wrong text, which is why the marked clause is shown. */
 
 export interface Span {
   start: number;

@@ -105,7 +105,7 @@ export function AuditChain({ events }: { events: AuditEvent[] }) {
     <section style={{ marginBottom: 36 }}>
       {/* ── controls ── */}
       <div className="row between wrap" style={{ marginBottom: 14, gap: 12 }}>
-        <span className="eyebrow">The chain — oldest first</span>
+        <span className="eyebrow">Event chain — oldest first</span>
         <span className="mono-label dim">
           showing {shown.length} of {events.length} events
         </span>
