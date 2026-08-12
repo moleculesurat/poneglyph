@@ -19,6 +19,7 @@ import { tamperEvent } from "./audit";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { asString, error, json, preflight, readJson, readSessionCookie } from "./http";
+import { onboardEntity, parseOnboardInput } from "./onboard";
 import { isChapterKey, newRun, runPipeline } from "./pipeline";
 import {
   loadRun,
@@ -29,7 +30,15 @@ import {
   seedSession,
   seededCounts,
 } from "./session";
-import type { DecisionKind, Env, ExecutionContext, LiveRun, SessionState } from "./types";
+import type {
+  DecisionKind,
+  Env,
+  ExecutionContext,
+  LiveRun,
+  ScheduledController,
+  SessionState,
+} from "./types";
+import { getWatch, pollWatch } from "./watch";
 
 const MAX_CLAUSE_CHARS = 12_000;
 
@@ -85,6 +94,18 @@ async function handleApi(
     });
   }
 
+  /* watchtower — GLOBAL state, deliberately before any session touch: the
+     SEBI feed is objective, and polling it must never seed a sandbox */
+  if (path === "/api/watch") {
+    if (method !== "GET") return error(request, 405, "GET only");
+    return json(request, await getWatch(env));
+  }
+  if (path === "/api/watch/poll") {
+    if (method !== "POST") return error(request, 405, "POST only");
+    const body = await readJson(request);
+    return json(request, await pollWatch(env, body?.force === true));
+  }
+
   const sid = readSessionCookie(request);
 
   /* fresh sandbox, fresh chain */
@@ -117,6 +138,7 @@ async function handleApi(
         chainTip: chainTip(state.chain),
         runs,
         counts: stateCounts(state, runs),
+        liveEntity: state.liveEntity ?? null,
       },
       { setSessionCookie: cookie },
     );
@@ -163,6 +185,33 @@ async function handleApi(
     if (!result) return error(request, 409, "the trail is empty; nothing to alter");
     await saveSession(env, state);
     return json(request, result, { setSessionCookie: cookie });
+  }
+
+  if (path === "/api/onboard") {
+    if (method !== "POST") return error(request, 405, "POST only");
+    if (state.liveEntity) {
+      return error(
+        request,
+        409,
+        `${state.liveEntity.profile.legalName} is already onboarded live in this sandbox. POST /api/session/reset clears the sandbox and lets a different entity be onboarded.`,
+        { onboardedAt: state.liveEntity.profile.onboardedAt },
+      );
+    }
+    const body = await readJson(request);
+    if (!body) return error(request, 400, "expected a JSON object body");
+    const parsed = parseOnboardInput(body);
+    if (!parsed.ok) return error(request, 400, parsed.error);
+    const outcome = await onboardEntity(state, parsed.input);
+    await saveSession(env, state);
+    return json(
+      request,
+      {
+        liveEntity: outcome.liveEntity,
+        auditEvent: outcome.auditEvent,
+        chainTip: chainTip(state.chain),
+      },
+      { setSessionCookie: cookie },
+    );
   }
 
   if (path === "/api/runs") {
@@ -411,5 +460,15 @@ export default {
       const err = e as Error;
       return error(request, 500, `unhandled error: ${err.message || "unknown"}`);
     }
+  },
+
+  /* hourly cron — the feed declares <ttl>60</ttl>, so hourly is respectful.
+     The same poll the button calls; failures are recorded, never invented. */
+  async scheduled(
+    _controller: ScheduledController,
+    env: Env,
+    _ctx: ExecutionContext,
+  ): Promise<void> {
+    await pollWatch(env, false);
   },
 };

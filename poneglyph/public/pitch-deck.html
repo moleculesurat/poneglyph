@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Poneglyph — Pitch Deck · SEBI TechSprint @ GFF 2026 · PS2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;1,300&family=Host+Grotesk:wght@400;500;600&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ── Poneglyph design tokens (mirrors app/globals.css) ─────────────── */
+  :root{
+    --white:#ffffff; --ink:#141417;
+    --ink-60:rgba(20,20,23,.6); --ink-40:rgba(20,20,23,.4);
+    --ink-20:rgba(20,20,23,.2); --ink-10:rgba(20,20,23,.1); --ink-05:rgba(20,20,23,.05);
+    --paper:#fbfaf9; --neutral:#f4f4f4;
+    --orange:#fe5301; --orange-deep:#d84600;
+    --orange-soft:rgba(254,83,1,.08); --orange-mid:rgba(254,83,1,.16);
+    --serif:"Aleo",serif; --sans:"Host Grotesk",sans-serif; --mono:"Azeret Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:#e8e7e5}
+  body{font-family:var(--sans);color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased}
+
+  .deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0}
+  .slide{
+    width:1280px;height:720px;background:var(--white);position:relative;overflow:hidden;
+    padding:58px 72px 64px;display:flex;flex-direction:column;
+    box-shadow:0 2px 24px rgba(20,20,23,.14);
+  }
+  /* dot-grid wash, as in the product shell */
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(var(--ink-10) 1px, transparent 1px);
+    background-size:26px 26px;
+    -webkit-mask-image:linear-gradient(115deg, transparent 55%, #000 100%);
+            mask-image:linear-gradient(115deg, transparent 55%, #000 100%);
+  }
+  .slide>*{position:relative;z-index:1}
+
+  /* ── type ── */
+  .eyebrow{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-60);display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:18px;height:8px;border-radius:2px;background:var(--orange)}
+  h1,h2{font-family:var(--serif);font-weight:300;line-height:1.08;letter-spacing:-0.01em}
+  h1{font-size:64px} h2{font-size:40px;margin-bottom:22px}
+  .accent{color:var(--orange-deep);font-style:italic}
+  .sub{color:var(--ink-60);line-height:1.6;max-width:74ch}
+  .mono{font-family:var(--mono)} .small{font-size:12.5px;line-height:1.55}
+  .dim{color:var(--ink-60)} .dim40{color:var(--ink-40)}
+  b{font-weight:600}
+
+  /* ── furniture ── */
+  .foot{
+    position:absolute;left:72px;right:72px;bottom:26px;display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--ink-40);z-index:1;
+  }
+  .hair{border:none;border-top:1.5px solid var(--ink-10);margin:18px 0}
+  .grid{display:grid;gap:18px} .c2{grid-template-columns:1fr 1fr} .c3{grid-template-columns:1fr 1fr 1fr} .c4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    border:1.5px solid var(--ink-10);border-radius:14px;padding:18px 20px;background:var(--white);position:relative;
+  }
+  .card.marked::after,.card.marked::before{
+    content:"+";position:absolute;font-family:var(--mono);font-size:12px;color:var(--orange);line-height:1;
+  }
+  .card.marked::before{top:6px;left:9px} .card.marked::after{bottom:6px;right:9px}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9.5px;
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border:1.5px solid var(--ink-20);
+    border-radius:6px 6px 22px 6px;color:var(--ink-60);background:var(--white);
+  }
+  .chip.orange{border-color:var(--orange);color:var(--orange-deep);background:var(--orange-soft)}
+  .chip.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .kv{display:flex;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--ink-10)}
+  .kv:last-child{border-bottom:none}
+  .kv .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-40);min-width:190px;flex:none}
+  .kv .v{font-size:13.5px;line-height:1.5}
+  .stat .n{font-family:var(--serif);font-weight:300;font-size:44px;line-height:1}
+  .stat .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);margin-top:8px}
+  .stat .h{font-size:11px;color:var(--ink-40);margin-top:5px;line-height:1.45}
+  table{border-collapse:collapse;width:100%}
+  th{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-40);text-align:left;padding:7px 12px;border-bottom:1.5px solid var(--ink-10)}
+  td{font-size:12.5px;padding:7px 12px;border-bottom:1px solid var(--ink-05);vertical-align:top}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .term{
+    font-family:var(--mono);font-size:11px;line-height:1.75;background:var(--ink);color:rgba(255,255,255,.85);
+    border-radius:10px;padding:16px 20px;
+  }
+  .term .p{color:#8be28b} .term .o{color:#ffb38a} .term .d{color:rgba(255,255,255,.45)}
+  .flow{display:flex;align-items:stretch;gap:0;margin:6px 0}
+  .flow .step{flex:1;border:1.5px solid var(--ink-10);border-radius:10px;padding:12px 12px;background:var(--white)}
+  .flow .step .t{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .flow .step .d{font-size:11px;color:var(--ink-60);line-height:1.45}
+  .flow .arr{display:flex;align-items:center;padding:0 7px;color:var(--ink-40);font-family:var(--mono)}
+  .badge-real{background:var(--ink-05);border:1.5px solid var(--ink-20)}
+  .badge-sim{background:var(--orange-soft);border:1.5px solid var(--orange)}
+  .mark{width:34px;height:34px}
+  ul.plain{list-style:none} ul.plain li{padding:5px 0 5px 20px;position:relative;line-height:1.5}
+  ul.plain li::before{content:"→";position:absolute;left:0;color:var(--orange);font-family:var(--mono);font-size:12px}
+
+  /* ── screen scaling ── */
+  @media (max-width:1340px){ .deck{transform-origin:top center} }
+  /* ── print / PDF ── */
+  @page{size:1280px 720px;margin:0}
+  @media print{
+    html{background:#fff} .deck{gap:0;padding:0}
+    .slide{box-shadow:none;page-break-after:always}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ══ 1 · TITLE ══════════════════════════════════════════════════════ -->
+<section class="slide" style="justify-content:center">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:34px">
+    <img class="mark" src="/poneglyph-mark.svg" alt="Poneglyph" width="34" height="34"/>
+    <span class="mono" style="font-size:15px;letter-spacing:.16em">PONEGLYPH</span>
+    <span class="mono dim40" style="font-size:10px;letter-spacing:.12em">AGENTIC COMPLIANCE</span>
+  </div>
+  <h1 style="max-width:20ch">From regulatory text to <span class="accent">operational action</span>.</h1>
+  <p class="sub" style="margin-top:24px;font-size:17px">
+    An agentic compliance engine that turns a SEBI master circular into a living, auditable
+    obligation register for one specific market intermediary — demonstrated on a real listed
+    stock broker, with a pipeline that executes in production.
+  </p>
+  <div style="display:flex;gap:12px;margin-top:36px;flex-wrap:wrap">
+    <span class="chip solid">SEBI Securities Market TechSprint · GFF 2026</span>
+    <span class="chip">Problem Statement 2 — Agentic Compliance</span>
+    <span class="chip orange">Live — poneglyph.walrussecuritas.com</span>
+  </div>
+  <div class="foot"><span>PONEGLYPH · ROUND 2 PROTOTYPE</span><span>github.com/walrus-securitas/poneglyph</span><span>01 / 12</span></div>
+</section>
+
+<!-- ══ 2 · PROBLEM ════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Problem — in SEBI's own framing</span>
+  <h2>Regulation is text for humans. Compliance systems need <span class="accent">machine-checkable rules</span>.</h2>
+  <div class="grid c2" style="margin-top:8px">
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:12px">Pain 1 · Interpretation</span>
+      <p class="small" style="font-size:13.5px">
+        When SEBI issues or amends a circular, a human reads the PDF, decides whether it binds
+        their firm, maps it to internal processes, and updates them. The work is slow, manual,
+        and <b>divergent</b> — two firms read the same clause differently, and the regulator
+        inherits the inconsistency.
+      </p>
+    </div>
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:12px">Pain 2 · Proof</span>
+      <p class="small" style="font-size:13.5px">
+        Compliance teams must track every standing obligation, hold <b>evidence</b> that each is
+        fulfilled, and produce audit trails on inspection. Smaller intermediaries carry the same
+        rulebook with the least capacity — the firms with the thinnest compliance teams hold the
+        most gaps.
+      </p>
+    </div>
+  </div>
+  <hr class="hair"/>
+  <p class="sub">
+    The bridging problem — unstructured regulatory text → structured, auditable, operational
+    compliance — is what PS2 names as the core unsolved problem. The suggested corpus, the
+    <b>Master Circular for Stock Brokers</b>, is the corpus this prototype runs on.
+  </p>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>02 / 12</span></div>
+</section>
+
+<!-- ══ 3 · THESIS ═════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Thesis — applicability is a computation</span>
+  <h2>Two brokers holding the same licence <span class="accent">do not owe the same things</span>.</h2>
+  <p class="sub" style="margin-bottom:20px">
+    Most tooling stops at circular → obligation table: the same table for every firm. But a
+    firm's real obligations are a function of what it <b>is</b> — its business segments, its
+    scale, its designations. Poneglyph starts from the firm, not from a checklist: the entity
+    profile determines which Parts of the rulebook bind, and the bound scope generates the
+    document requirements.
+  </p>
+  <div class="flow">
+    <div class="step"><div class="t" style="color:var(--orange-deep)">Entity profile</div><div class="d">Resolved from public filings; segments and scale confirmed, not assumed</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="t">Designations</div><div class="d">QSB and CSCRF grade computed against published parameters</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="t">Bound scope</div><div class="d">Which Parts I–X of the Master Circular apply, with reasons — including the exclusions</div></div>
+    <div class="arr">→</div>
+    <div class="step"><div class="t">Document requirements</div><div class="d">Each request carries the profile fact that triggered it</div></div>
+  </div>
+  <div class="grid c2" style="margin-top:20px">
+    <div class="card stat"><div class="n num">26</div><div class="l">document requirements — Angel One</div><div class="h">QSB (computed), margin trading, algo desk, depository participant</div></div>
+    <div class="card stat"><div class="n num">22</div><div class="l">same licence, without QSB · MTF · algo</div><div class="h">Same registration category, materially smaller obligation surface — computed, not configured</div></div>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>03 / 12</span></div>
+</section>
+
+<!-- ══ 4 · SYSTEM ═════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">System overview — a fixed pipeline, not a free agent</span>
+  <h2>A new regulation is a <span class="accent">new job</span> through a fixed pipeline.</h2>
+  <div class="term" style="margin-bottom:18px">
+    <span class="d">watch</span> → <span class="d">applicability</span> → <span class="o">extract</span> → <span class="p">verify (deterministic)</span> → <span class="p">human gate</span> → <span class="d">evidence</span> → <span class="d">gap → task</span> → <span class="o">diff on amendment</span> → <span class="p">hash-chained audit</span>
+  </div>
+  <div class="grid c2">
+    <div class="kv-col">
+      <div class="kv"><span class="k">Watch / decide</span><span class="v">A scraper polls SEBI daily; an applicability agent rules whether each instrument binds this firm — quoting the clause that decides, including for the <b>No</b>.</span></div>
+      <div class="kv"><span class="k">Extract</span><span class="v">Each obligation is drafted grounded to its source: circular, paragraph, and the exact character span of the clause.</span></div>
+      <div class="kv"><span class="k">Verify</span><span class="v">Five deterministic checks in plain code — citations resolve verbatim, deadlines parse, applicability matches, schema validates, chain appends. Any failure stops the run.</span></div>
+    </div>
+    <div class="kv-col">
+      <div class="kv"><span class="k">Human gate</span><span class="v">Drafts hold at pending-review. A named compliance officer approves or rejects; nothing reaches the register any other way — enforced structurally, the drafting path cannot write to it.</span></div>
+      <div class="kv"><span class="k">Amend / diff</span><span class="v">On amendment the engine diffs old against new and re-maps only what changed; untouched obligations are never re-reviewed.</span></div>
+      <div class="kv"><span class="k">Audit</span><span class="v">Every action appends to a SHA-256 hash chain. Integrity is verified by recomputation from content, so alteration of any record is detected by arithmetic.</span></div>
+    </div>
+  </div>
+  <hr class="hair"/>
+  <p class="small dim">
+    Agents are ephemeral workers inside the pipeline; the typed obligation ontology is the
+    permanent artefact. This is the only agent architecture a regulator can audit: every step
+    recorded, every judgement replayable, every write signed.
+  </p>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>04 / 12</span></div>
+</section>
+
+<!-- ══ 5 · ONBOARDING / ANGEL ONE ═════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Entity onboarding — a real listed intermediary</span>
+  <h2>Angel One Limited, onboarded from <span class="accent">its own public filings</span>.</h2>
+  <div class="grid c4" style="margin-bottom:16px">
+    <div class="card stat"><div class="n num">₹6,201.98&nbsp;cr</div><div class="l">Net worth · FY2025-26</div><div class="h">Total equity, standalone — XBRL filing (prior year ₹5,597.87 cr)</div></div>
+    <div class="card stat"><div class="n num">₹5,054.07&nbsp;cr</div><div class="l">Revenue · FY2025-26</div><div class="h">Standalone — same XBRL filing</div></div>
+    <div class="card stat"><div class="n num">3.86&nbsp;cr</div><div class="l">Client base · Jun 2026</div><div class="h">38.59 mn, business update — up 18.8% YoY</div></div>
+    <div class="card stat"><div class="n num">≈6.76&nbsp;mn</div><div class="l">NSE active clients</div><div class="h"><b>Derived</b>: 14.79% share × 4.57 cr market actives — an estimate, labelled as one</div></div>
+  </div>
+  <div class="grid c2">
+    <div class="card badge-real">
+      <span class="chip" style="margin-bottom:10px">Real · public and checkable</span>
+      <p class="small">Identity (ISIN INE732I01021 · NSE ANGELONE · BSE 543235), listing, net worth,
+      revenue, client base, market share — every fact carries the filing or business update it came
+      from. Anything the engine computed itself is labelled <b>derived</b>.</p>
+    </div>
+    <div class="card badge-sim">
+      <span class="chip orange" style="margin-bottom:10px">Illustrative · simulated posture</span>
+      <p class="small">All compliance posture — obligations met or gapped, evidence, tasks, audit
+      events — is simulated and asserts nothing about Angel One's actual compliance. No registration
+      number is invented: the public INZ000161534 is held as <b>declared</b> until its certificate
+      is supplied. QSB is <b>computed against the published parameters and held unconfirmed</b> —
+      the engine raises a document request for the exchange's designation letter instead of assuming.</p>
+    </div>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>05 / 12</span></div>
+</section>
+
+<!-- ══ 6 · REGISTER / TAXONOMY ════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Obligation register — the verified taxonomy</span>
+  <h2>43 obligations across <span class="accent">9 of 10 Parts</span> of the Master Circular.</h2>
+  <div style="display:grid;grid-template-columns:7fr 5fr;gap:24px;align-items:start">
+    <table>
+      <tr><th>Part</th><th>Title — verbatim from the circular</th><th style="text-align:right">Obligations</th></tr>
+      <tr><td class="num">I</td><td>Registration of Stock Brokers</td><td class="num" style="text-align:right">3</td></tr>
+      <tr><td class="num">II</td><td>Supervision &amp; Oversight <span class="dim40">— system audit, QSB</span></td><td class="num" style="text-align:right">2</td></tr>
+      <tr><td class="num">III</td><td>Dealings with Client <span class="dim40">— the largest Part</span></td><td class="num" style="text-align:right">19</td></tr>
+      <tr><td class="num">IV</td><td>Technology Related Provisions <span class="dim40">— CSCRF, algo, DMA</span></td><td class="num" style="text-align:right">6</td></tr>
+      <tr><td class="num">V</td><td>Change in Status, Constitution, Control, Affiliation</td><td class="num" style="text-align:right">2</td></tr>
+      <tr><td class="num">VI</td><td>Foreign Accounts Tax Compliance Act Related Provisions</td><td class="num" style="text-align:right">1</td></tr>
+      <tr><td class="num">VII</td><td>Investor Grievance Redressal <span class="dim40">— SCORES, ODR</span></td><td class="num" style="text-align:right">3</td></tr>
+      <tr><td class="num">VIII</td><td>Default Related Provisions</td><td class="num" style="text-align:right;color:var(--orange-deep)">0 — by determination</td></tr>
+      <tr><td class="num">IX</td><td>Miscellaneous <span class="dim40">— outsourcing, books, upstreaming</span></td><td class="num" style="text-align:right">5</td></tr>
+      <tr><td class="num">X</td><td>Reporting Requirements</td><td class="num" style="text-align:right">2</td></tr>
+    </table>
+    <div>
+      <div class="card marked" style="margin-bottom:14px">
+        <span class="chip" style="margin-bottom:10px">Grounding invariant</span>
+        <p class="small mono" style="font-size:10.5px;line-height:1.7">excerpt === paraText.slice(charStart, charEnd)</p>
+        <p class="small dim" style="margin-top:8px">Holds for all 43 register entries — verified mechanically, not by eye. Any control walks back to the exact characters of the clause it descends from.</p>
+      </div>
+      <div class="card">
+        <span class="chip orange" style="margin-bottom:10px">The zero is a decision</span>
+        <p class="small dim">Part VIII binds only upon a default event. The engine excluded it with the
+        reason on the record and holds it under a standing trigger watch — an explained zero, not a gap.</p>
+      </div>
+      <p class="small dim40" style="margin-top:12px">Taxonomy read from SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2024/53 — the source circular, not a summary. Overlaid: CSCRF (graded by entity size) and QSB (enhanced obligations).</p>
+    </div>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>06 / 12</span></div>
+</section>
+
+<!-- ══ 7 · AMENDMENT ══════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Amendment response — the live scenario</span>
+  <h2>SEBI amended Para 46. Ten obligations re-mapped, <span class="accent">thirty-three untouched</span>.</h2>
+  <div class="grid c3" style="margin-bottom:18px">
+    <div class="card stat"><div class="n num">Jul 3, 2026</div><div class="l">CUSPA circular issued</div><div class="h">HO/38/11/(9)2026-MIRSD-POD/I/15382/2026 — pledge-based regime for clients' unpaid securities</div></div>
+    <div class="card stat"><div class="n num">10 / 33</div><div class="l">re-mapped / untouched</div><div class="h">The diff re-maps only what changed; nobody re-reviews the whole rulebook</div></div>
+    <div class="card stat"><div class="n num">Jan 2027</div><div class="l">phased deadlines tracked</div><div class="h">Every due date taken from the circular's own effectivity phases</div></div>
+  </div>
+  <div class="card">
+    <p class="small" style="font-size:13.5px">
+      The Watchtower caught the circular, the applicability agent ruled it binding with the clause
+      quoted, the diff isolated the changed paragraphs, extraction drafted ten new obligations —
+      pledge account, client intimation by SMS and e-mail, five-trading-day window with day-six
+      release, daily reconciliation — and the verifier passed them to the human gate. Remediation
+      tasks carry owners and the circular's own dates. <b>This is Pain 1, closed end to end,
+      on a real nine-day-old amendment.</b>
+    </p>
+  </div>
+  <hr class="hair"/>
+  <p class="small dim">Contrast case shown in-product: a mutual-fund TER circular is ruled
+  <b>not applicable</b> — addressed to AMCs, and this firm holds no AMC registration. The engine
+  files the reason it ignored an instrument; the No is audited like the Yes.</p>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>07 / 12</span></div>
+</section>
+
+<!-- ══ 8 · LIVE LAYER ═════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Live execution layer — /live, in production now</span>
+  <h2>The pipeline <span class="accent">executes</span>. These results are observed, not claimed.</h2>
+  <div class="grid c2" style="margin-bottom:14px">
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:10px">Chain integrity — recomputed</span>
+      <p class="small">Every audit event is SHA-256 hashed over its content plus the previous hash.
+      Verification <b>recomputes from content</b>: the in-product tamper test edits one stored record,
+      and verification then fails at that exact index —
+      <span class="mono" style="font-size:10px">stored c275c5cefec9 ≠ recomputed 898698aa53d8</span>.
+      Independently re-derived outside the product: 61 events, 0 mismatches.</p>
+    </div>
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:10px">Verifier — rejects fabrication</span>
+      <p class="small">Citations resolve by exact string match against the submitted clause; character
+      offsets are derived from the match. A fabricated excerpt fails and the run stops. So does a
+      <b>one-word paraphrase</b> — which is how hallucination actually presents. Nothing failing a
+      check can reach the register.</p>
+    </div>
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:10px">Authorisation gate — persisted</span>
+      <p class="small">Approve and Reject mutate state in the session store. An approved obligation
+      enters the register as <b>gap</b> — approved, no evidence bound yet — never as met. A second
+      decision on the same draft returns <span class="mono" style="font-size:10.5px">409</span>.
+      The drafting path has no write access to the register.</p>
+    </div>
+    <div class="card marked">
+      <span class="chip" style="margin-bottom:10px">Extraction — live model call</span>
+      <p class="small">One serialised LLM call per run, grounded to computed offsets. Observed latency
+      11s–500s+ on free-tier capacity; a run orphaned by the edge runtime is settled at read time as
+      an <b>honest failure</b> rather than left spinning. No fabricated results on timeout, ever.</p>
+    </div>
+  </div>
+  <p class="small dim">Per-visitor sandboxes (session-keyed store), seeded from the same data — one
+  reviewer's approvals never leak into another's view. The seeded register, evidence artifacts and
+  tasks elsewhere in the sandbox remain simulated and labelled as such.</p>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com/live</span><span>08 / 12</span></div>
+</section>
+
+<!-- ══ 9 · TWO WINDOWS ════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Inspection surface — RegTech and SupTech on one graph</span>
+  <h2>One obligation graph, <span class="accent">two windows</span>.</h2>
+  <div class="grid c2" style="margin-bottom:16px">
+    <div class="card">
+      <span class="chip" style="margin-bottom:10px">Broker console</span>
+      <p class="small">The compliance team's working surface: register, evidence vault, document
+      vault, remediation queue, pipeline runs. Gaps become tasks with owners and the circular's own
+      deadlines. The officer stops reading PDFs and clears a queue.</p>
+    </div>
+    <div class="card">
+      <span class="chip orange" style="margin-bottom:10px">Inspector view · read-only</span>
+      <p class="small">The same data under a regulator's lens — enforced read-only by the interface.
+      Any control traces to its clause, its evidence, and its tamper-evident history in three clicks;
+      what once needed a data room and a week of correspondence becomes navigation.</p>
+    </div>
+  </div>
+  <div class="card marked">
+    <span class="chip" style="margin-bottom:10px">MCP surface — machine-queryable compliance</span>
+    <p class="small">The register is also a protocol: seven read-only tools over the ontology, with an
+    inspector-scoped token in place of a data-room export. A regulator's own agent asks
+    <i>"is this firm compliant with the CUSPA circular?"</i> and receives an answer traceable to
+    clauses — and the inspector's queries are themselves appended to the audit chain. Because the
+    ontology is open, every firm publishing it becomes comparable: the same question returns
+    comparable answers, which is PS2's divergent-interpretation pain addressed at the root.</p>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>09 / 12</span></div>
+</section>
+
+<!-- ══ 10 · ARCHITECTURE ══════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Architecture &amp; deployment</span>
+  <h2>Static assets on the edge; the API <span class="accent">executes in a Worker</span>.</h2>
+  <div class="term" style="margin-bottom:18px">
+<span class="d">┌ Cloudflare edge ─────────────────────────────────────────────────────────┐</span><br/>
+&nbsp;&nbsp;/api/* → Worker&nbsp;&nbsp;<span class="o">pipeline · verifier · gate · SHA-256 chain · KV sessions</span><br/>
+&nbsp;&nbsp;/*&nbsp;&nbsp;&nbsp;&nbsp; → static assets&nbsp;&nbsp;<span class="p">14 routes, prerendered — an API fault cannot take the site down</span><br/>
+<span class="d">└──────────────────────────────────────────────────────────────────────────┘</span><br/>
+&nbsp;&nbsp;extraction → OpenAI-compatible endpoint (Kimi K3) · serialised · honest timeout
+  </div>
+  <div class="grid c3">
+    <div class="kv-col">
+      <div class="kv"><span class="k">Frontend</span><span class="v">Next.js 16 static export — no server runtime, no cold starts</span></div>
+      <div class="kv"><span class="k">API</span><span class="v">Cloudflare Worker, Web Crypto, KV-backed per-visitor sessions</span></div>
+    </div>
+    <div class="kv-col">
+      <div class="kv"><span class="k">Ontology</span><span class="v">Typed obligation schema — the permanent artefact; open by design</span></div>
+      <div class="kv"><span class="k">Delivery</span><span class="v">Deploys on push to main via Cloudflare Workers Builds; one-command manual path</span></div>
+    </div>
+    <div class="kv-col">
+      <div class="kv"><span class="k">Supply chain</span><span class="v">0 npm audit findings; secrets held as Worker bindings, never in the bundle</span></div>
+      <div class="kv"><span class="k">Provider-agnostic</span><span class="v">Extraction speaks the OpenAI wire format — the model is a config value</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>10 / 12</span></div>
+</section>
+
+<!-- ══ 11 · MARKET ════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Market &amp; model</span>
+  <h2>A forced-purchase market, <span class="accent">under-served at the small end</span>.</h2>
+  <div class="grid c3" style="margin-bottom:18px">
+    <div class="card">
+      <span class="chip" style="margin-bottom:10px">Who pays</span>
+      <p class="small">India's thousands of small and mid-size stock brokers, RIAs and portfolio
+      managers — bound by the same rulebook as the largest firms, priced out of Big-4 compliance.
+      Compliance spend is non-discretionary and deadline-driven.</p>
+    </div>
+    <div class="card">
+      <span class="chip" style="margin-bottom:10px">Model — open core</span>
+      <p class="small">The obligation ontology is open: it sets the standard and makes compliance
+      comparable across firms. The engine, evidence connectors and audit vault are the paid
+      per-intermediary subscription, priced an order of magnitude below manual compliance.</p>
+    </div>
+    <div class="card">
+      <span class="chip" style="margin-bottom:10px">Expansion</span>
+      <p class="small">The engine is corpus-driven: the same pipeline points at the LODR, RA/IA and
+      PMS rulebooks with no structural change — then at other Indian regulators. Each new corpus is
+      an ingestion job, not a rebuild.</p>
+    </div>
+  </div>
+  <div class="card marked">
+    <p class="small" style="font-size:13.5px">
+      Alignment with the mandate: stronger compliance at thousands of small intermediaries is
+      investor protection delivered through infrastructure. A shared open ontology also gives the
+      regulator something it cannot buy today — <b>the same question, answered comparably, across
+      every firm that publishes it</b>.
+    </p>
+  </div>
+  <div class="foot"><span>PONEGLYPH</span><span>poneglyph.walrussecuritas.com</span><span>11 / 12</span></div>
+</section>
+
+<!-- ══ 12 · STATUS ════════════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Status — Round 2 prototype</span>
+  <h2>Deployed, verified, <span class="accent">open to inspection</span>.</h2>
+  <div class="grid c4" style="margin-bottom:18px">
+    <div class="card stat"><div class="n num">14</div><div class="l">routes live</div><div class="h">Entry gate, onboarding, register, document vault, live pipeline, inspector view</div></div>
+    <div class="card stat"><div class="n num">43</div><div class="l">obligations on register</div><div class="h">9 of 10 Parts; every entry clause-grounded</div></div>
+    <div class="card stat"><div class="n num">56</div><div class="l">seeded audit events</div><div class="h">SHA-256 chained; live events append per session</div></div>
+    <div class="card stat"><div class="n num">28</div><div class="l">document requirements</div><div class="h">Each carrying the profile fact that triggered it</div></div>
+  </div>
+  <div class="grid c2" style="margin-bottom:16px">
+    <div class="kv-col">
+      <div class="kv"><span class="k">Live prototype</span><span class="v mono" style="font-size:12px">poneglyph.walrussecuritas.com</span></div>
+      <div class="kv"><span class="k">Live pipeline</span><span class="v mono" style="font-size:12px">poneglyph.walrussecuritas.com/live</span></div>
+      <div class="kv"><span class="k">Repository</span><span class="v mono" style="font-size:12px">github.com/walrus-securitas/poneglyph</span></div>
+    </div>
+    <div class="kv-col">
+      <div class="kv"><span class="k">Next</span><span class="v">Full-corpus ingestion at scale · evidence connectors to exchange and depository systems of record · pilot with a mid-size broker</span></div>
+      <div class="kv"><span class="k">Team</span><span class="v">Anshuman Atrey — engineering &amp; security · Gayatri Jaiswal — operations</span></div>
+    </div>
+  </div>
+  <p class="sub" style="font-size:16px">
+    Agents propose. A deterministic verifier checks. A named human signs. A regulator can inspect
+    all of it — <b>that is agentic compliance built the way a regulator can trust</b>.
+  </p>
+  <div class="foot"><span>PONEGLYPH · SEBI TECHSPRINT @ GFF 2026 · PS2</span><span>poneglyph.walrussecuritas.com</span><span>12 / 12</span></div>
+</section>
+
+</div>
+</body>
+</html>

@@ -28,6 +28,10 @@
   "kv_namespaces": [
     { "binding": "PONEGLYPH_STATE", "id": "07e8da45f72b47c7bc3b9b29d4dd8634" }
   ],
+  // hourly watchtower poll of https://www.sebi.gov.in/sebirss.xml — the feed
+  // declares <ttl>60</ttl>, so hourly is the respectful cadence. The handler
+  // is `scheduled()` in worker/index.ts, running the same poll as the button.
+  "triggers": { "crons": ["0 * * * *"] },
   "assets": {
     "directory": "./out",
     // lets the Worker hand any non-API request back to the static site

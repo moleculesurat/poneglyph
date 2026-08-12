@@ -86,6 +86,14 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
   const write = makeRunWriter(env, sid);
   const input = run.input;
 
+  /* When a live entity has been onboarded in this session, the run assesses
+     THAT firm and the trace must say so. Snapshotted once here so a single
+     run never cites two different entities. Seeded sessions are untouched:
+     with no liveEntity every string below is byte-identical to before. */
+  const preState = await loadSession(env, sid);
+  const live = preState?.liveEntity;
+  const entityName = live ? live.profile.legalName : tenant.name;
+
   try {
     /* ── 1. watcher ───────────────────────────────────────────────────── */
     run.steps.push(
@@ -97,11 +105,22 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
     await write(run);
 
     /* ── 2. applicability ─────────────────────────────────────────────── */
-    const applicability = assessApplicability(input.clauseText);
+    const applicability = assessApplicability(
+      input.clauseText,
+      live
+        ? {
+            legalName: live.profile.legalName,
+            intermediaryTypes: live.profile.intermediaryTypes,
+            segments: live.profile.segments,
+            exchanges: live.profile.exchanges,
+            depositories: [],
+          }
+        : undefined,
+    );
     run.steps.push(
       step("applicability", {
         thought: applicability.verdict.reasoning,
-        action: `match_capacities(entity=${tenant.name}, clause)`,
+        action: `match_capacities(entity=${entityName}, clause)`,
         observation: `Verdict: ${applicability.verdict.verdict} (confidence ${applicability.verdict.confidence.toFixed(2)}).${
           applicability.matchedCapacities.length > 0
             ? ` Clause phrases matched: ${applicability.matchedCapacities.join(", ")}.`
@@ -125,7 +144,7 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
       );
       await finish(env, sid, run, write, {
         action: "run.completed",
-        detail: `${run.id} closed at applicability — ${input.circularId} para ${input.para} does not bind ${tenant.name}. ${applicability.verdict.reasoning} No extraction call was made and no obligation was drafted.`,
+        detail: `${run.id} closed at applicability — ${input.circularId} para ${input.para} does not bind ${entityName}. ${applicability.verdict.reasoning} No extraction call was made and no obligation was drafted.`,
       });
       return;
     }
@@ -216,7 +235,8 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
         chapter,
         para: input.para,
         runId: run.id,
-        defaultOwner: tenant.team[0]?.name ?? "Compliance Officer",
+        /* a live-onboarded entity has no seeded team; the role, not a name */
+        defaultOwner: live ? "Compliance Officer" : tenant.team[0]?.name ?? "Compliance Officer",
       });
       proposed.push(obligation);
       await appendEvent(state, {
@@ -224,7 +244,7 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
         action: "obligation.drafted",
         subjectType: "obligation",
         subjectId: obligation.id,
-        detail: `Drafted by ${run.id} from ${input.circularId} para ${input.para} — "${obligation.title}", grounded to chars ${obligation.clause.charStart}–${obligation.clause.charEnd} of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.`,
+        detail: `Drafted by ${run.id}${live ? ` for ${live.profile.legalName}` : ""} from ${input.circularId} para ${input.para} — "${obligation.title}", grounded to chars ${obligation.clause.charStart}–${obligation.clause.charEnd} of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.`,
       });
     }
 

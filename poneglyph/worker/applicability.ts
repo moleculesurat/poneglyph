@@ -44,12 +44,27 @@ const SEGMENT_PHRASES: Partial<Record<BusinessSegment, string[]>> = {
   "internet-trading": ["internet based trading", "internet trading", "wireless technology"],
 };
 
-const held = new Set<IntermediaryType>(angelOne.intermediaryTypes);
-const declaredSegments = new Set<BusinessSegment>(angelOne.segments);
-
 function hits(haystack: string, phrases: string[]): string[] {
   return phrases.filter((p) => haystack.includes(p));
 }
+
+/** the slice of a profile this agent compares a clause against. Defaults to
+    the seeded Angel One profile; a live-onboarded entity passes its own. */
+export interface ApplicabilityEntity {
+  legalName: string;
+  intermediaryTypes: IntermediaryType[];
+  segments: BusinessSegment[];
+  exchanges: string[];
+  depositories: string[];
+}
+
+const seededEntity: ApplicabilityEntity = {
+  legalName: angelOne.legalName,
+  intermediaryTypes: angelOne.intermediaryTypes,
+  segments: angelOne.segments,
+  exchanges: angelOne.exchanges,
+  depositories: angelOne.depositories,
+};
 
 export interface ApplicabilityOutcome {
   verdict: ApplicabilityVerdict;
@@ -61,7 +76,12 @@ export interface ApplicabilityOutcome {
   matchedForeignCapacities: IntermediaryType[];
 }
 
-export function assessApplicability(clauseText: string): ApplicabilityOutcome {
+export function assessApplicability(
+  clauseText: string,
+  entity: ApplicabilityEntity = seededEntity,
+): ApplicabilityOutcome {
+  const held = new Set<IntermediaryType>(entity.intermediaryTypes);
+  const declaredSegments = new Set<BusinessSegment>(entity.segments);
   const text = clauseText.toLowerCase();
 
   const matchedCapacities: string[] = [];
@@ -88,7 +108,7 @@ export function assessApplicability(clauseText: string): ApplicabilityOutcome {
     return {
       verdict: {
         verdict: "not-applicable",
-        reasoning: `The clause addresses ${names}. ${angelOne.legalName} is onboarded as ${angelOne.intermediaryTypes.join(" and ")} and declares no such capacity, and the clause carries no phrase addressing a capacity the firm holds. The rulebook for an intermediary the firm is not does not enter this register.`,
+        reasoning: `The clause addresses ${names}. ${entity.legalName} is onboarded as ${entity.intermediaryTypes.join(" and ")} and declares no such capacity, and the clause carries no phrase addressing a capacity the firm holds. The rulebook for an intermediary the firm is not does not enter this register.`,
         citedText: clauseText.slice(0, 180),
         confidence: 0.86,
       },
@@ -104,10 +124,14 @@ export function assessApplicability(clauseText: string): ApplicabilityOutcome {
       matchedSegments.length > 0
         ? ` It also touches declared business lines: ${matchedSegments.join(", ")}.`
         : "";
+    /* a live-onboarded entity may declare no depository — say nothing rather
+       than print an empty slot */
+    const depositoryNote =
+      entity.depositories.length > 0 ? ` with ${entity.depositories.join("/")} as depository` : "";
     return {
       verdict: {
         verdict: "applies",
-        reasoning: `The clause addresses "${matchedCapacities[0]}". ${angelOne.legalName} holds that capacity — ${angelOne.intermediaryTypes.join(", ")}, trading on ${angelOne.exchanges.join("/")} with ${angelOne.depositories.join("/")} as depository.${segmentNote}`,
+        reasoning: `The clause addresses "${matchedCapacities[0]}". ${entity.legalName} holds that capacity — ${entity.intermediaryTypes.join(", ")}, trading on ${entity.exchanges.join("/")}${depositoryNote}.${segmentNote}`,
         citedText: clauseText.slice(0, 180),
         confidence: matchedSegments.length > 0 ? 0.96 : 0.92,
       },
