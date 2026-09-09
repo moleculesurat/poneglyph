@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "collect": "node scripts/collect.mjs",
+    "pull": "node scripts/pull-register.mjs",
     "dev": "next dev",
     "build": "next build",
     "preview": "npx serve out -l 3000",

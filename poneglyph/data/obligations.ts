@@ -1,6 +1,8 @@
 import type { Obligation } from "@/lib/schema";
+import register from "./collected/register.json";
 
-/* The obligation register. Empty until the pipeline drafts obligations from the
-   collected corpus and the human gate approves them — nothing is hand-typed. */
+/* The approved obligation register.
+   Pulled from the running worker by `npm run pull`.
+   Never hand-edited — approve through the app, then pull. */
 
-export const obligations: Obligation[] = [];
+export const obligations: Obligation[] = register.obligations as Obligation[];

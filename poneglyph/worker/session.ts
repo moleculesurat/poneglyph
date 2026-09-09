@@ -1,17 +1,16 @@
 /* ══════════════════════════════════════════════════════════════════════
    Session — one shared register for the one tenant.
 
-   There is a single KV-backed register, keyed `sess:molecule`, seeded from
-   data/. Everyone who opens the app sees and mutates the same state.
+   KV (`sess:molecule`) is the working store; data/collected/register.json,
+   committed to git, is the durable one. A fresh KV namespace re-seeds from
+   that file: the obligations are loaded as-is and the chain is recomputed
+   from GENESIS with Web Crypto, so the seeded hashes must match the pulled
+   ones. From that moment the chain is arithmetic, not assertion — which is
+   precisely what makes /api/audit/verify meaningful.
 
-   Seeding re-hashes the authored audit trail FOR REAL. The 56 events in
-   data/audit.ts carry hand-written hex hashes that were never computed;
-   at seed time we keep their content and recompute the entire chain from
-   GENESIS with Web Crypto. From that moment the chain is arithmetic, not
-   assertion — which is precisely what makes /api/audit/verify meaningful.
-
-   Live records use their own id ranges so they can never collide with the
-   seed: runs from RUN-050, obligations from OBL-SB-201, events from AE-0057.
+   `npm run pull` writes register.json back from a running worker; the two
+   directions close the loop. Live records use their own id ranges so they
+   never collide with the seed.
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { AuditEvent } from "../lib/schema";
@@ -30,9 +29,9 @@ const RUN_TTL_SECONDS = 60 * 60 * 24 * 7;
 /** The one tenant. Every request resolves to this single shared register. */
 export const TENANT_SID = "molecule";
 
-export const LIVE_RUN_SEQ_START = 50; // seeded corpus ends at RUN-049
-export const LIVE_OBLIGATION_SEQ_START = 201; // seeded ends at OBL-SB-110
-export const LIVE_EVENT_SEQ_START = auditEvents.length + 1; // seeded ends at AE-0056
+export const LIVE_RUN_SEQ_START = 50; // live runs start here when none are seeded
+export const LIVE_OBLIGATION_SEQ_START = 201; // live obligations start here when none are seeded
+export const LIVE_EVENT_SEQ_START = auditEvents.length + 1; // first id past the seeded chain
 
 export const seededCounts = {
   obligations: seededObligations.length,
@@ -62,18 +61,24 @@ function seedContent(e: AuditEvent): Omit<AuditEvent, "hash" | "prevHash"> {
 
 export async function seedSession(sessionId: string): Promise<SessionState> {
   const chain = await rechain(auditEvents.map(seedContent));
+  /* live ids resume one past the highest seeded obligation, so a pulled
+     register keeps its numbering rather than colliding with it */
+  const maxObligationSeq = seededObligations.reduce(
+    (max, o) => Math.max(max, Number(o.id.split("-").pop()) || 0),
+    0,
+  );
   return {
     sessionId,
     createdAt: new Date().toISOString(),
     chain,
     seededChainLength: chain.length,
     pending: [],
-    register: [],
+    register: [...seededObligations],
     rejected: [],
     decisions: [],
     runIds: [],
     nextRunSeq: LIVE_RUN_SEQ_START,
-    nextObligationSeq: LIVE_OBLIGATION_SEQ_START,
+    nextObligationSeq: seededObligations.length ? maxObligationSeq + 1 : LIVE_OBLIGATION_SEQ_START,
     nextEventSeq: LIVE_EVENT_SEQ_START,
   };
 }
