@@ -30,7 +30,7 @@ const RUN_TTL_SECONDS = 60 * 60 * 24 * 7;
 export const TENANT_SID = "molecule";
 
 export const LIVE_RUN_SEQ_START = 50; // live runs start here when none are seeded
-export const LIVE_OBLIGATION_SEQ_START = 201; // live obligations start here when none are seeded
+export const LIVE_OBLIGATION_SEQ_START = 1; // obligations number from OBL-001 when none are seeded
 export const LIVE_EVENT_SEQ_START = auditEvents.length + 1; // first id past the seeded chain
 
 export const seededCounts = {
@@ -150,7 +150,7 @@ export function nextRunId(state: SessionState): string {
 }
 
 export function nextObligationId(state: SessionState): string {
-  const id = `OBL-SB-${String(state.nextObligationSeq).padStart(3, "0")}`;
+  const id = `OBL-${String(state.nextObligationSeq).padStart(3, "0")}`;
   state.nextObligationSeq += 1;
   return id;
 }

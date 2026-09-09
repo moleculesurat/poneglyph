@@ -139,7 +139,7 @@ export default function McpSurface() {
         <div className="row between wrap" style={{ marginBottom: 14, gap: 10 }}>
           <span className="eyebrow">Tool catalogue — {mcpTools.length} read-only tools</span>
           <span className="mono-label dim">
-            every example cites real register ids — OBL-SB-101, TSK-001, EV-015
+            every example cites real register ids — OBL-001, TSK-001, EV-015
           </span>
         </div>
         <div className="grid cols-2" style={{ alignItems: "start" }}>

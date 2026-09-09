@@ -78,7 +78,7 @@ DEADLINES
 "deadline" must be null unless the clause states an absolute calendar date, in which case give it as YYYY-MM-DD. A relative window is a frequency, not a deadline: put "30 days" in "frequency" and null in "deadline". Prose such as "within the timelines specified by the exchange" is NOT a deadline — use null. Never state a date the clause does not contain.
 
 SCOPE
-Emit only duties the clause actually states. One stated duty is one obligation. Never pad, never generalise beyond the text, never import a requirement from elsewhere in the regulations. At most 6 obligations. If the paragraph states no obligation at all, return {"obligations":[]}.`;
+Emit only duties the clause actually states. One stated duty is one obligation. Never pad, never generalise beyond the text, never import a requirement from elsewhere in the regulations. A sentence that says something is NOT required, is exempted, is relaxed, or MAY be done at the entity's option is not an obligation: emit nothing for it. A sentence that only explains procedure for a duty already emitted (which portal tab to click, which format to use) is part of that duty, not a second obligation. At most 6 obligations. If the paragraph states no obligation at all, return {"obligations":[]}.`;
 
 /* ── The model's raw output, validated but not yet trusted ──────────── */
 

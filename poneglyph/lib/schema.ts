@@ -95,7 +95,7 @@ export interface EvidenceSpec {
 }
 
 export interface Obligation {
-  id: string; // e.g. "OBL-SB-001"
+  id: string; // e.g. "OBL-001"
   title: string;
   summary: string;
   clause: ClauseRef;
