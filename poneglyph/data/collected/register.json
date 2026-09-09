@@ -1,7 +1,82 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "492a3eac54e5",
-  "obligations": [],
+  "tip": "87abbb09e9e3",
+  "obligations": [
+    {
+      "id": "OBL-001",
+      "title": "Upload monthly report on SEBI Intermediaries Portal within 7 working days of month end",
+      "summary": "Registered Portfolio Managers must upload the monthly report on the SEBI Intermediaries Portal within 7 working days of the end of each month. No hard copy of the report needs to be sent to SEBI.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.1.2",
+        "excerpt": "shall upload the report on SEBI Intermediaries Portal within 7 working days of the end of each month",
+        "charStart": 34,
+        "charEnd": 134
+      },
+      "type": "periodic",
+      "frequency": "monthly",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-001",
+        "name": "Monthly report portal upload",
+        "description": "A calendar-driven control that compiles the required monthly report and uploads it on the SEBI Intermediaries Portal within 7 working days of each month end, with the upload confirmation captured and tracked against the deadline.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "SEBI Intermediaries Portal submission log or acknowledgement showing the report was uploaded for each month, with upload timestamps falling within 7 working days of the respective month end."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-050",
+      "hash": "909a1d3050c9",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-002",
+      "title": "Submit limited Quarterly Activity Report on SI Portal within 15 days of quarter end",
+      "summary": "All AIFs must file a limited Quarterly Activity Report online on the SI Portal in the prescribed format within 15 calendar days of each quarter end, with the first report covering the quarter ending June 2026. No separate filing is required for March quarters as the Annual Activity Report already contains those data points.",
+      "clause": {
+        "circularId": "MC-AIF-2026",
+        "chapter": "aif-21",
+        "para": "21.1.2",
+        "excerpt": "A limited Quarterly Activity Report shall be submitted by all AIFs online on the SI Portal in prescribed format within 15 calendar days from the end of each such quarter.",
+        "charStart": 0,
+        "charEnd": 170
+      },
+      "type": "periodic",
+      "frequency": "quarterly",
+      "appliesTo": [
+        "aif-manager"
+      ],
+      "control": {
+        "id": "CTL-002",
+        "name": "Quarterly Activity Report filing on SI Portal",
+        "description": "Operate a quarterly reporting calendar that triggers preparation of the limited Quarterly Activity Report at each quarter end, compiles the prescribed data points, files the report online on the SI Portal, and logs the submission acknowledgement, ensuring filing within 15 calendar days of quarter end and skipping standalone March-quarter filings in favour of the Annual Activity Report.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Quarterly Activity Report in prescribed format together with the SI Portal submission acknowledgement for each applicable quarter"
+        },
+        {
+          "kind": "data-check",
+          "description": "Submission log evidencing that each quarterly report was filed on the SI Portal within 15 calendar days of the quarter end, beginning with the quarter ending June 2026"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-051",
+      "hash": "c9292c5f86c2",
+      "approvedBy": "Compliance Officer"
+    }
+  ],
   "auditEvents": [
     {
       "id": "AE-0001",
@@ -13,6 +88,72 @@
       "detail": "Register initialised for Molecule Ventures LLP. Corpus loaded: Master Circular for Portfolio Managers (SEBI/HO/IMD/IMD-POD-1/P/CIR/2025/104, 16 Jul 2025) and Master Circular for AIFs (HO/19/34/11(6)2025-AFD-POD1/I/12928/2026, 3 Jun 2026). No obligation has been drafted; the register fills only through the pipeline and the human gate.",
       "hash": "492a3eac54e5",
       "prevHash": "GENESIS"
+    },
+    {
+      "id": "AE-0002",
+      "at": "2026-09-09T17:57:48.277Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-001",
+      "detail": "Drafted by RUN-050 from MC-PM-2025 para 5.1.2 — \"Upload monthly report on SEBI Intermediaries Portal within 7 working days of month end\", grounded to chars 34–134 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8f46ffe3f419",
+      "prevHash": "492a3eac54e5"
+    },
+    {
+      "id": "AE-0003",
+      "at": "2026-09-09T17:57:48.277Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-050",
+      "detail": "RUN-050 completed extraction and verification over MC-PM-2025 para 5.1.2 in 30s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-001.",
+      "hash": "44862206bf60",
+      "prevHash": "8f46ffe3f419"
+    },
+    {
+      "id": "AE-0004",
+      "at": "2026-09-09T17:58:06.598Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-002",
+      "detail": "Drafted by RUN-051 from MC-AIF-2026 para 21.1.2 — \"Submit limited Quarterly Activity Report on SI Portal within 15 days of quarter end\", grounded to chars 0–170 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "889cabc25f31",
+      "prevHash": "44862206bf60"
+    },
+    {
+      "id": "AE-0005",
+      "at": "2026-09-09T17:58:06.598Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-051",
+      "detail": "RUN-051 completed extraction and verification over MC-AIF-2026 para 21.1.2 in 15s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-002.",
+      "hash": "89133fe4507e",
+      "prevHash": "889cabc25f31"
+    },
+    {
+      "id": "AE-0006",
+      "at": "2026-09-09T18:12:43.839Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-001",
+      "detail": "Approved by Compliance Officer at the human gate — \"Upload monthly report on SEBI Intermediaries Portal within 7 working days of month end\", grounded to MC-PM-2025 para 5.1.2, chars 34–134. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-050.",
+      "hash": "cf672f89288b",
+      "prevHash": "89133fe4507e"
+    },
+    {
+      "id": "AE-0007",
+      "at": "2026-09-09T18:12:52.629Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-002",
+      "detail": "Approved by Compliance Officer at the human gate — \"Submit limited Quarterly Activity Report on SI Portal within 15 days of quarter end\", grounded to MC-AIF-2026 para 21.1.2, chars 0–170. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-051.",
+      "hash": "87abbb09e9e3",
+      "prevHash": "cf672f89288b"
     }
   ]
 }
