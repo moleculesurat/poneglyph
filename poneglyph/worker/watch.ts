@@ -168,7 +168,7 @@ const TENANT_TERMS = [
   "aifs",
 ];
 
-/** domain terms that touch this tenant's rulebook without naming the capacity */
+/** domain terms that touch the tenant's rulebooks without naming the capacity */
 const DOMAIN_TERMS = [
   "master circular",
   "cscrf",
@@ -197,7 +197,6 @@ const FOREIGN_TERMS = [
   "merchant banker",
   "merchant bankers",
   "credit rating agency",
-  "custodian",
   "debenture trustee",
   "foreign portfolio investor",
   "foreign portfolio investors",
@@ -234,7 +233,7 @@ export function triageItem(title: string, docType: WatchDocType): WatchTriage {
       return {
         verdict: "monitor",
         matched: tenantHits,
-        reasoning: `${docType === "recovery" ? "Recovery proceeding" : "Enforcement order"} whose title touches the stock-broker capacity (${tenantHits.join(", ")}). It binds the parties it names and creates no new obligation for this tenant, but enforcement against the capacity the tenant holds is a supervisory signal worth holding. ${HEURISTIC_NOTE}`,
+        reasoning: `${docType === "recovery" ? "Recovery proceeding" : "Enforcement order"} whose title touches a capacity this tenant holds (${tenantHits.join(", ")}). It binds the parties it names and creates no new obligation for this tenant, but enforcement against the capacity the tenant holds is a supervisory signal worth holding. ${HEURISTIC_NOTE}`,
       };
     }
     return {

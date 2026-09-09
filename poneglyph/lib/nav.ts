@@ -16,7 +16,7 @@ export const BROKER_HOME = "/dashboard";
 
 export const NAV_ITEMS: NavItem[] = [
   { href: BROKER_HOME, label: "Dashboard", group: "Oversight", inspector: false },
-  { href: "/onboarding", label: "Entity Onboarding", group: "Oversight", inspector: false },
+  { href: "/onboarding", label: "Entity profile", group: "Oversight", inspector: false },
   { href: "/watchtower", label: "Watchtower · Scraper", group: "Oversight", inspector: false },
   { href: "/register", label: "Obligation Register", group: "Compliance", inspector: true },
   { href: "/documents", label: "Document Vault", group: "Compliance", inspector: true },

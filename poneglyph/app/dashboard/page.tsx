@@ -87,11 +87,9 @@ export default function Overview() {
               ))}
             </div>
             <span className="small dim60" style={{ maxWidth: "88ch" }}>
-              An illustrative onboarding of a real listed intermediary. Identity, listing and
-              financials are read from public filings and each fact carries its source; the
-              compliance posture on this dashboard — obligations met or gapped, evidence,
-              remediation — is <b>simulated for the sandbox</b> and asserts nothing about the
-              firm&rsquo;s actual compliance.
+              Every profile fact carries its provenance and is declared until documented; nothing on
+              this dashboard asserts a compliance posture — the register fills only through the
+              pipeline and the human gate.
             </span>
           </div>
           <Link href="/onboarding" className="mono-label" style={{ color: "var(--orange-deep)" }}>

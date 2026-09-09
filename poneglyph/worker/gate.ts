@@ -139,12 +139,6 @@ export async function decide(
   const [draft] = state.pending.splice(index, 1);
   const decidedAt = new Date().toISOString();
 
-  /* when this session onboarded a live entity, the decision record names it —
-     empty for seeded sessions, so their trail text is unchanged */
-  const entityNote = state.liveEntity
-    ? ` Entity context: ${state.liveEntity.profile.legalName}, onboarded live in this session from a declared profile.`
-    : "";
-
   if (decision === "approve") {
     /* Newly approved and nothing bound to it yet. `evidenceIds: []` means
        gap in this ontology, so that is what it is — an approved duty the
@@ -157,7 +151,7 @@ export async function decide(
       action: "obligation.approved",
       subjectType: "obligation",
       subjectId: approved.id,
-      detail: `Approved by ${officer} at the human gate — "${approved.title}", grounded to ${approved.clause.circularId} para ${approved.clause.para}, chars ${approved.clause.charStart}–${approved.clause.charEnd}. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by ${approved.createdByRun}.${entityNote}`,
+      detail: `Approved by ${officer} at the human gate — "${approved.title}", grounded to ${approved.clause.circularId} para ${approved.clause.para}, chars ${approved.clause.charStart}–${approved.clause.charEnd}. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by ${approved.createdByRun}.`,
       at: decidedAt,
     });
 
@@ -182,7 +176,7 @@ export async function decide(
     action: "obligation.rejected",
     subjectType: "obligation",
     subjectId: draft.id,
-    detail: `Rejected by ${officer} at the human gate — "${draft.title}", drafted by ${draft.createdByRun} from ${draft.clause.circularId} para ${draft.clause.para}. Not entered in the register. The draft and this decision are retained.${entityNote}`,
+    detail: `Rejected by ${officer} at the human gate — "${draft.title}", drafted by ${draft.createdByRun} from ${draft.clause.circularId} para ${draft.clause.para}. Not entered in the register. The draft and this decision are retained.`,
     at: decidedAt,
   });
 

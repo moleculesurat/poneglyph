@@ -94,21 +94,3 @@ export const CSCRF_GRADE_LABEL: Record<CscrfGrade, string> = {
   qualified: "Qualified RE",
   mii: "Market Infrastructure Institution",
 };
-
-export const QSB = {
-  name: "Qualified Stock Broker",
-  circular: "SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2023/26",
-  effectiveFrom: "2023-07-01",
-  note:
-    "SEBI designates high-impact brokers as QSBs and loads them with enhanced obligations — governance, risk management, cyber resilience, investor grievance handling — because their failure would be systemic.",
-  /** designation parameters, per the framework and its 2024 expansion */
-  parameters: [
-    "Number of active clients",
-    "Total available client assets",
-    "Trading volumes (excluding proprietary)",
-    "End-of-day margin obligations of all clients",
-    "Proprietary trading volumes (added 2024)",
-    "Compliance score (added 2024)",
-    "Grievance redressal score (added 2024)",
-  ],
-} as const;

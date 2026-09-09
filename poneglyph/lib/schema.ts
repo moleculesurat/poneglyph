@@ -275,22 +275,13 @@ export type SebiPart = string;
 /** CSCRF grades a regulated entity by size; the grade sets cyber depth. */
 export type CscrfGrade = "self-certification" | "basic" | "mid-size" | "qualified" | "mii";
 
-/** A business line the firm runs. Each unlocks a different obligation set —
-    this is why two brokers with the same licence owe different things. */
+/** A business line the firm runs; PMS MC ch. 1 defines discretionary /
+    non-discretionary / advisory, AIF Regulations define Category II. */
 export type BusinessSegment =
-  | "equity-cash"
-  | "equity-derivatives"
-  | "currency-derivatives"
-  | "commodity-derivatives"
-  | "debt-segment"
-  | "depository-participant"
-  | "research-analyst"
-  | "investment-adviser"
-  | "portfolio-manager"
-  | "mutual-fund-distribution"
-  | "margin-trading-facility"
-  | "algo-trading"
-  | "internet-trading";
+  | "pms-discretionary"
+  | "pms-non-discretionary"
+  | "pms-advisory"
+  | "aif-category-ii";
 
 /** Where a fact came from. `filing` and `exchange` are externally verifiable;
     `declared` is the firm's own word until a document backs it. */
@@ -407,61 +398,3 @@ export interface CompanyDocument {
   notes?: string;
 }
 
-/* ── Onboarding session ────────────────────────────────────────────── */
-
-export type OnboardingStepKey =
-  | "identify" // who is this entity
-  | "segments" // what business lines does it run
-  | "designation" // QSB / CSCRF grade determination
-  | "scope" // which Parts bind it
-  | "documents" // collect what the engine needs
-  | "activate"; // build the register
-
-export type OnboardingStepStatus = "done" | "active" | "pending";
-
-export interface OnboardingStep {
-  key: OnboardingStepKey;
-  title: string;
-  blurb: string;
-  status: OnboardingStepStatus;
-  /** one-line summary of the outcome, shown once done */
-  outcome?: string;
-  /** the agent's reasoning for this step, replayable like any pipeline run */
-  trace?: TraceStep[];
-}
-
-/** A question the engine asks the firm during onboarding. Answers here
-    change which obligations and documents apply — the opinionated part. */
-export interface OnboardingQuestion {
-  id: string;
-  step: OnboardingStepKey;
-  question: string;
-  /** why the engine needs to know — always shown, never a bare form field */
-  why: string;
-  kind: "single" | "multi" | "text" | "number";
-  options?: { value: string; label: string; implies?: string }[];
-  /** the engine's pre-filled answer from public data, if it could infer one */
-  prefilled?: string;
-  prefilledSource?: string;
-  answer?: string;
-  /** obligations/documents this answer switches on */
-  unlocks?: string[];
-}
-
-export interface OnboardingSession {
-  id: string;
-  entityId: string;
-  startedAt: string;
-  completedAt?: string;
-  mode: "opinionated" | "blank";
-  steps: OnboardingStep[];
-  questions: OnboardingQuestion[];
-  /** headline counts produced by the run */
-  result: {
-    partsApplicable: number;
-    partsExcluded: number;
-    obligationsMapped: number;
-    documentsRequested: number;
-    documentsReceived: number;
-  };
-}

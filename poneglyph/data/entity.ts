@@ -26,7 +26,7 @@ export const molecule: EntityProfile = {
   shortName: "Molecule",
   incorporatedIn: "India · LLP · Gujarat / Surat",
   intermediaryTypes: ["portfolio-manager", "aif-manager"],
-  segments: [], // BusinessSegment is still the broker list; re-cut in a later task
+  segments: [],
   registrations: [
     { category: "Portfolio Manager", authority: "SEBI", number: "INP000007216", masked: false },
     {

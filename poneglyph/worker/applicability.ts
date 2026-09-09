@@ -29,20 +29,12 @@ const CAPACITY_PHRASES: Record<IntermediaryType, string[]> = {
 
 /** Phrases that mark a clause as belonging to a business line. Only the
     segments the firm actually declares are searched for. */
+// ponytail: substring match, "discretionary portfolio" also hits "non-discretionary portfolio"; split when a declared segment misfires
 const SEGMENT_PHRASES: Partial<Record<BusinessSegment, string[]>> = {
-  "equity-cash": ["cash segment", "equity segment", "capital market segment"],
-  "equity-derivatives": ["derivatives segment", "futures and options", "equity derivatives"],
-  "currency-derivatives": ["currency derivatives"],
-  "commodity-derivatives": ["commodity derivatives", "commodity segment"],
-  "debt-segment": ["debt segment", "corporate bond"],
-  "depository-participant": ["depository", "demat", "beneficial owner"],
-  "research-analyst": ["research analyst", "research report"],
-  "investment-adviser": ["investment advice"],
-  "portfolio-manager": ["portfolio management"],
-  "mutual-fund-distribution": ["mutual fund distribution", "distributor"],
-  "margin-trading-facility": ["margin trading facility", "margin trading"],
-  "algo-trading": ["algorithmic trading", "algo trading", "algorithm"],
-  "internet-trading": ["internet based trading", "internet trading", "wireless technology"],
+  "pms-discretionary": ["discretionary portfolio"],
+  "pms-non-discretionary": ["non-discretionary"],
+  "pms-advisory": ["advisory services", "advisory client"],
+  "aif-category-ii": ["category ii"],
 };
 
 function hits(haystack: string, phrases: string[]): string[] {
@@ -50,7 +42,7 @@ function hits(haystack: string, phrases: string[]): string[] {
 }
 
 /** the slice of a profile this agent compares a clause against. Defaults to
-    the seeded Molecule profile; a live-onboarded entity passes its own. */
+    the seeded Molecule profile; the profile in data/entity.ts. */
 export interface ApplicabilityEntity {
   legalName: string;
   intermediaryTypes: IntermediaryType[];

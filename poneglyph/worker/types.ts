@@ -9,12 +9,7 @@
 
 import type {
   AuditEvent,
-  BusinessSegment,
-  CscrfGrade,
-  DocumentRequirement,
-  IntermediaryType,
   Obligation,
-  SebiPart,
   TraceStep,
   VerifierCheck,
 } from "../lib/schema";
@@ -117,59 +112,6 @@ export interface WatchPollResult {
   lastError?: string;
 }
 
-/* ── Live entity (onboarded in-session) ─────────────────────────────────
-   The same determination the seeded profile shows, computed live
-   and deterministically for a firm the caller declares. Every declared
-   figure carries the declared-unverified label; nothing is guessed. */
-
-export interface LiveEntityProfile {
-  id: string;
-  legalName: string;
-  intermediaryTypes: IntermediaryType[];
-  exchanges: string[];
-  segments: BusinessSegment[];
-  otherRegistrations: { portfolioManager: boolean; investmentAdviser: boolean };
-  declared: { activeClients?: number; netWorthCr?: number; clientAssetsCr?: number };
-  /** provenance label stamped on every declared figure */
-  declaredNote: string;
-  onboardedAt: string;
-}
-
-export type QsbParameterStatus = "crosses" | "does-not-cross" | "not-computable";
-
-export interface QsbParameterScore {
-  parameter: string;
-  status: QsbParameterStatus;
-  note: string;
-}
-
-export interface QsbDetermination {
-  qsb: boolean;
-  /** always "computed · unconfirmed" — never asserted as a designation */
-  verdict: string;
-  parameters: QsbParameterScore[];
-  basis: string;
-}
-
-/** A catalogue requirement resolved against THIS profile. `required` means
-    the ask was raised; `waived` means it was evaluated and not raised, with
-    the reason filed — the non-ask is recorded like the ask. */
-export interface LiveDocumentRequirement extends DocumentRequirement {
-  disposition: "required" | "waived";
-  waivedReason?: string;
-}
-
-export interface LiveEntity {
-  profile: LiveEntityProfile;
-  qsb: QsbDetermination;
-  /** null when the declared figures cannot band the entity — never guessed */
-  cscrfGrade: CscrfGrade | null;
-  cscrfBasis: string;
-  applicableParts: SebiPart[];
-  excludedParts: { part: SebiPart; reason: string }[];
-  documentRequirements: LiveDocumentRequirement[];
-}
-
 /* ── Live run ───────────────────────────────────────────────────────── */
 
 /** `PipelineRun` in the ontology has no "running" state because seeded runs
@@ -237,7 +179,4 @@ export interface SessionState {
   nextEventSeq: number;
   /** set by /api/audit/tamper so the UI can explain what verify just caught */
   tampered?: { index: number; id: string; field: string };
-  /** set by POST /api/onboard; absent on seeded-only sessions. Reset clears
-      it by reseeding — a fresh session simply never has one. */
-  liveEntity?: LiveEntity;
 }

@@ -2,10 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MarkedCard, Chip, Eyebrow, Hairline } from "@/components/ui";
 import { DashField } from "@/components/DashField";
-import { EntryGateStart } from "@/app/EntryGateStart";
 import { molecule, factOf } from "@/data/entity";
 import { obligations } from "@/data/obligations";
-import { blankOnboarding } from "@/data/onboarding";
 import { tenant } from "@/data/tenant";
 import { SEBI_DOMAINS, CSCRF_GRADE_LABEL } from "@/lib/domains";
 
@@ -193,51 +191,6 @@ export default function EntryGate() {
                   Open the entity profile <span className="arrow">→</span>
                 </Link>
               </div>
-            </div>
-          </MarkedCard>
-
-          {/* ── secondary: run it against a different firm ── */}
-          <MarkedCard pad={30}>
-            <div className="stack" style={{ gap: 18 }}>
-              <div className="row between wrap" style={{ gap: 10 }}>
-                <Chip tone="pending">Blank template</Chip>
-                <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-                  {blankOnboarding.id} · mode {blankOnboarding.mode}
-                </span>
-              </div>
-
-              <h2 className="display" style={{ fontSize: "clamp(23px, 2.6vw, 31px)" }}>
-                New entity <span className="accent grad">onboarding</span>
-              </h2>
-
-              <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                The same {blankOnboarding.steps.length} steps run for any NSE- or BSE-listed
-                intermediary. The engine resolves the legal person, reads what public disclosure
-                supports, and asks only about what it cannot see.
-              </p>
-
-              <div className="row wrap" style={{ gap: 7 }}>
-                {blankOnboarding.steps.map((s, i) => (
-                  <span key={s.key} className="chip" data-tone="info" style={{ fontSize: 9.5 }}>
-                    {String(i + 1).padStart(2, "0")} {s.key}
-                  </span>
-                ))}
-              </div>
-
-              <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                Every ask is <b style={{ color: "var(--ink)", fontWeight: 600 }}>derived from the
-                entity profile</b>, never read off a checklist. A firm that declares different
-                segments gets a different scope, a different document list and a different register
-                from the same corpus. Applicability is computed from the profile rather than read
-                off the licence, so two brokers holding the same registration do not carry the same
-                obligations.
-              </p>
-
-              <EntryGateStart />
-
-              <Link href="/onboarding" className="mono-label" style={{ color: "var(--orange-deep)", fontSize: 10 }}>
-                or open the blank {blankOnboarding.steps.length}-step template →
-              </Link>
             </div>
           </MarkedCard>
         </div>
