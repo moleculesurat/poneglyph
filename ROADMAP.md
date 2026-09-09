@@ -1,6 +1,6 @@
 # Molecule Compliance Pipeline — Roadmap
 
-Validated 2026-09-09. Low-level worker tasks live in `MOLECULE-TODO.md`.
+Validated 2026-09-09. Current state and next tasks live in `HANDOFF.md`.
 
 ```
 THE IDEA
