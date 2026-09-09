@@ -89,10 +89,14 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - Pranjal edited README/dev.vars.example (uncommitted) to default MODEL z-ai/glm-5.3-flash (~30x cheaper than
   sonnet-5 on OpenRouter). .dev.vars has no MODEL line, so code default decides.
 
+- 37548a1 8: DEFAULT_MODEL z-ai/glm-5.3-flash (Pranjal's choice, ~30x cheaper); GLM reproduced both reference
+  drafts (1 draft each, 5/5, verbatim excerpts; titles wordier; 5.1.2 frequency "monthly" vs Sonnet's
+  "7 working days"). Schema gap for stage [5]: cadence and filing window share one `frequency` field.
+
 ## In progress (prompt given, awaiting report)
-Task 8: DEFAULT_MODEL -> z-ai/glm-5.3-flash, commit Pranjal's doc edits (fix "anthropic/z-ai" typo), fresh KV,
-rerun 5.1.2 + 21.1.2 on GLM, compare to reference drafts. If GLM misses grounding or emits non-duties,
-revert default to sonnet-5 (report first).
+Task 9: app/live/PendingQueue.tsx — all pending drafts from /api/state with the existing GateCard; mounted on
+/live under the console. Then Pranjal approves OBL-001/002 in the browser (first real gate decisions, placeholder
+officer name OK per Pranjal), `npm run pull`, commit register.json.
 
 ## Next tasks (one prompt each)
 5.  Task 8: /live pending queue (app/live/PendingQueue.tsx: list all pending drafts from /api/state with the
