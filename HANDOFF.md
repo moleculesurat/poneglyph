@@ -58,21 +58,32 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
   poneglyph/.dev.vars for `wrangler dev`). Pranjal has not yet supplied a key.
 - wrangler.jsonc still pins Techgenie2050's account_id + poneglyph.walrussecuritas.com + KV id.
 
+## Done (continued, all VERIFIED)
+- 31fef04 4a: one shared session sid "molecule" (no cookies); x-gate-token (env GATE_TOKEN) required on
+  POST /api/runs + /api/obligations/:id/decision (401); tamper + reset routes/UI deleted; dev.vars.example.
+- 0ffeddc 4b: scripts/pull-register.mjs (`npm run pull`) -> data/collected/register.json (approved
+  obligations + audit chain, no timestamp, idempotent); data/obligations.ts + data/audit.ts import it;
+  seedSession seeds register + id sequence from it. Fresh KV reseed verifies intact, tip 492a3eac54e5.
+- d151573 docs: hackathon planning docs + given/0*-*.md deleted; root README rewritten. Left: given/*.pdf,
+  given/NOTE.md, DEMO-SCRIPT.txt, chat.txt, poneglyph/DESIGN.md (still says Angel One — worker fixes later).
+- verifier.parseCadence already accepts "15 calendar days", "7 working days", named cadences, T+N.
+
 ## In progress (prompt given, awaiting report)
-Task 4a: single shared tenant session (sid "molecule", no cookies), GATE_TOKEN header on POST /api/runs
-and POST /api/obligations/:id/decision (401 without), delete tamper + reset routes/UI, .dev.vars.example.
-Commit: "molecule: one shared register; gate token; tamper/reset demo removed".
+Task 5-prep: scripts/run-paras.mjs — `list` prints candidate paras (regex: \bshall\b AND a cadence/
+window phrase; expect 24 PMS, 51 AIF), `run <circ> <paras|all>` drives POST /api/runs one at a time with
+x-gate-token, polls /api/runs/:id, prints verifier checks + proposed count. Testable without a key (503).
 
 ## Next tasks (one prompt each)
-4b. scripts/pull-register.mjs: GET /api/state + /api/audit from the running worker -> data/collected/
-    register.json; data/obligations.ts + data/audit.ts import it (git = durable store, KV = working store).
-5.  Stage [2]-[4] on real text: needs a model key from Pranjal (.dev.vars). Run the two presets through
-    /live under `wrangler dev`, inspect extraction + verifier on PMS/AIF text, approve at the gate.
-    Then batch: every "shall ... within N days" para of both circulars.
-6.  Rewrite MOLECULE-TODO.md around roadmap stages; delete hackathon docs. Pranjal fills team names/segments.
-7.  [5] SCHEDULE, [6] PROVE, [8] SHOW, [7] MONITOR tuning. Collect residual: footnote marker at source
-    line end survives (PMS 5.1.2 "each month 67 and") — needs the page-bottom footnote list as lookup.
-8.  Deployment: Molecule's Cloudflare account/KV/domain in wrangler.jsonc; secrets.
+5.  Stage [2]-[4] on real text — BLOCKED on a model key from Pranjal (.dev.vars KIMI_*). Then:
+    run MC-PM-2025 5.1.2 and MC-AIF-2026 21.1.2 first; read the traces; fix prompt/verifier misfires;
+    then `run MC-PM-2025 all`, `run MC-AIF-2026 all`; approve at the gate (/live, token in the password
+    box); `npm run pull`; commit register.json.
+6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
+7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
+    [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
+    Collect residual: footnote marker at source line end survives (PMS 5.1.2 "each month 67 and").
+8.  Deployment: Molecule's Cloudflare account/KV/domain in wrangler.jsonc; `wrangler secret put` GATE_TOKEN
+    + KIMI_*. Run ids restart at RUN-050 on a fresh KV (runs are not pulled) — acceptable, note it.
 
 ## Key facts the tasks depend on
 - CSCRF tiers (given/sources/cscrf-clarifications-2025-04-30.txt para 2.6/2.7/4): PM AUM
