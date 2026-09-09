@@ -82,9 +82,17 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - Pranjal's decisions: placeholders for team names are fine for now; Molecule runs discretionary PMS only;
   provider = OpenRouter.
 
+- 8229070 7: SCOPE excludes relief/permission + procedure sentences (fixed the hard-copy draft); ids OBL-001…
+  Fresh KV rerun: 5.1.2 -> OBL-001 upload monthly report, periodic, 7 working days, chars 40-134;
+  21.1.2 -> OBL-002 quarterly activity report, periodic, "quarterly" (15 calendar days in excerpt), chars 0-170.
+  Both 5/5, pending in local KV. These two are the reference drafts for model comparisons.
+- Pranjal edited README/dev.vars.example (uncommitted) to default MODEL z-ai/glm-5.3-flash (~30x cheaper than
+  sonnet-5 on OpenRouter). .dev.vars has no MODEL line, so code default decides.
+
 ## In progress (prompt given, awaiting report)
-Task 7: prompt SCOPE excludes relief/permission sentences; id prefix OBL-SB- -> OBL- starting at 001;
-clear local KV; rerun PMS 5.1.2 + AIF 21.1.2; report drafts verbatim. Nothing approved.
+Task 8: DEFAULT_MODEL -> z-ai/glm-5.3-flash, commit Pranjal's doc edits (fix "anthropic/z-ai" typo), fresh KV,
+rerun 5.1.2 + 21.1.2 on GLM, compare to reference drafts. If GLM misses grounding or emits non-duties,
+revert default to sonnet-5 (report first).
 
 ## Next tasks (one prompt each)
 5.  Task 8: /live pending queue (app/live/PendingQueue.tsx: list all pending drafts from /api/state with the
