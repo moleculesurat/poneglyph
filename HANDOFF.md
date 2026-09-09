@@ -71,15 +71,25 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - fe356a7 5-prep: scripts/run-paras.mjs (`npm run paras -- list|run`), 24/51/75 candidates, error paths
   verified (503 no model, unset/wrong token, para not found).
 
-## In progress
-Nothing. BLOCKED on Pranjal: model key in poneglyph/.dev.vars (KIMI_API_KEY, KIMI_BASE_URL, KIMI_MODEL),
-then `GATE_TOKEN=test npm run paras -- run MC-PM-2025 5.1.2` under `npx wrangler dev --port 8787`.
+- b8ad754 6: OpenRouter is the provider (OPEN_ROUTER_KEY, optional MODEL, default anthropic/claude-sonnet-5,
+  base URL constant); facts: AUM Rs 1,000 cr+ and 500 clients (Sep 2026, declared by Pranjal), segments
+  ["pms-discretionary"], new fact pms-automation-threshold (PMS MC 2.7.3.1 applies at >= Rs 1,000 cr).
+- FIRST REAL RUN (RUN-050, MC-PM-2025 5.1.2, 10 s, 557 completion tokens): 5/5 checks, 2 drafts.
+  OBL-SB-201 "Upload monthly report on SEBI Intermediaries Portal", periodic, 7 working days, excerpt
+  verbatim chars 40-134 — GOOD. OBL-SB-202 "No hard copy submission required" — NOT a duty (a relief
+  sentence); prompt SCOPE needs "a statement that something is not required / exempted / permitted is not
+  an obligation". Drafts sit in local KV only (.wrangler/state), nothing approved.
+- Pranjal's decisions: placeholders for team names are fine for now; Molecule runs discretionary PMS only;
+  provider = OpenRouter.
+
+## In progress (prompt given, awaiting report)
+Task 7: prompt SCOPE excludes relief/permission sentences; id prefix OBL-SB- -> OBL- starting at 001;
+clear local KV; rerun PMS 5.1.2 + AIF 21.1.2; report drafts verbatim. Nothing approved.
 
 ## Next tasks (one prompt each)
-5.  Stage [2]-[4] on real text — BLOCKED on a model key from Pranjal (.dev.vars KIMI_*). Then:
-    run MC-PM-2025 5.1.2 and MC-AIF-2026 21.1.2 first; read the traces; fix prompt/verifier misfires;
-    then `run MC-PM-2025 all`, `run MC-AIF-2026 all`; approve at the gate (/live, token in the password
-    box); `npm run pull`; commit register.json.
+5.  Task 8: /live pending queue (app/live/PendingQueue.tsx: list all pending drafts from /api/state with the
+    GateCard approve/reject). Task 9: `run MC-PM-2025 all` + `run MC-AIF-2026 all` (75 paras, ~15 min);
+    Pranjal approves/rejects in the queue; `npm run pull`; commit register.json.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
