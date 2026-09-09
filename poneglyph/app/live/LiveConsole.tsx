@@ -33,7 +33,7 @@ import { HighlightedClause, MonoBtn, Notice, StepCard, type Span } from "./parts
 
 const RUN_KEY = "poneglyph.live.runId";
 const CHAPTER_KEYS = Object.keys(CHAPTER_PART) as ChapterKey[];
-const OFFICER = tenant.team.find((m) => m.role === "Compliance Officer") ?? tenant.team[0];
+export const OFFICER = tenant.team.find((m) => m.role === "Compliance Officer") ?? tenant.team[0];
 
 const STATUS_TONE: Record<LiveRunView["status"], "live" | "at-risk" | "met" | "gap"> = {
   running: "live",
@@ -248,7 +248,7 @@ function BeforeAfter({
   );
 }
 
-function GateCard({
+export function GateCard({
   obligation,
   decided,
   busy,

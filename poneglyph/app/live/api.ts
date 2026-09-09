@@ -79,6 +79,12 @@ export interface DecisionResponse {
   chainTip: string;
 }
 
+/** GET /api/state (the slice the queue needs) */
+export interface StateResponse {
+  obligations: Obligation[];
+  counts: Record<string, number>;
+}
+
 /** sessionStorage key holding the shared-register write gate token */
 export const GATE_TOKEN_KEY = "gate-token";
 

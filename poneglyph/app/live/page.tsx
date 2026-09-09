@@ -8,6 +8,7 @@ import { documentRequirements } from "@/data/documents";
 import { runs } from "@/data/runs";
 import { auditEvents } from "@/data/audit";
 import { LiveConsole } from "./LiveConsole";
+import { PendingQueue } from "./PendingQueue";
 
 /* Every other route in this sandbox renders authored TypeScript. This one
    renders what the engine did on the request, including when that is nothing. */
@@ -102,6 +103,8 @@ export default function LivePage() {
       </MarkedCard>
 
       <LiveConsole />
+
+      <PendingQueue />
 
       {/* ── 06 · scope statement ────────────────────────────────────── */}
       <section style={{ margin: "52px 0 40px" }}>
