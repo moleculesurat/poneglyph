@@ -68,10 +68,12 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
   given/NOTE.md, DEMO-SCRIPT.txt, chat.txt, poneglyph/DESIGN.md (still says Angel One — worker fixes later).
 - verifier.parseCadence already accepts "15 calendar days", "7 working days", named cadences, T+N.
 
-## In progress (prompt given, awaiting report)
-Task 5-prep: scripts/run-paras.mjs — `list` prints candidate paras (regex: \bshall\b AND a cadence/
-window phrase; expect 24 PMS, 51 AIF), `run <circ> <paras|all>` drives POST /api/runs one at a time with
-x-gate-token, polls /api/runs/:id, prints verifier checks + proposed count. Testable without a key (503).
+- fe356a7 5-prep: scripts/run-paras.mjs (`npm run paras -- list|run`), 24/51/75 candidates, error paths
+  verified (503 no model, unset/wrong token, para not found).
+
+## In progress
+Nothing. BLOCKED on Pranjal: model key in poneglyph/.dev.vars (KIMI_API_KEY, KIMI_BASE_URL, KIMI_MODEL),
+then `GATE_TOKEN=test npm run paras -- run MC-PM-2025 5.1.2` under `npx wrangler dev --port 8787`.
 
 ## Next tasks (one prompt each)
 5.  Stage [2]-[4] on real text — BLOCKED on a model key from Pranjal (.dev.vars KIMI_*). Then:
