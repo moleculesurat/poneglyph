@@ -1,0 +1,1202 @@
+{
+  "id": "MC-PM-2025",
+  "number": "SEBI/HO/IMD/IMD-POD-1/P/CIR/2025/104",
+  "title": "Master Circular for Portfolio Managers",
+  "issuedOn": "2025-07-16",
+  "kind": "master-circular",
+  "source": "https://www.sebi.gov.in/legal/master-circulars/jul-2025/master-circular-for-portfolio-managers_95347.html",
+  "sourceFile": "given/sources/pms-master-circular-2025-07-16.txt",
+  "sourceSha256": "6f7592d4097421b51277769b16d54a51fccebb1247e3ff0cab55865c9946f2a2",
+  "chapters": [
+    {
+      "key": "pm-1",
+      "title": "REGISTRATION AND POST-REGISTRATION ACTIVITY",
+      "paras": [
+        {
+          "para": "1.1",
+          "text": "Application procedure for registration as Portfolio Manager"
+        },
+        {
+          "para": "1.1.1",
+          "text": "All entities desirous to be registered as Portfolio Manager, are required to file an online application on SEBI Intermediary Portal (https://siportal.sebi.gov.in)."
+        },
+        {
+          "para": "1.1.2",
+          "text": "An applicant is required to furnish the application in Form A as specified in the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020 (“PM Regulations”), to SEBI for registration as a Portfolio Manager. On receipt of ‘Form A’, SEBI may seek further information for processing the application. Any information sought by SEBI has to be responded in detail and supported by relevant documents."
+        },
+        {
+          "para": "1.1.3",
+          "text": "The information submitted to SEBI at the time of registration, shall be full and complete in all respects, otherwise it may delay processing of the registration application."
+        },
+        {
+          "para": "1.1.4",
+          "text": "Online process for Fresh Registrations and Updation of Information is given in Annexure 1A of this Master Circular."
+        },
+        {
+          "para": "1.2",
+          "text": "General Registration Guidelines"
+        },
+        {
+          "para": "1.2.1",
+          "text": "The registration granted to a portfolio manager under Chapter II of the PM Regulations is for the principal office as well as for all the branch offices of the portfolio manager in India."
+        },
+        {
+          "para": "1.2.2",
+          "text": "The portfolio manager shall mention its registration number contained in the certificate of registration in all the correspondence with SEBI, other authorities, Stock Exchanges and the clients of the portfolio manager."
+        },
+        {
+          "para": "1.2.3",
+          "text": "With a view to ensuring that all Rules, Regulations, Guidelines, Notifications etc. issued by SEBI, the Government of India and other regulatory authorities are complied with, the Portfolio Manager shall designate a senior officer as compliance Officer, who shall co-ordinate with regulatory authorities in various matters and provide necessary guidance as also ensure compliance internally. The Compliance Officer shall inter alia ensure that the observations made / the deficiencies pointed out by SEBI in the functioning of the portfolio managers do not recur."
+        },
+        {
+          "para": "1.2.4",
+          "text": "Correspondence relating to registration and clarifications on Guidelines / Circulars issued by SEBI shall be made only by the principal office of the portfolio manager and not by any of its branch offices."
+        },
+        {
+          "para": "1.2.5",
+          "text": "The portfolio managers shall have a code of conduct as envisaged under the Securities and Exchange Board of India (Prohibition of Insider Trading) Regulations, 2015."
+        },
+        {
+          "para": "1.3",
+          "text": "Clarification for Same Group Entities"
+        },
+        {
+          "para": "1.3.1",
+          "text": "SEBI may consider grant of certificate to an applicant, notwithstanding that another entity in the same group has been previously granted registration by SEBI, if the following conditions are fulfilled:"
+        },
+        {
+          "para": "1.3.1.1",
+          "text": "The entities are incorporated as separate legal entities."
+        },
+        {
+          "para": "1.3.1.2",
+          "text": "The entities have independent Board of Directors. Explanation: Independent Board of Directors for this purpose means that common directors should not be in majority in both the Boards."
+        },
+        {
+          "para": "1.3.1.3",
+          "text": "There is arm’s length relationship with reference to their operations."
+        },
+        {
+          "para": "1.3.1.4",
+          "text": "The key personnel and infrastructure are independently available for each entity."
+        },
+        {
+          "para": "1.3.1.5",
+          "text": "Each entity has independent regulatory control and supervisory mechanism."
+        },
+        {
+          "para": "1.3.2",
+          "text": "It is also clarified that whenever as per the above policy, two entities in the same group are granted registration, any action by way of suspension or cancellation of registration taken by SEBI against one entity, may entail action against other entities of the same group, under the Intermediaries Regulations. Explanation: For the purposes of this Master Circular, two entities are considered to be in the same group if:"
+        },
+        {
+          "para": "1.3.2.1",
+          "text": "the same person, by himself or in combination with relatives, directly or indirectly exercises control over both the entities or,"
+        },
+        {
+          "para": "1.3.2.2",
+          "text": "one is an ‘associate company’ of another and for this purpose, ‘associate company’ shall mean ‘associate company’ as defined under sub-section (6) of section 2 of the Companies Act,2013, or"
+        },
+        {
+          "para": "1.3.2.3",
+          "text": "where one entity directly or indirectly exercises ‘control’ over the other entity and for this purpose, ‘control’ as defined under the Regulation 2(1)(e) of the PM Regulations shall be referred."
+        },
+        {
+          "para": "1.4",
+          "text": "Co-investment Portfolio Management Services"
+        },
+        {
+          "para": "1.4.1",
+          "text": "The Co-investment portfolio management services shall be provided in the following manner:"
+        },
+        {
+          "para": "1.4.1.1",
+          "text": "A Manager of Category I or Category II Alternative Investment Fund (“AIF”) who is also a SEBI registered Portfolio Manager, and intends to act as Co-investment Portfolio Manager and offer Co-investment services through portfolio management route, shall do so only under prior intimation to SEBI."
+        },
+        {
+          "para": "1.4.1.2",
+          "text": "Any other Manager of Category I or Category II AIF, who is not a SEBI registered Portfolio Manager, and intends to act as Co-investment Portfolio Manager and offer Co-investment services through portfolio management route, shall seek registration from SEBI as a Portfolio Manager in terms of the PM Regulations. Pursuant to the grant of registration, if such Portfolio Manager is desirous of offering portfolio management services other than Co-investment, the same shall be subject to compliance with all provisions of the PM Regulations including eligibility criteria, and with the prior approval of SEBI."
+        },
+        {
+          "para": "1.5",
+          "text": "Procedure for seeking prior approval for change in control of SEBI registered Portfolio Managers 8"
+        },
+        {
+          "para": "1.5.1",
+          "text": "The PM Regulations provides that a Portfolio Manager shall obtain prior approval of SEBI in case of change in control in such manner as may be specified by SEBI. Accordingly, it has been decided that all SEBI registered Portfolio Managers shall comply with the following in case they propose a change in control:"
+        },
+        {
+          "para": "1.5.1.1",
+          "text": "An online application shall be made by Portfolio Manager to SEBI for prior approval through the SEBI Intermediary Portal (https://siportal.sebi.gov.in)."
+        },
+        {
+          "para": "1.5.1.2",
+          "text": "The prior approval granted by SEBI shall be valid for a period of six months from the date of such approval."
+        },
+        {
+          "para": "1.5.1.3",
+          "text": "Applications for fresh registration pursuant to change in control shall be made to SEBI within six months from the date of prior approval."
+        },
+        {
+          "para": "1.5.1.4",
+          "text": "9[Pursuant to grant of prior approval by SEBI, in order to enable existing investors/ clients to take well informed decision regarding their continuance or otherwise with the changed management, the portfolio manager shall inform its existing investors/ clients about the proposed change prior to effecting the same and give an option to exit without any exit load, within a period of not less than 30 calendar days, from the date of such communication. However, for the clients under co- investment portfolio management services, the Portfolio Manager shall ensure compliance with the second proviso of Regulation 22 (2) of PMS Regulations.]"
+        },
+        {
+          "para": "1.5.1.5",
+          "text": "In matters which involves scheme(s) of arrangement which needs sanction of the National Company Law Tribunal (“NCLT”) in terms of the provisions of the Companies Act, 2013, the Portfolio Managers shall ensure the following:"
+        },
+        {
+          "para": "1.5.1.5.1",
+          "text": "The application seeking approval for the proposed change in control under PM Regulations shall be filed with SEBI prior to filing the application with NCLT;"
+        },
+        {
+          "para": "1.5.1.5.2",
+          "text": "Upon being satisfied with compliance of the applicable regulatory requirements, in-principle approval shall be granted by SEBI;"
+        },
+        {
+          "para": "1.5.1.5.3",
+          "text": "The validity of such in-principle approval shall be three months from the date of such approval, within which the relevant application shall be made to NCLT;"
+        },
+        {
+          "para": "1.5.1.5.4",
+          "text": "Within 15 [calendar] days from the date of order of NCLT, Portfolio Manager shall submit an online application in terms of paragraph 1... of this Master Circular along with the following documents to SEBI for final approval:  Copy of the NCLT Order approving the scheme;  Copy of the approved scheme;  Statement explaining modifications, if any, in the approved scheme vis-à-vis the draft scheme and the reasons for the same; and  Details of compliance with the conditions/ observations mentioned in the in-principle approval provided by SEBI."
+        },
+        {
+          "para": "1.5.1.5.5",
+          "text": "All other provisions mentioned at paragraphs 1... to 1... of this Master Circular regarding the procedure for seeking prior approval for change in control of Portfolio Managers, shall also apply."
+        },
+        {
+          "para": "1.6",
+          "text": "Format of Net worth calculation"
+        },
+        {
+          "para": "1.6.1",
+          "text": "Following format shall be followed by Portfolio Managers for calculation of Net worth: The statement of networth of ……….. based on audited / unaudited accounts as on …………."
+        },
+        {
+          "para": "1.7",
+          "text": "Certificate of associated persons in the Securities Markets"
+        },
+        {
+          "para": "1.7.1",
+          "text": "For employees of Portfolio Managers"
+        },
+        {
+          "para": "1.7.1.1",
+          "text": "The associated persons functioning as principal officer of a Portfolio Manager or employee(s) of the Portfolio Manager having decision making authority related to fund management, shall obtain certification from the National Institute of Securities Markets by passing the NISM- Series-XXI-B: Portfolio Managers Certification Examination as mentioned in the communiqué No. NISM/ Certification/Series-XXI-B: Portfolio Managers (PM) Certification/2021/01 dated June 15, 2021 issued by the National Institute of Securities Markets."
+        },
+        {
+          "para": "1.7.1.2",
+          "text": "The Portfolio Managers shall ensure that all such associated persons who are principal officers or employees having decision making authority related to fund management as on the date of this notification obtain the certification by passing the NISM-Series-XXI-B: Portfolio Managers Certification Examination within two years from the date of the notification: Provided that a Portfolio Manager, who engages or employs any such associated person who is a principal officer or an employee having decision making authority related to fund management, after the date of the Gazette Notification No. SEBI/LAD-NRO/GN/2021/49, shall ensure that such person obtains certification by passing the NISM- Series-XXI-B: Portfolio Managers Certification Examination within one year from the date of their employment."
+        },
+        {
+          "para": "1.7.2",
+          "text": "For distributors of Portfolio Managers"
+        },
+        {
+          "para": "1.7.2.1",
+          "text": "The associated persons, engaged by a Portfolio Manager as a distributor of the Portfolio Management Services, shall obtain certification from the National Institute of Securities Markets by passing the NISM-Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination as mentioned in the communiqué No. NISM/Certification/Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination/2021/01 dated February 16, 2021 issued by the National Institute of Securities Markets."
+        },
+        {
+          "para": "1.7.2.2",
+          "text": "The Portfolio Managers shall ensure that all such associated persons who are distributors of the Portfolio Management Services as on the date of the notification obtain the certification by passing the NISM- Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination within two years from the date of the notification: Provided that a portfolio manager, who engages or employs any such associated person who is a distributor of the Portfolio Management Services, after the date of the notification, shall ensure that such person obtains certification by passing the NISM-Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination within one year from the date of their employment: Provided further that an associated person, who being a distributor of the Portfolio Management Services, has obtained any of the following registration/ certification as on the date of this notification a) a valid AMFI Registration Number (ARN) b) NISM Series-V-A exam certification shall be exempted from the requirement of obtaining certification by passing the NISM-Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination till the validity of the said registration/ certification."
+        }
+      ]
+    },
+    {
+      "key": "pm-2",
+      "title": "OPERATING GUIDELINES",
+      "paras": [
+        {
+          "para": "2.1",
+          "text": "Guidelines for advertisement by Portfolio Managers"
+        },
+        {
+          "para": "2.1.1",
+          "text": "SEBI has formulated a Code of Advertisement governing any advertisements issued by the Portfolio Managers in connection with their activities. All Portfolio Managers registered with SEBI are required to strictly observe the Code of Advertisement set out in Annexure 2A of this Master Circular."
+        },
+        {
+          "para": "2.2",
+          "text": "Maintenance of Clients’ Funds in a separate Bank Account by Portfolio Managers"
+        },
+        {
+          "para": "2.2.1",
+          "text": "The PM Regulations states that “the portfolio manager shall segregate each client’s funds and portfolio of securities and keep them separately from his own funds and securities and be responsible for safekeeping of clients’ funds and securities.”"
+        },
+        {
+          "para": "2.2.2",
+          "text": "With regard to the above, it is clarified that Portfolio Managers may keep the funds of all clients in a separate bank account maintained by the Portfolio Managers subject to the following conditions:"
+        },
+        {
+          "para": "2.2.2.1",
+          "text": "There shall be a clear segregation of each client’s fund through proper and clear maintenance of back office records,"
+        },
+        {
+          "para": "2.2.2.2",
+          "text": "Portfolio Managers shall not use the funds of one client for another client,"
+        },
+        {
+          "para": "2.2.2.3",
+          "text": "Portfolio Managers shall also maintain an accounting system containing separate client-wise data for their funds and provide statement to clients for such accounts at least on monthly basis,"
+        },
+        {
+          "para": "2.2.2.4",
+          "text": "Portfolio Managers shall reconcile the client-wise funds with the funds in the aforesaid bank account on daily basis."
+        },
+        {
+          "para": "2.2.3",
+          "text": "With respect to investment in short term Liquid Mutual Funds by Portfolio Managers, it is clarified that pending investment of funds, any short term deployment of funds in Liquid Mutual Funds for the purpose of cash management shall be maintained on the lines as per paragraph 2.. of this Master Circular."
+        },
+        {
+          "para": "2.3",
+          "text": "Direct on-boarding of clients by Portfolio Managers"
+        },
+        {
+          "para": "2.3.1",
+          "text": "Portfolio Managers shall provide an option to clients to be on-boarded directly, without intermediation of persons engaged in distribution services."
+        },
+        {
+          "para": "2.3.2",
+          "text": "Portfolio Managers shall prominently disclose in its Disclosure Documents, marketing material and on its website, about the option for direct on-boarding."
+        },
+        {
+          "para": "2.3.3",
+          "text": "At the time of on-boarding of clients directly, no charges except statutory charges shall be levied."
+        },
+        {
+          "para": "2.3.4",
+          "text": "The above provisions with respect to direct on-boarding of clients shall not be applicable to Co-investment portfolio management services."
+        },
+        {
+          "para": "2.4",
+          "text": "Supervision of Distributors"
+        },
+        {
+          "para": "2.4.1",
+          "text": "The Portfolio Managers shall:"
+        },
+        {
+          "para": "2.4.1.1",
+          "text": "Ensure that any person or entity involved in the distribution of its services is carrying out the distribution activities in compliance with the PM Regulations and circulars issued thereunder from time to time."
+        },
+        {
+          "para": "2.4.1.2",
+          "text": "Pay fees or commission to distributors only on trail-basis. Further, any fees or commission paid shall be only from the fees received by Portfolio Managers."
+        },
+        {
+          "para": "2.4.1.3",
+          "text": "Ensure that prospective clients are informed about the fees or commission to be earned by the distributors for on-boarding them to specific investment approaches."
+        },
+        {
+          "para": "2.4.1.4",
+          "text": "Ensure that distributors abide by the Code of Conduct as specified in Annexure 2B of this Master Circular."
+        },
+        {
+          "para": "2.4.1.5",
+          "text": "Have mechanism to independently verify the compliance of its distributors with the Code of Conduct."
+        },
+        {
+          "para": "2.4.1.6",
+          "text": "Ensure that, within 15 [calendar] days from the end of every financial year, a self-certification is also received from distributors with regard to compliance with Code of conduct. 2.4A. Collective oversight of distributors through APMI26 2.4A.. Any person or entity involved in the distribution of portfolio management services shall obtain registration with APMI. 2.4A.. Portfolio Managers shall ensure that any person or entity engaged in the distribution of its services has obtained registration with APMI, in accordance with the criteria laid down by APMI."
+        },
+        {
+          "para": "2.5",
+          "text": "Clarification on minimum investment amount by clients and schemes"
+        },
+        {
+          "para": "2.5.1",
+          "text": "The Portfolio Managers shall ensure the following:"
+        },
+        {
+          "para": "2.5.1.1",
+          "text": "To ensure compliance with the PM Regulations, the first single lump- sum investment amount received as funds or securities from clients should not be less than ₹50 Lakh."
+        },
+        {
+          "para": "2.5.1.2",
+          "text": "Portfolio Managers shall not organize investment portfolios as ‘Schemes’ akin to Mutual Fund Schemes while marketing their services to clients."
+        },
+        {
+          "para": "2.6",
+          "text": "Written down policies by Portfolio Manager"
+        },
+        {
+          "para": "2.6.1",
+          "text": "Portfolio Managers shall put in place a written down policy (“policy”), in compliance with the PM Regulations and circulars issued thereunder, which inter-alia detail the specific activities, role and responsibilities of various teams engaged in fund management, dealing, compliance, risk management, back-office, etc., with regard to management of client funds and securities including the order placement, execution of order, trade allocation amongst clients and other related matters."
+        },
+        {
+          "para": "2.6.2",
+          "text": "Portfolio Managers shall also put in place a specific policy, in compliance with the PM Regulations and circulars issued thereunder, which shall inter- alia provide for the following:"
+        },
+        {
+          "para": "2.6.2.1",
+          "text": "Specific situations (not generic) wherein the orders shall be placed for each client individually or pooled from trading account of Portfolio Manager."
+        },
+        {
+          "para": "2.6.2.2",
+          "text": "Scenarios / situations in which deviation from the allotment of securities as intended at the time of placement of order would be permissible, if at all."
+        },
+        {
+          "para": "2.6.2.3",
+          "text": "Scenarios, wherein, the Portfolio Manager is required to place certain margins / collaterals in order to execute certain transactions, details on how such margins / collaterals shall be segregated / placed from amongst various clients, without affecting the interest of any client."
+        },
+        {
+          "para": "2.6.2.4",
+          "text": "Deviations, if any, shall be on account of exigency only and require prior written approval of the Principal Officer and Compliance officer of the Portfolio Manager with a detailed rationale for such deviation."
+        },
+        {
+          "para": "2.6.3",
+          "text": "The aforesaid policies as mentioned at paragraphs 2.. & 2.. shall be approved by the Board / equivalent body of the Portfolio Manager."
+        },
+        {
+          "para": "2.7",
+          "text": "Fair and equitable treatment of all clients"
+        },
+        {
+          "para": "2.7.1",
+          "text": "Portfolio Managers shall ensure that all clients are treated in a fair and equitable manner and ensure compliance with the following:"
+        },
+        {
+          "para": "2.7.2",
+          "text": "Requirements with respect to investments in all instruments: 30"
+        },
+        {
+          "para": "2.7.2.1",
+          "text": "Portfolio Managers shall constitute a dealing team (DT) which shall be responsible for order placement and execution of all orders in accordance with the aforesaid policies of the Portfolio Manager. DT may include the Principal Officer or the person appointed in terms of Regulation 7(2) (e) of the PM Regulations."
+        },
+        {
+          "para": "2.7.2.2",
+          "text": "Portfolio Managers shall ensure that DT is suitably staffed and comply with the following:"
+        },
+        {
+          "para": "2.7.2.2.1",
+          "text": "All conversations of DT shall be only through the dedicated recorded telephone lines or through emails from authorized email ids."
+        },
+        {
+          "para": "2.7.2.2.2",
+          "text": "Mobile phones or any other communication devices other than the recorded telephone lines shall not be allowed inside the dealing room."
+        },
+        {
+          "para": "2.7.2.2.3",
+          "text": "Access to internet facilities on computers and other devices inside the dealing room shall be restricted and shall only be used for activities related to trade execution."
+        },
+        {
+          "para": "2.7.2.2.4",
+          "text": "Entry/access to the dealing room shall be restricted to authorized employees as defined in the aforementioned policies of the Portfolio Manager."
+        },
+        {
+          "para": "2.7.2.2.5",
+          "text": "There shall be no sharing of information through any mode, except for trade execution under the approved policies of the Portfolio Manager."
+        },
+        {
+          "para": "2.7.3",
+          "text": "For equity, equity-related instruments and Mutual Funds units 31"
+        },
+        {
+          "para": "2.7.3.1",
+          "text": "Portfolio Managers with assets under management of INR 1000 crores or more under discretionary and non-discretionary services, shall have in place an automated system with minimal manual intervention for ensuring effective funds and securities management including order management and allocation of securities to each client."
+        },
+        {
+          "para": "2.7.3.2",
+          "text": "The aforesaid system shall inter-alia clearly capture details with respect to pre-order placement allocation as well as final allocation of trades to clients along with instances of deviation, if any, as mentioned at paragraph 2... above."
+        },
+        {
+          "para": "2.7.4",
+          "text": "Portfolio Managers shall maintain audit trail of all activities related to management of funds and securities of clients including order placement, trade execution and allocation. Further, there shall be time stamping with respect to order placement, order execution and trade allocation."
+        },
+        {
+          "para": "2.8",
+          "text": "Cyber Security and Cyber Resilience framework for Portfolio Managers"
+        },
+        {
+          "para": "2.8.1",
+          "text": "All Portfolio Managers shall comply with the applicable provisions of Cybersecurity and Cyber Resilience Framework (CSCRF) for SEBI Regulated Entities (REs), specified vide SEBI Circular no. SEBI/HO/ITD- 1/ITD_CSC_EXT/P/CIR/2024/113 dated August 20, 2024, including any subsequent directions in this regard."
+        },
+        {
+          "para": "2.9",
+          "text": "Valuation of Securities by Portfolio Managers"
+        },
+        {
+          "para": "2.9.1",
+          "text": "APMI shall prescribe standardized valuation norms for Portfolio Managers, same as the corresponding norms applicable to the Mutual Funds. Valuation of the portfolio debt and money market securities by portfolio managers shall be carried out in accordance with these standardized valuation norms prescribed by APMI."
+        },
+        {
+          "para": "2.9.2",
+          "text": "APMI shall empanel valuation agencies for the purpose of providing security level prices to Portfolio Managers. Portfolio Managers shall mandatorily use valuation services obtained only from one or more of such empanelled valuation agencies for the purpose of valuation of debt and money market securities in portfolios managed by them. The ultimate responsibility for fair valuation shall be that of the Portfolio Manager."
+        }
+      ]
+    },
+    {
+      "key": "pm-3",
+      "title": "INVESTMENTS BY PORTFOLIO MANAGERS",
+      "paras": [
+        {
+          "para": "3.1",
+          "text": "Transaction in Corporate Bonds through Request for Quote platform by Portfolio Management Services (PMS)"
+        },
+        {
+          "para": "3.1.1",
+          "text": "In order to enhance transparency pertaining to debt investments by Portfolio Managers in Corporate Bonds (“CBs”) and to increase liquidity on exchange platform, the following shall be followed by Portfolio Managers:"
+        },
+        {
+          "para": "3.1.1.1",
+          "text": "On a monthly basis, Portfolio Managers shall undertake at least 10% of their total secondary market trades by value in CBs in that month by placing/seeking quotes through one-to-one (OTO) or one-to-many (OTM) mode on the Request for Quote platform of stock exchanges (RFQ)."
+        },
+        {
+          "para": "3.1.1.2",
+          "text": "In order to ensure compliance with the abovementioned 10 percent requirement, Portfolio Managers shall consider the trades executed by value through OTO or OTM mode of RFQ with respect to the total secondary market trades in CBs, during the current month and immediate preceding two months on a rolling basis."
+        },
+        {
+          "para": "3.1.1.3",
+          "text": "All transactions in CBs wherein Portfolio Managers is on both sides of the trade shall be executed through RFQ in OTO mode. However, any transaction entered by Portfolio Managers in CBs in OTM mode which gets executed with another Portfolio Managers, shall be counted in OTM mode."
+        },
+        {
+          "para": "3.1.1.4",
+          "text": "Portfolio Managers are permitted to accept the Contract Note from the stock brokers for transactions carried out in OTO and OTM modes of RFQ."
+        },
+        {
+          "para": "3.1.2",
+          "text": "Portfolio Managers shall ensure that at least 10% (by value) of their secondary market trades in CBs in current month and immediate preceding two months are executed by placing / seeking quotes through OTO or OTM mode of RFQ. For example, for the month of May 2022, the secondary market trades executed in CBs in the months of March 2022, April 2022 and May 2022 shall be considered for the purpose of aforesaid calculation."
+        },
+        {
+          "para": "3.2",
+          "text": "Investment in Derivatives"
+        },
+        {
+          "para": "3.2.1",
+          "text": "Portfolio Managers are permitted to invest in derivatives, including transactions for the purpose of hedging and portfolio rebalancing, through recognized stock exchanges."
+        },
+        {
+          "para": "3.2.2",
+          "text": "Portfolio Managers can invest in derivatives on the terms specified in the Portfolio Management Agreement. The Agreement should contain complete details pertaining to the manner and terms of usage of derivative product including quantum of exposure to derivatives (in absolute terms and as a percentage of investments in other securities in the portfolio), type of derivative instruments, purpose of using derivatives, type of derivative position and the exposure thereof, terms of valuing and liquidating derivative contracts in the event of liquidation of portfolio management scheme, prior permission from investors in the event of any changes in the manner or terms of usage of derivative contracts etc."
+        },
+        {
+          "para": "3.2.3",
+          "text": "The total exposure of the portfolio client in derivatives should not exceed his portfolio funds placed with the Portfolio Manager and the Portfolio Manager should, in essence, invest and not borrow on behalf of his clients."
+        },
+        {
+          "para": "3.2.4",
+          "text": "It may be noted that investment in derivatives shall be only on the terms mutually agreed between the Portfolio Manager and the client through the portfolio management agreement. In the event of the any violation of the terms of the agreement, the Portfolio Manager shall be responsible."
+        },
+        {
+          "para": "3.2.5",
+          "text": "Portfolio Managers are required to provide necessary disclosures in Disclosure Document in terms of the PM Regulations."
+        },
+        {
+          "para": "3.3",
+          "text": "Participation of Portfolio Managers in Commodity Derivatives Market in India"
+        },
+        {
+          "para": "3.3.1",
+          "text": "Portfolio Managers are permitted to participate in Exchange Traded Commodity Derivatives on behalf of their clients."
+        },
+        {
+          "para": "3.3.2",
+          "text": "The participation of Portfolio Managers in the exchange traded commodity derivatives shall be subject to the following:"
+        },
+        {
+          "para": "3.3.2.1",
+          "text": "Portfolio Managers shall appoint SEBI registered Custodians before dealing in Exchange Traded Commodity Derivatives."
+        },
+        {
+          "para": "3.3.2.2",
+          "text": "Portfolio Managers may participate in Exchange Traded Commodity Derivatives on behalf of their clients and such participation shall be in compliance with all the rules, regulations including the PM Regulations and circulars/guidelines and position limit norms as may be applicable to ‘clients’, issued by SEBI and recognized stock exchanges from time to time."
+        },
+        {
+          "para": "3.3.2.3",
+          "text": "Portfolio Managers may participate in Exchange Traded Commodity Derivatives after entering into an agreement with the clients. Portfolio Managers may execute addendums to the agreement with their existing clients, permitting the Portfolio Managers to participate in the Exchange Traded Commodity Derivatives on their behalf."
+        },
+        {
+          "para": "3.3.2.4",
+          "text": "Portfolio Managers shall provide adequate disclosures in the Disclosure Document as well as the agreement with the client pertaining to their participation in the Exchange Traded Commodity Derivatives, including but not limited to the risk factors, margin requirements, position limits, prior experience of the Portfolio Manager in Exchange Traded Commodity Derivatives, valuation of goods, etc."
+        },
+        {
+          "para": "3.3.2.5",
+          "text": "In case dealing in commodity derivatives lead to delivery of physical goods, there is a possibility that, the Portfolio Manager remains in possession of the physical commodity. In such cases, the goods need to be disposed off at the earliest, within the timelines as agreed upon between the client and the Portfolio Manager. The responsibility of liquidating the physical goods shall be with the Portfolio Manager."
+        },
+        {
+          "para": "3.3.2.6",
+          "text": "Since Foreign Portfolio Investors (“FPIs”) are allowed to participate in the Exchange Traded Commodity Derivatives market, subject to conditions specified by SEBI; Portfolio Managers shall, while onboarding FPIs as clients and executing transactions in Exchange Traded Commodity Derivatives market, ensure that all conditions specified by SEBI are complied with."
+        },
+        {
+          "para": "3.3.2.7",
+          "text": "Portfolio Managers shall also provide periodic reports to the clients as per the PM Regulations regarding their exposure in Exchange Traded Commodity Derivatives."
+        },
+        {
+          "para": "3.3.2.8",
+          "text": "Portfolio Managers shall report the exposure in Exchange Traded Commodity Derivatives under the heading of ‘Commodity Derivatives’ in the monthly reports submitted to SEBI."
+        },
+        {
+          "para": "3.4",
+          "text": "Limits on investment in securities of associates/ related parties of Portfolio Managers"
+        },
+        {
+          "para": "3.4.1",
+          "text": "Regulation 24 (3A) of the PM Regulations inter-alia provides that the Portfolio Manager shall ensure compliance with the prudential limits on investment as may be specified by the Board. Accordingly, the Portfolio Managers shall ensure the following:"
+        },
+        {
+          "para": "3.4.2",
+          "text": "Portfolio Manager shall invest up to a maximum of 30 percent of their client’s portfolio (as a percentage of the client’s assets under management) in the securities of their own associates/related parties. Further, the Portfolio Manager shall ensure compliance with the following limits: Security Limit for investment in Limit for single associate/related investment across party (as percentage of multiple client’s AUM) associates/related parties (as percentage of client’s AUM) Equity 15% 25% Debt and hybrid 15% 25% securities Equity + Debt + Hybrid 30% securities"
+        },
+        {
+          "para": "3.4.3",
+          "text": "The aforementioned limits shall be applicable only to direct investments by Portfolio Managers in equity and debt/hybrid securities of their own associates/related parties and not to any investments in the Mutual Funds."
+        },
+        {
+          "para": "3.4.4",
+          "text": "Hybrid securities includes units of Real Estate Investment Trusts (REITs), units of Infrastructure Investment Trusts (InvITs), convertible debt securities and other securities of like nature."
+        },
+        {
+          "para": "3.5",
+          "text": "Prior consent of the client regarding investments in the securities of associates/related parties Regulation 22(1A) of the PM Regulations provides that the Portfolio Manager may make investments in the securities of its related parties or its associates only after obtaining the prior consent of the client in such manner as may be specified by the Board from time to time. Accordingly, the Portfolio Managers shall ensure compliance with the following:"
+        },
+        {
+          "para": "3.5.1",
+          "text": "Portfolio Managers shall obtain a one-time prior positive consent of client in the format specified at Annexure 3A (consent form), as a part of the agreement mandated under Regulation 22(1) of the PM Regulations."
+        },
+        {
+          "para": "3.5.2",
+          "text": "The consent form shall have an option to indicate dissent, in case the client does not want to undertake any investment in the securities of associates/related parties of respective Portfolio Manager. The client shall also have an option to specify a limit on investments in the securities of associates/related parties of respective Portfolio Manager, below the ceiling specified in paragraph 3.. above."
+        },
+        {
+          "para": "3.5.3",
+          "text": "The text and figures of the consent form shall be prominently highlighted and not be below size 12 font."
+        },
+        {
+          "para": "3.5.4",
+          "text": "For new clients, the aforementioned consent shall be obtained at the time of entering into agreement, in terms of Regulation 22 (1) of the PM Regulations (i.e., at the time of onboarding of a new client)."
+        },
+        {
+          "para": "3.5.5",
+          "text": "For existing clients, the aforementioned consent shall be obtained by way of execution of a supplementary agreement with the clients. In cases where the agreements entered with existing clients contain provision for obtaining consent for investments through a specified mode, the same mode can be used for obtaining aforesaid prior consent for investments in the securities of associates/related parties of the Portfolio Manager as well."
+        },
+        {
+          "para": "3.5.6",
+          "text": "Portfolio Manager shall not make any investments in the securities of associates/related parties without the prior consent of the client at the time of on boarding new clients. For existing clients, fresh investments in the securities of associates/related parties of Portfolio Managers can be made only after obtaining consent from the client."
+        },
+        {
+          "para": "3.5.7",
+          "text": "In the event of passive breach of the specified investment limits, (i.e., occurrence of instances not arising out of omission and/or commission of portfolio manager), a rebalancing of the portfolio shall be completed by Portfolio Managers within a period of 90 [calendar] days from the date of such breach. Notwithstanding the same, the client may give an informed, prior positive consent to the Portfolio Manager for waiver from the rebalancing of the portfolio to rectify any passive breach of the investment limits."
+        },
+        {
+          "para": "3.5.8",
+          "text": "Such requirement of rebalancing in the event of a passive breach of investment limits shall be suitably disclosed in the consent form mentioned at paragraph 3.. above and any waiver from the same shall also be obtained in the same document."
+        },
+        {
+          "para": "3.5.9",
+          "text": "In accordance with Regulation 27 (1) of the PM Regulations, Portfolio Managers shall maintain records and documents pertaining to: a) Prior positive consent or dissent, as the case may be. b) Instances of the passive breach of investment limits, if any. c) Steps taken, if any to rectify the passive breach of investments limits. d) Waiver obtained from the client regarding rebalancing in the event of a passive breach of investment limits."
+        },
+        {
+          "para": "3.6",
+          "text": "Minimum credit rating of securities for investments by Portfolio Managers 41"
+        },
+        {
+          "para": "3.6.1",
+          "text": "Regulation 24 (3C) of the PM Regulations provides that Portfolio Managers shall not be allowed to invest clients’ funds in unrated securities of their related parties or their associates. Further, Regulation 24 (3E) of the PM Regulations provides that the Portfolio Manager shall ensure investment of its clients’ funds on the basis of the credit rating of securities as may be specified by the Board. Accordingly, with respect to investments in debt and hybrid securities, the Portfolio Managers shall ensure compliance with the following:"
+        },
+        {
+          "para": "3.6.2",
+          "text": "Portfolio Managers offering discretionary portfolio management services shall not make any investment in below investment grade securities."
+        },
+        {
+          "para": "3.6.3",
+          "text": "Portfolio Managers offering non-discretionary portfolio management services shall not make any investment in below investment grade listed securities. However, Portfolio Manager may invest up to 10% of the assets under management of such clients in unlisted unrated securities of issuers other than associates/related parties of Portfolio Manager. The said investment in unlisted unrated debt and hybrid securities shall be within the maximum specified limit of 25% for investment in unlisted securities under Regulation 24(4) of the PM Regulations."
+        },
+        {
+          "para": "3.7",
+          "text": "Applicability of above provisions: 42"
+        },
+        {
+          "para": "3.7.1",
+          "text": "The requirements as specified at paragraphs 3., 3. & 3. above and in Regulations 22 (1A), 22(4) (da) & (db), 24 (3A) to 3(E) of the PM Regulations shall not be applicable for advisory portfolio management services, co-investment portfolio management services and for client categories who in turn manage funds under government mandates and/or are governed under specific Acts of State and/or Parliament."
+        },
+        {
+          "para": "3.7.2",
+          "text": "Notwithstanding the above, for advisory portfolio management services, Portfolio Managers shall make suitable disclosure to the client regarding conflict of interest with respect to investments in the securities of the associates/related parties, while giving advice. The term “associate” for this purpose shall have the same meaning as defined under explanation to Regulation 24 (3C) of the PM Regulations. Further, Portfolio Managers shall disclose the credit rating of all securities, while giving advice."
+        }
+      ]
+    },
+    {
+      "key": "pm-4",
+      "title": "DISCLOSURE REQUIREMENTS",
+      "paras": [
+        {
+          "para": "4.1",
+          "text": "Material change in Disclosure Document"
+        },
+        {
+          "para": "4.1.1",
+          "text": "Material change, for the purpose of the PM Regulations, shall include change in control of the Portfolio Manager, Principal Officer, fees charged, charges associated with the services offered, investment approaches offered (along with the impact of such change) and such other changes as specified by SEBI from time to time."
+        },
+        {
+          "para": "4.2",
+          "text": "Clause in Disclosure Document/ Client agreement/ Power of attorney"
+        },
+        {
+          "para": "4.2.1",
+          "text": "It has come to the notice of SEBI while perusing disclosure documents/ agreements/ Power of Attorney entered into by the Portfolio Managers with the clients that many Portfolio Managers are using the following clause or a similar clause. ‘The portfolio managers’ decision in deployment of the Clients’ account is absolute and final and can never be called in question or be open to review at any time during currency of the agreement or any time thereafter.’"
+        },
+        {
+          "para": "4.2.2",
+          "text": "It is felt that every client should have the prerogative to question the decision of portfolio manager and the exercise of discretion by him."
+        },
+        {
+          "para": "4.2.3",
+          "text": "Therefore, it is advised that Portfolio Managers who have incorporated the said clause or similar clause shall modify it as below:- ‘The portfolio managers’ decision (taken in good faith) in deployment of the Clients’ account is absolute and final and cannot be called in question or be open to review at time during the currency of the agreement or any time thereafter except on the ground of malafide, fraud, conflict of interest or gross negligence."
+        },
+        {
+          "para": "4.3",
+          "text": "Disclosure of fees and charges"
+        },
+        {
+          "para": "4.3.1",
+          "text": "To ensure transparency and adequate disclosure regarding fees and charges, the client agreement shall contain a separate annexure which shall list all fees and charges payable to the portfolio manager. The said annexure shall contain details of levy of all applicable charges on a sample portfolio of Rs. lacs over a period of one year. The fees and charges shall be shown for 3 scenarios viz. when the portfolio value increases by 20%, decreases by 20% or remains unchanged. An illustration of the same is enclosed as Annexure 4A of this Master Circular"
+        },
+        {
+          "para": "4.3.2",
+          "text": "[For new clients, on-boarded on or after October 01, 2024, whenever performance fees is charged to such client, the annexure for fees and charges to the PMS-client agreement, shall also contain the following additional fee illustrations:  One year and multi-year fee illustrations that cover different scenarios viz. increase in the portfolio value by a certain percentage, decrease in the portfolio value by a certain percentage and when the portfolio value remains unchanged. The said illustrations shall also suitably incorporate the high watermark principle. The standard formats for the above fee illustrations have been prescribed by APMI, in consultation with SEBI]"
+        },
+        {
+          "para": "4.3.3",
+          "text": "All text and figures in the annexure on fees and charges shall be at least in size 11 font."
+        },
+        {
+          "para": "4.3.4",
+          "text": "[While on-boarding a client, Portfolio Manager shall ensure that: a. the client has understood the structure for fees and charges. b. the new client has separately signed the annexure on fees and charges and added a note, that they have understood the structure for fees and charges, in the following manner: i. handwritten, in case the client is on-boarded through physical mode. ii. typed using keyboard or written electronically using fingers/a stylus pen, in case the client is on-boarded through digital mode."
+        },
+        {
+          "para": "4.3.5",
+          "text": "The standard procedure for on-boarding of client through digital mode has been specified by APMI, in consultation with SEBI."
+        },
+        {
+          "para": "4.3.6",
+          "text": "Portfolio Manager shall ensure that no additional fees and charges are levied, other than those specified in the annexure (on fees and charges) to the PMS-client agreement.]"
+        },
+        {
+          "para": "4.4",
+          "text": "Publishing of Investor Charter by Portfolio Managers on their websites"
+        },
+        {
+          "para": "4.4.1",
+          "text": "With a view to enhancing awareness of investors about the various activities which an investor deals with while availing the services provided by portfolio managers, an investor charter has been prepared by SEBI, which is enclosed as Annexure 4B of this Master Circular."
+        },
+        {
+          "para": "4.4.2",
+          "text": "The investor charter is a document in an easy to understand language. It details different services provided by the Portfolio Managers to the investors along with estimated timelines, like account opening, agreement with the portfolio manager, periodic statements to the investors, investor grievance redressal mechanism, responsibilities of investors etc. at one single place for ease of reference. All registered Portfolio Managers are advised to bring to the notice of their clients the Investor Charter by prominently displaying on their websites."
+        },
+        {
+          "para": "4.5",
+          "text": "Performance Disclosure by Portfolio Managers"
+        },
+        {
+          "para": "4.5.1",
+          "text": "To ensure compliance with the PM Regulations, Portfolio Managers shall disclose the performance of portfolios grouped by investment category for the past three years as per Annexure 4C of this Master Circular."
+        },
+        {
+          "para": "4.5.2",
+          "text": "Performance Benchmark reporting to clients :"
+        },
+        {
+          "para": "4.5.2.1",
+          "text": "[*]"
+        },
+        {
+          "para": "4.5.2.2",
+          "text": "[The portfolio managers may select benchmark indices in line with paragraph 4.6A of this Master Circular. Any change in the benchmark indices at a later date shall be recorded and justified with specific reasons thereof."
+        },
+        {
+          "para": "4.5.2.3",
+          "text": "Portfolio Managers have the option to give their management perception on the performance of their schemes.]"
+        },
+        {
+          "para": "4.5.2.4",
+          "text": "The Boards of portfolio managers may review the performance of the funds managed by them for each client separately in their meetings and should take corrective action wherever necessary. They may also compare the performance of the portfolios with benchmarks."
+        },
+        {
+          "para": "4.5.3",
+          "text": "In relation to performance of the portfolio manager, it is also clarified that the Portfolio Managers shall: “All portfolio managers are required to disclose the performance of their portfolios to their clients, including disclosure of the performance indicators calculated on the basis of ‘time weighted rate of return’ method taking each individual category of investments for the immediately preceding three years in case of discretionary portfolio managers. In order to make the investors fully aware about how their funds have been deployed and also to give them an objective analysis of the performance of the portfolios being managed by the portfolio managers on discretionary basis in comparison with the rise or fall in the markets, portfolio managers shall disclose the performance of benchmark indices in the periodical reports to be furnished to the client in terms of the PM Regulations i.e. Regulation 31 of the SEBI (Portfolio Managers) Regulations, 2020.”"
+        },
+        {
+          "para": "4.5.3.1",
+          "text": "Consider all cash holdings and investments in liquid funds, for calculation of performance."
+        },
+        {
+          "para": "4.5.3.2",
+          "text": "Report performance data net of all fees and all expenses (including taxes)."
+        },
+        {
+          "para": "4.5.3.3",
+          "text": "Clearly disclose any change in investment approach that may impact the performance of client portfolio, in the marketing material."
+        },
+        {
+          "para": "4.5.3.4",
+          "text": "Ensure that performance reported in all marketing material and website of the Portfolio Manager is the same as that reported to SEBI."
+        },
+        {
+          "para": "4.5.3.5",
+          "text": "Ensure that the aggregate performance of the Portfolio Manager (firm- level performance) reported in any document shall be same as the combined performance of all the portfolios managed by the Portfolio Manager."
+        },
+        {
+          "para": "4.5.3.6",
+          "text": "Provide a disclaimer in all marketing material that the performance related information provided therein is not verified by SEBI."
+        },
+        {
+          "para": "4.6",
+          "text": "Nomenclature ‘Investment Approach’"
+        },
+        {
+          "para": "4.6.1",
+          "text": "[An investment approach (‘IA’) is the documented investment philosophy to be adopted by the Portfolio Managers while managing the client funds in order to achieve client’s investment objectives.] 58 The information about Investment Approaches offered by Portfolio Managers, shall be uniform across all types of regulatory reporting, client reporting, disclosure document, marketing materials and any such document which refer to services offered by Portfolio Managers."
+        },
+        {
+          "para": "4.6.2",
+          "text": "Any description of investment approach provided by Portfolio Managers shall, inter alia, include:"
+        },
+        {
+          "para": "4.6.2.1",
+          "text": "investment objective"
+        },
+        {
+          "para": "4.6.2.2",
+          "text": "description of types of securities e.g. equity or debt, listed or unlisted, convertible instruments, etc."
+        },
+        {
+          "para": "4.6.2.3",
+          "text": "basis of selection of such types of securities as part of the investment approach"
+        },
+        {
+          "para": "4.6.2.4",
+          "text": "allocation of portfolio across types of securities"
+        },
+        {
+          "para": "4.6.2.5",
+          "text": "appropriate benchmark to compare performance and basis for choice of benchmark"
+        },
+        {
+          "para": "4.6.2.6",
+          "text": "indicative tenure or investment horizon"
+        },
+        {
+          "para": "4.6.2.7",
+          "text": "risks associated with the investment approach"
+        },
+        {
+          "para": "4.6.2.8",
+          "text": "other salient features, if any. 4.6A. Performance Benchmarking In order to help investors in assessing the performance of a Portfolio Manager, the applicable requirements related to performance reporting and benchmarking by Portfolio Managers has been reviewed as under: 4.6A.. In addition to Investment Approach, an additional layer of broadly defined investment themes called “Strategies” shall be adopted by Portfolio Managers. These broad Strategies shall be ‘Equity’, ‘Debt’, ‘Hybrid’ and ‘Multi Asset’. 4.6A. Each IA shall be tagged to one and only one Strategy from the Strategies as above. This tagging shall be at the discretion of the concerned Portfolio Manager. A Portfolio Manager may tag more than one IA to a Strategy, but each IA must be tagged to only one Strategy. 4.6A. APMI shall prescribe a maximum of three benchmarks for each Strategy. These benchmarks shall reflect the core philosophy of the Strategy. While tagging an IA to a particular Strategy, the Portfolio Manager shall select one benchmark from those prescribed for that Strategy to enable the investor to evaluate relative performance of the Portfolio Managers. 4.6A. The Board of the Portfolio Managers shall be responsible for ensuring appropriate selection of Strategy and benchmark for each IA. 4.6A. Once an IA is tagged to a Strategy and/or to a benchmark, the tagging shall be changed only after offering an option to subscribers to the IA to exit without any exit load. The performance track record (of the specific IA whose tagging with Strategy/ benchmark was changed) prior to the change shall not be used by the Portfolio Manager for performance reporting. Further, the same shall be verified as part of annual audit under the Regulations. 4.6A. The changes in Strategy and/ or benchmark shall be recorded with proper justification and shall be verified as part of the annual audit under the Regulations."
+        },
+        {
+          "para": "4.7",
+          "text": "Disclosure of details of related party investments by Portfolio Managers"
+        },
+        {
+          "para": "4.7.1",
+          "text": "Regulations 22 (4) (da) & (db) of the PM Regulations provides that the Portfolio Manager shall disclose in the Disclosure Document the details of its diversification policy and the details of investment of clients’ funds by the Portfolio Manager in the securities of its related parties or associates. Accordingly, the Portfolio Manager shall ensure compliance with the following:"
+        },
+        {
+          "para": "4.7.2",
+          "text": "Disclosure of the details of investment of clients’ funds in the securities of associate/related parties in the Disclosure Document under the head “Details of investments in the securities of related parties of the Portfolio Manager”, in the following format: Investments in the securities of associates/related parties of Portfolio Manager: Sr. Investme Name of Investment amount Value of investment as percentage of No. nt the (cost of investment) as on last day of the total AUM as on Approac associat on last day of the previous calendar last day of the h, if any e/relate previous calendar quarter (INR in crores) previous d party quarter (INR in crores) calendar quarter"
+        },
+        {
+          "para": "4.7.3",
+          "text": "Portfolio Managers shall ensure that any material changes in the above information is updated in the Disclosure Document and uploaded on their respective websites within 7 [calendar] days. 4.7A. Most Important Terms and Conditions (MITC) Document 4.7A.. In order to facilitate ease of understanding of the critical aspects of the Portfolio Manager-client relationship, Portfolio Manager shall additionally provide to its client a “Most Important Terms and Conditions (MITC)” document, which shall be duly acknowledged by the client. 4.7A.. The standard format for MITC has been prescribed by APMI, in consultation with SEBI."
+        }
+      ]
+    },
+    {
+      "key": "pm-5",
+      "title": "REPORTING REQUIREMENTS",
+      "paras": [
+        {
+          "para": "5.1",
+          "text": "Submission of monthly report by Portfolio Managers"
+        },
+        {
+          "para": "5.1.1",
+          "text": "All Registered Portfolio Managers are required to submit monthly report regarding their portfolio management activity as per the format enclosed as Annexure 5A66 of this Master Circular."
+        },
+        {
+          "para": "5.1.2",
+          "text": "All Registered Portfolio Managers shall upload the report on SEBI Intermediaries Portal within 7 working days of the end of each month 67 and there is no requirement of sending hard copy of the said report to SEBI."
+        },
+        {
+          "para": "5.1.3",
+          "text": "In the said report data pertaining to Assets under Management (“AUM”) of the portfolio manager as on the last calendar day of each month shall be indicated in Rupees in crores."
+        },
+        {
+          "para": "5.1.4",
+          "text": "Procedure to upload monthly report on portal is as follows:"
+        },
+        {
+          "para": "5.1.4.1",
+          "text": "Log on to SEBI Portal at https://siportal.sebi.gov.in using the Username and Password provided at the time of Registration/ Renewal as a portfolio manager."
+        },
+        {
+          "para": "5.1.4.2",
+          "text": "Select the portfolio manager tab"
+        },
+        {
+          "para": "5.1.4.3",
+          "text": "Select the link: PM Monthly Report"
+        },
+        {
+          "para": "5.1.4.4",
+          "text": "Fill the data in the format provided"
+        },
+        {
+          "para": "5.1.4.5",
+          "text": "Save the data and then Submit"
+        },
+        {
+          "para": "5.1.5",
+          "text": "In terms of the PM Regulations, Compliance Officer of the portfolio managers shall also be responsible for ensuring compliance with this Master Circular."
+        },
+        {
+          "para": "5.2",
+          "text": "Submission of compliance reports by Portfolio Manager"
+        },
+        {
+          "para": "5.2.1",
+          "text": "With effect from Financial Year 2019-20, Portfolio Managers are required to submit the following information to SEBI:"
+        },
+        {
+          "para": "5.2.1.1",
+          "text": "A certificate from the qualified Chartered Accountant certifying the net- worth as on March 31, every year based on audited account within 6 months from the end of Financial Year."
+        },
+        {
+          "para": "5.2.1.2",
+          "text": "A certificate of compliance with PM Regulations and circulars issued thereunder, duly signed by the Principal Officer, within 60 [calendar] days of end of each financial year. Further, details of non-compliance along with the corrective actions, if any, duly approved by Board of the Portfolio Manager."
+        },
+        {
+          "para": "5.2.2",
+          "text": "Submission of Corporate Governance Report:"
+        },
+        {
+          "para": "5.2.2.1",
+          "text": "Boards of the Portfolio Managers should review the compliance of regulations in their periodical meetings. They should develop a system of getting quarterly reports of compliance of SEBI Regulations and Guidelines and also that due diligence has been exercised by their officials in their operations and that the interests of investors are protected. Such reports may be placed before the Boards of the Portfolio Managers by the compliance officers. Boards of the Portfolio Managers should also review redressal of investors’ grievances. Any deficiency letters or warning letters issued to the Portfolio Managers by SEBI should also be placed before the Boards of the Portfolio Managers."
+        },
+        {
+          "para": "5.2.2.2",
+          "text": "There shall be internal audit by a practicing Chartered Accountant (“CA”) or Company Secretary (“CS”) so as to judge the quality of internal procedures being followed by the Portfolio Manager. The report of the internal audit shall be submitted to the Board of the Portfolio Manager."
+        },
+        {
+          "para": "5.2.2.3",
+          "text": "Portfolio Managers shall exercise due diligence in all their operational activities."
+        },
+        {
+          "para": "5.2.2.4",
+          "text": "Portfolio Managers shall report to SEBI on compliance with the provisions of the above guidelines while submitting the annual reports. The report should reach SEBI within thirty [calendar] days from the end of the financial year."
+        },
+        {
+          "para": "5.2.3",
+          "text": "Failure to submit reports as mentioned in this master circular shall constitute a default and render the Portfolio Managers liable for action under the Intermediaries Regulations."
+        },
+        {
+          "para": "5.3",
+          "text": "Firm-level performance reporting by Portfolio Managers"
+        },
+        {
+          "para": "5.3.1",
+          "text": "The firm-level performance data of Portfolio Managers shall be audited annually. Confirmation of compliance with paragraph 4.. of this Master Circular shall be reported to SEBI within sixty [calendar] 74days of end of each financial year. The said report to SEBI shall be certified by the Directors/Partners of the Portfolio Manager or by person(s) authorized by the Board of Directors/Partners of the Portfolio Manager."
+        },
+        {
+          "para": "5.3.2",
+          "text": "Accordingly, Portfolio Managers are required to consider all clients’ portfolios managed (i.e. clients of both discretionary and non-discretionary portfolio management services) for the purpose of audit of firm-level performance data."
+        },
+        {
+          "para": "5.3.3",
+          "text": "Standard Terms of Reference by APMI:"
+        },
+        {
+          "para": "5.3.3.1",
+          "text": "In order to have uniformity, APMI, in consultation with SEBI, shall specify standardised Terms of Reference (‘ToR’) for aforesaid audit of firm-level performance data."
+        },
+        {
+          "para": "5.3.3.2",
+          "text": "The standard ToR shall inter-alia include requirement for Portfolio Managers to consider clients’ portfolios under all services for the purpose of audit of firm-level performance data. Performance of advisory clients may be excluded only if performance of such clients, either individually or cumulatively, is not reported or published in any marketing material or website."
+        },
+        {
+          "para": "5.3.3.3",
+          "text": "The standard ToR specified by APMI (available on APMI website: link) is applicable with effect from October 01, 2023, and shall be mandatorily followed by all Portfolio Managers for the purpose of annual audit of firm-level performance data."
+        },
+        {
+          "para": "5.3.4",
+          "text": "Submission of reports:"
+        },
+        {
+          "para": "5.3.4.1",
+          "text": "Portfolio Managers shall submit the confirmation of compliance with the requirement of annual audit of firm-level performance data in line with the standard ToR specified by APMI, to SEBI within sixty [calendar] days from the end of each financial year. The aforesaid report on confirmation of compliance to SEBI shall be certified by Directors/ Partners of the Portfolio Manager or by person(s) authorized by the Board of Directors/Partners of the Portfolio Manager."
+        },
+        {
+          "para": "5.3.4.2",
+          "text": "Portfolio Managers shall submit audit report on firm-level performance data to SEBI within sixty [calendar] days from end of each financial year."
+        },
+        {
+          "para": "5.4",
+          "text": "Offsite Inspection data reporting to SEBI"
+        },
+        {
+          "para": "5.4.1",
+          "text": "As a part of off-site inspection and surveillance of Portfolio Managers and to monitor the compliance of the PM Regulations and circulars issued therein, SEBI has framed the data structure and all the Portfolio Managers are required to furnish the data to SEBI under the following heads/reporting formats: S. Table Name No. 1 PMS_Inspection_PM_Master 2 PMS_Inspection_Client_Master 3 PMS_Inspection_Client_Folio_Master 4 PMS_Inspection_Client_Folio_AUM 5 PMS_Inspection_Client_Cap_Transactions 6 PMS_Inspection_Client_Expense_Master 7 PMS_Inspection_Client_Holding_Master 8 PMS_Inspection_PM_Operating_Expense 9 PMS_Inspection_PM_Pool_Acc_Master 10 PMS_Inspection_PM_Associated_Security_ Details 11 PMS_Inspection_Trade_Data 12 PMS_Inspection_FM_Dealer_Dtls"
+        },
+        {
+          "para": "5.4.2",
+          "text": "The data to be submitted by Portfolio Managers in the aforementioned reporting formats is prescribed in Annexure 5B."
+        },
+        {
+          "para": "5.4.3",
+          "text": "Portfolio Managers shall submit data as per the specified formats for all its clients on quarterly basis within [15 calendar days]78from end of the quarter. Day-wise data shall be furnished for table headings: “Client Folio AUM” and “Client Holding Master”."
+        },
+        {
+          "para": "5.4.4",
+          "text": "[Portfolio Managers shall submit data for all their clients from April 01, 2023 onwards.]"
+        },
+        {
+          "para": "5.4.5",
+          "text": "Details of the requirements prescribed under various paragraphs of this Master Circular that are covered through the reporting formats, as mentioned in the paragraph 5.. above, are specified in Annexure 5C."
+        },
+        {
+          "para": "5.4.6",
+          "text": "[Any change in the prescribed formats shall be communicated by the Board from time to time."
+        },
+        {
+          "para": "5.4.7",
+          "text": "Portfolio Managers who are exclusively co-investment managers, shall not be required to submit the offsite inspection data."
+        },
+        {
+          "para": "5.4.8",
+          "text": "Portfolio Managers are not required to submit data with respect to funds managed by them for EPFO and other similar government mandates.]"
+        },
+        {
+          "para": "5.5",
+          "text": "Reporting to clients by Portfolio Managers"
+        },
+        {
+          "para": "5.5.1",
+          "text": "Portfolio Managers shall furnish a report in the format provided at Annexure 5D81 of this Master Circular, to their clients on a quarterly basis 82 which inter-alia includes the following:"
+        },
+        {
+          "para": "5.5.1.1",
+          "text": "Details of investment of client’s funds in the securities of associates/related parties of the Portfolio Manager."
+        },
+        {
+          "para": "5.5.1.2",
+          "text": "Details of instances of passive breach of investment limits, if any, and steps taken to rectify the same."
+        },
+        {
+          "para": "5.5.1.3",
+          "text": "Details of credit ratings of investments in debt and hybrid securities."
+        },
+        {
+          "para": "5.5.1.4",
+          "text": "[Details of fee calculation: The standard format for the annexure detailing the fee calculation shall be as specified by APMI, in consultation with SEBI.]"
+        },
+        {
+          "para": "5.6",
+          "text": "Reporting of Performance to Clients"
+        },
+        {
+          "para": "5.6.1",
+          "text": "Portfolio Manager shall present the Time-weighted Rate of Return (‘TWRR’) of the IA along with the trailing return of the selected benchmark when communicating/ advertising/ publishing/ mentioning performance of an Investment Approach."
+        },
+        {
+          "para": "5.6.2",
+          "text": "Portfolio Manager shall present the Extended Internal Rate of Return (‘XIRR’) for each IA the investor invests in when reporting performance to an investor. This shall be accompanied by the minimum, maximum and median XIRR return generated across all investors in each of the IA the investor has invested in. The TWRR of the respective IA(s) and the trailing return of the benchmark(s) selected shall also be presented separately. Following disclaimer must accompany this disclosure: “Please note that performance of your portfolio may vary from that of other investors and that generated by the Investment Approach across all investors because of 1) the timing of inflows and outflows of funds; and 2) differences in the portfolio composition because of restrictions and other constraints.”"
+        },
+        {
+          "para": "5.6.3",
+          "text": "The following shall not be mentioned or implied in performance reporting or in any other communication in any form by the Portfolio Managers:"
+        },
+        {
+          "para": "5.6.3.1",
+          "text": "Any other categorization/ classification of IAs, except for the Strategy that they are tagged to."
+        },
+        {
+          "para": "5.6.3.2",
+          "text": "Model Portfolio returns"
+        },
+        {
+          "para": "5.6.3.3",
+          "text": "The performance of one or more cherry-picked investor(s) However, aggregated performance statistics of all investors in an IA may be used by a Portfolio Manager for aggregated performance reporting."
+        },
+        {
+          "para": "5.6.4",
+          "text": "Portfolio Manager shall disclose relative performance of its investment approach in all the marketing material where performance of the concerned investment approach is being presented. Such disclosure of relative performance shall, at minimum, include the following:"
+        },
+        {
+          "para": "5.6.4.1",
+          "text": "Performance relative to the selected benchmark"
+        },
+        {
+          "para": "5.6.4.2",
+          "text": "Performance relative to other Portfolio Managers within the selected Strategy"
+        },
+        {
+          "para": "5.6.5",
+          "text": "Verification of all the above performance statistics shall be carried out in the annual audit under the Regulations."
+        },
+        {
+          "para": "5.6.6",
+          "text": "Portfolio Managers shall also submit the monthly reports to APMI in addition to SEBI within 7 working days from the end of each month. APMI shall make available the monthly reports of the Portfolio Managers on APMI website in an intuitive and user-friendly manner facilitating ease of comparison so as to provide access to portfolio level, investment approach level, portfolio manager level and industry level information to all the stakeholders. APMI shall also make available relative performance of each investment approach within the strategy to concerned portfolio manager and also disclose the same on its website."
+        },
+        {
+          "para": "5.6.7",
+          "text": "The above provisions under paragraphs 5.. to 5.. shall be applicable to any entity reporting/ publishing/ advertising performance of any Investment Approach of any Portfolio Manager."
+        },
+        {
+          "para": "5.6.8",
+          "text": "Portfolio of investors/clients of portfolio manager shall not be covered under provisions 2., 4..1A, 4.6A, 5., if,"
+        },
+        {
+          "para": "5.6.8.1",
+          "text": "Investors are governed by separate statutes like Provident Funds (Employees’ Provident Fund Organization, Coal Mines Provident Fund Organization, Exempted Provident Fund Trusts), Employee State Insurance Corporation, Postal Life Insurance, etc."
+        },
+        {
+          "para": "5.6.8.2",
+          "text": "The non-individual Investors are regulated by RBI, IRDA & PFRDA for whom specific valuation and/or benchmarking norms have been specified by the concerned regulator(s). subject to verification of compliance with the above conditions in the annual audit under Regulation 30 of the PM Regulations."
+        },
+        {
+          "para": "5.6.9",
+          "text": "Portfolio Managers shall not advertise/ publish/ mention to any entity other than those belonging to the investor category to which said Investment Approach is offered the returns of the Investment Approaches where exception as above has been exercised. Portfolio Managers may, however, include the assets managed in such Investment Approaches in their total AUM when communicating publicly as well as in regulatory reporting."
+        },
+        {
+          "para": "5.6.10",
+          "text": "Letters issued to APMI with respect to Performance Benchmarking are enclosed under ‘Policy related letters/emails issued by SEBI’"
+        }
+      ]
+    },
+    {
+      "key": "pm-6",
+      "title": "FEES AND CHARGES",
+      "paras": [
+        {
+          "para": "6.1",
+          "text": "Regulation of Fees and Charges"
+        },
+        {
+          "para": "6.1.1",
+          "text": "The inter se relationship between the portfolio manager and client, mutual rights, liabilities and obligations relating to management of funds or portfolio of securities are required to be specified in the agreement signed between the portfolio manager and the client. The contents of the portfolio manager-client agreement are laid out in the PM Regulations."
+        },
+        {
+          "para": "6.1.2",
+          "text": "In order to bring about greater uniformity, clarity and transparency with regard to fees and charges, portfolio managers are advised to take the following measures in respect of all client agreements:"
+        },
+        {
+          "para": "6.1.3",
+          "text": "Fees and Charges 89"
+        },
+        {
+          "para": "6.1.3.1",
+          "text": "As provided in the PM Regulations, no upfront fees shall be charged by the Portfolio Managers, either directly or indirectly, to the clients."
+        },
+        {
+          "para": "6.1.3.2",
+          "text": "Brokerage at actuals shall be charged to clients as expense."
+        },
+        {
+          "para": "6.1.3.3",
+          "text": "Operating expenses excluding brokerage, over and above the fees charged for Portfolio Management Service, shall not exceed 0.% per annum of the client’s average daily AUM."
+        },
+        {
+          "para": "6.1.3.4",
+          "text": "Charges for all transactions in a financial year (Broking, Demat, custody etc.) through self or associates shall be capped at 20% by value per associate (including self) per service. Any charges to self/associate shall not be at rates more than that paid to the non- associates providing the same service."
+        },
+        {
+          "para": "6.1.3.5",
+          "text": "The provisions with respect to fees and charges shall not be applicable to Co-investment services."
+        },
+        {
+          "para": "6.1.3.6",
+          "text": "Profit/ performance shall be computed on the basis of high water mark principle over the life of the investment, for charging of performance / profit sharing fee. High Water Mark Principle: High Water Mark shall be the highest value that the portfolio/account has reached. Value of the portfolio for computation of high watermark shall be taken to be the value on the date when performance fees are charged. For the purpose of charging performance fee, the frequency shall not be less than quarterly. The portfolio manager shall charge performance based fee only on increase in portfolio value in excess of the previously achieved high water mark. Illustration: Consider that frequency of charging of performance fees is annual. A client’s initial contribution is ₹50,,, which then rises to ₹60,, in its first year; a performance fee/ profit sharing would be payable on the ₹10,, return. In the next year the portfolio value drops to ₹55,, hence no performance fee would be payable. If in the third year the Portfolio rises to ₹65,,, a performance fee/profit sharing would be payable only on the ₹5,, profit which is portfolio value in excess of the previously achieved high water mark of ₹60,,, rather than on the full return during that year from ₹55,, to ₹65,,."
+        },
+        {
+          "para": "6.1.3.7",
+          "text": "All fees and charges shall be levied on the actual amount of clients’ assets under management."
+        },
+        {
+          "para": "6.1.3.8",
+          "text": "High Water Mark shall be applicable for discretionary and non- discretionary services and not for advisory services."
+        },
+        {
+          "para": "6.1.3.9",
+          "text": "In case of interim contributions/ withdrawals by clients, performance fees may be charged after appropriately adjusting the high water mark on proportionate basis. 6..3A. Fee Calculation tool: 6..3A..Portfolio Manager shall provide a fee calculation tool to all clients that highlights various fee options with multi-year fee calculations. Such tool shall incorporate the high watermark principle, wherever applicable. 6..3A. .The link to access the said tool shall be provided in advance to all new clients, on-boarded on or after October 01, 2024."
+        },
+        {
+          "para": "6.1.4",
+          "text": "Exit Load:"
+        },
+        {
+          "para": "6.1.4.1",
+          "text": "In case client portfolio is redeemed in part or full, the exit load charged shall be as under:"
+        },
+        {
+          "para": "6.1.4.1.1",
+          "text": "In the first year of investment, maximum of 3% of the amount redeemed."
+        },
+        {
+          "para": "6.1.4.1.2",
+          "text": "In the second year of investment, maximum of 2% of the amount redeemed."
+        },
+        {
+          "para": "6.1.4.1.3",
+          "text": "In the third year of investment, maximum of 1% of the amount redeemed."
+        },
+        {
+          "para": "6.1.4.1.4",
+          "text": "After a period of three years from the date of investment, no exit load."
+        },
+        {
+          "para": "6.1.4.2",
+          "text": "The provisions with respect to exit load as specified at paragraph 6... shall not be applicable to Co-investment services."
+        },
+        {
+          "para": "6.1.5",
+          "text": "In case of large value accredited investors, the quantum and manner of exit load applicable to the client of the Portfolio Manager shall be governed through bilaterally negotiated contractual terms and the provisions of paragraph 6.. of this Master Circular shall not be applicable."
+        },
+        {
+          "para": "6.1.5.1",
+          "text": "“Accredited Investor” shall have the same meaning as assigned to it under clause (ab) of sub-regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012."
+        },
+        {
+          "para": "6.1.6",
+          "text": "Maximum Liability"
+        },
+        {
+          "para": "6.1.6.1",
+          "text": "The PM Regulations provide that the agreement between the portfolio manager and the client shall, inter alia, contain, in case of a discretionary portfolio manager, a condition that the liability of a client shall not exceed his investment with the portfolio manager."
+        },
+        {
+          "para": "6.1.6.2",
+          "text": "Portfolio managers shall strictly comply with the aforesaid Regulation."
+        }
+      ]
+    },
+    {
+      "key": "pm-7",
+      "title": "GRIEVANCE REDRESSAL",
+      "paras": [
+        {
+          "para": "7.1",
+          "text": "Dispute Resolution"
+        },
+        {
+          "para": "7.1.1",
+          "text": "The PM Regulations provide for settlement of grievances/disputes and provision for arbitration in the portfolio manager – client agreement."
+        },
+        {
+          "para": "7.1.2",
+          "text": "In case of any dispute regarding fees and charges, the same shall be referred to arbitration for settlement as per the terms of the agreement, under the Arbitration and Conciliation Act, 1996."
+        },
+        {
+          "para": "7.2",
+          "text": "Disclosure of Investor Complaints by Portfolio Managers on their websites"
+        },
+        {
+          "para": "7.2.1",
+          "text": "In order to enhance transparency in the Investor Grievance Redressal Mechanism, all Portfolio Managers on a monthly basis shall disclose on their websites, the data pertaining to all complaints including SCORES complaints received by them in the format mentioned in Annexure 7A of this Master Circular. The information shall be made available by 07th of the succeeding month."
+        },
+        {
+          "para": "7.2.2",
+          "text": "Further, the Portfolio Managers are advised to display link/option on their websites and mobile apps so as to enable their clients to lodge complaint with them directly. Additionally, link to SEBI Complaints Redress System (“SCORES”) website and the link to download the SCORES mobile app may also be provided by the Portfolio Managers on their websites."
+        }
+      ]
+    }
+  ]
+}

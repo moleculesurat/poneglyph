@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "collect": "node scripts/collect.mjs",
     "dev": "next dev",
     "build": "next build",
     "preview": "npx serve out -l 3000",
