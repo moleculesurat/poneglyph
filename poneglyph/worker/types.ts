@@ -48,9 +48,8 @@ export interface Env {
   PONEGLYPH_STATE: KVNamespace;
   /* secrets — set with `wrangler secret put`, mirrored in .dev.vars locally.
      Optional at the type level so a missing key is a handled 503, never a throw. */
-  KIMI_API_KEY?: string;
-  KIMI_BASE_URL?: string;
-  KIMI_MODEL?: string;
+  OPEN_ROUTER_KEY?: string;
+  MODEL?: string;          // OpenRouter model id; default anthropic/claude-sonnet-5
   /** the shared-register write gate — required to start a run or record a
       decision. Optional at the type level so an unset gate is a handled 401. */
   GATE_TOKEN?: string;

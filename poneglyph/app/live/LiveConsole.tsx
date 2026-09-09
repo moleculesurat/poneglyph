@@ -532,8 +532,8 @@ export function LiveConsole() {
           <div className="row wrap" style={{ gap: 10 }}>
             {health ? (
               <>
-                <Chip tone={health.hasKimiKey ? "met" : "gap"}>
-                  {health.hasKimiKey ? "model configured" : "model key absent"}
+                <Chip tone={health.hasModelKey ? "met" : "gap"}>
+                  {health.hasModelKey ? "model configured" : "model key absent"}
                 </Chip>
                 {health.model ? (
                   <span className="mono-label dim" style={{ fontSize: 9.5 }}>

@@ -15,6 +15,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { AuditEvent } from "../lib/schema";
+import { modelOf } from "./extract";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { asString, error, gateAllowed, json, preflight, readJson } from "./http";
@@ -85,9 +86,9 @@ async function handleApi(
     if (method !== "GET") return error(request, 405, "GET only");
     return json(request, {
       ok: true,
-      hasKimiKey: Boolean(env.KIMI_API_KEY),
+      hasModelKey: Boolean(env.OPEN_ROUTER_KEY),
       hasGateToken: Boolean(env.GATE_TOKEN),
-      model: env.KIMI_MODEL ?? null,
+      model: modelOf(env),
       seededCounts,
     });
   }
@@ -228,12 +229,12 @@ async function startRun(
   ctx: ExecutionContext,
   state: SessionState,
 ): Promise<Response> {
-  if (!env.KIMI_API_KEY || !env.KIMI_BASE_URL || !env.KIMI_MODEL) {
+  if (!env.OPEN_ROUTER_KEY) {
     return error(
       request,
       503,
-      "The extraction model is not configured on this deployment, so no run can be started. Set KIMI_API_KEY, KIMI_BASE_URL and KIMI_MODEL as Worker secrets.",
-      { hasKimiKey: Boolean(env.KIMI_API_KEY) },
+      "The extraction model is not configured on this deployment, so no run can be started. Set OPEN_ROUTER_KEY as a Worker secret (MODEL optional, default anthropic/claude-sonnet-5).",
+      { hasModelKey: Boolean(env.OPEN_ROUTER_KEY) },
     );
   }
 

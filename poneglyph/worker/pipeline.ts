@@ -17,7 +17,7 @@ import { CHAPTER_PART } from "../lib/domains";
 import { tenant } from "../data/tenant";
 import { assessApplicability } from "./applicability";
 import { appendEvent } from "./audit";
-import { ExtractionError, extractObligations } from "./extract";
+import { ExtractionError, extractObligations, modelOf } from "./extract";
 import { proposeObligation } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { loadSession, makeRunWriter, saveSession } from "./session";
@@ -137,7 +137,7 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
     run.steps.push(
       step("extraction", {
         thought: `Clause binds the entity. Sending para ${input.para} to the extraction model for obligation drafting, with a hard requirement that every excerpt be a verbatim substring of the clause.`,
-        action: `extract_obligations(model=${env.KIMI_MODEL ?? "unconfigured"}, para=${input.para})`,
+        action: `extract_obligations(model=${modelOf(env)}, para=${input.para})`,
         observation: "Call in flight. Serialised — the provider rejects concurrent calls.",
       }),
     );

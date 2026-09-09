@@ -5,8 +5,8 @@
      · one successful call took 41s; another took 2m47s; one hit 300s and
        returned nothing at all
      · a second, concurrent call was rejected in 7s
-     · it is a reasoning model — a small max_tokens is spent entirely on
-       reasoning tokens and `content` comes back EMPTY
+     · some models are reasoning models — a small max_tokens is spent
+       entirely on reasoning tokens and `content` comes back EMPTY
    So: calls are serialised, generously budgeted, timed out at 240s, and
    attempted at most twice.
 
@@ -22,6 +22,12 @@ import { sleep } from "./session";
 const MAX_TOKENS = 4000;
 const CALL_TIMEOUT_MS = 240_000;
 const MAX_ATTEMPTS = 2;
+
+const OPENROUTER_BASE = "https://openrouter.ai/api/v1";
+export const DEFAULT_MODEL = "anthropic/claude-sonnet-5";
+export function modelOf(env: Env): string {
+  return env.MODEL?.trim() || DEFAULT_MODEL;
+}
 
 /* ── Serialisation ──────────────────────────────────────────────────────
    The provider rejects a concurrent second call outright. Within an isolate
@@ -215,8 +221,7 @@ async function callOnce(
   input: RunInput,
   correction: string | undefined,
 ): Promise<CallResult> {
-  const base = (env.KIMI_BASE_URL ?? "").replace(/\/+$/, "");
-  const model = env.KIMI_MODEL ?? "";
+  const model = modelOf(env);
   const messages: { role: string; content: string }[] = [
     { role: "system", content: SYSTEM_PROMPT },
     { role: "user", content: userPrompt(input) },
@@ -228,11 +233,13 @@ async function callOnce(
     });
   }
 
-  const response = await fetch(`${base}/chat/completions`, {
+  const response = await fetch(`${OPENROUTER_BASE}/chat/completions`, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      authorization: `Bearer ${env.KIMI_API_KEY ?? ""}`,
+      authorization: `Bearer ${env.OPEN_ROUTER_KEY ?? ""}`,
+      "http-referer": "https://github.com/moleculesurat/poneglyph",
+      "x-title": "poneglyph",
     },
     body: JSON.stringify({ model, max_tokens: MAX_TOKENS, messages }),
     signal: AbortSignal.timeout(CALL_TIMEOUT_MS),
@@ -281,9 +288,9 @@ export async function extractObligations(
   input: RunInput,
   precheck: (raw: RawObligation[]) => string | null,
 ): Promise<ExtractionOutcome> {
-  if (!env.KIMI_API_KEY || !env.KIMI_BASE_URL || !env.KIMI_MODEL) {
+  if (!env.OPEN_ROUTER_KEY) {
     throw new ExtractionError(
-      "extraction model is not configured on this deployment — KIMI_API_KEY, KIMI_BASE_URL and KIMI_MODEL must all be set. No obligations were drafted.",
+      "extraction model is not configured on this deployment — OPEN_ROUTER_KEY must be set. No obligations were drafted.",
       0,
     );
   }

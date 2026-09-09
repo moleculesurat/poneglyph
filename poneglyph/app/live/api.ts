@@ -42,7 +42,7 @@ export interface StartRunResponse {
 /** GET /api/health */
 export interface HealthResponse {
   ok: boolean;
-  hasKimiKey: boolean;
+  hasModelKey: boolean;
   hasGateToken: boolean;
   model: string | null;
   seededCounts: Record<string, number>;

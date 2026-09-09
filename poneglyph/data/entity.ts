@@ -12,7 +12,7 @@ import type { EntityFact, EntityProfile } from "@/lib/schema";
    decided only by the pipeline and the human gate, never stated here.
    ══════════════════════════════════════════════════════════════════════ */
 
-const DECLARED_BY = "Compliance Officer, Molecule Ventures LLP, 2026-09-09";
+const DECLARED_BY = "Pranjal Agrawal, Partner, Molecule Ventures LLP, 2026-09-09";
 const declared = (doc: string): Pick<EntityFact, "provenance" | "verified" | "asOf" | "source"> => ({
   provenance: "declared",
   verified: false,
@@ -26,7 +26,7 @@ export const molecule: EntityProfile = {
   shortName: "Molecule",
   incorporatedIn: "India · LLP · Gujarat / Surat",
   intermediaryTypes: ["portfolio-manager", "aif-manager"],
-  segments: [],
+  segments: ["pms-discretionary"],
   registrations: [
     { category: "Portfolio Manager", authority: "SEBI", number: "INP000007216", masked: false },
     {
@@ -52,14 +52,14 @@ export const molecule: EntityProfile = {
     {
       key: "aum",
       label: "AUM",
-      value: "Rs 777 crore (Nov 2025)",
-      rupees: 7_770_000_000,
+      value: "Rs 1,000 crore+ (Sep 2026)",
+      rupees: 10_000_000_000,
       ...declared("PM monthly report to SEBI, Nov 2025 (SI Portal)"),
     },
     {
       key: "clients",
       label: "Clients",
-      value: "431 (Nov 2025)",
+      value: "500 (Sep 2026)",
       ...declared("PM monthly report to SEBI, Nov 2025 (SI Portal)"),
     },
     {
@@ -68,10 +68,16 @@ export const molecule: EntityProfile = {
       value: "Category II AIF — in preparation",
       ...declared("SEBI AIF application / registration certificate"),
     },
+    {
+      key: "pms-automation-threshold",
+      label: "PMS MC 2.7.3.1 threshold",
+      value: "AUM ≥ Rs 1,000 crore — automated order/allocation system applies",
+      ...declared("PM monthly report to SEBI showing AUM"),
+    },
   ],
   cscrfGrade: "self-certification",
   cscrfBasis:
-    'Portfolio manager: Table 3 grades a PM with AUM "Rs. 3000 Crores and below" as a self-certification RE (para 2.6); declared AUM Rs 777 crore. AIF manager: Table 4 grades a manager whose "Sum of corpus of all AIFs, VCFs, and their schemes managed by a manager" is "Rs. 3000 Crores and below" as a self-certification RE (para 2.7); no scheme launched yet. Para 4: "In case an RE is registered under more than one category of REs, then the provision of highest category under which such an RE falls shall be applicable to that RE." Both categories resolve to self-certification. Market-SOC: para 2.6 exempts only self-certification PMs that "have less than 100 clients"; declared client count is 431, so the M-SOC requirement is NOT exempted. Facts are declared, not yet documented; the grade is re-derived when the backing documents arrive.',
+    'Portfolio manager: Table 3 grades a PM with AUM "Rs. 3000 Crores and below" as a self-certification RE (para 2.6); declared AUM Rs 1,000 crore+. AIF manager: Table 4 grades a manager whose "Sum of corpus of all AIFs, VCFs, and their schemes managed by a manager" is "Rs. 3000 Crores and below" as a self-certification RE (para 2.7); no scheme launched yet. Para 4: "In case an RE is registered under more than one category of REs, then the provision of highest category under which such an RE falls shall be applicable to that RE." Both categories resolve to self-certification. Market-SOC: para 2.6 exempts only self-certification PMs that "have less than 100 clients"; declared client count is 500, so the M-SOC requirement is NOT exempted. Facts are declared, not yet documented; the grade is re-derived when the backing documents arrive.',
   applicableParts: ["MC-PM-2025", "MC-AIF-2026"],
   excludedParts: [],
 };
