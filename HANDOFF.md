@@ -93,15 +93,21 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
   drafts (1 draft each, 5/5, verbatim excerpts; titles wordier; 5.1.2 frequency "monthly" vs Sonnet's
   "7 working days"). Schema gap for stage [5]: cadence and filing window share one `frequency` field.
 
+- 95b6982 9: app/live/PendingQueue.tsx — all pending drafts from /api/state, GateCard reused, mounted under the console.
+- 84435f9 10: FIRST TWO APPROVALS in git: register.json = OBL-001 (PMS 5.1.2), OBL-002 (AIF 21.1.2), approved by
+  "Compliance Officer" (placeholder, Pranjal's OK), status gap (no evidence), 7 events, tip 87abbb09e9e3.
+  Reseed loop proven: fresh KV -> intact, same tip, re-pull byte-identical. d93fdec /live prose fixed.
+- Gotcha: `npm run pull` needs `npx wrangler dev --port 8787` running (ECONNREFUSED otherwise).
+- /register rows are client-rendered (RegisterTable in Suspense) so static HTML greps can't see ids; use the JS chunk.
+- Pranjal's .dev.vars GATE_TOKEN was literally "<pick a real token>" — told him to set a real one.
+
 ## In progress (prompt given, awaiting report)
-Task 9: app/live/PendingQueue.tsx — all pending drafts from /api/state with the existing GateCard; mounted on
-/live under the console. Then Pranjal approves OBL-001/002 in the browser (first real gate decisions, placeholder
-officer name OK per Pranjal), `npm run pull`, commit register.json.
+Task 11: batch — `npm run paras -- run MC-PM-2025 all` then `MC-AIF-2026 all` (75 paras, GLM); renumber /live
+scope section to 07. Then I read all drafts via /api/state and give Pranjal a review sheet; he decides in the queue;
+pull; commit.
 
 ## Next tasks (one prompt each)
-5.  Task 8: /live pending queue (app/live/PendingQueue.tsx: list all pending drafts from /api/state with the
-    GateCard approve/reject). Task 9: `run MC-PM-2025 all` + `run MC-AIF-2026 all` (75 paras, ~15 min);
-    Pranjal approves/rejects in the queue; `npm run pull`; commit register.json.
+5.  After the batch: schema `window` field (cadence vs filing window), stage [5] SCHEDULE.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
