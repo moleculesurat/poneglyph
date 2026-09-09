@@ -15,10 +15,9 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { AuditEvent } from "../lib/schema";
-import { tamperEvent } from "./audit";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
-import { asString, error, json, preflight, readJson, readSessionCookie } from "./http";
+import { asString, error, gateAllowed, json, preflight, readJson } from "./http";
 import { isChapterKey, newRun, runPipeline } from "./pipeline";
 import {
   loadRun,
@@ -26,7 +25,6 @@ import {
   nextRunId,
   resolveSession,
   saveSession,
-  seedSession,
   seededCounts,
 } from "./session";
 import type {
@@ -88,6 +86,7 @@ async function handleApi(
     return json(request, {
       ok: true,
       hasKimiKey: Boolean(env.KIMI_API_KEY),
+      hasGateToken: Boolean(env.GATE_TOKEN),
       model: env.KIMI_MODEL ?? null,
       seededCounts,
     });
@@ -105,89 +104,53 @@ async function handleApi(
     return json(request, await pollWatch(env, body?.force === true));
   }
 
-  const sid = readSessionCookie(request);
-
-  /* fresh sandbox, fresh chain */
-  if (path === "/api/session/reset") {
-    if (method !== "POST") return error(request, 405, "POST only");
-    const state = await seedSession(sid ?? crypto.randomUUID());
-    await saveSession(env, state);
-    return json(
-      request,
-      { sessionId: state.sessionId, seeded: true },
-      { setSessionCookie: state.sessionId },
-    );
-  }
-
-  const { state, created } = await resolveSession(env, sid);
-  const cookie = created ? state.sessionId : undefined;
+  const state = await resolveSession(env);
 
   if (path === "/api/state") {
     if (method !== "GET") return error(request, 405, "GET only");
     const runs = await loadRuns(env, state);
-    return json(
-      request,
-      {
-        sessionId: state.sessionId,
-        /* the LIVE delta only — the 43 seeded rows are already in the bundle */
-        obligations: [...state.pending, ...state.register],
-        rejected: state.rejected,
-        decisions: state.decisions,
-        auditEvents: state.chain,
-        chainTip: chainTip(state.chain),
-        runs,
-        counts: stateCounts(state, runs),
-      },
-      { setSessionCookie: cookie },
-    );
+    return json(request, {
+      sessionId: state.sessionId,
+      /* the LIVE delta only — the 43 seeded rows are already in the bundle */
+      obligations: [...state.pending, ...state.register],
+      rejected: state.rejected,
+      decisions: state.decisions,
+      auditEvents: state.chain,
+      chainTip: chainTip(state.chain),
+      runs,
+      counts: stateCounts(state, runs),
+    });
   }
 
   if (path === "/api/audit") {
     if (method !== "GET") return error(request, 405, "GET only");
-    return json(
-      request,
-      {
-        events: state.chain,
-        count: state.chain.length,
-        seededCount: state.seededChainLength,
-        liveCount: state.chain.length - state.seededChainLength,
-        tip: chainTip(state.chain),
-      },
-      { setSessionCookie: cookie },
-    );
+    return json(request, {
+      events: state.chain,
+      count: state.chain.length,
+      seededCount: state.seededChainLength,
+      liveCount: state.chain.length - state.seededChainLength,
+      tip: chainTip(state.chain),
+    });
   }
 
   if (path === "/api/audit/verify") {
     if (method !== "POST") return error(request, 405, "POST only");
     const verdict = await verifyChain(state.chain);
-    return json(
-      request,
-      {
-        intact: verdict.intact,
-        count: verdict.count,
-        breaks: verdict.breaks,
-        tip: verdict.tip,
-        method:
-          'Each event was re-hashed with SHA-256 over id|at|actor|action|subjectType|subjectId|detail|prevHash and compared with its stored hash. No stored hash was trusted.',
-      },
-      { setSessionCookie: cookie },
-    );
-  }
-
-  if (path === "/api/audit/tamper") {
-    if (method !== "POST") return error(request, 405, "POST only");
-    const body = await readJson(request);
-    const rawIndex = body?.index;
-    const index = typeof rawIndex === "number" ? rawIndex : undefined;
-    const result = tamperEvent(state, index);
-    if (!result) return error(request, 409, "the trail is empty; nothing to alter");
-    await saveSession(env, state);
-    return json(request, result, { setSessionCookie: cookie });
+    return json(request, {
+      intact: verdict.intact,
+      count: verdict.count,
+      breaks: verdict.breaks,
+      tip: verdict.tip,
+      method:
+        'Each event was re-hashed with SHA-256 over id|at|actor|action|subjectType|subjectId|detail|prevHash and compared with its stored hash. No stored hash was trusted.',
+    });
   }
 
   if (path === "/api/runs") {
     if (method !== "POST") return error(request, 405, "POST only");
-    return startRun(request, env, ctx, state, cookie);
+    if (!gateAllowed(request, env))
+      return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+    return startRun(request, env, ctx, state);
   }
 
   const runMatch = path.match(/^\/api\/runs\/([A-Za-z0-9-]{1,32})$/);
@@ -228,32 +191,30 @@ async function handleApi(
       await makeRunWriter(env, state.sessionId)(run);
     }
 
-    return json(
-      request,
-      {
-        id: run.id,
-        status: run.status,
-        trigger: run.trigger,
-        input: run.input,
-        steps: run.steps,
-        verifierChecks: run.verifierChecks,
-        proposed: run.proposed,
-        error: run.error,
-        startedAt: run.startedAt,
-        finishedAt: run.finishedAt,
-        durationSec:
-          run.status === "running"
-            ? Math.round((Date.now() - new Date(run.startedAt).getTime()) / 1000)
-            : run.durationSec,
-      },
-      { setSessionCookie: cookie },
-    );
+    return json(request, {
+      id: run.id,
+      status: run.status,
+      trigger: run.trigger,
+      input: run.input,
+      steps: run.steps,
+      verifierChecks: run.verifierChecks,
+      proposed: run.proposed,
+      error: run.error,
+      startedAt: run.startedAt,
+      finishedAt: run.finishedAt,
+      durationSec:
+        run.status === "running"
+          ? Math.round((Date.now() - new Date(run.startedAt).getTime()) / 1000)
+          : run.durationSec,
+    });
   }
 
   const decisionMatch = path.match(/^\/api\/obligations\/([A-Za-z0-9-]{1,32})\/decision$/);
   if (decisionMatch) {
     if (method !== "POST") return error(request, 405, "POST only");
-    return handleDecision(request, env, state, decisionMatch[1], cookie);
+    if (!gateAllowed(request, env))
+      return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+    return handleDecision(request, env, state, decisionMatch[1]);
   }
 
   return error(request, 404, `no API route for ${method} ${url.pathname}`);
@@ -266,7 +227,6 @@ async function startRun(
   env: Env,
   ctx: ExecutionContext,
   state: SessionState,
-  cookie: string | undefined,
 ): Promise<Response> {
   if (!env.KIMI_API_KEY || !env.KIMI_BASE_URL || !env.KIMI_MODEL) {
     return error(
@@ -329,11 +289,7 @@ async function startRun(
   /* return now; the pipeline keeps writing after the response is sent */
   ctx.waitUntil(runPipeline(env, state.sessionId, run));
 
-  return json(
-    request,
-    { runId: run.id, status: "running" },
-    { status: 202, setSessionCookie: cookie },
-  );
+  return json(request, { runId: run.id, status: "running" }, { status: 202 });
 }
 
 /** A run sits at `awaiting-approval` until every obligation it drafted has
@@ -363,7 +319,6 @@ async function handleDecision(
   env: Env,
   state: SessionState,
   obligationId: string,
-  cookie: string | undefined,
 ): Promise<Response> {
   const body = await readJson(request);
   if (!body) return error(request, 400, "expected a JSON object body");
@@ -403,11 +358,11 @@ async function handleDecision(
   await closeRunIfFullyDecided(env, state, result.obligation.createdByRun);
   const auditEvent = state.chain.find((e) => e.id === result.auditEventId);
 
-  return json(
-    request,
-    { obligation: result.obligation, auditEvent, chainTip: chainTip(state.chain) },
-    { setSessionCookie: cookie },
-  );
+  return json(request, {
+    obligation: result.obligation,
+    auditEvent,
+    chainTip: chainTip(state.chain),
+  });
 }
 
 /* ── Entry ──────────────────────────────────────────────────────────── */

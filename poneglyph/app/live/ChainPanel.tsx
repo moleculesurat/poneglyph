@@ -1,27 +1,17 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   Chain integrity — the session's hash chain, verification, and the
-   tamper test.
+   Chain integrity — the shared register's hash chain and its verification.
 
    Nothing on this panel is animated. "verify chain" recomputes SHA-256
    over every event's own content in the Worker and compares it with the
-   stored digest. "tamper test" edits one event's detail text in storage
-   and leaves its stored hash unchanged, reproducing a database-level
-   edit; the verifier is not told that anything happened.
+   stored digest, so no stored hash is taken on trust.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { useCallback, useEffect, useState } from "react";
 import { Chip, Hairline, KV, MarkedCard } from "@/components/ui";
 import type { AuditEvent } from "@/lib/schema";
-import {
-  apiCall,
-  stampOf,
-  type AuditResponse,
-  type ResetResponse,
-  type TamperResponse,
-  type VerifyResponse,
-} from "./api";
+import { apiCall, stampOf, type AuditResponse, type VerifyResponse } from "./api";
 import { MonoBtn, Notice } from "./parts";
 
 const WINDOW = 10;
@@ -138,18 +128,11 @@ function EventRow({
   );
 }
 
-export function ChainPanel({
-  refreshKey,
-  onSessionReset,
-}: {
-  refreshKey: number;
-  onSessionReset: () => void;
-}) {
+export function ChainPanel({ refreshKey }: { refreshKey: number }) {
   const [audit, setAudit] = useState<AuditResponse | null>(null);
   const [verdict, setVerdict] = useState<VerifyResponse | null>(null);
-  const [tamper, setTamper] = useState<TamperResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState<null | "load" | "verify" | "tamper" | "reset">(null);
+  const [busy, setBusy] = useState<null | "load" | "verify">(null);
   const [showAll, setShowAll] = useState(false);
 
   const load = useCallback(async () => {
@@ -174,45 +157,6 @@ export function ChainPanel({
       setBusy("verify");
       setError(null);
       setVerdict(await apiCall<VerifyResponse>("/api/audit/verify", { method: "POST" }));
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setBusy(null);
-    }
-  }
-
-  async function doTamper() {
-    if (!audit) return;
-    try {
-      setBusy("tamper");
-      setError(null);
-      /* aim at an event inside the window on screen, so the break is visible
-         rather than buried three hundred rows up */
-      const index = Math.max(0, audit.count - 4);
-      const result = await apiCall<TamperResponse>("/api/audit/tamper", {
-        method: "POST",
-        body: { index },
-      });
-      setTamper(result);
-      setVerdict(null);
-      setShowAll(false);
-      await load();
-    } catch (e) {
-      setError((e as Error).message);
-    } finally {
-      setBusy(null);
-    }
-  }
-
-  async function reset() {
-    try {
-      setBusy("reset");
-      setError(null);
-      await apiCall<ResetResponse>("/api/session/reset", { method: "POST" });
-      setVerdict(null);
-      setTamper(null);
-      onSessionReset();
-      await load();
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -250,17 +194,6 @@ export function ChainPanel({
           <MonoBtn onClick={() => void verify()} disabled={busy !== null || events.length === 0}>
             {busy === "verify" ? "verifying…" : "verify chain"}
           </MonoBtn>
-          <MonoBtn
-            tone="orange"
-            onClick={() => void doTamper()}
-            disabled={busy !== null || events.length === 0}
-            title="Diagnostic: edits one event's detail text in storage and leaves its stored hash unchanged, reproducing a database-level edit."
-          >
-            {busy === "tamper" ? "editing record…" : "tamper test"}
-          </MonoBtn>
-          <MonoBtn onClick={() => void reset()} disabled={busy !== null}>
-            {busy === "reset" ? "reseeding…" : "reset session"}
-          </MonoBtn>
         </div>
       </div>
 
@@ -270,9 +203,7 @@ export function ChainPanel({
           id | at | actor | action | subjectType | subjectId | detail | prevHash
         </span>
         . Verification recomputes each digest from the event&apos;s own content and compares it with
-        the stored value, so no stored hash is taken on trust. The tamper test is the diagnostic for
-        that property: it edits a stored record without touching its stored hash, and verification
-        reports the mismatch it produces.
+        the stored value, so no stored hash is taken on trust.
       </p>
 
       {error ? <Notice tone="attention">{error}</Notice> : null}
@@ -312,14 +243,6 @@ export function ChainPanel({
             </div>
           </MarkedCard>
         </div>
-      ) : null}
-
-      {tamper ? (
-        <Notice tone="attention">
-          {tamper.hint} No other record was modified, and{" "}
-          <span className="mono-value">/api/audit/verify</span> receives no signal that the edit
-          occurred — run it now and the mismatch is found by recomputation alone.
-        </Notice>
       ) : null}
 
       {verdict ? (
@@ -364,7 +287,7 @@ export function ChainPanel({
                 event chains onto the stored hash — the verifier carries stored hashes forward
                 deliberately, so one edit reports as one precise break rather than a cascade down the
                 tail. Every entry after index {firstBreak} names a predecessor whose recorded content
-                no longer produces the hash it claims. Reset the session to reseed a clean chain.
+                no longer produces the hash it claims.
               </p>
             ) : null}
           </div>

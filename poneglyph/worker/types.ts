@@ -51,6 +51,9 @@ export interface Env {
   KIMI_API_KEY?: string;
   KIMI_BASE_URL?: string;
   KIMI_MODEL?: string;
+  /** the shared-register write gate — required to start a run or record a
+      decision. Optional at the type level so an unset gate is a handled 401. */
+  GATE_TOKEN?: string;
 }
 
 /** what the cron trigger hands to scheduled() — structurally exact */
@@ -155,9 +158,9 @@ export interface DecisionRecord {
 
 /* ── Session ────────────────────────────────────────────────────────── */
 
-/** One judge, one sandbox. Everything mutable lives here, under `sess:<sid>`.
-    `pending` and `register` are separate collections ON PURPOSE — see
-    worker/gate.ts for why that is the whole product claim. */
+/** One tenant, one shared register. Everything mutable lives here, under
+    `sess:molecule`. `pending` and `register` are separate collections ON
+    PURPOSE — see worker/gate.ts for why that is the whole product claim. */
 export interface SessionState {
   sessionId: string;
   createdAt: string;
@@ -177,6 +180,4 @@ export interface SessionState {
   nextRunSeq: number;
   nextObligationSeq: number;
   nextEventSeq: number;
-  /** set by /api/audit/tamper so the UI can explain what verify just caught */
-  tampered?: { index: number; id: string; field: string };
 }

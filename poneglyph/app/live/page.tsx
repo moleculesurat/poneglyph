@@ -27,11 +27,11 @@ const REAL_HERE = [
   },
   {
     k: "Hash chain",
-    v: "SHA-256 computed with Web Crypto over a canonical event string. Verification recomputes every digest from the event's own content, so the tamper test — which edits stored content and leaves the stored hash alone — is detected by arithmetic rather than by a flag.",
+    v: "SHA-256 computed with Web Crypto over a canonical event string. Verification recomputes every digest from the event's own content and compares it with the stored value, so an edit to stored content is caught by arithmetic rather than by a flag — no stored hash is taken on trust.",
   },
   {
     k: "Authorisation gate",
-    v: "Approve or reject writes to persisted state in the visitor's own sandbox: the obligation moves collections, the run closes, and a new audit event is appended with a computed hash.",
+    v: "Approve or reject writes to the shared persisted register: the obligation moves collections, the run closes, and a new audit event is appended with a computed hash.",
   },
 ];
 

@@ -1,13 +1,22 @@
 /* ══════════════════════════════════════════════════════════════════════
-   HTTP plumbing — JSON responses, same-origin CORS, the session cookie.
+   HTTP plumbing — JSON responses, same-origin CORS, the write gate.
 
    CORS is deliberately not permissive. The Worker serves the API and the
    static site from the same origin, so the only Origin ever echoed is the
    request's own. There is no wildcard and no allowlist of third parties.
    ══════════════════════════════════════════════════════════════════════ */
 
-export const SESSION_COOKIE = "pg_sid";
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 30; // 30 days
+import type { Env } from "./types";
+
+/** The register is shared, so writes are gated by a shared secret. A request
+    may start a run or record a decision only if it carries the token. */
+export function gateAllowed(request: Request, env: Env): boolean {
+  return (
+    typeof env.GATE_TOKEN === "string" &&
+    env.GATE_TOKEN.length > 0 &&
+    request.headers.get("x-gate-token") === env.GATE_TOKEN
+  );
+}
 
 /** Echo Origin only when it is this very origin. Anything else gets no
     CORS headers at all, which is the correct answer for a same-origin API. */
@@ -20,7 +29,7 @@ export function corsHeaders(request: Request): Record<string, string> {
     "access-control-allow-origin": origin,
     "access-control-allow-credentials": "true",
     "access-control-allow-methods": "GET, POST, OPTIONS",
-    "access-control-allow-headers": "content-type",
+    "access-control-allow-headers": "content-type, x-gate-token",
     vary: "Origin",
   };
 }
@@ -28,7 +37,7 @@ export function corsHeaders(request: Request): Record<string, string> {
 export function json(
   request: Request,
   body: unknown,
-  init: { status?: number; setSessionCookie?: string } = {},
+  init: { status?: number } = {},
 ): Response {
   const headers = new Headers({
     "content-type": "application/json; charset=utf-8",
@@ -36,30 +45,7 @@ export function json(
     "cache-control": "no-store",
     ...corsHeaders(request),
   });
-  if (init.setSessionCookie) {
-    headers.append("set-cookie", sessionCookie(request, init.setSessionCookie));
-  }
   return new Response(JSON.stringify(body), { status: init.status ?? 200, headers });
-}
-
-export function sessionCookie(request: Request, sid: string): string {
-  const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
-  return `${SESSION_COOKIE}=${sid}; HttpOnly; SameSite=Lax; Path=/; Max-Age=${COOKIE_MAX_AGE}${secure}`;
-}
-
-export function readSessionCookie(request: Request): string | null {
-  const header = request.headers.get("Cookie");
-  if (!header) return null;
-  for (const part of header.split(";")) {
-    const [name, ...rest] = part.trim().split("=");
-    if (name === SESSION_COOKIE) {
-      const value = rest.join("=").trim();
-      /* only ever a UUID we minted — reject anything else rather than using
-         an attacker-chosen string as a KV key */
-      return /^[0-9a-f-]{36}$/i.test(value) ? value : null;
-    }
-  }
-  return null;
 }
 
 export function error(

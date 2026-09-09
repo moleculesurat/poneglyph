@@ -23,8 +23,8 @@
   "routes": [
     { "pattern": "poneglyph.walrussecuritas.com", "custom_domain": true }
   ],
-  // one sandbox per visitor, keyed by the pg_sid cookie: sess:<sid> holds the
-  // hash chain and the register delta, run:<sid>:<runId> holds a live run.
+  // one shared register for the one tenant: sess:molecule holds the hash
+  // chain and the register delta, run:molecule:<runId> holds a live run.
   "kv_namespaces": [
     { "binding": "PONEGLYPH_STATE", "id": "07e8da45f72b47c7bc3b9b29d4dd8634" }
   ],

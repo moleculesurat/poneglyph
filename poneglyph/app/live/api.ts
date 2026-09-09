@@ -43,6 +43,7 @@ export interface StartRunResponse {
 export interface HealthResponse {
   ok: boolean;
   hasKimiKey: boolean;
+  hasGateToken: boolean;
   model: string | null;
   seededCounts: Record<string, number>;
 }
@@ -71,12 +72,6 @@ export interface VerifyResponse {
   method: string;
 }
 
-/** POST /api/audit/tamper */
-export interface TamperResponse {
-  tampered: { index: number; id: string; field: string };
-  hint: string;
-}
-
 /** POST /api/obligations/:id/decision */
 export interface DecisionResponse {
   obligation: Obligation;
@@ -84,11 +79,8 @@ export interface DecisionResponse {
   chainTip: string;
 }
 
-/** POST /api/session/reset */
-export interface ResetResponse {
-  sessionId: string;
-  seeded: boolean;
-}
+/** sessionStorage key holding the shared-register write gate token */
+export const GATE_TOKEN_KEY = "gate-token";
 
 const NO_API =
   "The engine API did not answer with JSON. /live is the one route that needs the Worker in front of the static export — a plain file-server preview of ./out serves the pages but no /api.";
@@ -101,19 +93,29 @@ function messageOf(body: unknown, fallback: string): string {
   return fallback;
 }
 
-/** One call to the engine. Cookies ride along by default (same-origin), which
-    is how the sandbox stays yours and nobody else's. */
+/** One call to the engine. Write routes are gated by a shared token, sent in
+    the x-gate-token header from sessionStorage when the operator has set one. */
 export async function apiCall<T>(
   path: string,
   init: { method?: string; body?: Record<string, unknown> } = {},
 ): Promise<T> {
   const method = init.method ?? "GET";
+
+  const headers: Record<string, string> = {};
+  if (init.body) headers["content-type"] = "application/json";
+  try {
+    const token = sessionStorage.getItem(GATE_TOKEN_KEY);
+    if (token !== null) headers["x-gate-token"] = token;
+  } catch {
+    /* sessionStorage unavailable — send the call without a gate token */
+  }
+
   let response: Response;
   try {
     response = await fetch(path, {
       method,
       cache: "no-store",
-      headers: init.body ? { "content-type": "application/json" } : undefined,
+      headers,
       body: init.body ? JSON.stringify(init.body) : undefined,
     });
   } catch (e) {

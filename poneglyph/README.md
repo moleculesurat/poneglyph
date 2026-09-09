@@ -72,3 +72,8 @@ What the engine cannot verify, it reports as unverified — never as compliant. 
 - `app/` — one route per tab; `app/page.tsx` is the design exemplar
 - `components/` + `app/globals.css` — the Poneglyph design system
 - `DESIGN.md` — the build contract (brand rules, data contract, page specs)
+
+## Worker secrets
+
+Copy `dev.vars.example` to `.dev.vars` (gitignored) for `npx wrangler dev`; `GATE_TOKEN` gates the write routes and `KIMI_*` wires the extraction model.
+On deploy, set them as Worker secrets: `npx wrangler secret put GATE_TOKEN` (and likewise `KIMI_API_KEY`, `KIMI_BASE_URL`, `KIMI_MODEL`).

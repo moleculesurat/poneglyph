@@ -1,8 +1,8 @@
 /* ══════════════════════════════════════════════════════════════════════
-   Sessions — one sandbox per visitor.
+   Session — one shared register for the one tenant.
 
-   Every judge gets their own KV-backed sandbox seeded from data/. One
-   person approving an obligation cannot change what anybody else sees.
+   There is a single KV-backed register, keyed `sess:molecule`, seeded from
+   data/. Everyone who opens the app sees and mutates the same state.
 
    Seeding re-hashes the authored audit trail FOR REAL. The 56 events in
    data/audit.ts carry hand-written hex hashes that were never computed;
@@ -24,8 +24,11 @@ import { documentRequirements } from "../data/documents";
 import { rechain } from "./hash";
 import type { Env, LiveRun, SessionState } from "./types";
 
-const SESSION_TTL_SECONDS = 60 * 60 * 24 * 30; // matches the cookie
+const SESSION_TTL_SECONDS = 60 * 60 * 24 * 30; // 30 days
 const RUN_TTL_SECONDS = 60 * 60 * 24 * 7;
+
+/** The one tenant. Every request resolves to this single shared register. */
+export const TENANT_SID = "molecule";
 
 export const LIVE_RUN_SEQ_START = 50; // seeded corpus ends at RUN-049
 export const LIVE_OBLIGATION_SEQ_START = 201; // seeded ends at OBL-SB-110
@@ -91,25 +94,19 @@ export async function saveSession(env: Env, state: SessionState): Promise<void> 
   });
 }
 
-/** Load the caller's sandbox, minting and seeding one if they have none.
-    `created` tells the caller to set the cookie. */
-export async function resolveSession(
-  env: Env,
-  sid: string | null,
-): Promise<{ state: SessionState; created: boolean }> {
-  if (sid) {
-    const existing = await loadSession(env, sid);
-    if (existing) return { state: existing, created: false };
-  }
-  const state = await seedSession(crypto.randomUUID());
+/** Load the one shared register, seeding it the first time it is asked for. */
+export async function resolveSession(env: Env): Promise<SessionState> {
+  const existing = await loadSession(env, TENANT_SID);
+  if (existing) return existing;
+  const state = await seedSession(TENANT_SID);
   await saveSession(env, state);
-  return { state, created: true };
+  return state;
 }
 
 /* ── Live runs ──────────────────────────────────────────────────────────
    Runs live under their own keys, not inside the session blob. The pipeline
-   writes progress every step; a decision or a tamper writes the session.
-   Separate keys mean a three-minute extraction cannot clobber an approval
+   writes progress every step; a decision writes the session. Separate keys
+   mean a three-minute extraction cannot clobber an approval
    that happened while it was in flight. */
 
 export async function loadRun(env: Env, sid: string, runId: string): Promise<LiveRun | null> {

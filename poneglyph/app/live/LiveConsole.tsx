@@ -18,6 +18,7 @@ import type { ChapterKey, Obligation, VerifierCheck } from "@/lib/schema";
 import { tenant } from "@/data/tenant";
 import {
   apiCall,
+  GATE_TOKEN_KEY,
   secondsLabel,
   stampOf,
   type DecisionResponse,
@@ -261,6 +262,14 @@ function GateCard({
   onDecide: (decision: "approve" | "reject") => void;
 }) {
   const o = decided?.obligation ?? obligation;
+  const [token, setToken] = useState("");
+  useEffect(() => {
+    try {
+      setToken(sessionStorage.getItem(GATE_TOKEN_KEY) ?? "");
+    } catch {
+      /* sessionStorage unavailable — leave the field empty */
+    }
+  }, []);
   return (
     <MarkedCard pad={22} style={decided ? undefined : { borderColor: "var(--orange)" }}>
       <div className="stack" style={{ gap: 16 }}>
@@ -347,6 +356,26 @@ function GateCard({
                 <Cta variant="ghost" onClick={() => onDecide("reject")}>
                   Reject
                 </Cta>
+                <input
+                  type="password"
+                  placeholder="gate token"
+                  value={token}
+                  onChange={(e) => {
+                    setToken(e.target.value);
+                    try {
+                      sessionStorage.setItem(GATE_TOKEN_KEY, e.target.value);
+                    } catch {
+                      /* sessionStorage unavailable — the header just won't be sent */
+                    }
+                  }}
+                  className="mono-value"
+                  style={{
+                    border: "1.5px solid var(--ink-10)",
+                    background: "var(--white)",
+                    padding: "9px 11px",
+                    color: "var(--ink)",
+                  }}
+                />
               </div>
               <span className="mono-label dim" style={{ fontSize: 9.5 }}>
                 signs as {OFFICER.name} · {OFFICER.role}
@@ -480,15 +509,6 @@ export function LiveConsole() {
     } finally {
       setDecidingId(null);
     }
-  }
-
-  function resetLocal() {
-    window.sessionStorage.removeItem(RUN_KEY);
-    setRunId(null);
-    setRun(null);
-    setDecisions({});
-    setDecisionError(null);
-    setPollError(null);
   }
 
   const running = run?.status === "running";
@@ -837,7 +857,7 @@ export function LiveConsole() {
       ) : null}
 
       {/* ── 05 · the chain ────────────────────────────────────────────── */}
-      <ChainPanel refreshKey={chainRefresh} onSessionReset={resetLocal} />
+      <ChainPanel refreshKey={chainRefresh} />
     </div>
   );
 }

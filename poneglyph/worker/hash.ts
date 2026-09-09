@@ -11,9 +11,8 @@
 
    Verification RECOMPUTES every hash from the event's own content and
    compares it against the stored value. Nothing trusts a stored hash.
-   That is the difference between a tamper demo that means something and
-   one that is theatre: alter a `detail` field and the recomputation
-   diverges at that event and at every event after it.
+   That is what makes the chain meaningful rather than theatre: alter a
+   `detail` field in storage and the recomputation diverges at that event.
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { AuditEvent } from "../lib/schema";
