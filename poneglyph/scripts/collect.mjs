@@ -1,15 +1,18 @@
 // collect — parse the two SEBI master circulars (pdftotext -layout dumps) into
 // paragraph JSON. Plain Node, no deps. Deterministic: same input -> byte-identical output.
 //
-// ponytail: footnote handling is precision-first, not exhaustive. We strip footnote
-// digits GLUED to a lowercase word ("requirements29"), to closing punctuation
-// ("Managers"45), and landing at a paragraph's start ("65All"). We deliberately do NOT
-// touch spaced footnotes ("month 67 and") — leaving a stray "67" is cosmetic and never
-// costs a real number like "7 working days" — nor digits glued after an UPPERCASE letter
-// ("5A66"), because that would corrupt real identifiers like "DOF1"/"POD1". Titles get one
-// extra pass: a trailing standalone number is dropped, since a heading never ends in one.
-// A lone 1-3 digit line is treated as a footnote-block start; body tables (none pre-annexure
-// here) could fool that.
+// ponytail: footnote handling is precision-first, not exhaustive, because verbatim text is
+// rule 1 of the roadmap. We strip footnote digits GLUED to a lowercase word
+// ("requirements29"), to a closing bracket/quote (")28", "”28"), landing at a paragraph's
+// start ("65All"), and glued to a sentence-ending full stop — a dot preceded by a letter and
+// followed by a new sentence ("requirement.45 The" -> "requirement. The"). We deliberately do
+// NOT touch: spaced footnotes ("month 67 and") — a stray "67" is cosmetic and never costs a
+// real number like "7 working days"; digits after an UPPERCASE letter ("5A66"), which would
+// corrupt identifiers like "DOF1"/"POD1"; and — the reason for the full-stop guard — decimals
+// and cross-references, so "0.50%", "₹50,00,000", "para 2.4.1 of" and "para 3.1.1 (a)" stay
+// exact. Titles get one extra pass: a trailing standalone number is dropped, since a heading
+// never ends in one. A lone 1-3 digit line is treated as a footnote-block start; body tables
+// (none pre-annexure here) could fool that.
 
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
@@ -67,8 +70,13 @@ function matchHeading(doc, line) {
 function stripFootnotes(s) {
   return s
     .replace(/^\d+(?=[A-Za-z])/, "") // superscript landed at the start: "65All" -> "All"
-    .replace(/([)\]”"'’.,;:])\d{1,3}\b/g, "$1") // after closing punctuation
-    .replace(/([a-z])\d{1,3}\b/g, "$1"); // after a lowercase word: "requirements29"
+    .replace(/([a-z])\d{1,3}\b/g, "$1") // after a lowercase word: "requirements29"
+    .replace(/([)\]”"'’])\d{1,3}\b/g, "$1") // after a closing bracket or quote: "(CIV”28)" -> "(CIV”)"
+    // after a sentence-ending full stop (dot preceded by a letter) AND followed by a new
+    // sentence — whitespace + a capital or an opening quote/bracket, or end of text:
+    // "requirement.45 The" -> "requirement. The". The letter-before-dot guard leaves numeric
+    // separators alone, so "para 3.1.1 (a)", "para 2.4.1 of" and "0.50%" are untouched.
+    .replace(/([A-Za-z]\.)\d{1,3}(?=\s+["'“‘(\[A-Z]|\s*$)/g, "$1");
 }
 
 const cleanText = (s) => stripFootnotes(s.replace(/\s+/g, " ").trim()).trim();
@@ -171,11 +179,33 @@ function build(doc) {
   if (doc.id === "MC-PM-2025") {
     if (!chapters.some((c) => c.key === "pm-5")) throw new Error("MC-PM-2025: chapter 5 missing");
     has("5.1.2", "within 7 working days of the end of each month");
+    has("6.1.3.3", "0.50% per annum"); // decimal must survive
+    has("6.1.3.6", "₹50,00,000"); // grouped-thousands amount must survive
+    has("2.5.1.1", "₹50 Lakh"); // glued footnote after "Lakh" gone, amount kept
+    has("1.5.1.5.5", "paragraphs 1.5.1.2 to 1.5.1.4"); // cross-references must survive
   }
   if (doc.id === "MC-AIF-2026") {
     has("21.1.2", "within 15 calendar days from the end of each such quarter");
     has("17.2.2", "prior to the date of first investment");
+    has("12.1.1", "para 2.4.1 of this Master circular"); // cross-reference must survive
+    has("3.1.1", "para 3.1.1 (a) and (b)"); // cross-reference before an opening bracket must survive
   }
+
+  // No paragraph may carry the damage the old stripper caused (2.., ..4, 50,,).
+  const total = chapters.reduce((n, c) => n + c.paras.length, 0);
+  const expectParas = doc.id === "MC-PM-2025" ? 287 : 509;
+  if (total !== expectParas) throw new Error(`${doc.id}: expected ${expectParas} paragraphs, got ${total}`);
+  for (const c of chapters)
+    for (const p of c.paras)
+      if (/\d\.\.|\.\.\d|,,/.test(p.text))
+        throw new Error(`${doc.id}: para ${p.para} still shows footnote-strip damage: ${p.text}`);
+
+  // Spaced footnote numbers (a 1-3 digit token between two words) are left as-is by design;
+  // count them for information only.
+  let spaced = 0;
+  for (const c of chapters)
+    for (const p of c.paras) if (/[A-Za-z] \d{1,3} [A-Za-z]/.test(p.text)) spaced++;
+  console.log(`${doc.id}: ${spaced} paragraphs contain a spaced number token (footnote or real, left untouched)`);
 
   mkdirSync(OUT, { recursive: true });
   const file = resolve(OUT, `${doc.id.toLowerCase()}.json`);

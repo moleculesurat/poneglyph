@@ -158,11 +158,11 @@
         },
         {
           "para": "1.5.1.5.4",
-          "text": "Within 15 [calendar] days from the date of order of NCLT, Portfolio Manager shall submit an online application in terms of paragraph 1... of this Master Circular along with the following documents to SEBI for final approval:  Copy of the NCLT Order approving the scheme;  Copy of the approved scheme;  Statement explaining modifications, if any, in the approved scheme vis-à-vis the draft scheme and the reasons for the same; and  Details of compliance with the conditions/ observations mentioned in the in-principle approval provided by SEBI."
+          "text": "Within 15 [calendar] days from the date of order of NCLT, Portfolio Manager shall submit an online application in terms of paragraph 1.5.1.1 of this Master Circular along with the following documents to SEBI for final approval:  Copy of the NCLT Order approving the scheme;  Copy of the approved scheme;  Statement explaining modifications, if any, in the approved scheme vis-à-vis the draft scheme and the reasons for the same; and  Details of compliance with the conditions/ observations mentioned in the in-principle approval provided by SEBI."
         },
         {
           "para": "1.5.1.5.5",
-          "text": "All other provisions mentioned at paragraphs 1... to 1... of this Master Circular regarding the procedure for seeking prior approval for change in control of Portfolio Managers, shall also apply."
+          "text": "All other provisions mentioned at paragraphs 1.5.1.2 to 1.5.1.4 of this Master Circular regarding the procedure for seeking prior approval for change in control of Portfolio Managers, shall also apply."
         },
         {
           "para": "1.6",
@@ -244,7 +244,7 @@
         },
         {
           "para": "2.2.3",
-          "text": "With respect to investment in short term Liquid Mutual Funds by Portfolio Managers, it is clarified that pending investment of funds, any short term deployment of funds in Liquid Mutual Funds for the purpose of cash management shall be maintained on the lines as per paragraph 2.. of this Master Circular."
+          "text": "With respect to investment in short term Liquid Mutual Funds by Portfolio Managers, it is clarified that pending investment of funds, any short term deployment of funds in Liquid Mutual Funds for the purpose of cash management shall be maintained on the lines as per paragraph 2.2.2 of this Master Circular."
         },
         {
           "para": "2.3",
@@ -296,7 +296,7 @@
         },
         {
           "para": "2.4.1.6",
-          "text": "Ensure that, within 15 [calendar] days from the end of every financial year, a self-certification is also received from distributors with regard to compliance with Code of conduct. 2.4A. Collective oversight of distributors through APMI26 2.4A.. Any person or entity involved in the distribution of portfolio management services shall obtain registration with APMI. 2.4A.. Portfolio Managers shall ensure that any person or entity engaged in the distribution of its services has obtained registration with APMI, in accordance with the criteria laid down by APMI."
+          "text": "Ensure that, within 15 [calendar] days from the end of every financial year, a self-certification is also received from distributors with regard to compliance with Code of conduct. 2.4A. Collective oversight of distributors through APMI26 2.4A.1. Any person or entity involved in the distribution of portfolio management services shall obtain registration with APMI. 2.4A.2. Portfolio Managers shall ensure that any person or entity engaged in the distribution of its services has obtained registration with APMI, in accordance with the criteria laid down by APMI."
         },
         {
           "para": "2.5",
@@ -344,7 +344,7 @@
         },
         {
           "para": "2.6.3",
-          "text": "The aforesaid policies as mentioned at paragraphs 2.. & 2.. shall be approved by the Board / equivalent body of the Portfolio Manager."
+          "text": "The aforesaid policies as mentioned at paragraphs 2.6.1 & 2.6.2 shall be approved by the Board / equivalent body of the Portfolio Manager."
         },
         {
           "para": "2.7",
@@ -396,7 +396,7 @@
         },
         {
           "para": "2.7.3.2",
-          "text": "The aforesaid system shall inter-alia clearly capture details with respect to pre-order placement allocation as well as final allocation of trades to clients along with instances of deviation, if any, as mentioned at paragraph 2... above."
+          "text": "The aforesaid system shall inter-alia clearly capture details with respect to pre-order placement allocation as well as final allocation of trades to clients along with instances of deviation, if any, as mentioned at paragraph 2.6.2.4 above."
         },
         {
           "para": "2.7.4",
@@ -554,7 +554,7 @@
         },
         {
           "para": "3.5.2",
-          "text": "The consent form shall have an option to indicate dissent, in case the client does not want to undertake any investment in the securities of associates/related parties of respective Portfolio Manager. The client shall also have an option to specify a limit on investments in the securities of associates/related parties of respective Portfolio Manager, below the ceiling specified in paragraph 3.. above."
+          "text": "The consent form shall have an option to indicate dissent, in case the client does not want to undertake any investment in the securities of associates/related parties of respective Portfolio Manager. The client shall also have an option to specify a limit on investments in the securities of associates/related parties of respective Portfolio Manager, below the ceiling specified in paragraph 3.4.2 above."
         },
         {
           "para": "3.5.3",
@@ -578,7 +578,7 @@
         },
         {
           "para": "3.5.8",
-          "text": "Such requirement of rebalancing in the event of a passive breach of investment limits shall be suitably disclosed in the consent form mentioned at paragraph 3.. above and any waiver from the same shall also be obtained in the same document."
+          "text": "Such requirement of rebalancing in the event of a passive breach of investment limits shall be suitably disclosed in the consent form mentioned at paragraph 3.5.2 above and any waiver from the same shall also be obtained in the same document."
         },
         {
           "para": "3.5.9",
@@ -606,7 +606,7 @@
         },
         {
           "para": "3.7.1",
-          "text": "The requirements as specified at paragraphs 3., 3. & 3. above and in Regulations 22 (1A), 22(4) (da) & (db), 24 (3A) to 3(E) of the PM Regulations shall not be applicable for advisory portfolio management services, co-investment portfolio management services and for client categories who in turn manage funds under government mandates and/or are governed under specific Acts of State and/or Parliament."
+          "text": "The requirements as specified at paragraphs 3.4, 3.5 & 3.6 above and in Regulations 22 (1A), 22(4) (da) & (db), 24 (3A) to 3(E) of the PM Regulations shall not be applicable for advisory portfolio management services, co-investment portfolio management services and for client categories who in turn manage funds under government mandates and/or are governed under specific Acts of State and/or Parliament."
         },
         {
           "para": "3.7.2",
@@ -648,7 +648,7 @@
         },
         {
           "para": "4.3.1",
-          "text": "To ensure transparency and adequate disclosure regarding fees and charges, the client agreement shall contain a separate annexure which shall list all fees and charges payable to the portfolio manager. The said annexure shall contain details of levy of all applicable charges on a sample portfolio of Rs. lacs over a period of one year. The fees and charges shall be shown for 3 scenarios viz. when the portfolio value increases by 20%, decreases by 20% or remains unchanged. An illustration of the same is enclosed as Annexure 4A of this Master Circular"
+          "text": "To ensure transparency and adequate disclosure regarding fees and charges, the client agreement shall contain a separate annexure which shall list all fees and charges payable to the portfolio manager. The said annexure shall contain details of levy of all applicable charges on a sample portfolio of Rs.50 lacs over a period of one year. The fees and charges shall be shown for 3 scenarios viz. when the portfolio value increases by 20%, decreases by 20% or remains unchanged. An illustration of the same is enclosed as Annexure 4A of this Master Circular"
         },
         {
           "para": "4.3.2",
@@ -712,7 +712,7 @@
         },
         {
           "para": "4.5.3",
-          "text": "In relation to performance of the portfolio manager, it is also clarified that the Portfolio Managers shall: “All portfolio managers are required to disclose the performance of their portfolios to their clients, including disclosure of the performance indicators calculated on the basis of ‘time weighted rate of return’ method taking each individual category of investments for the immediately preceding three years in case of discretionary portfolio managers. In order to make the investors fully aware about how their funds have been deployed and also to give them an objective analysis of the performance of the portfolios being managed by the portfolio managers on discretionary basis in comparison with the rise or fall in the markets, portfolio managers shall disclose the performance of benchmark indices in the periodical reports to be furnished to the client in terms of the PM Regulations i.e. Regulation 31 of the SEBI (Portfolio Managers) Regulations, 2020.”"
+          "text": "In relation to performance of the portfolio manager, it is also clarified that the Portfolio Managers shall:56 “All portfolio managers are required to disclose the performance of their portfolios to their clients, including disclosure of the performance indicators calculated on the basis of ‘time weighted rate of return’ method taking each individual category of investments for the immediately preceding three years in case of discretionary portfolio managers. In order to make the investors fully aware about how their funds have been deployed and also to give them an objective analysis of the performance of the portfolios being managed by the portfolio managers on discretionary basis in comparison with the rise or fall in the markets, portfolio managers shall disclose the performance of benchmark indices in the periodical reports to be furnished to the client in terms of the PM Regulations i.e. Regulation 31 of the SEBI (Portfolio Managers) Regulations, 2020.”"
         },
         {
           "para": "4.5.3.1",
@@ -780,7 +780,7 @@
         },
         {
           "para": "4.6.2.8",
-          "text": "other salient features, if any. 4.6A. Performance Benchmarking In order to help investors in assessing the performance of a Portfolio Manager, the applicable requirements related to performance reporting and benchmarking by Portfolio Managers has been reviewed as under: 4.6A.. In addition to Investment Approach, an additional layer of broadly defined investment themes called “Strategies” shall be adopted by Portfolio Managers. These broad Strategies shall be ‘Equity’, ‘Debt’, ‘Hybrid’ and ‘Multi Asset’. 4.6A. Each IA shall be tagged to one and only one Strategy from the Strategies as above. This tagging shall be at the discretion of the concerned Portfolio Manager. A Portfolio Manager may tag more than one IA to a Strategy, but each IA must be tagged to only one Strategy. 4.6A. APMI shall prescribe a maximum of three benchmarks for each Strategy. These benchmarks shall reflect the core philosophy of the Strategy. While tagging an IA to a particular Strategy, the Portfolio Manager shall select one benchmark from those prescribed for that Strategy to enable the investor to evaluate relative performance of the Portfolio Managers. 4.6A. The Board of the Portfolio Managers shall be responsible for ensuring appropriate selection of Strategy and benchmark for each IA. 4.6A. Once an IA is tagged to a Strategy and/or to a benchmark, the tagging shall be changed only after offering an option to subscribers to the IA to exit without any exit load. The performance track record (of the specific IA whose tagging with Strategy/ benchmark was changed) prior to the change shall not be used by the Portfolio Manager for performance reporting. Further, the same shall be verified as part of annual audit under the Regulations. 4.6A. The changes in Strategy and/ or benchmark shall be recorded with proper justification and shall be verified as part of the annual audit under the Regulations."
+          "text": "other salient features, if any. 4.6A. Performance Benchmarking In order to help investors in assessing the performance of a Portfolio Manager, the applicable requirements related to performance reporting and benchmarking by Portfolio Managers has been reviewed as under: 4.6A.1. In addition to Investment Approach, an additional layer of broadly defined investment themes called “Strategies” shall be adopted by Portfolio Managers. These broad Strategies shall be ‘Equity’, ‘Debt’, ‘Hybrid’ and ‘Multi Asset’. 4.6A. Each IA shall be tagged to one and only one Strategy from the Strategies as above. This tagging shall be at the discretion of the concerned Portfolio Manager. A Portfolio Manager may tag more than one IA to a Strategy, but each IA must be tagged to only one Strategy. 4.6A. APMI shall prescribe a maximum of three benchmarks for each Strategy. These benchmarks shall reflect the core philosophy of the Strategy. While tagging an IA to a particular Strategy, the Portfolio Manager shall select one benchmark from those prescribed for that Strategy to enable the investor to evaluate relative performance of the Portfolio Managers. 4.6A. The Board of the Portfolio Managers shall be responsible for ensuring appropriate selection of Strategy and benchmark for each IA. 4.6A. Once an IA is tagged to a Strategy and/or to a benchmark, the tagging shall be changed only after offering an option to subscribers to the IA to exit without any exit load. The performance track record (of the specific IA whose tagging with Strategy/ benchmark was changed) prior to the change shall not be used by the Portfolio Manager for performance reporting. Further, the same shall be verified as part of annual audit under the Regulations. 4.6A. The changes in Strategy and/ or benchmark shall be recorded with proper justification and shall be verified as part of the annual audit under the Regulations."
         },
         {
           "para": "4.7",
@@ -796,7 +796,7 @@
         },
         {
           "para": "4.7.3",
-          "text": "Portfolio Managers shall ensure that any material changes in the above information is updated in the Disclosure Document and uploaded on their respective websites within 7 [calendar] days. 4.7A. Most Important Terms and Conditions (MITC) Document 4.7A.. In order to facilitate ease of understanding of the critical aspects of the Portfolio Manager-client relationship, Portfolio Manager shall additionally provide to its client a “Most Important Terms and Conditions (MITC)” document, which shall be duly acknowledged by the client. 4.7A.. The standard format for MITC has been prescribed by APMI, in consultation with SEBI."
+          "text": "Portfolio Managers shall ensure that any material changes in the above information is updated in the Disclosure Document and uploaded on their respective websites within 7 [calendar] days. 4.7A. Most Important Terms and Conditions (MITC) Document 4.7A.1. In order to facilitate ease of understanding of the critical aspects of the Portfolio Manager-client relationship, Portfolio Manager shall additionally provide to its client a “Most Important Terms and Conditions (MITC)” document, which shall be duly acknowledged by the client. 4.7A.2. The standard format for MITC has been prescribed by APMI, in consultation with SEBI."
         }
       ]
     },
@@ -854,7 +854,7 @@
         },
         {
           "para": "5.2.1",
-          "text": "With effect from Financial Year 2019-20, Portfolio Managers are required to submit the following information to SEBI:"
+          "text": "With effect from Financial Year 2019-20, Portfolio Managers are required to submit the following information to SEBI:70"
         },
         {
           "para": "5.2.1.1",
@@ -894,7 +894,7 @@
         },
         {
           "para": "5.3.1",
-          "text": "The firm-level performance data of Portfolio Managers shall be audited annually. Confirmation of compliance with paragraph 4.. of this Master Circular shall be reported to SEBI within sixty [calendar] 74days of end of each financial year. The said report to SEBI shall be certified by the Directors/Partners of the Portfolio Manager or by person(s) authorized by the Board of Directors/Partners of the Portfolio Manager."
+          "text": "The firm-level performance data of Portfolio Managers shall be audited annually. Confirmation of compliance with paragraph 4.5.3 of this Master Circular shall be reported to SEBI within sixty [calendar] 74days of end of each financial year. The said report to SEBI shall be certified by the Directors/Partners of the Portfolio Manager or by person(s) authorized by the Board of Directors/Partners of the Portfolio Manager."
         },
         {
           "para": "5.3.2",
@@ -950,7 +950,7 @@
         },
         {
           "para": "5.4.5",
-          "text": "Details of the requirements prescribed under various paragraphs of this Master Circular that are covered through the reporting formats, as mentioned in the paragraph 5.. above, are specified in Annexure 5C."
+          "text": "Details of the requirements prescribed under various paragraphs of this Master Circular that are covered through the reporting formats, as mentioned in the paragraph 5.4.1 above, are specified in Annexure 5C."
         },
         {
           "para": "5.4.6",
@@ -1038,11 +1038,11 @@
         },
         {
           "para": "5.6.7",
-          "text": "The above provisions under paragraphs 5.. to 5.. shall be applicable to any entity reporting/ publishing/ advertising performance of any Investment Approach of any Portfolio Manager."
+          "text": "The above provisions under paragraphs 5.6.1 to 5.6.6 shall be applicable to any entity reporting/ publishing/ advertising performance of any Investment Approach of any Portfolio Manager."
         },
         {
           "para": "5.6.8",
-          "text": "Portfolio of investors/clients of portfolio manager shall not be covered under provisions 2., 4..1A, 4.6A, 5., if,"
+          "text": "Portfolio of investors/clients of portfolio manager shall not be covered under provisions 2.9, 4.6.1A, 4.6A, 5.6, if,"
         },
         {
           "para": "5.6.8.1",
@@ -1092,7 +1092,7 @@
         },
         {
           "para": "6.1.3.3",
-          "text": "Operating expenses excluding brokerage, over and above the fees charged for Portfolio Management Service, shall not exceed 0.% per annum of the client’s average daily AUM."
+          "text": "Operating expenses excluding brokerage, over and above the fees charged for Portfolio Management Service, shall not exceed 0.50% per annum of the client’s average daily AUM."
         },
         {
           "para": "6.1.3.4",
@@ -1104,7 +1104,7 @@
         },
         {
           "para": "6.1.3.6",
-          "text": "Profit/ performance shall be computed on the basis of high water mark principle over the life of the investment, for charging of performance / profit sharing fee. High Water Mark Principle: High Water Mark shall be the highest value that the portfolio/account has reached. Value of the portfolio for computation of high watermark shall be taken to be the value on the date when performance fees are charged. For the purpose of charging performance fee, the frequency shall not be less than quarterly. The portfolio manager shall charge performance based fee only on increase in portfolio value in excess of the previously achieved high water mark. Illustration: Consider that frequency of charging of performance fees is annual. A client’s initial contribution is ₹50,,, which then rises to ₹60,, in its first year; a performance fee/ profit sharing would be payable on the ₹10,, return. In the next year the portfolio value drops to ₹55,, hence no performance fee would be payable. If in the third year the Portfolio rises to ₹65,,, a performance fee/profit sharing would be payable only on the ₹5,, profit which is portfolio value in excess of the previously achieved high water mark of ₹60,,, rather than on the full return during that year from ₹55,, to ₹65,,."
+          "text": "Profit/ performance shall be computed on the basis of high water mark principle over the life of the investment, for charging of performance / profit sharing fee. High Water Mark Principle: High Water Mark shall be the highest value that the portfolio/account has reached. Value of the portfolio for computation of high watermark shall be taken to be the value on the date when performance fees are charged. For the purpose of charging performance fee, the frequency shall not be less than quarterly. The portfolio manager shall charge performance based fee only on increase in portfolio value in excess of the previously achieved high water mark. Illustration: Consider that frequency of charging of performance fees is annual. A client’s initial contribution is ₹50,00,000, which then rises to ₹60,00,000 in its first year; a performance fee/ profit sharing would be payable on the ₹10,00,000 return. In the next year the portfolio value drops to ₹55,00,000 hence no performance fee would be payable. If in the third year the Portfolio rises to ₹65,00,000, a performance fee/profit sharing would be payable only on the ₹5,00,000 profit which is portfolio value in excess of the previously achieved high water mark of ₹60,00,000, rather than on the full return during that year from ₹55,00,000 to ₹65,00,000."
         },
         {
           "para": "6.1.3.7",
@@ -1116,11 +1116,11 @@
         },
         {
           "para": "6.1.3.9",
-          "text": "In case of interim contributions/ withdrawals by clients, performance fees may be charged after appropriately adjusting the high water mark on proportionate basis. 6..3A. Fee Calculation tool: 6..3A..Portfolio Manager shall provide a fee calculation tool to all clients that highlights various fee options with multi-year fee calculations. Such tool shall incorporate the high watermark principle, wherever applicable. 6..3A. .The link to access the said tool shall be provided in advance to all new clients, on-boarded on or after October 01, 2024."
+          "text": "In case of interim contributions/ withdrawals by clients, performance fees may be charged after appropriately adjusting the high water mark on proportionate basis. 6.1.3A. Fee Calculation tool:93 6.1.3A.1.Portfolio Manager shall provide a fee calculation tool to all clients that highlights various fee options with multi-year fee calculations. Such tool shall incorporate the high watermark principle, wherever applicable. 6.1.3A.2 .The link to access the said tool shall be provided in advance to all new clients, on-boarded on or after October 01, 2024."
         },
         {
           "para": "6.1.4",
-          "text": "Exit Load:"
+          "text": "Exit Load:94"
         },
         {
           "para": "6.1.4.1",
@@ -1144,11 +1144,11 @@
         },
         {
           "para": "6.1.4.2",
-          "text": "The provisions with respect to exit load as specified at paragraph 6... shall not be applicable to Co-investment services."
+          "text": "The provisions with respect to exit load as specified at paragraph 6.1.4.1 shall not be applicable to Co-investment services."
         },
         {
           "para": "6.1.5",
-          "text": "In case of large value accredited investors, the quantum and manner of exit load applicable to the client of the Portfolio Manager shall be governed through bilaterally negotiated contractual terms and the provisions of paragraph 6.. of this Master Circular shall not be applicable."
+          "text": "In case of large value accredited investors, the quantum and manner of exit load applicable to the client of the Portfolio Manager shall be governed through bilaterally negotiated contractual terms and the provisions of paragraph 6.1.4 of this Master Circular shall not be applicable."
         },
         {
           "para": "6.1.5.1",
