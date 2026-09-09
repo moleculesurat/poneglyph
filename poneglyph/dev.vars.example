@@ -1,4 +1,4 @@
 GATE_TOKEN=change-me
 OPEN_ROUTER_KEY=
-# MODEL is optional (default anthropic/claude-sonnet-5)
-MODEL=anthropic/claude-sonnet-5
+# MODEL is optional (default z-ai/glm-5.3-flash)
+MODEL=z-ai/glm-5.3-flash

@@ -233,7 +233,7 @@ async function startRun(
     return error(
       request,
       503,
-      "The extraction model is not configured on this deployment, so no run can be started. Set OPEN_ROUTER_KEY as a Worker secret (MODEL optional, default anthropic/claude-sonnet-5).",
+      "The extraction model is not configured on this deployment, so no run can be started. Set OPEN_ROUTER_KEY as a Worker secret (MODEL optional, default z-ai/glm-5.3-flash).",
       { hasModelKey: Boolean(env.OPEN_ROUTER_KEY) },
     );
   }

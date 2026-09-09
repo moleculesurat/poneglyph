@@ -24,7 +24,7 @@ const CALL_TIMEOUT_MS = 240_000;
 const MAX_ATTEMPTS = 2;
 
 const OPENROUTER_BASE = "https://openrouter.ai/api/v1";
-export const DEFAULT_MODEL = "anthropic/claude-sonnet-5";
+export const DEFAULT_MODEL = "z-ai/glm-5.3-flash";
 export function modelOf(env: Env): string {
   return env.MODEL?.trim() || DEFAULT_MODEL;
 }

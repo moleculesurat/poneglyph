@@ -75,5 +75,5 @@ What the engine cannot verify, it reports as unverified — never as compliant. 
 
 ## Worker secrets
 
-Copy `dev.vars.example` to `.dev.vars` (gitignored) for `npx wrangler dev`; `GATE_TOKEN` gates the write routes and `OPEN_ROUTER_KEY` wires the extraction model (`MODEL` optional, default `anthropic/claude-sonnet-5`).
+Copy `dev.vars.example` to `.dev.vars` (gitignored) for `npx wrangler dev`; `GATE_TOKEN` gates the write routes and `OPEN_ROUTER_KEY` wires the extraction model (`MODEL` optional, default `z-ai/glm-5.3-flash`).
 On deploy, set them as Worker secrets: `npx wrangler secret put GATE_TOKEN` (and likewise `OPEN_ROUTER_KEY`, and `MODEL` if overriding the default).
