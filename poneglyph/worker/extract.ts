@@ -57,7 +57,7 @@ Reply with ONE JSON object and nothing else. No prose before or after it. No mar
   "type": "one-time" | "ongoing" | "periodic" | "event-driven",
   "frequency": string or null, see VOCABULARY,
   "deadline": string or null, see DEADLINES,
-  "appliesTo": array of strings from EXACTLY this list: "stock-broker", "investment-adviser", "amc", "rta", "depository-participant",
+  "appliesTo": array of strings from EXACTLY this list: "stock-broker", "investment-adviser", "amc", "rta", "depository-participant", "portfolio-manager", "aif-manager",
   "control": {"name": string, "description": string, describing the control a firm would operate to satisfy the duty},
   "evidenceSpec": [{"kind": "document" | "data-check" | "live-scan", "description": string, naming the artefact that proves the duty was met}]
 }]}
@@ -362,6 +362,17 @@ const CAPACITY_ALIASES: Record<string, IntermediaryType> = {
   "registrar to an issue": "rta",
   "share transfer agent": "rta",
   "registrar and transfer agent": "rta",
+  "portfolio-manager": "portfolio-manager",
+  "portfolio manager": "portfolio-manager",
+  "portfolio managers": "portfolio-manager",
+  "aif-manager": "aif-manager",
+  aif: "aif-manager",
+  aifs: "aif-manager",
+  "alternative investment fund": "aif-manager",
+  "alternative investment funds": "aif-manager",
+  "manager of the aif": "aif-manager",
+  "aif manager": "aif-manager",
+  "aif managers": "aif-manager",
 };
 
 const OBLIGATION_TYPES: ObligationType[] = ["one-time", "ongoing", "periodic", "event-driven"];

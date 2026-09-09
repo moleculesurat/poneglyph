@@ -1,7 +1,7 @@
 "use client";
 
 /* ══════════════════════════════════════════════════════════════════════
-   NewOnboarding — the blank flow, for a firm that is not Angel One.
+   NewOnboarding — the blank flow, for a firm onboarding itself.
 
    The point of the ontology is that the same six steps run for any
    NSE/BSE entity and produce a DIFFERENT register, because the register

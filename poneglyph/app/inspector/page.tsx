@@ -6,6 +6,7 @@ import { evidence } from "@/data/evidence";
 import { auditEvents } from "@/data/audit";
 import { mcpTools } from "@/data/mcp";
 import { tenant } from "@/data/tenant";
+import { factOf } from "@/data/entity";
 import type { ObligationStatus } from "@/lib/schema";
 import { InspectorMode } from "./InspectorMode";
 
@@ -110,9 +111,7 @@ export default function InspectorPage() {
           <KV k="SEBI reg no">
             <span className="mono-value">{tenant.sebiRegNo}</span>
           </KV>
-          <KV k="Exchanges">{tenant.exchanges.join(" · ")}</KV>
-          <KV k="QSB status">{tenant.qsb ? "Qualified stock broker" : "Not designated QSB"}</KV>
-          <KV k="Active clients">{tenant.activeClients.toLocaleString("en-IN")}</KV>
+          <KV k="Clients">{factOf("clients")?.value ?? "—"}</KV>
           <KV k="Registered office">{tenant.city}</KV>
           <KV k="Compliance officer">{complianceOfficer}</KV>
           <KV k="Session scope">

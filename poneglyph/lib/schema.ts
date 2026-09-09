@@ -11,7 +11,9 @@ export type IntermediaryType =
   | "investment-adviser"
   | "amc"
   | "rta"
-  | "depository-participant";
+  | "depository-participant"
+  | "portfolio-manager"
+  | "aif-manager";
 
 export type ObligationType = "one-time" | "ongoing" | "periodic" | "event-driven";
 
@@ -240,9 +242,6 @@ export interface Tenant {
   name: string;
   sebiRegNo: string;
   type: IntermediaryType;
-  exchanges: string[];
-  qsb: boolean;
-  activeClients: number;
   city: string;
   team: TeamMember[];
   /** the sandbox's pinned "today" — keeps '9 days ago' true forever */
@@ -323,21 +322,13 @@ export interface EntityProfile {
   id: string;
   legalName: string;
   shortName: string;
-  /** public market identity, where the firm is listed */
-  isin?: string;
-  tickers?: { exchange: string; symbol: string }[];
-  listed: boolean;
   incorporatedIn: string;
   intermediaryTypes: IntermediaryType[];
   segments: BusinessSegment[];
-  exchanges: string[];
-  depositories: string[];
   registrations: RegistrationLine[];
   /** every profile fact, with provenance */
   facts: EntityFact[];
   /** designation outcomes computed from the facts above */
-  qsb: boolean;
-  qsbBasis: string[];
   cscrfGrade: CscrfGrade;
   cscrfBasis: string;
   /** Parts of the Master Circular this profile makes binding */

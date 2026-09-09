@@ -162,7 +162,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 {tenant.name}
               </div>
               <div className="mono-label dim" style={{ fontSize: 8.5, marginTop: 2 }}>
-                {tenant.sebiRegNo} · {tenant.exchanges.join(" + ")}
+                {tenant.sebiRegNo} · {tenant.type.replace("-", " ")}
               </div>
               {persona === "inspector" ? (
                 <div className="chip" data-tone="live" style={{ marginTop: 8, fontSize: 8.5 }}>

@@ -118,7 +118,7 @@ export interface WatchPollResult {
 }
 
 /* ── Live entity (onboarded in-session) ─────────────────────────────────
-   The same determination the seeded Angel One record shows, computed live
+   The same determination the seeded profile shows, computed live
    and deterministically for a firm the caller declares. Every declared
    figure carries the declared-unverified label; nothing is guessed. */
 

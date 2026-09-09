@@ -92,10 +92,10 @@ export default function LivePage() {
           <div className="stack" style={{ gap: 8 }}>
             <span className="mono-label dim">tenant disclosure</span>
             <p className="small dim60" style={{ margin: 0, lineHeight: 1.7 }}>
-              {tenant.name} is a real, listed, SEBI-registered stock broker. Its identity and
-              financial facts are drawn from public filings; all compliance posture produced on this
-              route is illustrative. An obligation drafted from a pasted clause demonstrates the
-              engine and is not a statement about the firm.
+              {tenant.name} is a SEBI-registered portfolio manager; every fact carries its
+              provenance. All compliance posture produced on this route is illustrative. An
+              obligation drafted from a pasted clause demonstrates the engine and is not a statement
+              about the firm.
             </p>
           </div>
         </div>

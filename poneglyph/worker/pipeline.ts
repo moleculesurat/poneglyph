@@ -112,8 +112,6 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
             legalName: live.profile.legalName,
             intermediaryTypes: live.profile.intermediaryTypes,
             segments: live.profile.segments,
-            exchanges: live.profile.exchanges,
-            depositories: [],
           }
         : undefined,
     );

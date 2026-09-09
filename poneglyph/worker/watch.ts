@@ -10,8 +10,8 @@
      · HONEST FAILURE — if the fetch fails from the edge, the recorded
        state carries the real status/error verbatim. No canned catch, no
        simulated success, ever.
-     · DETERMINISTIC TRIAGE — no model. New items are scored against the
-       stock-broker tenant by keywords and link path, the matched terms are
+     · DETERMINISTIC TRIAGE — no model. New items are scored against
+       this tenant by keywords and link path, the matched terms are
        recorded, and the verdict copy says plainly that this is a heuristic
        triage; full applicability runs when a clause enters the pipeline.
        Most days the feed is enforcement items and the right answer is
@@ -152,53 +152,46 @@ export function classifyDocType(url: string): WatchDocType {
   return "other";
 }
 
-/* ── Deterministic triage against the stock-broker tenant ───────────── */
+/* ── Deterministic triage against this tenant ───────────── */
 
 const HEURISTIC_NOTE =
   "This is a heuristic triage over the feed title and link path only; full applicability is determined when a clause of the document is put through the extraction pipeline.";
 
 /** terms that address the capacity the tenant holds */
 const TENANT_TERMS = [
-  "stock broker",
-  "stock brokers",
-  "trading member",
-  "trading members",
-  "qualified stock broker",
-  "broker",
-  "brokers",
+  "portfolio manager",
+  "portfolio managers",
+  "portfolio management",
+  "alternative investment fund",
+  "alternative investment funds",
+  "aif",
+  "aifs",
 ];
 
-/** domain terms that touch a broker's rulebook without naming the capacity */
+/** domain terms that touch this tenant's rulebook without naming the capacity */
 const DOMAIN_TERMS = [
   "master circular",
-  "margin",
   "cscrf",
   "cyber security",
   "cybersecurity",
   "cyber",
-  "client funds",
-  "client securities",
-  "upstreaming",
-  "algorithmic trading",
-  "internet based trading",
-  "demat",
-  "depository participant",
   "intermediaries",
   "intermediary",
+  "valuation",
+  "private placement memorandum",
+  "ppm",
+  "custodian",
+  "nism",
 ];
 
-/** capacities the stock-broker tenant does not hold */
+/** capacities this tenant does not hold */
 const FOREIGN_TERMS = [
   "mutual fund",
   "mutual funds",
   "asset management company",
   "amc",
-  "portfolio manager",
-  "portfolio managers",
   "investment adviser",
   "investment advisers",
-  "alternative investment fund",
-  "aif",
   "reit",
   "invit",
   "merchant banker",
@@ -209,6 +202,12 @@ const FOREIGN_TERMS = [
   "foreign portfolio investor",
   "foreign portfolio investors",
   "fpi",
+  "stock broker",
+  "stock brokers",
+  "trading member",
+  "trading members",
+  "broker",
+  "brokers",
 ];
 
 function escapeRegex(term: string): string {
@@ -241,7 +240,7 @@ export function triageItem(title: string, docType: WatchDocType): WatchTriage {
     return {
       verdict: "not-applicable",
       matched: [],
-      reasoning: `${docType === "recovery" ? "Recovery proceeding" : "Enforcement order"} against the specific parties it names. It changes no rule that binds this stock-broker tenant, so the engine files the No rather than inventing relevance. ${HEURISTIC_NOTE}`,
+      reasoning: `${docType === "recovery" ? "Recovery proceeding" : "Enforcement order"} against the specific parties it names. It changes no rule that binds this tenant, so the engine files the No rather than inventing relevance. ${HEURISTIC_NOTE}`,
     };
   }
 
@@ -258,7 +257,7 @@ export function triageItem(title: string, docType: WatchDocType): WatchTriage {
     return {
       verdict: "not-applicable",
       matched: foreignHits,
-      reasoning: `The title addresses ${foreignHits.join(", ")} — capacities this stock-broker tenant does not hold. The rulebook for an intermediary the tenant is not does not enter the register. ${HEURISTIC_NOTE}`,
+      reasoning: `The title addresses ${foreignHits.join(", ")} — capacities this tenant does not hold. The rulebook for an intermediary the tenant is not does not enter the register. ${HEURISTIC_NOTE}`,
     };
   }
 
@@ -267,7 +266,7 @@ export function triageItem(title: string, docType: WatchDocType): WatchTriage {
       return {
         verdict: "applies",
         matched: domainHits,
-        reasoning: `A master circular touching ${domainHits.join(", ")} — consolidated instruments of this kind routinely reach trading members even where the title omits the addressee. ${HEURISTIC_NOTE}`,
+        reasoning: `A master circular touching ${domainHits.join(", ")} — consolidated instruments of this kind routinely reach the capacities this tenant holds even where the title omits the addressee. ${HEURISTIC_NOTE}`,
       };
     }
     return {

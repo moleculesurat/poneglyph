@@ -20,8 +20,9 @@ import type {
 } from "../lib/schema";
 import type { RawObligation } from "./extract";
 import { normaliseAppliesTo, normaliseEvidenceKind, normaliseType } from "./extract";
+import { molecule } from "../data/entity";
 
-export const TENANT_CAPACITY: IntermediaryType = "stock-broker";
+export const TENANT_CAPACITIES: IntermediaryType[] = molecule.intermediaryTypes;
 
 /** A model output normalised into the ontology and located in the clause.
     Offsets are -1 until citations-resolve finds the excerpt. */
@@ -199,13 +200,13 @@ function deadlinesParse(drafts: DraftObligation[]): VerifierCheck {
 }
 
 function applicabilityMatch(drafts: DraftObligation[]): VerifierCheck {
-  const offScope = drafts.filter((d) => !d.appliesTo.includes(TENANT_CAPACITY));
+  const offScope = drafts.filter((d) => !d.appliesTo.some((c) => TENANT_CAPACITIES.includes(c)));
   if (offScope.length > 0) {
     const dropped = offScope.flatMap((d) => d.droppedCapacities);
     return {
       name: "applicability-match",
       pass: false,
-      note: `${offScope.length}/${drafts.length} drafted obligations do not scope to ${TENANT_CAPACITY}. First: "${offScope[0].title}" scoped to [${offScope[0].appliesTo.join(", ") || "nothing recognisable"}]${dropped.length > 0 ? `; unmapped labels dropped: ${dropped.join(", ")}` : ""}. The register only carries duties that bind this tenant.`,
+      note: `${offScope.length}/${drafts.length} drafted obligations do not scope to ${TENANT_CAPACITIES.join(" or ")}. First: "${offScope[0].title}" scoped to [${offScope[0].appliesTo.join(", ") || "nothing recognisable"}]${dropped.length > 0 ? `; unmapped labels dropped: ${dropped.join(", ")}` : ""}. The register only carries duties that bind this tenant.`,
     };
   }
   const dropped = drafts.flatMap((d) => d.droppedCapacities);
@@ -215,7 +216,7 @@ function applicabilityMatch(drafts: DraftObligation[]): VerifierCheck {
     note:
       drafts.length === 0
         ? "No obligations drafted; nothing to scope."
-        : `All ${drafts.length} drafted obligations scope to ${TENANT_CAPACITY}, consistent with the onboarded entity profile.${dropped.length > 0 ? ` Unrecognised capacity labels dropped rather than guessed: ${dropped.join(", ")}.` : ""}`,
+        : `All ${drafts.length} drafted obligations scope to ${TENANT_CAPACITIES.join(" or ")}, consistent with the onboarded entity profile.${dropped.length > 0 ? ` Unrecognised capacity labels dropped rather than guessed: ${dropped.join(", ")}.` : ""}`,
   };
 }
 
@@ -304,9 +305,9 @@ export function precheck(raw: RawObligation[], clauseText: string): string | nul
     }
   }
 
-  const offScope = drafts.find((d) => !d.appliesTo.includes(TENANT_CAPACITY));
+  const offScope = drafts.find((d) => !d.appliesTo.some((c) => TENANT_CAPACITIES.includes(c)));
   if (offScope && drafts.length > 0) {
-    return `"${offScope.title}" has appliesTo ${JSON.stringify(offScope.raw.appliesTo)}, which does not include the exact value "stock-broker". Use only the exact enum values listed in the schema.`;
+    return `"${offScope.title}" has appliesTo ${JSON.stringify(offScope.raw.appliesTo)}, which does not include any of ${JSON.stringify(TENANT_CAPACITIES)}. Use only the exact enum values listed in the schema.`;
   }
 
   const broken = drafts.find(

@@ -3,10 +3,9 @@ import Link from "next/link";
 import { PageHead, StatTile, MarkedCard, Chip, Hairline, KV } from "@/components/ui";
 import { DashField } from "@/components/DashField";
 import { documentRequirements } from "@/data/documents";
-import { angelOneOnboarding } from "@/data/onboarding";
 import { obligations } from "@/data/obligations";
 import { tenant } from "@/data/tenant";
-import { angelOne } from "@/data/entity";
+import { molecule } from "@/data/entity";
 import { partLabel } from "@/lib/domains";
 import {
   AddDocumentCta,
@@ -320,23 +319,6 @@ export default function DocumentsPage() {
               ))}
             </div>
           </div>
-          <div className="panel pad">
-            <span className="stat-number">
-              {angelOneOnboarding.result.documentsReceived}
-              <span className="dim" style={{ fontSize: "0.5em" }}>
-                {" "}
-                / {angelOneOnboarding.result.documentsRequested}
-              </span>
-            </span>
-            <div className="mono-label dim" style={{ marginTop: 8 }}>
-              answered at onboarding
-            </div>
-            <p className="small dim60" style={{ marginTop: 6, lineHeight: 1.55 }}>
-              Session {angelOneOnboarding.id} closed {angelOneOnboarding.completedAt?.slice(0, 10)}{" "}
-              with {angelOneOnboarding.result.obligationsMapped} obligations mapped across{" "}
-              {angelOneOnboarding.result.partsApplicable} applicable Parts.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -377,15 +359,8 @@ export default function DocumentsPage() {
         <div className="panel pad">
           <span className="mono-label dim">Provenance — real and simulated content on this page</span>
           <p className="small dim60" style={{ marginTop: 8, lineHeight: 1.6, maxWidth: "96ch" }}>
-            {tenant.name} is a real, listed, SEBI-registered stock broker, and this is an
-            illustrative onboarding of a public entity using public filings. The only extracted
-            values that are real are the identity and financial fields on{" "}
-            <span className="mono-value">DOC-015</span> — ISIN, listing, net worth, revenue, profit,
-            client base and market share, reconciled from XBRL filings and the published June 2026
-            business update. Every other document record on this page — file names, page counts,
-            audit periods, validity windows, upload trail and operational extractions — is
-            simulated, and none of it is an assertion about the firm&apos;s actual documents or
-            actual compliance. The named uploaders are the sandbox compliance team.
+            {molecule.legalName} is a SEBI-registered portfolio manager; every fact on this page
+            carries its provenance.
           </p>
         </div>
       </section>

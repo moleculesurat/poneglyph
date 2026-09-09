@@ -3,11 +3,11 @@ import Link from "next/link";
 import { MarkedCard, Chip, Eyebrow, Hairline } from "@/components/ui";
 import { DashField } from "@/components/DashField";
 import { EntryGateStart } from "@/app/EntryGateStart";
-import { angelOne, factOf } from "@/data/entity";
+import { molecule, factOf } from "@/data/entity";
 import { obligations } from "@/data/obligations";
 import { blankOnboarding } from "@/data/onboarding";
 import { tenant } from "@/data/tenant";
-import { SEBI_DOMAINS } from "@/lib/domains";
+import { SEBI_DOMAINS, CSCRF_GRADE_LABEL } from "@/lib/domains";
 
 /* ══════════════════════════════════════════════════════════════════════
    Entry gate — the cover of the product. Full-bleed: AppShell drops its
@@ -15,8 +15,8 @@ import { SEBI_DOMAINS } from "@/lib/domains";
    lays itself out. Two entry paths and nothing else competing.
    ══════════════════════════════════════════════════════════════════════ */
 
-const netWorth = factOf("net-worth-fy26");
-const clientBase = factOf("client-base-total");
+const netWorth = factOf("aum");
+const clientBase = factOf("clients");
 
 /* Four lines of proof that the demo tenant is a real filed entity, not a
    mock. Every figure is read from data/entity.ts with its provenance —
@@ -29,14 +29,14 @@ const PROOF: { k: string; v: string; note: string }[] = [
     ? [{ k: clientBase.label, v: clientBase.value, note: `${clientBase.provenance} · as of ${clientBase.asOf}` }]
     : []),
   {
-    k: "Designation",
-    v: angelOne.qsb ? "Qualified Stock Broker" : "Not designated",
+    k: "CSCRF grade",
+    v: CSCRF_GRADE_LABEL[molecule.cscrfGrade],
     note: "computed · unconfirmed",
   },
   {
     k: "Register scope",
     v: `${obligations.length} obligations · ${SEBI_DOMAINS.length} rulebooks`,
-    note: `${angelOne.excludedParts.length} Part scoped out, with its reason on the record`,
+    note: `${molecule.applicableParts.length} rulebooks bound, ${molecule.excludedParts.length} scoped out`,
   },
 ];
 
@@ -135,20 +135,19 @@ export default function EntryGate() {
                   <span className="dot" data-pulse /> Recommended path
                 </Chip>
                 <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-                  {angelOne.id} · session ONB-001
+                  {molecule.id} · session ONB-001
                 </span>
               </div>
 
               <h2 className="display" style={{ fontSize: "clamp(23px, 2.6vw, 31px)" }}>
                 Onboarded entity —{" "}
-                <span className="accent grad">{angelOne.legalName}</span>
+                <span className="accent grad">{molecule.legalName}</span>
               </h2>
 
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                A real, listed, SEBI-registered stock broker, already onboarded from its own public
-                filings. Nothing below was written for the demo — the engine resolved the entity,
-                read the filed results and stamped every figure with the document it came from
-                before a single obligation was mapped.
+                Molecule Ventures LLP&rsquo;s registration INP000007216 is declared, not yet
+                documented. Every profile fact carries the source that will back it, and no
+                obligation is mapped until it clears the pipeline and the human gate.
               </p>
 
               <div className="stack" style={{ gap: 0 }}>
@@ -254,8 +253,8 @@ export default function EntryGate() {
 
         {/* ── the honesty line ────────────────────────────────────────── */}
         <p className="small dim60" style={{ maxWidth: "94ch", marginTop: 22, lineHeight: 1.65 }}>
-          {angelOne.legalName}&rsquo;s identity, listing and financial figures are real, public and
-          sourced; the broker registration {tenant.sebiRegNo} is held as{" "}
+          {molecule.legalName}&rsquo;s registration {tenant.sebiRegNo} is declared, not yet
+          documented — held as{" "}
           <b style={{ color: "var(--ink)", fontWeight: 600 }}>declared</b>, not verified, until its
           certificate is read. All compliance posture in this sandbox — obligations met or gapped,
           evidence, remediation, audit events, every trace — is{" "}
