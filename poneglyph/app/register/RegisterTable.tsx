@@ -70,15 +70,14 @@ const PART_ROWS = SEBI_DOMAINS.map((d) => ({
 const PARTS_MAPPED = PART_ROWS.filter((p) => p.count > 0).length;
 const EMPTY_PARTS = PART_ROWS.filter((p) => p.count === 0).map((p) => p.part);
 
-/** "Part VIII" / "Parts VIII and X" / "Parts V, VIII and X" — the empty
-    Parts named rather than counted, so the legend reads as a statement
-    about which chapters carry nothing and never as a bare number. */
+/** the empty rulebooks named rather than counted, so the legend reads as a
+    statement about which rulebooks carry nothing and never as a bare number. */
 const EMPTY_PARTS_LABEL =
   EMPTY_PARTS.length === 0
     ? ""
     : EMPTY_PARTS.length === 1
-      ? `Part ${EMPTY_PARTS[0]}`
-      : `Parts ${EMPTY_PARTS.slice(0, -1).join(", ")} and ${EMPTY_PARTS[EMPTY_PARTS.length - 1]}`;
+      ? partLabel(EMPTY_PARTS[0])
+      : `${EMPTY_PARTS.slice(0, -1).map(partLabel).join(", ")} and ${partLabel(EMPTY_PARTS[EMPTY_PARTS.length - 1])}`;
 
 const STATUS_COUNTS = obligations.reduce(
   (acc, o) => ((acc[o.status] = (acc[o.status] ?? 0) + 1), acc),
@@ -255,7 +254,7 @@ export function RegisterTable() {
       {/* ── filters ── */}
       <MarkedCard pad={18} style={{ marginBottom: 18 }}>
         <div className="stack" style={{ gap: 12 }}>
-          <FilterRow label="SEBI part">
+          <FilterRow label="rulebook">
             <FilterChip active={part === "all"} onClick={() => selectPart("all")}>
               All
             </FilterChip>
@@ -266,17 +265,17 @@ export function RegisterTable() {
                   active={part === p.part}
                   onClick={() => selectPart(part === p.part ? "all" : p.part)}
                 >
-                  Part {p.part} · {p.count}
+                  {partLabel(p.part)} · {p.count}
                 </FilterChip>
               ) : (
                 <span
                   key={p.part}
                   className="chip"
                   data-tone="pending"
-                  title={`Part ${p.part} · ${p.title} — no obligation extracted from this Part in the current corpus`}
+                  title={`${p.title} — no obligation extracted from this rulebook in the current corpus`}
                   style={{ opacity: 0.5 }}
                 >
-                  Part {p.part} · 0
+                  {partLabel(p.part)} · 0
                 </span>
               )
             )}
@@ -291,14 +290,12 @@ export function RegisterTable() {
                 </>
               ) : (
                 <>
-                  Master Circular for Stock Brokers, Parts I–X. {obligations.length} obligations
-                  map across {PARTS_MAPPED} of the {PART_ROWS.length} Parts.
+                  {SEBI_DOMAINS.map((d) => d.title).join(" and ")}. {obligations.length}{" "}
+                  obligations map across {PARTS_MAPPED} of the {PART_ROWS.length} rulebooks.
                   {EMPTY_PARTS_LABEL ? (
                     <>
                       {" "}
-                      {EMPTY_PARTS_LABEL} carries no obligation — excluded at onboarding as
-                      event-driven and held under a standing trigger watch, not left unextracted —
-                      and is shown dashed rather than hidden.
+                      {EMPTY_PARTS_LABEL} carries no obligation yet.
                     </>
                   ) : null}
                 </>
@@ -307,7 +304,7 @@ export function RegisterTable() {
           </div>
           <FilterRow label="chapter">
             <FilterChip active={chapter === "all"} onClick={() => setChapter("all")}>
-              {part === "all" ? "All" : `All of Part ${part}`}
+              {part === "all" ? "All" : `All of ${partLabel(part)}`}
             </FilterChip>
             {visibleChapters.map((ch) => (
               <FilterChip
@@ -486,7 +483,7 @@ function RegisterRow({
         <td>
           <span className="small dim60">{CHAPTER_LABEL[o.clause.chapter]}</span>
           <div className="mono-label dim" style={{ fontSize: 9.5, marginTop: 3 }}>
-            Part {part}
+            {partLabel(part)}
           </div>
         </td>
         <td>
@@ -535,7 +532,7 @@ function RegisterRow({
                     title={`Filter the register to ${partLabel(part)}`}
                     style={{ cursor: "pointer" }}
                   >
-                    Part {part}
+                    {partLabel(part)}
                   </button>
                   <span className="dim" aria-hidden>
                     →
@@ -568,7 +565,7 @@ function RegisterRow({
               <div className="panel pad" style={{ padding: "18px 22px" }}>
                 <div className="row between wrap" style={{ gap: 10 }}>
                   <span className="mono-label dim">
-                    {o.clause.circularId} · Part {part} · {chapterTitle} · para {o.clause.para}
+                    {o.clause.circularId} · {partLabel(part)} · {chapterTitle} · para {o.clause.para}
                   </span>
                   <button
                     type="button"

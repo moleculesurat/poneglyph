@@ -574,7 +574,7 @@ export function DocumentExplorer() {
     <>
       <MarkedCard pad={18} style={{ marginBottom: 18 }}>
         <div className="stack" style={{ gap: 12 }}>
-          <FilterRow label="sebi part">
+          <FilterRow label="rulebook">
             <FilterChip active={part === "all"} onClick={() => setPart("all")}>
               All
             </FilterChip>
@@ -585,7 +585,7 @@ export function DocumentExplorer() {
                 title={partLabel(p)}
                 onClick={() => setPart(part === p ? "all" : p)}
               >
-                Part {p} · {PART_COUNTS[p] ?? 0}
+                {partLabel(p)} · {PART_COUNTS[p] ?? 0}
               </FilterChip>
             ))}
           </FilterRow>

@@ -1,29 +1,28 @@
 /* ══════════════════════════════════════════════════════════════════════
    Clause presets for the live console.
 
-   Every clause body below is READ OUT OF data/ — the corpus paragraphs and
-   the watchtower catch — rather than retyped here, so the text a judge sends
-   to the engine is the same text the rest of the sandbox cites.
+   The two binding clauses are READ OUT OF the collected corpus (data/corpus.ts)
+   rather than retyped here, so the text a judge sends to the engine is the same
+   text the rest of the sandbox cites. The control case is a hard-coded sentence.
+
+   ponytail / NOTE: until stage [0] PROFILE sets Molecule as a portfolio manager
+   and AIF manager, the applicability agent still judges against the stock-broker
+   profile, so it will MISJUDGE these PMS/AIF clauses. That is expected in this
+   interim state and resolves when the profile is switched.
    ══════════════════════════════════════════════════════════════════════ */
 
-import { cuspaCircular, masterCircular } from "@/data/corpus";
-import { catches } from "@/data/watchtower";
+import { circulars } from "@/data/corpus";
 import type { ChapterKey, Circular } from "@/lib/schema";
 
-function paraText(circular: Circular, chapter: ChapterKey, para: string): string {
-  const found = circular.chapters.find((c) => c.key === chapter)?.paras.find((p) => p.para === para);
+function paraText(circular: Circular | undefined, chapter: ChapterKey, para: string): string {
+  const found = circular?.chapters
+    .find((c) => c.key === chapter)
+    ?.paras.find((p) => p.para === para);
   return found?.text ?? "";
 }
 
-const amcCatch = catches.find((c) => c.id === "CATCH-004");
-
-/* The addressee sentence is the one the catch's own applicability reasoning
-   quotes — "all Asset Management Companies (AMCs) and Association of Mutual
-   Funds in India (AMFI)" — restated as the head of the instrument, because a
-   circular states its addressee once and the operative clause never repeats
-   it. The operative sentence below it is the catch's cited text, unedited. */
-const AMC_ADDRESSEE =
-  "This circular is addressed to every asset management company (AMC) and to the Association of Mutual Funds in India (AMFI).";
+const pm = circulars.find((c) => c.id === "MC-PM-2025");
+const aif = circulars.find((c) => c.id === "MC-AIF-2026");
 
 export interface ClausePreset {
   key: string;
@@ -39,37 +38,38 @@ export interface ClausePreset {
 
 export const CLAUSE_PRESETS: ClausePreset[] = [
   {
-    key: "cuspa",
-    label: "CUSPA · para 46.3",
-    circularId: cuspaCircular.id,
-    circularNumber: cuspaCircular.number,
-    para: "46.3",
-    chapter: "unpaid-securities",
-    clauseText: paraText(cuspaCircular, "unpaid-securities", "46.3"),
+    key: "pms-monthly",
+    label: "PMS · para 5.1.2",
+    circularId: pm?.id ?? "MC-PM-2025",
+    circularNumber: pm?.number ?? "",
+    para: "5.1.2",
+    chapter: "pm-5",
+    clauseText: paraText(pm, "pm-5", "5.1.2"),
     expectation:
-      "Addressed to trading members, so applicability should return applies and the extraction call should be made. Expect one event-driven intimation duty, grounded to a span of this paragraph.",
+      "Addressed to portfolio managers, so once the profile is set applicability should return applies and the extraction call should be made. Expect one periodic reporting duty — the monthly report within 7 working days.",
   },
   {
-    key: "cyber",
-    label: "CSCRF · para 103.2",
-    circularId: masterCircular.id,
-    circularNumber: masterCircular.number,
-    para: "103.2",
-    chapter: "cyber",
-    clauseText: paraText(masterCircular, "cyber", "103.2"),
+    key: "aif-quarterly",
+    label: "AIF · para 21.1.2",
+    circularId: aif?.id ?? "MC-AIF-2026",
+    circularNumber: aif?.number ?? "",
+    para: "21.1.2",
+    chapter: "aif-21",
+    clauseText: paraText(aif, "aif-21", "21.1.2"),
     expectation:
-      "A cyber-resilience paragraph that names no capacity of its own, so applicability inherits the addressee of the parent instrument and says so. Two duties usually fall out of it — log retention and multi-factor authentication.",
+      "Addressed to AIFs, so once the profile is set applicability should return applies and the extraction call should be made. Expect one periodic reporting duty — the quarterly activity report within 15 calendar days.",
   },
   {
-    key: "amc",
-    label: "AMC total expense ratio · not binding",
-    circularId: "CIRC-AMC-TER-2026",
-    circularNumber: amcCatch?.circularNumber ?? "SEBI/HO/IMD/IMD-PoD-1/P/CIR/2026/54",
-    para: "3.2",
-    chapter: "reporting",
-    clauseText: `${AMC_ADDRESSEE} ${amcCatch?.applicability.citedText ?? ""}`.trim(),
+    key: "broker-control",
+    label: "Stock-broker clause · not binding",
+    circularId: "MC-SB-2024",
+    circularNumber: "SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2024/53",
+    para: "5.1",
+    chapter: "pm-5",
+    clauseText:
+      "Every stock broker shall submit to the stock exchanges the consolidated periodic report in the format specified, within fifteen days of the end of each quarter.",
     expectation:
-      "The control case. The clause binds asset management companies; the tenant holds no such registration. Applicability should answer no, the run should close there, and no model call should be spent. A cheap, cited no is the correct outcome.",
+      "The control case. The clause binds stock brokers; Molecule holds no such registration. Applicability should answer no, the run should close there, and no model call should be spent. A cheap, cited no is the correct outcome.",
   },
 ];
 

@@ -36,11 +36,6 @@ import {
 const raisedCount = documentRequirements.filter((r) => r.mandatory).length;
 const notRaisedCount = documentRequirements.length - raisedCount;
 
-/* Part VIII raised no ask at all — it is scoped out of this entity's
-   register, so no requirement could ever hang off it. The absence is a
-   determination, and it is worth naming on this page. */
-const excludedPart = angelOne.excludedParts[0];
-
 const blockedStatuses = BLOCKED_TOTAL.map((id) => obligations.find((o) => o.id === id)).filter(
   (o): o is NonNullable<typeof o> => Boolean(o)
 );
@@ -269,29 +264,6 @@ export default function DocumentsPage() {
                 </div>
               );
             })}
-          </div>
-
-          <Hairline dashed />
-
-          <div className="row wrap" style={{ gap: 14, marginTop: 16, alignItems: "flex-start" }}>
-            <Chip tone="info">Part {excludedPart.part}</Chip>
-            <div className="stack" style={{ gap: 4, minWidth: 0 }}>
-              <span className="small" style={{ fontWeight: 500 }}>
-                {partLabel(excludedPart.part)} produced no requirement at all
-              </span>
-              <span className="small dim60" style={{ maxWidth: "82ch", lineHeight: 1.6 }}>
-                It is scoped out of this entity&apos;s register as event-driven — dormant until an
-                exchange default notice reaches the Watchtower — so no document could hang off it.
-                The Part is scoped, not deleted.
-              </span>
-              <Link
-                href="/onboarding"
-                className="mono-label"
-                style={{ fontSize: 9.5, color: "var(--orange-deep)", marginTop: 2 }}
-              >
-                read the scope determination →
-              </Link>
-            </div>
           </div>
         </MarkedCard>
       </section>

@@ -17,17 +17,8 @@ const counts = obligations.reduce(
   {} as Record<ObligationStatus, number>
 );
 
-/* the Jul 3 CUSPA amendment's footprint on the register — derived, so the
-   alert card can never drift from the data behind it */
-const remapped = obligations.filter((o) => o.clause.circularId !== "MC-SB-2025").length;
-const untouched = obligations.length - remapped;
-
-/* labels come from the single source of truth; the dashboard only adds a
-   CUSPA date-stamp to the one chapter the Jul 3 amendment rewrote */
-const CHAPTER_TITLES: Record<ChapterKey, string> = {
-  ...CHAPTER_LABEL,
-  "unpaid-securities": "Unpaid Securities (CUSPA — amended Jul 3)",
-};
+/* chapter labels come straight from the single source of truth */
+const CHAPTER_TITLES: Record<ChapterKey, string> = CHAPTER_LABEL;
 
 /* the register, rolled up the way the Master Circular is organised:
    Part I–X → chapter → obligation. Parts carrying nothing are dropped
@@ -78,31 +69,6 @@ export default function Overview() {
         right={<Cta variant="ghost">Export register</Cta>}
       />
 
-      {/* ── amendment alert ── */}
-      <Link href="/amendments">
-        <MarkedCard pad={18} style={{ marginBottom: 26 }}>
-          <div className="row between wrap">
-            <div className="row" style={{ gap: 14 }}>
-              <Chip tone="gap">
-                <span className="dot" data-pulse /> Amendment
-              </Chip>
-              <div>
-                <div style={{ fontWeight: 600, fontSize: 14.5 }}>
-                  SEBI amended Para 46 — unpaid securities now run on a pledge-based CUSPA regime
-                </div>
-                <div className="small dim60">
-                  Circular HO/38/11/(9)2026-MIRSD-POD/I/15382/2026 · issued 2026-07-03 · caught by
-                  Watchtower 9 days ago · {remapped} obligations re-mapped, {untouched} untouched
-                </div>
-              </div>
-            </div>
-            <span className="mono-label" style={{ color: "var(--orange-deep)" }}>
-              View the diff →
-            </span>
-          </div>
-        </MarkedCard>
-      </Link>
-
       {/* ── tenant line — real entity, simulated posture ── */}
       <div className="panel" style={{ padding: "13px 18px", marginBottom: 26 }}>
         <div className="row between wrap" style={{ gap: 12 }}>
@@ -136,9 +102,9 @@ export default function Overview() {
 
       {/* ── posture ── */}
       <div className="grid cols-4" style={{ marginBottom: 30 }}>
-        <StatTile label="Obligations tracked" value={obligations.length} hint="Master Circular + CUSPA amendment" />
-        <StatTile label="Met with evidence" value={counts.met ?? 0} hint={`${Math.round(((counts.met ?? 0) / obligations.length) * 100)}% of register`} />
-        <StatTile label="Open gaps" value={counts.gap ?? 0} accent hint="all from the Jul 3 amendment" />
+        <StatTile label="Obligations tracked" value={obligations.length} hint="drafted through the pipeline" />
+        <StatTile label="Met with evidence" value={counts.met ?? 0} hint={`${obligations.length ? Math.round(((counts.met ?? 0) / obligations.length) * 100) : 0}% of register`} />
+        <StatTile label="Open gaps" value={counts.gap ?? 0} accent hint="unmet obligations" />
         <StatTile
           label="Needs attention"
           value={(counts["at-risk"] ?? 0) + (counts["pending-review"] ?? 0)}
@@ -286,6 +252,14 @@ export default function Overview() {
             all runs →
           </Link>
         </div>
+        {!latestRun ? (
+          <MarkedCard pad={22}>
+            <span className="small dim60">
+              No pipeline run yet. The register fills once a run drafts obligations from the corpus
+              and the human gate approves them.
+            </span>
+          </MarkedCard>
+        ) : (
         <MarkedCard pad={0} style={{ overflow: "hidden" }}>
           <div style={{ position: "relative", padding: 22 }}>
             <DashField
@@ -323,6 +297,7 @@ export default function Overview() {
             </div>
           </div>
         </MarkedCard>
+        )}
       </section>
     </>
   );

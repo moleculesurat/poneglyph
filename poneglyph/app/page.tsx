@@ -35,7 +35,7 @@ const PROOF: { k: string; v: string; note: string }[] = [
   },
   {
     k: "Register scope",
-    v: `${obligations.length} obligations · ${angelOne.applicableParts.length} of ${SEBI_DOMAINS.length} Parts`,
+    v: `${obligations.length} obligations · ${SEBI_DOMAINS.length} rulebooks`,
     note: `${angelOne.excludedParts.length} Part scoped out, with its reason on the record`,
   },
 ];

@@ -1,20 +1,16 @@
 /* ══════════════════════════════════════════════════════════════════════
-   SEBI regulatory domains — the real taxonomy.
+   SEBI regulatory domains — derived from the collected corpus.
 
-   Source of truth: SEBI Master Circular for Stock Brokers,
-   ref SEBI/HO/MIRSD/MIRSD-PoD-1/P/CIR/2024/53 (May 22, 2024), issued by
-   the Market Intermediaries Regulation and Supervision Department (MIRSD).
-   Part titles below are VERBATIM from that circular's Table of Contents.
+   A Part is one circular (its id). SEBI_DOMAINS, CHAPTER_PART and
+   CHAPTER_LABEL are computed from `circulars` (data/corpus.ts, read from the
+   collected JSON) — one domain per circular, chapters and titles straight
+   from the source. Nothing here is hand-typed.
 
-   Two frameworks sit across these Parts and grade a firm's obligations:
-     · CSCRF — Cybersecurity & Cyber Resilience Framework (Aug 20, 2024),
-       adopted from Jan 1 / Apr 1 2025. Referenced at Part IV item 60.
-     · QSB  — Qualified Stock Broker enhanced obligations (Part II item 18).
-
-   This file is the single source of truth for chapter → Part rollup and
+   This file remains the single source of truth for chapter → Part rollup and
    for human labels. UI must import from here, never redeclare a map.
    ══════════════════════════════════════════════════════════════════════ */
 
+import { circulars } from "@/data/corpus";
 import type { ChapterKey, CscrfGrade, SebiPart } from "@/lib/schema";
 
 /* types live in the schema (the ontology); re-exported here for convenience */
@@ -22,140 +18,35 @@ export type { CscrfGrade, SebiPart };
 
 export interface SebiDomain {
   part: SebiPart;
-  /** verbatim Part title from the Master Circular's Table of Contents */
+  /** the circular title */
   title: string;
   /** plain-language gloss for the UI */
   blurb: string;
   /** register chapters that roll up into this Part */
   chapters: ChapterKey[];
-  /** representative subject numbers from the circular's ToC */
+  /** short summary of the Part's extent */
   items: string;
 }
 
-/* ── The ten Parts, in circular order ──────────────────────────────── */
+/* ── One Part per circular, computed from the corpus ───────────────── */
 
-export const SEBI_DOMAINS: SebiDomain[] = [
-  {
-    part: "I",
-    title: "Registration of Stock Brokers",
-    blurb:
-      "Getting and keeping the licence — antecedent verification, corporate conversion, single registration across segments, transfer of business.",
-    chapters: ["registration"],
-    items: "Subjects 1–12",
-  },
-  {
-    part: "II",
-    title: "Supervision & Oversight",
-    blurb:
-      "How the firm is watched — annual inspection by exchanges, annual system audit, the Early Warning Mechanism against diversion of client securities, and the QSB enhanced-obligation regime.",
-    chapters: ["supervision"],
-    items: "Subjects 13–18 (incl. QSB at 18)",
-  },
-  {
-    part: "III",
-    title: "Dealings with Client",
-    blurb:
-      "The largest Part — account opening and UCC, nomination, margin trading and margin collection, pledge/re-pledge, collateral segregation, handling of client securities, pay-in validation, running-account settlement.",
-    chapters: ["client-dealings", "margin", "unpaid-securities"],
-    items: "Subjects 19–49 (Para 46 = pay-in validation)",
-  },
-  {
-    part: "IV",
-    title: "Technology Related Provisions",
-    blurb:
-      "Electronic contract notes, internet/wireless trading, direct market access, smart order routing, algorithmic trading, software testing — and the Cyber Security & Cyber Resilience framework, AI/ML reporting, cloud and SaaS adoption.",
-    chapters: ["technology", "cyber"],
-    items: "Subjects 50–65 (CSCRF at 60, AI/ML at 61)",
-  },
-  {
-    part: "V",
-    title: "Change in Status, Constitution, Control, Affiliation",
-    blurb:
-      "Prior approval for change in control, periodical reporting to exchanges, NOC for subsidiaries and GIFT-IFSC ventures.",
-    chapters: ["change-control"],
-    items: "Subjects 66–68",
-  },
-  {
-    part: "VI",
-    title: "Foreign Accounts Tax Compliance Act Related Provisions",
-    blurb:
-      "FATCA registration under the Inter-Governmental Agreement with the USA, and the Multilateral Competent Authority Agreement.",
-    chapters: ["fatca"],
-    items: "Subjects 69–70",
-  },
-  {
-    part: "VII",
-    title: "Investor Grievance Redressal",
-    blurb:
-      "Exclusive complaints e-mail ID, redressal through SCORES, the Online Dispute Resolution mechanism, and publishing the Investor Charter plus complaint disclosures.",
-    chapters: ["grievance"],
-    items: "Subjects 71–74",
-  },
-  {
-    part: "VIII",
-    title: "Default Related Provisions",
-    blurb:
-      "Standard operating procedure when a trading or clearing member defaults, and recovery of assets and client funds.",
-    chapters: ["default"],
-    items: "Subjects 75–76",
-  },
-  {
-    part: "IX",
-    title: "Miscellaneous",
-    blurb:
-      "Advertisement by brokers, maintenance of books of accounts, outsourcing, conflicts of interest, website disclosures, the IRRA platform, upstreaming of client funds, bank guarantees out of client funds.",
-    chapters: ["advertisement", "books-records", "outsourcing"],
-    items: "Subjects 77–92 (upstreaming at 92)",
-  },
-  {
-    part: "X",
-    title: "Reporting Requirements",
-    blurb:
-      "The consolidated periodic reporting obligations owed to exchanges and to SEBI.",
-    chapters: ["reporting"],
-    items: "Subject 93 + Annexure-28",
-  },
-];
+export const SEBI_DOMAINS: SebiDomain[] = circulars.map((c) => ({
+  part: c.id,
+  title: c.title,
+  blurb: `${c.number} · issued ${c.issuedOn}`,
+  chapters: c.chapters.map((ch) => ch.key),
+  items: `${c.chapters.length} chapters`,
+}));
 
-/* ── Chapter → Part rollup ─────────────────────────────────────────── */
+/* ── Chapter → Part rollup, and chapter labels ─────────────────────── */
 
-export const CHAPTER_PART: Record<ChapterKey, SebiPart> = {
-  registration: "I",
-  supervision: "II",
-  "client-dealings": "III",
-  margin: "III",
-  "unpaid-securities": "III",
-  technology: "IV",
-  cyber: "IV",
-  "change-control": "V",
-  fatca: "VI",
-  grievance: "VII",
-  default: "VIII",
-  advertisement: "IX",
-  "books-records": "IX",
-  outsourcing: "IX",
-  reporting: "X",
-};
+export const CHAPTER_PART: Record<ChapterKey, SebiPart> = Object.fromEntries(
+  circulars.flatMap((c) => c.chapters.map((ch) => [ch.key, c.id])),
+);
 
-/* ── Chapter labels (single source of truth for the UI) ────────────── */
-
-export const CHAPTER_LABEL: Record<ChapterKey, string> = {
-  registration: "Registration",
-  supervision: "Supervision & Oversight",
-  "client-dealings": "Dealings with Client",
-  margin: "Margin & Collateral",
-  "unpaid-securities": "Unpaid Securities (CUSPA)",
-  technology: "Trading Technology",
-  cyber: "Cyber Security (CSCRF)",
-  "change-control": "Change in Control",
-  fatca: "FATCA",
-  grievance: "Investor Grievance",
-  default: "Default Management",
-  advertisement: "Advertisement",
-  "books-records": "Books & Records",
-  outsourcing: "Outsourcing & Conduct",
-  reporting: "Reporting",
-};
+export const CHAPTER_LABEL: Record<ChapterKey, string> = Object.fromEntries(
+  circulars.flatMap((c) => c.chapters.map((ch) => [ch.key, ch.title])),
+);
 
 /* ── Lookups ───────────────────────────────────────────────────────── */
 
@@ -173,9 +64,9 @@ export function domainByPart(part: SebiPart): SebiDomain | undefined {
   return DOMAIN_BY_PART.get(part);
 }
 
-/** Part label for chips: "Part III · Dealings with Client" */
+/** Part label for chips: the circular title, e.g. "Master Circular for Portfolio Managers" */
 export function partLabel(part: SebiPart): string {
-  return `Part ${part} · ${DOMAIN_BY_PART.get(part)?.title ?? ""}`;
+  return DOMAIN_BY_PART.get(part)?.title ?? part;
 }
 
 /* ── The two grading frameworks ────────────────────────────────────── */

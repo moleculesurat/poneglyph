@@ -15,7 +15,7 @@ const overdueN = tasks.filter(
 ).length;
 const fromCuspaRun = tasks.filter((t) => t.createdByRun === "RUN-047").length;
 const fromCorpusPass = tasks.filter((t) => t.createdByRun === "RUN-049").length;
-const earliestDue = tasks.map((t) => t.due).sort()[0];
+const earliestDue = tasks.map((t) => t.due).sort()[0] ?? "—";
 const unevidencedN = obligations.filter((o) => o.evidenceIds.length === 0).length;
 
 export default function Remediation() {

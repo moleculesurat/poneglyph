@@ -21,24 +21,9 @@ export type EvidenceKind = "document" | "data-check" | "live-scan";
 
 export type TaskStatus = "open" | "in-progress" | "done" | "overdue";
 
-/** Register chapters. Each rolls up to one Part (I–X) of the SEBI Master
-    Circular for Stock Brokers — see `lib/domains.ts` for the mapping. */
-export type ChapterKey =
-  | "registration" // Part I
-  | "supervision" // Part II — incl. system audit + QSB
-  | "client-dealings" // Part III
-  | "margin" // Part III
-  | "unpaid-securities" // Part III — Para 46 / CUSPA
-  | "technology" // Part IV — ECN, IBT, DMA, algo
-  | "cyber" // Part IV — CSCRF
-  | "change-control" // Part V
-  | "fatca" // Part VI
-  | "grievance" // Part VII — SCORES, ODR
-  | "default" // Part VIII
-  | "advertisement" // Part IX
-  | "books-records" // Part IX
-  | "outsourcing" // Part IX — outsourcing + conflicts of interest
-  | "reporting"; // Part X
+/** A register chapter, keyed by the chapter key from the collected corpus
+    (e.g. "pm-5", "aif-21"). Derived from the JSON, never hand-typed. */
+export type ChapterKey = string;
 
 /* ── Regulatory corpus ─────────────────────────────────────────────── */
 
@@ -59,8 +44,10 @@ export interface Circular {
   title: string;
   issuedOn: string; // ISO date
   kind: "master-circular" | "amendment" | "regulation";
-  source: string; // sebi.gov.in URL (simulated)
+  source: string; // sebi.gov.in URL
   supersedes?: string; // circular id
+  sourceFile?: string; // path to the collected source dump
+  sourceSha256?: string; // sha256 of that source file
   chapters: Chapter[];
 }
 
@@ -283,8 +270,8 @@ export interface McpTool {
    clause made us ask for it.
    ══════════════════════════════════════════════════════════════════════ */
 
-/** Parts I–X of the Master Circular. Titles live in `lib/domains.ts`. */
-export type SebiPart = "I" | "II" | "III" | "IV" | "V" | "VI" | "VII" | "VIII" | "IX" | "X";
+/** A Part is now a circular id (e.g. "MC-PM-2025"). Titles live in `lib/domains.ts`. */
+export type SebiPart = string;
 
 /** CSCRF grades a regulated entity by size; the grade sets cyber depth. */
 export type CscrfGrade = "self-certification" | "basic" | "mid-size" | "qualified" | "mii";

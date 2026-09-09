@@ -35,7 +35,9 @@ const VERDICT_LABEL: Record<ApplicabilityVerdict["verdict"], string> = {
 };
 
 const pollRun = runs.find((r) => r.id === "RUN-048") ?? runs[runs.length - 1];
-const nextPoll = `${nextDay(pollRun.startedAt.slice(0, 10))} ${pollRun.startedAt.slice(11, 16)} IST`;
+const nextPoll = pollRun
+  ? `${nextDay(pollRun.startedAt.slice(0, 10))} ${pollRun.startedAt.slice(11, 16)} IST`
+  : "—";
 
 const sources = [...new Set(catches.map((c) => c.source))];
 const hero = catches.find((c) => c.id === "CATCH-005");
@@ -115,6 +117,30 @@ function CatchCard({ c }: { c: ScraperCatch }) {
 /* ── page ─────────────────────────────────────────────────────────────── */
 
 export default function Watchtower() {
+  if (!pollRun || catches.length === 0) {
+    return (
+      <>
+        <PageHead
+          eyebrow={`Watchtower · ${tenant.name}`}
+          title={
+            <>
+              SEBI Circular <span className="accent grad">Scraper</span>
+            </>
+          }
+          sub={
+            <>
+              The Watchtower polls SEBI&rsquo;s circulars, regulations and press releases and rules
+              on applicability with clause-level citations. Nothing has been caught yet — when a
+              document that binds this entity appears, it opens a pipeline run and shows here.
+            </>
+          }
+        />
+        <div className="panel pad">
+          <span className="small dim60">No catches on record. The register fills only through the pipeline and the human gate.</span>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <PageHead

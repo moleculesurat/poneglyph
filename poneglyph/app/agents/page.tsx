@@ -50,6 +50,24 @@ const PRINCIPLES = [
 ];
 
 export default function AgentsPage() {
+  if (!heroRun) {
+    return (
+      <>
+        <PageHead
+          eyebrow="Agent pipeline"
+          title={
+            <>
+              The <span className="accent grad">Glass Box</span>
+            </>
+          }
+          sub="No pipeline run yet. Every run — watcher, applicability, extraction, verifier, human gate — is recorded and replayable here once the pipeline drafts obligations from the corpus."
+        />
+        <div className="panel pad">
+          <span className="small dim60">No runs on record. The register fills only through the pipeline and the human gate.</span>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <PageHead
