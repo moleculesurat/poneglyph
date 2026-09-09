@@ -73,7 +73,7 @@ export default function LivePage() {
           <div className="row wrap" style={{ gap: 10 }}>
             <Chip tone="live">live</Chip>
             <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-              sandbox per visitor
+              shared register
             </span>
           </div>
         }
@@ -82,12 +82,9 @@ export default function LivePage() {
       <MarkedCard pad={22} style={{ marginBottom: 34 }}>
         <div className="grid cols-2" style={{ gap: 22 }}>
           <div className="stack" style={{ gap: 8 }}>
-            <span className="mono-label dim">session sandbox</span>
+            <span className="mono-label dim">shared register</span>
             <p className="small dim60" style={{ margin: 0, lineHeight: 1.7 }}>
-              A cookie mints a private sandbox seeded from the same fixtures as the rest of the site.
-              Runs started, obligations approved and events appended in this session are scoped to it
-              — no other visitor&apos;s view changes — and it can be reseeded at any time from the
-              chain integrity section at the bottom of this route.
+              One shared register for Molecule Ventures LLP; write routes need the gate token.
             </p>
           </div>
           <div className="stack" style={{ gap: 8 }}>

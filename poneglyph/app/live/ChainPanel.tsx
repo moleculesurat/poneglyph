@@ -184,7 +184,7 @@ export function ChainPanel({ refreshKey }: { refreshKey: number }) {
     <section className="stack" style={{ gap: 18 }}>
       <div className="row between wrap" style={{ gap: 14 }}>
         <div className="stack" style={{ gap: 6 }}>
-          <span className="mono-label dim">05 · audit chain</span>
+          <span className="mono-label dim">06 · audit chain</span>
           <h2 className="display" style={{ fontSize: 24 }}>
             Chain <span className="accent grad">integrity</span>
             {audit ? ` — ${audit.count} events, recomputed from content` : ""}
