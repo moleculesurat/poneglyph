@@ -1,6 +1,6 @@
 # HANDOFF — Molecule compliance pipeline (read this first after /clear)
 
-Updated 2026-09-09. Repo: /Users/pranjal/Code/poneglyph (app in poneglyph/). Branch `molecule`.
+Updated 2026-09-09 (evening). Repo: /Users/pranjal/Code/poneglyph (app in poneglyph/). Branch `molecule`.
 Remotes: `origin` = github.com/moleculesurat/poneglyph (fork), `upstream` = walrus-securitas/poneglyph.
 
 ## Roles (do not drift)
@@ -36,29 +36,43 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - 0073ed1 worker: footnote-stripper fix (was eating "para 2.4.1" -> "para 2.."). VERIFIED by me:
   zero damage patterns, all cross-refs/decimals present verbatim in source.
 
-## In progress (prompt already given to the worker, awaiting report)
-Task: app reads collected JSON as corpus; ChapterKey/SebiPart -> string; lib/domains.ts derives
-SEBI_DOMAINS/CHAPTER_PART/CHAPTER_LABEL from `circulars`; delete broker demo register (obligations,
-evidence, tasks, runs, catches, documents -> []; audit -> one genesis event, hash 492a3eac54e5);
-stub /amendments (delete Redline.tsx); presets from collected paras (PMS 5.1.2, AIF 21.1.2,
-broker control case); "Part {x}" literals -> partLabel(x); guards for empty arrays; drop the
-worker's "spine-swap draft" stash. Accept only if: `npm run collect && npx tsc --noEmit &&
-npm run build` pass, wrangler dry-run builds, /register /dashboard /live /audit load.
-Commit msg: "molecule: app reads the collected corpus; chapter taxonomy derived; broker demo
-register deleted".
+## Done today (all VERIFIED by me: tsc, build, wrangler dry-run, pages 200, greps, applicability probe)
+- 6425cad app reads collected corpus; taxonomy derived from `circulars`; broker demo register deleted;
+  audit = one genesis event AE-0001 hash 492a3eac54e5; presets PMS 5.1.2 / AIF 21.1.2 / broker control.
+- 003ee9d stage [0]: tenant + entity = Molecule (portfolio-manager + aif-manager, 5 declared facts w/
+  provenance, cscrfBasis verbatim from CSCRF clarifications 2.6/2.7/4 = self-certification, NOT M-SOC
+  exempt); applicability/verifier/extract/watch read capacities from the profile; onboarding = profile stub.
+  Team names are ROLE placeholders ("Compliance Officer", "Principal Officer") — Pranjal to fill.
+- e85ccbd deleted live-onboard path (worker/onboard.ts, /api/onboard, liveEntity), QSB, onboarding
+  session data/components; BusinessSegment = pms-discretionary|pms-non-discretionary|pms-advisory|
+  aif-category-ii; entity.segments = [] until Pranjal declares which PMS lines Molecule runs.
+- Probe (npx tsx, assessApplicability on the 3 presets): applies / applies / not-applicable. Re-run after
+  any applicability change.
 
-## Next tasks (in order, one prompt each)
-1. Stage [0] PROFILE: data/tenant.ts + data/entity.ts -> Molecule (PM + aif-manager, facts with
-   provenance, cscrfGrade self-certification); IntermediaryType += portfolio-manager, aif-manager;
-   BusinessSegment -> PMS/AIF lines; worker/applicability.ts + verifier.ts read capacities from the
-   profile (TENANT_CAPACITY hardcode goes); watch.ts term lists flip (PM/AIF = tenant, broker =
-   foreign); onboarding page -> stub on Molecule facts; remove QSB; CSCRF tiers from the Apr 2025
-   circular; drop Tenant.exchanges/qsb/activeClients.
-2. Stage [2]+[3]+[4] on real text: run the recurring PMS/AIF duties through /live, approve at the
-   gate; then seed script or DB for approved obligations (KV is per-session today).
-3. Rewrite MOLECULE-TODO.md around roadmap stages (stale). Docs cleanup (hackathon files).
-4. Stage [5] SCHEDULE (cadence -> dates), [6] PROVE, [8] SHOW, [7] MONITOR tuning.
-5. Deployment: Molecule's Cloudflare account/KV/domain in wrangler.jsonc, model secrets.
+## Architecture facts learned
+- Register lives ONLY in KV, per-visitor session (cookie pg_sid -> sess:<uuid>); /register /dashboard
+  /audit pages render static seed data (now empty); only /live reads /api. So approvals are invisible
+  outside /live and vanish per browser. Hackathon leftovers: /api/audit/tamper (corrupts the chain on
+  purpose), /api/session/reset (wipes the register). No auth on the gate.
+- Extraction needs an OpenAI-compatible endpoint: KIMI_API_KEY/KIMI_BASE_URL/KIMI_MODEL (Worker secrets or
+  poneglyph/.dev.vars for `wrangler dev`). Pranjal has not yet supplied a key.
+- wrangler.jsonc still pins Techgenie2050's account_id + poneglyph.walrussecuritas.com + KV id.
+
+## In progress (prompt given, awaiting report)
+Task 4a: single shared tenant session (sid "molecule", no cookies), GATE_TOKEN header on POST /api/runs
+and POST /api/obligations/:id/decision (401 without), delete tamper + reset routes/UI, .dev.vars.example.
+Commit: "molecule: one shared register; gate token; tamper/reset demo removed".
+
+## Next tasks (one prompt each)
+4b. scripts/pull-register.mjs: GET /api/state + /api/audit from the running worker -> data/collected/
+    register.json; data/obligations.ts + data/audit.ts import it (git = durable store, KV = working store).
+5.  Stage [2]-[4] on real text: needs a model key from Pranjal (.dev.vars). Run the two presets through
+    /live under `wrangler dev`, inspect extraction + verifier on PMS/AIF text, approve at the gate.
+    Then batch: every "shall ... within N days" para of both circulars.
+6.  Rewrite MOLECULE-TODO.md around roadmap stages; delete hackathon docs. Pranjal fills team names/segments.
+7.  [5] SCHEDULE, [6] PROVE, [8] SHOW, [7] MONITOR tuning. Collect residual: footnote marker at source
+    line end survives (PMS 5.1.2 "each month 67 and") — needs the page-bottom footnote list as lookup.
+8.  Deployment: Molecule's Cloudflare account/KV/domain in wrangler.jsonc; secrets.
 
 ## Key facts the tasks depend on
 - CSCRF tiers (given/sources/cscrf-clarifications-2025-04-30.txt para 2.6/2.7/4): PM AUM
@@ -85,3 +99,7 @@ register deleted".
 - Reviews must run the checks (determinism, greps against source, tsc); the worker's reports
   were honest but the bug only showed up by testing.
 - Keep prompts to one task; the worker executes exactly what is written.
+- Spec warts I caused today: told the worker to add "custodian" to DOMAIN_TERMS without removing it from
+  FOREIGN_TERMS; named only two broker phrasings so a third survived. Lesson: for term-list edits say
+  "grep X must return N lines" instead of naming phrasings.
+- Never let the worker invent facts about Molecule: unknowns become [PRANJAL: ...] slots or role placeholders.
