@@ -41,7 +41,7 @@ export interface Chapter {
 }
 
 export interface Circular {
-  id: string; // e.g. "MC-SB-2025"
+  id: string; // e.g. "MC-PM-2025"
   number: string; // official circular number
   title: string;
   issuedOn: string; // ISO date

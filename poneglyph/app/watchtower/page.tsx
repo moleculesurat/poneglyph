@@ -43,9 +43,6 @@ const sources = [...new Set(catches.map((c) => c.source))];
 const hero = catches.find((c) => c.id === "CATCH-005");
 const rest = catches.filter((c) => c.id !== "CATCH-005");
 
-/* the register's footprint per circular — derived, never typed */
-const cuspaRemapped = obligations.filter((o) => o.clause.circularId !== "MC-SB-2025").length;
-
 const appliesN = catches.filter((c) => c.applicability.verdict === "applies").length;
 const partialN = catches.filter((c) => c.applicability.verdict === "partial").length;
 const triggeredN = catches.filter((c) => c.triggeredRunId).length;
@@ -153,8 +150,7 @@ export default function Watchtower() {
           <>
             The Watchtower polls SEBI&rsquo;s circulars, regulations and press releases every 24
             hours, rules on applicability with clause-level citations, and hands anything that
-            binds this tenant to the agent pipeline.{" "}
-            <b>CATCH-005 re-mapped {cuspaRemapped} obligations on the register.</b>
+            binds this tenant to the agent pipeline.
           </>
         }
       />

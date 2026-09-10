@@ -134,7 +134,7 @@ export default function InspectorPage() {
             label="Open gaps — declared"
             value={counts.gap ?? 0}
             accent
-            hint="all from the Jul 3 amendment · carried on the register as open"
+            hint="approved duties with no evidence bound"
           />
           <StatTile
             label="Human-approved mappings"
