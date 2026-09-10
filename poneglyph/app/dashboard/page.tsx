@@ -8,6 +8,7 @@ import { runs } from "@/data/runs";
 import { factOf } from "@/data/entity";
 import { tenant } from "@/data/tenant";
 import { CHAPTER_LABEL, SEBI_DOMAINS, partOf } from "@/lib/domains";
+import { parseSchedule, nextDue, TODAY } from "@/lib/schedule";
 import type { ChapterKey, ObligationStatus } from "@/lib/schema";
 
 /* ── derived, all from static data (sim-today pinned) ─────────────────── */
@@ -19,6 +20,17 @@ const counts = obligations.reduce(
 
 /* chapter labels come straight from the single source of truth */
 const CHAPTER_TITLES: Record<ChapterKey, string> = CHAPTER_LABEL;
+
+/* ── stage 5: schedules parsed from the approved register's own text ──── */
+const upcoming = obligations
+  .filter((o) => o.type === "periodic")
+  .map((o) => ({ o, s: parseSchedule(o) }))
+  .map((x) => ({ ...x, due: x.s ? nextDue(x.s, TODAY) : null }))
+  .sort((a, b) =>
+    (a.due === null) !== (b.due === null) ? (a.due === null ? 1 : -1) : (a.due ?? "").localeCompare(b.due ?? ""),
+  );
+const datedCount = upcoming.filter((x) => x.due).length;
+const milestones = upcoming.filter((x) => x.due).map((x) => ({ at: x.due!, label: x.o.title, note: x.s!.note, href: `/register?id=${x.o.id}` }));
 
 /* the register, rolled up the way the Master Circular is organised:
    Part I–X → chapter → obligation. Parts carrying nothing are dropped
@@ -110,16 +122,44 @@ export default function Overview() {
         />
       </div>
 
-      {/* ── deadline runway ── */}
+      {/* ── deadline runway — due dates computed from register text ── */}
       <section style={{ marginBottom: 34 }}>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Deadline runway — open due dates</span>
-          <span className="mono-label dim">
-            drag to scroll · sim-today {tenant.simToday}
-          </span>
+          <span className="eyebrow">Deadline runway — computed due dates</span>
+          <span className="mono-label dim">drag to scroll</span>
         </div>
         <MarkedCard pad={14}>
-          <DeadlineRunway />
+          <DeadlineRunway milestones={milestones} today={TODAY} />
+          <Hairline />
+          <table className="small" style={{ width: "100%", borderCollapse: "collapse" }}>
+            <thead>
+              <tr className="mono-label dim" style={{ textAlign: "left", fontSize: 9.5 }}>
+                <th style={{ padding: "6px 8px", width: 110 }}>due</th>
+                <th style={{ padding: "6px 8px", width: 90 }}>obligation</th>
+                <th style={{ padding: "6px 8px" }}>title</th>
+                <th style={{ padding: "6px 8px" }}>schedule</th>
+              </tr>
+            </thead>
+            <tbody>
+              {upcoming.map(({ o, s, due }) => (
+                <tr key={o.id} style={{ borderTop: "1px solid var(--ink-10)" }}>
+                  <td className="mono-label" style={{ padding: "6px 8px", whiteSpace: "nowrap", color: due ? undefined : "var(--ink-40)" }}>
+                    {due ?? "—"}
+                  </td>
+                  <td style={{ padding: "6px 8px" }}>
+                    <Link href={`/register?id=${o.id}`} className="mono-label" style={{ color: "var(--orange-deep)" }}>
+                      {o.id}
+                    </Link>
+                  </td>
+                  <td style={{ padding: "6px 8px" }}>{o.title}</td>
+                  <td className="dim60" style={{ padding: "6px 8px" }}>{s?.note ?? "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <span className="mono-label dim" style={{ fontSize: 9.5, display: "inline-block", marginTop: 8 }}>
+            as of build {TODAY} · {upcoming.length} periodic duties, {datedCount} with a computable date
+          </span>
         </MarkedCard>
       </section>
 
