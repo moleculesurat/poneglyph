@@ -119,15 +119,21 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - REVIEW-2026-09-10.md covers all 115: reject 25, approve 76, 14 conditional on 6 yes/no facts from Pranjal.
 - Footnote artefacts in excerpts: only OBL-011 "]78from", OBL-098 "] 74days" (+ "month 67" in the corpus). Cosmetic; collect fix deferred.
 
-## In progress — waiting on PRANJAL, not the worker
-Pranjal: answer the 6 questions in REVIEW; run the decide commands (reject list, approve lists); `npm run pull`; commit
-register.json. Nothing else moves until the register is in git.
+- 0f65e97 REGISTER IN GIT: 86 approved (40 PMS, 46 AIF; 31 periodic, 41 event-driven, 10 ongoing, 4 one-time),
+  31 rejected, 0 pending; 354 events, tip 0f50b24363a6. Verified: every excerpt verbatim in corpus, chain intact,
+  re-pull idempotent, no rejected id in the register. Pranjal's facts: ETCD no, distributors YES, CDS no, real-estate no,
+  overseas limit YES, co-investment no. All approvals signed "Compliance Officer" (placeholder).
+- frequency strings in the register: annual 11, monthly 6, 30 days 6, quarterly 5, 15 days 5, 60 days 4, half-yearly 2,
+  N working days 5, event-driven 16, None 21. deadline is never set. Excerpts carry the real window text.
+
+## In progress (prompt given, awaiting report)
+Task 14: lib/schedule.ts — deterministic parse of period + filing window from the excerpt (never invents a date);
+nextDue(today); dashboard "upcoming filings" + DeadlineRunway fed from it (hard-coded CUSPA milestones deleted).
 
 ## Next tasks (one prompt each)
-5.  Task 14 (after the pull, on real approved data): lib/schedule.ts derives cadence + window + anchor from excerpt/
-    frequency ('within 7 working days of the end of each month' -> monthly, 7 working days, month-end) and next due
-    dates; dashboard/remediation show them. Then decide with Pranjal whether to extract the other ~445 'shall'
-    paragraphs (ongoing duties without a cadence) chapter by chapter. Collect footnote fix when convenient.
+5.  Decide with Pranjal whether to extract the other ~445 'shall' paragraphs (ongoing duties without a cadence),
+    chapter by chapter (suggested: PMS ch 2, AIF ch 3 first). [6] PROVE: evidence upload + bind (status gap -> met).
+    Collect footnote fix when convenient. Real team names before the register is relied on.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
