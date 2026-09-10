@@ -5,8 +5,9 @@
      · one successful call took 41s; another took 2m47s; one hit 300s and
        returned nothing at all
      · a second, concurrent call was rejected in 7s
-     · some models are reasoning models — a small max_tokens is spent
-       entirely on reasoning tokens and `content` comes back EMPTY
+     · some models are reasoning models — they spend the token budget on
+       reasoning before writing content, so too small a max_tokens returns
+       EMPTY content; the budget below was raised to 16k for that reason
    So: calls are serialised, generously budgeted, timed out at 240s, and
    attempted at most twice.
 
@@ -19,7 +20,7 @@ import type { EvidenceKind, IntermediaryType, ObligationType } from "../lib/sche
 import type { Env, RunInput } from "./types";
 import { sleep } from "./session";
 
-const MAX_TOKENS = 4000;
+const MAX_TOKENS = 16000;
 const CALL_TIMEOUT_MS = 240_000;
 const MAX_ATTEMPTS = 2;
 

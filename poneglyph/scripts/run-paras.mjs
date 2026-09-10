@@ -1,6 +1,6 @@
 /* Drive the extraction pipeline over collected paragraphs, one at a time.
    usage:  node scripts/run-paras.mjs list [MC-PM-2025|MC-AIF-2026]
-           node scripts/run-paras.mjs run <circularId> <para>[,<para>...]|all [--base URL]
+           node scripts/run-paras.mjs run <circularId> <para>[,<para>...]|all [--force] [--base URL]
    env GATE_TOKEN → x-gate-token header on `run`. Writes nothing to disk. */
 import { readFile } from "node:fs/promises";
 const SHALL = /\bshall\b/i;
@@ -29,12 +29,21 @@ async function cmdList(circularId) {
   }
 }
 
-/* POST one run; 409 (a run already in flight) retries up to 60×5s, exit on 401/503/other */
+/* POST one run; 409 retries up to 60×5s, dropped connections up to 12×5s
+   (then give up on this para, returning null), exit on 401/503/other. */
 async function startRun(base, token, body) {
   const opts = { method: "POST", headers: { "content-type": "application/json", "x-gate-token": token }, body: JSON.stringify(body) };
+  let neterr = 0;
   for (let tries = 0; tries < 60; tries++) {
-    const res = await fetch(`${base}/api/runs`, opts);
-    const text = await res.text();
+    let res, text;
+    try {
+      res = await fetch(`${base}/api/runs`, opts);
+      text = await res.text();
+    } catch (e) {
+      if (++neterr > 12) { console.log(`${body.para}  network-error  ${e.message || "fetch failed"}`); return null; }
+      await sleep(5000);
+      continue;
+    }
     let data = {}; try { data = JSON.parse(text); } catch {}
     if (res.status === 202) return data.runId;
     if (res.status === 409) { await sleep(5000); continue; }
@@ -47,14 +56,16 @@ async function startRun(base, token, body) {
 async function poll(base, runId) {
   const deadline = Date.now() + 600_000; // 10 min, then caller reports timeout
   while (Date.now() < deadline) {
-    const run = await (await fetch(`${base}/api/runs/${runId}`)).json();
-    if (run.status !== "running") return run;
+    try {
+      const run = await (await fetch(`${base}/api/runs/${runId}`)).json();
+      if (run.status !== "running") return run;
+    } catch { /* dropped connection — wait and poll again, never crash the batch */ }
     await sleep(3000);
   }
   return null;
 }
 
-async function cmdRun(circularId, selector, base) {
+async function cmdRun(circularId, selector, base, force) {
   const doc = await load(circularId);
   const index = new Map();
   for (const [ch, p] of eachPara(doc)) index.set(p.para, { ch, p });
@@ -64,10 +75,26 @@ async function cmdRun(circularId, selector, base) {
   for (const para of selected) if (!index.has(para)) fail(`para ${para} not found in ${circularId}`);
   const token = process.env.GATE_TOKEN;
   if (!token) fail("GATE_TOKEN unset — export the worker's gate token and retry");
-  let done = 0, awaiting = 0, failed = 0;
+  /* one /api/state read up front: never re-run a paragraph that already has a
+     draft (any status). --force runs it anyway. */
+  const drafted = new Set();
+  if (!force) {
+    try {
+      const state = await (await fetch(`${base}/api/state`)).json();
+      for (const o of [...(state.obligations ?? []), ...(state.rejected ?? [])])
+        drafted.add(`${o.clause.circularId}|${o.clause.para}`);
+    } catch { /* state unreadable — skip nothing */ }
+  }
+  let done = 0, awaiting = 0, failed = 0, skipped = 0;
   for (const para of selected) {
+    if (drafted.has(`${circularId}|${para}`)) {
+      console.log(`${para}  skipped (already drafted/approved)`);
+      skipped++;
+      continue;
+    }
     const { ch, p } = index.get(para);
     const runId = await startRun(base, token, { clauseText: p.text, para, chapter: ch.key, circularId });
+    if (!runId) continue; // network-error already reported by startRun
     const run = await poll(base, runId);
     if (!run) { console.log(`${para}  timeout`); continue; }
     const checks = run.verifierChecks ?? [];
@@ -78,13 +105,14 @@ async function cmdRun(circularId, selector, base) {
     if (run.status === "awaiting-approval") awaiting++;
     else if (run.status === "failed") failed++;
   }
-  console.log(`${done}/${selected.length} runs finished; ${awaiting} awaiting approval, ${failed} failed`);
+  console.log(`${done}/${selected.length} runs finished; ${awaiting} awaiting approval, ${failed} failed, ${skipped} skipped`);
 }
 
 const [cmd, ...rest] = process.argv.slice(2);
 const base = rest.includes("--base") ? rest[rest.indexOf("--base") + 1] : "http://localhost:8787";
+const force = rest.includes("--force");
 if (cmd === "list") await cmdList(rest[0]);
 else if (cmd === "run") {
-  if (!rest[0] || !rest[1]) fail("usage: run <circularId> <para[,para...]|all> [--base URL]");
-  await cmdRun(rest[0], rest[1], base);
-} else fail("usage: run-paras.mjs list [circularId] | run <circularId> <para|all> [--base URL]");
+  if (!rest[0] || !rest[1]) fail("usage: run <circularId> <para[,para...]|all> [--force] [--base URL]");
+  await cmdRun(rest[0], rest[1], base, force);
+} else fail("usage: run-paras.mjs list [circularId] | run <circularId> <para|all> [--force] [--base URL]");

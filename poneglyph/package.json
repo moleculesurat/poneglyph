@@ -6,6 +6,7 @@
     "collect": "node scripts/collect.mjs",
     "pull": "node scripts/pull-register.mjs",
     "paras": "node scripts/run-paras.mjs",
+    "decide": "node scripts/decide.mjs",
     "dev": "next dev",
     "build": "next build",
     "preview": "npx serve out -l 3000",
