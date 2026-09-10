@@ -131,8 +131,16 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
   + DeadlineRunway fed from it; hard-coded CUSPA milestones deleted. 30/31 periodic duties parse, 29 dated.
   Working days = Mon-Fri, holidays not modelled (ponytail comment).
 
-## In progress (prompt given, awaiting report)
-Task 15: stale hackathon residue purge (CUSPA prose in 7 files, data/mcp.ts CUSPA demo, TaskBoard CIRC-CUSPA check).
+- d3195e1 15: CUSPA prose, fake /mcp page + data/mcp.ts, dead redline links purged. Residue with WRONG NUMBERS
+  still shown: register.tsx gapsFromAmendment / watchtower.tsx cuspaRemapped filter on circularId !== "MC-SB-2025"
+  (= all 86), inspector "Jul 3 amendment" hint -> Task 15b.
+
+## In progress (prompts given, awaiting reports)
+Task 15b: the three MC-SB-2025 / Jul 3 residues (tiny).
+Task 16 (stage [6] PROVE, API + CLI): SessionState.evidence; POST /api/obligations/:id/evidence (gate token) binds an
+EvidenceArtifact (metadata + SHA-256 of the file, file stays in Molecule's drive), obligation -> met, audit event
+evidence.bound; /api/state + pull + data/evidence.ts + seed carry evidence; scripts/attach.mjs. Task 17 next: UI
+form in the register row + live status overlay from /api/state; periodic duties re-open as gap after the period end.
 
 ## Next tasks (one prompt each)
 5.  Decide with Pranjal whether to extract the other ~445 'shall' paragraphs (ongoing duties without a cadence),
