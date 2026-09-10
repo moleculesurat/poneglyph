@@ -57,7 +57,9 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
   ids like 4(1), 22A; optional `heading`). Verify: regs set 1-43 + 22A/34A/42A, no dup ids, no footnote leak, MC JSONs byte-identical.
   Coordinator prototype (scratchpad proto.mjs) got 3/19/6/59/12/6/1 paras per chapter.
 - given/1741061994339.pdf (untracked, Pranjal's) = the ORIGINAL Gazette notification of 16 Jan 2020, unamended; not used.
-- Next: 1a' Schedules II-IV (fees, code of conduct, agreement contents) as chapters; 1b batches; 1c; 1d; 1e.
+- Task 19 (1a') ISSUED 2026-09-10: Schedules II/III/IV of REG-PM-2020 as chapters pmr-s2/s3/s4 (5/10/18 items, ids S2.1..; total 141,
+  10 chapters). Schedule I (forms), VI (declarations) and the amendment history are not collected.
+- Then: 1b batches (PMS MC remaining shall, then REG-PM-2020, then related-party circular); 1c; 1d; 1e.
 
 ## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
 - RSS: HTTP 200, 30 items, 29 enforcement/recovery + 1 circular. Missed circular 104323 (AIF, Sep 2026).
