@@ -135,12 +135,15 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
   still shown: register.tsx gapsFromAmendment / watchtower.tsx cuspaRemapped filter on circularId !== "MC-SB-2025"
   (= all 86), inspector "Jul 3 amendment" hint -> Task 15b.
 
-## In progress (prompts given, awaiting reports)
-Task 15b: the three MC-SB-2025 / Jul 3 residues (tiny).
-Task 16 (stage [6] PROVE, API + CLI): SessionState.evidence; POST /api/obligations/:id/evidence (gate token) binds an
-EvidenceArtifact (metadata + SHA-256 of the file, file stays in Molecule's drive), obligation -> met, audit event
-evidence.bound; /api/state + pull + data/evidence.ts + seed carry evidence; scripts/attach.mjs. Task 17 next: UI
-form in the register row + live status overlay from /api/state; periodic duties re-open as gap after the period end.
+- 1c04a93 15b: wrong-number hints fixed. 2b75719 + 3025146 16 (stage [6] PROVE, API+CLI): POST /api/obligations/:id/
+  evidence (gate token, validated) binds an EvidenceArtifact (metadata + file sha256, file stays with the firm), duty ->
+  met, audit evidence.bound; /api/state, pull, data/evidence.ts, seed carry evidence; `npm run attach -- OBL-001 --title
+  … --file path`. EV-001 (a test text file) is bound to OBL-001 in register.json; tip a94246dffa92, 355 events.
+  Verified: fresh-KV reseed intact with evidence, idempotent pull, 401/400 paths. validUntil is validated but not stored.
+
+## In progress (prompt given, awaiting report)
+Task 17: register UI — "attach evidence" form on each approved row (file hashed in the browser, not uploaded), live
+status/evidence overlay from /api/state, periodic duties show gap again once evidence is older than the last period end.
 
 ## Next tasks (one prompt each)
 5.  Decide with Pranjal whether to extract the other ~445 'shall' paragraphs (ongoing duties without a cadence),
