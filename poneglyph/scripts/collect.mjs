@@ -217,6 +217,9 @@ function regParse(doc) {
 
   const flush = () => {
     if (para && cur) {
+      // a paragraph that opens with an amendment marker glued to its bracket ("58[ The fees…")
+      // — drop the digits, keep SEBI's [ mark
+      if (para.buf.length) para.buf[0] = para.buf[0].replace(/^\d{1,3}(?=\[)/, "");
       const text = cleanText(para.buf.join(" "));
       if (text) {
         const p = { para: para.para, text };
@@ -408,9 +411,15 @@ function regChecks(doc, chapters, has) {
   const total = chapters.reduce((n, c) => n + c.paras.length, 0);
   if (total !== 144) throw new Error(`${doc.id}: expected 144 paragraphs, got ${total}`);
   for (const c of chapters)
-    for (const p of c.paras)
+    for (const p of c.paras) {
       if (/Declaration by an existing portfolio manager|were published in the Gazette/.test(p.text))
         throw new Error(`${doc.id}: collected past Schedule IV into ${p.para}: ${p.text.slice(0, 60)}`);
+      if (/^\d{1,3}\[/.test(p.text))
+        throw new Error(`${doc.id}: ${p.para} still opens with an amendment marker: ${p.text.slice(0, 40)}`);
+    }
+  const s25 = paraObj(chapters, "S2.5");
+  if (!s25 || !s25.text.startsWith("[ The fees specified in paragraphs (1) and (3) above"))
+    throw new Error(`${doc.id}: S2.5 starts "${(s25 && s25.text.slice(0, 55)) || "(not found)"}"`);
 
   has("S2.3", "five lakh rupees every three years");
   has("S2.4", "[The fee referred to in paragraph (2) shall be paid by the portfolio manager within");

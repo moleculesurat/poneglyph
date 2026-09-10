@@ -1,11 +1,17 @@
 /* Drive the extraction pipeline over collected paragraphs, one at a time.
-   usage:  node scripts/run-paras.mjs list [MC-PM-2025|MC-AIF-2026]
-           node scripts/run-paras.mjs run <circularId> <para>[,<para>...]|all [--force] [--base URL]
+   usage:  node scripts/run-paras.mjs list <circularId> [shall[:<chapterKey>]]
+           node scripts/run-paras.mjs run <circularId> <para>[,<para>...]|all|shall[:<chapterKey>] [--force] [--base URL]
    env GATE_TOKEN → x-gate-token header on `run`. Writes nothing to disk. */
 import { readFile } from "node:fs/promises";
 const SHALL = /\bshall\b/i;
 const CADENCE = /\b(within|not later than|before|by)\b[^.]{0,40}\b(days?|weeks?|months?|quarter|year|working|calendar)\b|\b(monthly|quarterly|half[- ]yearly|annual(ly)?|yearly|every)\b/i;
 const isCandidate = (t) => SHALL.test(t) && CADENCE.test(t);
+/* a `shall` / `shall:<chapterKey>` selector → { chapter }, else null (not a shall selector) */
+const shallSel = (selector) => {
+  if (selector === "shall") return { chapter: null };
+  const m = /^shall:(.+)$/.exec(selector ?? "");
+  return m ? { chapter: m[1] } : null;
+};
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const fail = (msg) => (console.error(msg), process.exit(1));
 async function load(circularId) {
@@ -16,16 +22,20 @@ async function load(circularId) {
 function* eachPara(doc) {
   for (const ch of doc.chapters) for (const p of ch.paras) yield [ch, p];
 }
-async function cmdList(circularId) {
+async function cmdList(circularId, selector) {
+  const sel = shallSel(selector); // null → today's candidate list (shall + cadence)
   for (const id of circularId ? [circularId] : ["MC-PM-2025", "MC-AIF-2026", "REG-PM-2020"]) {
     const doc = await load(id);
     let n = 0;
     for (const [ch, p] of eachPara(doc)) {
-      if (!isCandidate(p.text)) continue;
+      const match = sel
+        ? SHALL.test(p.text) && (!sel.chapter || ch.key === sel.chapter)
+        : isCandidate(p.text);
+      if (!match) continue;
       n++;
       console.log(`${ch.key}  ${p.para}  ${p.text.slice(0, 80)}`);
     }
-    console.log(`${n} candidates in ${id}`);
+    console.log(sel ? `${n} shall paragraphs in ${id}${sel.chapter ? ` ${sel.chapter}` : ""}` : `${n} candidates in ${id}`);
   }
 }
 
@@ -69,9 +79,14 @@ async function cmdRun(circularId, selector, base, force) {
   const doc = await load(circularId);
   const index = new Map();
   for (const [ch, p] of eachPara(doc)) index.set(p.para, { ch, p });
+  const sel = shallSel(selector);
   const selected = selector === "all"
     ? [...index.values()].filter(({ p }) => isCandidate(p.text)).map(({ p }) => p.para)
-    : selector.split(",");
+    : sel
+      ? [...index.values()]
+          .filter(({ ch, p }) => SHALL.test(p.text) && (!sel.chapter || ch.key === sel.chapter))
+          .map(({ p }) => p.para)
+      : selector.split(",");
   for (const para of selected) if (!index.has(para)) fail(`para ${para} not found in ${circularId}`);
   const token = process.env.GATE_TOKEN;
   if (!token) fail("GATE_TOKEN unset — export the worker's gate token and retry");
@@ -111,8 +126,8 @@ async function cmdRun(circularId, selector, base, force) {
 const [cmd, ...rest] = process.argv.slice(2);
 const base = rest.includes("--base") ? rest[rest.indexOf("--base") + 1] : "http://localhost:8787";
 const force = rest.includes("--force");
-if (cmd === "list") await cmdList(rest[0]);
+if (cmd === "list") await cmdList(rest[0], rest[1]);
 else if (cmd === "run") {
-  if (!rest[0] || !rest[1]) fail("usage: run <circularId> <para[,para...]|all> [--force] [--base URL]");
+  if (!rest[0] || !rest[1]) fail("usage: run <circularId> <para[,para...]|all|shall[:chapter]> [--force] [--base URL]");
   await cmdRun(rest[0], rest[1], base, force);
-} else fail("usage: run-paras.mjs list [circularId] | run <circularId> <para|all> [--force] [--base URL]");
+} else fail("usage: run-paras.mjs list <circularId> [shall[:chapter]] | run <circularId> <para|all|shall[:chapter]> [--force] [--base URL]");
