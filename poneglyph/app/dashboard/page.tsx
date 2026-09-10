@@ -75,7 +75,7 @@ export default function Overview() {
         sub={
           <>
             Register posture, upcoming deadlines and the latest regulatory events for one
-            SEBI-registered stock broker. <b>Orange marks an item requiring attention.</b>
+            SEBI-registered portfolio manager. <b>Orange marks an item requiring attention.</b>
           </>
         }
         right={<Cta variant="ghost">Export register</Cta>}

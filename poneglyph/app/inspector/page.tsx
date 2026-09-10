@@ -4,9 +4,8 @@ import { DashField } from "@/components/DashField";
 import { obligations } from "@/data/obligations";
 import { evidence } from "@/data/evidence";
 import { auditEvents } from "@/data/audit";
-import { mcpTools } from "@/data/mcp";
 import { tenant } from "@/data/tenant";
-import { factOf } from "@/data/entity";
+import { factOf, molecule } from "@/data/entity";
 import type { ObligationStatus } from "@/lib/schema";
 import { InspectorMode } from "./InspectorMode";
 
@@ -60,15 +59,6 @@ const WALK_BACK = [
       " hash-chained events from first ingest (Jun 2025) to sim-today: every obligation created, evidence bound, mapping approved and amendment applied, with agent or human attribution. Run the chain verification yourself — a single altered event breaks the chain.",
     foot: `${auditEvents.length} events · GENESIS-anchored · agent + human actors attributed`,
   },
-  {
-    step: "04",
-    href: "/mcp",
-    name: "MCP interface",
-    title: "Programmatic queries over the same record",
-    body:
-      `A read-only, inspector-scoped MCP endpoint exposes ${mcpTools.length} query tools over the identical record this session renders — obligations, mappings, evidence, amendments, gaps. Your own tooling gets byte-for-byte the answers you see here.`,
-    foot: `${mcpTools.length} tools · read-only scope · same record, machine-readable`,
-  },
 ] as const;
 
 export default function InspectorPage() {
@@ -86,7 +76,7 @@ export default function InspectorPage() {
         sub={
           <>
             A read-only inspection session over the live obligation register of one
-            SEBI-registered stock broker. <b>The clause citations, evidence hashes and audit chain
+            SEBI-registered portfolio manager. <b>The clause citations, evidence hashes and audit chain
             are the record; the surrounding prose is navigation only.</b> Nothing on this side of
             the session can approve, edit or upload.
           </>
@@ -224,7 +214,9 @@ export default function InspectorPage() {
                 rather than a reconciliation of twelve separate spreadsheets.
               </p>
               <div className="row wrap" style={{ gap: 8 }}>
-                <Chip tone="info">stock-broker × 4</Chip>
+                {molecule.intermediaryTypes.map((t) => (
+                  <Chip key={t} tone="info">{t}</Chip>
+                ))}
                 <Chip tone="info">investment-adviser × 3</Chip>
                 <Chip tone="info">amc × 2</Chip>
                 <Chip tone="info">rta × 2</Chip>

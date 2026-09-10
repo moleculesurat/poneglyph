@@ -26,7 +26,6 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/live", label: "Live Pipeline", group: "Engine", inspector: false },
   { href: "/agents", label: "Agent Console", group: "Engine", inspector: false },
   { href: "/audit", label: "Audit Trail", group: "Engine", inspector: true },
-  { href: "/mcp", label: "MCP Surface", group: "Engine", inspector: true },
 ];
 
 export const INSPECTOR_HOME = "/inspector";

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHead, StatTile, Cta, Hairline } from "@/components/ui";
 import { obligations } from "@/data/obligations";
 import { tenant } from "@/data/tenant";
+import { SEBI_DOMAINS } from "@/lib/domains";
 import type { ObligationStatus } from "@/lib/schema";
 import { RegisterTable } from "./RegisterTable";
 
@@ -13,8 +14,7 @@ const counts = obligations.reduce(
   {} as Record<ObligationStatus, number>
 );
 
-const baseCount = obligations.filter((o) => o.clause.circularId === "MC-SB-2025").length;
-const deltaCount = obligations.length - baseCount;
+const countFor = (id: string) => obligations.filter((o) => o.clause.circularId === id).length;
 
 /* the open gaps split by the circular that raised them — the Jul 3
    amendment carries most of them, the corpus-completion pass the rest */
@@ -25,7 +25,7 @@ const gapsFromMaster = gaps.length - gapsFromAmendment;
 const CROSS_LINKS = [
   { href: "/evidence", label: "Evidence vault" },
   { href: "/remediation", label: "Remediation queue" },
-  { href: "/amendments", label: "Amendment redline" },
+  { href: "/amendments", label: "Amendments" },
   { href: "/agents", label: "Agent runs" },
 ] as const;
 
@@ -41,9 +41,8 @@ export default function RegisterPage() {
         }
         sub={
           <>
-            All {obligations.length} obligations on the register — {baseCount} extracted from the
-            Master Circular, {deltaCount} from the Jul 3 CUSPA amendment. Each row is grounded to a
-            clause, mapped to a control, and bound to evidence.{" "}
+            {obligations.length} approved duties across {SEBI_DOMAINS.length} rulebooks. Each row
+            is grounded to a clause, mapped to a control, and bound to evidence.{" "}
             <b>Expand a row for the full walk-back; open the clause to read it in the corpus.</b>
           </>
         }
@@ -55,7 +54,7 @@ export default function RegisterPage() {
         <StatTile
           label="On register"
           value={obligations.length}
-          hint={`${baseCount} base · ${deltaCount} CUSPA delta`}
+          hint={`${countFor("MC-PM-2025")} PMS · ${countFor("MC-AIF-2026")} AIF`}
         />
         <StatTile
           label="Met with evidence"

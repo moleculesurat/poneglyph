@@ -43,8 +43,7 @@ const sources = [...new Set(catches.map((c) => c.source))];
 const hero = catches.find((c) => c.id === "CATCH-005");
 const rest = catches.filter((c) => c.id !== "CATCH-005");
 
-/* the CUSPA amendment's footprint on the register — derived, never typed,
-   so the header line cannot drift from the data behind it */
+/* the register's footprint per circular — derived, never typed */
 const cuspaRemapped = obligations.filter((o) => o.clause.circularId !== "MC-SB-2025").length;
 
 const appliesN = catches.filter((c) => c.applicability.verdict === "applies").length;
@@ -154,7 +153,7 @@ export default function Watchtower() {
           <>
             The Watchtower polls SEBI&rsquo;s circulars, regulations and press releases every 24
             hours, rules on applicability with clause-level citations, and hands anything that
-            binds a stock broker to the agent pipeline.{" "}
+            binds this tenant to the agent pipeline.{" "}
             <b>CATCH-005 re-mapped {cuspaRemapped} obligations on the register.</b>
           </>
         }
@@ -243,10 +242,7 @@ export default function Watchtower() {
 
               <div className="row wrap" style={{ gap: 12 }}>
                 <Link href="/agents" className="cta" data-variant="orange">
-                  Replay {hero.triggeredRunId ?? "RUN-047"} <span className="arrow">→</span>
-                </Link>
-                <Link href="/amendments" className="cta" data-variant="ghost">
-                  View the Para 46 redline <span className="arrow">→</span>
+                  Replay {hero.triggeredRunId ?? "the latest run"} <span className="arrow">→</span>
                 </Link>
               </div>
             </div>
@@ -274,9 +270,6 @@ export default function Watchtower() {
       <div className="row wrap" style={{ gap: 22, marginTop: 18 }}>
         <Link href="/agents" className="mono-label" style={{ color: "var(--orange-deep)" }}>
           pipeline runs →
-        </Link>
-        <Link href="/amendments" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-          CUSPA redline →
         </Link>
         <Link href="/register" className="mono-label" style={{ color: "var(--orange-deep)" }}>
           obligation register →

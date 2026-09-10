@@ -22,9 +22,7 @@ const daysOut = (due: string) => Math.round((Date.parse(due) - T0) / DAY);
 const isOverdue = (t: RemediationTask) =>
   t.status === "overdue" || t.due < tenant.simToday;
 
-/* clause chain target: CUSPA clauses live in the redline, the rest in the register */
-const clauseHref = (o: Obligation) =>
-  o.clause.circularId === "CIRC-CUSPA-2026" ? "/amendments" : "/register";
+const clauseHref = (_o: Obligation) => "/register";
 
 const COLUMN_ORDER: { status: TaskStatus; label: string }[] = [
   { status: "overdue", label: "Overdue" },
@@ -137,7 +135,6 @@ function TaskDetails({ t, o }: { t: RemediationTask; o?: Obligation }) {
           <Link href="/agents" style={{ textDecoration: "underline" }}>
             {t.createdByRun}
           </Link>
-          {t.createdByRun === "RUN-047" ? " — the CUSPA amendment pipeline, 9 days ago" : ""}
         </KV>
       </div>
     </details>
@@ -245,10 +242,7 @@ export function TaskBoard() {
                       padding: "18px 16px",
                     }}
                   >
-                    <span className="small dim60">
-                      Nothing closed yet — the CUSPA queue opened 2026-07-03. First closure
-                      expected with the depository filing due 2026-08-15.
-                    </span>
+                    <span className="small dim60">No task has been closed yet.</span>
                   </div>
                 )}
               </div>

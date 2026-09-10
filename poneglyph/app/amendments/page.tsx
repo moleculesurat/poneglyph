@@ -17,7 +17,7 @@ export default function Amendments() {
             No amendment has been ingested yet. The corpus holds{" "}
             {SEBI_DOMAINS.map((d) => d.title).join(" and ")}. When SEBI reissues either master
             circular, the watchtower catches it and opens a pipeline run; only the changed
-            paragraphs are re-extracted, re-verified and put to the human gate — and the redline
+            paragraphs are re-extracted, re-verified and put to the human gate, and the change
             appears here.
           </>
         }

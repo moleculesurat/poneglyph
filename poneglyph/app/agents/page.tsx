@@ -8,7 +8,7 @@ import { RunsTable } from "./RunsTable";
 
 /* ── derived, all from static data ────────────────────────────────────── */
 
-const heroRun = runs.find((r) => r.id === "RUN-047") ?? runs[runs.length - 1];
+const heroRun = runs[runs.length - 1];
 const heldObligations = obligations.filter((o) => o.status === "pending-review");
 
 const totalSteps = runs.reduce((n, r) => n + r.steps.length, 0);
@@ -101,14 +101,14 @@ export default function AgentsPage() {
           label="Held at human gate"
           value={heldObligations.length}
           accent
-          hint="mappings from RUN-047 awaiting a signature"
+          hint="mappings awaiting a signature"
         />
       </div>
 
-      {/* ── RUN-047 — the hero run ── */}
+      {/* ── the latest run ── */}
       <section style={{ marginBottom: 36 }}>
         <div className="row between" style={{ marginBottom: 14 }}>
-          <span className="eyebrow">Most recent run — {heroRun.id}, CUSPA amendment re-map</span>
+          <span className="eyebrow">Most recent run — {heroRun.id}, latest pipeline run</span>
           <Link href="/watchtower" className="mono-label" style={{ color: "var(--orange-deep)" }}>
             view the catch →
           </Link>
@@ -125,7 +125,7 @@ export default function AgentsPage() {
                 </span>
               </div>
               <div style={{ fontWeight: 600, fontSize: 15.5 }}>
-                CUSPA amendment re-map — {heroRun.durationSec} seconds end-to-end, then held at the
+                latest pipeline run — {heroRun.durationSec} seconds end-to-end, then held at the
                 human gate
               </div>
               <span className="small dim60">

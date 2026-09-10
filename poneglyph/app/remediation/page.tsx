@@ -13,8 +13,6 @@ const highN = tasks.filter((t) => t.priority === "high").length;
 const overdueN = tasks.filter(
   (t) => t.status === "overdue" || t.due < tenant.simToday
 ).length;
-const fromCuspaRun = tasks.filter((t) => t.createdByRun === "RUN-047").length;
-const fromCorpusPass = tasks.filter((t) => t.createdByRun === "RUN-049").length;
 const earliestDue = tasks.map((t) => t.due).sort()[0] ?? "—";
 const unevidencedN = obligations.filter((o) => o.evidenceIds.length === 0).length;
 
@@ -30,11 +28,9 @@ export default function Remediation() {
         }
         sub={
           <>
-            {tasks.length} tasks in flight — {fromCuspaRun} raised by RUN-047 within minutes of
-            the CUSPA amendment landing, {fromCorpusPass} by the RUN-049 corpus pass, the rest
-            older register findings still closing. Each one is chained task ← obligation ←
-            clause, so nothing in the queue exists without a paragraph of the circular demanding
-            it. <b>Orange marks a task past its due date.</b>
+            Tasks open when an approved duty has no evidence; none are seeded. Each one is chained
+            task ← obligation ← clause, so nothing in the queue exists without a paragraph of the
+            circular demanding it. <b>Orange marks a task past its due date.</b>
           </>
         }
         right={<Cta variant="ghost">Export queue</Cta>}
@@ -48,9 +44,9 @@ export default function Remediation() {
           hint={`${openN} open · ${inFlightN} in progress`}
         />
         <StatTile
-          label="Raised by RUN-047"
-          value={fromCuspaRun}
-          hint="the Jul 3 CUSPA amendment, auto-opened"
+          label="Duties with no evidence"
+          value={unevidencedN}
+          hint="auto-opened from gaps"
         />
         <StatTile
           label="High priority"
@@ -94,9 +90,6 @@ export default function Remediation() {
         </Link>
         <Link href="/agents" className="mono-label" style={{ color: "var(--orange-deep)" }}>
           pipeline runs →
-        </Link>
-        <Link href="/amendments" className="mono-label" style={{ color: "var(--orange-deep)" }}>
-          CUSPA redline →
         </Link>
       </div>
     </>

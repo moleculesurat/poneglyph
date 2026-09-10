@@ -67,7 +67,7 @@ export default function EvidencePage() {
                 awaiting artifacts in all
               </div>
               <div className="small dim60">
-                Every one traces to the Jul 3 CUSPA amendment: {gapCount} gaps, {pendingCount}{" "}
+                Every entry traces to an approved duty: {gapCount} gaps, {pendingCount}{" "}
                 pending review, {riskCount} at risk. Remediation tasks are queued with owners and
                 the circular&apos;s own deadlines.
               </div>

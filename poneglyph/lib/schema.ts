@@ -62,7 +62,7 @@ export interface DiffBlock {
 }
 
 export interface Amendment {
-  id: string; // e.g. "AMD-2026-CUSPA"
+  id: string; // e.g. "AMD-2026-01"
   circularId: string; // the amending circular
   amends: string; // the amended circular id
   issuedOn: string;
@@ -202,7 +202,7 @@ export interface VerifierCheck {
 }
 
 export interface PipelineRun {
-  id: string; // e.g. "RUN-047"
+  id: string; // e.g. "RUN-050"
   trigger: string; // "watchtower catch CATCH-004" | "manual re-verify" …
   startedAt: string;
   durationSec: number;
@@ -246,16 +246,6 @@ export interface Tenant {
   team: TeamMember[];
   /** the sandbox's pinned "today" — keeps '9 days ago' true forever */
   simToday: string;
-}
-
-/* ── MCP surface ───────────────────────────────────────────────────── */
-
-export interface McpTool {
-  name: string;
-  description: string;
-  inputSchema: string; // pretty-printed JSON schema
-  exampleCall: string;
-  exampleResult: string;
 }
 
 /* ══════════════════════════════════════════════════════════════════════

@@ -4,11 +4,6 @@
    The two binding clauses are READ OUT OF the collected corpus (data/corpus.ts)
    rather than retyped here, so the text a judge sends to the engine is the same
    text the rest of the sandbox cites. The control case is a hard-coded sentence.
-
-   ponytail / NOTE: until stage [0] PROFILE sets Molecule as a portfolio manager
-   and AIF manager, the applicability agent still judges against the stock-broker
-   profile, so it will MISJUDGE these PMS/AIF clauses. That is expected in this
-   interim state and resolves when the profile is switched.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { circulars } from "@/data/corpus";
