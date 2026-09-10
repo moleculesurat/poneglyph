@@ -53,9 +53,10 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
    "Compliance Officer").
 
 ## Next worker tasks (ROADMAP.md BUILD ORDER, phase 1)
-- Task 18 (1a) ISSUED 2026-09-10: PM Regulations 2020 collect -> data/collected/reg-pm-2020.json (7 chapters, ~106 sub-regulation units,
+- Task 18 (1a) ACCEPTED 2026-09-10 (8cdf009; worker found pdftotext form-feeds hiding 22(4), 24(7), 30(2) -> 108 paras): PM Regulations 2020 collect -> data/collected/reg-pm-2020.json (7 chapters, ~106 sub-regulation units,
   ids like 4(1), 22A; optional `heading`). Verify: regs set 1-43 + 22A/34A/42A, no dup ids, no footnote leak, MC JSONs byte-identical.
   Coordinator prototype (scratchpad proto.mjs) got 3/19/6/59/12/6/1 paras per chapter.
+- given/1741061994339.pdf (untracked, Pranjal's) = the ORIGINAL Gazette notification of 16 Jan 2020, unamended; not used.
 - Next: 1a' Schedules II-IV (fees, code of conduct, agreement contents) as chapters; 1b batches; 1c; 1d; 1e.
 
 ## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
