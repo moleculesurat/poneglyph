@@ -83,6 +83,15 @@ function nextPeriodEnd(end: Date, p: Period): Date {
   return currentPeriodEnd(after, p);
 }
 
+const STEP: Record<Period, number> = { monthly: 1, quarterly: 3, "half-yearly": 6, annual: 12 };
+
+/* most recent period end on or before today (today itself if it is a period end);
+   nextDue starts here so an open filing window is never skipped */
+function lastPeriodEnd(today: Date, p: Period): Date {
+  const end = currentPeriodEnd(today, p);
+  return iso(end) === iso(today) ? end : lastDay(end.getUTCFullYear(), end.getUTCMonth() - STEP[p]);
+}
+
 function addWindow(end: Date, s: Schedule): Date {
   if (s.windowMonths) return lastDay(end.getUTCFullYear(), end.getUTCMonth() + s.windowMonths); // clamp to month end
   if (!s.windowDays) return end;
@@ -99,7 +108,7 @@ function addWindow(end: Date, s: Schedule): Date {
 export function nextDue(s: Schedule, today: string): string | null {
   if (s.anchor === "event") return null;
   const t = new Date(today + "T00:00:00Z");
-  let end = currentPeriodEnd(t, s.period);
+  let end = lastPeriodEnd(t, s.period);
   let due = addWindow(end, s);
   while (today > iso(due)) {
     end = nextPeriodEnd(end, s.period);
