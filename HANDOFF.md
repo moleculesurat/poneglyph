@@ -52,8 +52,11 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
 4. Real Compliance Officer / Principal Officer names before anyone relies on the register (86 approvals signed
    "Compliance Officer").
 
-## Next worker tasks
-None cut yet. Order and reasons are ROADMAP.md "BUILD ORDER" (A–F); one prompt per task when Pranjal says go.
+## Next worker tasks (ROADMAP.md BUILD ORDER, phase 1)
+- Task 18 (1a) ISSUED 2026-09-10: PM Regulations 2020 collect -> data/collected/reg-pm-2020.json (7 chapters, ~106 sub-regulation units,
+  ids like 4(1), 22A; optional `heading`). Verify: regs set 1-43 + 22A/34A/42A, no dup ids, no footnote leak, MC JSONs byte-identical.
+  Coordinator prototype (scratchpad proto.mjs) got 3/19/6/59/12/6/1 paras per chapter.
+- Next: 1a' Schedules II-IV (fees, code of conduct, agreement contents) as chapters; 1b batches; 1c; 1d; 1e.
 
 ## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
 - RSS: HTTP 200, 30 items, 29 enforcement/recovery + 1 circular. Missed circular 104323 (AIF, Sep 2026).
