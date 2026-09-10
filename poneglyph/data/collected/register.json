@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "0f50b24363a6",
+  "tip": "a94246dffa92",
   "obligations": [
     {
       "id": "OBL-001",
@@ -31,8 +31,10 @@
           "description": "SEBI Intermediaries Portal submission log or acknowledgement showing the report was uploaded for each month, with upload timestamps falling within 7 working days of the respective month end."
         }
       ],
-      "evidenceIds": [],
-      "status": "gap",
+      "evidenceIds": [
+        "EV-001"
+      ],
+      "status": "met",
       "createdByRun": "RUN-050",
       "hash": "909a1d3050c9",
       "approvedBy": "Compliance Officer"
@@ -3283,6 +3285,30 @@
       "createdByRun": "RUN-166",
       "hash": "9641a8f4da40",
       "approvedBy": "Compliance Officer"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "kind": "document",
+      "title": "Aug 2026 monthly report — SI Portal acknowledgement",
+      "description": "",
+      "connector": "manual-upload",
+      "obligationIds": [
+        "OBL-001"
+      ],
+      "capturedAt": "2026-09-10T09:51:37.511Z",
+      "hash": "17d12fdbf5ee",
+      "history": [
+        {
+          "at": "2026-09-10T09:51:37.511Z",
+          "event": "captured",
+          "hash": "17d12fdbf5ee"
+        }
+      ],
+      "detail": {
+        "docExcerpt": "ev.txt · sha256 f2ca1bb6c7e907d06dafe4687e579fce76b37e4e93b7605022da52e6ccc26fd2"
+      }
     }
   ],
   "auditEvents": [
@@ -7179,6 +7205,17 @@
       "detail": "Approved by Compliance Officer at the human gate — \"Report decision to surrender overseas limit within 2 working days\", grounded to MC-AIF-2026 para 5.3.2, chars 521–727. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-150.",
       "hash": "0f50b24363a6",
       "prevHash": "4f7637bd823b"
+    },
+    {
+      "id": "AE-0355",
+      "at": "2026-09-10T09:51:37.511Z",
+      "actor": "human:Compliance Officer",
+      "action": "evidence.bound",
+      "subjectType": "evidence",
+      "subjectId": "EV-001",
+      "detail": "Evidence EV-001 (document) bound to OBL-001 by Compliance Officer: \"Aug 2026 monthly report — SI Portal acknowledgement\", file ev.txt sha256 f2ca1bb6c7e907d06dafe4687e579fce76b37e4e93b7605022da52e6ccc26fd2. Status gap → met.",
+      "hash": "a94246dffa92",
+      "prevHash": "0f50b24363a6"
     }
   ]
 }
