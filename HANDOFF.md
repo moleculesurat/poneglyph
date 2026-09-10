@@ -57,9 +57,13 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
   ids like 4(1), 22A; optional `heading`). Verify: regs set 1-43 + 22A/34A/42A, no dup ids, no footnote leak, MC JSONs byte-identical.
   Coordinator prototype (scratchpad proto.mjs) got 3/19/6/59/12/6/1 paras per chapter.
 - given/1741061994339.pdf (untracked, Pranjal's) = the ORIGINAL Gazette notification of 16 Jan 2020, unamended; not used.
-- Task 19 (1a') REJECTED once 2026-09-10 (d7c8be6): Schedule III has 13 items in the source; my spec said 10 (grep missed items
+- Task 19 (1a') ACCEPTED 2026-09-10 (91e2d96; REG-PM-2020 = 10 chapters, 144 paras). First cut REJECTED (d7c8be6): Schedule III has 13 items in the source; my spec said 10 (grep missed items
   opening with a sub-marker) and the worker added a fold rule to hit 10 instead of reporting. Fix issued: 5/13/18, total 144. Schedule I (forms), VI (declarations) and the amendment history are not collected.
-- Then: 1b batches (PMS MC remaining shall, then REG-PM-2020, then related-party circular); 1c; 1d; 1e.
+- Task 20 (1b start) ISSUED 2026-09-10: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
+  PMS shall inventory: MC-PM 154 paras (pm-1 26, pm-2 35, pm-3 32, pm-4 16, pm-5 28, pm-6 15, pm-7 2), REG-PM 114
+  (pmr-2 16, pmr-3 4, pmr-4 55, pmr-5 9, pmr-6 5, s2 5, s3 12, s4 6, pmr-1 2). 24 + 26 of these are shall+cadence.
+  Batch order: pm-1, pm-2, pm-3, pm-4, pm-5, pm-6+7, pmr-2, pmr-4, pmr-3+5+6+1, s2+s3+s4. REVIEW sheet per batch.
+- Then: 1c proof pages; 1d watchtower; 1e deployment.
 
 ## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
 - RSS: HTTP 200, 30 items, 29 enforcement/recovery + 1 circular. Missed circular 104323 (AIF, Sep 2026).

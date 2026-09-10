@@ -7,7 +7,8 @@ until a named person at Molecule signs it; what we cannot prove shows as a gap.
 ```
 WHERE WE ARE
   PMS          86 approved duties from the two master circulars (40 PMS / 46 AIF post-registration), due dates
-               from the sentences, evidence attach, audit chain. Runs locally only.
+               from the sentences, evidence attach, audit chain. Runs locally only. PM Regulations 2020 collected
+               (10 chapters incl. Schedules II–IV, 144 units) — not yet extracted.
   AIF          nothing on registration — AIF Regulations 2012 not in the corpus. Category I and III paragraphs
                were never drafted; applicability rejects anything not Category II.
   WATCHTOWER   hourly RSS poll. Works, but the feed is 29/30 enforcement orders and missed this month's AIF
