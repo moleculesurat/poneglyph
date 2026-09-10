@@ -50,8 +50,92 @@ AIF LAUNCH CHECKLIST (one-time duties A–I) ...................................
 DEPLOYMENT    Molecule's Cloudflare account, KV, domain, secrets .............. [ ] wrangler.jsonc still hackathon account
               today: runs locally only (wrangler dev)
 
-NEXT IN ORDER   browser test of attach + pull → AIF Regulations collect → remaining corpus
-                (chapter by chapter) → real names → deployment
+NEXT IN ORDER   Pranjal's 4 answers → AIF Regulations collect → profile: AIF stage + categories
+                → nav split (PMS | AIF registration | AIF rules Cat II/III | Watchtower)
+                → AIF registration section → Cat III tagging + chapter 7 run → watchtower v2
+                → remaining PMS corpus → real names → deployment
+```
+
+```
+PLAN v2 — 2026-09-10 (Pranjal's shape: PMS as is; AIF = registration section + rules section
+for Cat II and Cat III; watchtower on real sources)
+
+THE APP BECOMES FOUR SECTIONS, ONE REGISTER UNDERNEATH
+
+  PMS                 what exists today: register, dashboard, evidence, schedule. "Regular
+                      things": finish the remaining ~445 "shall" paragraphs chapter by chapter,
+                      add PMS Regulations 2020 as a source later. No structural change.
+
+  AIF · REGISTRATION  new section. The one-time track A–I (below) as an ORDERED CHECKLIST with a
+                      progress line to "certificate received" and then to "first close". Same
+                      pipeline, same gate, same evidence attach as /register — only the view
+                      differs (order + progress, not filters). Sources: AIF Regulations 2012
+                      ch II (registration, eligibility, fees, certificate) + AIF MC 2026 ch 1
+                      (registration clarifications), ch 2 (PPM filing), ch 3 (investor
+                      on-boarding), ch 12 (first close / tenure). Every line is type
+                      "one-time"; the profile fact aif-stage (not-applied → applied →
+                      in-principle → registered → first-close) is the only switch.
+
+  AIF · RULES         appears once aif-stage = registered (before that: visible, greyed
+                      "switches on at registration"). Two tabs: CATEGORY II and CATEGORY III.
+                      Same register rows, tagged by the category the sentence addresses
+                      (ii / iii / all). Today applicability REJECTS Cat III paragraphs (chapter 7,
+                      40 paras, never drafted); it will TAG instead. Rows whose category the firm
+                      does not hold are shown as reference, not as gaps. Which categories are
+                      "held" is a profile fact [PRANJAL: Cat II only, or Cat II + Cat III?].
+
+  WATCHTOWER          the cron, on real sources (below). Catches that triage "applies" produce
+                      a work item: fetch → pdftotext → collect → re-run only the changed
+                      paragraphs → REVIEW sheet → gate. Nothing enters the register unread.
+
+WATCHTOWER v2 — REAL SOURCES (verified by GET on 2026-09-10, all HTTP 200 without cookies)
+
+  today   sebi.gov.in/sebirss.xml — 30 items, 29 enforcement/recovery, 1 circular; does NOT
+          carry the Sep-2026 AIF circular on angel funds (104323). Keep it, but it is not enough.
+  add     legal circulars listing, all departments, 25 newest per page
+            HomeAction.do?doListing=yes&sid=1&ssid=7&smid=0
+          legal circulars, AIF & FPI department (deptId=75)          → AIF circulars
+            …&sid=1&ssid=7&smid=0&deptId=75
+          master circulars listing (ssid=6)                          → new MC versions
+          regulations listing (ssid=3)                               → "last amended on" versions
+            of AIF Regulations 2012 and PM Regulations 2020
+  PMS     no department/intermediary filter exists in the GET listing (deptId=9 = IMD shows
+          mutual-fund items). PMS circulars are caught from the all-departments page by the
+          existing title terms ("portfolio manager"). Hourly poll × 25 items/page is far above
+          SEBI's daily volume, so nothing is missed.
+  paging  the ajax paginator (sebiweb/ajax/home/getnewslistinfo.jsp) answered HTTP 530 from a
+          laptop; the worker may fare differently — a probe task, not a dependency. Page 1 is
+          enough for the cron.
+  parse   listing pages are HTML tables: anchor href https://www.sebi.gov.in/legal/<type>/<mon-yyyy>/
+          <slug>_<id>.html + anchor text = title + a date cell. Hand-rolled regex, like the RSS
+          parser; no packages. Dedupe on URL with the existing watch:seen set; docType from the
+          path as today; triage unchanged.
+  cron    keep 0 * * * *; one scheduled() run polls RSS + 4 listing pages (5 fetches/hour).
+  action  /watchtower shows the catch with its document URL and PDF link; `npm run watch:pull`
+          writes applies-catches to data/collected/watch.json. pdftotext stays a laptop step
+          (workerd has no PDF text extraction). Later: paragraph-hash diff between a master
+          circular version and the corpus so only changed paragraphs re-run.
+
+SOURCES TO ADD (URLs located; PDFs fetched only with Pranjal's yes)
+  AIF Regulations 2012, last amended 14 Jul 2026
+    https://www.sebi.gov.in/legal/regulations/jul-2026/securities-and-exchange-board-of-india-alternative-investment-funds-regulations-2012-last-amended-on-july-14-2026-_102975.html
+    PDF https://www.sebi.gov.in/sebi_data/attachdocs/jul-2026/1785301664601.pdf
+  PM Regulations 2020, last amended 3 Sep 2025 (for the PMS "registration and rules" pass, later)
+    https://www.sebi.gov.in/legal/regulations/sep-2025/securities-and-exchange-board-of-india-portfolio-managers-regulations-2020-last-amended-on-september-03-2025-_96560.html
+  PMS related-party circular 2022 — already in given/sources, not yet collected.
+
+DATA CHANGES (smallest set)
+  entity.ts   facts: aif-stage (declared), aif-categories-held (declared)
+  schema.ts   Obligation.aifCategories?: ("i"|"ii"|"iii"|"all")[]  — set by applicability
+  applicability.ts  Cat III sentence → tag, not reject; "all AIFs" → all
+  nav.ts      groups: PMS · AIF Registration · AIF Rules · Watchtower · Engine · Inspection
+  Nothing else: one KV, one register, one gate, one evidence path.
+
+BUILD ORDER (one worker task each; see HANDOFF.md "Next worker tasks")
+  1 AIF Regulations collect            5 Cat III: tag + run chapter 7 + tabs
+  2 profile: aif-stage + categories    6 watchtower v2 sources
+  3 nav split + greyed AIF rules       7 remaining PMS corpus batches
+  4 AIF registration section (view)    8 real names, deployment
 ```
 
 ```

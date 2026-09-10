@@ -1,6 +1,6 @@
 # HANDOFF — Molecule compliance pipeline (read this first after /clear)
 
-Updated 2026-09-10 (end of session 2). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
+Updated 2026-09-10 (session 3, plan v2 agreed shape — see ROADMAP.md PLAN v2). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
 origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status board; REVIEW-2026-09-10.md the draft review.
 
 ## Roles (do not drift)
@@ -52,17 +52,36 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
 4. Real Compliance Officer / Principal Officer names before anyone relies on the register (86 approvals signed
    "Compliance Officer").
 
-## Next worker tasks (one prompt each, in order)
-1. AIF Regulations collect (after 3): pdftotext -> given/sources; extend scripts/collect.mjs (regulations are
-   numbered differently from circulars: Chapter/Regulation/sub-regulation); derive chapter taxonomy as before.
-2. Remaining-corpus batches (after 2): `npm run paras` needs a `--all-shall` selector (SHALL regex only); run per
-   chapter; I write a REVIEW-<date>.md per batch; Pranjal decides; pull; commit.
-3. [7] MONITOR: a watchtower catch -> re-run the paragraph(s) of the affected circular -> diff drafts vs register.
-4. [6] documents/evidence pages fed from register.json evidence (currently the vault pages render empty seed arrays).
-5. Deployment: Molecule's Cloudflare account_id/KV/domain in wrangler.jsonc; `wrangler secret put GATE_TOKEN
-   OPEN_ROUTER_KEY`; after deploy `npm run pull -- https://<domain>` becomes the durable loop.
-6. Small: exchange holiday list for working-day math; collect footnote fix ("month 67", "]78from");
-   EvidenceArtifact.validUntil (validated, not stored); poneglyph/DESIGN.md + README de-hackathon.
+## Next worker tasks (one prompt each, in order — PLAN v2 in ROADMAP.md)
+1. AIF Regulations collect (after Pranjal's yes on fetching, or the PDF lands in given/): pdftotext -> given/sources/
+   aif-regulations-2012-2026-07-14.txt; extend scripts/collect.mjs for Chapter/Regulation/sub-regulation numbering;
+   chapter taxonomy in lib/domains.ts as before. URL + PDF link in ROADMAP.md "SOURCES TO ADD".
+2. Profile: entity.ts facts `aif-stage` (not-applied|applied|in-principle|registered|first-close; today
+   not-applied) and `aif-categories-held` ([PRANJAL: ii only, or ii+iii]); both declared, source slots.
+3. Nav split: groups PMS · AIF Registration · AIF Rules · Watchtower · Engine · Inspection. /register stays the PMS
+   register (filter part=MC-PM); /aif/registration and /aif/rules are new routes; AIF Rules greyed with
+   "switches on at registration" while aif-stage != registered/first-close.
+4. AIF registration section: one-time duties (type one-time, sources AIF Regs ch II + AIF MC ch 1,2,3,12) rendered
+   as the ordered A–I checklist with progress; reuse AttachEvidence + effectiveStatus; no new data path.
+5. Cat III: applicability tags `aifCategories` instead of rejecting; Obligation.aifCategories in schema + verifier;
+   `npm run paras -- run MC-AIF-2026 <chapter 7 paras>`; /aif/rules tabs Cat II | Cat III; rows for a category not
+   held render as reference, never as gap.
+6. Watchtower v2: watch.ts polls RSS + circulars-all + circulars deptId=75 + master-circulars + regulations listing
+   (URLs in ROADMAP.md); hand-rolled anchor/date parse; same seen/catches keys; probe the ajax paginator from the
+   worker once (HTTP 530 from laptop). Then `npm run watch:pull` -> data/collected/watch.json.
+7. Remaining-corpus batches (after Pranjal's yes): `npm run paras` gets `--all-shall`; PMS ch 2 first, then AIF ch 3;
+   REVIEW-<date>.md per batch; decide; pull; commit.
+8. [6] documents/evidence pages fed from register.json evidence.
+9. Deployment: Molecule's Cloudflare account_id/KV/domain in wrangler.jsonc; secrets; `npm run pull -- https://<domain>`.
+10. Small: exchange holiday list; collect footnote fix ("month 67", "]78from"); EvidenceArtifact.validUntil;
+    DESIGN.md + README de-hackathon.
+
+## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
+- RSS: HTTP 200, 30 items, 29 enforcement/recovery + 1 circular. Missed circular 104323 (AIF, Sep 2026).
+- Circulars listing GET (sid=1&ssid=7&smid=0): HTTP 200, 25 items; &deptId=75 -> 25 AIF/FPI items; &deptId=9 -> IMD
+  (mutual funds). No intermediary filter in the GET form. Master circulars ssid=6, regulations ssid=3 (deptId ignored).
+- Ajax paginator POST sebiweb/ajax/home/getnewslistinfo.jsp -> HTTP 530 from laptop.
+- AIF Regulations 2012 consolidated (last amended 14 Jul 2026) page _102975.html, PDF attachdocs/jul-2026/1785301664601.pdf.
 
 ## Lessons (keep)
 - Validate the plan before cutting tasks; derive data from sources, never hand-type it.
