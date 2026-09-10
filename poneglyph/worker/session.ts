@@ -67,6 +67,10 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
     (max, o) => Math.max(max, Number(o.id.split("-").pop()) || 0),
     0,
   );
+  const maxEvidenceSeq = seededEvidence.reduce(
+    (max, e) => Math.max(max, Number(e.id.split("-").pop()) || 0),
+    0,
+  );
   return {
     sessionId,
     createdAt: new Date().toISOString(),
@@ -77,9 +81,11 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
     rejected: [],
     decisions: [],
     runIds: [],
+    evidence: [...seededEvidence],
     nextRunSeq: LIVE_RUN_SEQ_START,
     nextObligationSeq: seededObligations.length ? maxObligationSeq + 1 : LIVE_OBLIGATION_SEQ_START,
     nextEventSeq: LIVE_EVENT_SEQ_START,
+    nextEvidenceSeq: maxEvidenceSeq + 1,
   };
 }
 
@@ -102,7 +108,12 @@ export async function saveSession(env: Env, state: SessionState): Promise<void> 
 /** Load the one shared register, seeding it the first time it is asked for. */
 export async function resolveSession(env: Env): Promise<SessionState> {
   const existing = await loadSession(env, TENANT_SID);
-  if (existing) return existing;
+  if (existing) {
+    /* older KV sessions predate the evidence vault; backfill in place */
+    existing.evidence ??= [];
+    existing.nextEvidenceSeq ??= 1;
+    return existing;
+  }
   const state = await seedSession(TENANT_SID);
   await saveSession(env, state);
   return state;
@@ -158,5 +169,11 @@ export function nextObligationId(state: SessionState): string {
 export function nextEventId(state: SessionState): string {
   const id = `AE-${String(state.nextEventSeq).padStart(4, "0")}`;
   state.nextEventSeq += 1;
+  return id;
+}
+
+export function nextEvidenceId(state: SessionState): string {
+  const id = `EV-${String(state.nextEvidenceSeq).padStart(3, "0")}`;
+  state.nextEvidenceSeq += 1;
   return id;
 }

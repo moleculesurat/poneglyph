@@ -15,6 +15,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { AuditEvent } from "../lib/schema";
+import { bindEvidence, type EvidenceInput } from "./evidence";
 import { modelOf } from "./extract";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
@@ -52,6 +53,8 @@ function stateCounts(state: SessionState, runs: LiveRun[]): Record<string, numbe
     approved: state.register.length,
     rejected: state.rejected.length,
     liveObligations: state.pending.length + state.register.length + state.rejected.length,
+    met: state.register.filter((o) => o.status === "met").length,
+    evidence: state.evidence.length,
     runs: runs.length,
     runsAwaitingApproval: runs.filter((r) => r.status === "awaiting-approval").length,
     runsFailed: runs.filter((r) => r.status === "failed").length,
@@ -115,6 +118,7 @@ async function handleApi(
       /* the LIVE delta only — the 43 seeded rows are already in the bundle */
       obligations: [...state.pending, ...state.register],
       rejected: state.rejected,
+      evidence: state.evidence,
       decisions: state.decisions,
       auditEvents: state.chain,
       chainTip: chainTip(state.chain),
@@ -218,7 +222,77 @@ async function handleApi(
     return handleDecision(request, env, state, decisionMatch[1]);
   }
 
+  const evidenceMatch = path.match(/^\/api\/obligations\/([A-Za-z0-9-]{1,32})\/evidence$/);
+  if (evidenceMatch) {
+    if (method !== "POST") return error(request, 405, "POST only");
+    if (!gateAllowed(request, env))
+      return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+    return handleEvidence(request, env, state, evidenceMatch[1]);
+  }
+
   return error(request, 404, `no API route for ${method} ${url.pathname}`);
+}
+
+/* ── POST /api/obligations/:id/evidence ─────────────────────────────── */
+
+async function handleEvidence(
+  request: Request,
+  env: Env,
+  state: SessionState,
+  obligationId: string,
+): Promise<Response> {
+  const body = await readJson(request);
+  if (!body) return error(request, 400, "expected a JSON object body");
+
+  const kind = asString(body.kind);
+  if (kind !== "document" && kind !== "data-check" && kind !== "live-scan") {
+    return error(request, 400, 'kind must be one of "document", "data-check" or "live-scan"');
+  }
+
+  const title = asString(body.title);
+  if (!title || title.length > 120) {
+    return error(request, 400, "title is required and must be 1–120 characters");
+  }
+
+  const description = typeof body.description === "string" ? body.description : "";
+  if (description.length > 600) return error(request, 400, "description must be at most 600 characters");
+
+  const officer = asString(body.officer);
+  if (!officer || officer.length > 120) {
+    return error(request, 400, "officer is required and must be 1–120 characters — an unsigned bind is not a bind");
+  }
+
+  const sha256 = asString(body.sha256);
+  if (sha256 !== undefined && !/^[0-9a-f]{64}$/.test(sha256)) {
+    return error(request, 400, "sha256, if given, must be 64 lowercase hex characters");
+  }
+
+  const validUntil = asString(body.validUntil);
+  if (validUntil !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(validUntil)) {
+    return error(request, 400, "validUntil, if given, must be an ISO date YYYY-MM-DD");
+  }
+
+  const fileName = asString(body.fileName);
+  if (fileName !== undefined && fileName.length > 200) {
+    return error(request, 400, "fileName must be at most 200 characters");
+  }
+
+  const input: EvidenceInput = { kind, title, description, fileName, sha256, validUntil };
+  const result = await bindEvidence(state, obligationId, input, officer);
+  if (result === "not-found") {
+    return error(request, 404, `no obligation ${obligationId} in the register`, {
+      hint: "Evidence binds only to an approved duty already on the register.",
+    });
+  }
+
+  await saveSession(env, state);
+  const auditEvent = state.chain.find((e) => e.id === result.auditEventId);
+  return json(request, {
+    evidence: result.evidence,
+    obligation: result.obligation,
+    auditEvent,
+    chainTip: chainTip(state.chain),
+  });
 }
 
 /* ── POST /api/runs ─────────────────────────────────────────────────── */

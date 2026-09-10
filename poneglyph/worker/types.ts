@@ -9,6 +9,7 @@
 
 import type {
   AuditEvent,
+  EvidenceArtifact,
   Obligation,
   TraceStep,
   VerifierCheck,
@@ -175,8 +176,11 @@ export interface SessionState {
   rejected: Obligation[];
   decisions: DecisionRecord[];
   runIds: string[];
+  /** artefacts bound to approved duties; the file stays with the firm, only its hash is kept */
+  evidence: EvidenceArtifact[];
   /** id allocation, so live records never collide with the seeded ones */
   nextRunSeq: number;
   nextObligationSeq: number;
   nextEventSeq: number;
+  nextEvidenceSeq: number;
 }

@@ -21,10 +21,13 @@ const obligations = state.obligations
   .filter((o) => typeof o.approvedBy === "string" && o.approvedBy.length > 0)
   .sort((a, b) => a.id.localeCompare(b.id));
 
+const evidence = [...(state.evidence ?? [])].sort((a, b) => a.id.localeCompare(b.id));
+
 const register = {
   source,
   tip: state.chainTip,
   obligations,
+  evidence,
   auditEvents: state.auditEvents,
 };
 
