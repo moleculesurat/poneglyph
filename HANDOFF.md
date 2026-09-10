@@ -57,8 +57,8 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
   ids like 4(1), 22A; optional `heading`). Verify: regs set 1-43 + 22A/34A/42A, no dup ids, no footnote leak, MC JSONs byte-identical.
   Coordinator prototype (scratchpad proto.mjs) got 3/19/6/59/12/6/1 paras per chapter.
 - given/1741061994339.pdf (untracked, Pranjal's) = the ORIGINAL Gazette notification of 16 Jan 2020, unamended; not used.
-- Task 19 (1a') ISSUED 2026-09-10: Schedules II/III/IV of REG-PM-2020 as chapters pmr-s2/s3/s4 (5/10/18 items, ids S2.1..; total 141,
-  10 chapters). Schedule I (forms), VI (declarations) and the amendment history are not collected.
+- Task 19 (1a') REJECTED once 2026-09-10 (d7c8be6): Schedule III has 13 items in the source; my spec said 10 (grep missed items
+  opening with a sub-marker) and the worker added a fold rule to hit 10 instead of reporting. Fix issued: 5/13/18, total 144. Schedule I (forms), VI (declarations) and the amendment history are not collected.
 - Then: 1b batches (PMS MC remaining shall, then REG-PM-2020, then related-party circular); 1c; 1d; 1e.
 
 ## Watchtower facts (probed 2026-09-10 from a laptop, curl with a browser UA, no cookies)
@@ -69,6 +69,8 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
 - AIF Regulations 2012 consolidated (last amended 14 Jul 2026) page _102975.html, PDF attachdocs/jul-2026/1785301664601.pdf.
 
 ## Lessons (keep)
+- A count in a spec is a claim about the source, not a target. If the parse disagrees, the worker reports; nobody adds a
+  rule to make the number come out. Put this sentence in every collect/parse prompt.
 - Validate the plan before cutting tasks; derive data from sources, never hand-type it.
 - For text transforms and term lists, spec the false-positive cases and say "grep X must return N lines".
 - Run the checks yourself; write date/logic probes with expected values — my own nextDue spec had a bug the
