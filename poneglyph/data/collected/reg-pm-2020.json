@@ -584,6 +584,156 @@
           "heading": "Power of the Board to issue clarifications."
         }
       ]
+    },
+    {
+      "key": "pmr-s2",
+      "title": "Schedule II (Regulation 15): FEES",
+      "paras": [
+        {
+          "para": "S2.1",
+          "text": "Every portfolio manager shall pay a non-refundable fee of one lakh rupees along with the application for grant of certificate of registration."
+        },
+        {
+          "para": "S2.2",
+          "text": "Every portfolio manager shall pay a sum of ten lakh rupees as registration fees at the time of the grant of certificate by the Board."
+        },
+        {
+          "para": "S2.3",
+          "text": "A portfolio manager who has been granted a certificate of registration, to keep its registration in force, shall pay fee of five lakh rupees every three years , from the date of grant of certificate of registration or from the date of grant of certificate of registration granted prior to the commencement of the Securities and Exchange Board of India (Change in Conditions of Registration of Certain Intermediaries) (Amendment) Regulations, 2016, as the case may be, within three months before expiry of the block period for which fee has been paid."
+        },
+        {
+          "para": "S2.4",
+          "text": "[The fee referred to in paragraph (2) shall be paid by the portfolio manager within fifteen days from the date of receipt of intimation from the Board under regulation 10 by way of direct credit into the bank account through NEFT/RTGS/IMPS or online payment using the SEBI Payment Gateway or any other mode as may be specified by the Board from time to time.]"
+        },
+        {
+          "para": "S2.5",
+          "text": "58[ The fees specified in paragraphs (1) and (3) above, shall be payable by the portfolio manager by way of direct credit into the bank account through NEFT/RTGS/IMPS or online payment using the SEBI Payment Gateway or any other mode as may be specified by the Board from time to time.]"
+        }
+      ]
+    },
+    {
+      "key": "pmr-s3",
+      "title": "Schedule III (Regulation 21): CODE OF CONDUCT- PORTFOLIO MANAGER",
+      "paras": [
+        {
+          "para": "S3.1",
+          "text": "A portfolio manager shall, in the conduct of his business, observe high standards of integrity and fairness in all his dealings with his clients and other portfolio managers."
+        },
+        {
+          "para": "S3.2",
+          "text": "The money received by a portfolio manager from a client for an investment purpose should be deployed by the portfolio manager as soon as possible for that purpose and money due and payable to a client should be paid forthwith."
+        },
+        {
+          "para": "S3.3",
+          "text": "A portfolio manager shall render at all times high standards of service, exercise due diligence, ensure proper care and exercise independent professional judgment. The portfolio manager shall either avoid any conflict of interest in his investment or disinvestment decision, or where any conflict of interest arises, ensure fair treatment to all by way of direct credit in the bank account through NEFT/RTGS/IMPS or any other mode allowed by RBI.” his customers. It shall disclose to the clients, possible source of conflict of interest, while providing unbiased services. A portfolio manager shall not place his interest above those of his clients."
+        },
+        {
+          "para": "S3.4",
+          "text": "A portfolio manager shall not execute any trade against the interest of the clients in its proprietary account."
+        },
+        {
+          "para": "S3.5",
+          "text": "A portfolio manager shall not make any statement or indulge in any act, practice or unfair competition, which is likely to be harmful to the interests of other portfolio managers or is likely to place such other portfolio managers in a disadvantageous position in relation to the portfolio manager himself, while competing for or executing any assignment."
+        },
+        {
+          "para": "S3.6",
+          "text": "A portfolio manager shall not make any exaggerated statement, whether oral or written, to the client either about the qualification or the capability to render certain services or his achievements in regard to services rendered to other clients."
+        },
+        {
+          "para": "S3.7",
+          "text": "At the time of entering into a contract, the portfolio manager shall obtain in writing from the client, his interest in various corporate bodies which enables him to obtain unpublished price-sensitive information of the body corporate."
+        },
+        {
+          "para": "S3.8",
+          "text": "A portfolio manager shall not disclose to any clients, or press any confidential information about his client, which has come to his knowledge."
+        },
+        {
+          "para": "S3.9",
+          "text": "The portfolio manager shall where necessary and in the interest of the client take adequate steps for the transfer of the clients' securities and for claiming and receiving dividends, interest payments and other rights accruing to the client. It shall also take necessary action for conversion of securities and subscription for/renunciation of rights in accordance with the clients' instruction."
+        },
+        {
+          "para": "S3.10",
+          "text": "A portfolio manager shall endeavor to - (a) ensure that the investors are provided with true and adequate information without making any misguiding or exaggerated claims and are made aware of attendant risks before any investment decision is taken by them; (b) render the best possible advice to the client having regard to the client's needs and the environment, and his own professional skills; (c) ensure that all professional dealings are effected in a prompt, efficient and cost effective manner. (1) A portfolio manager shall not be a party to - (a) creation of false market in securities; (b) price rigging or manipulation of securities; (c) passing of price sensitive information to brokers, members of the recognized stock exchanges and any other intermediaries in the capital market or take any other action which is prejudicial to the interest of the investors. (2) No portfolio manager or any of its directors, partners or manager shall either on their own or through their associates or family members or relatives enter into any transaction in securities of companies on the basis of unpublished price sensitive information obtained by them during the course of any professional assignment. (a) A portfolio manager or any of its employees shall not render, directly or indirectly any investment advice about any security in the publicly accessible media, whether real- time or non-real-time, unless a disclosure of his long or short position in the said security has been made, while rendering such advice. (b) In case an employee of the portfolio manager is rendering such advice, he shall also disclose the interest of his dependent family members and the employer including their long or short position in the said security, while rendering such advice. (a)The portfolio manager shall abide by the Act, Rules, and regulations made thereunder and the Guidelines / Schemes issued by the Board. (b) The portfolio manager shall comply with the code of conduct specified in the SEBI (Prohibition of Insider Trading) Regulations, 2015. (c) The portfolio manager shall not use his status as any other registered intermediary to unduly influence the investment decision of the clients while rendering portfolio management services."
+        }
+      ]
+    },
+    {
+      "key": "pmr-s4",
+      "title": "Schedule IV (Regulation 22): CONTENTS OF AGREEMENT BETWEEN THE PORTFOLIO MANAGER AND HIS CLIENTS",
+      "paras": [
+        {
+          "para": "S4.1",
+          "text": "Appointment of portfolio manager."
+        },
+        {
+          "para": "S4.2",
+          "text": "Scope of services to be provided by the portfolio manager subject to the activities permitted under SEBI (Portfolio Managers) Regulations, 2020, viz, advisory, investment management, custody of securities, keeping track of corporate benefits associated with the securities. The Portfolio Manager shall act in a fiduciary capacity and as a trustee and agent of the clients' account."
+        },
+        {
+          "para": "S4.3",
+          "text": "Functions, obligations, duties and responsibilities (as discretionary and non- discretionary to be given separately) with specific provisions regarding instructions for non-discretionary portfolio manager which, inter alia, includes - (i) terms in compliance with the Act, SEBI (Portfolio Managers) Regulations,2020, rules, regulations, guidelines made under the Act and any other laws/rules/regulations / guidelines etc.; (ii) providing reports to clients; (iii) maintenance of records of client wise transaction and related books of accounts; (iv) provisions regarding audit of accounts as required under the SEBI (Portfolio Managers) Regulations, 2020; (v) settlement of accounts and procedure therefor including the provisions for payment on maturity or early termination of the contract."
+        },
+        {
+          "para": "S4.4",
+          "text": "Investment objectives and guidelines - (i) Types of securities in which investment would be made specifying restrictions, if any. (ii) Particulars regarding amount, period of management, repayment or withdrawal. (iii) Taxation aspects such as Tax Deducted at Source etc. (iv) Condition that the portfolio manager shall not lend the securities of the client unless authorized by him in writing."
+        },
+        {
+          "para": "S4.5",
+          "text": "Risk factors (i) A detailed statement of risks associated with each type of investment including the standard risks associated with each type of investment."
+        },
+        {
+          "para": "S4.6",
+          "text": "Period of agreement- the agreement shall provide the period of the agreement in years, terms of termination and/or provision for renewal in case of a renewable agreement."
+        },
+        {
+          "para": "S4.7",
+          "text": "Conditions under which agreement may be altered, terminated and implications thereof, such as settlement of amounts invested, repayment obligations etc. (i) Voluntary/mandatory termination by the portfolio manager; (ii) Voluntary/mandatory termination by the client; (iii) Suspension by the Board or other regulatory authority. [Provided that sub-clauses (i) and (ii) shall not apply in case of Co-investment Portfolio Manager.]"
+        },
+        {
+          "para": "S4.8",
+          "text": "Maintenance of Accounts- Maintenance of accounts separately in the name of the client as are necessary to account for the assets and any additions, income, receipts and disbursements in connection therewith, as provided under SEBI (Portfolio Managers) Regulations, 2020."
+        },
+        {
+          "para": "S4.9",
+          "text": "Change in the quantum of funds to be managed- The conditions under which the client may withdraw cash or securities from the portfolio account or bring in additional cash to be managed as per the terms and conditions that apply. The portfolio manager shall not change any terms of the agreement without prior consent of the client."
+        },
+        {
+          "para": "S4.10",
+          "text": "Access to information- (Subject to the provisions of SEBI (Portfolio Managers) Regulations, 2020) - Provisions enabling client to get the books of accounts of the portfolio manager relating to his transactions audited by a chartered accountant appointed by him and permitting the client an access to relevant and material documents of portfolio manager, provisions listing the documents for inspection along with timings for such inspection, furnishing of reports to the client subject to furnishing at least once in three months and the reports to be made available on the web site of the portfolio manager with restricted access to each client and other rights of clients etc. The provision that the statements / documents / report furnished by the portfolio manager to the client present a true and fair picture of the transactions."
+        },
+        {
+          "para": "S4.11",
+          "text": "Terms of Fees- The quantum and manner of payment of fees and charges for each activity for which services are rendered by the portfolio manager directly or indirectly (where such service is outsourced) such as investment management, advisory and transfer, and transaction costs with specific references to brokerage costs, custody charges, cost related to furnishing regular communication, account statement, miscellaneous expenses (individual expenses in excess of 5% to be indicated separately) etc. The provision that the portfolio manager shall take prior permission from the client in this respect."
+        },
+        {
+          "para": "S4.12",
+          "text": "Billing- Periodicity of billing, whether payment to be made in advance, manner of payment of fees, whether setting off against the account etc., type of documents evidencing receipt of payment of fees."
+        },
+        {
+          "para": "S4.13",
+          "text": "Liability of portfolio manager- Liability of portfolio manager in connection with recommendations made, to cover errors of judgment, negligence or willful misfeasance and in connection with discharge of duties or acts of other intermediaries, brokers, custodians etc."
+        },
+        {
+          "para": "S4.14",
+          "text": "Liability of client- restricting the liability of the client to the extent of his investment."
+        },
+        {
+          "para": "S4.15",
+          "text": "Death or Disability- providing for continuation/termination of the agreement in event of client's death/disability, succession, nomination, representation etc. to be incorporated."
+        },
+        {
+          "para": "S4.16",
+          "text": "Assignment- Conditions for assignment of the agreement by client."
+        },
+        {
+          "para": "S4.17",
+          "text": "Governing Law- The law/jurisdiction of country/state which governs the agreement to be stated."
+        },
+        {
+          "para": "S4.18",
+          "text": "Settlement of grievances/disputes and provision for arbitration- Provisions to cover protection of act done in good faith or Risks and losses, provisions for redressal of grievances, dispute resolution mechanism, reference for arbitration and the situations under which such rights may arise, may be made. [*****]"
+        }
+      ]
     }
   ]
 }

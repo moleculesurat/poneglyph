@@ -65,7 +65,7 @@ const DOCS = [
       "https://www.sebi.gov.in/legal/regulations/sep-2025/securities-and-exchange-board-of-india-portfolio-managers-regulations-2020-last-amended-on-september-03-2025-_96560.html",
     sourceFile: "given/sources/pm-regulations-2020-2025-09-03.txt",
     keyPrefix: "pmr",
-    chapters: 7,
+    chapters: 10, // 7 regulation chapters + Schedules II–IV
   },
 ];
 
@@ -179,8 +179,17 @@ const CH_TITLE = /^\s*[A-Z][A-Z0-9 ,/&()'’.-]*[A-Z]\s*$/; // all-caps line; fo
 const REG = /^(\d{1,3}[A-Z]?)\.\s+/; // "3. ", "22A. ", "24. " — years (4 digits) never match
 const SUBREG = /^\((\d{1,2})\)\s+["'“‘(\[A-Z]/; // "(1) An", "(1) (a)" — a lowercase start ("(2) of …") is a wrapped cross-ref
 const SUBNUM = /^\((\d{1,2})\)\s+(.*)$/;
-const REG_STOP = /^\s+SCHEDULE I\s*$/; // schedules are the next task
 const REG_BARE = /^\s*\d{1,3}\s*$/; // lone superscript marker for the bracketed insertion that follows — drop the line
+// ── schedules ──
+// After the regulations, SCHEDULE I holds forms (not collected); skip to SCHEDULE II
+// and collect II–IV as chapters (pmr-s2..pmr-s4), stopping at SCHEDULE VI (declarations)
+// or the "Footnote:" amendment history, whichever comes first.
+const SCHED_I = /^\s+SCHEDULE I\s*$/; // forms — start skipping here
+const SCHED_COLLECT = /^\s+SCHEDULE (II|III|IV)\s*$/; // the three we collect
+const SCHED_END = /^\s+SCHEDULE VI\s*$/; // declarations — stop
+const FOOTNOTE_HDR = /^\s*Footnote:/; // amendment history — stop
+const SITEM = /^\s*(\d{1,2})\.\s+(.*)$/; // a numbered schedule item, at any indent; remainder captured
+const REG_REF = /^\s*\[Regulation (\d+)\]/; // the bracketed regulation reference in a schedule header
 const FOOT =
   /^\s*(\d{1,3}\s+)?(Inserted|Substituted|Omitted|The words|Clause \([a-z]+\) omitted|Renumbered) (by|for)\b|^\s*\d{4},? w\.e\.f|\bw\.e\.f\b/;
 
@@ -203,6 +212,8 @@ function regParse(doc) {
   let curHeading; // heading for the current regulation's paragraphs
   let pendingHeading; // heading seen, waiting for its regulation line
   let skipFootnote = false;
+  let mode = "reg"; // "reg" → chapters I–VII, "forms" → skipping Schedule I, "sched" → collecting II–IV
+  let schedNum = null; // current schedule number, for S<n>.<item> ids
 
   const flush = () => {
     if (para && cur) {
@@ -222,12 +233,72 @@ function regParse(doc) {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    if (cur && REG_STOP.test(line)) break; // schedules — stop
+    // once in the schedules, stop at SCHEDULE VI (declarations) or the amendment history
+    if (mode !== "reg" && (SCHED_END.test(line) || FOOTNOTE_HDR.test(line))) {
+      flush();
+      break;
+    }
     if (skipFootnote) {
       if (PAGE.test(line)) skipFootnote = false; // footnote block ends at the page marker
       continue;
     }
     if (PAGE.test(line)) continue; // drop page markers, keep the paragraph going
+
+    if (mode === "reg" && SCHED_I.test(line)) {
+      flush();
+      mode = "forms"; // Schedule I is forms — skip until Schedule II
+      continue;
+    }
+    const scm = line.match(SCHED_COLLECT);
+    if (scm && mode !== "reg") {
+      flush();
+      schedNum = ROMAN[scm[1]];
+      // header: a bracketed "[Regulation N]" ref and the ALL-CAPS title line(s) between the
+      // marker and the first numbered item, in either order (IV puts the title before the ref).
+      let ref = "";
+      const caps = [];
+      let j = i + 1;
+      for (; j < lines.length; j++) {
+        const t = lines[j];
+        if (!t.trim() || PAGE.test(t)) continue;
+        const rr = t.match(REG_REF);
+        if (rr) {
+          ref = rr[1];
+          continue;
+        }
+        if (SITEM.test(t)) break; // first item — header ends
+        if (CH_TITLE.test(t)) caps.push(t.trim()); // an ALL-CAPS title line (mixed-case lines are skipped)
+      }
+      cur = { key: `${doc.keyPrefix}-s${schedNum}`, title: `Schedule ${scm[1]} (Regulation ${ref}): ${caps.join(" ")}`, paras: [] };
+      chapters.push(cur);
+      mode = "sched";
+      para = null;
+      i = j - 1; // resume at the first item line
+      continue;
+    }
+    if (mode === "forms") continue; // skipping Schedule I's forms
+
+    if (mode === "sched") {
+      if (REG_BARE.test(line)) continue; // lone superscript marker — drop
+      if (FOOT.test(line)) {
+        skipFootnote = true; // footnote block — skip to the page marker (Schedule II item 4)
+        continue;
+      }
+      const im = line.match(SITEM);
+      if (im) {
+        // a numbered line whose remainder opens with "(" is a "(1)"/"(a)" sub-clause of the
+        // current item (Schedule III items 11–13), not a new item — fold it in.
+        if (/^\(/.test(im[2])) {
+          if (para) para.buf.push(im[2]);
+        } else {
+          flush();
+          para = { para: `S${schedNum}.${im[1]}`, buf: [im[2]] };
+        }
+        continue;
+      }
+      if (para && line.trim()) para.buf.push(line.trim()); // sub-item / wrapped continuation
+      continue;
+    }
 
     const cm = line.match(CH_MARK);
     if (cm && ROMAN[cm[1]]) {
@@ -292,6 +363,9 @@ function regChecks(doc, chapters, has) {
     "INSPECTION AND DISCIPLINARY PROCEEDINGS",
     "PROCEDURE FOR ACTION IN CASE OF DEFAULT",
     "MISCELLANEOUS",
+    "Schedule II (Regulation 15): FEES",
+    "Schedule III (Regulation 21): CODE OF CONDUCT- PORTFOLIO MANAGER",
+    "Schedule IV (Regulation 22): CONTENTS OF AGREEMENT BETWEEN THE PORTFOLIO MANAGER AND HIS CLIENTS",
   ];
   chapters.forEach((c, i) => {
     if (c.title !== TITLES[i]) throw new Error(`${doc.id}: chapter ${i + 1} title "${c.title}" != "${TITLES[i]}"`);
@@ -303,6 +377,13 @@ function regChecks(doc, chapters, has) {
   for (const c of chapters)
     for (const p of c.paras) {
       ids.push(p.para);
+      if (/Inserted by|Substituted (by|for)|w\.e\.f/.test(p.text))
+        throw new Error(`${doc.id}: footnote leaked into ${p.para}: ${p.text.slice(0, 90)}`);
+      if (/^S\d/.test(p.para)) {
+        // schedule item — validate shape, but keep it out of the regulation-number invariants
+        if (!/^S\d\.\d{1,2}$/.test(p.para)) throw new Error(`${doc.id}: malformed schedule id ${p.para}`);
+        continue;
+      }
       const m = p.para.match(/^(\d{1,3}[A-Z]?)(?:\((\d{1,2})\))?$/);
       if (!m) throw new Error(`${doc.id}: malformed paragraph id ${p.para}`);
       regNums.add(m[1]);
@@ -311,8 +392,6 @@ function regChecks(doc, chapters, has) {
         arr.push(Number(m[2]));
         subByReg.set(m[1], arr);
       }
-      if (/Inserted by|Substituted (by|for)|w\.e\.f/.test(p.text))
-        throw new Error(`${doc.id}: footnote leaked into ${p.para}: ${p.text.slice(0, 90)}`);
     }
   const dup = ids.find((x, i) => ids.indexOf(x) !== i);
   if (dup) throw new Error(`${doc.id}: duplicate paragraph id ${dup}`);
@@ -323,6 +402,28 @@ function regChecks(doc, chapters, has) {
   for (const [reg, subs] of subByReg)
     for (let i = 1; i < subs.length; i++)
       if (subs[i] <= subs[i - 1]) throw new Error(`${doc.id}: reg ${reg} sub-regs not increasing: ${subs.join(",")}`);
+
+  // schedules
+  const countOf = (k) => (chapters.find((c) => c.key === k) || { paras: [] }).paras.length;
+  if (chapters.some((c) => c.key === "pmr-s1" || c.key === "pmr-s6"))
+    throw new Error(`${doc.id}: unexpected schedule chapter (pmr-s1 or pmr-s6 — forms/declarations must not be collected)`);
+  for (const [k, n] of [["pmr-s2", 5], ["pmr-s3", 10], ["pmr-s4", 18]])
+    if (countOf(k) !== n) throw new Error(`${doc.id}: ${k} expected ${n} items, got ${countOf(k)}`);
+  const total = chapters.reduce((n, c) => n + c.paras.length, 0);
+  if (total !== 141) throw new Error(`${doc.id}: expected 141 paragraphs, got ${total}`);
+  for (const c of chapters)
+    for (const p of c.paras)
+      if (/Declaration by an existing portfolio manager|were published in the Gazette/.test(p.text))
+        throw new Error(`${doc.id}: collected past Schedule IV into ${p.para}: ${p.text.slice(0, 60)}`);
+
+  has("S2.3", "five lakh rupees every three years");
+  has("S2.4", "[The fee referred to in paragraph (2) shall be paid by the portfolio manager within");
+  has("S2.4", "SEBI Payment Gateway");
+  has("S2.5", "fees specified in paragraphs (1) and (3) above");
+  has("S3.1", "observe high standards of integrity and fairness");
+  has("S3.10", "(b) The portfolio manager shall comply with the code of conduct specified in the SEBI (Prohibition of Insider Trading) Regulations, 2015.");
+  has("S4.3", "(ii) providing reports to clients;");
+  has("S4.18", "Settlement of grievances/disputes and provision for arbitration");
 
   has("3", "No person shall act as a portfolio manager unless it has obtained a certificate of registration");
   has("15(1)", "within 15 days of receiving intimation from the Board");
