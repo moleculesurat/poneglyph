@@ -35,7 +35,7 @@ SOURCES (given/sources)  PMS Master Circular Jul 2025 ........................ [
               exchange holiday calendar (working days = Mon–Fri today) ....... [ ]
         │
 [6] PROVE     evidence binds via API/CLI, sha256 kept, file stays with firm ... [x] (EV-001 test bound)
-              attach from register row + live status + periodic re-open ...... [~] Task 17
+              attach from register row + live status + periodic re-open ...... [x]
               documents page / evidence vault fed from real evidence ......... [ ]
         │
 [7] MONITOR   hourly SEBI RSS watchtower, term lists = PM/AIF ................. [x] (unreviewed on real feed)
@@ -50,7 +50,7 @@ AIF LAUNCH CHECKLIST (one-time duties A–I) ...................................
 DEPLOYMENT    Molecule's Cloudflare account, KV, domain, secrets .............. [ ] wrangler.jsonc still hackathon account
               today: runs locally only (wrangler dev)
 
-NEXT IN ORDER   17 evidence UI → browser test + pull → AIF Regulations collect → remaining corpus
+NEXT IN ORDER   browser test of attach + pull → AIF Regulations collect → remaining corpus
                 (chapter by chapter) → real names → deployment
 ```
 
