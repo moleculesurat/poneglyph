@@ -99,7 +99,7 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
     await write(run);
 
     /* ── 2. applicability ─────────────────────────────────────────────── */
-    const applicability = assessApplicability(input.clauseText);
+    const applicability = assessApplicability(input.clauseText, input.chapter);
     run.steps.push(
       step("applicability", {
         thought: applicability.verdict.reasoning,

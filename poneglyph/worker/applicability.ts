@@ -14,6 +14,7 @@
    ══════════════════════════════════════════════════════════════════════ */
 
 import type { ApplicabilityVerdict, BusinessSegment, IntermediaryType } from "../lib/schema";
+import { CHAPTER_LABEL } from "../lib/domains";
 import { molecule } from "../data/entity";
 
 /** Phrases a circular uses for each intermediary capacity. */
@@ -41,6 +42,30 @@ function hits(haystack: string, phrases: string[]): string[] {
   return phrases.filter((p) => haystack.includes(p));
 }
 
+/* ── AIF category scope ─────────────────────────────────────────────────
+   The firm manages a Category II AIF only. A rule whose scope names another
+   category or fund type — and never the firm's own — does not bind it. Read
+   against the chapter title as well as the clause, because a master circular
+   often sets the category once in the chapter heading. */
+
+// ponytail: held AIF category hardcoded until entity.segments carries aif-category-ii (Pranjal: after registration)
+const HELD_AIF_CATEGORIES = ["ii"];
+const NAMES_HELD = /\bcategory\s+ii\b(?!i)|\bcategory\s+i\s*(?:,|and|&)\s*ii\b|\bcategories\s+i\s*(?:,|and|&)\s*ii\b|\ball (?:categories of )?aifs?\b|\bevery aif\b/;
+const FOREIGN_SCOPE: [RegExp, string][] = [
+  [/\bcategory\s+i\b(?!i)/, "Category I"], [/\bcategory\s+iii\b/, "Category III"],
+  [/\bangel funds?\b/, "Angel Funds"], [/\blarge value funds?\b|\blvfs?\b/, "Large Value Funds"],
+  [/\bopen[- ]ended\b/, "open-ended schemes"], [/\bventure capital funds?\b|\bvcfs?\b/, "Venture Capital Funds"],
+];
+
+/** the sentence in `clause` containing the first match of `re`, original case */
+function matchedSentence(clause: string, re: RegExp): string {
+  const m = re.exec(clause.toLowerCase());
+  if (!m) return clause;
+  const start = clause.lastIndexOf(".", m.index) + 1;
+  const dot = clause.indexOf(".", m.index);
+  return clause.slice(start, dot === -1 ? clause.length : dot + 1).trim();
+}
+
 /** the slice of a profile this agent compares a clause against. Defaults to
     the seeded Molecule profile; the profile in data/entity.ts. */
 export interface ApplicabilityEntity {
@@ -63,15 +88,44 @@ export interface ApplicabilityOutcome {
   matchedCapacities: string[];
   matchedSegments: BusinessSegment[];
   matchedForeignCapacities: IntermediaryType[];
+  matchedScope?: string;
 }
 
 export function assessApplicability(
   clauseText: string,
+  chapter?: string,
   entity: ApplicabilityEntity = seededEntity,
 ): ApplicabilityOutcome {
   const held = new Set<IntermediaryType>(entity.intermediaryTypes);
   const declaredSegments = new Set<BusinessSegment>(entity.segments);
   const text = clauseText.toLowerCase();
+
+  /* ── AIF category scope — before any capacity check ───────────────────
+     Only when the firm actually holds the AIF-manager capacity. */
+  const chapterTitle = chapter ? CHAPTER_LABEL[chapter] ?? "" : "";
+  const scope = `${chapterTitle}\n${clauseText}`.toLowerCase();
+  if (held.has("aif-manager") && !NAMES_HELD.test(scope)) {
+    const foreign = FOREIGN_SCOPE.find(([re]) => re.test(scope));
+    if (foreign) {
+      const [re, label] = foreign;
+      const inTitle = chapterTitle.length > 0 && re.test(chapterTitle.toLowerCase());
+      const where = inTitle ? "chapter title" : "clause";
+      const citedText = (inTitle ? chapterTitle : matchedSentence(clauseText, re)).slice(0, 180);
+      return {
+        verdict: {
+          verdict: "not-applicable",
+          reasoning: `The ${where} addresses ${label}. ${entity.legalName} manages Category II only; a rule scoped to ${label} does not enter this register.`,
+          citedText,
+          confidence: 0.9,
+        },
+        proceed: false,
+        matchedCapacities: [],
+        matchedSegments: [],
+        matchedForeignCapacities: [],
+        matchedScope: label,
+      };
+    }
+  }
 
   const matchedCapacities: string[] = [];
   for (const capacity of held) {
