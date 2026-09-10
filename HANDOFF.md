@@ -126,9 +126,13 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - frequency strings in the register: annual 11, monthly 6, 30 days 6, quarterly 5, 15 days 5, 60 days 4, half-yearly 2,
   N working days 5, event-driven 16, None 21. deadline is never set. Excerpts carry the real window text.
 
+- 472c63a + 3af4624 14/14b: lib/schedule.ts (parseSchedule from excerpt text, nextDue from the LAST period end so an
+  open window is never skipped — my first spec had that bug; 20 date cases pass); dashboard "upcoming filings" table
+  + DeadlineRunway fed from it; hard-coded CUSPA milestones deleted. 30/31 periodic duties parse, 29 dated.
+  Working days = Mon-Fri, holidays not modelled (ponytail comment).
+
 ## In progress (prompt given, awaiting report)
-Task 14: lib/schedule.ts — deterministic parse of period + filing window from the excerpt (never invents a date);
-nextDue(today); dashboard "upcoming filings" + DeadlineRunway fed from it (hard-coded CUSPA milestones deleted).
+Task 15: stale hackathon residue purge (CUSPA prose in 7 files, data/mcp.ts CUSPA demo, TaskBoard CIRC-CUSPA check).
 
 ## Next tasks (one prompt each)
 5.  Decide with Pranjal whether to extract the other ~445 'shall' paragraphs (ongoing duties without a cadence),
