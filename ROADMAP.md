@@ -1,6 +1,58 @@
 # Molecule Compliance Pipeline — Roadmap
 
-Validated 2026-09-09. Current state and next tasks live in `HANDOFF.md`.
+Validated 2026-09-09. Current state and next tasks live in `HANDOFF.md`. Status board below updated 2026-09-10.
+
+```
+STATUS BOARD — 2026-09-10                                [x] done  [~] in progress  [ ] pending
+
+SOURCES (given/sources)  PMS Master Circular Jul 2025 ........................ [x]
+                         AIF Master Circular Jun 2026 ........................ [x]
+                         CSCRF clarifications Apr 2025 (tier facts) .......... [x]
+                         PMS related-party circular 2022 ..................... [ ] not collected
+                         AIF Regulations 2012 (registration duties) .......... [ ] NOT IN CORPUS — need the PDF
+        │
+[0] PROFILE   Molecule = PM INP000007216 + AIF manager (Cat II, in prep) ....... [x]
+              AUM Rs 1,000 cr+, 500 clients, discretionary PMS, CSCRF self-cert  [x]
+              real names of Compliance Officer / Principal Officer ............ [ ] placeholders
+        │
+[1] COLLECT   PDF text → paragraph JSON (287 PMS + 509 AIF paras) ............ [x]
+              footnote digits at line ends ("month 67") ...................... [ ] cosmetic
+        │
+[2] EXTRACT   OpenRouter (GLM 5.3 flash), one paragraph per call, 16k tokens . [x]
+              75 "shall + time limit" paragraphs → 117 drafts ............... [x]
+              ~445 remaining "shall" paragraphs (ongoing duties) ............. [ ] awaiting Pranjal's go
+        │
+[3] ANALYSE   applicability: capacity + chapter title + AIF category ......... [x]
+              5-check verifier (verbatim excerpt, cadence, scope, schema, chain) [x]
+              relief / procedure sentences excluded ........................... [x]
+        │
+[4] REGISTER  human gate, token-guarded, /live queue + decide CLI ............. [x]
+              86 approved (40 PMS / 46 AIF), 31 rejected, 0 pending .......... [x]
+              register pulled into git, worker reseeds from it ............... [x]
+        │
+[5] SCHEDULE  due dates parsed from each duty's own sentence ................. [x]
+              dashboard "upcoming filings" + runway ........................... [x]
+              exchange holiday calendar (working days = Mon–Fri today) ....... [ ]
+        │
+[6] PROVE     evidence binds via API/CLI, sha256 kept, file stays with firm ... [x] (EV-001 test bound)
+              attach from register row + live status + periodic re-open ...... [~] Task 17
+              documents page / evidence vault fed from real evidence ......... [ ]
+        │
+[7] MONITOR   hourly SEBI RSS watchtower, term lists = PM/AIF ................. [x] (unreviewed on real feed)
+              catch → re-run affected paragraph → diff against register ...... [ ]
+              consultation paper 23 Jul 2026 on new PMS Regulations .......... [ ] watch item
+        │
+[8] SHOW      /register /dashboard /audit render the pulled register .......... [x]
+              hackathon residue purged (Angel One, CUSPA, fake MCP) .......... [x]
+              inspector view for a SEBI inspection ........................... [ ] exists, untested on real data
+
+AIF LAUNCH CHECKLIST (one-time duties A–I) .................................... [ ] blocked on AIF Regulations text
+DEPLOYMENT    Molecule's Cloudflare account, KV, domain, secrets .............. [ ] wrangler.jsonc still hackathon account
+              today: runs locally only (wrangler dev)
+
+NEXT IN ORDER   17 evidence UI → browser test + pull → AIF Regulations collect → remaining corpus
+                (chapter by chapter) → real names → deployment
+```
 
 ```
 THE IDEA
