@@ -46,24 +46,31 @@ THE SECTIONS — in the order of the firm's life
                        MCP connector today; claude.ai custom connectors need OAuth [PRANJAL: which client?].
   6 INSPECTION         read-only view of 1–3 plus the audit chain, for SEBI. Exists, untested on real data.
 
-BUILD ORDER — and why
-  A  profile facts + section nav          unblocked, small. Every later task lands in its section.
-  B  watchtower sources + deployment      unblocked. The cron means nothing until deployed; MCP needs a URL.
-                                          Once live it catches AIF circulars while C–E are built.
-  C  sources: AIF Regs + PM Regs collect  waits for the PDFs (or a yes to fetch). One collect task each;
-                                          regulations are numbered Chapter/Regulation/sub-regulation, so
-                                          collect.mjs learns that shape once and both use it.
-  D  AIF onboarding, one category at a time (section 2)   first track end to end, then the other two are
-                                          the same pipeline on category-tagged paragraphs.
-  E  AIF rules Cat I | II | III (section 3)  tags replace rejection in applicability; run ch 7, 8, 9 and the
-                                          Regulations' ongoing chapters; three tabs.
-  F  MCP read tools (section 5)           small, independent; after B so claude.ai can reach it. Claude Code
-                                          can use it locally against wrangler dev even before B.
-  G  PMS depth (section 1)                remaining "shall" paragraphs + PM Regs duties in ~50-para batches,
-                                          one review sheet each. Review-heavy for Pranjal, so batches
-                                          interleave with C–F rather than block them.
-  H  hardening                            real officer names, holiday calendar, evidence-vault pages from
-                                          the real register, inspector on real data, MCP write tools.
+BUILD ORDER — PMS first, end to end; then AIF; then the rest
+  PHASE 1  PMS DONE (section 1 + 4 for PMS)
+    1a  PM Regulations 2020 collect      pdftotext → given/sources; collect.mjs learns Chapter/Regulation/
+                                         sub-regulation numbering (reused for the AIF Regulations later).
+    1b  PMS corpus finished              remaining ~445 "shall" paragraphs of the PMS MC, then the PM Regs,
+                                         then the related-party circular — ~50 paras a batch, one review
+                                         sheet each, Pranjal decides, pull, commit.
+    1c  PMS proof                        documents/evidence pages fed from the real register; holiday
+                                         calendar for working-day due dates; real officer names.
+    1d  watchtower on real sources       RSS + the four listing pages; catch → work item (fetch, pdftotext,
+                                         collect, re-run changed paragraphs, review, gate).
+    1e  deployment                       Molecule's Cloudflare account, KV, domain, secrets. The cron
+                                         starts. `npm run pull -- https://<domain>` becomes the loop.
+    done looks like: every PMS duty SEBI wrote is in the register or ruled out with a reason; dates,
+    proof and gaps are live; the watchtower catches the next PMS circular and hands it to the pipeline.
+
+  PHASE 2  AIF
+    2a  profile stage facts + nav split  sections PMS · AIF Onboarding · AIF Rules.
+    2b  AIF Regulations collect          same collect shape as 1a.
+    2c  onboarding, one category at a time (section 2)   [PRANJAL: II → III → I?]
+    2d  rules Cat I | II | III (section 3)   tags replace rejection; run MC ch 7, 8, 9 + Regs ongoing chapters.
+
+  PHASE 3  ASK + HARDENING
+    3a  MCP read tools (section 5); write tools behind the gate token later.
+    3b  inspector view on real data; DESIGN.md / README de-hackathon.
 
 WATCHTOWER SOURCES (verified 2026-09-10: plain GET, browser UA, no cookies, HTTP 200)
   keep  sebi.gov.in/sebirss.xml — 30 newest items of every kind
@@ -95,13 +102,11 @@ DATA CHANGES — the whole list
   watch.ts           four listing sources beside the RSS
   worker             /api/mcp route: initialize, tools/list, tools/call; bearer = GATE_TOKEN
 
-OPEN ON PRANJAL'S SIDE
+OPEN ON PRANJAL'S SIDE — phase 1 first
   1  browser test of attach-evidence on /register, then `npm run pull` + commit register.json
-  2  yes/no on the remaining ~445 "shall" paragraphs (G)
-  3  AIF Regulations + PM Regulations PDFs into given/, or a yes to fetch them from sebi.gov.in (C)
-  4  real Compliance Officer / Principal Officer names (H)
-  5  order of the three onboarding tracks — suggest II (Molecule's own) → III → I (D)
-  6  current stage of each category — profile says Cat II "not yet applied", I and III none (A)
-  7  MCP client: Claude Code (bearer token, ready with the worker) or claude.ai (needs OAuth on top) (F)
-  8  PM Regulations version: Feb 2025 as linked, or the Sep 2025 consolidation (C)
+  2  PM Regulations PDF into given/, or a yes to fetch it (1a); version: Feb 2025 as linked, or Sep 2025
+  3  yes/no on the remaining ~445 "shall" paragraphs (1b)
+  4  real Compliance Officer / Principal Officer names (1c)
+  5  Molecule's Cloudflare account, domain (1e)
+  later: order of the three AIF tracks; stage of each category; AIF Regulations PDF; MCP client
 ```
