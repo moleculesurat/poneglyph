@@ -32,6 +32,7 @@ export type ChapterKey = string;
 export interface Para {
   para: string; // e.g. "46.3"
   text: string;
+  heading?: string; // regulation heading, where the source carries one (e.g. "Registration as portfolio manager.")
 }
 
 export interface Chapter {

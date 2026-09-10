@@ -1,0 +1,589 @@
+{
+  "id": "REG-PM-2020",
+  "number": "SEBI/LAD-NRO/GN/2020/03",
+  "title": "Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020",
+  "issuedOn": "2025-09-03",
+  "kind": "regulation",
+  "source": "https://www.sebi.gov.in/legal/regulations/sep-2025/securities-and-exchange-board-of-india-portfolio-managers-regulations-2020-last-amended-on-september-03-2025-_96560.html",
+  "sourceFile": "given/sources/pm-regulations-2020-2025-09-03.txt",
+  "sourceSha256": "9cf5b0b1041634046ff479296777f1039f00a9a974ebd31e09dd7398f91787e4",
+  "chapters": [
+    {
+      "key": "pmr-1",
+      "title": "PRELIMINARY",
+      "paras": [
+        {
+          "para": "1(1)",
+          "text": "These regulations may be called the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020.",
+          "heading": "Short title and commencement."
+        },
+        {
+          "para": "1(2)",
+          "text": "These regulations shall come into force on the date of their publication in the Official Gazette.",
+          "heading": "Short title and commencement."
+        },
+        {
+          "para": "2(1)",
+          "text": "In these regulations, unless the context otherwise requires, ─ (a) “Act” means the Securities and Exchange Board of India Act, 1992 (15 of 1992); [(aa) “accreditation agency” shall have the same meaning as assigned to it in clause (aa) of sub-regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012; (ab) “accredited investor” means any person who fulfils the eligibility criteria as specified by the Board and is granted a certificate of accreditation by an accreditation agency;] [(ac) “Alternative Investment Fund” shall have the same meaning as assigned to it in clause (b) of sub-regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012;] (b) “body corporate” shall have the meaning assigned to it under sub-section (11) of Section 2 of the Companies Act, 2013 (18 of 2013) as amended from time to time; (c) “certificate” means a certificate of registration issued by the Board; [***] [(e) “Change in control” in case of a body corporate – (A) if its shares are listed on any recognised stock exchange, shall be construed with reference to the definition of control in terms of regulations framed under clause (h) of sub-section (2) of section 11 of the Act; (B) if its shares are not listed on any recognised stock exchange, shall be construed with reference to the definition of control as provided in sub-section (27) of Section 2 of the Companies Act, 2013 (18 of 2013);] (f) “chartered accountant\" means a chartered accountant as defined in clause (b) of sub- section (1) of section 2 of the Chartered Accountants Act, 1949 (38 of 1949) and who has obtained a certificate of practice under sub-section (1) of section 6 of that Act; [(fa) “Co-investment Portfolio Manager” means a Portfolio Manager who is a Manager of a Category I or Category II Alternative Investment Fund(s); and: (i) provides services only to the investors of such Category I or Category II Alternative Investment Fund(s); and (ii) makes investment only in unlisted securities of investee companies where such Category I or Category II Alternative Investment Fund(s) make investments: Provided that the Co-investment Portfolio Manager may provide services to investors from any other Category I or Category II Alternative Investment Fund(s) which are managed by them and are also sponsored by the same Sponsor(s);] (g) “discretionary portfolio manager” means a portfolio manager who under a contract relating to portfolio management, exercises or may exercise, any degree of discretion as to the investment of funds or management of the portfolio of securities of the client, as the case may be; (h) “eligible fund manager” shall have the same meaning as assigned to it in sub-section (4) of Section 9A of the Income-tax Act, 1961; (i) “eligible investment fund” shall have the same meaning as assigned to it in sub-section (3) of Section 9A of the Income-tax Act, 1961; (j) \"form\" means a form specified in Schedule I; (k) “goods” means the goods notified by the Central Government under clause (bc) of section 2 of the Securities Contracts (Regulation) Act, 1956 and forming the underlying of any commodity derivative; (l) \"inspecting authority\" means one or more persons appointed by the Board to exercise powers conferred under Chapter V; [(la) “large value accredited investor” means an accredited investor who has entered into an agreement with the portfolio manager for a minimum investment amount of ten crore rupees;] [(lb) “investee company” shall have the same meaning as assigned to it in clause (o) of sub- regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012; (lc) “Manager” shall have the same meaning as assigned to it in clause (q) of sub-regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012;] (m) “NISM” means the National Institute of Securities Market established by the Board; (n) “portfolio” means the total holdings of securities and goods belonging to any person; (o) “portfolio manager” means a body corporate, which pursuant to a contract with a client, advises or directs or undertakes on behalf of the client (whether as a discretionary portfolio manager or otherwise) the management or administration of a portfolio of securities or goods or funds of the client, as the case may be: Provided that the Portfolio Manager may deal in goods received in delivery against physical settlement of commodity derivatives. (p) “principal officer” means an employee of the portfolio manager who has been designated as such by the portfolio manager and is responsible for: - (i) the decisions made by the portfolio manager for the management or administration of portfolio of securities or the funds of the client, as the case may be; and (ii) all other operations of the portfolio manager. [(pa) “related party” in relation to a portfolio manager, means— (i) a director, partner or his relative; (ii) a key managerial personnel or his relative; (iii) a firm, in which a director, partner, manager or his relative is a partner; (iv) a private company in which a director, partner or manager or his relative is a member or director; (v) a public company in which a director, partner or manager is a director or holds along with his relatives, more than two per cent. of its paid-up share capital; (vi) any body corporate whose board of directors, managing director or manager is accustomed to act in accordance with the advice, directions or instructions of a director, partner or manager; (vii) any person on whose advice, directions or instructions a director, partner or manager is accustomed to act: Provided that nothing in sub-clauses (vi) and (vii) shall apply to the advice, directions or instructions given in a professional capacity; (viii) any body corporate which is— (A) a holding, subsidiary or an associate company of the portfolio manager; or (B) a subsidiary of a holding company to which the portfolio manager is also a subsidiary; (C) an investing company or the venturer of the portfolio manager; Explanation.—For the purpose of this clause, “investing company or the venturer of a portfolio manager” means a body corporate whose investment in the portfolio manager would result in the portfolio manager becoming an associate of the body corporate. (ix) a related party as defined under the applicable accounting standards; (x) such other person as may be specified by the Board: Provided that, (a) any person or entity forming a part of the promoter or promoter group of the listed entity; or (b) any person or any entity, holding equity shares: (i) of twenty per cent or more; or (ii) of ten per cent or more, with effect from April 1, 2023; in the listed entity either directly or on a beneficial interest basis as provided under section 89 of the Companies Act, 2013, at any time, during the immediate preceding financial year; shall be deemed to be a related party;] (q) “securities lending” means securities lending as per the Securities Lending Scheme, 1997 specified by the Board. [(r) “Sponsor” shall have the same meaning as assigned to it in clause (w) of sub-regulation (1) of regulation 2 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012;] (2) Words and expressions used and not defined in these regulations but defined in the Act shall have the meanings respectively assigned to them in the Act.",
+          "heading": "Definitions."
+        }
+      ]
+    },
+    {
+      "key": "pmr-2",
+      "title": "REGISTRATION OF PORTFOLIO MANAGERS",
+      "paras": [
+        {
+          "para": "3",
+          "text": "No person shall act as a portfolio manager unless it has obtained a certificate of registration from the Board under these regulations.",
+          "heading": "Registration as portfolio manager."
+        },
+        {
+          "para": "4(1)",
+          "text": "An application by a person for the grant of a certificate shall be made to the Board in Form A of Schedule I and shall be accompanied by a non-refundable application fee, as specified in para (1) of Schedule II.",
+          "heading": "Application for grant of certificate."
+        },
+        {
+          "para": "4(2)",
+          "text": "Notwithstanding anything contained in sub-regulation (1), any application made by a person prior to coming into force of these regulations containing such particulars or as near thereto as mentioned in Form A of Schedule I shall be treated as an application made in pursuance of sub- regulation (1) and dealt with accordingly.",
+          "heading": "Application for grant of certificate."
+        },
+        {
+          "para": "5",
+          "text": "Subject to the provisions of sub-regulation (2) of regulation 4, any application, which is not complete in all respects and does not conform to the instructions specified in the form, shall be rejected: Provided that, before rejecting any such application, the applicant shall be given an opportunity to remove objections indicated by the Board, within the time specified, not later than 3 weeks.",
+          "heading": "Application to conform to the requirements."
+        },
+        {
+          "para": "6(1)",
+          "text": "The Board may require the applicant to furnish further information or clarification regarding matters relevant to his activity of a portfolio manager for the purposes of disposal of the application.",
+          "heading": "Furnishing of further information, clarification and personal representation."
+        },
+        {
+          "para": "6(2)",
+          "text": "The applicant or its principal officer shall, if so required, appear before the Board for personal representation.",
+          "heading": "Furnishing of further information, clarification and personal representation."
+        },
+        {
+          "para": "7(1)",
+          "text": "For considering the grant of certificate of registration to the applicant, the Board shall take into account all matters which it deems relevant to the activities relating to portfolio management.",
+          "heading": "Consideration of application."
+        },
+        {
+          "para": "7(2)",
+          "text": "Without prejudice to the generality of the foregoing provisions, the Board shall consider whether :- (a)the applicant is a body corporate; (b) the applicant has the necessary infrastructure like adequate office space, equipment and the manpower to effectively discharge the activities of a portfolio manager; (c) the applicant has appointed a compliance officer; (d) the principal officer of the applicant has– [(i) a professional qualification in finance, law, accountancy or business management from a university or an institution recognized by the Central Government or any State Government or a foreign university or a professional qualification by completing a Post Graduate Program in the Securities Market (Portfolio Management) from NISM of a duration not less than one year or a professional qualification by obtaining a CFA charter from the CFA institute;] (ii) experience of at least five years in related activities in the securities market including in a portfolio manager, stock broker, investment advisor, research analyst or as a fund manager; and (iii) the relevant NISM certification as specified by the Board from time to time [:] Provided that at least 2 years of relevant experience is in portfolio management or investment advisory services or in the areas related to fund management [:] Provided further that a portfolio manager, who was granted a certificate of registration prior to the commencement of the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020, shall comply with sub clauses (i) and (ii) of clause (d) of sub-regulation (2) of regulation 7 within thirty-six months from such commencement[:] [Provided further that a fresh NISM certification shall be obtained before expiry of the validity of the existing certification to ensure continuity in compliance with the certification requirements [:]] [Provided further that the Co-investment Portfolio Manager may designate a member of the Key Investment Team of the Manager as the principal officer who fulfils either of the criteria specified in clause (g) of regulation 4 of the Securities and Exchange Board of India (Alternative Investment Funds) Regulations, 2012, and in that case the requirement under clause (d) shall not apply to the principal officer so appointed; ] (e) In addition to the Principal Officer and Compliance Officer, the applicant has in its employment at least one person with the following qualifications :- (i) graduation from a university or an institution recognized by the Central Government or any State Government or a foreign university; and (ii) an experience of at least two years in related activities in the securities market including in a portfolio manager, stock broker, investment advisor or as a fund manager: Ibid Ibid. Provided that any employee of the Portfolio Manager who has decision making authority related to fund management shall have the same [minimum qualifications, experience and certification] as specified for the Principal Officer in clause (d) of sub- regulation (2) of regulation 7: Provided further that a portfolio manager, who was granted a certificate of registration prior to the commencement of the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020, shall comply with sub clauses (i) and (ii) of clause (e) of sub-regulation (2) of regulation 7 within twelve months from such commencement [:] [Provided further that the requirement under clause(e) above shall not apply to Co- investment Portfolio Manager;] (f) any disciplinary action has been taken by the Board against a person directly or indirectly connected with the applicant under the Act or the rules or the regulations made thereunder; Explanation. ─ For the purposes of sub-clause (f), the expression \"person directly or indirectly connected\" means any person being an associate, subsidiary company or an associate company within the meaning of sub-section (6) of section 2 of the Companies Act, 2013; (g) the applicant fulfills the net worth requirement specified in regulation 9 [:] [Provided that the requirement under clause(g) shall not apply to the Co-investment Portfolio Manager;] (h) the applicant, its director or partner, principal officer, compliance officer or the employee as specified in clause (e) is involved in any litigation connected with the securities market that has an adverse bearing on the business of the applicant; (i) the applicant, its director or partner, principal officer, compliance officer or the employee as specified in clause (e) has at any time been convicted for any offence involving moral turpitude or has been found guilty of any economic offence; (j) the applicant is a fit and proper person; (k) the grant of certificate to the applicant is in the interest of investors.",
+          "heading": "Consideration of application."
+        },
+        {
+          "para": "8",
+          "text": "For the purposes of determining whether an applicant or the portfolio manager is a fit and proper person, the Board may take into account the criteria specified in Schedule II of the Securities and Exchange Board of India (Intermediaries) Regulations, 2008.",
+          "heading": "Criteria for fit and proper person."
+        },
+        {
+          "para": "9",
+          "text": "The net worth referred to in clause (g) of regulation 7 shall not be less than five crore rupees: Provided that a portfolio manager, who was granted a certificate of registration prior to the commencement of the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020, shall raise its net worth to not less than five crore rupees within thirty-six months from such commencement: Provided further that the portfolio manager shall fulfill the net worth requirements under these regulations, separately and independently, of the capital adequacy requirements, if any, for each activity undertaken by it under the relevant regulations[:] [Provided further that the requirement under this regulation shall not apply to the Co- investment Portfolio Manager.] Explanation. ─ For the purposes of this regulation, \"net worth\" means the aggregate value of paid up equity capital plus free reserves (excluding reserves created out of revaluation) reduced by the aggregate value of accumulated losses and deferred expenditure not written off, including miscellaneous expenses not written off.",
+          "heading": "Net worth Requirement."
+        },
+        {
+          "para": "10(1)",
+          "text": "The Board on being satisfied that the applicant fulfils the requirements specified in regulation 7 shall send an intimation to the applicant and on receipt of the payment of registration fees as specified in paragraph (2) of Schedule II grant a certificate in Form B of Schedule I.",
+          "heading": "Procedure for registration."
+        },
+        {
+          "para": "10(2)",
+          "text": "The portfolio manager who has already been granted a certificate of registration by the Board, prior to the commencement of the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020 shall be deemed to have been granted a certificate of registration, in terms of sub- regulation (1).",
+          "heading": "Procedure for registration."
+        },
+        {
+          "para": "11",
+          "text": "The certificate of registration granted under regulation 10 shall, inter alia, be subject to the following conditions, namely: - (a) the portfolio manager shall abide by the provisions of the Act and these regulations; [(aa) the portfolio manager shall obtain prior approval of the Board in case of change in control in such manner as may be specified by the Board] (b) the portfolio manager shall forthwith inform the Board in writing, if any information or particulars previously submitted to the Board are found to be false or misleading in any material particular or if there is any material change in the information already submitted; (c) the portfolio manager shall pay the fees for registration in the manner provided in these regulations; (d) the portfolio manager shall take adequate steps for redressal of grievances of the investors within [twenty-one calendar days] of the date of the receipt of the complaint and keep the Board informed about the number, nature and other particulars of the complaints received; and (e) the portfolio manager shall maintain the net worth specified in regulation 9 at all times during the period of the certificate [:] [Provided that the requirement under clause(e) shall not apply to Co-investment Portfolio Manager.]",
+          "heading": "Conditions of registration."
+        },
+        {
+          "para": "12",
+          "text": "The certificate of registration granted under regulation 10 shall be valid unless it is suspended or cancelled by the Board. Procedure where registration is refused",
+          "heading": "Period of validity of certificate."
+        },
+        {
+          "para": "13(1)",
+          "text": "After considering an application made under regulation 4, if the Board is of the opinion that a certificate should not be granted to the applicant, it may reject the application after giving the applicant a reasonable opportunity of being heard."
+        },
+        {
+          "para": "13(2)",
+          "text": "The decision of the Board to reject the application shall be communicated to the applicant within thirty days of such decision."
+        },
+        {
+          "para": "14",
+          "text": "Any portfolio manager whose application for a certificate has been refused by the Board shall on and from the date of the receipt of the communication under sub- regulation (2) of regulation 13 cease to carry on any activity as portfolio manager.",
+          "heading": "Effect of refusal to grant certificate."
+        },
+        {
+          "para": "15(1)",
+          "text": "Every applicant eligible for grant of a certificate shall pay such fees within 15 days of receiving intimation from the Board and in such manner as specified in Schedule II: Provided that the Board may on sufficient cause being shown allow the portfolio manager to pay such fees at any time before the expiry of one month from the date on which such fees become due.",
+          "heading": "Payment of fees, and the consequences of failure to pay fees."
+        },
+        {
+          "para": "15(2)",
+          "text": "Where a portfolio manager fails to pay the fees as provided in Schedule II, the Board may suspend the certificate, whereupon the portfolio manager shall forthwith cease to carry on the activity as a portfolio manager for the period during which the suspension subsists.",
+          "heading": "Payment of fees, and the consequences of failure to pay fees."
+        }
+      ]
+    },
+    {
+      "key": "pmr-3",
+      "title": "ELIGIBLE FUND MANAGERS",
+      "paras": [
+        {
+          "para": "16(1)",
+          "text": "The provisions of this Chapter shall apply to eligible fund managers exclusively, pertaining to their activities as portfolio managers to eligible investment funds.",
+          "heading": "Applicability."
+        },
+        {
+          "para": "16(2)",
+          "text": "All other provisions of these regulations and the guidelines and circulars issued thereunder, unless the context otherwise requires or is repugnant to the provisions of this chapter, shall apply to eligible fund managers in relation to their activities as portfolio managers to eligible investment funds.",
+          "heading": "Applicability."
+        },
+        {
+          "para": "17",
+          "text": "An existing portfolio manager may act as a portfolio manager to an eligible investment fund if: (a) it fulfills all the conditions specified in sub section (4) of Section 9A of the Income- tax Act, 1961; and (b) it intimates the Board prior to undertaking such activity and submit declarations as specified in clause (1) of Schedule VI.",
+          "heading": "Procedure to be followed by an existing Portfolio Manager."
+        },
+        {
+          "para": "18",
+          "text": "An applicant who is a body corporate who intends to act as an eligible fund manager may be granted registration under regulation 10 if: (a) it fulfills all the conditions specified in sub section (4) of Section 9A of the Income-tax Act, 1961; (b) it complies with the requirements specified under Chapter II of these regulations, unless specified otherwise in this Chapter; (c) it pays the fees as specified in Schedule II; and (d) it provides a declaration to the Board as specified in paragraph (2) of Schedule VI.",
+          "heading": "Procedure to be followed by an applicant for fresh registration."
+        },
+        {
+          "para": "19",
+          "text": "An eligible fund manager shall be required to: - (1) comply with the requirements specified under Section 9A of the Income-tax Act, 1961 or any amendment, notification, clarification, guideline issued thereunder; (2) offer discretionary or non-discretionary or advisory services or a combination thereof to eligible investment funds; (3) operate in accordance to its mutually agreed contract with the eligible investment funds; (4) provide all material disclosures to eligible investment funds; (5) segregate funds and securities of each eligible investment fund; (6) segregate the funds and securities of eligible investment funds from those of its other clients; (7) maintain and segregate its books and accounts pertaining to its activities as a portfolio manager to eligible investment funds and other clients; (8) appoint a custodian: Provided that the requirement of compliance with this sub-regulation would not arise in case an eligible investment fund has already appointed a custodian under the applicable act or regulations; (9) keep the funds of eligible investment funds in scheduled commercial banks; Provided that requirement of compliance with this sub-regulation would not arise in case an eligible investment fund does not intend to invest in Indian securities; (10) maintain any additional records as may be specified by the Board and disclose the same to the Board as and when required; (11) provide quarterly reports to the Board; (12) ensure compliance with the Prevention of Money Laundering Act, 2002 and rules and regulations made thereunder; (13) abide by the provisions in these regulations and circulars / guidelines issued by the Board from time to time.",
+          "heading": "Obligation and Responsibilities of Eligible Fund Managers."
+        },
+        {
+          "para": "20",
+          "text": "The eligible fund managers shall be exempted from the following provisions pertaining to their activities as portfolio managers to eligible investment funds notwithstanding anything contained in these regulations, Schedules thereto or circulars issued thereunder: (i) sub-regulation (1), (2), (3) and (4) of Regulation 22; (ii) sub-regulation (2), (3), (4), (8) and (9) of Regulation 23; (iii) clause (b) of sub-regulation (1) of Regulation 24; (iv) clause (a) of sub-regulation (2) of Regulation 24; (v) sub-regulation (7) of Regulation 24; (vi) sub-regulation (11) of Regulation 24; (vii) Regulation 26; (viii) sub-regulation (3) of Regulation 30; (ix) sub-regulation (1), (2), and (3) of Regulation 31; (x) Form C in Schedule I; and [(xi) Schedule IV.]",
+          "heading": "Certain provisions not to apply."
+        }
+      ]
+    },
+    {
+      "key": "pmr-4",
+      "title": "GENERAL OBLIGATIONS AND RESPONSIBILITIES",
+      "paras": [
+        {
+          "para": "21",
+          "text": "Every portfolio manager shall abide by the Code of Conduct as specified in Schedule III.",
+          "heading": "Code of Conduct."
+        },
+        {
+          "para": "22(1)",
+          "text": "The portfolio manager shall, before taking up an assignment of management of funds and portfolio on behalf of a client, enter into an agreement in writing with such client that clearly defines the inter se relationship and sets out their mutual rights, liabilities and obligations relating to management of portfolio containing the details as specified in Schedule IV [:] [Provided that the contents of agreement specified under Schedule IV of these regulations shall not apply to the agreement between the portfolio managers and the large value accredited investors.] [(1A) The portfolio manager may make investments in the securities of its related parties or its associates only after obtaining the prior consent of the client in such manner as may be specified by the Board from time to time: Provided that the requirement for obtaining consent shall not apply to such portfolio managers as may be specified by the Board.]",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(2)",
+          "text": "The agreement between the portfolio manager and the client shall, inter alia, include the following :- (a) the investment objectives and the services to be provided; (b) period of the contract and provision of early termination, if any; (c) investment approach, areas of investment and restrictions, if any, imposed by the client with regard to the investment in a particular company or industry; Explanation: An investment approach is a broad outlay of the type of securities and permissible instruments to be invested in by the portfolio manager for the customer, taking into account factors specific to clients and securities. (d) type of instruments and proportion of exposure; (e) tenure of portfolio investments; (f) terms for early withdrawal of funds or securities by the clients; (g) attendant risks involved in the management of the portfolio; (h) amount to be invested subject to the restrictions provided under these regulations; (i) procedure of settling client's account including form of repayment on maturity or early termination of contract; (j) fees payable to the portfolio manager; (k) the quantum and manner of fees payable by the client for each activity for which service is rendered by the portfolio manager directly or indirectly (where such service is out sourced); (l) custody of securities; (m) in case of a discretionary portfolio manager; a condition that the liability of a client shall not exceed his investment with the portfolio manager; (n) accounting terms, audit and furnishing of the reports to the clients as per the provisions of these regulations; and (o) other terms of portfolio investment subject to these regulations: [Provided that in case of the Co-investment Portfolio Manager, the terms of co-investment in an investee company by a co-investor, shall not be more favourable than the terms of investment of the Alternative Investment Fund: Provided further that in case of the Co-investment Portfolio Manager, the terms of exit from the Co-investment in an investee company including the timing of exit shall be identical to the terms applicable to that of exit of the Alternative Investment Fund: Provided further that in case of the Co-investment Portfolio Manager, the early withdrawal of funds by the co-investors with respect to Co-investment in investee companies shall be allowed to the extent that the Alternative Investment Fund has also made an exit from respective investment in such investee companies.] [(3) The portfolio manager shall provide to the client, the Disclosure Document, in the format as may be specified by the Board, along with a certificate in Form C as specified in Schedule I, prior to entering into an agreement with the client as referred to in sub-regulation (1).]",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(4)",
+          "text": "The Disclosure Document, shall inter alia include the following :─ (a) the quantum and manner of payment of fees payable by the client for each activity for which service is rendered by the portfolio manager directly or indirectly (where such service is out sourced); (b) portfolio risks including risk specific to each investment approach offered by the portfolio manager; (c) complete disclosures of transactions with related parties as per the accounting standards specified by the Institute of Chartered Accountants of India; (d) details of conflicts of interest related to services offered by group companies or associates of the portfolio manager; [(da) the details of investment of client’s funds by the portfolio manager in the securities of its related parties or associates; (db) the details of diversification policy of the portfolio manager: Provided that the requirements specified above at clauses (da) and (db) above shall not apply to such portfolio managers as may be specified by the Board: Provided further that the Board may specify disclosure requirements other than the requirements specified at clauses (da) and (db) above;] (e) the performance of the portfolio manager: Provided that the performance of a discretionary portfolio manager shall be calculated using ‘Time Weighted Rate of Return’ for the immediately preceding three years and in such cases performance indicators shall also be disclosed: [Provided further that the performance of the Co-investment Portfolio Manager shall be calculated in the manner as agreed between the Co-investment Portfolio Manager and the client:] Provided further that the portfolio manager may be allowed to disclose performance segregated on the basis of investment approach; (f) the audited financial statements of the portfolio manager for the immediately preceding three years.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(5)",
+          "text": "The contents of the Disclosure Document shall be certified by an independent chartered accountant.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(6)",
+          "text": "The portfolio manager shall ensure that a copy of Disclosure Document is available on the website of the portfolio manager at all times and as soon as the registration is granted [:] [Provided that the requirement under this sub-regulation shall not apply to Co-investment Portfolio Manager.]",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(7)",
+          "text": "The portfolio manager shall file with the Board, a copy of the Disclosure Document after grant of certificate of registration before circulating it to any client or whenever any material change including change in the investment approach is effected. The portfolio manager shall file the disclosure document with the material change within 7 working days from the date of the change.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(8)",
+          "text": "The portfolio manager shall file disclosure document along with the certificate in Form C as specified in Schedule I.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(9)",
+          "text": "The portfolio manager shall disclose a change in the identity of the Principal Officer to the Board and the clients within 7 working days of effecting the change.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(10)",
+          "text": "The portfolio manager shall report its performance uniformly in the disclosures to the Board, marketing materials and reports to the clients and on its website.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(11)",
+          "text": "The portfolio manager shall charge an agreed fee from the clients for rendering portfolio management services without guaranteeing or assuring, either directly or indirectly, any return and the fee so charged may be a fixed fee or a return based fee or a combination of both: Provided that no up-front fees shall be charged by the portfolio manager directly or in-directly to the clients.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22(12)",
+          "text": "The portfolio manager shall disclose the range of fees charged under various heads in the disclosure document. [Dispute Resolution.",
+          "heading": "Contract with clients and disclosures."
+        },
+        {
+          "para": "22A",
+          "text": "All claims, differences or disputes between investors and the portfolio manager arising out of or in relation to the activities of the portfolio manager in the securities market shall be submitted to a dispute resolution mechanism that includes mediation and/or conciliation and/or arbitration, in accordance with the procedure specified by the Board.]"
+        },
+        {
+          "para": "23(1)",
+          "text": "The discretionary portfolio manager shall individually and independently manage the funds of each client in accordance with the needs of the client, in a manner which does not partake character of a Mutual Fund, whereas the non-discretionary portfolio manager shall manage the funds in accordance with the directions of the client.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(2)",
+          "text": "The portfolio manager shall not accept from the client, funds or securities worth less than fifty lakh rupees: Provided that the minimum investment amount per client shall be applicable for new clients and fresh investments by existing clients: [Provided further that subject to appropriate disclosures in the disclosure document and the terms agreed between the client and the portfolio manager, the requirement of minimum investment amount per client shall not apply to an accredited investor:] [Provided further that the requirement of minimum investment amount per client shall not apply to the Co-investment Portfolio Manager:] Provided further that existing investments of clients, as on the date of notification of the Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020, may continue as such till maturity of the investment or as specified by the Board.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(3)",
+          "text": "The portfolio manager shall act in a fiduciary capacity with regard to the client's funds.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(4)",
+          "text": "The portfolio manager shall segregate each client’s holding in securities in separate accounts.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(5)",
+          "text": "The portfolio manager shall keep the funds of all clients in a separate account to be maintained by it in a Scheduled Commercial Bank. Explanation. ─ For the purposes of this sub-regulation, the expression ‘Scheduled Commercial Bank’ means any bank included in the Second Schedule to the Reserve Bank of India Act, 1934 (2 of 1934).",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(6)",
+          "text": "The portfolio manager shall transact in securities within the limitation placed by the client himself with regard to dealing in securities under the provisions of the Reserve Bank of India Act, 1934 (2 of 1934).",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(7)",
+          "text": "The portfolio manager shall not derive any direct or indirect benefit out of the client's funds or securities.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(8)",
+          "text": "The portfolio manager shall not borrow funds or securities on behalf of the client.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(9)",
+          "text": "The portfolio manager shall not lend securities held on behalf of the clients to a third person except as provided under these regulations.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(10)",
+          "text": "The portfolio manager shall ensure proper and timely handling of complaints from his clients and take appropriate action immediately.",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "23(11)",
+          "text": "The portfolio manager shall ensure that any person or entity involved in the distribution of its services is carrying out the distribution activities in compliance with these regulations and circulars issued thereunder from time to time. [(12) The portfolio manager shall ensure compliance with the Investor Charter specified by the Board from time to time.]",
+          "heading": "General responsibilities of a Portfolio Manager."
+        },
+        {
+          "para": "24(1)",
+          "text": "(a) The money or securities accepted by the portfolio manager shall not be invested or managed by the portfolio manager except in terms of the agreement between the portfolio manager and the client. (b) Any renewal of portfolio on maturity of the initial period shall be deemed as a fresh placement [:] [Provided that the requirement under clause (b) shall not apply to the Co-investment Portfolio Manager.]",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(2)",
+          "text": "Notwithstanding anything contained in the agreement referred to in regulation 22, the funds or securities can be withdrawn by the client before the maturity of the contract under the following circumstances, namely- (a) voluntary or compulsory termination of portfolio management services by the portfolio manager or the client[:] [Provided that clause(a) shall not apply in case of the Co-investment Portfolio Manager;] (b) suspension or cancellation of the certificate of registration of the portfolio manager by the Board; (c) bankruptcy or liquidation of the portfolio manager.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(3)",
+          "text": "The discretionary portfolio manager shall invest funds of his clients in the securities listed or traded on a recognized stock exchange, money market instruments, units of Mutual Funds and other securities as specified by Board from time to time, on behalf of their clients. Explanation. ─ For the purposes of this sub-regulation: \"money market instruments\" includes commercial paper, trade bill, treasury bills, certificate of deposit and usance bills. [(3A) The portfolio manager shall ensure compliance with the prudential limits on investments as may be specified by the Board. (3B) The prudential limits, as specified under sub-regulation (3A), shall be applicable at the client level at the time of making investments by the portfolio managers. (3C) The portfolio manager shall not be allowed to invest clients’ funds in unrated securities of their related parties or their associates. Explanation. ─ For the purposes of sub-regulation (3C), the term \"associate\" shall mean– (i) a body corporate in which a director or partner of the portfolio manager holds, either individually or collectively, more than twenty percent of its paid- up equity share capital or partnership interest, as the case may be; or (ii) a body corporate which holds, either individually or collectively, more than twenty percent of the paid-up equity share capital or partnership interest, as the case may be of the portfolio manager. (3D) The portfolio manager shall put in place an alert based system to monitor compliance with the prudential limits on investments. (3E) The portfolio manager shall ensure investment of its clients’ funds on the basis of the credit rating of securities as may be specified by the Board: Provided that the requirements under sub-regulations (3A), (3B), (3C) and (3E) shall not apply to investments made prior to the coming into force of the Securities and Exchange Board of India (Portfolio Managers) (Amendment) Regulations, 2022: Provided further that the requirements under sub-regulations (3A), (3B), (3C), (3D) and (3E) shall not apply to such portfolio managers as may be specified by the Board.]",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(4)",
+          "text": "The portfolio manager offering non-discretionary or advisory services to clients may invest or provide advice for investment up to 25% of the assets under management of such clients in unlisted securities, in addition to the securities permitted for discretionary portfolio management. [(4A) The portfolio manager may offer discretionary or non-discretionary or advisory services for investment up to hundred percent of the assets under management of the large value accredited investors in unlisted securities, subject to appropriate disclosures in the disclosure document and the terms agreed between the client and the portfolio manager.] [(4B) The Co-investment Portfolio Manager shall invest hundred percent of the assets under management in unlisted securities of investee companies where Category I and Category II Alternative Investment Funds managed by it as Manager, make investment;]",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(5)",
+          "text": "Portfolio Managers may invest in units of Mutual Funds only through direct plan.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(6)",
+          "text": "The portfolio manager while investing in units of Mutual Funds through direct plan shall not charge any kind of distribution related fees to the client.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(7)",
+          "text": "The portfolio manager shall not leverage the portfolio of its clients for investment in derivatives.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(8)",
+          "text": "The portfolio manager shall not deploy the clients' funds in bill discounting, badla financing or for the purpose of lending or placement with corporate or non-corporate bodies.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(9)",
+          "text": "The portfolio manager shall not invest the clients’ funds in the portfolio managed or administered by another portfolio manager.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(10)",
+          "text": "The portfolio manager shall not invest client’s fund based on the advice of any other entity.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(11)",
+          "text": "The portfolio manager shall not while dealing with clients’ funds indulge in speculative transactions i.e, it shall not enter into any transaction for purchase or sale of any security which is periodically or ultimately settled otherwise than by actual delivery or transfer of security except the transactions in derivatives.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(12)",
+          "text": "The portfolio manager shall, ordinarily purchase or sell securities separately for each client. However, in the event of aggregation of purchases or sales for economy of scale, inter se allocation shall be done on a pro rata basis and at weighted average price of the day's transactions. The portfolio manager shall not keep any open position in respect of allocation of sales or purchases effected in a day.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(13)",
+          "text": "The portfolio manager shall not execute off market transfers in client’s account except: (a) for settlement of the clients’ own trades; (b) for providing margin/ collateral for clients’ own positions; (c) for dealing in unlisted securities in accordance with the regulations; (d) with specific consent of the client for each transaction; (e) for any other reason specified by the Board from time to time.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(14)",
+          "text": "The portfolio manager shall segregate each clients' funds and portfolio of securities and keep them separately from his own funds and securities and be responsible for safekeeping of clients' funds and securities.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(15)",
+          "text": "The portfolio manager shall not hold the securities belonging to the portfolio account, in its own name on behalf of its clients either by virtue of contract with clients or otherwise.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "24(16)",
+          "text": "The portfolio manager may, subject to authorization by the client in writing, participate in securities lending.",
+          "heading": "Management or administration of clients' portfolio."
+        },
+        {
+          "para": "25",
+          "text": "Foreign portfolio investors may avail of the services of a portfolio manager.",
+          "heading": "Foreign Portfolio Investor availing portfolio management services."
+        },
+        {
+          "para": "26",
+          "text": "Every portfolio manager shall appoint a custodian in respect of securities managed or administered by it: Provided that this regulation shall not apply to a portfolio manager who provides only advisory services[:] [Provided further that this regulation shall not apply to a Co-investment Portfolio Manager.]",
+          "heading": "Appointment of custodian."
+        },
+        {
+          "para": "27(1)",
+          "text": "Every portfolio manager shall keep and maintain the following books of accounts, records and documents namely: - (a) a copy of balance sheet at the end of each accounting period; (b) a copy of the profit and loss account for each accounting period; (c) a copy of the auditor’s report on the accounts for each accounting period; (d) a statement of financial position and; (e) records in support of every investment transaction or recommendation which will indicate the data, facts and opinion leading to that investment decision: Provided that such a record shall be maintained under the hands of the Principal Officer of the portfolio manager.",
+          "heading": "Maintenance of books of accounts, records, etc."
+        },
+        {
+          "para": "27(2)",
+          "text": "Every portfolio manager shall intimate to the Board the place where the books of accounts, records and documents are maintained.",
+          "heading": "Maintenance of books of accounts, records, etc."
+        },
+        {
+          "para": "27(3)",
+          "text": "Without prejudice to sub-regulation (1), every portfolio manager shall, after the end of each accounting period, furnish to the Board copies of the balance sheet, profit and loss account and such other documents for the preceding five accounting years as and when required by the Board.",
+          "heading": "Maintenance of books of accounts, records, etc."
+        },
+        {
+          "para": "28",
+          "text": "Every portfolio manager shall furnish to the Board a net worth certificate issued by a chartered accountant as and when required by the Board.",
+          "heading": "Submission of net worth certificate."
+        },
+        {
+          "para": "29",
+          "text": "The portfolio manager shall preserve the books of account and other records and documents mentioned under this chapter for a minimum period of five years.",
+          "heading": "Maintenance of books of accounts, records and other documents."
+        },
+        {
+          "para": "30(1)",
+          "text": "(a) The portfolio manager shall maintain separate client-wise accounts. (b) The funds received from the clients, investments or disinvestments, all the credits to the account of the client like interest, dividend, bonus, or any other beneficial interest received on the investment and debits for expenses, if any, shall be properly accounted for and details thereof shall be properly reflected in the client's account. (c) The tax deducted at source as required under the provisions of the Income-Tax Act, 1961, (43 of 1961) shall be recorded in the portfolio account.",
+          "heading": "Accounts and audit."
+        },
+        {
+          "para": "30(2)",
+          "text": "The books of account will be audited yearly by qualified auditor to ensure that the portfolio manager has followed proper accounting methods and procedures and that the portfolio manager has performed his duties in accordance with the law. A certificate to this effect shall, if so specified, be submitted to the Board within six months of close of portfolio manager's accounting period.",
+          "heading": "Accounts and audit."
+        },
+        {
+          "para": "30(3)",
+          "text": "The portfolio accounts of the portfolio manager shall be audited annually by an independent chartered accountant and a copy of the certificate issued by the chartered accountant shall be given to the client.",
+          "heading": "Accounts and audit."
+        },
+        {
+          "para": "30(4)",
+          "text": "The client may appoint a chartered accountant to audit the books and accounts of the portfolio manager relating to his transactions and the portfolio manager shall co-operate with such chartered accountant in course of the audit.",
+          "heading": "Accounts and audit."
+        },
+        {
+          "para": "31(1)",
+          "text": "The portfolio manager shall furnish periodically a report to the client, as agreed in the contract, but not exceeding a period of three months and as and when required by the client and such report shall contain the following details, namely: - (a) the composition and the value of the portfolio, description of securities and goods, number of securities, value of each security held in the portfolio, units of goods, value of goods, cash balance and aggregate value of the portfolio as on the date of report; (b) transactions undertaken during the period of report including date of transaction and details of purchases and sales; (c) beneficial interest received during that period in the form of interest, dividend, bonus shares, rights shares, etc; (d) expenses incurred in managing the portfolio of the client; (e) details of risk foreseen by the portfolio manager and the risk relating to the securities recommended by the portfolio manager for investment or disinvestment; (f) default in payment of coupons or any other default in payments in the underlying debt security and downgrading to default rating by the rating agencies, if any; (g) details of commission paid to distributor(s) for the particular client.",
+          "heading": "Reports to be furnished to the client."
+        },
+        {
+          "para": "31(2)",
+          "text": "The report referred to in sub-regulation (1) may be made available on the website of the portfolio manager with restricted access to each client.",
+          "heading": "Reports to be furnished to the client."
+        },
+        {
+          "para": "31(3)",
+          "text": "On termination of the contract, the portfolio manager shall give a detailed statement of accounts to the client and settle the account with the client as agreed in the contract.",
+          "heading": "Reports to be furnished to the client."
+        },
+        {
+          "para": "31(4)",
+          "text": "The client shall have the right to obtain details of his portfolio from the portfolio managers.",
+          "heading": "Reports to be furnished to the client."
+        },
+        {
+          "para": "32",
+          "text": "The portfolio manager shall take steps to rectify the deficiencies made out in the auditor’s report within two months from the date of the auditor’s report as specified in sub-regulation (2) of Regulation 30.",
+          "heading": "Report on steps taken on Auditor's report."
+        },
+        {
+          "para": "33",
+          "text": "The Board may ask portfolio manager to disclose any information as and when required including the following: - (a) particulars regarding the management of a portfolio; (b) any change in the information or particulars previously furnished, which have a bearing on the certificate granted to him; (c) the names of the clients whose portfolio it has managed; (d) particulars relating to the net worth requirement as specified in regulation 9.",
+          "heading": "Disclosures to the Board."
+        },
+        {
+          "para": "34(1)",
+          "text": "Every portfolio manager shall appoint a compliance officer who shall be responsible for monitoring the compliance of the Act, rules and regulations, notifications, guidelines, instructions etc., issued by the Board or the Central Government and for redressal of investors' grievances: Provided that the role of compliance officer shall not be assigned to the principal officer appointed in terms of clause (d) of sub-regulation (2) of regulation 7 or the employee of the portfolio manager appointed in terms of clause (e) of sub-regulation (2) of regulation 7 [:] [Provided further that in case of the Co-investment Portfolio Manager, the role of compliance officer may be assigned to the principal officer appointed in terms of clause (d) of sub-regulation (2) of regulation 7.]",
+          "heading": "Appointment of compliance officer."
+        },
+        {
+          "para": "34(2)",
+          "text": "The compliance officer shall immediately and independently report to the Board any non- compliance observed by him. [ Grievance Redressal Mechanism.",
+          "heading": "Appointment of compliance officer."
+        },
+        {
+          "para": "34A(1)",
+          "text": "The Portfolio Manager shall redress investor grievances promptly but not later than twenty-one calendar days from the date of receipt of the grievance and in such manner as may be specified by the Board."
+        },
+        {
+          "para": "34A(2)",
+          "text": "The Board may also recognize a body corporate for handling and monitoring the process of grievance redressal within such time and in such manner as may be specified.]"
+        }
+      ]
+    },
+    {
+      "key": "pmr-5",
+      "title": "INSPECTION AND DISCIPLINARY PROCEEDINGS",
+      "paras": [
+        {
+          "para": "35(1)",
+          "text": "The Board may appoint one or more persons as inspecting authority to undertake the inspection of the books of account, records and documents of the portfolio manager for any of the purposes specified in sub-regulation (2).",
+          "heading": "Right of inspection by the Board."
+        },
+        {
+          "para": "35(2)",
+          "text": "The purposes referred to in sub-regulation (1) may be as follows: - (a) to ensure that the books of account are being maintained in the manner required; (b) to ensure that the provisions of the Act, rules and regulations are being complied with; (c) to investigate into the complaints received from investors, other portfolio managers or any other person on any matter having a bearing on the activities of the portfolio manager; and (d) to investigate suo motu in the interest of securities market or investors' interest into the affairs of the portfolio manager.",
+          "heading": "Right of inspection by the Board."
+        },
+        {
+          "para": "36(1)",
+          "text": "Before undertaking an inspection under regulation 35, the Board shall give a reasonable notice to the portfolio manager.",
+          "heading": "Notice before inspection."
+        },
+        {
+          "para": "36(2)",
+          "text": "Notwithstanding anything contained in sub-regulation (1), where the Board is satisfied that in the interest of the investors no such notice should be given, it may by an order in writing direct that the inspection of the affairs of the portfolio manager be taken up without such notice.",
+          "heading": "Notice before inspection."
+        },
+        {
+          "para": "36(3)",
+          "text": "During the course of inspection the portfolio manager against whom an inspection is being carried out shall be bound to discharge his obligations as provided under regulation 37.",
+          "heading": "Notice before inspection."
+        },
+        {
+          "para": "37(1)",
+          "text": "It shall be the duty of every director, partner, officer and employee of the portfolio manager who is being inspected to produce to the inspecting authority such books, accounts and other documents in his custody or control and furnish him with the statements and information relating to his activities as a portfolio manager within such time as the inspecting authority may require.",
+          "heading": "Obligations of Portfolio Manager on inspection."
+        },
+        {
+          "para": "37(2)",
+          "text": "The portfolio manager shall allow the inspecting authority to have a reasonable access to the premises occupied by such portfolio manager or by any other person, on his behalf and also extend reasonable facility for examining any books, records, documents and computer data in the possession of the portfolio manager or any such other person and also provide copies of documents or other material which in the opinion of the inspecting authority are relevant for the purposes of the inspection.",
+          "heading": "Obligations of Portfolio Manager on inspection."
+        },
+        {
+          "para": "37(3)",
+          "text": "The inspecting authority shall in the course of inspection, be entitled to examine or record statements of any principal officer, director, partner and employee of the portfolio manager.",
+          "heading": "Obligations of Portfolio Manager on inspection."
+        },
+        {
+          "para": "37(4)",
+          "text": "It shall be the duty of every director, partner, officer or employee of the portfolio manager to give to the inspecting authority all assistance in connection with the inspection which the portfolio manager may reasonably be expected to give.",
+          "heading": "Obligations of Portfolio Manager on inspection."
+        },
+        {
+          "para": "38",
+          "text": "The inspecting authority shall, as soon as possible, submit an inspection report to the Board.",
+          "heading": "Submission of report to the Board."
+        },
+        {
+          "para": "39",
+          "text": "The Board or the Chairman shall after consideration of inspection or investigation report take such action as the Board or Chairman may deem fit and appropriate including action under Chapter V of the Securities and Exchange Board of India (Intermediaries) Regulations, 2008.",
+          "heading": "Action on inspection or investigation report."
+        },
+        {
+          "para": "40",
+          "text": "The Board may appoint a qualified auditor to investigate into the books of account or the affairs of the portfolio manager: Provided that the auditor so appointed shall have the same powers of the inspecting authority as are mentioned in regulation 35 and the obligation of the portfolio manager and his employees in regulation 37 shall be applicable to the investigation under this regulation. Explanation. ─ For the purposes of sub-regulation (2) of regulation 30 and under this regulation, the expression \"qualified auditor\" shall have the same meaning as given to it under section 141 of the Companies Act, 2013 (18 of 2013).",
+          "heading": "Appointment of Auditor."
+        }
+      ]
+    },
+    {
+      "key": "pmr-6",
+      "title": "PROCEDURE FOR ACTION IN CASE OF DEFAULT",
+      "paras": [
+        {
+          "para": "41",
+          "text": "A portfolio manager who contravenes any of the provisions of the Act, rules or regulations framed thereunder shall be liable for one or more action specified therein including the action under Chapter V of the Securities and Exchange Board of India (Intermediaries) Regulations, 2008.",
+          "heading": "Liability for action in case of default."
+        },
+        {
+          "para": "42(1)",
+          "text": "The Securities and Exchange Board of India (Portfolio Managers) Regulations, 1993, shall stand repealed from the date on which these regulations come into force.",
+          "heading": "Repeal and Savings."
+        },
+        {
+          "para": "42(2)",
+          "text": "Notwithstanding such repeal, — (a) anything done or any action taken or purported to have been done or taken including registration or approval granted, fees collected, registration or approval, suspended or cancelled, any adjudication, enquiry or investigation commenced or show-cause notice issued under the repealed regulations, prior to such repeal, shall be deemed to have been done or taken under the corresponding provisions of these regulations; (b) any application made to the Board under the repealed regulations, prior to such repeal, and pending before it shall be deemed to have been made under the corresponding provisions of these regulations; (c) the previous operation of the repealed regulations or anything duly done or suffered thereunder, any right, privilege, obligation or liability acquired, accrued or incurred under the repealed regulations, any penalty, incurred in respect of any violation committed against the repealed regulations, or any investigation, legal proceeding or remedy in respect of any such right, privilege, obligation, liability, penalty as aforesaid, shall remain unaffected as if the repealed regulations has never been repealed;",
+          "heading": "Repeal and Savings."
+        },
+        {
+          "para": "42(3)",
+          "text": "After the repeal of Securities and Exchange Board of India (Portfolio Managers) Regulations, 1993, any reference thereto in any other regulations made, guidelines or circulars issued thereunder by the Board shall be deemed to be a reference to the corresponding provisions of these regulations. [CHAPTER VI-A POWER TO RELAX STRICT ENFORCEMENT OF THE REGULATIONS",
+          "heading": "Repeal and Savings."
+        },
+        {
+          "para": "42A(1)",
+          "text": "The Board may, exempt any person or class of persons from the operation of all or any of the provisions of these regulations for a period as may be specified but not exceeding twelve months, for furthering innovation [***] relating to testing new products, processes, services, business models, etc. in live environment of regulatory sandbox in the securities markets.",
+          "heading": "Exemption from enforcement of the regulations in special cases."
+        },
+        {
+          "para": "42A(2)",
+          "text": "Any exemption granted by the Board under sub-regulation (1) shall be subject to the applicant satisfying such conditions as may be specified by the Board including conditions to be complied with on a continuous basis. Explanation. — For the purposes of these regulations, \"regulatory sandbox\" means a live testing environment where new products, processes, services, business models, etc. may be deployed on a limited set of eligible customers for a specified period of time, for furthering innovation in the securities market, subject to such conditions as may be specified by the Board.]",
+          "heading": "Exemption from enforcement of the regulations in special cases."
+        }
+      ]
+    },
+    {
+      "key": "pmr-7",
+      "title": "MISCELLANEOUS",
+      "paras": [
+        {
+          "para": "43",
+          "text": "In order to remove any difficulties in respect of the application or interpretation of these regulations, the Board may issue clarifications or guidelines in the form of circulars.",
+          "heading": "Power of the Board to issue clarifications."
+        }
+      ]
+    }
+  ]
+}

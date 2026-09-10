@@ -55,6 +55,18 @@ const DOCS = [
     stop: /^\s*Annexure\s*1\b/,
     chapters: 25,
   },
+  {
+    id: "REG-PM-2020",
+    number: "SEBI/LAD-NRO/GN/2020/03",
+    title: "Securities and Exchange Board of India (Portfolio Managers) Regulations, 2020",
+    issuedOn: "2025-09-03", // consolidation date in the header
+    kind: "regulation",
+    source:
+      "https://www.sebi.gov.in/legal/regulations/sep-2025/securities-and-exchange-board-of-india-portfolio-managers-regulations-2020-last-amended-on-september-03-2025-_96560.html",
+    sourceFile: "given/sources/pm-regulations-2020-2025-09-03.txt",
+    keyPrefix: "pmr",
+    chapters: 7,
+  },
 ];
 
 // Reject table-of-contents rows (dot leaders / ellipsis) so heading detection only
@@ -76,7 +88,12 @@ function stripFootnotes(s) {
     // sentence — whitespace + a capital or an opening quote/bracket, or end of text:
     // "requirement.45 The" -> "requirement. The". The letter-before-dot guard leaves numeric
     // separators alone, so "para 3.1.1 (a)", "para 2.4.1 of" and "0.50%" are untouched.
-    .replace(/([A-Za-z]\.)\d{1,3}(?=\s+["'“‘(\[A-Z]|\s*$)/g, "$1");
+    .replace(/([A-Za-z]\.)\d{1,3}(?=\s+["'“‘(\[A-Z]|\s*$)/g, "$1")
+    // amendment marker glued to an opening bracket ("within 25[twenty-one]"): drop the
+    // digits, keep the space and the square brackets (SEBI's own amendment marks). The
+    // leading-whitespace guard means a bracket at a paragraph start (circular "9[…]") is
+    // untouched, so the two master-circular outputs stay byte-identical.
+    .replace(/(\s)\d{1,3}(?=\[)/g, "$1");
 }
 
 const cleanText = (s) => stripFootnotes(s.replace(/\s+/g, " ").trim()).trim();
@@ -149,14 +166,190 @@ function parse(doc) {
   return { doc, sha, chapters };
 }
 
+// ── regulation-shaped source ──────────────────────────────────────────────
+// SEBI regulations: centred "CHAPTER <roman>" markers, numbered regulations at
+// column 0, the sub-regulation ("(1)", "(2)") as the paragraph unit. Clauses,
+// provisos and explanations fold into their sub-regulation; a regulation with no
+// sub-regulation is one paragraph. Footnotes sit at page bottoms and are skipped
+// to the page marker, as parse() does; SEBI's [..] amendment marks are kept.
+// ponytail: clause-level split when a duty hides inside a long clause list.
+const ROMAN = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7 };
+const CH_MARK = /^\s+CHAPTER ([IVX]+)\s*$/; // "CHAPTER VI-A" (footnote-bracketed) never matches
+const CH_TITLE = /^\s*[A-Z][A-Z0-9 ,/&()'’.-]*[A-Z]\s*$/; // all-caps line; footnote/page lines carry lowercase and are skipped
+const REG = /^(\d{1,3}[A-Z]?)\.\s+/; // "3. ", "22A. ", "24. " — years (4 digits) never match
+const SUBREG = /^\((\d{1,2})\)\s+["'“‘(\[A-Z]/; // "(1) An", "(1) (a)" — a lowercase start ("(2) of …") is a wrapped cross-ref
+const SUBNUM = /^\((\d{1,2})\)\s+(.*)$/;
+const REG_STOP = /^\s+SCHEDULE I\s*$/; // schedules are the next task
+const REG_BARE = /^\s*\d{1,3}\s*$/; // lone superscript marker for the bracketed insertion that follows — drop the line
+const FOOT =
+  /^\s*(\d{1,3}\s+)?(Inserted|Substituted|Omitted|The words|Clause \([a-z]+\) omitted|Renumbered) (by|for)\b|^\s*\d{4},? w\.e\.f|\bw\.e\.f\b/;
+
+function paraObj(chapters, n) {
+  for (const c of chapters) for (const p of c.paras) if (p.para === n) return p;
+  return null;
+}
+
+function regParse(doc) {
+  const raw = readFileSync(resolve(ROOT, doc.sourceFile));
+  const sha = createHash("sha256").update(raw).digest("hex");
+  // pdftotext glues a form-feed to the first line of each page ("\f(2) The books…");
+  // strip it so a column-0 regulation/sub-regulation line at a page top still anchors.
+  const lines = raw.toString("utf8").replace(/\f/g, "").split(/\r?\n/);
+
+  const chapters = [];
+  let cur = null; // current chapter
+  let para = null; // { para, buf, heading }
+  let curReg = null; // current regulation number
+  let curHeading; // heading for the current regulation's paragraphs
+  let pendingHeading; // heading seen, waiting for its regulation line
+  let skipFootnote = false;
+
+  const flush = () => {
+    if (para && cur) {
+      const text = cleanText(para.buf.join(" "));
+      if (text) {
+        const p = { para: para.para, text };
+        if (para.heading) p.heading = para.heading;
+        cur.paras.push(p);
+      }
+    }
+    para = null;
+  };
+  const nextNonBlank = (i) => {
+    for (let j = i + 1; j < lines.length; j++) if (lines[j].trim()) return lines[j];
+    return "";
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (cur && REG_STOP.test(line)) break; // schedules — stop
+    if (skipFootnote) {
+      if (PAGE.test(line)) skipFootnote = false; // footnote block ends at the page marker
+      continue;
+    }
+    if (PAGE.test(line)) continue; // drop page markers, keep the paragraph going
+
+    const cm = line.match(CH_MARK);
+    if (cm && ROMAN[cm[1]]) {
+      flush();
+      let j = i + 1; // title = next all-caps line (skips chapter V's footnote block + page marker)
+      while (j < lines.length && !CH_TITLE.test(lines[j])) j++;
+      cur = { key: `${doc.keyPrefix}-${ROMAN[cm[1]]}`, title: lines[j].trim(), paras: [] };
+      chapters.push(cur);
+      curReg = null;
+      curHeading = undefined;
+      pendingHeading = undefined;
+      i = j;
+      continue;
+    }
+    if (!cur) continue; // front matter / cover
+
+    if (REG_BARE.test(line)) continue; // lone superscript marker — drop the line, keep the text that follows
+    if (FOOT.test(line)) {
+      skipFootnote = true; // footnote block — skip to the page marker
+      continue;
+    }
+
+    const rm = line.match(REG);
+    if (rm) {
+      flush();
+      curReg = rm[1];
+      curHeading = pendingHeading;
+      pendingHeading = undefined;
+      const rest = line.slice(rm[0].length); // "4. (1) An…" and "24. (1) (a) The…" carry the first sub-regulation inline
+      if (SUBREG.test(rest)) {
+        const m = rest.match(SUBNUM);
+        para = { para: `${curReg}(${m[1]})`, buf: [m[2]], heading: curHeading };
+      } else {
+        para = { para: curReg, buf: [rest], heading: curHeading };
+      }
+      continue;
+    }
+    if (curReg && SUBREG.test(line)) {
+      flush();
+      const m = line.match(SUBNUM);
+      para = { para: `${curReg}(${m[1]})`, buf: [m[2]], heading: curHeading };
+      continue;
+    }
+    // regulation heading: a column-0 line ending in "." whose next non-blank line is a regulation line
+    if (/^\S/.test(line) && /\.\s*$/.test(line) && REG.test(nextNonBlank(i))) {
+      flush();
+      pendingHeading = line.trim();
+      continue;
+    }
+    if (para && line.trim()) para.buf.push(line.trim()); // wrapped continuation
+  }
+  flush();
+  return { doc, sha, chapters };
+}
+
+function regChecks(doc, chapters, has) {
+  const TITLES = [
+    "PRELIMINARY",
+    "REGISTRATION OF PORTFOLIO MANAGERS",
+    "ELIGIBLE FUND MANAGERS",
+    "GENERAL OBLIGATIONS AND RESPONSIBILITIES",
+    "INSPECTION AND DISCIPLINARY PROCEEDINGS",
+    "PROCEDURE FOR ACTION IN CASE OF DEFAULT",
+    "MISCELLANEOUS",
+  ];
+  chapters.forEach((c, i) => {
+    if (c.title !== TITLES[i]) throw new Error(`${doc.id}: chapter ${i + 1} title "${c.title}" != "${TITLES[i]}"`);
+  });
+
+  const ids = [];
+  const regNums = new Set();
+  const subByReg = new Map();
+  for (const c of chapters)
+    for (const p of c.paras) {
+      ids.push(p.para);
+      const m = p.para.match(/^(\d{1,3}[A-Z]?)(?:\((\d{1,2})\))?$/);
+      if (!m) throw new Error(`${doc.id}: malformed paragraph id ${p.para}`);
+      regNums.add(m[1]);
+      if (m[2]) {
+        const arr = subByReg.get(m[1]) ?? [];
+        arr.push(Number(m[2]));
+        subByReg.set(m[1], arr);
+      }
+      if (/Inserted by|Substituted (by|for)|w\.e\.f/.test(p.text))
+        throw new Error(`${doc.id}: footnote leaked into ${p.para}: ${p.text.slice(0, 90)}`);
+    }
+  const dup = ids.find((x, i) => ids.indexOf(x) !== i);
+  if (dup) throw new Error(`${doc.id}: duplicate paragraph id ${dup}`);
+
+  const expected = new Set([...Array(43)].map((_, i) => String(i + 1)).concat(["22A", "34A", "42A"]));
+  for (const n of expected) if (!regNums.has(n)) throw new Error(`${doc.id}: missing regulation ${n}`);
+  for (const n of regNums) if (!expected.has(n)) throw new Error(`${doc.id}: unexpected regulation ${n}`);
+  for (const [reg, subs] of subByReg)
+    for (let i = 1; i < subs.length; i++)
+      if (subs[i] <= subs[i - 1]) throw new Error(`${doc.id}: reg ${reg} sub-regs not increasing: ${subs.join(",")}`);
+
+  has("3", "No person shall act as a portfolio manager unless it has obtained a certificate of registration");
+  has("15(1)", "within 15 days of receiving intimation from the Board");
+  has("23(2)", "fifty lakh rupees");
+  has("28", "net worth certificate issued by a chartered accountant");
+  has("34(1)", "appoint a compliance officer");
+  has("22(1)", "enter into an agreement in writing");
+  has("11", "within [twenty-one calendar days] of the date of the receipt");
+
+  const p24 = paraObj(chapters, "24(1)");
+  if (!p24 || !p24.text.startsWith("(a) The money or securities accepted"))
+    throw new Error(`${doc.id}: 24(1) text starts "${(p24 && p24.text.slice(0, 45)) || "(not found)"}"`);
+  const headOf = (n) => (paraObj(chapters, n) || {}).heading;
+  if (headOf("3") !== "Registration as portfolio manager.")
+    throw new Error(`${doc.id}: reg 3 heading "${headOf("3")}"`);
+  if (headOf("28") !== "Submission of net worth certificate.")
+    throw new Error(`${doc.id}: reg 28 heading "${headOf("28")}"`);
+}
+
 function build(doc) {
-  const { sha, chapters } = parse(doc);
+  const { sha, chapters } = (doc.kind === "regulation" ? regParse : parse)(doc);
   const out = {
     id: doc.id,
     number: doc.number,
     title: doc.title,
     issuedOn: doc.issuedOn,
-    kind: "master-circular",
+    kind: doc.kind ?? "master-circular",
     source: doc.source,
     sourceFile: doc.sourceFile,
     sourceSha256: sha,
@@ -176,6 +369,18 @@ function build(doc) {
   if (chapters.length !== doc.chapters) {
     throw new Error(`${doc.id}: expected ${doc.chapters} chapters, got ${chapters.length}`);
   }
+
+  if (doc.kind === "regulation") {
+    regChecks(doc, chapters, has);
+    mkdirSync(OUT, { recursive: true });
+    writeFileSync(resolve(OUT, `${doc.id.toLowerCase()}.json`), JSON.stringify(out, null, 2) + "\n");
+    console.log(`\n${doc.id}  ${chapters.length} chapters`);
+    for (const c of chapters)
+      console.log(`  ${c.key.padEnd(8)} ${String(c.paras.length).padStart(3)} paras  ${c.title}`);
+    console.log(`  total ${chapters.reduce((n, c) => n + c.paras.length, 0)} paragraphs`);
+    return;
+  }
+
   if (doc.id === "MC-PM-2025") {
     if (!chapters.some((c) => c.key === "pm-5")) throw new Error("MC-PM-2025: chapter 5 missing");
     has("5.1.2", "within 7 working days of the end of each month");

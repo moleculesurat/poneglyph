@@ -17,7 +17,7 @@ function* eachPara(doc) {
   for (const ch of doc.chapters) for (const p of ch.paras) yield [ch, p];
 }
 async function cmdList(circularId) {
-  for (const id of circularId ? [circularId] : ["MC-PM-2025", "MC-AIF-2026"]) {
+  for (const id of circularId ? [circularId] : ["MC-PM-2025", "MC-AIF-2026", "REG-PM-2020"]) {
     const doc = await load(id);
     let n = 0;
     for (const [ch, p] of eachPara(doc)) {
