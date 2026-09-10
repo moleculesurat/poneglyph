@@ -107,14 +107,20 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - e21708c REVIEW-2026-09-10.md: my recommendations on all 69 (reject 12: 3 duplicates, 9 wrong category/
   fragments; approve 53; 4 need Pranjal's facts: ETCD, distributors, CDS, real-estate investees).
 
+- 7a52021 12: MAX_TOKENS 16000 (Pranjal: NO reasoning cap); run-paras skips drafted paras, survives dropped
+  connections; scripts/decide.mjs bulk approve/reject (`npm run decide -- approve|reject ids`). 1.5.1.4 now drafts
+  (3455 of 3639 completion tokens were reasoning). Pending drafts: 84; still-failed paras: 12 (list in REVIEW).
+- Review sheet updated for all 84. KEY FINDING: AIF chapter 7 title = "Operational and prudential norms for
+  Category III AIFs" — applicability must read the chapter title, not only the paragraph.
+
 ## In progress (prompt given, awaiting report)
-Task 12: MAX_TOKENS 16000 + OpenRouter reasoning effort low; run-paras: try/catch fetch, skip paras already
-drafted/approved (--force to override); scripts/decide.mjs for bulk approve/reject with the gate token.
-Then Pranjal decides per the review sheet, `npm run pull`, commit.
+Task 13: applicability reads chapter title + clause for AIF category/sub-type phrases (Category I/III, Angel Fund,
+LVF, open-ended) -> not-applicable for a Cat II manager; rerun the 12 still-failed paras. Then Pranjal answers the
+open questions (ETCD, distributors, CDS, real-estate investees, overseas limit, co-investment PMS), runs decide,
+pulls, commits.
 
 ## Next tasks (one prompt each)
-5.  Task 13: applicability knows the AIF category (Category I/III, Angel Fund, LVF -> not-applicable for a Cat II
-    manager); rerun the failed paras. Then schema `window` field (cadence vs filing window), stage [5] SCHEDULE.
+5.  Schema `window` field (cadence vs filing window); stage [5] SCHEDULE; collect footnote fix.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
