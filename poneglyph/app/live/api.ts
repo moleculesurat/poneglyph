@@ -7,7 +7,7 @@
    message is the Worker's own words.
    ══════════════════════════════════════════════════════════════════════ */
 
-import type { AuditEvent, Obligation, TraceStep, VerifierCheck } from "@/lib/schema";
+import type { AuditEvent, EvidenceArtifact, Obligation, TraceStep, VerifierCheck } from "@/lib/schema";
 
 export type LiveRunStatus = "running" | "awaiting-approval" | "completed" | "failed";
 
@@ -82,7 +82,16 @@ export interface DecisionResponse {
 /** GET /api/state (the slice the queue needs) */
 export interface StateResponse {
   obligations: Obligation[];
+  evidence: EvidenceArtifact[];
   counts: Record<string, number>;
+}
+
+/** POST /api/obligations/:id/evidence */
+export interface EvidenceResponse {
+  evidence: EvidenceArtifact;
+  obligation: Obligation;
+  auditEvent?: AuditEvent;
+  chainTip: string;
 }
 
 /** sessionStorage key holding the shared-register write gate token */

@@ -1,7 +1,7 @@
 /* Stage 5 — SCHEDULE. Due dates derived only from words in the approved
    register's own excerpt; nothing is guessed. Pure functions, no React. */
 
-import type { Obligation } from "@/lib/schema";
+import type { EvidenceArtifact, Obligation, ObligationStatus } from "@/lib/schema";
 
 export type Period = "monthly" | "quarterly" | "half-yearly" | "annual";
 export interface Schedule {
@@ -87,7 +87,7 @@ const STEP: Record<Period, number> = { monthly: 1, quarterly: 3, "half-yearly": 
 
 /* most recent period end on or before today (today itself if it is a period end);
    nextDue starts here so an open filing window is never skipped */
-function lastPeriodEnd(today: Date, p: Period): Date {
+export function lastPeriodEnd(today: Date, p: Period): Date {
   const end = currentPeriodEnd(today, p);
   return iso(end) === iso(today) ? end : lastDay(end.getUTCFullYear(), end.getUTCMonth() - STEP[p]);
 }
@@ -103,6 +103,23 @@ function addWindow(end: Date, s: Schedule): Date {
     if (wd >= 1 && wd <= 5) added++;
   }
   return d;
+}
+
+/* An approved periodic duty proven for a past period is a gap again for the
+   current one: `met` holds only while bound evidence was captured after the
+   most recent period end. Non-periodic and event-anchored duties never re-open. */
+export function effectiveStatus(
+  o: Obligation,
+  evidence: EvidenceArtifact[],
+  today: string,
+): ObligationStatus {
+  if (o.status !== "met") return o.status;
+  if (o.type !== "periodic") return "met";
+  const s = parseSchedule(o);
+  if (!s || s.anchor === "event") return "met";
+  const cutoff = iso(lastPeriodEnd(new Date(today + "T00:00:00Z"), s.period));
+  const bound = evidence.filter((e) => e.obligationIds.includes(o.id));
+  return bound.some((e) => e.capturedAt.slice(0, 10) > cutoff) ? "met" : "gap";
 }
 
 export function nextDue(s: Schedule, today: string): string | null {

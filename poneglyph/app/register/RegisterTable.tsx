@@ -20,21 +20,24 @@
    part+chapter pair drops the chapter and keeps the Part.
    ══════════════════════════════════════════════════════════════════════ */
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Cta, KV, MarkedCard, StatusChip } from "@/components/ui";
-import { usePersona } from "@/components/persona";
+import { KV, MarkedCard, StatusChip } from "@/components/ui";
+import { apiCall, type StateResponse } from "@/app/live/api";
 import { circulars } from "@/data/corpus";
 import { obligations } from "@/data/obligations";
 import { CHAPTER_LABEL, SEBI_DOMAINS, domainByPart, partLabel, partOf } from "@/lib/domains";
+import { effectiveStatus } from "@/lib/schedule";
 import type {
   ChapterKey,
+  EvidenceArtifact,
   Obligation,
   ObligationStatus,
   ObligationType,
   SebiPart,
 } from "@/lib/schema";
+import { AttachEvidence } from "./AttachEvidence";
 import { ClauseDrawer, HighlightedClause } from "./ClauseDrawer";
 
 /* ── static lookups ───────────────────────────────────────────────────── */
@@ -148,7 +151,6 @@ function FilterRow({
 /* ── main component ───────────────────────────────────────────────────── */
 
 export function RegisterTable() {
-  const { persona } = usePersona();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
@@ -179,6 +181,48 @@ export function RegisterTable() {
     return isObligationId(v) ? v : null;
   });
   const [clauseFor, setClauseFor] = useState<Obligation | null>(null);
+
+  /* Live overlay from the worker: the register the app renders is static (the
+     hydration must match), but once mounted we pull real state so a periodic
+     duty proven for a past period re-opens as a gap, and freshly-bound evidence
+     shows without a rebuild. On failure we keep the static register. */
+  const [live, setLive] = useState<{
+    byId: Map<string, Obligation>;
+    evidence: EvidenceArtifact[];
+    today: string;
+  } | null>(null);
+  const [liveError, setLiveError] = useState(false);
+
+  const refresh = useCallback(() => {
+    apiCall<StateResponse>("/api/state")
+      .then((s) => {
+        setLive({
+          byId: new Map(s.obligations.map((o) => [o.id, o])),
+          evidence: s.evidence,
+          today: new Date().toISOString().slice(0, 10),
+        });
+        setLiveError(false);
+      })
+      .catch(() => {
+        setLive(null);
+        setLiveError(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  /* displayed status: the live-recomputed status once mounted, the static
+     register's own status before that (so SSR and hydration agree) */
+  const displayedStatus = useCallback(
+    (o: Obligation): ObligationStatus => {
+      if (!live) return o.status;
+      const row = live.byId.get(o.id) ?? o;
+      return effectiveStatus(row, live.evidence, live.today);
+    },
+    [live],
+  );
 
   /* deep-link landing: scroll the ?id= row into view once, post-hydration */
   useEffect(() => {
@@ -232,10 +276,10 @@ export function RegisterTable() {
         (o) =>
           (part === "all" || partOf(o.clause.chapter) === part) &&
           (chapter === "all" || o.clause.chapter === chapter) &&
-          (status === "all" || o.status === status) &&
+          (status === "all" || displayedStatus(o) === status) &&
           (type === "all" || o.type === type)
       ),
-    [part, chapter, status, type]
+    [part, chapter, status, type, displayedStatus]
   );
 
   const filtersActive =
@@ -366,6 +410,12 @@ export function RegisterTable() {
         )}
       </div>
 
+      {liveError ? (
+        <div className="mono-label dim" style={{ marginBottom: 8, fontSize: 9.5 }}>
+          live state unavailable — showing the last pulled register
+        </div>
+      ) : null}
+
       {/* ── table ── */}
       <MarkedCard pad={0} style={{ overflow: "hidden" }}>
         <div style={{ overflowX: "auto" }}>
@@ -404,13 +454,14 @@ export function RegisterTable() {
                   return (
                     <RegisterRow
                       key={o.id}
-                      o={o}
+                      o={live?.byId.get(o.id) ?? o}
+                      status={displayedStatus(o)}
                       open={open}
-                      persona={persona}
                       onToggle={() => setExpandedId(open ? null : o.id)}
                       onViewClause={() => setClauseFor(o)}
                       onFilterPart={selectPart}
                       onFilterChapter={selectChapter}
+                      onBound={refresh}
                     />
                   );
                 })
@@ -429,26 +480,28 @@ export function RegisterTable() {
 
 function RegisterRow({
   o,
+  status,
   open,
-  persona,
   onToggle,
   onViewClause,
   onFilterPart,
   onFilterChapter,
+  onBound,
 }: {
   o: Obligation;
+  status: ObligationStatus;
   open: boolean;
-  persona: "broker" | "inspector";
   onToggle: () => void;
   onViewClause: () => void;
   onFilterPart: (part: SebiPart) => void;
   onFilterChapter: (chapter: ChapterKey) => void;
+  onBound: () => void;
 }) {
   const text = paraText(o);
   const chapterTitle = findChapter(o)?.title ?? CHAPTER_LABEL[o.clause.chapter];
   const part = partOf(o.clause.chapter);
   const domain = domainByPart(part);
-  const attention = o.status !== "met";
+  const attention = status !== "met";
 
   return (
     <>
@@ -506,7 +559,7 @@ function RegisterRow({
           </span>
         </td>
         <td>
-          <StatusChip status={o.status} />
+          <StatusChip status={status} />
         </td>
       </tr>
 
@@ -653,31 +706,11 @@ function RegisterRow({
                 </div>
               </div>
 
-              {/* human gate — broker only */}
-              {o.status === "pending-review" ? (
-                persona === "broker" ? (
-                  <div className="row wrap" style={{ gap: 12 }}>
-                    <Cta
-                      variant="orange"
-                      toastMsg="Sandbox — human-gate approvals are disabled in the demo"
-                    >
-                      Approve mapping
-                    </Cta>
-                    <Cta
-                      variant="ghost"
-                      toastMsg="Sandbox — human-gate rejections are disabled in the demo"
-                    >
-                      Reject to agent
-                    </Cta>
-                    <span className="small dim60">
-                      {`The decision is appended to the audit chain with the officer's identity.`}
-                    </span>
-                  </div>
-                ) : (
-                  <span className="mono-label dim">
-                    pending human gate — approval reserved for the intermediary
-                  </span>
-                )
+              {/* an approved duty can be proven from its own row */}
+              {o.approvedBy ? (
+                <div className="panel pad" style={{ padding: "18px 22px" }}>
+                  <AttachEvidence obligationId={o.id} onBound={onBound} />
+                </div>
               ) : null}
             </div>
           </td>
