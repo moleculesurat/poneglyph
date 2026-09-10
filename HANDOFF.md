@@ -113,14 +113,21 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - Review sheet updated for all 84. KEY FINDING: AIF chapter 7 title = "Operational and prudential norms for
   Category III AIFs" — applicability must read the chapter title, not only the paragraph.
 
-## In progress (prompt given, awaiting report)
-Task 13: applicability reads chapter title + clause for AIF category/sub-type phrases (Category I/III, Angel Fund,
-LVF, open-ended) -> not-applicable for a Cat II manager; rerun the 12 still-failed paras. Then Pranjal answers the
-open questions (ETCD, distributors, CDS, real-estate investees, overseas limit, co-investment PMS), runs decide,
-pulls, commits.
+- 714711d 13: applicability reads chapter title + AIF category regexes (Cat I/III, Angel, LVF, open-ended, VCF);
+  probe verified (7.6.2/8.2.1/12.1.5/2.6.1 not-applicable; 21.1.2/3.2.5/21.3.7 applies). 12 failed paras rerun:
+  31 new drafts OBL-087..117; 7.3.3 stopped before the model. ALL 75 candidates now drafted. 115 pending in local KV.
+- REVIEW-2026-09-10.md covers all 115: reject 25, approve 76, 14 conditional on 6 yes/no facts from Pranjal.
+- Footnote artefacts in excerpts: only OBL-011 "]78from", OBL-098 "] 74days" (+ "month 67" in the corpus). Cosmetic; collect fix deferred.
+
+## In progress — waiting on PRANJAL, not the worker
+Pranjal: answer the 6 questions in REVIEW; run the decide commands (reject list, approve lists); `npm run pull`; commit
+register.json. Nothing else moves until the register is in git.
 
 ## Next tasks (one prompt each)
-5.  Schema `window` field (cadence vs filing window); stage [5] SCHEDULE; collect footnote fix.
+5.  Task 14 (after the pull, on real approved data): lib/schedule.ts derives cadence + window + anchor from excerpt/
+    frequency ('within 7 working days of the end of each month' -> monthly, 7 working days, month-end) and next due
+    dates; dashboard/remediation show them. Then decide with Pranjal whether to extract the other ~445 'shall'
+    paragraphs (ongoing duties without a cadence) chapter by chapter. Collect footnote fix when convenient.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
