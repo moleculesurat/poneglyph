@@ -103,12 +103,12 @@ export default function LivePage() {
 
       <PendingQueue />
 
-      {/* ── 06 · scope statement ────────────────────────────────────── */}
+      {/* ── 07 · scope statement ────────────────────────────────────── */}
       <section style={{ margin: "52px 0 40px" }}>
         <Hairline />
         <div className="stack" style={{ gap: 18, marginTop: 26 }}>
           <div className="stack" style={{ gap: 6 }}>
-            <span className="mono-label dim">06 · real execution and seeded data</span>
+            <span className="mono-label dim">07 · real execution and seeded data</span>
             <h2 className="display" style={{ fontSize: 24 }}>
               Execution <span className="accent grad">scope</span>
             </h2>
