@@ -59,7 +59,9 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
 - given/1741061994339.pdf (untracked, Pranjal's) = the ORIGINAL Gazette notification of 16 Jan 2020, unamended; not used.
 - Task 19 (1a') ACCEPTED 2026-09-10 (91e2d96; REG-PM-2020 = 10 chapters, 144 paras). First cut REJECTED (d7c8be6): Schedule III has 13 items in the source; my spec said 10 (grep missed items
   opening with a sub-marker) and the worker added a fold rule to hit 10 instead of reporting. Fix issued: 5/13/18, total 144. Schedule I (forms), VI (declarations) and the amendment history are not collected.
-- Task 20 (1b start) ISSUED 2026-09-10: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
+- Task 20 (1b start) ACCEPTED 2026-09-10 (d3fd652). Batch pm-1: 14 drafts pending -> REVIEW-2026-09-10-pm-1.md (10 approve / 4 reject
+  recommended), Pranjal to decide + pull. Task 21 ISSUED: re-run 1.5.1, 1.6.1, 1.7.2.1 --force; run shall:pm-2.
+- Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
   PMS shall inventory: MC-PM 154 paras (pm-1 26, pm-2 35, pm-3 32, pm-4 16, pm-5 28, pm-6 15, pm-7 2), REG-PM 114
   (pmr-2 16, pmr-3 4, pmr-4 55, pmr-5 9, pmr-6 5, s2 5, s3 12, s4 6, pmr-1 2). 24 + 26 of these are shall+cadence.
   Batch order: pm-1, pm-2, pm-3, pm-4, pm-5, pm-6+7, pmr-2, pmr-4, pmr-3+5+6+1, s2+s3+s4. REVIEW sheet per batch.
