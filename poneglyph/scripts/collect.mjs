@@ -286,14 +286,10 @@ function regParse(doc) {
       }
       const im = line.match(SITEM);
       if (im) {
-        // a numbered line whose remainder opens with "(" is a "(1)"/"(a)" sub-clause of the
-        // current item (Schedule III items 11–13), not a new item — fold it in.
-        if (/^\(/.test(im[2])) {
-          if (para) para.buf.push(im[2]);
-        } else {
-          flush();
-          para = { para: `S${schedNum}.${im[1]}`, buf: [im[2]] };
-        }
+        // every numbered line starts a new item, whatever follows it — the "(1)"/"(a)"
+        // sub-markers on Schedule III items 11–13 open separate duties, not sub-clauses.
+        flush();
+        para = { para: `S${schedNum}.${im[1]}`, buf: [im[2]] };
         continue;
       }
       if (para && line.trim()) para.buf.push(line.trim()); // sub-item / wrapped continuation
@@ -407,10 +403,10 @@ function regChecks(doc, chapters, has) {
   const countOf = (k) => (chapters.find((c) => c.key === k) || { paras: [] }).paras.length;
   if (chapters.some((c) => c.key === "pmr-s1" || c.key === "pmr-s6"))
     throw new Error(`${doc.id}: unexpected schedule chapter (pmr-s1 or pmr-s6 — forms/declarations must not be collected)`);
-  for (const [k, n] of [["pmr-s2", 5], ["pmr-s3", 10], ["pmr-s4", 18]])
+  for (const [k, n] of [["pmr-s2", 5], ["pmr-s3", 13], ["pmr-s4", 18]])
     if (countOf(k) !== n) throw new Error(`${doc.id}: ${k} expected ${n} items, got ${countOf(k)}`);
   const total = chapters.reduce((n, c) => n + c.paras.length, 0);
-  if (total !== 141) throw new Error(`${doc.id}: expected 141 paragraphs, got ${total}`);
+  if (total !== 144) throw new Error(`${doc.id}: expected 144 paragraphs, got ${total}`);
   for (const c of chapters)
     for (const p of c.paras)
       if (/Declaration by an existing portfolio manager|were published in the Gazette/.test(p.text))
@@ -421,7 +417,12 @@ function regChecks(doc, chapters, has) {
   has("S2.4", "SEBI Payment Gateway");
   has("S2.5", "fees specified in paragraphs (1) and (3) above");
   has("S3.1", "observe high standards of integrity and fairness");
-  has("S3.10", "(b) The portfolio manager shall comply with the code of conduct specified in the SEBI (Prohibition of Insider Trading) Regulations, 2015.");
+  has("S3.10", "render the best possible advice to the client");
+  if (paraObj(chapters, "S3.10").text.includes("false market"))
+    throw new Error(`${doc.id}: S3.10 bled into item 11 (contains "false market")`);
+  has("S3.11", "creation of false market in securities");
+  has("S3.12", "publicly accessible media");
+  has("S3.13", "(b) The portfolio manager shall comply with the code of conduct specified in the SEBI (Prohibition of Insider Trading) Regulations, 2015.");
   has("S4.3", "(ii) providing reports to clients;");
   has("S4.18", "Settlement of grievances/disputes and provision for arbitration");
 
