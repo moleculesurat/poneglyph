@@ -101,13 +101,20 @@ watchtower still hard-wired to "stock-broker" until stage 0 lands.
 - /register rows are client-rendered (RegisterTable in Suspense) so static HTML greps can't see ids; use the JS chunk.
 - Pranjal's .dev.vars GATE_TOKEN was literally "<pick a real token>" — told him to set a real one.
 
+- 7693950 11: BATCH RUN on GLM: 75 paras -> 69 pending drafts, 35 failed runs (18 finish_reason=length: GLM
+  burns the 4000-token budget on reasoning; 11 invalid JSON; 8 no evidenceSpec). Drafts live in local KV
+  (.wrangler/state) — DO NOT rm it until they are decided and pulled. Worker's AIF retry may still add drafts.
+- e21708c REVIEW-2026-09-10.md: my recommendations on all 69 (reject 12: 3 duplicates, 9 wrong category/
+  fragments; approve 53; 4 need Pranjal's facts: ETCD, distributors, CDS, real-estate investees).
+
 ## In progress (prompt given, awaiting report)
-Task 11: batch — `npm run paras -- run MC-PM-2025 all` then `MC-AIF-2026 all` (75 paras, GLM); renumber /live
-scope section to 07. Then I read all drafts via /api/state and give Pranjal a review sheet; he decides in the queue;
-pull; commit.
+Task 12: MAX_TOKENS 16000 + OpenRouter reasoning effort low; run-paras: try/catch fetch, skip paras already
+drafted/approved (--force to override); scripts/decide.mjs for bulk approve/reject with the gate token.
+Then Pranjal decides per the review sheet, `npm run pull`, commit.
 
 ## Next tasks (one prompt each)
-5.  After the batch: schema `window` field (cadence vs filing window), stage [5] SCHEDULE.
+5.  Task 13: applicability knows the AIF category (Category I/III, Angel Fund, LVF -> not-applicable for a Cat II
+    manager); rerun the failed paras. Then schema `window` field (cadence vs filing window), stage [5] SCHEDULE.
 6.  Pranjal fills tenant.team names and entity.segments. poneglyph/DESIGN.md + poneglyph/README.md de-Angel.
 7.  [5] SCHEDULE (frequency -> next due dates from the FY calendar), [6] PROVE (evidence upload/bind),
     [8] SHOW (/register, /dashboard render from register.json — already do, via data/*.ts), [7] MONITOR.
