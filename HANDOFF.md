@@ -71,7 +71,9 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   REVIEW-2026-09-11-pm-3.md (20 approve / 18 reject: debt/CB, ETCD, non-discretionary, advisory not applicable).
   Task 23 ACCEPTED 2026-09-11 (be3d5b2): parse errors fed back as correction; pm-4 + pm-5 -> 32 drafts,
   REVIEW-2026-09-11-pm-4-5.md (30 approve / 2 reject). Holdouts: 3.5.3 (bad JSON twice), 4.7.1 (ungrounded), 5.4.4, 5.6.4.
-  Task 24 ISSUED: pm-6 + pm-7, then REG-PM-2020 pmr-2.
+  Task 24 ACCEPTED 2026-09-11 (no code): holdouts recovered, pm-6/pm-7 done, pmr-2 run -> 35 drafts,
+  REVIEW-2026-09-11-pm-6-7-pmr-2.md (26 approve / 9 reject). PMS MASTER CIRCULAR EXTRACTION COMPLETE (all 154 shall paras).
+  Task 25 ISSUED: re-run REG 3,11,14 --force; run pmr-4 (55 units).
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
 - Deployment: task 1e-i = infra STUDY (worker, no code) before any port; Pranjal schedules it.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
