@@ -274,11 +274,21 @@ async function callOnce(
     );
   }
 
-  return {
-    raw: parseObligations(extractJsonObject(content)),
-    model: body.model ?? model,
-    usage: body.usage,
-  };
+  let raw: RawObligation[];
+  try {
+    raw = parseObligations(extractJsonObject(content));
+  } catch (e) {
+    /* a parse or shape error is the model's fault and the model can fix it —
+       tag it so the retry loop feeds the complaint back, and name a truncated
+       reply as such (finish_reason "length" means the token budget was hit) */
+    const err = e as Error;
+    err.name = "ExtractionParseError";
+    if (choice?.finish_reason === "length") {
+      err.message += " (finish_reason: length — the reply was cut off at the token limit; emit a shorter reply)";
+    }
+    throw err;
+  }
+  return { raw, model: body.model ?? model, usage: body.usage };
 }
 
 /** Run the extraction. `precheck` lets the pipeline reject a first attempt on
@@ -321,10 +331,14 @@ export async function extractObligations(
       };
     } catch (e) {
       const err = e as Error;
-      lastError =
-        err.name === "TimeoutError" || err.name === "AbortError"
-          ? `the model did not respond within ${CALL_TIMEOUT_MS / 1000}s`
-          : err.message;
+      if (err.name === "TimeoutError" || err.name === "AbortError") {
+        lastError = `the model did not respond within ${CALL_TIMEOUT_MS / 1000}s`;
+      } else {
+        lastError = err.message;
+        /* feed a parse/shape complaint back on the next attempt, the same way a
+           verifier complaint is fed back; timeouts and network errors retry blind */
+        if (err.name === "ExtractionParseError") correction = err.message;
+      }
       if (attempt < MAX_ATTEMPTS) {
         await sleep(4000 * attempt);
         continue;
