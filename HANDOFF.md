@@ -27,7 +27,9 @@ origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status bo
   (worker -> data/collected/register.json: approved obligations + evidence + audit chain; idempotent; the worker
   reseeds a fresh KV from it). All need `npx wrangler dev --port 8787` running and `export GATE_TOKEN=$(grep
   '^GATE_TOKEN=' .dev.vars | cut -d= -f2)`. .dev.vars is gitignored (GATE_TOKEN, OPEN_ROUTER_KEY).
-- Register in git (0f65e97, 3025146): 86 approved (40 PMS / 46 AIF; 31 periodic, 41 event-driven, 10 ongoing,
+- Register in git (43628bf): 119 approved (pm-1, pm-2 decided as recommended), 7 rejected in KV only, EV-001 + EV-002 (browser
+  attach test passed). Older 31 rejections were lost at a reseed — register.json did not carry `rejected` (task 22 fixes).
+- Earlier register (0f65e97, 3025146): 86 approved (40 PMS / 46 AIF; 31 periodic, 41 event-driven, 10 ongoing,
   4 one-time), 31 rejected, 0 pending, EV-001 (test file ev.txt) bound to OBL-001, 355 events, tip a94246dffa92.
   Every excerpt verbatim in the corpus. All 75 "shall + time limit" paragraphs are drafted or ruled out.
 - lib/schedule.ts: parseSchedule (period + window from the excerpt only), nextDue (from the LAST period end),
@@ -39,7 +41,8 @@ origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status bo
 
 ## Pranjal's facts/decisions so far
 Discretionary PMS only; distributors YES; ETCD no; CDS no; real-estate investees no; overseas limit YES;
-co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no reasoning cap.
+co-investment PMS no; NO debt / money-market securities (2026-09-11 -> withdraw OBL-157); placeholders for names OK for now;
+OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Cloudflare (2026-09-11).
 
 ## Open on PRANJAL's side
 1. Browser test of Task 17: open localhost:8787/register/, expand an approved row, attach a real file (hash only is
@@ -62,7 +65,7 @@ co-investment PMS no; placeholders for names OK for now; OpenRouter + GLM; no re
 - Task 20 (1b start) ACCEPTED 2026-09-10 (d3fd652). Batch pm-1: 14 drafts pending -> REVIEW-2026-09-10-pm-1.md (10 approve / 4 reject
   recommended), Pranjal to decide + pull. Task 21 ACCEPTED 2026-09-11 (no code): pm-2 -> 26 drafts, REVIEW-2026-09-11-pm-2.md (23 approve / 3 reject).
   40 drafts pending Pranjal's decisions. Model failures (glm-5.3-flash): invalid JSON on long paras, empty evidenceSpec on
-  lead-ins — 2.2.2.2, 2.3.3, 2.5.1.2, 2.9.2, 2.2.2.4, 2.4.1.2, 2.7.4 + re-run 2.7.2.2 (mis-titled). Task 22 = those + pm-3.
+  lead-ins — 2.2.2.2, 2.3.3, 2.5.1.2, 2.9.2, 2.2.2.4, 2.4.1.2, 2.7.4 + re-run 2.7.2.2 (mis-titled). Task 22 ISSUED 2026-09-11: withdraw route (reject an approved id), `rejected` in pull + reseed, re-runs, batch pm-3.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
   PMS shall inventory: MC-PM 154 paras (pm-1 26, pm-2 35, pm-3 32, pm-4 16, pm-5 28, pm-6 15, pm-7 2), REG-PM 114
   (pmr-2 16, pmr-3 4, pmr-4 55, pmr-5 9, pmr-6 5, s2 5, s3 12, s4 6, pmr-1 2). 24 + 26 of these are shall+cadence.

@@ -13,7 +13,7 @@ WHERE WE ARE
                were never drafted; applicability rejects anything not Category II.
   WATCHTOWER   hourly RSS poll. Works, but the feed is 29/30 enforcement orders and missed this month's AIF
                circular. Nothing happens after a catch.
-  ELSE         deployment on the hackathon Cloudflare account; officer names are placeholders; no MCP.
+  ELSE         runs locally (wrangler dev); target is Molecule's AWS, not Cloudflare; officer names are placeholders; no MCP.
 
 THE SECTIONS — in the order of the firm's life
   0 PROFILE            who Molecule is. Adds one fact per AIF category: stage of Cat I, Cat II, Cat III
@@ -58,8 +58,12 @@ BUILD ORDER — PMS first, end to end; then AIF; then the rest
                                          calendar for working-day due dates; real officer names.
     1d  watchtower on real sources       RSS + the four listing pages; catch → work item (fetch, pdftotext,
                                          collect, re-run changed paragraphs, review, gate).
-    1e  deployment                       Molecule's Cloudflare account, KV, domain, secrets. The cron
-                                         starts. `npm run pull -- https://<domain>` becomes the loop.
+    1e  deployment on Molecule's AWS    Pranjal's call 2026-09-11: Molecule runs AWS, not Cloudflare. Port is
+                                         small — the worker touches only KV get/put (14 call sites), fetch, Web
+                                         Crypto, a cron hook and static assets: Lambda (function URL) + DynamoDB
+                                         shim for `PONEGLYPH_STATE` + EventBridge hourly rule + S3/CloudFront
+                                         for `out/`. Secrets in SSM/Secrets Manager. [PRANJAL: account/region,
+                                         Lambda or container, IaC tool, who deploys]. Then `npm run pull -- <url>`.
     done looks like: every PMS duty SEBI wrote is in the register or ruled out with a reason; dates,
     proof and gaps are live; the watchtower catches the next PMS circular and hands it to the pipeline.
 
@@ -108,6 +112,6 @@ OPEN ON PRANJAL'S SIDE — phase 1 first
   2  PM Regulations PDF into given/, or a yes to fetch it (1a); version: Feb 2025 as linked, or Sep 2025
   3  yes/no on the remaining ~445 "shall" paragraphs (1b)
   4  real Compliance Officer / Principal Officer names (1c)
-  5  Molecule's Cloudflare account, domain (1e)
+  5  Molecule's AWS: account/region, Lambda vs container, IaC tool, domain (1e)
   later: order of the three AIF tracks; stage of each category; AIF Regulations PDF; MCP client
 ```
