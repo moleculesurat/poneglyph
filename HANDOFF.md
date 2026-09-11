@@ -73,7 +73,9 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   REVIEW-2026-09-11-pm-4-5.md (30 approve / 2 reject). Holdouts: 3.5.3 (bad JSON twice), 4.7.1 (ungrounded), 5.4.4, 5.6.4.
   Task 24 ACCEPTED 2026-09-11 (no code): holdouts recovered, pm-6/pm-7 done, pmr-2 run -> 35 drafts,
   REVIEW-2026-09-11-pm-6-7-pmr-2.md (26 approve / 9 reject). PMS MASTER CIRCULAR EXTRACTION COMPLETE (all 154 shall paras).
-  Task 25 ISSUED: re-run REG 3,11,14 --force; run pmr-4 (55 units).
+  Task 25 ACCEPTED 2026-09-11 (no code): pmr-4 -> 78 drafts, REVIEW-2026-09-11-pmr-4.md (51 approve / 27 reject, mostly
+  duplicates of MC lines). Note: a reg-11 run that reported a 300s timeout still wrote drafts later -> the re-run duplicated it.
+  Task 26 ISSUED: re-run pmr-4 failures + reg 3; run pmr-1,3,5,6 (20 units) and Schedules s2,s3,s4 (23).
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
 - Deployment: task 1e-i = infra STUDY (worker, no code) before any port; Pranjal schedules it.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
