@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "37fd0053ece2",
+  "tip": "39fbe1ebd00a",
   "obligations": [
     {
       "id": "OBL-001",
@@ -4492,6 +4492,760 @@
       "createdByRun": "RUN-104",
       "hash": "3fe8f095fddb",
       "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-158",
+      "title": "No use of one client's funds for another client",
+      "summary": "Portfolio Managers must not utilise the funds belonging to one client for any other client, keeping each client's funds strictly segregated.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.2.2",
+        "excerpt": "Portfolio Managers shall not use the funds of one client for another client,",
+        "charStart": 0,
+        "charEnd": 76
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-158",
+        "name": "Client fund segregation check",
+        "description": "Maintain separate accounting of each client's funds and operate checks that no deployment, transfer, or debit moves money from one client's account to cover another client's requirement.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Client-level fund ledger report showing no cross-utilisation or transfers of funds between client accounts"
+        },
+        {
+          "kind": "document",
+          "description": "Client fund segregation policy and internal control procedure for handling client monies"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-107",
+      "hash": "37ac34120895",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-159",
+      "title": "Levy only statutory charges at direct client on-boarding",
+      "summary": "When on-boarding clients directly, the portfolio manager must not levy any charges other than statutory charges. All non-statutory on-boarding charges are prohibited.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.3.3",
+        "excerpt": "At the time of on-boarding of clients directly, no charges except statutory charges shall be levied.",
+        "charStart": 0,
+        "charEnd": 100
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-159",
+        "name": "Direct on-boarding charge restriction",
+        "description": "Maintain an approved charge schedule for direct client on-boarding that contains only statutory charges; configure the on-boarding and billing systems so that no non-statutory charge can be applied at on-boarding, and check each direct on-boarding record to confirm only statutory charges were levied.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Report of charges levied on directly on-boarded clients, validated against the approved statutory-charge list with zero non-statutory charges identified"
+        },
+        {
+          "kind": "document",
+          "description": "Approved direct on-boarding fee schedule evidencing that only statutory charges are included"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-108",
+      "hash": "d30538689ee3",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-162",
+      "title": "Daily reconciliation of client-wise funds with bank account",
+      "summary": "The portfolio manager must reconcile, on a daily basis, the funds held client-wise against the funds available in the designated bank account.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.2.4",
+        "excerpt": "Portfolio Managers shall reconcile the client-wise funds with the funds in the aforesaid bank account on daily basis.",
+        "charStart": 0,
+        "charEnd": 117
+      },
+      "type": "ongoing",
+      "frequency": "daily",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-162",
+        "name": "Daily client-wise funds reconciliation",
+        "description": "Each day, compare the aggregate client-wise funds recorded in the portfolio management system against the balance in the designated bank account, investigate and resolve any mismatch, and record the reconciliation outcome.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "System report showing client-wise fund balances matched against the bank account balance for each day, with mismatches flagged and resolved"
+        },
+        {
+          "kind": "document",
+          "description": "Signed daily reconciliation statement retained as an audit record"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-111",
+      "hash": "7ed4429dc7ab",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-163",
+      "title": "Pay fees or commission to distributors only on trail-basis",
+      "summary": "Portfolio Managers must structure all fees or commission paid to distributors exclusively on a trail basis, with no upfront or other payout modes.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.4.1.2",
+        "excerpt": "Pay fees or commission to distributors only on trail-basis.",
+        "charStart": 0,
+        "charEnd": 59
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-163",
+        "name": "Trail-only distributor payout control",
+        "description": "Configure the distributor remuneration system so every payout entry is flagged as trail-basis and block creation or approval of any upfront or non-trail commission; review payout configuration and exceptions periodically.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Distributor payout register for the review period showing each fee or commission entry classified as trail-basis with zero non-trail payouts"
+        },
+        {
+          "kind": "document",
+          "description": "Distributor remuneration policy or agreements stating that payouts are on trail-basis only"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-112",
+      "hash": "2d21ec008d53",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-164",
+      "title": "Pay distributor fees or commission only from fees received by Portfolio Managers",
+      "summary": "Any fees or commission paid to distributors must be sourced solely from the fees received by the Portfolio Manager, not from any other source.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.4.1.2",
+        "excerpt": "any fees or commission paid shall be only from the fees received by Portfolio Managers.",
+        "charStart": 69,
+        "charEnd": 156
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-164",
+        "name": "Distributor payout funding-source control",
+        "description": "Route all distributor fee or commission payments through a settlement account funded only by Portfolio Manager fee receipts, and reconcile distributor payouts against fee inflows before release.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Reconciliation report mapping total fees or commission paid to distributors against fees received by the Portfolio Manager in the same period"
+        },
+        {
+          "kind": "document",
+          "description": "Ledger or bank statement extracts evidencing that distributor payouts were funded from fee receipts"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-112",
+      "hash": "a2c4ff51c3df",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-165",
+      "title": "Maintain audit trail of client fund and securities management activities",
+      "summary": "Portfolio Managers must keep an audit trail of all activities related to the management of client funds and securities, including order placement, trade execution and allocation.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.4",
+        "excerpt": "Portfolio Managers shall maintain audit trail of all activities related to management of funds and securities of clients including order placement, trade execution and allocation.",
+        "charStart": 0,
+        "charEnd": 179
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-165",
+        "name": "Client activity audit trail",
+        "description": "Operate a system that automatically records every activity related to the management of client funds and securities, capturing order placement, trade execution and allocation, with the trail retained and reviewable on demand.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Audit trail records covering client fund and securities management activities, including order placement, trade execution and allocation, with no gaps or missing events"
+        },
+        {
+          "kind": "document",
+          "description": "Sample audit trail log extract demonstrating completeness of recorded client activities"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-113",
+      "hash": "085b019ccba9",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-166",
+      "title": "Time stamp order placement, execution and trade allocation",
+      "summary": "All order placement, order execution and trade allocation events must carry a time stamp.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.4",
+        "excerpt": "there shall be time stamping with respect to order placement, order execution and trade allocation.",
+        "charStart": 189,
+        "charEnd": 288
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-166",
+        "name": "Order lifecycle time stamping",
+        "description": "Configure the order management and allocation systems to capture and store an accurate time stamp at each of order placement, order execution and trade allocation, with clocks synchronised to a reliable time source.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Verification that time stamps are present and populated on all order placement, order execution and trade allocation records in the system"
+        },
+        {
+          "kind": "document",
+          "description": "Sample of time-stamped order placement, execution and allocation records drawn from the audit trail"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-113",
+      "hash": "51d2bbc462a9",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-167",
+      "title": "Ensure DT is suitably staffed",
+      "summary": "Portfolio Managers must ensure the DT is adequately staffed so it can discharge its responsibilities. This is a continuing duty to maintain appropriate staffing levels.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2",
+        "excerpt": "Portfolio Managers shall ensure that DT is suitably staffed",
+        "charStart": 0,
+        "charEnd": 59
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-167",
+        "name": "DT staffing adequacy review",
+        "description": "Maintain an approved staffing plan for the DT, periodically assess headcount against workload and functional coverage, and fill vacancies promptly to keep the team adequately resourced at all times.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Approved DT organisational chart and staffing plan showing roles and headcount"
+        },
+        {
+          "kind": "data-check",
+          "description": "Periodic headcount report for the DT compared against the sanctioned staffing plan, with flagged and remediated shortfalls"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-114",
+      "hash": "0bbdc13db233",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-177",
+      "title": "Ensure compliance with Board-specified prudential investment limits",
+      "summary": "Under Regulation 24(3A) of the PM Regulations, the Portfolio Manager must ensure that investments comply with the prudential limits on investment specified by the Board.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.4.1",
+        "excerpt": "the Portfolio Manager shall ensure compliance with the prudential limits on investment as may be specified by the Board",
+        "charStart": 66,
+        "charEnd": 185
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-177",
+        "name": "Prudential limit compliance check",
+        "description": "Operate pre- and post-trade controls that test each portfolio's investments and holdings against the prudential limits specified by the Board, flag breaches, escalate them for remediation, and record the outcome of each review.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Portfolio holdings report tested against Board-specified prudential limits, showing pass/fail per limit and documented remediation of any breaches"
+        },
+        {
+          "kind": "document",
+          "description": "Prudential limit monitoring records or compliance sign-off evidencing periodic verification of adherence to the limits"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-128",
+      "hash": "e95aa701734b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-178",
+      "title": "Cap investment in securities of own associates/related parties at 30% of client AUM",
+      "summary": "A portfolio manager must not invest more than 30% of a client's portfolio, measured as a percentage of that client's assets under management, in securities of the portfolio manager's own associates or related parties.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.4.2",
+        "excerpt": "Portfolio Manager shall invest up to a maximum of 30 percent of their client’s portfolio (as a percentage of the client’s assets under management) in the securities of their own associates/related parties.",
+        "charStart": 0,
+        "charEnd": 205
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-178",
+        "name": "Related-party concentration limit check",
+        "description": "Pre-trade and position monitoring that measures each client's aggregate exposure to securities of the portfolio manager's own associates/related parties as a percentage of that client's AUM, blocks or escalates any trade or holding that would take exposure above the 30% cap, and routes exceptions to compliance for remediation.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Client-level related-party exposure report showing aggregate investment in securities of own associates/related parties as a percentage of each client's AUM against the 30% cap, with breaches flagged"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-129",
+      "hash": "04c4d4aecc6c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-179",
+      "title": "Comply with sub-limits on associate/related party investments by instrument class",
+      "summary": "For each client, exposure to a single associate/related party is capped at 15% of client AUM for equity and 15% for debt and hybrid securities, aggregate exposure across multiple associates/related parties is capped at 25% for equity and 25% for debt and hybrid securities, and combined equity, debt and hybrid exposure is capped at 30% of client AUM.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.4.2",
+        "excerpt": "Further, the Portfolio Manager shall ensure compliance with the following limits: Security Limit for investment in Limit for single associate/related investment across party (as percentage of multiple client’s AUM) associates/related parties (as percentage of client’s AUM) Equity 15% 25% Debt and hybrid 15% 25% securities Equity + Debt + Hybrid 30% securities",
+        "charStart": 206,
+        "charEnd": 567
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-179",
+        "name": "Instrument-class related-party limit monitoring",
+        "description": "Maintain per-client limit registers that track, by instrument class, exposure to each single associate/related party and aggregate exposure across multiple associates/related parties against the 15% and 25% limits, keep combined equity, debt and hybrid related-party exposure within 30% of client AUM, and flag and escalate any breach.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Limit-monitoring report listing, for each client, single associate/related party exposure and aggregate exposure across associates/related parties for equity and for debt and hybrid securities against the 15% and 25% limits, and combined equity + debt + hybrid exposure against 30%"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-129",
+      "hash": "e86ed0d354c3",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-181",
+      "title": "Obtain one-time prior positive client consent (Annexure 3A)",
+      "summary": "Portfolio Managers must obtain the client's prior positive consent, in the Annexure 3A consent-form format, as part of the client agreement required under Regulation 22(1) of the PM Regulations. This consent is one-time per client.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.1",
+        "excerpt": "Portfolio Managers shall obtain a one-time prior positive consent of client in the format specified at Annexure 3A (consent form)",
+        "charStart": 0,
+        "charEnd": 129
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-181",
+        "name": "Client consent capture at onboarding",
+        "description": "As part of executing each Regulation 22(1) client agreement, obtain the client's affirmative opt-in on the prescribed Annexure 3A consent form before the agreement is finalised, verify the consent is positive (not implied), and file it in the client records; do not onboard the client without it.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed Annexure 3A consent form retained in the client file, attached to or referenced in the Regulation 22(1) client agreement, for every client onboarded"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-132",
+      "hash": "963a4faa7f25",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-182",
+      "title": "Include dissent option in consent form for associate/related party securities",
+      "summary": "The consent form must contain an option through which a client can indicate dissent, i.e. that they do not want any investment in securities of associates or related parties of the Portfolio Manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.2",
+        "excerpt": "The consent form shall have an option to indicate dissent, in case the client does not want to undertake any investment in the securities of associates/related parties of respective Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 200
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-182",
+        "name": "Consent form dissent option control",
+        "description": "Amend and periodically review the client consent form template to ensure it includes a clearly marked dissent option covering zero investment in securities of associates/related parties of the Portfolio Manager.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Current version of the client consent form template showing the dissent option for investments in securities of the Portfolio Manager's associates/related parties"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-133",
+      "hash": "7affc4f0dcb5",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-183",
+      "title": "Include option in consent form for client-set limit on associate/related party investments",
+      "summary": "The consent form must also allow the client to specify a cap on investments in securities of the Portfolio Manager's associates/related parties, set below the ceiling prescribed in paragraph 3.4.2.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.2",
+        "excerpt": "The client shall also have an option to specify a limit on investments in the securities of associates/related parties of respective Portfolio Manager, below the ceiling specified in paragraph 3.4.2 above.",
+        "charStart": 201,
+        "charEnd": 406
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-183",
+        "name": "Consent form client-set limit control",
+        "description": "Maintain the consent form template so that clients can enter their own limit on investments in associate/related party securities, with a validation that any entered limit is below the paragraph 3.4.2 ceiling.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Current version of the client consent form template showing the field for the client to specify an investment limit below the paragraph 3.4.2 ceiling"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-133",
+      "hash": "d716cfdc1c09",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-184",
+      "title": "Obtain consent from new clients at the time of entering into the agreement",
+      "summary": "For each new client, the specified consent must be obtained when the agreement is entered into, i.e., at the time of onboarding the new client, in terms of Regulation 22(1) of the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.4",
+        "excerpt": "For new clients, the aforementioned consent shall be obtained at the time of entering into agreement, in terms of Regulation 22 (1) of the PM Regulations (i.e., at the time of onboarding of a new client).",
+        "charStart": 0,
+        "charEnd": 204
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-184",
+        "name": "New-client consent capture at onboarding",
+        "description": "Embed a mandatory consent-capture step in the client onboarding workflow so that the consent document is obtained and recorded as part of entering into the agreement with each new client, with no client agreement executed without the consent on file.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed consent form for each new client, captured at the time of entering into the agreement and filed in the client onboarding records"
+        },
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of the new-client onboarding register against the consent log showing consent obtained at agreement execution for every new client onboarded in the period"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-135",
+      "hash": "c7b4cec86226",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-185",
+      "title": "Obtain prior consent of existing clients via supplementary agreement",
+      "summary": "For existing clients, the prior consent for investments in securities of associates/related parties of the Portfolio Manager must be obtained by executing a supplementary agreement with each client. Where existing agreements already contain a consent provision for investments through a specified mode, that same mode may be used (permissive, not an additional duty).",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.5",
+        "excerpt": "For existing clients, the aforementioned consent shall be obtained by way of execution of a supplementary agreement with the clients.",
+        "charStart": 0,
+        "charEnd": 133
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-185",
+        "name": "Supplementary agreement execution for existing clients",
+        "description": "Maintain a programme to execute supplementary agreements with every existing client to capture their prior consent for investments in securities of associates/related parties of the Portfolio Manager, with client-wise tracking of execution status and completion.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Executed supplementary agreements for existing clients, retained in client files with dates of execution"
+        },
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of the existing client master against the register of executed supplementary agreements, showing each client's consent status"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-136",
+      "hash": "3b8a07828fa6",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-187",
+      "title": "Get client consent before fresh investments in associates'/related parties' securities",
+      "summary": "For existing clients, the Portfolio Manager may make fresh investments in securities of its associates or related parties only after obtaining the client's consent for each such investment.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.6",
+        "excerpt": "fresh investments in the securities of associates/related parties of Portfolio Managers can be made only after obtaining consent from the client.",
+        "charStart": 199,
+        "charEnd": 344
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-187",
+        "name": "Pre-trade consent check",
+        "description": "Before executing any fresh investment in associates'/related parties' securities for an existing client, verify a valid client consent is on file for that investment and block the trade until consent is obtained and recorded.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Client consent records obtained prior to each fresh investment in associates'/related parties' securities"
+        },
+        {
+          "kind": "data-check",
+          "description": "Log of fresh associate/related party investments per existing client matched against consent records, with unmatched trades flagged"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-137",
+      "hash": "4ad66ea71b81",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-188",
+      "title": "Maintain records of consents, passive breaches, rectification and waivers",
+      "summary": "Portfolio Managers must keep records and documents covering prior positive consent or dissent, instances of passive breach of investment limits, steps taken to rectify such breaches, and client waivers regarding rebalancing after a passive breach.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.9",
+        "excerpt": "In accordance with Regulation 27 (1) of the PM Regulations, Portfolio Managers shall maintain records and documents pertaining to:",
+        "charStart": 0,
+        "charEnd": 130
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-188",
+        "name": "Regulation 27(1) records repository",
+        "description": "Operate a centralised, indexed repository that, for each client and portfolio, captures the prior positive consent or dissent obtained, every instance of passive breach of investment limits, the rectification steps taken for each breach, and any client waiver regarding rebalancing following a passive breach, with records retained and retrievable for inspection.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Stored client consent/dissent records, passive breach logs, rectification-step records and signed client waivers held in the records repository"
+        },
+        {
+          "kind": "data-check",
+          "description": "Sample check that each logged passive breach has corresponding rectification records and, where applicable, a client waiver on file"
+        },
+        {
+          "kind": "live-scan",
+          "description": "Repository query confirming all four record categories (consent/dissent, breaches, rectification steps, waivers) are populated and retained for the review period"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-139",
+      "hash": "fbfc378fbf8e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-189",
+      "title": "No investment in unrated securities of related parties or associates",
+      "summary": "Per Regulation 24(3C) of the PM Regulations, Portfolio Managers are prohibited from investing clients' funds in unrated securities issued by their related parties or their associates.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.6.1",
+        "excerpt": "Portfolio Managers shall not be allowed to invest clients’ funds in unrated securities of their related parties or their associates",
+        "charStart": 55,
+        "charEnd": 186
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-189",
+        "name": "Pre-trade related-party unrated security screen",
+        "description": "Before executing any client investment, screen the issuer against the firm's maintained register of related parties and associates; block any investment in an unrated security whose issuer is a related party or associate of the Portfolio Manager.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Pre-trade screening log showing each proposed client investment tested against the related-party/associate register, with unrated related-party or associate securities rejected"
+        },
+        {
+          "kind": "document",
+          "description": "Register of the Portfolio Manager's related parties and associates, with evidence of updates used for screening"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-140",
+      "hash": "2c3dccd4197c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-190",
+      "title": "Invest clients' funds per Board-specified credit ratings",
+      "summary": "Per Regulation 24(3E) of the PM Regulations, the Portfolio Manager must ensure that clients' funds are invested on the basis of the credit rating of securities, following the rating criteria specified by the SEBI Board.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.6.1",
+        "excerpt": "the Portfolio Manager shall ensure investment of its clients’ funds on the basis of the credit rating of securities as may be specified by the Board",
+        "charStart": 252,
+        "charEnd": 400
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-190",
+        "name": "Credit-rating criteria compliance check",
+        "description": "At investment and on portfolio review, verify that every debt and hybrid security held for clients satisfies the credit-rating requirements specified by the Board before and while funds remain invested; act on downgrades or lapses in rating coverage.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Client portfolio holdings report cross-checked against Board-specified credit-rating criteria, with any holdings outside the rating parameters flagged and remediated"
+        },
+        {
+          "kind": "document",
+          "description": "Credit ratings and rating agency reports for securities in client portfolios as on the date of investment"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-140",
+      "hash": "e72d6d4f661f",
+      "approvedBy": "Compliance Officer"
     }
   ],
   "evidence": [
@@ -4853,6 +5607,680 @@
       "createdByRun": "RUN-105",
       "hash": "6be35bb2b791",
       "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-160",
+      "title": "Use only APMI-empanelled valuation agencies for debt and money market securities",
+      "summary": "Portfolio Managers must source valuation services for debt and money market securities in their managed portfolios exclusively from one or more valuation agencies empanelled by APMI.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.9.2",
+        "excerpt": "Portfolio Managers shall mandatorily use valuation services obtained only from one or more of such empanelled valuation agencies for the purpose of valuation of debt and money market securities in portfolios managed by them.",
+        "charStart": 112,
+        "charEnd": 336
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-160",
+        "name": "Empanelled-agency valuation whitelist",
+        "description": "Maintain an approved-vendor list restricted to APMI-empanelled valuation agencies and configure valuation workflows so that prices for debt and money market securities can be sourced only from agencies on that list, with non-empanelled vendors blocked.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Valuation source audit trail showing every debt and money market security price was obtained from an APMI-empanelled valuation agency"
+        },
+        {
+          "kind": "document",
+          "description": "Signed service contracts or engagement letters with the empanelled valuation agencies in use"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-110",
+      "hash": "085a0a4f9d3b"
+    },
+    {
+      "id": "OBL-161",
+      "title": "Retain ultimate responsibility for fair valuation of portfolio securities",
+      "summary": "The Portfolio Manager remains ultimately accountable for the fair valuation of portfolio securities and cannot shift that responsibility onto the valuation agency supplying prices.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.9.2",
+        "excerpt": "The ultimate responsibility for fair valuation shall be that of the Portfolio Manager.",
+        "charStart": 337,
+        "charEnd": 423
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-161",
+        "name": "Fair valuation accountability framework",
+        "description": "Operate a valuation governance process in which the Portfolio Manager reviews and signs off on fair valuations of debt and money market securities, documenting that accountability is retained in-house even when prices are externally sourced.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Valuation policy or governance charter naming the Portfolio Manager as the owner of fair valuation"
+        },
+        {
+          "kind": "data-check",
+          "description": "Periodic Portfolio Manager review and sign-off records on valuation outputs for managed portfolios"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-110",
+      "hash": "f1c976fdd4df"
+    },
+    {
+      "id": "OBL-168",
+      "title": "Track OTO/OTM RFQ trades vs total CB secondary trades on rolling 3-month basis",
+      "summary": "Portfolio Managers must, to ensure compliance with the 10 percent requirement, take into account trades executed by value through the OTO or OTM mode of RFQ relative to total secondary market trades in CBs, measured over the current month plus the immediate preceding two months on a rolling basis.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.1.1.2",
+        "excerpt": "Portfolio Managers shall consider the trades executed by value through OTO or OTM mode of RFQ with respect to the total secondary market trades in CBs, during the current month and immediate preceding two months on a rolling basis.",
+        "charStart": 78,
+        "charEnd": 309
+      },
+      "type": "ongoing",
+      "frequency": "monthly",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-168",
+        "name": "Rolling 3-month OTO/OTM RFQ trade ratio monitoring",
+        "description": "Maintain a monthly computation of the value of trades executed through OTO or OTM mode of RFQ as a proportion of total secondary market trades in CBs, using a rolling window of the current month and the two immediately preceding months, and use it to verify the 10 percent requirement is met.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Computation showing value of OTO/OTM RFQ trades divided by total secondary market CB trades for the rolling window of current month plus preceding two months"
+        },
+        {
+          "kind": "document",
+          "description": "Monthly rolling-basis compliance report evidencing consideration of the 10 percent requirement"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-116",
+      "hash": "8f50d0f3ae2b"
+    },
+    {
+      "id": "OBL-169",
+      "title": "Execute both-side CB trades through RFQ in OTO mode",
+      "summary": "Every corporate bond transaction in which the Portfolio Manager is on both sides of the trade must be executed on the RFQ platform in OTO mode. Transactions initiated in OTM mode that are executed with another Portfolio Manager count as OTM mode and fall outside this OTO requirement.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.1.1.3",
+        "excerpt": "All transactions in CBs wherein Portfolio Managers is on both sides of the trade shall be executed through RFQ in OTO mode.",
+        "charStart": 0,
+        "charEnd": 123
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-169",
+        "name": "OTO-mode RFQ routing check",
+        "description": "Operate an order-routing validation that identifies any CB transaction where the Portfolio Manager is on both sides of the trade and permits execution only through the RFQ platform in OTO mode, while recording OTM-mode transactions executed with another Portfolio Manager as OTM.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "RFQ platform trade log extract showing each CB transaction with both-side PM exposure tagged with its execution mode (OTO or OTM)"
+        },
+        {
+          "kind": "document",
+          "description": "Trade confirmations or exchange trade files evidencing that both-side CB transactions were executed in OTO mode on the RFQ platform"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-117",
+      "hash": "75fe4d135b9f"
+    },
+    {
+      "id": "OBL-170",
+      "title": "Ensure at least 10% of CB secondary market trades executed via RFQ OTO/OTM mode",
+      "summary": "Portfolio Managers must ensure that at least 10% by value of their secondary market trades in CBs, measured over the current month and the immediate preceding two months, are executed by placing or seeking quotes through the OTO or OTM mode of RFQ. The rolling three-month window is used for computing the percentage.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.1.2",
+        "excerpt": "Portfolio Managers shall ensure that at least 10% (by value) of their secondary market trades in CBs in current month and immediate preceding two months are executed by placing / seeking quotes through OTO or OTM mode of RFQ.",
+        "charStart": 0,
+        "charEnd": 225
+      },
+      "type": "ongoing",
+      "frequency": "monthly",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-170",
+        "name": "RFQ execution threshold monitoring",
+        "description": "Track all secondary market trades in CBs on a rolling three-month basis (current month plus immediate preceding two months), tag trades executed through the OTO or OTM mode of RFQ, compute their share by value of total CB secondary market trades, and escalate corrective action if the share falls below 10%.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Monthly computation showing value of secondary market CB trades executed via OTO/OTM RFQ mode divided by total value of secondary market CB trades over the current month and immediate preceding two months, confirming the ratio is at least 10%."
+        },
+        {
+          "kind": "document",
+          "description": "Trade-level extract of secondary market CB transactions for the rolling three-month window, with RFQ mode (OTO/OTM) tags, reconciled to the order/trade management system."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-118",
+      "hash": "99924ee8d460"
+    },
+    {
+      "id": "OBL-171",
+      "title": "Appoint SEBI registered Custodians before dealing in ETCDs",
+      "summary": "A Portfolio Manager must appoint a custodian registered with SEBI before it undertakes any dealing in Exchange Traded Commodity Derivatives. Dealing in such derivatives is not permitted until a SEBI registered custodian has been appointed.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.1",
+        "excerpt": "Portfolio Managers shall appoint SEBI registered Custodians before dealing in Exchange Traded Commodity Derivatives.",
+        "charStart": 0,
+        "charEnd": 116
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-171",
+        "name": "Custodian appointment gate for ETCD dealing",
+        "description": "Maintain a pre-trade control that blocks any Exchange Traded Commodity Derivatives transaction until the firm has formally appointed a custodian holding valid SEBI registration. Verify the custodian's SEBI registration at appointment, execute the custodial agreement, record the appointment date, and re-verify registration status before continuing ETCD dealing if the appointment lapses.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Executed custodian appointment letter or custodial agreement with the SEBI registered custodian, together with the custodian's SEBI registration certificate or registration number"
+        },
+        {
+          "kind": "data-check",
+          "description": "Report comparing the custodian appointment date against the firm's ETCD trade records confirming that no Exchange Traded Commodity Derivatives transaction predates the appointment"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-121",
+      "hash": "c596d0f31687"
+    },
+    {
+      "id": "OBL-172",
+      "title": "Ensure ETCD participation for clients complies with applicable rules and position limits",
+      "summary": "A Portfolio Manager trading Exchange Traded Commodity Derivatives on behalf of clients must ensure that such participation complies with all rules, regulations (including the PM Regulations), circulars/guidelines and position limit norms applicable to clients, as issued by SEBI and recognized stock exchanges.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.2",
+        "excerpt": "such participation shall be in compliance with all the rules, regulations including the PM Regulations and circulars/guidelines and position limit norms as may be applicable to",
+        "charStart": 107,
+        "charEnd": 283
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-172",
+        "name": "ETCD client-side compliance check",
+        "description": "Before and while placing Exchange Traded Commodity Derivative orders on behalf of each client, verify that the trade and resulting positions conform to the PM Regulations, SEBI and stock exchange circulars/guidelines, and the position limit norms applicable to clients; block, reduce or unwind any trade that would breach these limits.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Client-level ETCD position monitoring report showing each client's open positions against the position limit norms applicable to clients, with breaches flagged and resolved"
+        },
+        {
+          "kind": "document",
+          "description": "Compliance checklist mapping the PM Regulations and current SEBI and recognized stock exchange circulars and guidelines to the ETCD trades executed for clients"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-122",
+      "hash": "3134a90b0ab9"
+    },
+    {
+      "id": "OBL-173",
+      "title": "Dispose of physical commodities received via delivery within agreed timelines",
+      "summary": "Where commodity derivatives dealings result in the Portfolio Manager holding physical goods, the Portfolio Manager must dispose of them at the earliest, within timelines agreed with the client, and bears responsibility for liquidating them.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.5",
+        "excerpt": "the goods need to be disposed off at the earliest, within the timelines as agreed upon between the client and the Portfolio Manager. The responsibility of liquidating the physical goods shall be with the Portfolio Manager.",
+        "charStart": 192,
+        "charEnd": 414
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-173",
+        "name": "Physical commodity disposal monitoring",
+        "description": "Maintain a register of physical commodities received on delivery and track disposal against client-agreed timelines, escalating any position approaching the agreed deadline.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Log of physical commodity holdings with delivery dates, client-agreed disposal timelines, and completed disposal records"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-124",
+      "hash": "4378fce127a2"
+    },
+    {
+      "id": "OBL-174",
+      "title": "Ensure FPI clients meet all SEBI conditions for ETCD participation",
+      "summary": "When onboarding Foreign Portfolio Investors as clients and when executing Exchange Traded Commodity Derivatives transactions for them, Portfolio Managers must ensure compliance with every condition specified by SEBI for FPI participation in that market.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.6",
+        "excerpt": "Portfolio Managers shall, while onboarding FPIs as clients and executing transactions in Exchange Traded Commodity Derivatives market, ensure that all conditions specified by SEBI are complied with.",
+        "charStart": 164,
+        "charEnd": 362
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-174",
+        "name": "FPI onboarding and ETCD transaction compliance check",
+        "description": "Before an FPI is accepted as a client and before any Exchange Traded Commodity Derivatives transaction is executed for an FPI, the firm runs a checklist validating that the client and the proposed trade satisfy each SEBI-specified condition for FPI participation in the ETCD market; non-compliant onboarding or orders are blocked and escalated.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "FPI onboarding checklist or clearance record showing each SEBI-specified condition was verified before the client was accepted."
+        },
+        {
+          "kind": "data-check",
+          "description": "Trade-level check confirming every ETCD transaction executed for FPI clients was tagged to a compliant, condition-verified FPI account."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-125",
+      "hash": "98e11af74763"
+    },
+    {
+      "id": "OBL-175",
+      "title": "Periodic client reports on Exchange Traded Commodity Derivatives exposure",
+      "summary": "Portfolio Managers must provide clients with periodic reports, prepared as per the PM Regulations, covering the clients' exposure in Exchange Traded Commodity Derivatives.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.7",
+        "excerpt": "Portfolio Managers shall also provide periodic reports to the clients as per the PM Regulations regarding their exposure in Exchange Traded Commodity Derivatives.",
+        "charStart": 0,
+        "charEnd": 162
+      },
+      "type": "periodic",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-175",
+        "name": "Periodic ETCD client reporting",
+        "description": "Operate a recurring reporting cycle that computes each client's exposure in Exchange Traded Commodity Derivatives, formats the report in line with the PM Regulations, and dispatches it to the client at the prescribed periodicity.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copies of the periodic client reports issued, showing each client's Exchange Traded Commodity Derivatives exposure as per the PM Regulations."
+        },
+        {
+          "kind": "data-check",
+          "description": "Check that every client due a report in the period received one, and that the reported ETCD exposure figures reconcile to the client's derivative positions."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-126",
+      "hash": "adb6b678e277"
+    },
+    {
+      "id": "OBL-176",
+      "title": "Report ETCD exposure under 'Commodity Derivatives' heading in monthly SEBI reports",
+      "summary": "Portfolio Managers must include their exposure in Exchange Traded Commodity Derivatives under the 'Commodity Derivatives' heading in the monthly reports they submit to SEBI.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.3.2.8",
+        "excerpt": "Portfolio Managers shall report the exposure in Exchange Traded Commodity Derivatives under the heading of ‘Commodity Derivatives’ in the monthly reports submitted to SEBI.",
+        "charStart": 0,
+        "charEnd": 172
+      },
+      "type": "periodic",
+      "frequency": "monthly",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-176",
+        "name": "Monthly ETCD exposure reporting control",
+        "description": "Before each monthly SEBI report submission, compile the portfolio's Exchange Traded Commodity Derivatives exposure from the risk/position systems, classify it under the 'Commodity Derivatives' heading, and have a second person verify the figure matches underlying position records before filing.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the monthly report submitted to SEBI showing Exchange Traded Commodity Derivatives exposure under the 'Commodity Derivatives' heading, with submission timestamp."
+        },
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of the reported ETCD exposure figure against the underlying position/exposure records for the reporting month."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-127",
+      "hash": "c630de4d8235"
+    },
+    {
+      "id": "OBL-180",
+      "title": "Obtain prior client consent before investing in related party or associate securities",
+      "summary": "Regulation 22(1A) of the PM Regulations provides that a Portfolio Manager may invest in securities of its related parties or associates only after obtaining the client's prior consent, in the manner specified by the Board. Portfolio Managers must apply this consent gate to every such investment.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5",
+        "excerpt": "the Portfolio Manager may make investments in the securities of its related parties or its associates only after obtaining the prior consent of the client in such manner as may be specified by the Board from time to time",
+        "charStart": 152,
+        "charEnd": 372
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-180",
+        "name": "Prior client consent gate for related-party investments",
+        "description": "Before executing any investment in securities issued by the Portfolio Manager's related parties or associates on a client's behalf, obtain and record the client's prior consent in the Board-specified manner, and block execution until documented consent is on file.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Client consent records, captured in the Board-specified manner, for each proposed investment in related party or associate securities, retained against the client mandate."
+        },
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of executed related-party/associate securities trades against the consent register, confirming no trade was executed without prior client consent."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-131",
+      "hash": "cfc293fc9ba2"
+    },
+    {
+      "id": "OBL-186",
+      "title": "Obtain client consent for associate/related party investments at onboarding",
+      "summary": "When onboarding new clients, the Portfolio Manager must secure the client's prior consent before making any investments in securities of the Portfolio Manager's associates or related parties.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.6",
+        "excerpt": "shall not make any investments in the securities of associates/related parties without the prior consent of the client at the time of on boarding new clients.",
+        "charStart": 18,
+        "charEnd": 176
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-186",
+        "name": "Onboarding consent gate",
+        "description": "During client onboarding, capture and record each new client's explicit consent (or refusal) for investments in securities of the Portfolio Manager's associates and related parties, and block any such investment for clients without recorded consent.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed onboarding form or consent record per client showing consent for investments in associates'/related parties' securities"
+        },
+        {
+          "kind": "data-check",
+          "description": "Report of new clients onboarded in the period cross-checked against consent records, flagging any associate/related party investment made without consent"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-137",
+      "hash": "c5bcf936b1b7"
+    },
+    {
+      "id": "OBL-191",
+      "title": "No investment in below investment grade listed securities",
+      "summary": "Portfolio Managers offering non-discretionary portfolio management services must not invest client assets in listed securities rated below investment grade. This is a standing prohibition on all such investments.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.6.3",
+        "excerpt": "shall not make any investment in below investment grade listed securities",
+        "charStart": 76,
+        "charEnd": 149
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-191",
+        "name": "Below investment grade pre-trade screen",
+        "description": "Maintain a rating-based restriction list and block any purchase of listed securities rated below investment grade in non-discretionary client portfolios, with periodic re-verification of existing holdings against current ratings.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "live-scan",
+          "description": "Pre-trade compliance check log showing orders in below investment grade listed securities are rejected for non-discretionary portfolios"
+        },
+        {
+          "kind": "data-check",
+          "description": "Holdings report evidencing zero exposure to listed securities rated below investment grade across non-discretionary client portfolios"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-142",
+      "hash": "767f3b55edc3"
+    },
+    {
+      "id": "OBL-192",
+      "title": "Limit unlisted unrated investments to 10% of client AUM, excluding related parties",
+      "summary": "If the Portfolio Manager chooses to invest non-discretionary client assets in unlisted unrated securities, such investments must not exceed 10% of the client's assets under management and must not be in issuers that are associates or related parties of the Portfolio Manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.6.3",
+        "excerpt": "may invest up to 10% of the assets under management of such clients in unlisted unrated securities of issuers other than associates/related parties of Portfolio Manager",
+        "charStart": 178,
+        "charEnd": 346
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-192",
+        "name": "Unlisted unrated exposure cap monitor",
+        "description": "Track aggregate unlisted unrated holdings for each non-discretionary client against the 10% of AUM cap, and screen issuer names against the associates/related parties register before execution to block prohibited counterparties.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Report showing unlisted unrated holdings as a percentage of each non-discretionary client's AUM, all within 10%"
+        },
+        {
+          "kind": "document",
+          "description": "Associates/related parties register with screening records evidencing no unlisted unrated holdings in issuers related to the Portfolio Manager"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-142",
+      "hash": "7bab404b2d95"
+    },
+    {
+      "id": "OBL-193",
+      "title": "Keep unlisted unrated debt and hybrid securities within 25% unlisted limit",
+      "summary": "Any unlisted unrated debt and hybrid securities held for non-discretionary clients must remain within the overall 25% cap for investment in unlisted securities prescribed by Regulation 24(4) of the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.6.3",
+        "excerpt": "The said investment in unlisted unrated debt and hybrid securities shall be within the maximum specified limit of 25% for investment in unlisted securities under Regulation 24(4) of the PM Regulations.",
+        "charStart": 348,
+        "charEnd": 549
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-193",
+        "name": "Regulation 24(4) unlisted limit check",
+        "description": "Compute total unlisted securities exposure, including unlisted unrated debt and hybrid securities, for non-discretionary portfolios and ensure it remains within the 25% limit under Regulation 24(4) of the PM Regulations.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Compliance report showing total unlisted securities exposure, including unlisted unrated debt and hybrid securities, within the 25% limit under Regulation 24(4)"
+        },
+        {
+          "kind": "document",
+          "description": "Compliance officer certificate confirming adherence to the Regulation 24(4) unlisted securities limit"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-142",
+      "hash": "fbd9f445a965"
+    },
+    {
+      "id": "OBL-194",
+      "title": "Disclose conflicts of interest for associate/related-party securities to advisory clients",
+      "summary": "For advisory portfolio management services, the portfolio manager must make suitable disclosure to the client about conflicts of interest arising from investments in the securities of associates/related parties at the time advice is given.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.7.2",
+        "excerpt": "Portfolio Managers shall make suitable disclosure to the client regarding conflict of interest with respect to investments in the securities of the associates/related parties, while giving advice",
+        "charStart": 71,
+        "charEnd": 266
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-194",
+        "name": "Conflict-of-interest disclosure at point of advice",
+        "description": "Before or while rendering advice to an advisory portfolio management client, disclose to that client any conflict of interest concerning investments in securities of associates or related parties, applying the definition of 'associate' from the explanation to Regulation 24(3C) of the PM Regulations.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Sample of client advice records or disclosure statements evidencing the conflict-of-interest disclosure made to advisory clients"
+        },
+        {
+          "kind": "data-check",
+          "description": "Register mapping advised securities to associate/related-party issuers, with disclosure status flagged for each advice event"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-144",
+      "hash": "5002a6b7a922"
+    },
+    {
+      "id": "OBL-195",
+      "title": "Disclose credit rating of all securities while giving advice",
+      "summary": "When giving advice under advisory portfolio management services, the portfolio manager must disclose the credit rating of all securities covered by the advice.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.7.2",
+        "excerpt": "Portfolio Managers shall disclose the credit rating of all securities, while giving advice",
+        "charStart": 417,
+        "charEnd": 507
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-195",
+        "name": "Credit-rating disclosure at point of advice",
+        "description": "Ensure that every advice communication to advisory clients includes the credit rating of each security being advised upon, sourced from a current ratings feed.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Sample of client advice or communication records showing the credit rating disclosed for each advised security"
+        },
+        {
+          "kind": "data-check",
+          "description": "Validation that advice records carry a populated credit-rating field for all advised securities"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-144",
+      "hash": "51f8583eeb91"
     }
   ],
   "auditEvents": [
@@ -10289,6 +11717,1260 @@
       "detail": "Withdrawn by Compliance Officer at the human gate — \"Value portfolio debt and money market securities per APMI standardized norms\", grounded to MC-PM-2025 para 2.9.1. Removed from the register. Reason: Molecule holds no debt or money-market securities (Pranjal, 2026-09-11). Evidence bindings retained.",
       "hash": "37fd0053ece2",
       "prevHash": "6974c702b7d3"
+    },
+    {
+      "id": "AE-0495",
+      "at": "2026-09-11T08:06:19.915Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-158",
+      "detail": "Drafted by RUN-107 from MC-PM-2025 para 2.2.2.2 — \"No use of one client's funds for another client\", grounded to chars 0–76 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "6100dfd4d0db",
+      "prevHash": "37fd0053ece2"
+    },
+    {
+      "id": "AE-0496",
+      "at": "2026-09-11T08:06:19.915Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-107",
+      "detail": "RUN-107 completed extraction and verification over MC-PM-2025 para 2.2.2.2 in 35s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-158.",
+      "hash": "0d33f3fdd914",
+      "prevHash": "6100dfd4d0db"
+    },
+    {
+      "id": "AE-0497",
+      "at": "2026-09-11T08:06:35.877Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-159",
+      "detail": "Drafted by RUN-108 from MC-PM-2025 para 2.3.3 — \"Levy only statutory charges at direct client on-boarding\", grounded to chars 0–100 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "62ccb382c994",
+      "prevHash": "0d33f3fdd914"
+    },
+    {
+      "id": "AE-0498",
+      "at": "2026-09-11T08:06:35.877Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-108",
+      "detail": "RUN-108 completed extraction and verification over MC-PM-2025 para 2.3.3 in 15s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-159.",
+      "hash": "db51983c3ec9",
+      "prevHash": "62ccb382c994"
+    },
+    {
+      "id": "AE-0499",
+      "at": "2026-09-11T08:07:17.421Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-109",
+      "detail": "RUN-109 failed on MC-PM-2025 para 2.5.1.2. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1266 (line 1 column 1267). Nothing was drafted and nothing entered the register.",
+      "hash": "97aa001c376f",
+      "prevHash": "db51983c3ec9"
+    },
+    {
+      "id": "AE-0500",
+      "at": "2026-09-11T08:07:50.975Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-160",
+      "detail": "Drafted by RUN-110 from MC-PM-2025 para 2.9.2 — \"Use only APMI-empanelled valuation agencies for debt and money market securities\", grounded to chars 112–336 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "48a9c006bc89",
+      "prevHash": "97aa001c376f"
+    },
+    {
+      "id": "AE-0501",
+      "at": "2026-09-11T08:07:50.975Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-161",
+      "detail": "Drafted by RUN-110 from MC-PM-2025 para 2.9.2 — \"Retain ultimate responsibility for fair valuation of portfolio securities\", grounded to chars 337–423 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "db7c04fe7c01",
+      "prevHash": "48a9c006bc89"
+    },
+    {
+      "id": "AE-0502",
+      "at": "2026-09-11T08:07:50.975Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-110",
+      "detail": "RUN-110 completed extraction and verification over MC-PM-2025 para 2.9.2 in 33s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-160, OBL-161.",
+      "hash": "af32e0d84bc8",
+      "prevHash": "db7c04fe7c01"
+    },
+    {
+      "id": "AE-0503",
+      "at": "2026-09-11T08:08:07.521Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-162",
+      "detail": "Drafted by RUN-111 from MC-PM-2025 para 2.2.2.4 — \"Daily reconciliation of client-wise funds with bank account\", grounded to chars 0–117 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "4badf85362fe",
+      "prevHash": "af32e0d84bc8"
+    },
+    {
+      "id": "AE-0504",
+      "at": "2026-09-11T08:08:07.521Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-111",
+      "detail": "RUN-111 completed extraction and verification over MC-PM-2025 para 2.2.2.4 in 13s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-162.",
+      "hash": "f0b7bd550060",
+      "prevHash": "4badf85362fe"
+    },
+    {
+      "id": "AE-0505",
+      "at": "2026-09-11T08:08:36.857Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-163",
+      "detail": "Drafted by RUN-112 from MC-PM-2025 para 2.4.1.2 — \"Pay fees or commission to distributors only on trail-basis\", grounded to chars 0–59 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "5d628279ecf3",
+      "prevHash": "f0b7bd550060"
+    },
+    {
+      "id": "AE-0506",
+      "at": "2026-09-11T08:08:36.857Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-164",
+      "detail": "Drafted by RUN-112 from MC-PM-2025 para 2.4.1.2 — \"Pay distributor fees or commission only from fees received by Portfolio Managers\", grounded to chars 69–156 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "85e89c9b42ac",
+      "prevHash": "5d628279ecf3"
+    },
+    {
+      "id": "AE-0507",
+      "at": "2026-09-11T08:08:36.857Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-112",
+      "detail": "RUN-112 completed extraction and verification over MC-PM-2025 para 2.4.1.2 in 27s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-163, OBL-164.",
+      "hash": "1095ca233c9e",
+      "prevHash": "85e89c9b42ac"
+    },
+    {
+      "id": "AE-0508",
+      "at": "2026-09-11T08:09:14.017Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-165",
+      "detail": "Drafted by RUN-113 from MC-PM-2025 para 2.7.4 — \"Maintain audit trail of client fund and securities management activities\", grounded to chars 0–179 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "40a00bc63feb",
+      "prevHash": "1095ca233c9e"
+    },
+    {
+      "id": "AE-0509",
+      "at": "2026-09-11T08:09:14.017Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-166",
+      "detail": "Drafted by RUN-113 from MC-PM-2025 para 2.7.4 — \"Time stamp order placement, execution and trade allocation\", grounded to chars 189–288 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8055afe63f10",
+      "prevHash": "40a00bc63feb"
+    },
+    {
+      "id": "AE-0510",
+      "at": "2026-09-11T08:09:14.017Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-113",
+      "detail": "RUN-113 completed extraction and verification over MC-PM-2025 para 2.7.4 in 34s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-165, OBL-166.",
+      "hash": "941aea3caaa0",
+      "prevHash": "8055afe63f10"
+    },
+    {
+      "id": "AE-0511",
+      "at": "2026-09-11T08:09:35.405Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-167",
+      "detail": "Drafted by RUN-114 from MC-PM-2025 para 2.7.2.2 — \"Ensure DT is suitably staffed\", grounded to chars 0–59 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "35445a4a949b",
+      "prevHash": "941aea3caaa0"
+    },
+    {
+      "id": "AE-0512",
+      "at": "2026-09-11T08:09:35.405Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-114",
+      "detail": "RUN-114 completed extraction and verification over MC-PM-2025 para 2.7.2.2 in 19s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-167.",
+      "hash": "fd0a2a33fd05",
+      "prevHash": "35445a4a949b"
+    },
+    {
+      "id": "AE-0513",
+      "at": "2026-09-11T08:10:03.781Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-115",
+      "detail": "RUN-115 completed extraction and verification over MC-PM-2025 para 3.1.1 in 10s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "153279d68bf7",
+      "prevHash": "fd0a2a33fd05"
+    },
+    {
+      "id": "AE-0514",
+      "at": "2026-09-11T08:10:21.013Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-168",
+      "detail": "Drafted by RUN-116 from MC-PM-2025 para 3.1.1.2 — \"Track OTO/OTM RFQ trades vs total CB secondary trades on rolling 3-month basis\", grounded to chars 78–309 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "a17996d4082e",
+      "prevHash": "153279d68bf7"
+    },
+    {
+      "id": "AE-0515",
+      "at": "2026-09-11T08:10:21.013Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-116",
+      "detail": "RUN-116 completed extraction and verification over MC-PM-2025 para 3.1.1.2 in 15s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-168.",
+      "hash": "461329af138f",
+      "prevHash": "a17996d4082e"
+    },
+    {
+      "id": "AE-0516",
+      "at": "2026-09-11T08:11:12.340Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-169",
+      "detail": "Drafted by RUN-117 from MC-PM-2025 para 3.1.1.3 — \"Execute both-side CB trades through RFQ in OTO mode\", grounded to chars 0–123 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "5017d8a6df2d",
+      "prevHash": "461329af138f"
+    },
+    {
+      "id": "AE-0517",
+      "at": "2026-09-11T08:11:12.340Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-117",
+      "detail": "RUN-117 completed extraction and verification over MC-PM-2025 para 3.1.1.3 in 48s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-169.",
+      "hash": "f072453fbc46",
+      "prevHash": "5017d8a6df2d"
+    },
+    {
+      "id": "AE-0518",
+      "at": "2026-09-11T08:11:29.184Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-170",
+      "detail": "Drafted by RUN-118 from MC-PM-2025 para 3.1.2 — \"Ensure at least 10% of CB secondary market trades executed via RFQ OTO/OTM mode\", grounded to chars 0–225 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9890544aa1ea",
+      "prevHash": "f072453fbc46"
+    },
+    {
+      "id": "AE-0519",
+      "at": "2026-09-11T08:11:29.184Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-118",
+      "detail": "RUN-118 completed extraction and verification over MC-PM-2025 para 3.1.2 in 14s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-170.",
+      "hash": "2f79dd2d89b7",
+      "prevHash": "9890544aa1ea"
+    },
+    {
+      "id": "AE-0520",
+      "at": "2026-09-11T08:12:06.696Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-119",
+      "detail": "RUN-119 was stopped by the verifier on MC-PM-2025 para 3.2.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "2eb940fb52dc",
+      "prevHash": "2f79dd2d89b7"
+    },
+    {
+      "id": "AE-0521",
+      "at": "2026-09-11T08:12:13.746Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-120",
+      "detail": "RUN-120 completed extraction and verification over MC-PM-2025 para 3.3.2 in 4s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "236bd667e976",
+      "prevHash": "2eb940fb52dc"
+    },
+    {
+      "id": "AE-0522",
+      "at": "2026-09-11T08:13:25.032Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-171",
+      "detail": "Drafted by RUN-121 from MC-PM-2025 para 3.3.2.1 — \"Appoint SEBI registered Custodians before dealing in ETCDs\", grounded to chars 0–116 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "90c9e35dd676",
+      "prevHash": "236bd667e976"
+    },
+    {
+      "id": "AE-0523",
+      "at": "2026-09-11T08:13:25.032Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-121",
+      "detail": "RUN-121 completed extraction and verification over MC-PM-2025 para 3.3.2.1 in 70s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-171.",
+      "hash": "81cf92ba53d0",
+      "prevHash": "90c9e35dd676"
+    },
+    {
+      "id": "AE-0524",
+      "at": "2026-09-11T08:14:03.616Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-172",
+      "detail": "Drafted by RUN-122 from MC-PM-2025 para 3.3.2.2 — \"Ensure ETCD participation for clients complies with applicable rules and position limits\", grounded to chars 107–283 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "26169560feac",
+      "prevHash": "81cf92ba53d0"
+    },
+    {
+      "id": "AE-0525",
+      "at": "2026-09-11T08:14:03.616Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-122",
+      "detail": "RUN-122 completed extraction and verification over MC-PM-2025 para 3.3.2.2 in 36s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-172.",
+      "hash": "fd675588a54b",
+      "prevHash": "26169560feac"
+    },
+    {
+      "id": "AE-0526",
+      "at": "2026-09-11T08:14:34.250Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-123",
+      "detail": "RUN-123 was stopped by the verifier on MC-PM-2025 para 3.3.2.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "8c975c6bb9d0",
+      "prevHash": "fd675588a54b"
+    },
+    {
+      "id": "AE-0527",
+      "at": "2026-09-11T08:14:49.361Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-173",
+      "detail": "Drafted by RUN-124 from MC-PM-2025 para 3.3.2.5 — \"Dispose of physical commodities received via delivery within agreed timelines\", grounded to chars 192–414 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d51d39211a8b",
+      "prevHash": "8c975c6bb9d0"
+    },
+    {
+      "id": "AE-0528",
+      "at": "2026-09-11T08:14:49.361Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-124",
+      "detail": "RUN-124 completed extraction and verification over MC-PM-2025 para 3.3.2.5 in 12s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-173.",
+      "hash": "f12dae89a033",
+      "prevHash": "d51d39211a8b"
+    },
+    {
+      "id": "AE-0529",
+      "at": "2026-09-11T08:15:31.252Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-174",
+      "detail": "Drafted by RUN-125 from MC-PM-2025 para 3.3.2.6 — \"Ensure FPI clients meet all SEBI conditions for ETCD participation\", grounded to chars 164–362 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c3dc769d403e",
+      "prevHash": "f12dae89a033"
+    },
+    {
+      "id": "AE-0530",
+      "at": "2026-09-11T08:15:31.252Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-125",
+      "detail": "RUN-125 completed extraction and verification over MC-PM-2025 para 3.3.2.6 in 39s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-174.",
+      "hash": "fbf1a5811bf6",
+      "prevHash": "c3dc769d403e"
+    },
+    {
+      "id": "AE-0531",
+      "at": "2026-09-11T08:15:49.836Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-175",
+      "detail": "Drafted by RUN-126 from MC-PM-2025 para 3.3.2.7 — \"Periodic client reports on Exchange Traded Commodity Derivatives exposure\", grounded to chars 0–162 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "2c1b9c7f8420",
+      "prevHash": "fbf1a5811bf6"
+    },
+    {
+      "id": "AE-0532",
+      "at": "2026-09-11T08:15:49.836Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-126",
+      "detail": "RUN-126 completed extraction and verification over MC-PM-2025 para 3.3.2.7 in 16s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-175.",
+      "hash": "ae17118a7299",
+      "prevHash": "2c1b9c7f8420"
+    },
+    {
+      "id": "AE-0533",
+      "at": "2026-09-11T08:16:07.082Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-176",
+      "detail": "Drafted by RUN-127 from MC-PM-2025 para 3.3.2.8 — \"Report ETCD exposure under 'Commodity Derivatives' heading in monthly SEBI reports\", grounded to chars 0–172 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e4c5b61c271d",
+      "prevHash": "ae17118a7299"
+    },
+    {
+      "id": "AE-0534",
+      "at": "2026-09-11T08:16:07.082Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-127",
+      "detail": "RUN-127 completed extraction and verification over MC-PM-2025 para 3.3.2.8 in 16s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-176.",
+      "hash": "330659308023",
+      "prevHash": "e4c5b61c271d"
+    },
+    {
+      "id": "AE-0535",
+      "at": "2026-09-11T08:16:32.458Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-177",
+      "detail": "Drafted by RUN-128 from MC-PM-2025 para 3.4.1 — \"Ensure compliance with Board-specified prudential investment limits\", grounded to chars 66–185 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "33ae95a7d4fb",
+      "prevHash": "330659308023"
+    },
+    {
+      "id": "AE-0536",
+      "at": "2026-09-11T08:16:32.458Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-128",
+      "detail": "RUN-128 completed extraction and verification over MC-PM-2025 para 3.4.1 in 23s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-177.",
+      "hash": "cce486ece2ba",
+      "prevHash": "33ae95a7d4fb"
+    },
+    {
+      "id": "AE-0537",
+      "at": "2026-09-11T08:18:37.886Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-178",
+      "detail": "Drafted by RUN-129 from MC-PM-2025 para 3.4.2 — \"Cap investment in securities of own associates/related parties at 30% of client AUM\", grounded to chars 0–205 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "0e443a530eb1",
+      "prevHash": "cce486ece2ba"
+    },
+    {
+      "id": "AE-0538",
+      "at": "2026-09-11T08:18:37.886Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-179",
+      "detail": "Drafted by RUN-129 from MC-PM-2025 para 3.4.2 — \"Comply with sub-limits on associate/related party investments by instrument class\", grounded to chars 206–567 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e0e3c4fe7ba9",
+      "prevHash": "0e443a530eb1"
+    },
+    {
+      "id": "AE-0539",
+      "at": "2026-09-11T08:18:37.886Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-129",
+      "detail": "RUN-129 completed extraction and verification over MC-PM-2025 para 3.4.2 in 122s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-178, OBL-179.",
+      "hash": "689fc24f5fbb",
+      "prevHash": "e0e3c4fe7ba9"
+    },
+    {
+      "id": "AE-0540",
+      "at": "2026-09-11T08:22:49.029Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-130",
+      "detail": "RUN-130 completed extraction and verification over MC-PM-2025 para 3.4.3 in 249s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "2d4d0feff66b",
+      "prevHash": "689fc24f5fbb"
+    },
+    {
+      "id": "AE-0541",
+      "at": "2026-09-11T08:23:38.016Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-180",
+      "detail": "Drafted by RUN-131 from MC-PM-2025 para 3.5 — \"Obtain prior client consent before investing in related party or associate securities\", grounded to chars 152–372 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "1345bbb0b9f4",
+      "prevHash": "2d4d0feff66b"
+    },
+    {
+      "id": "AE-0542",
+      "at": "2026-09-11T08:23:38.016Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-131",
+      "detail": "RUN-131 completed extraction and verification over MC-PM-2025 para 3.5 in 45s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-180.",
+      "hash": "8298f950165e",
+      "prevHash": "1345bbb0b9f4"
+    },
+    {
+      "id": "AE-0543",
+      "at": "2026-09-11T08:23:54.981Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-181",
+      "detail": "Drafted by RUN-132 from MC-PM-2025 para 3.5.1 — \"Obtain one-time prior positive client consent (Annexure 3A)\", grounded to chars 0–129 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "430f62f6ac66",
+      "prevHash": "8298f950165e"
+    },
+    {
+      "id": "AE-0544",
+      "at": "2026-09-11T08:23:54.981Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-132",
+      "detail": "RUN-132 completed extraction and verification over MC-PM-2025 para 3.5.1 in 14s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-181.",
+      "hash": "cdf9c9515f73",
+      "prevHash": "430f62f6ac66"
+    },
+    {
+      "id": "AE-0545",
+      "at": "2026-09-11T08:24:48.359Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-182",
+      "detail": "Drafted by RUN-133 from MC-PM-2025 para 3.5.2 — \"Include dissent option in consent form for associate/related party securities\", grounded to chars 0–200 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9ceef3a83002",
+      "prevHash": "cdf9c9515f73"
+    },
+    {
+      "id": "AE-0546",
+      "at": "2026-09-11T08:24:48.359Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-183",
+      "detail": "Drafted by RUN-133 from MC-PM-2025 para 3.5.2 — \"Include option in consent form for client-set limit on associate/related party investments\", grounded to chars 201–406 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "5f976e005cfe",
+      "prevHash": "9ceef3a83002"
+    },
+    {
+      "id": "AE-0547",
+      "at": "2026-09-11T08:24:48.359Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-133",
+      "detail": "RUN-133 completed extraction and verification over MC-PM-2025 para 3.5.2 in 50s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-182, OBL-183.",
+      "hash": "160f301f2e7d",
+      "prevHash": "5f976e005cfe"
+    },
+    {
+      "id": "AE-0548",
+      "at": "2026-09-11T08:25:08.615Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-134",
+      "detail": "RUN-134 failed on MC-PM-2025 para 3.5.3. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1138 (line 1 column 1139). Nothing was drafted and nothing entered the register.",
+      "hash": "42188e5a3524",
+      "prevHash": "160f301f2e7d"
+    },
+    {
+      "id": "AE-0549",
+      "at": "2026-09-11T08:25:46.578Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-184",
+      "detail": "Drafted by RUN-135 from MC-PM-2025 para 3.5.4 — \"Obtain consent from new clients at the time of entering into the agreement\", grounded to chars 0–204 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "b7ac3ccb397e",
+      "prevHash": "42188e5a3524"
+    },
+    {
+      "id": "AE-0550",
+      "at": "2026-09-11T08:25:46.578Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-135",
+      "detail": "RUN-135 completed extraction and verification over MC-PM-2025 para 3.5.4 in 35s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-184.",
+      "hash": "6b13fe236610",
+      "prevHash": "b7ac3ccb397e"
+    },
+    {
+      "id": "AE-0551",
+      "at": "2026-09-11T08:26:12.594Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-185",
+      "detail": "Drafted by RUN-136 from MC-PM-2025 para 3.5.5 — \"Obtain prior consent of existing clients via supplementary agreement\", grounded to chars 0–133 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "a081bb0f3663",
+      "prevHash": "6b13fe236610"
+    },
+    {
+      "id": "AE-0552",
+      "at": "2026-09-11T08:26:12.594Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-136",
+      "detail": "RUN-136 completed extraction and verification over MC-PM-2025 para 3.5.5 in 22s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-185.",
+      "hash": "13c2e06ebebd",
+      "prevHash": "a081bb0f3663"
+    },
+    {
+      "id": "AE-0553",
+      "at": "2026-09-11T08:27:04.656Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-186",
+      "detail": "Drafted by RUN-137 from MC-PM-2025 para 3.5.6 — \"Obtain client consent for associate/related party investments at onboarding\", grounded to chars 18–176 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "1477f28f0d10",
+      "prevHash": "13c2e06ebebd"
+    },
+    {
+      "id": "AE-0554",
+      "at": "2026-09-11T08:27:04.656Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-187",
+      "detail": "Drafted by RUN-137 from MC-PM-2025 para 3.5.6 — \"Get client consent before fresh investments in associates'/related parties' securities\", grounded to chars 199–344 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "194d2662b207",
+      "prevHash": "1477f28f0d10"
+    },
+    {
+      "id": "AE-0555",
+      "at": "2026-09-11T08:27:04.656Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-137",
+      "detail": "RUN-137 completed extraction and verification over MC-PM-2025 para 3.5.6 in 50s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-186, OBL-187.",
+      "hash": "74fbb39868be",
+      "prevHash": "194d2662b207"
+    },
+    {
+      "id": "AE-0556",
+      "at": "2026-09-11T08:28:20.118Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-138",
+      "detail": "RUN-138 was stopped by the verifier on MC-PM-2025 para 3.5.8. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "ae093372567b",
+      "prevHash": "74fbb39868be"
+    },
+    {
+      "id": "AE-0557",
+      "at": "2026-09-11T08:28:53.796Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-188",
+      "detail": "Drafted by RUN-139 from MC-PM-2025 para 3.5.9 — \"Maintain records of consents, passive breaches, rectification and waivers\", grounded to chars 0–130 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "f96a0087bfd0",
+      "prevHash": "ae093372567b"
+    },
+    {
+      "id": "AE-0558",
+      "at": "2026-09-11T08:28:53.796Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-139",
+      "detail": "RUN-139 completed extraction and verification over MC-PM-2025 para 3.5.9 in 30s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-188.",
+      "hash": "223479456988",
+      "prevHash": "f96a0087bfd0"
+    },
+    {
+      "id": "AE-0559",
+      "at": "2026-09-11T08:29:36.296Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-189",
+      "detail": "Drafted by RUN-140 from MC-PM-2025 para 3.6.1 — \"No investment in unrated securities of related parties or associates\", grounded to chars 55–186 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "84d1b601f753",
+      "prevHash": "223479456988"
+    },
+    {
+      "id": "AE-0560",
+      "at": "2026-09-11T08:29:36.296Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-190",
+      "detail": "Drafted by RUN-140 from MC-PM-2025 para 3.6.1 — \"Invest clients' funds per Board-specified credit ratings\", grounded to chars 252–400 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "330b4aa88562",
+      "prevHash": "84d1b601f753"
+    },
+    {
+      "id": "AE-0561",
+      "at": "2026-09-11T08:29:36.296Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-140",
+      "detail": "RUN-140 completed extraction and verification over MC-PM-2025 para 3.6.1 in 39s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-189, OBL-190.",
+      "hash": "2a862b34e665",
+      "prevHash": "330b4aa88562"
+    },
+    {
+      "id": "AE-0562",
+      "at": "2026-09-11T08:30:00.340Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-141",
+      "detail": "RUN-141 was stopped by the verifier on MC-PM-2025 para 3.6.2. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "c1412ba2df1d",
+      "prevHash": "2a862b34e665"
+    },
+    {
+      "id": "AE-0563",
+      "at": "2026-09-11T08:32:34.431Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-191",
+      "detail": "Drafted by RUN-142 from MC-PM-2025 para 3.6.3 — \"No investment in below investment grade listed securities\", grounded to chars 76–149 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e80325c8c291",
+      "prevHash": "c1412ba2df1d"
+    },
+    {
+      "id": "AE-0564",
+      "at": "2026-09-11T08:32:34.431Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-192",
+      "detail": "Drafted by RUN-142 from MC-PM-2025 para 3.6.3 — \"Limit unlisted unrated investments to 10% of client AUM, excluding related parties\", grounded to chars 178–346 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c1f12a6a0eb3",
+      "prevHash": "e80325c8c291"
+    },
+    {
+      "id": "AE-0565",
+      "at": "2026-09-11T08:32:34.431Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-193",
+      "detail": "Drafted by RUN-142 from MC-PM-2025 para 3.6.3 — \"Keep unlisted unrated debt and hybrid securities within 25% unlisted limit\", grounded to chars 348–549 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "f30970933a3e",
+      "prevHash": "c1f12a6a0eb3"
+    },
+    {
+      "id": "AE-0566",
+      "at": "2026-09-11T08:32:34.431Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-142",
+      "detail": "RUN-142 completed extraction and verification over MC-PM-2025 para 3.6.3 in 151s. Five of five verifier checks passed. 3 obligation(s) drafted and held at the human gate: OBL-191, OBL-192, OBL-193.",
+      "hash": "76a5a982a4b7",
+      "prevHash": "f30970933a3e"
+    },
+    {
+      "id": "AE-0567",
+      "at": "2026-09-11T08:32:42.059Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-143",
+      "detail": "RUN-143 completed extraction and verification over MC-PM-2025 para 3.7.1 in 5s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "df54753bb546",
+      "prevHash": "76a5a982a4b7"
+    },
+    {
+      "id": "AE-0568",
+      "at": "2026-09-11T08:33:38.727Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-194",
+      "detail": "Drafted by RUN-144 from MC-PM-2025 para 3.7.2 — \"Disclose conflicts of interest for associate/related-party securities to advisory clients\", grounded to chars 71–266 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9cb0aa9cfe67",
+      "prevHash": "df54753bb546"
+    },
+    {
+      "id": "AE-0569",
+      "at": "2026-09-11T08:33:38.727Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-195",
+      "detail": "Drafted by RUN-144 from MC-PM-2025 para 3.7.2 — \"Disclose credit rating of all securities while giving advice\", grounded to chars 417–507 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "2a6d5b31d526",
+      "prevHash": "9cb0aa9cfe67"
+    },
+    {
+      "id": "AE-0570",
+      "at": "2026-09-11T08:33:38.727Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-144",
+      "detail": "RUN-144 completed extraction and verification over MC-PM-2025 para 3.7.2 in 53s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-194, OBL-195.",
+      "hash": "fbe408c246ce",
+      "prevHash": "2a6d5b31d526"
+    },
+    {
+      "id": "AE-0571",
+      "at": "2026-09-11T08:39:07.280Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-158",
+      "detail": "Approved by Compliance Officer at the human gate — \"No use of one client's funds for another client\", grounded to MC-PM-2025 para 2.2.2.2, chars 0–76. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-107.",
+      "hash": "1592bdb62220",
+      "prevHash": "fbe408c246ce"
+    },
+    {
+      "id": "AE-0572",
+      "at": "2026-09-11T08:39:07.298Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-159",
+      "detail": "Approved by Compliance Officer at the human gate — \"Levy only statutory charges at direct client on-boarding\", grounded to MC-PM-2025 para 2.3.3, chars 0–100. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-108.",
+      "hash": "e8f121d0805c",
+      "prevHash": "1592bdb62220"
+    },
+    {
+      "id": "AE-0573",
+      "at": "2026-09-11T08:39:07.308Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-162",
+      "detail": "Approved by Compliance Officer at the human gate — \"Daily reconciliation of client-wise funds with bank account\", grounded to MC-PM-2025 para 2.2.2.4, chars 0–117. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-111.",
+      "hash": "8a58178de0db",
+      "prevHash": "e8f121d0805c"
+    },
+    {
+      "id": "AE-0574",
+      "at": "2026-09-11T08:39:07.317Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-163",
+      "detail": "Approved by Compliance Officer at the human gate — \"Pay fees or commission to distributors only on trail-basis\", grounded to MC-PM-2025 para 2.4.1.2, chars 0–59. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-112.",
+      "hash": "545f94015ea8",
+      "prevHash": "8a58178de0db"
+    },
+    {
+      "id": "AE-0575",
+      "at": "2026-09-11T08:39:07.325Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-164",
+      "detail": "Approved by Compliance Officer at the human gate — \"Pay distributor fees or commission only from fees received by Portfolio Managers\", grounded to MC-PM-2025 para 2.4.1.2, chars 69–156. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-112.",
+      "hash": "a8bb7253f323",
+      "prevHash": "545f94015ea8"
+    },
+    {
+      "id": "AE-0576",
+      "at": "2026-09-11T08:39:07.336Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-165",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain audit trail of client fund and securities management activities\", grounded to MC-PM-2025 para 2.7.4, chars 0–179. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-113.",
+      "hash": "db5ef76c9bec",
+      "prevHash": "a8bb7253f323"
+    },
+    {
+      "id": "AE-0577",
+      "at": "2026-09-11T08:39:07.345Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-166",
+      "detail": "Approved by Compliance Officer at the human gate — \"Time stamp order placement, execution and trade allocation\", grounded to MC-PM-2025 para 2.7.4, chars 189–288. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-113.",
+      "hash": "cf84cafe875c",
+      "prevHash": "db5ef76c9bec"
+    },
+    {
+      "id": "AE-0578",
+      "at": "2026-09-11T08:39:07.354Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-167",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure DT is suitably staffed\", grounded to MC-PM-2025 para 2.7.2.2, chars 0–59. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-114.",
+      "hash": "eeaa63568e0e",
+      "prevHash": "cf84cafe875c"
+    },
+    {
+      "id": "AE-0579",
+      "at": "2026-09-11T08:39:07.363Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-177",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure compliance with Board-specified prudential investment limits\", grounded to MC-PM-2025 para 3.4.1, chars 66–185. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-128.",
+      "hash": "21376b2e5c6d",
+      "prevHash": "eeaa63568e0e"
+    },
+    {
+      "id": "AE-0580",
+      "at": "2026-09-11T08:39:07.371Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-178",
+      "detail": "Approved by Compliance Officer at the human gate — \"Cap investment in securities of own associates/related parties at 30% of client AUM\", grounded to MC-PM-2025 para 3.4.2, chars 0–205. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-129.",
+      "hash": "9b558b4da708",
+      "prevHash": "21376b2e5c6d"
+    },
+    {
+      "id": "AE-0581",
+      "at": "2026-09-11T08:39:07.378Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-179",
+      "detail": "Approved by Compliance Officer at the human gate — \"Comply with sub-limits on associate/related party investments by instrument class\", grounded to MC-PM-2025 para 3.4.2, chars 206–567. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-129.",
+      "hash": "7625841c9eec",
+      "prevHash": "9b558b4da708"
+    },
+    {
+      "id": "AE-0582",
+      "at": "2026-09-11T08:39:07.387Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-181",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain one-time prior positive client consent (Annexure 3A)\", grounded to MC-PM-2025 para 3.5.1, chars 0–129. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-132.",
+      "hash": "0569c7cc612d",
+      "prevHash": "7625841c9eec"
+    },
+    {
+      "id": "AE-0583",
+      "at": "2026-09-11T08:39:07.396Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-182",
+      "detail": "Approved by Compliance Officer at the human gate — \"Include dissent option in consent form for associate/related party securities\", grounded to MC-PM-2025 para 3.5.2, chars 0–200. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-133.",
+      "hash": "3fb5c19eb6e2",
+      "prevHash": "0569c7cc612d"
+    },
+    {
+      "id": "AE-0584",
+      "at": "2026-09-11T08:39:07.403Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-183",
+      "detail": "Approved by Compliance Officer at the human gate — \"Include option in consent form for client-set limit on associate/related party investments\", grounded to MC-PM-2025 para 3.5.2, chars 201–406. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-133.",
+      "hash": "7bdd7bced8ef",
+      "prevHash": "3fb5c19eb6e2"
+    },
+    {
+      "id": "AE-0585",
+      "at": "2026-09-11T08:39:07.410Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-184",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain consent from new clients at the time of entering into the agreement\", grounded to MC-PM-2025 para 3.5.4, chars 0–204. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-135.",
+      "hash": "0172b1cb9567",
+      "prevHash": "7bdd7bced8ef"
+    },
+    {
+      "id": "AE-0586",
+      "at": "2026-09-11T08:39:07.418Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-185",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain prior consent of existing clients via supplementary agreement\", grounded to MC-PM-2025 para 3.5.5, chars 0–133. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-136.",
+      "hash": "25f5b1478378",
+      "prevHash": "0172b1cb9567"
+    },
+    {
+      "id": "AE-0587",
+      "at": "2026-09-11T08:39:07.425Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-187",
+      "detail": "Approved by Compliance Officer at the human gate — \"Get client consent before fresh investments in associates'/related parties' securities\", grounded to MC-PM-2025 para 3.5.6, chars 199–344. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-137.",
+      "hash": "602dbf39e5eb",
+      "prevHash": "25f5b1478378"
+    },
+    {
+      "id": "AE-0588",
+      "at": "2026-09-11T08:39:07.432Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-188",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain records of consents, passive breaches, rectification and waivers\", grounded to MC-PM-2025 para 3.5.9, chars 0–130. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-139.",
+      "hash": "5ecd6a9954c7",
+      "prevHash": "602dbf39e5eb"
+    },
+    {
+      "id": "AE-0589",
+      "at": "2026-09-11T08:39:07.439Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-189",
+      "detail": "Approved by Compliance Officer at the human gate — \"No investment in unrated securities of related parties or associates\", grounded to MC-PM-2025 para 3.6.1, chars 55–186. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-140.",
+      "hash": "7125f94ce776",
+      "prevHash": "5ecd6a9954c7"
+    },
+    {
+      "id": "AE-0590",
+      "at": "2026-09-11T08:39:07.445Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-190",
+      "detail": "Approved by Compliance Officer at the human gate — \"Invest clients' funds per Board-specified credit ratings\", grounded to MC-PM-2025 para 3.6.1, chars 252–400. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-140.",
+      "hash": "dcb9038eca60",
+      "prevHash": "7125f94ce776"
+    },
+    {
+      "id": "AE-0591",
+      "at": "2026-09-11T08:39:07.624Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-160",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Use only APMI-empanelled valuation agencies for debt and money market securities\", drafted by RUN-110 from MC-PM-2025 para 2.9.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "95da494bf7e4",
+      "prevHash": "dcb9038eca60"
+    },
+    {
+      "id": "AE-0592",
+      "at": "2026-09-11T08:39:07.639Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-161",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Retain ultimate responsibility for fair valuation of portfolio securities\", drafted by RUN-110 from MC-PM-2025 para 2.9.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "4fb8cf65c6cb",
+      "prevHash": "95da494bf7e4"
+    },
+    {
+      "id": "AE-0593",
+      "at": "2026-09-11T08:39:07.650Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-168",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Track OTO/OTM RFQ trades vs total CB secondary trades on rolling 3-month basis\", drafted by RUN-116 from MC-PM-2025 para 3.1.1.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "b7309d1f393c",
+      "prevHash": "4fb8cf65c6cb"
+    },
+    {
+      "id": "AE-0594",
+      "at": "2026-09-11T08:39:07.659Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-169",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Execute both-side CB trades through RFQ in OTO mode\", drafted by RUN-117 from MC-PM-2025 para 3.1.1.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "ec80dd089f8e",
+      "prevHash": "b7309d1f393c"
+    },
+    {
+      "id": "AE-0595",
+      "at": "2026-09-11T08:39:07.668Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-170",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Ensure at least 10% of CB secondary market trades executed via RFQ OTO/OTM mode\", drafted by RUN-118 from MC-PM-2025 para 3.1.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "170d8f336b48",
+      "prevHash": "ec80dd089f8e"
+    },
+    {
+      "id": "AE-0596",
+      "at": "2026-09-11T08:39:07.677Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-171",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Appoint SEBI registered Custodians before dealing in ETCDs\", drafted by RUN-121 from MC-PM-2025 para 3.3.2.1. Not entered in the register. The draft and this decision are retained.",
+      "hash": "f1173001f602",
+      "prevHash": "170d8f336b48"
+    },
+    {
+      "id": "AE-0597",
+      "at": "2026-09-11T08:39:07.686Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-172",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Ensure ETCD participation for clients complies with applicable rules and position limits\", drafted by RUN-122 from MC-PM-2025 para 3.3.2.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "2e51f537a2ef",
+      "prevHash": "f1173001f602"
+    },
+    {
+      "id": "AE-0598",
+      "at": "2026-09-11T08:39:07.695Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-173",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Dispose of physical commodities received via delivery within agreed timelines\", drafted by RUN-124 from MC-PM-2025 para 3.3.2.5. Not entered in the register. The draft and this decision are retained.",
+      "hash": "60470140af1e",
+      "prevHash": "2e51f537a2ef"
+    },
+    {
+      "id": "AE-0599",
+      "at": "2026-09-11T08:39:07.707Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-174",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Ensure FPI clients meet all SEBI conditions for ETCD participation\", drafted by RUN-125 from MC-PM-2025 para 3.3.2.6. Not entered in the register. The draft and this decision are retained.",
+      "hash": "415111789d3d",
+      "prevHash": "60470140af1e"
+    },
+    {
+      "id": "AE-0600",
+      "at": "2026-09-11T08:39:07.714Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-175",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Periodic client reports on Exchange Traded Commodity Derivatives exposure\", drafted by RUN-126 from MC-PM-2025 para 3.3.2.7. Not entered in the register. The draft and this decision are retained.",
+      "hash": "6c1b1e03d01a",
+      "prevHash": "415111789d3d"
+    },
+    {
+      "id": "AE-0601",
+      "at": "2026-09-11T08:39:07.723Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-176",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Report ETCD exposure under 'Commodity Derivatives' heading in monthly SEBI reports\", drafted by RUN-127 from MC-PM-2025 para 3.3.2.8. Not entered in the register. The draft and this decision are retained.",
+      "hash": "54323f899308",
+      "prevHash": "6c1b1e03d01a"
+    },
+    {
+      "id": "AE-0602",
+      "at": "2026-09-11T08:39:07.730Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-180",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Obtain prior client consent before investing in related party or associate securities\", drafted by RUN-131 from MC-PM-2025 para 3.5. Not entered in the register. The draft and this decision are retained.",
+      "hash": "f7a4339fdc68",
+      "prevHash": "54323f899308"
+    },
+    {
+      "id": "AE-0603",
+      "at": "2026-09-11T08:39:07.738Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-186",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Obtain client consent for associate/related party investments at onboarding\", drafted by RUN-137 from MC-PM-2025 para 3.5.6. Not entered in the register. The draft and this decision are retained.",
+      "hash": "5cecd63b44cd",
+      "prevHash": "f7a4339fdc68"
+    },
+    {
+      "id": "AE-0604",
+      "at": "2026-09-11T08:39:07.745Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-191",
+      "detail": "Rejected by Compliance Officer at the human gate — \"No investment in below investment grade listed securities\", drafted by RUN-142 from MC-PM-2025 para 3.6.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "952c5068dbd6",
+      "prevHash": "5cecd63b44cd"
+    },
+    {
+      "id": "AE-0605",
+      "at": "2026-09-11T08:39:07.752Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-192",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Limit unlisted unrated investments to 10% of client AUM, excluding related parties\", drafted by RUN-142 from MC-PM-2025 para 3.6.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "e7d5cab7b9da",
+      "prevHash": "952c5068dbd6"
+    },
+    {
+      "id": "AE-0606",
+      "at": "2026-09-11T08:39:07.759Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-193",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Keep unlisted unrated debt and hybrid securities within 25% unlisted limit\", drafted by RUN-142 from MC-PM-2025 para 3.6.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "f04bf2449c6c",
+      "prevHash": "e7d5cab7b9da"
+    },
+    {
+      "id": "AE-0607",
+      "at": "2026-09-11T08:39:07.766Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-194",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Disclose conflicts of interest for associate/related-party securities to advisory clients\", drafted by RUN-144 from MC-PM-2025 para 3.7.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "c7f9c78ed6b7",
+      "prevHash": "f04bf2449c6c"
+    },
+    {
+      "id": "AE-0608",
+      "at": "2026-09-11T08:39:07.772Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-195",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Disclose credit rating of all securities while giving advice\", drafted by RUN-144 from MC-PM-2025 para 3.7.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "39fbe1ebd00a",
+      "prevHash": "c7f9c78ed6b7"
     }
   ]
 }
