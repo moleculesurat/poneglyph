@@ -5,15 +5,17 @@ live. Three rules never change: every duty points to the exact sentence SEBI wro
 until a named person at Molecule signs it; what we cannot prove shows as a gap.
 
 ```
-WHERE WE ARE
-  PMS          86 approved duties from the two master circulars (40 PMS / 46 AIF post-registration), due dates
-               from the sentences, evidence attach, audit chain. Runs locally only. PM Regulations 2020 collected
-               (10 chapters incl. Schedules II–IV, 144 units) — not yet extracted.
+WHERE WE ARE (2026-09-11)
+  PMS          register 168 approved (122 PMS / 46 AIF post-registration), 28 rejected or withdrawn, all decided by
+               Pranjal from review sheets; 2 evidence files bound. Corpus = PMS master circular (287 paras) + PM
+               Regulations 2020 incl. Schedules II–IV (144 units). Extraction: MC chapters 1–5 done (all "shall"
+               paragraphs run, decided); chapters 6–7 and the Regulations queued (task 24). Runs locally only.
   AIF          nothing on registration — AIF Regulations 2012 not in the corpus. Category I and III paragraphs
-               were never drafted; applicability rejects anything not Category II.
+               were never drafted; applicability rejects anything not Category II. Waits for phase 2.
   WATCHTOWER   hourly RSS poll. Works, but the feed is 29/30 enforcement orders and missed this month's AIF
-               circular. Nothing happens after a catch.
-  ELSE         runs locally (wrangler dev); target is Molecule's AWS, not Cloudflare; officer names are placeholders; no MCP.
+               circular. Nothing happens after a catch. Real sources listed below, not yet wired (1d).
+  ELSE         runs locally (wrangler dev); target is Molecule's AWS, study first (1e-i); officer names are
+               placeholders; no MCP.
 
 THE SECTIONS — in the order of the firm's life
   0 PROFILE            who Molecule is. Adds one fact per AIF category: stage of Cat I, Cat II, Cat III
