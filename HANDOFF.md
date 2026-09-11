@@ -69,7 +69,9 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   40 drafts pending Pranjal's decisions. Model failures (glm-5.3-flash): invalid JSON on long paras, empty evidenceSpec on
   lead-ins — 2.2.2.2, 2.3.3, 2.5.1.2, 2.9.2, 2.2.2.4, 2.4.1.2, 2.7.4 + re-run 2.7.2.2 (mis-titled). Task 22 ACCEPTED 2026-09-11 (9f09f5f): withdraw route, `rejected` persisted, OBL-157 withdrawn, pm-3 run -> 38 drafts,
   REVIEW-2026-09-11-pm-3.md (20 approve / 18 reject: debt/CB, ETCD, non-discretionary, advisory not applicable).
-  Task 23 ISSUED: extract.ts retry-on-invalid-JSON; re-run 3.5.3; run pm-4 (16) + pm-5 (28).
+  Task 23 ACCEPTED 2026-09-11 (be3d5b2): parse errors fed back as correction; pm-4 + pm-5 -> 32 drafts,
+  REVIEW-2026-09-11-pm-4-5.md (30 approve / 2 reject). Holdouts: 3.5.3 (bad JSON twice), 4.7.1 (ungrounded), 5.4.4, 5.6.4.
+  Task 24 ISSUED: pm-6 + pm-7, then REG-PM-2020 pmr-2.
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
 - Deployment: task 1e-i = infra STUDY (worker, no code) before any port; Pranjal schedules it.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
