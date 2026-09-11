@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "39fbe1ebd00a",
+  "tip": "d14ff2c90e88",
   "obligations": [
     {
       "id": "OBL-001",
@@ -5246,6 +5246,1122 @@
       "createdByRun": "RUN-140",
       "hash": "e72d6d4f661f",
       "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-196",
+      "title": "Do not organize investment portfolios as 'Schemes' akin to Mutual Fund Schemes",
+      "summary": "Portfolio Managers must structure their investment offerings and present them to clients without packaging portfolios into scheme-like structures that resemble Mutual Fund Schemes.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.5.1.2",
+        "excerpt": "Portfolio Managers shall not organize investment portfolios as ‘Schemes’ akin to Mutual Fund Schemes while marketing their services to clients.",
+        "charStart": 0,
+        "charEnd": 143
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-196",
+        "name": "Non-scheme portfolio structuring and marketing review",
+        "description": "A product-structuring and marketing compliance review that checks, before any client-facing offering or marketing material is used, that portfolios are not organized or presented as 'Schemes' similar to mutual fund schemes, with sign-off from compliance.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Approved product-structuring policy and marketing material sign-off records confirming no portfolio is organized or marketed as a scheme akin to a mutual fund scheme."
+        },
+        {
+          "kind": "live-scan",
+          "description": "Scan of client-facing marketing materials and portfolio documentation for any scheme-style packaging or scheme-like terminology."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-145",
+      "hash": "7193d9ec8ce0",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-197",
+      "title": "Amend portfolio management agreement clause to revised wording",
+      "summary": "Portfolio Managers who have incorporated the superseded clause, or a similar clause, in their agreements must modify it to the exact revised wording set out in the circular.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.2.3",
+        "excerpt": "Portfolio Managers who have incorporated the said clause or similar clause shall modify it as below",
+        "charStart": 30,
+        "charEnd": 129
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-197",
+        "name": "Agreement clause review and amendment",
+        "description": "Review the standard portfolio management agreement template and executed client agreements to identify the superseded clause or any similar wording, and amend every affected agreement to the revised clause text prescribed in the circular.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Amended portfolio management agreement or amendment letter showing the clause replaced with the revised wording prescribed in the circular"
+        },
+        {
+          "kind": "data-check",
+          "description": "Inventory of client agreements identified as containing the superseded or a similar clause, each marked as modified with the date of amendment"
+        },
+        {
+          "kind": "live-scan",
+          "description": "Scan of the current standard agreement template confirming the revised clause wording is in force for new agreements"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-148",
+      "hash": "d44d35a4b950",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-198",
+      "title": "Client agreement must include annexure of all fees and charges payable to PM",
+      "summary": "Every client agreement must carry a separate annexure that lists all fees and charges payable to the portfolio manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.1",
+        "excerpt": "the client agreement shall contain a separate annexure which shall list all fees and charges payable to the portfolio manager",
+        "charStart": 75,
+        "charEnd": 200
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-198",
+        "name": "Client agreement annexure verification",
+        "description": "Maintain the master client agreement template with the separate fees and charges annexure and verify its presence before executing any client agreement.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Executed client agreement containing the separate fees and charges annexure"
+        },
+        {
+          "kind": "data-check",
+          "description": "Template sign-off confirming every active client agreement format includes the fee annexure"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-149",
+      "hash": "0ae54b359f87",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-199",
+      "title": "Annexure must illustrate all charges on Rs.50 lakh sample portfolio over one year",
+      "summary": "The annexure must set out details of the levy of all applicable charges on a sample portfolio of Rs.50 lacs over a period of one year.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.1",
+        "excerpt": "The said annexure shall contain details of levy of all applicable charges on a sample portfolio of Rs.50 lacs over a period of one year",
+        "charStart": 202,
+        "charEnd": 337
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-199",
+        "name": "Sample portfolio charge illustration",
+        "description": "Compute the levy of all applicable charges on a Rs.50 lakh sample portfolio over a one-year period and embed those details in the annexure, refreshing it whenever the fee structure changes.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Annexure illustration showing levy of all applicable charges on a Rs.50 lakh sample portfolio over one year"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-149",
+      "hash": "2fe04c3443e0",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-200",
+      "title": "Show fees and charges for three portfolio value scenarios",
+      "summary": "The fees and charges in the annexure must be shown for three scenarios: portfolio value increasing by 20%, decreasing by 20%, or remaining unchanged.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.1",
+        "excerpt": "The fees and charges shall be shown for 3 scenarios viz. when the portfolio value increases by 20%, decreases by 20% or remains unchanged",
+        "charStart": 339,
+        "charEnd": 476
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-200",
+        "name": "Three-scenario fee display",
+        "description": "Configure the annexure to present fees and charges under all three mandated portfolio value scenarios (up 20%, down 20%, unchanged) before the agreement is issued to the client.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Annexure extract displaying fees and charges under the 20% increase, 20% decrease and unchanged value scenarios"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-149",
+      "hash": "2ce0ca4c0a47",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-201",
+      "title": "Add performance-fee illustrations to fee annexure of PMS-client agreement",
+      "summary": "Whenever performance fees are charged to a new client onboarded on or after October 01, 2024, the fees-and-charges annexure to the PMS-client agreement must also include one-year and multi-year fee illustrations covering scenarios where the portfolio value increases, decreases, or stays unchanged, using the standard formats prescribed by APMI.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.2",
+        "excerpt": "For new clients, on-boarded on or after October 01, 2024, whenever performance fees is charged to such client, the annexure for fees and charges to the PMS-client agreement, shall also contain the following additional fee illustrations",
+        "charStart": 1,
+        "charEnd": 236
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-201",
+        "name": "Fee annexure illustration gate",
+        "description": "Before executing any PMS-client agreement that provides for performance fees with a client onboarded on or after October 01, 2024, the fees-and-charges annexure is generated with the prescribed one-year and multi-year illustrations covering portfolio value increase, decrease and unchanged scenarios, and is verified as attached to the agreement.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed fees-and-charges annexure showing the one-year and multi-year fee illustrations for a new client charged performance fees"
+        },
+        {
+          "kind": "data-check",
+          "description": "Report confirming every PMS-client agreement with performance fees onboarded on or after October 01, 2024 has an annexure containing the required illustrations"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-150",
+      "hash": "5eb752c53bb8",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-202",
+      "title": "Incorporate high watermark principle in the fee illustrations",
+      "summary": "The fee illustrations included in the fees-and-charges annexure must suitably incorporate the high watermark principle.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.2",
+        "excerpt": "The said illustrations shall also suitably incorporate the high watermark principle.",
+        "charStart": 479,
+        "charEnd": 563
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-202",
+        "name": "High watermark illustration validation",
+        "description": "A validation step that checks, before annexures are issued, that each one-year and multi-year fee illustration template applies the high watermark principle across all prescribed scenarios.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Validation checklist or sign-off showing the fee illustration templates incorporate the high watermark principle"
+        },
+        {
+          "kind": "data-check",
+          "description": "Template configuration check confirming high watermark logic is applied in the fee illustration engine"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-150",
+      "hash": "4eaccb150db5",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-203",
+      "title": "Annexure on fees and charges in at least size 11 font",
+      "summary": "Every annexure on fees and charges must be prepared so that all text and figures in it use a font size of at least 11.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.3",
+        "excerpt": "All text and figures in the annexure on fees and charges shall be at least in size 11 font.",
+        "charStart": 0,
+        "charEnd": 91
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-203",
+        "name": "Annexure font size check",
+        "description": "Before the annexure on fees and charges is finalised, filed or published, the document is reviewed to confirm that all text and figures are rendered in a font size of at least 11, and any smaller text is reformatted before release.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "The final annexure on fees and charges as filed or published, showing that all text and figures are in at least size 11 font."
+        },
+        {
+          "kind": "data-check",
+          "description": "A document formatting validation confirming that no text or figure in the annexure is below size 11 font."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-151",
+      "hash": "0298a0f862bc",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-204",
+      "title": "Ensure client understands fee and charge structure at on-boarding",
+      "summary": "At the time of on-boarding a client, the Portfolio Manager must ensure the client has understood the structure for fees and charges.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.4",
+        "excerpt": "While on-boarding a client, Portfolio Manager shall ensure that: a. the client has understood the structure for fees and charges.",
+        "charStart": 1,
+        "charEnd": 130
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-204",
+        "name": "Onboarding fee-structure disclosure check",
+        "description": "The on-boarding workflow includes a mandatory step where the fee and charge structure is explained to the client and their understanding is recorded; client on-boarding cannot be completed until this step is done and evidenced in the client file.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Client on-boarding record containing the client's acknowledgement/note that they have understood the structure for fees and charges"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-152",
+      "hash": "630b2f0850be",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-205",
+      "title": "Obtain separately signed fees and charges annexure with client note",
+      "summary": "The new client must separately sign the annexure on fees and charges and add a note that they have understood the fee structure — handwritten for physical on-boarding, or typed/electronically written for digital on-boarding.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.4",
+        "excerpt": "b. the new client has separately signed the annexure on fees and charges and added a note, that they have understood the structure for fees and charges, in the following manner:",
+        "charStart": 131,
+        "charEnd": 308
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-205",
+        "name": "Fees annexure capture by onboarding mode",
+        "description": "The on-boarding workflow captures a separately signed annexure on fees and charges bearing the client's note of understanding: handwritten for clients on-boarded through physical mode, and typed on keyboard or written electronically using fingers/a stylus pen for clients on-boarded through digital mode. On-boarding is blocked until the correctly executed annexure is captured.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Separately signed annexure on fees and charges with the client's note of understanding — handwritten for physical on-boarding, typed or electronically written (finger/stylus) for digital on-boarding"
+        },
+        {
+          "kind": "data-check",
+          "description": "Onboarding system check confirming the signed fees and charges annexure is present on the client record, with mode matching the on-boarding channel"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-152",
+      "hash": "650aa801869b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-206",
+      "title": "Levy only the fees and charges specified in the PMS-client agreement annexure",
+      "summary": "The portfolio manager must not levy any fee or charge on a client beyond those set out in the annexure on fees and charges to the PMS-client agreement.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.3.6",
+        "excerpt": "Portfolio Manager shall ensure that no additional fees and charges are levied, other than those specified in the annexure (on fees and charges) to the PMS-client agreement.",
+        "charStart": 0,
+        "charEnd": 172
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-206",
+        "name": "Fee schedule annexure check",
+        "description": "Before any fee or charge is billed to a client, the billing process verifies that the charge is listed in the annexure on fees and charges to the PMS-client agreement; any charge not listed there is blocked and escalated to compliance.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Reconciliation report matching each fee and charge levied on client accounts against the fee annexure of the PMS-client agreement, with any unmatched charges flagged as exceptions."
+        },
+        {
+          "kind": "document",
+          "description": "Executed PMS-client agreement including the annexure on fees and charges, retained as the approved fee schedule reference."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-153",
+      "hash": "605dd1b6fd4e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-207",
+      "title": "Disclose 3-year portfolio performance by investment category",
+      "summary": "Portfolio Managers must disclose the performance of portfolios grouped by investment category covering the past three years, in the format prescribed by Annexure 4C of the Master Circular.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.5.1",
+        "excerpt": "Portfolio Managers shall disclose the performance of portfolios grouped by investment category for the past three years as per Annexure 4C of this Master Circular.",
+        "charStart": 46,
+        "charEnd": 209
+      },
+      "type": "periodic",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-207",
+        "name": "Annexure 4C performance disclosure",
+        "description": "Compile portfolio performance figures grouped by investment category for the trailing three years, present them in the Annexure 4C format, verify accuracy against internally computed performance data, and make the disclosure as required by the PM Regulations.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Completed Annexure 4C disclosure showing portfolio performance grouped by investment category for the past three years"
+        },
+        {
+          "kind": "data-check",
+          "description": "Check that each disclosed performance figure reconciles to internally computed portfolio performance for the corresponding investment category and period"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-154",
+      "hash": "a48bd75fa875",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-208",
+      "title": "Record and justify any change in benchmark indices",
+      "summary": "If a portfolio manager changes a benchmark index at a later date, the change must be recorded and supported with specific reasons justifying it.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.5.2.2",
+        "excerpt": "Any change in the benchmark indices at a later date shall be recorded and justified with specific reasons thereof.",
+        "charStart": 106,
+        "charEnd": 220
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-208",
+        "name": "Benchmark change documentation control",
+        "description": "Whenever the firm changes a selected benchmark index, it logs the change in a benchmark register and prepares a written justification stating the specific reasons for the change, retained for subsequent review.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Benchmark change register entry showing the previous index, the new index, and the date the change was made."
+        },
+        {
+          "kind": "document",
+          "description": "Written justification note recording the specific reasons for the change in benchmark indices."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-155",
+      "hash": "80b07bd2232b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-209",
+      "title": "Disclose portfolio performance to clients using TWRR indicators for preceding 3 years",
+      "summary": "Portfolio managers must disclose the performance of their portfolios to clients, including performance indicators calculated on the time weighted rate of return method for each individual category of investments, covering the immediately preceding three years in the case of discretionary portfolio managers.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.5.3",
+        "excerpt": "All portfolio managers are required to disclose the performance of their portfolios to their clients, including disclosure of the performance indicators calculated on the basis of ‘time weighted rate of return’ method taking each individual category of investments for the immediately preceding three years in case of discretionary portfolio managers.",
+        "charStart": 112,
+        "charEnd": 463
+      },
+      "type": "periodic",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-209",
+        "name": "Client performance disclosure control",
+        "description": "A reporting process that computes time weighted rate of return based performance indicators for each individual category of investments over the immediately preceding three years and includes them in the performance disclosures issued to each client.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Client performance disclosure showing TWRR-based performance indicators per investment category for the immediately preceding three years"
+        },
+        {
+          "kind": "data-check",
+          "description": "Register mapping each discretionary client to dated performance disclosures covering the trailing three-year period"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-156",
+      "hash": "498fa81dc998",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-210",
+      "title": "Disclose benchmark index performance in periodical reports to clients",
+      "summary": "Portfolio managers must disclose the performance of benchmark indices in the periodical reports furnished to clients under Regulation 31 of the SEBI (Portfolio Managers) Regulations, 2020, so investors can compare portfolio performance against market movements.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.5.3",
+        "excerpt": "portfolio managers shall disclose the performance of benchmark indices in the periodical reports to be furnished to the client in terms of the PM Regulations i.e. Regulation 31 of the SEBI (Portfolio Managers) Regulations, 2020.",
+        "charStart": 744,
+        "charEnd": 972
+      },
+      "type": "periodic",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-210",
+        "name": "Benchmark performance inclusion control",
+        "description": "A step in the periodic client reporting process that verifies each report includes the performance of benchmark indices alongside the portfolio's own performance before it is issued to the client.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Periodical client report containing the benchmark index performance disclosure"
+        },
+        {
+          "kind": "data-check",
+          "description": "Log confirming benchmark index performance was included in each periodical report issued to clients"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-156",
+      "hash": "fff2768de1cb",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-211",
+      "title": "Report firm-level performance identical to combined performance of all portfolios",
+      "summary": "The Portfolio Manager must ensure that any document reporting aggregate (firm-level) performance shows exactly the same figure as the combined performance of all portfolios it manages.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.5.3.5",
+        "excerpt": "Ensure that the aggregate performance of the Portfolio Manager (firm- level performance) reported in any document shall be same as the combined performance of all the portfolios managed by the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 211
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-211",
+        "name": "Firm-level performance reconciliation",
+        "description": "Before any document containing firm-level performance is released, compute the combined performance of all managed portfolios and reconcile it against the firm-level figure stated in the document; any mismatch blocks publication until corrected.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Reconciliation output comparing firm-level performance in each published document with the computed combined performance of all portfolios, showing zero variance."
+        },
+        {
+          "kind": "document",
+          "description": "Signed-off performance reports or client-facing documents evidencing that reported firm-level performance matches the combined portfolio performance."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-157",
+      "hash": "01d6e4e55494",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-212",
+      "title": "Keep Investment Approach information uniform across all PM documents and reports",
+      "summary": "Portfolio Managers must ensure that information about the Investment Approaches they offer is consistent and uniform across regulatory reporting, client reporting, disclosure documents, marketing materials, and any other document referring to their services.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.6.1",
+        "excerpt": "The information about Investment Approaches offered by Portfolio Managers, shall be uniform across all types of regulatory reporting, client reporting, disclosure document, marketing materials and any such document which refer to services offered by Portfolio Managers.",
+        "charStart": 199,
+        "charEnd": 468
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-212",
+        "name": "IA disclosure consistency control",
+        "description": "Maintain a single master version of the Investment Approach description; before any regulatory report, client report, disclosure document or marketing material is issued, check that every reference to the Investment Approach matches the master version so that no divergent wording or figures reach clients or regulators.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Master Investment Approach document or register serving as the single source of truth for IA information"
+        },
+        {
+          "kind": "data-check",
+          "description": "Cross-document comparison log showing that IA wording in regulatory reports, client reports, disclosure documents and marketing materials matches the master IA version"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-158",
+      "hash": "3e72446f3f4f",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-213",
+      "title": "Include prescribed elements in investment approach descriptions",
+      "summary": "Any description of the investment approach that a Portfolio Manager provides must include the elements the circular prescribes for such descriptions.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.6.2",
+        "excerpt": "Any description of investment approach provided by Portfolio Managers shall, inter alia, include:",
+        "charStart": 0,
+        "charEnd": 97
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-213",
+        "name": "Investment approach description checklist",
+        "description": "Maintain an approved template and pre-issuance checklist ensuring that every description of investment approach given to clients or prospects contains all mandated elements before it is provided.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Investment approach description document (and approved template/version history) evidencing inclusion of the prescribed elements."
+        },
+        {
+          "kind": "data-check",
+          "description": "Compliance review log confirming each provided description was checked against the mandated-content checklist before delivery."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-159",
+      "hash": "0bcbaa2e7d5b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-214",
+      "title": "Report month-end AUM in Rupees crores in the said report",
+      "summary": "In the said report, the portfolio manager must indicate Assets under Management (AUM) data as on the last calendar day of each month, expressed in Rupees in crores.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.1.3",
+        "excerpt": "data pertaining to Assets under Management (“AUM”) of the portfolio manager as on the last calendar day of each month shall be indicated in Rupees in crores.",
+        "charStart": 19,
+        "charEnd": 176
+      },
+      "type": "periodic",
+      "frequency": "monthly",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-214",
+        "name": "Month-end AUM snapshot and reporting control",
+        "description": "Capture the portfolio manager's AUM as on the last calendar day of each month, convert the figure to Rupees in crores, and include it in the said report for that month.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "The monthly report showing AUM as on the last calendar day of the month stated in Rupees in crores."
+        },
+        {
+          "kind": "data-check",
+          "description": "Month-end AUM data check confirming the reported value equals the last-calendar-day AUM snapshot converted to Rupees in crores."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-161",
+      "hash": "2e0829b9d40b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-215",
+      "title": "Compliance Officer responsible for ensuring compliance with the Master Circular",
+      "summary": "The portfolio manager's Compliance Officer must ensure that the firm complies with the requirements of this Master Circular, in addition to duties under the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.1.5",
+        "excerpt": "In terms of the PM Regulations, Compliance Officer of the portfolio managers shall also be responsible for ensuring compliance with this Master Circular.",
+        "charStart": 0,
+        "charEnd": 153
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-215",
+        "name": "Compliance Officer accountability for Master Circular compliance",
+        "description": "Designate a Compliance Officer who tracks the firm's adherence to the Master Circular, monitors regulatory updates, reviews business processes for conformity, and escalates or remediates identified instances of non-compliance.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Compliance Officer appointment or designation record stating responsibility for Master Circular compliance"
+        },
+        {
+          "kind": "document",
+          "description": "Compliance monitoring or self-assessment report signed off by the Compliance Officer covering adherence to the Master Circular"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-162",
+      "hash": "472194698f73",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-216",
+      "title": "Internal audit by practicing CA or CS",
+      "summary": "The Portfolio Manager must have its internal procedures audited by a practicing Chartered Accountant or Company Secretary to judge the quality of those procedures.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.2.2.2",
+        "excerpt": "There shall be internal audit by a practicing Chartered Accountant (“CA”) or Company Secretary (“CS”) so as to judge the quality of internal procedures being followed by the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 192
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-216",
+        "name": "Internal audit engagement",
+        "description": "Engage a practicing Chartered Accountant or Company Secretary to conduct an internal audit of the Portfolio Manager's internal procedures, with scope covering the quality of those procedures, and obtain the completed audit report.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed engagement letter with the practicing CA or CS and the internal audit report issued by them"
+        },
+        {
+          "kind": "data-check",
+          "description": "Internal audit register showing auditor designation (CA/CS) and audit completion for the period"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-163",
+      "hash": "f8325861ce74",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-217",
+      "title": "Submit internal audit report to the Board",
+      "summary": "The report of the internal audit must be submitted to the Board of the Portfolio Manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.2.2.2",
+        "excerpt": "The report of the internal audit shall be submitted to the Board of the Portfolio Manager.",
+        "charStart": 193,
+        "charEnd": 283
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-217",
+        "name": "Board reporting of audit report",
+        "description": "Maintain a process to place the completed internal audit report before the Board of the Portfolio Manager and record its submission and review in Board records.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board agenda, minutes, or acknowledgement evidencing submission of the internal audit report to the Board"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-163",
+      "hash": "e54099a3187d",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-218",
+      "title": "Exercise due diligence in all operational activities",
+      "summary": "Portfolio Managers must apply due diligence in the conduct of all their operational activities.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.2.2.3",
+        "excerpt": "Portfolio Managers shall exercise due diligence in all their operational activities.",
+        "charStart": 0,
+        "charEnd": 84
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-218",
+        "name": "Operational due diligence framework",
+        "description": "Maintain a documented due diligence framework that embeds diligence checks into day-to-day operational processes, with periodic review of operational activities to confirm diligence is being exercised.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Due diligence policy covering operational activities, together with records of diligence reviews performed"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-164",
+      "hash": "afd0e417903e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-220",
+      "title": "Present TWRR with benchmark trailing return in performance communications",
+      "summary": "Whenever the Portfolio Manager communicates, advertises, publishes or mentions the performance of an Investment Approach, it must present the TWRR of the IA together with the trailing return of the selected benchmark.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.1",
+        "excerpt": "Portfolio Manager shall present the Time-weighted Rate of Return (‘TWRR’) of the IA along with the trailing return of the selected benchmark when communicating/ advertising/ publishing/ mentioning performance of an Investment Approach.",
+        "charStart": 0,
+        "charEnd": 235
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-220",
+        "name": "Performance communication review",
+        "description": "Pre-release review and approval of every performance communication, advertisement or publication to confirm it presents the Investment Approach's TWRR alongside the trailing return of the selected benchmark before it is issued.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Samples of performance communications, advertisements or publications showing the TWRR of the IA alongside the trailing return of the selected benchmark, with approval records"
+        },
+        {
+          "kind": "data-check",
+          "description": "Computation records verifying the TWRR of the Investment Approach and the trailing return of the selected benchmark used in each performance disclosure"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-172",
+      "hash": "b870dd23898c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-221",
+      "title": "Report XIRR to investors for each Investment Approach",
+      "summary": "When reporting performance to an investor, the portfolio manager must present the Extended Internal Rate of Return (XIRR) for each Investment Approach (IA) in which that investor is invested.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.2",
+        "excerpt": "Portfolio Manager shall present the Extended Internal Rate of Return (‘XIRR’) for each IA the investor invests in when reporting performance to an investor.",
+        "charStart": 0,
+        "charEnd": 156
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-221",
+        "name": "XIRR in investor performance reports",
+        "description": "Performance reports issued to each investor display the XIRR for every Investment Approach in which that investor is invested, so the investor sees the money-weighted return of their own holdings.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Sample investor performance report showing the XIRR disclosed for each IA the investor is invested in"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-173",
+      "hash": "12af105430e3",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-222",
+      "title": "Disclose min, max and median XIRR across all investors",
+      "summary": "The investor's own XIRR must be accompanied by the minimum, maximum and median XIRR returns generated across all investors in each IA the investor has invested in.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.2",
+        "excerpt": "This shall be accompanied by the minimum, maximum and median XIRR return generated across all investors in each of the IA the investor has invested in.",
+        "charStart": 157,
+        "charEnd": 308
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-222",
+        "name": "Peer XIRR distribution disclosure",
+        "description": "For each IA covered in an investor's performance report, the report populates the minimum, maximum and median XIRR across all investors in that IA alongside the investor's individual XIRR.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Report extract or template check confirming minimum, maximum and median XIRR across all investors are populated for each IA disclosed to the investor"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-173",
+      "hash": "4f05caf2f901",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-223",
+      "title": "Present TWRR and benchmark trailing returns separately",
+      "summary": "The performance disclosure must also present, separately, the time-weighted rate of return (TWRR) of the respective IA(s) and the trailing return of the selected benchmark(s).",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.2",
+        "excerpt": "The TWRR of the respective IA(s) and the trailing return of the benchmark(s) selected shall also be presented separately.",
+        "charStart": 309,
+        "charEnd": 430
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-223",
+        "name": "TWRR and benchmark trailing return section",
+        "description": "Performance reports contain a separate presentation of the TWRR for each relevant Investment Approach and the trailing returns of the benchmarks selected against those IAs, distinct from the XIRR disclosures.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Sample investor performance report showing TWRR of the IA(s) and trailing returns of the selected benchmark(s) presented separately from the XIRR figures"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-173",
+      "hash": "444cee27f5ea",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-224",
+      "title": "Attach prescribed disclaimer to performance disclosure",
+      "summary": "Every performance disclosure of this kind must carry the prescribed disclaimer explaining that an investor's portfolio performance may vary from other investors and from the Investment Approach overall due to timing of fund flows and differences in portfolio composition.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.2",
+        "excerpt": "Following disclaimer must accompany this disclosure: “Please note that performance of your portfolio may vary from that of other investors and that generated by the Investment Approach across all investors because of 1) the timing of inflows and outflows of funds; and 2) differences in the portfolio composition because of restrictions and other constraints.”",
+        "charStart": 431,
+        "charEnd": 791
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-224",
+        "name": "Mandatory performance disclaimer",
+        "description": "A standardised disclaimer text covering timing of inflows/outflows and portfolio composition differences is embedded in every investor performance disclosure issued by the firm.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Sample performance disclosure showing the prescribed disclaimer text included verbatim"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-173",
+      "hash": "c9f7009afb74",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-225",
+      "title": "No prohibited mention or implication in performance reporting or any communication",
+      "summary": "Portfolio Managers must not mention or imply the items specified immediately after this provision in any performance reporting or in any other communication, in any form.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.3",
+        "excerpt": "The following shall not be mentioned or implied in performance reporting or in any other communication in any form by the Portfolio Managers:",
+        "charStart": 0,
+        "charEnd": 141
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-225",
+        "name": "Performance communication pre-release review",
+        "description": "Every performance report and outbound communication is reviewed against the circular's prohibited-items list before release, and any content that mentions or implies a listed item is blocked or removed prior to publication or dispatch.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Compliance sign-off or review record for each performance report and client-facing communication showing it was checked against the prohibited-items list"
+        },
+        {
+          "kind": "data-check",
+          "description": "Periodic sweep of published performance reports and other communications for wording that mentions or implies any prohibited item"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-174",
+      "hash": "d866ab980938",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-227",
+      "title": "Do not advertise returns of exception-exercised approaches outside eligible investors",
+      "summary": "Portfolio Managers must not advertise, publish, or mention the returns of Investment Approaches for which the exception has been exercised to any entity outside the investor category to which the approach is offered. The clause permits (but does not require) including such assets in total AUM figures, so no separate obligation arises from that sentence.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.9",
+        "excerpt": "Portfolio Managers shall not advertise/ publish/ mention to any entity other than those belonging to the investor category to which said Investment Approach is offered the returns of the Investment Approaches where exception as above has been exercised.",
+        "charStart": 0,
+        "charEnd": 253
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-227",
+        "name": "Marketing communication restriction for exception-exercised approaches",
+        "description": "Maintain a register of Investment Approaches for which the investor-category exception has been exercised, mapped to their eligible investor categories. Route all advertising, publication, and investor communications that mention the returns of such approaches through a compliance pre-clearance step that verifies every recipient belongs to the eligible investor category before release.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Compliance pre-clearance records for marketing materials and communications referencing returns of exception-exercised Investment Approaches, evidencing the recipient-category check performed before release."
+        },
+        {
+          "kind": "data-check",
+          "description": "Register of exception-exercised Investment Approaches cross-checked against distribution lists of performance communications to confirm no recipient falls outside the eligible investor category."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-178",
+      "hash": "dc6a2adb0c59",
+      "approvedBy": "Compliance Officer"
     }
   ],
   "evidence": [
@@ -6281,6 +7397,80 @@
       "status": "rejected",
       "createdByRun": "RUN-144",
       "hash": "51f8583eeb91"
+    },
+    {
+      "id": "OBL-219",
+      "title": "Standard ToR must cover clients' portfolios under all services for performance audit",
+      "summary": "The standard Terms of Reference for the audit of firm-level performance data must expressly require that clients' portfolios under all services are considered in the audit.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.3.3.2",
+        "excerpt": "The standard ToR shall inter-alia include requirement for Portfolio Managers to consider clients’ portfolios under all services for the purpose of audit of firm-level performance data.",
+        "charStart": 0,
+        "charEnd": 184
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-219",
+        "name": "Standard ToR content review",
+        "description": "Compliance reviews the standard Terms of Reference used for the audit of firm-level performance data and confirms it contains the requirement that clients' portfolios under all services are considered; the ToR is re-checked whenever it is revised or a new audit is commissioned.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Current standard Terms of Reference for the firm-level performance data audit showing the clause requiring consideration of clients' portfolios under all services"
+        },
+        {
+          "kind": "data-check",
+          "description": "Compliance review log recording that the ToR version used for each performance data audit contains the all-services portfolio coverage requirement"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-167",
+      "hash": "8ba95a5f3158"
+    },
+    {
+      "id": "OBL-226",
+      "title": "Apply paragraphs 5.6.1 to 5.6.6 to all performance reporting and advertising",
+      "summary": "Any entity that reports, publishes or advertises the performance of any Investment Approach of a Portfolio Manager must comply with the requirements set out in paragraphs 5.6.1 to 5.6.6.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.7",
+        "excerpt": "The above provisions under paragraphs 5.6.1 to 5.6.6 shall be applicable to any entity reporting/ publishing/ advertising performance of any Investment Approach of any Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 186
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-226",
+        "name": "Performance communication compliance gate",
+        "description": "Before any performance figure for an Investment Approach is reported, published or advertised, the communication is routed through a compliance review that verifies it meets the requirements of paragraphs 5.6.1 to 5.6.6, and no performance communication is released without this sign-off.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Register of all performance reports, publications and advertisements for Investment Approaches, each bearing dated pre-release compliance sign-off against the requirements of paragraphs 5.6.1 to 5.6.6."
+        },
+        {
+          "kind": "live-scan",
+          "description": "Periodic scan of the firm's websites, portals and public communication channels for Investment Approach performance claims, confirming each was captured in the pre-release compliance gate."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-176",
+      "hash": "645757776eb4"
     }
   ],
   "auditEvents": [
@@ -12971,6 +14161,1084 @@
       "detail": "Rejected by Compliance Officer at the human gate — \"Disclose credit rating of all securities while giving advice\", drafted by RUN-144 from MC-PM-2025 para 3.7.2. Not entered in the register. The draft and this decision are retained.",
       "hash": "39fbe1ebd00a",
       "prevHash": "c7f9c78ed6b7"
+    },
+    {
+      "id": "AE-0609",
+      "at": "2026-09-11T08:42:09.457Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-196",
+      "detail": "Drafted by RUN-145 from MC-PM-2025 para 2.5.1.2 — \"Do not organize investment portfolios as 'Schemes' akin to Mutual Fund Schemes\", grounded to chars 0–143 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9ab5e7cad1b2",
+      "prevHash": "39fbe1ebd00a"
+    },
+    {
+      "id": "AE-0610",
+      "at": "2026-09-11T08:42:09.457Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-145",
+      "detail": "RUN-145 completed extraction and verification over MC-PM-2025 para 2.5.1.2 in 12s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-196.",
+      "hash": "6bc86b660286",
+      "prevHash": "9ab5e7cad1b2"
+    },
+    {
+      "id": "AE-0611",
+      "at": "2026-09-11T08:43:13.340Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-146",
+      "detail": "RUN-146 failed on MC-PM-2025 para 3.5.3. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1079 (line 1 column 1080). Nothing was drafted and nothing entered the register.",
+      "hash": "0bfca8e7a2a4",
+      "prevHash": "6bc86b660286"
+    },
+    {
+      "id": "AE-0612",
+      "at": "2026-09-11T08:43:41.675Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-147",
+      "detail": "RUN-147 completed extraction and verification over MC-PM-2025 para 4.1.1 in 8s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "2418a037f2a5",
+      "prevHash": "0bfca8e7a2a4"
+    },
+    {
+      "id": "AE-0613",
+      "at": "2026-09-11T08:44:13.843Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-197",
+      "detail": "Drafted by RUN-148 from MC-PM-2025 para 4.2.3 — \"Amend portfolio management agreement clause to revised wording\", grounded to chars 30–129 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "384018d7a381",
+      "prevHash": "2418a037f2a5"
+    },
+    {
+      "id": "AE-0614",
+      "at": "2026-09-11T08:44:13.843Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-148",
+      "detail": "RUN-148 completed extraction and verification over MC-PM-2025 para 4.2.3 in 28s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-197.",
+      "hash": "c0616fbb2bfd",
+      "prevHash": "384018d7a381"
+    },
+    {
+      "id": "AE-0615",
+      "at": "2026-09-11T08:45:25.779Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-198",
+      "detail": "Drafted by RUN-149 from MC-PM-2025 para 4.3.1 — \"Client agreement must include annexure of all fees and charges payable to PM\", grounded to chars 75–200 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e20196e0a935",
+      "prevHash": "c0616fbb2bfd"
+    },
+    {
+      "id": "AE-0616",
+      "at": "2026-09-11T08:45:25.779Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-199",
+      "detail": "Drafted by RUN-149 from MC-PM-2025 para 4.3.1 — \"Annexure must illustrate all charges on Rs.50 lakh sample portfolio over one year\", grounded to chars 202–337 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "4acf88fde481",
+      "prevHash": "e20196e0a935"
+    },
+    {
+      "id": "AE-0617",
+      "at": "2026-09-11T08:45:25.780Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-200",
+      "detail": "Drafted by RUN-149 from MC-PM-2025 para 4.3.1 — \"Show fees and charges for three portfolio value scenarios\", grounded to chars 339–476 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "07f139de141f",
+      "prevHash": "4acf88fde481"
+    },
+    {
+      "id": "AE-0618",
+      "at": "2026-09-11T08:45:25.780Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-149",
+      "detail": "RUN-149 completed extraction and verification over MC-PM-2025 para 4.3.1 in 70s. Five of five verifier checks passed. 3 obligation(s) drafted and held at the human gate: OBL-198, OBL-199, OBL-200.",
+      "hash": "f539af6585f7",
+      "prevHash": "07f139de141f"
+    },
+    {
+      "id": "AE-0619",
+      "at": "2026-09-11T08:47:32.281Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-201",
+      "detail": "Drafted by RUN-150 from MC-PM-2025 para 4.3.2 — \"Add performance-fee illustrations to fee annexure of PMS-client agreement\", grounded to chars 1–236 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "1ed00781e8d2",
+      "prevHash": "f539af6585f7"
+    },
+    {
+      "id": "AE-0620",
+      "at": "2026-09-11T08:47:32.281Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-202",
+      "detail": "Drafted by RUN-150 from MC-PM-2025 para 4.3.2 — \"Incorporate high watermark principle in the fee illustrations\", grounded to chars 479–563 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "2c6a271744c5",
+      "prevHash": "1ed00781e8d2"
+    },
+    {
+      "id": "AE-0621",
+      "at": "2026-09-11T08:47:32.281Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-150",
+      "detail": "RUN-150 completed extraction and verification over MC-PM-2025 para 4.3.2 in 124s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-201, OBL-202.",
+      "hash": "1a0014522c96",
+      "prevHash": "2c6a271744c5"
+    },
+    {
+      "id": "AE-0622",
+      "at": "2026-09-11T08:48:23.654Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-203",
+      "detail": "Drafted by RUN-151 from MC-PM-2025 para 4.3.3 — \"Annexure on fees and charges in at least size 11 font\", grounded to chars 0–91 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8ee55bf1f509",
+      "prevHash": "1a0014522c96"
+    },
+    {
+      "id": "AE-0623",
+      "at": "2026-09-11T08:48:23.654Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-151",
+      "detail": "RUN-151 completed extraction and verification over MC-PM-2025 para 4.3.3 in 49s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-203.",
+      "hash": "22095d5578c7",
+      "prevHash": "8ee55bf1f509"
+    },
+    {
+      "id": "AE-0624",
+      "at": "2026-09-11T08:49:16.233Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-204",
+      "detail": "Drafted by RUN-152 from MC-PM-2025 para 4.3.4 — \"Ensure client understands fee and charge structure at on-boarding\", grounded to chars 1–130 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "64a370727f0d",
+      "prevHash": "22095d5578c7"
+    },
+    {
+      "id": "AE-0625",
+      "at": "2026-09-11T08:49:16.233Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-205",
+      "detail": "Drafted by RUN-152 from MC-PM-2025 para 4.3.4 — \"Obtain separately signed fees and charges annexure with client note\", grounded to chars 131–308 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "4d576aea4ea1",
+      "prevHash": "64a370727f0d"
+    },
+    {
+      "id": "AE-0626",
+      "at": "2026-09-11T08:49:16.233Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-152",
+      "detail": "RUN-152 completed extraction and verification over MC-PM-2025 para 4.3.4 in 50s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-204, OBL-205.",
+      "hash": "71c1b7e7b910",
+      "prevHash": "4d576aea4ea1"
+    },
+    {
+      "id": "AE-0627",
+      "at": "2026-09-11T08:50:00.989Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-206",
+      "detail": "Drafted by RUN-153 from MC-PM-2025 para 4.3.6 — \"Levy only the fees and charges specified in the PMS-client agreement annexure\", grounded to chars 0–172 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "da8d2422c906",
+      "prevHash": "71c1b7e7b910"
+    },
+    {
+      "id": "AE-0628",
+      "at": "2026-09-11T08:50:00.989Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-153",
+      "detail": "RUN-153 completed extraction and verification over MC-PM-2025 para 4.3.6 in 41s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-206.",
+      "hash": "ea394cb149d6",
+      "prevHash": "da8d2422c906"
+    },
+    {
+      "id": "AE-0629",
+      "at": "2026-09-11T08:50:36.571Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-207",
+      "detail": "Drafted by RUN-154 from MC-PM-2025 para 4.5.1 — \"Disclose 3-year portfolio performance by investment category\", grounded to chars 46–209 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "acf82edaacd3",
+      "prevHash": "ea394cb149d6"
+    },
+    {
+      "id": "AE-0630",
+      "at": "2026-09-11T08:50:36.571Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-154",
+      "detail": "RUN-154 completed extraction and verification over MC-PM-2025 para 4.5.1 in 34s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-207.",
+      "hash": "12629c276ca6",
+      "prevHash": "acf82edaacd3"
+    },
+    {
+      "id": "AE-0631",
+      "at": "2026-09-11T08:51:24.221Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-208",
+      "detail": "Drafted by RUN-155 from MC-PM-2025 para 4.5.2.2 — \"Record and justify any change in benchmark indices\", grounded to chars 106–220 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8e0cf39395b8",
+      "prevHash": "12629c276ca6"
+    },
+    {
+      "id": "AE-0632",
+      "at": "2026-09-11T08:51:24.221Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-155",
+      "detail": "RUN-155 completed extraction and verification over MC-PM-2025 para 4.5.2.2 in 46s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-208.",
+      "hash": "517a660fe183",
+      "prevHash": "8e0cf39395b8"
+    },
+    {
+      "id": "AE-0633",
+      "at": "2026-09-11T08:54:20.076Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-209",
+      "detail": "Drafted by RUN-156 from MC-PM-2025 para 4.5.3 — \"Disclose portfolio performance to clients using TWRR indicators for preceding 3 years\", grounded to chars 112–463 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "67a3085223db",
+      "prevHash": "517a660fe183"
+    },
+    {
+      "id": "AE-0634",
+      "at": "2026-09-11T08:54:20.076Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-210",
+      "detail": "Drafted by RUN-156 from MC-PM-2025 para 4.5.3 — \"Disclose benchmark index performance in periodical reports to clients\", grounded to chars 744–972 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "7443db2133aa",
+      "prevHash": "67a3085223db"
+    },
+    {
+      "id": "AE-0635",
+      "at": "2026-09-11T08:54:20.076Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-156",
+      "detail": "RUN-156 completed extraction and verification over MC-PM-2025 para 4.5.3 in 174s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-209, OBL-210.",
+      "hash": "a3c669d088ab",
+      "prevHash": "7443db2133aa"
+    },
+    {
+      "id": "AE-0636",
+      "at": "2026-09-11T08:54:43.071Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-211",
+      "detail": "Drafted by RUN-157 from MC-PM-2025 para 4.5.3.5 — \"Report firm-level performance identical to combined performance of all portfolios\", grounded to chars 0–211 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "5fddb56be57a",
+      "prevHash": "a3c669d088ab"
+    },
+    {
+      "id": "AE-0637",
+      "at": "2026-09-11T08:54:43.071Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-157",
+      "detail": "RUN-157 completed extraction and verification over MC-PM-2025 para 4.5.3.5 in 19s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-211.",
+      "hash": "5bf0c8ff3a7c",
+      "prevHash": "5fddb56be57a"
+    },
+    {
+      "id": "AE-0638",
+      "at": "2026-09-11T08:55:06.359Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-212",
+      "detail": "Drafted by RUN-158 from MC-PM-2025 para 4.6.1 — \"Keep Investment Approach information uniform across all PM documents and reports\", grounded to chars 199–468 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c0068f577340",
+      "prevHash": "5bf0c8ff3a7c"
+    },
+    {
+      "id": "AE-0639",
+      "at": "2026-09-11T08:55:06.359Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-158",
+      "detail": "RUN-158 completed extraction and verification over MC-PM-2025 para 4.6.1 in 21s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-212.",
+      "hash": "b538e2f7876b",
+      "prevHash": "c0068f577340"
+    },
+    {
+      "id": "AE-0640",
+      "at": "2026-09-11T08:55:27.351Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-213",
+      "detail": "Drafted by RUN-159 from MC-PM-2025 para 4.6.2 — \"Include prescribed elements in investment approach descriptions\", grounded to chars 0–97 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "51082061d772",
+      "prevHash": "b538e2f7876b"
+    },
+    {
+      "id": "AE-0641",
+      "at": "2026-09-11T08:55:27.351Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-159",
+      "detail": "RUN-159 completed extraction and verification over MC-PM-2025 para 4.6.2 in 18s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-213.",
+      "hash": "9d80d3bf8f25",
+      "prevHash": "51082061d772"
+    },
+    {
+      "id": "AE-0642",
+      "at": "2026-09-11T08:56:17.132Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-160",
+      "detail": "RUN-160 was stopped by the verifier on MC-PM-2025 para 4.7.1. Failed checks: citations-resolve. 1 of 5. No obligation was drafted into the register.",
+      "hash": "8d27d04d26d1",
+      "prevHash": "9d80d3bf8f25"
+    },
+    {
+      "id": "AE-0643",
+      "at": "2026-09-11T08:56:46.358Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-214",
+      "detail": "Drafted by RUN-161 from MC-PM-2025 para 5.1.3 — \"Report month-end AUM in Rupees crores in the said report\", grounded to chars 19–176 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "cb718d305f26",
+      "prevHash": "8d27d04d26d1"
+    },
+    {
+      "id": "AE-0644",
+      "at": "2026-09-11T08:56:46.358Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-161",
+      "detail": "RUN-161 completed extraction and verification over MC-PM-2025 para 5.1.3 in 9s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-214.",
+      "hash": "6e3d8475b135",
+      "prevHash": "cb718d305f26"
+    },
+    {
+      "id": "AE-0645",
+      "at": "2026-09-11T08:57:16.334Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-215",
+      "detail": "Drafted by RUN-162 from MC-PM-2025 para 5.1.5 — \"Compliance Officer responsible for ensuring compliance with the Master Circular\", grounded to chars 0–153 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "89c3e5ad6989",
+      "prevHash": "6e3d8475b135"
+    },
+    {
+      "id": "AE-0646",
+      "at": "2026-09-11T08:57:16.334Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-162",
+      "detail": "RUN-162 completed extraction and verification over MC-PM-2025 para 5.1.5 in 26s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-215.",
+      "hash": "4b4a3c8a44cd",
+      "prevHash": "89c3e5ad6989"
+    },
+    {
+      "id": "AE-0647",
+      "at": "2026-09-11T08:57:30.930Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-216",
+      "detail": "Drafted by RUN-163 from MC-PM-2025 para 5.2.2.2 — \"Internal audit by practicing CA or CS\", grounded to chars 0–192 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "00e078c871b1",
+      "prevHash": "4b4a3c8a44cd"
+    },
+    {
+      "id": "AE-0648",
+      "at": "2026-09-11T08:57:30.930Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-217",
+      "detail": "Drafted by RUN-163 from MC-PM-2025 para 5.2.2.2 — \"Submit internal audit report to the Board\", grounded to chars 193–283 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "ab17c512fc80",
+      "prevHash": "00e078c871b1"
+    },
+    {
+      "id": "AE-0649",
+      "at": "2026-09-11T08:57:30.930Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-163",
+      "detail": "RUN-163 completed extraction and verification over MC-PM-2025 para 5.2.2.2 in 11s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-216, OBL-217.",
+      "hash": "c2e16b5a0460",
+      "prevHash": "ab17c512fc80"
+    },
+    {
+      "id": "AE-0650",
+      "at": "2026-09-11T08:58:05.455Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-218",
+      "detail": "Drafted by RUN-164 from MC-PM-2025 para 5.2.2.3 — \"Exercise due diligence in all operational activities\", grounded to chars 0–84 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8caacdb1fb0b",
+      "prevHash": "c2e16b5a0460"
+    },
+    {
+      "id": "AE-0651",
+      "at": "2026-09-11T08:58:05.455Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-164",
+      "detail": "RUN-164 completed extraction and verification over MC-PM-2025 para 5.2.2.3 in 33s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-218.",
+      "hash": "607ef5dd1815",
+      "prevHash": "8caacdb1fb0b"
+    },
+    {
+      "id": "AE-0652",
+      "at": "2026-09-11T08:58:25.615Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-165",
+      "detail": "RUN-165 completed extraction and verification over MC-PM-2025 para 5.2.3 in 17s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "e08f45170fa8",
+      "prevHash": "607ef5dd1815"
+    },
+    {
+      "id": "AE-0653",
+      "at": "2026-09-11T08:58:43.394Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-166",
+      "detail": "RUN-166 completed extraction and verification over MC-PM-2025 para 5.3.3.1 in 14s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "919afa299192",
+      "prevHash": "e08f45170fa8"
+    },
+    {
+      "id": "AE-0654",
+      "at": "2026-09-11T08:59:30.689Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-219",
+      "detail": "Drafted by RUN-167 from MC-PM-2025 para 5.3.3.2 — \"Standard ToR must cover clients' portfolios under all services for performance audit\", grounded to chars 0–184 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "31bb1cd30ff1",
+      "prevHash": "919afa299192"
+    },
+    {
+      "id": "AE-0655",
+      "at": "2026-09-11T08:59:30.689Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-167",
+      "detail": "RUN-167 completed extraction and verification over MC-PM-2025 para 5.3.3.2 in 43s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-219.",
+      "hash": "6bc7cb57f685",
+      "prevHash": "31bb1cd30ff1"
+    },
+    {
+      "id": "AE-0656",
+      "at": "2026-09-11T09:00:08.186Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-168",
+      "detail": "RUN-168 was stopped by the verifier on MC-PM-2025 para 5.4.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "2be2d2a0c9b6",
+      "prevHash": "6bc7cb57f685"
+    },
+    {
+      "id": "AE-0657",
+      "at": "2026-09-11T09:00:19.220Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-169",
+      "detail": "RUN-169 completed extraction and verification over MC-PM-2025 para 5.4.6 in 7s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "150d71d1da32",
+      "prevHash": "2be2d2a0c9b6"
+    },
+    {
+      "id": "AE-0658",
+      "at": "2026-09-11T09:00:39.606Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-170",
+      "detail": "RUN-170 completed extraction and verification over MC-PM-2025 para 5.4.7 in 19s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "c2cfe2664f7d",
+      "prevHash": "150d71d1da32"
+    },
+    {
+      "id": "AE-0659",
+      "at": "2026-09-11T09:00:57.794Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-171",
+      "detail": "RUN-171 completed extraction and verification over MC-PM-2025 para 5.5.1.4 in 16s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "7fe3b0e52ffe",
+      "prevHash": "c2cfe2664f7d"
+    },
+    {
+      "id": "AE-0660",
+      "at": "2026-09-11T09:01:14.077Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-220",
+      "detail": "Drafted by RUN-172 from MC-PM-2025 para 5.6.1 — \"Present TWRR with benchmark trailing return in performance communications\", grounded to chars 0–235 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "61754636752e",
+      "prevHash": "7fe3b0e52ffe"
+    },
+    {
+      "id": "AE-0661",
+      "at": "2026-09-11T09:01:14.077Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-172",
+      "detail": "RUN-172 completed extraction and verification over MC-PM-2025 para 5.6.1 in 14s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-220.",
+      "hash": "444a9ad3f3e3",
+      "prevHash": "61754636752e"
+    },
+    {
+      "id": "AE-0662",
+      "at": "2026-09-11T09:02:21.388Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-221",
+      "detail": "Drafted by RUN-173 from MC-PM-2025 para 5.6.2 — \"Report XIRR to investors for each Investment Approach\", grounded to chars 0–156 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "57ab91ad8c8f",
+      "prevHash": "444a9ad3f3e3"
+    },
+    {
+      "id": "AE-0663",
+      "at": "2026-09-11T09:02:21.388Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-222",
+      "detail": "Drafted by RUN-173 from MC-PM-2025 para 5.6.2 — \"Disclose min, max and median XIRR across all investors\", grounded to chars 157–308 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8216f8622f81",
+      "prevHash": "57ab91ad8c8f"
+    },
+    {
+      "id": "AE-0664",
+      "at": "2026-09-11T09:02:21.388Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-223",
+      "detail": "Drafted by RUN-173 from MC-PM-2025 para 5.6.2 — \"Present TWRR and benchmark trailing returns separately\", grounded to chars 309–430 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e70a82e38e7c",
+      "prevHash": "8216f8622f81"
+    },
+    {
+      "id": "AE-0665",
+      "at": "2026-09-11T09:02:21.388Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-224",
+      "detail": "Drafted by RUN-173 from MC-PM-2025 para 5.6.2 — \"Attach prescribed disclaimer to performance disclosure\", grounded to chars 431–791 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "f752ae6c2831",
+      "prevHash": "e70a82e38e7c"
+    },
+    {
+      "id": "AE-0666",
+      "at": "2026-09-11T09:02:21.388Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-173",
+      "detail": "RUN-173 completed extraction and verification over MC-PM-2025 para 5.6.2 in 63s. Five of five verifier checks passed. 4 obligation(s) drafted and held at the human gate: OBL-221, OBL-222, OBL-223, OBL-224.",
+      "hash": "e8becebe48db",
+      "prevHash": "f752ae6c2831"
+    },
+    {
+      "id": "AE-0667",
+      "at": "2026-09-11T09:03:03.682Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-225",
+      "detail": "Drafted by RUN-174 from MC-PM-2025 para 5.6.3 — \"No prohibited mention or implication in performance reporting or any communication\", grounded to chars 0–141 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9353328f908b",
+      "prevHash": "e8becebe48db"
+    },
+    {
+      "id": "AE-0668",
+      "at": "2026-09-11T09:03:03.682Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-174",
+      "detail": "RUN-174 completed extraction and verification over MC-PM-2025 para 5.6.3 in 39s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-225.",
+      "hash": "220b564c0f90",
+      "prevHash": "9353328f908b"
+    },
+    {
+      "id": "AE-0669",
+      "at": "2026-09-11T09:03:43.167Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-175",
+      "detail": "RUN-175 was stopped by the verifier on MC-PM-2025 para 5.6.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "7e0aa404ea13",
+      "prevHash": "220b564c0f90"
+    },
+    {
+      "id": "AE-0670",
+      "at": "2026-09-11T09:04:09.279Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-226",
+      "detail": "Drafted by RUN-176 from MC-PM-2025 para 5.6.7 — \"Apply paragraphs 5.6.1 to 5.6.6 to all performance reporting and advertising\", grounded to chars 0–186 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "3dcaf0b44c86",
+      "prevHash": "7e0aa404ea13"
+    },
+    {
+      "id": "AE-0671",
+      "at": "2026-09-11T09:04:09.279Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-176",
+      "detail": "RUN-176 completed extraction and verification over MC-PM-2025 para 5.6.7 in 24s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-226.",
+      "hash": "d54e89c61525",
+      "prevHash": "3dcaf0b44c86"
+    },
+    {
+      "id": "AE-0672",
+      "at": "2026-09-11T09:04:20.392Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-177",
+      "detail": "RUN-177 completed extraction and verification over MC-PM-2025 para 5.6.8 in 8s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "fb6ba6ae821f",
+      "prevHash": "d54e89c61525"
+    },
+    {
+      "id": "AE-0673",
+      "at": "2026-09-11T09:04:38.058Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-227",
+      "detail": "Drafted by RUN-178 from MC-PM-2025 para 5.6.9 — \"Do not advertise returns of exception-exercised approaches outside eligible investors\", grounded to chars 0–253 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "433326311fc7",
+      "prevHash": "fb6ba6ae821f"
+    },
+    {
+      "id": "AE-0674",
+      "at": "2026-09-11T09:04:38.058Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-178",
+      "detail": "RUN-178 completed extraction and verification over MC-PM-2025 para 5.6.9 in 16s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-227.",
+      "hash": "f7f3996dfb01",
+      "prevHash": "433326311fc7"
+    },
+    {
+      "id": "AE-0675",
+      "at": "2026-09-11T09:08:48.003Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-196",
+      "detail": "Approved by Compliance Officer at the human gate — \"Do not organize investment portfolios as 'Schemes' akin to Mutual Fund Schemes\", grounded to MC-PM-2025 para 2.5.1.2, chars 0–143. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-145.",
+      "hash": "bee3c7e96c8c",
+      "prevHash": "f7f3996dfb01"
+    },
+    {
+      "id": "AE-0676",
+      "at": "2026-09-11T09:08:48.018Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-197",
+      "detail": "Approved by Compliance Officer at the human gate — \"Amend portfolio management agreement clause to revised wording\", grounded to MC-PM-2025 para 4.2.3, chars 30–129. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-148.",
+      "hash": "1a3f7e553191",
+      "prevHash": "bee3c7e96c8c"
+    },
+    {
+      "id": "AE-0677",
+      "at": "2026-09-11T09:08:48.027Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-198",
+      "detail": "Approved by Compliance Officer at the human gate — \"Client agreement must include annexure of all fees and charges payable to PM\", grounded to MC-PM-2025 para 4.3.1, chars 75–200. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-149.",
+      "hash": "b87c6ef7cc22",
+      "prevHash": "1a3f7e553191"
+    },
+    {
+      "id": "AE-0678",
+      "at": "2026-09-11T09:08:48.037Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-199",
+      "detail": "Approved by Compliance Officer at the human gate — \"Annexure must illustrate all charges on Rs.50 lakh sample portfolio over one year\", grounded to MC-PM-2025 para 4.3.1, chars 202–337. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-149.",
+      "hash": "a7cd8eb8659d",
+      "prevHash": "b87c6ef7cc22"
+    },
+    {
+      "id": "AE-0679",
+      "at": "2026-09-11T09:08:48.046Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-200",
+      "detail": "Approved by Compliance Officer at the human gate — \"Show fees and charges for three portfolio value scenarios\", grounded to MC-PM-2025 para 4.3.1, chars 339–476. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-149.",
+      "hash": "197507593634",
+      "prevHash": "a7cd8eb8659d"
+    },
+    {
+      "id": "AE-0680",
+      "at": "2026-09-11T09:08:48.057Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-201",
+      "detail": "Approved by Compliance Officer at the human gate — \"Add performance-fee illustrations to fee annexure of PMS-client agreement\", grounded to MC-PM-2025 para 4.3.2, chars 1–236. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-150.",
+      "hash": "325dab1d131f",
+      "prevHash": "197507593634"
+    },
+    {
+      "id": "AE-0681",
+      "at": "2026-09-11T09:08:48.067Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-202",
+      "detail": "Approved by Compliance Officer at the human gate — \"Incorporate high watermark principle in the fee illustrations\", grounded to MC-PM-2025 para 4.3.2, chars 479–563. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-150.",
+      "hash": "512e4711277f",
+      "prevHash": "325dab1d131f"
+    },
+    {
+      "id": "AE-0682",
+      "at": "2026-09-11T09:08:48.079Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-203",
+      "detail": "Approved by Compliance Officer at the human gate — \"Annexure on fees and charges in at least size 11 font\", grounded to MC-PM-2025 para 4.3.3, chars 0–91. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-151.",
+      "hash": "bca9e1fc5789",
+      "prevHash": "512e4711277f"
+    },
+    {
+      "id": "AE-0683",
+      "at": "2026-09-11T09:08:48.089Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-204",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure client understands fee and charge structure at on-boarding\", grounded to MC-PM-2025 para 4.3.4, chars 1–130. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-152.",
+      "hash": "b02877b19530",
+      "prevHash": "bca9e1fc5789"
+    },
+    {
+      "id": "AE-0684",
+      "at": "2026-09-11T09:08:48.098Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-205",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain separately signed fees and charges annexure with client note\", grounded to MC-PM-2025 para 4.3.4, chars 131–308. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-152.",
+      "hash": "b21241082bc5",
+      "prevHash": "b02877b19530"
+    },
+    {
+      "id": "AE-0685",
+      "at": "2026-09-11T09:08:48.107Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-206",
+      "detail": "Approved by Compliance Officer at the human gate — \"Levy only the fees and charges specified in the PMS-client agreement annexure\", grounded to MC-PM-2025 para 4.3.6, chars 0–172. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-153.",
+      "hash": "721129d27044",
+      "prevHash": "b21241082bc5"
+    },
+    {
+      "id": "AE-0686",
+      "at": "2026-09-11T09:08:48.116Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-207",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose 3-year portfolio performance by investment category\", grounded to MC-PM-2025 para 4.5.1, chars 46–209. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-154.",
+      "hash": "20becf5d9c82",
+      "prevHash": "721129d27044"
+    },
+    {
+      "id": "AE-0687",
+      "at": "2026-09-11T09:08:48.124Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-208",
+      "detail": "Approved by Compliance Officer at the human gate — \"Record and justify any change in benchmark indices\", grounded to MC-PM-2025 para 4.5.2.2, chars 106–220. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-155.",
+      "hash": "571c60cd544c",
+      "prevHash": "20becf5d9c82"
+    },
+    {
+      "id": "AE-0688",
+      "at": "2026-09-11T09:08:48.133Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-209",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose portfolio performance to clients using TWRR indicators for preceding 3 years\", grounded to MC-PM-2025 para 4.5.3, chars 112–463. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-156.",
+      "hash": "c4e1ac504119",
+      "prevHash": "571c60cd544c"
+    },
+    {
+      "id": "AE-0689",
+      "at": "2026-09-11T09:08:48.142Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-210",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose benchmark index performance in periodical reports to clients\", grounded to MC-PM-2025 para 4.5.3, chars 744–972. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-156.",
+      "hash": "68ec3307810c",
+      "prevHash": "c4e1ac504119"
+    },
+    {
+      "id": "AE-0690",
+      "at": "2026-09-11T09:08:48.150Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-211",
+      "detail": "Approved by Compliance Officer at the human gate — \"Report firm-level performance identical to combined performance of all portfolios\", grounded to MC-PM-2025 para 4.5.3.5, chars 0–211. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-157.",
+      "hash": "ff640a19fd2d",
+      "prevHash": "68ec3307810c"
+    },
+    {
+      "id": "AE-0691",
+      "at": "2026-09-11T09:08:48.158Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-212",
+      "detail": "Approved by Compliance Officer at the human gate — \"Keep Investment Approach information uniform across all PM documents and reports\", grounded to MC-PM-2025 para 4.6.1, chars 199–468. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-158.",
+      "hash": "dff469a0fc42",
+      "prevHash": "ff640a19fd2d"
+    },
+    {
+      "id": "AE-0692",
+      "at": "2026-09-11T09:08:48.165Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-213",
+      "detail": "Approved by Compliance Officer at the human gate — \"Include prescribed elements in investment approach descriptions\", grounded to MC-PM-2025 para 4.6.2, chars 0–97. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-159.",
+      "hash": "ae596f90946d",
+      "prevHash": "dff469a0fc42"
+    },
+    {
+      "id": "AE-0693",
+      "at": "2026-09-11T09:08:48.173Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-214",
+      "detail": "Approved by Compliance Officer at the human gate — \"Report month-end AUM in Rupees crores in the said report\", grounded to MC-PM-2025 para 5.1.3, chars 19–176. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-161.",
+      "hash": "3bb731f8a6eb",
+      "prevHash": "ae596f90946d"
+    },
+    {
+      "id": "AE-0694",
+      "at": "2026-09-11T09:08:48.181Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-215",
+      "detail": "Approved by Compliance Officer at the human gate — \"Compliance Officer responsible for ensuring compliance with the Master Circular\", grounded to MC-PM-2025 para 5.1.5, chars 0–153. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-162.",
+      "hash": "1a181b390828",
+      "prevHash": "3bb731f8a6eb"
+    },
+    {
+      "id": "AE-0695",
+      "at": "2026-09-11T09:08:48.198Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-216",
+      "detail": "Approved by Compliance Officer at the human gate — \"Internal audit by practicing CA or CS\", grounded to MC-PM-2025 para 5.2.2.2, chars 0–192. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-163.",
+      "hash": "176e8cdbf1fc",
+      "prevHash": "1a181b390828"
+    },
+    {
+      "id": "AE-0696",
+      "at": "2026-09-11T09:08:48.207Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-217",
+      "detail": "Approved by Compliance Officer at the human gate — \"Submit internal audit report to the Board\", grounded to MC-PM-2025 para 5.2.2.2, chars 193–283. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-163.",
+      "hash": "e87cd909fd0a",
+      "prevHash": "176e8cdbf1fc"
+    },
+    {
+      "id": "AE-0697",
+      "at": "2026-09-11T09:08:48.217Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-218",
+      "detail": "Approved by Compliance Officer at the human gate — \"Exercise due diligence in all operational activities\", grounded to MC-PM-2025 para 5.2.2.3, chars 0–84. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-164.",
+      "hash": "5765f1358bef",
+      "prevHash": "e87cd909fd0a"
+    },
+    {
+      "id": "AE-0698",
+      "at": "2026-09-11T09:08:48.225Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-220",
+      "detail": "Approved by Compliance Officer at the human gate — \"Present TWRR with benchmark trailing return in performance communications\", grounded to MC-PM-2025 para 5.6.1, chars 0–235. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-172.",
+      "hash": "448951247bf0",
+      "prevHash": "5765f1358bef"
+    },
+    {
+      "id": "AE-0699",
+      "at": "2026-09-11T09:08:48.233Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-221",
+      "detail": "Approved by Compliance Officer at the human gate — \"Report XIRR to investors for each Investment Approach\", grounded to MC-PM-2025 para 5.6.2, chars 0–156. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-173.",
+      "hash": "a5617aac2954",
+      "prevHash": "448951247bf0"
+    },
+    {
+      "id": "AE-0700",
+      "at": "2026-09-11T09:08:48.240Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-222",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose min, max and median XIRR across all investors\", grounded to MC-PM-2025 para 5.6.2, chars 157–308. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-173.",
+      "hash": "c35eff558e21",
+      "prevHash": "a5617aac2954"
+    },
+    {
+      "id": "AE-0701",
+      "at": "2026-09-11T09:08:48.247Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-223",
+      "detail": "Approved by Compliance Officer at the human gate — \"Present TWRR and benchmark trailing returns separately\", grounded to MC-PM-2025 para 5.6.2, chars 309–430. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-173.",
+      "hash": "b272a05a4ed5",
+      "prevHash": "c35eff558e21"
+    },
+    {
+      "id": "AE-0702",
+      "at": "2026-09-11T09:08:48.255Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-224",
+      "detail": "Approved by Compliance Officer at the human gate — \"Attach prescribed disclaimer to performance disclosure\", grounded to MC-PM-2025 para 5.6.2, chars 431–791. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-173.",
+      "hash": "368d53e66a38",
+      "prevHash": "b272a05a4ed5"
+    },
+    {
+      "id": "AE-0703",
+      "at": "2026-09-11T09:08:48.265Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-225",
+      "detail": "Approved by Compliance Officer at the human gate — \"No prohibited mention or implication in performance reporting or any communication\", grounded to MC-PM-2025 para 5.6.3, chars 0–141. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-174.",
+      "hash": "1b5d319ae866",
+      "prevHash": "368d53e66a38"
+    },
+    {
+      "id": "AE-0704",
+      "at": "2026-09-11T09:08:48.274Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-227",
+      "detail": "Approved by Compliance Officer at the human gate — \"Do not advertise returns of exception-exercised approaches outside eligible investors\", grounded to MC-PM-2025 para 5.6.9, chars 0–253. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-178.",
+      "hash": "8b30631475be",
+      "prevHash": "1b5d319ae866"
+    },
+    {
+      "id": "AE-0705",
+      "at": "2026-09-11T09:08:48.465Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-219",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Standard ToR must cover clients' portfolios under all services for performance audit\", drafted by RUN-167 from MC-PM-2025 para 5.3.3.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "9be1eaa260b4",
+      "prevHash": "8b30631475be"
+    },
+    {
+      "id": "AE-0706",
+      "at": "2026-09-11T09:08:48.483Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-226",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Apply paragraphs 5.6.1 to 5.6.6 to all performance reporting and advertising\", drafted by RUN-176 from MC-PM-2025 para 5.6.7. Not entered in the register. The draft and this decision are retained.",
+      "hash": "d14ff2c90e88",
+      "prevHash": "9be1eaa260b4"
     }
   ]
 }
