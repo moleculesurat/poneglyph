@@ -414,7 +414,10 @@ async function handleDecision(
   }
   if (officer.length > 120) return error(request, 400, "officer name is implausibly long");
 
-  const result = await decide(state, obligationId, decision, officer);
+  const reason = asString(body.reason);
+  if (reason !== undefined && reason.length > 400) return error(request, 400, "reason is implausibly long");
+
+  const result = await decide(state, obligationId, decision, officer, reason);
 
   if (result === "not-found") {
     return error(request, 404, `no obligation ${obligationId} awaiting decision in this sandbox`, {

@@ -16,6 +16,7 @@
 import type { AuditEvent } from "../lib/schema";
 import { auditEvents } from "../data/audit";
 import { obligations as seededObligations } from "../data/obligations";
+import { rejected as seededRejected } from "../data/rejected";
 import { evidence as seededEvidence } from "../data/evidence";
 import { tasks as seededTasks } from "../data/tasks";
 import { runs as seededRuns } from "../data/runs";
@@ -63,7 +64,7 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
   const chain = await rechain(auditEvents.map(seedContent));
   /* live ids resume one past the highest seeded obligation, so a pulled
      register keeps its numbering rather than colliding with it */
-  const maxObligationSeq = seededObligations.reduce(
+  const maxObligationSeq = [...seededObligations, ...seededRejected].reduce(
     (max, o) => Math.max(max, Number(o.id.split("-").pop()) || 0),
     0,
   );
@@ -78,7 +79,7 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
     seededChainLength: chain.length,
     pending: [],
     register: [...seededObligations],
-    rejected: [],
+    rejected: [...seededRejected],
     decisions: [],
     runIds: [],
     evidence: [...seededEvidence],

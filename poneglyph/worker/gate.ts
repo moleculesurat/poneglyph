@@ -120,19 +120,44 @@ export interface GateResult {
 
 /** Approve or reject a pending obligation. The ONLY writer of `state.register`.
     Approval demands a named officer and stamps it on the record; rejection
-    moves the draft to `rejected` and it never touches the register. */
+    moves the draft to `rejected` and it never touches the register.
+
+    Reject on an already-approved id WITHDRAWS it: the record leaves the
+    register for `rejected` with status "withdrawn", its evidence bindings
+    intact, and a hash-chained `obligation.withdrawn` event names the officer
+    and reason. Approve on an approved id stays an error. */
 export async function decide(
   state: SessionState,
   obligationId: string,
   decision: DecisionKind,
   officer: string,
+  reason?: string,
 ): Promise<GateResult | GateFailure> {
   const index = state.pending.findIndex((o) => o.id === obligationId);
 
   if (index === -1) {
-    const alreadyDecided =
-      state.register.some((o) => o.id === obligationId) ||
-      state.rejected.some((o) => o.id === obligationId);
+    const registerIndex = state.register.findIndex((o) => o.id === obligationId);
+    if (decision === "reject" && registerIndex !== -1) {
+      const [record] = state.register.splice(registerIndex, 1);
+      const decidedAt = new Date().toISOString();
+      /* keep evidenceIds untouched — the proof of what was done stays bound
+         even after the duty is withdrawn from the live register */
+      const withdrawn: Obligation = { ...record, status: "withdrawn" };
+      state.rejected.push(withdrawn);
+
+      const event = await appendEvent(state, {
+        actor: `human:${officer}`,
+        action: "obligation.withdrawn",
+        subjectType: "obligation",
+        subjectId: record.id,
+        detail: `Withdrawn by ${officer} at the human gate — "${record.title}", grounded to ${record.clause.circularId} para ${record.clause.para}. Removed from the register${reason ? `. Reason: ${reason}` : " (no reason given)"}. Evidence bindings retained.`,
+        at: decidedAt,
+      });
+
+      state.decisions.push({ obligationId: record.id, decision, officer, decidedAt, auditEventId: event.id });
+      return { obligation: withdrawn, auditEventId: event.id };
+    }
+    const alreadyDecided = registerIndex !== -1 || state.rejected.some((o) => o.id === obligationId);
     return alreadyDecided ? "already-decided" : "not-found";
   }
 

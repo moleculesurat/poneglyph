@@ -55,9 +55,10 @@ const STATUS_CELL: Record<ObligationStatus, React.CSSProperties> = {
   "at-risk": { background: "var(--orange-soft)", boxShadow: "inset 0 0 0 1.5px var(--orange)" },
   gap: { background: "var(--orange)" },
   "pending-review": { background: "transparent", boxShadow: "inset 0 0 0 1.5px var(--ink-20)", borderStyle: "dashed" },
-  /* a live-pipeline draft the officer turned down — it never enters this heat-map,
-     but the union must stay exhaustive */
+  /* a live-pipeline draft the officer turned down, or an approved duty later
+     withdrawn — neither enters this heat-map, but the union must stay exhaustive */
   rejected: { background: "transparent", boxShadow: "inset 0 0 0 1.5px var(--ink-10)" },
+  withdrawn: { background: "transparent", boxShadow: "inset 0 0 0 1.5px var(--ink-10)" },
 };
 
 export default function Overview() {

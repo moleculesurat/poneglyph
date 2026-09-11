@@ -23,11 +23,15 @@ const obligations = state.obligations
 
 const evidence = [...(state.evidence ?? [])].sort((a, b) => a.id.localeCompare(b.id));
 
+/* rejected + withdrawn drafts, so run-paras' skip logic survives a fresh store */
+const rejected = [...(state.rejected ?? [])].sort((a, b) => a.id.localeCompare(b.id));
+
 const register = {
   source,
   tip: state.chainTip,
   obligations,
   evidence,
+  rejected,
   auditEvents: state.auditEvents,
 };
 
@@ -37,5 +41,5 @@ await writeFile(
 );
 
 console.log(
-  `${obligations.length} approved obligations, ${state.auditEvents.length} audit events, tip ${register.tip}`,
+  `${obligations.length} approved obligations, ${rejected.length} rejected/withdrawn, ${state.auditEvents.length} audit events, tip ${register.tip}`,
 );

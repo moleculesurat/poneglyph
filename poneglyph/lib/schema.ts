@@ -17,7 +17,7 @@ export type IntermediaryType =
 
 export type ObligationType = "one-time" | "ongoing" | "periodic" | "event-driven";
 
-export type ObligationStatus = "met" | "gap" | "at-risk" | "pending-review" | "rejected";
+export type ObligationStatus = "met" | "gap" | "at-risk" | "pending-review" | "rejected" | "withdrawn";
 
 export type EvidenceKind = "document" | "data-check" | "live-scan";
 

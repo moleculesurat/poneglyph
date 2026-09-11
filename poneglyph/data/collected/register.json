@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "6974c702b7d3",
+  "tip": "37fd0053ece2",
   "obligations": [
     {
       "id": "OBL-001",
@@ -4492,45 +4492,6 @@
       "createdByRun": "RUN-104",
       "hash": "3fe8f095fddb",
       "approvedBy": "Compliance Officer"
-    },
-    {
-      "id": "OBL-157",
-      "title": "Value portfolio debt and money market securities per APMI standardized norms",
-      "summary": "Portfolio managers must carry out valuation of all portfolio debt and money market securities in accordance with the standardized valuation norms prescribed by APMI, which mirror the corresponding Mutual Fund norms.",
-      "clause": {
-        "circularId": "MC-PM-2025",
-        "chapter": "pm-2",
-        "para": "2.9.1",
-        "excerpt": "Valuation of the portfolio debt and money market securities by portfolio managers shall be carried out in accordance with these standardized valuation norms prescribed by APMI.",
-        "charStart": 138,
-        "charEnd": 314
-      },
-      "type": "ongoing",
-      "frequency": "continuous",
-      "appliesTo": [
-        "portfolio-manager"
-      ],
-      "control": {
-        "id": "CTL-157",
-        "name": "APMI norm-aligned securities valuation",
-        "description": "Operate a valuation process for all debt and money market securities held in managed portfolios that applies the APMI-prescribed standardized valuation methodology (aligned to Mutual Fund norms). The valuation policy and pricing engine are mapped to the APMI norms, each security's valuation is produced by the approved methodology, and any deviation or manual override is flagged, reviewed and escalated.",
-        "owner": "Compliance Officer"
-      },
-      "evidenceSpec": [
-        {
-          "kind": "document",
-          "description": "Valuation policy document explicitly referencing the APMI standardized valuation norms and their application to portfolio debt and money market securities"
-        },
-        {
-          "kind": "data-check",
-          "description": "Sample of valued debt and money market securities with computed prices traced back to the APMI standardized valuation methodology, showing conformity for each instrument"
-        }
-      ],
-      "evidenceIds": [],
-      "status": "gap",
-      "createdByRun": "RUN-105",
-      "hash": "6be35bb2b791",
-      "approvedBy": "Compliance Officer"
     }
   ],
   "evidence": [
@@ -4577,6 +4538,321 @@
       "detail": {
         "docExcerpt": "DetailedStatement (68).xlsx · sha256 98ef208e87c5701b3db5ef19b4442d193c305a293da58afb1a04fab20e55d45f"
       }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "OBL-118",
+      "title": "Submit full and complete information to SEBI at the time of registration",
+      "summary": "The portfolio manager must ensure that all information submitted to SEBI with its registration application is full and complete in all respects, as incomplete submissions may delay processing.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.1.3",
+        "excerpt": "The information submitted to SEBI at the time of registration, shall be full and complete in all respects",
+        "charStart": 0,
+        "charEnd": 105
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-118",
+        "name": "Registration application completeness review",
+        "description": "Before filing the registration application, a designated officer reviews the submission against SEBI's required information set and confirms every field is complete, accurate and supported by documentation; any gaps are remediated prior to submission.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "The registration application as filed with SEBI, together with a completed pre-submission completeness checklist signed off by the responsible officer"
+        },
+        {
+          "kind": "data-check",
+          "description": "Verification that every mandatory field in the registration submission is populated and no placeholder or blank responses remain"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-050",
+      "hash": "599eb8f85f37"
+    },
+    {
+      "id": "OBL-125",
+      "title": "Prior intimation to SEBI before offering co-investment services",
+      "summary": "A Portfolio Manager that is also the Manager of a Category I or Category II AIF must give prior intimation to SEBI before acting as a Co-investment Portfolio Manager and offering co-investment services through the portfolio management route.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.4.1.1",
+        "excerpt": "A Manager of Category I or Category II Alternative Investment Fund (“AIF”) who is also a SEBI registered Portfolio Manager, and intends to act as Co-investment Portfolio Manager and offer Co-investment services through portfolio management route, shall do so only under prior intimation to SEBI.",
+        "charStart": 0,
+        "charEnd": 295
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager",
+        "aif-manager"
+      ],
+      "control": {
+        "id": "CTL-125",
+        "name": "Pre-activity SEBI intimation gate",
+        "description": "Before commencing co-investment services through the portfolio management route, compliance verifies that the entity is a SEBI registered Portfolio Manager and the Manager of a Category I or Category II AIF, then files a prior intimation with SEBI and records it; co-investment activity is commenced only after the intimation is submitted.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the prior intimation submitted to SEBI, with submission date and proof of dispatch"
+        },
+        {
+          "kind": "document",
+          "description": "SEBI acknowledgment or receipt of the intimation, if issued"
+        },
+        {
+          "kind": "data-check",
+          "description": "Register entry confirming the intimation date precedes commencement of any co-investment activity, and that the entity holds PM registration and manages a Category I or II AIF"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-058",
+      "hash": "5e45e5e6dec4"
+    },
+    {
+      "id": "OBL-126",
+      "title": "Seek SEBI registration as Portfolio Manager to offer co-investment services",
+      "summary": "A Manager of a Category I or Category II AIF who is not a SEBI-registered Portfolio Manager must obtain registration as a Portfolio Manager under the PM Regulations before acting as a Co-investment Portfolio Manager and offering co-investment services through the portfolio management route.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.4.1.2",
+        "excerpt": "Any other Manager of Category I or Category II AIF, who is not a SEBI registered Portfolio Manager, and intends to act as Co-investment Portfolio Manager and offer Co-investment services through portfolio management route, shall seek registration from SEBI as a Portfolio Manager in terms of the PM Regulations.",
+        "charStart": 0,
+        "charEnd": 311
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "aif-manager"
+      ],
+      "control": {
+        "id": "CTL-126",
+        "name": "PM registration gate before co-investment launch",
+        "description": "Before an unregistered Category I/II AIF manager commences co-investment services through the portfolio management route, a compliance checkpoint verifies whether the entity holds a SEBI Portfolio Manager registration; if not, service launch is blocked until an application for registration under the PM Regulations is filed with SEBI and registration is granted.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the application for registration as Portfolio Manager filed with SEBI under the PM Regulations"
+        },
+        {
+          "kind": "document",
+          "description": "SEBI registration certificate as Portfolio Manager granted to the AIF manager"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-059",
+      "hash": "ae90aac187ab"
+    },
+    {
+      "id": "OBL-127",
+      "title": "Obtain SEBI prior approval before offering PMS other than co-investment",
+      "summary": "A Portfolio Manager registered under this route may offer portfolio management services beyond co-investment only after complying with all provisions of the PM Regulations, including eligibility criteria, and obtaining SEBI's prior approval.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.4.1.2",
+        "excerpt": "Pursuant to the grant of registration, if such Portfolio Manager is desirous of offering portfolio management services other than Co-investment, the same shall be subject to compliance with all provisions of the PM Regulations including eligibility criteria, and with the prior approval of SEBI.",
+        "charStart": 312,
+        "charEnd": 607
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "aif-manager"
+      ],
+      "control": {
+        "id": "CTL-127",
+        "name": "Pre-approval gate for expanded PMS offering",
+        "description": "Any plan to offer portfolio management services other than co-investment is routed through a checkpoint that confirms compliance with all PM Regulations including the eligibility criteria, and that SEBI's prior approval has been obtained and recorded before such services commence.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "SEBI prior approval permitting the Portfolio Manager to offer portfolio management services other than co-investment"
+        },
+        {
+          "kind": "data-check",
+          "description": "Completed PM Regulations eligibility-criteria assessment evidencing compliance before launch of non-co-investment services"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-059",
+      "hash": "30e57e93445e"
+    },
+    {
+      "id": "OBL-142",
+      "title": "Place orders individually per client or pooled from PM account in specific situations",
+      "summary": "In the specific, non-generic situations contemplated, orders must be placed for each client individually or pooled from the trading account of the Portfolio Manager, and this mode must not be applied as a generic practice.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.2.1",
+        "excerpt": "Specific situations (not generic) wherein the orders shall be placed for each client individually or pooled from trading account of Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 150
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-142",
+        "name": "Order placement mode control",
+        "description": "At order entry, classify each order against the defined specific situations and route it for each client individually or pool it from the Portfolio Manager's trading account as prescribed, ensuring the pooled route is used only in the specified situations and never generically.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Order audit trail evidencing that orders arising in the specified situations were placed individually per client or pooled from the Portfolio Manager's trading account as required."
+        },
+        {
+          "kind": "document",
+          "description": "Compliance-approved mapping of the specific situations to the permitted order placement mode (individual or pooled)."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-089",
+      "hash": "80f33df389e4"
+    },
+    {
+      "id": "OBL-143",
+      "title": "Disclose how margins/collaterals are segregated among clients",
+      "summary": "Where the portfolio manager must place margins or collaterals to execute transactions, it must disclose details of how such margins/collaterals are segregated or placed from amongst various clients without affecting the interest of any client.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.2.3",
+        "excerpt": "details on how such margins / collaterals shall be segregated / placed from amongst various clients, without affecting the interest of any client.",
+        "charStart": 135,
+        "charEnd": 281
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-143",
+        "name": "Margin/collateral segregation and disclosure control",
+        "description": "Maintain a documented methodology for allocating margins/collaterals placed for executing transactions across clients, ensure the allocation does not disadvantage any client, and include this methodology in client-facing disclosures.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Client agreement or disclosure document page setting out how margins/collaterals are segregated or placed amongst clients"
+        },
+        {
+          "kind": "document",
+          "description": "Internal policy on allocation of margins/collaterals across clients ensuring no client's interest is affected"
+        },
+        {
+          "kind": "data-check",
+          "description": "Sample check of client disclosures confirming the margin/collateral segregation methodology was provided"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-090",
+      "hash": "32ac97776ade"
+    },
+    {
+      "id": "OBL-148",
+      "title": "Ensure the dealing terminal (DT) is suitably staffed",
+      "summary": "Portfolio managers must maintain adequate, suitable staffing of the dealing terminal function at all times. Adequate staffing of DT is a standing condition of operating as a portfolio manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2",
+        "excerpt": "ensure that DT is suitably staffed",
+        "charStart": 25,
+        "charEnd": 59
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-148",
+        "name": "DT staffing adequacy review",
+        "description": "Maintain an approved staffing plan for the dealing terminal, including named DT operators per shift, required qualifications, and backup coverage; periodically verify headcount and competency against the plan and escalate or fill gaps so DT is never understaffed during market hours.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Current DT staffing roster listing operators, shifts, and backup personnel, with approval by senior management."
+        },
+        {
+          "kind": "document",
+          "description": "Records of DT operator qualifications or certifications demonstrating suitability of staff."
+        },
+        {
+          "kind": "data-check",
+          "description": "Staffing-level check confirming DT operator headcount meets the approved plan for every trading session, with exceptions logged and remediated."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-095",
+      "hash": "4444fb075558"
+    },
+    {
+      "id": "OBL-157",
+      "title": "Value portfolio debt and money market securities per APMI standardized norms",
+      "summary": "Portfolio managers must carry out valuation of all portfolio debt and money market securities in accordance with the standardized valuation norms prescribed by APMI, which mirror the corresponding Mutual Fund norms.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.9.1",
+        "excerpt": "Valuation of the portfolio debt and money market securities by portfolio managers shall be carried out in accordance with these standardized valuation norms prescribed by APMI.",
+        "charStart": 138,
+        "charEnd": 314
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-157",
+        "name": "APMI norm-aligned securities valuation",
+        "description": "Operate a valuation process for all debt and money market securities held in managed portfolios that applies the APMI-prescribed standardized valuation methodology (aligned to Mutual Fund norms). The valuation policy and pricing engine are mapped to the APMI norms, each security's valuation is produced by the approved methodology, and any deviation or manual override is flagged, reviewed and escalated.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Valuation policy document explicitly referencing the APMI standardized valuation norms and their application to portfolio debt and money market securities"
+        },
+        {
+          "kind": "data-check",
+          "description": "Sample of valued debt and money market securities with computed prices traced back to the APMI standardized valuation methodology, showing conformity for each instrument"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "withdrawn",
+      "createdByRun": "RUN-105",
+      "hash": "6be35bb2b791",
+      "approvedBy": "Compliance Officer"
     }
   ],
   "auditEvents": [
@@ -10002,6 +10278,17 @@
       "detail": "Evidence EV-002 (document) bound to OBL-002 by Compliance Officer: \"testing\", file DetailedStatement (68).xlsx sha256 98ef208e87c5701b3db5ef19b4442d193c305a293da58afb1a04fab20e55d45f. Status gap → met.",
       "hash": "6974c702b7d3",
       "prevHash": "94d68a87e5b5"
+    },
+    {
+      "id": "AE-0494",
+      "at": "2026-09-11T08:04:49.030Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.withdrawn",
+      "subjectType": "obligation",
+      "subjectId": "OBL-157",
+      "detail": "Withdrawn by Compliance Officer at the human gate — \"Value portfolio debt and money market securities per APMI standardized norms\", grounded to MC-PM-2025 para 2.9.1. Removed from the register. Reason: Molecule holds no debt or money-market securities (Pranjal, 2026-09-11). Evidence bindings retained.",
+      "hash": "37fd0053ece2",
+      "prevHash": "6974c702b7d3"
     }
   ]
 }

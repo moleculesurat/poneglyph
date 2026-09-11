@@ -35,8 +35,9 @@ const STATUS_RANK: Record<ObligationStatus, number> = {
   "pending-review": 1,
   "at-risk": 2,
   gap: 3,
-  /* live-pipeline drafts the officer turned down; never in the seeded register */
+  /* live-pipeline drafts the officer turned down, or approved duties withdrawn; never in the seeded register */
   rejected: 4,
+  withdrawn: 5,
 };
 
 const CONNECTORS = [...new Set(evidence.map((e) => e.connector))];

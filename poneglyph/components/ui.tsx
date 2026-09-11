@@ -68,9 +68,10 @@ const STATUS_LABEL: Record<ObligationStatus, string> = {
   "at-risk": "At risk",
   "pending-review": "Pending review",
   rejected: "Rejected",
+  withdrawn: "Withdrawn",
 };
 export function StatusChip({ status }: { status: ObligationStatus }) {
-  const tone = status === "pending-review" ? "pending" : status;
+  const tone = status === "pending-review" ? "pending" : status === "withdrawn" ? "rejected" : status;
   return (
     <span className="chip" data-tone={tone}>
       {status === "gap" ? <span className="dot" data-pulse /> : null}
