@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "d14ff2c90e88",
+  "tip": "7da95f68fb75",
   "obligations": [
     {
       "id": "OBL-001",
@@ -6362,6 +6362,987 @@
       "createdByRun": "RUN-178",
       "hash": "dc6a2adb0c59",
       "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-228",
+      "title": "Consent form text and figures prominently highlighted, minimum size 12 font",
+      "summary": "Consent forms must present their text and figures prominently highlighted, and the font size used must not be below size 12.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-3",
+        "para": "3.5.3",
+        "excerpt": "The text and figures of the consent form shall be prominently highlighted and not be below size 12 font.",
+        "charStart": 0,
+        "charEnd": 104
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-228",
+        "name": "Consent form format verification",
+        "description": "Review the consent form template before use and whenever it is amended, to confirm that text and figures are prominently highlighted and rendered in a font size of at least 12.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Consent form template or sample showing prominently highlighted text and figures with font size of at least 12"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-179",
+      "hash": "193c404dda91",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-229",
+      "title": "Disclose diversification policy and related-party investments in Disclosure Document",
+      "summary": "The Portfolio Manager must include in its Disclosure Document the details of its diversification policy, and the details of any investment of clients' funds by the Portfolio Manager in securities of its related parties or associates.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-4",
+        "para": "4.7.1",
+        "excerpt": "the Portfolio Manager shall disclose in the Disclosure Document the details of its diversification policy and the details of investment of clients’ funds by the Portfolio Manager in the securities of its related parties or associates",
+        "charStart": 67,
+        "charEnd": 300
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-229",
+        "name": "Disclosure Document content control",
+        "description": "Maintain a review checklist and approval step ensuring the Disclosure Document contains a section on the diversification policy and a section detailing investments of clients' funds in securities of related parties or associates, reviewed before any issue or update of the document.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the current Disclosure Document showing the diversification policy section and the related-party/associate investment disclosures."
+        },
+        {
+          "kind": "data-check",
+          "description": "Checklist record confirming both required disclosure items are present and signed off in the latest Disclosure Document version."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-180",
+      "hash": "2da68c20e627",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-230",
+      "title": "Submit data for all clients from April 01, 2023 onwards",
+      "summary": "Portfolio Managers must submit data covering all of their clients, with the data scope commencing from April 01, 2023 and continuing onwards. No client may be excluded from the submission.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.4.4",
+        "excerpt": "Portfolio Managers shall submit data for all their clients from April 01, 2023 onwards.",
+        "charStart": 1,
+        "charEnd": 88
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-230",
+        "name": "Full client coverage validation for data submissions",
+        "description": "Before each submission, reconcile the client master list against the records included in the data submission to confirm every client is covered, and verify that all data with an applicable date on or after April 01, 2023 is within the submission scope.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Coverage reconciliation report comparing the firm's complete client master records to the client records included in the submitted data, showing zero exclusions and a data start date of 2023-04-01."
+        },
+        {
+          "kind": "document",
+          "description": "Submission log or acknowledgement evidencing that the data covering all clients was submitted."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "deadline": "2023-04-01",
+      "createdByRun": "RUN-181",
+      "hash": "e23ae72e86df",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-231",
+      "title": "Disclose relative performance of investment approach in performance marketing material",
+      "summary": "Whenever marketing material presents the performance of an investment approach, the Portfolio Manager must also disclose the relative performance of that approach in that material. Such disclosure must meet the stated minimum content requirements.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-5",
+        "para": "5.6.4",
+        "excerpt": "Portfolio Manager shall disclose relative performance of its investment approach in all the marketing material where performance of the concerned investment approach is being presented.",
+        "charStart": 0,
+        "charEnd": 185
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-231",
+        "name": "Pre-publication relative performance disclosure review",
+        "description": "Before releasing any marketing material, review whether it presents the performance of an investment approach; if it does, verify that the relative performance of that approach is disclosed in the material with the required minimum contents, and withhold release until the disclosure is present.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of each marketing item presenting investment approach performance, showing the relative performance disclosure included in it"
+        },
+        {
+          "kind": "data-check",
+          "description": "Register of marketing materials reviewed, flagging items that present investment approach performance and recording whether relative performance disclosure was verified before release"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-182",
+      "hash": "e4b4d539e2a2",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-232",
+      "title": "No upfront fees charged to clients, directly or indirectly",
+      "summary": "Portfolio Managers are prohibited from charging any upfront fees to clients, whether levied directly or indirectly, as provided in the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.1",
+        "excerpt": "no upfront fees shall be charged by the Portfolio Managers, either directly or indirectly, to the clients.",
+        "charStart": 35,
+        "charEnd": 141
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-232",
+        "name": "Upfront fee prohibition check",
+        "description": "Review fee structures, billing configurations, and client onboarding documentation on an ongoing basis to confirm that no upfront fees are levied on any client, whether charged directly or through indirect means such as bundled charges or deductions at account opening.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Billing/fee system query over all client accounts confirming zero upfront fee charges recorded"
+        },
+        {
+          "kind": "document",
+          "description": "Client fee agreements or fee disclosure documents demonstrating absence of any upfront fee component"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-183",
+      "hash": "455624277c9a",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-233",
+      "title": "Cap charges to self/associates at 20% of transaction value per service per year",
+      "summary": "Total charges paid through self or associates for broking, demat, custody and similar services must not exceed 20% by value, measured per associate (including self) per service over a financial year.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.4",
+        "excerpt": "Charges for all transactions in a financial year (Broking, Demat, custody etc.) through self or associates shall be capped at 20% by value per associate (including self) per service.",
+        "charStart": 0,
+        "charEnd": 182
+      },
+      "type": "ongoing",
+      "frequency": "annual",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-233",
+        "name": "Associate charge cap monitoring",
+        "description": "Maintain a register of all charges paid to self and each associate, tagged by service type; aggregate charges by associate and service against total transaction value for the financial year; block or escalate any associate-service combination approaching or exceeding the 20% cap before further charges are levied.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Year-to-date register of charges to self and each associate by service, showing each associate's share of transaction value against the 20% cap"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-186",
+      "hash": "5d87c6ed9e7e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-234",
+      "title": "Charge self/associates no more than rates paid to non-associates for same service",
+      "summary": "Any charges levied on self or associates for a service must not exceed the rates paid to non-associate providers of that same service.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.4",
+        "excerpt": "Any charges to self/associate shall not be at rates more than that paid to the non- associates providing the same service.",
+        "charStart": 183,
+        "charEnd": 305
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-234",
+        "name": "Associate rate benchmarking",
+        "description": "Maintain a benchmark of rates paid to non-associate providers for each service; require approval of any charge to self or associates only where the rate is at or below the corresponding non-associate rate.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Rate comparison schedule evidencing rates charged to self/associates versus rates paid to non-associate providers for the same services"
+        },
+        {
+          "kind": "data-check",
+          "description": "Check that every charge levied on self/associates is at or below the non-associate rate for that service"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-186",
+      "hash": "981887375be5",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-235",
+      "title": "Levy all fees and charges on actual client assets under management",
+      "summary": "The portfolio manager must base every fee and charge it levies on clients on the actual amount of the clients' assets under management, not on any notional or other base.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.7",
+        "excerpt": "All fees and charges shall be levied on the actual amount of clients’ assets under management.",
+        "charStart": 0,
+        "charEnd": 94
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-235",
+        "name": "Fee basis validation",
+        "description": "Configure the fee-calculation engine to compute all client fees and charges using the actual valued AUM of each client as the basis, and validate before invoicing that no fee is levied on a notional, committed, or stale base.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of each client fee invoice or debit against the client's actual AUM for the corresponding period, confirming the fee base equals actual assets under management."
+        },
+        {
+          "kind": "document",
+          "description": "Client fee statements and the fee-calculation configuration/documentation showing the AUM basis used for levying fees and charges."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-188",
+      "hash": "fb5beff13137",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-236",
+      "title": "Apply High Water Mark to discretionary and non-discretionary services only",
+      "summary": "The High Water Mark must be applied to discretionary and non-discretionary portfolio management services and must not be applied to advisory services.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.8",
+        "excerpt": "High Water Mark shall be applicable for discretionary and non- discretionary services and not for advisory services.",
+        "charStart": 0,
+        "charEnd": 116
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-236",
+        "name": "HWM applicability by mandate type",
+        "description": "Configure the fee and performance computation system so the High Water Mark is enforced on every discretionary and non-discretionary mandate and disabled for advisory-only mandates; verify the configuration at client onboarding and whenever a mandate's service type changes.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Fee-configuration report showing the HWM flag enabled for all discretionary and non-discretionary mandates and absent for advisory mandates"
+        },
+        {
+          "kind": "document",
+          "description": "Approved performance-fee computation policy stating High Water Mark applicability by service type"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-189",
+      "hash": "922b3da08d2f",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-237",
+      "title": "Provide fee calculation tool to all clients",
+      "summary": "The portfolio manager must give every client a fee calculation tool that highlights the various fee options with multi-year fee calculations, and the tool must incorporate the high watermark principle wherever applicable.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.9",
+        "excerpt": "Portfolio Manager shall provide a fee calculation tool to all clients that highlights various fee options with multi-year fee calculations. Such tool shall incorporate the high watermark principle, wherever applicable.",
+        "charStart": 205,
+        "charEnd": 423
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-237",
+        "name": "Fee calculation tool provision",
+        "description": "Maintain a fee calculation tool accessible to every client that displays the various fee options with multi-year fee computations and embeds the high watermark principle wherever applicable.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "live-scan",
+          "description": "Check that the fee calculation tool is live and accessible to clients and displays multiple fee options with multi-year fee calculations including the high watermark principle where applicable"
+        },
+        {
+          "kind": "data-check",
+          "description": "Client master data confirming the fee calculation tool has been provided to all clients"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-190",
+      "hash": "6ef9b575d363",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-238",
+      "title": "Share tool link in advance with new clients",
+      "summary": "For every new client onboarded on or after October 01, 2024, the portfolio manager must provide the link to access the fee calculation tool in advance of onboarding.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.3.9",
+        "excerpt": "The link to access the said tool shall be provided in advance to all new clients, on-boarded on or after October 01, 2024.",
+        "charStart": 434,
+        "charEnd": 556
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-238",
+        "name": "Onboarding tool link delivery",
+        "description": "Build the onboarding checklist so the fee calculation tool link is sent to each new client before onboarding is completed, covering all clients onboarded on or after 2024-10-01.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Onboarding records pairing each new client onboarded on or after 2024-10-01 with a timestamped dispatch of the fee calculation tool link prior to onboarding"
+        },
+        {
+          "kind": "document",
+          "description": "Sample client communication (email or letter) containing the fee calculation tool link"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "deadline": "2024-10-01",
+      "createdByRun": "RUN-190",
+      "hash": "f139db345bbd",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-239",
+      "title": "Charge prescribed exit load on part or full redemption of client portfolio",
+      "summary": "When a client portfolio is redeemed, whether in part or in full, the portfolio manager must charge the exit load specified in the prescribed schedule for that redemption.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.4.1",
+        "excerpt": "In case client portfolio is redeemed in part or full, the exit load charged shall be as under:",
+        "charStart": 0,
+        "charEnd": 94
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-239",
+        "name": "Exit load application at redemption",
+        "description": "At the time of processing any part or full redemption of a client portfolio, the redemption workflow retrieves the prescribed exit load schedule, computes the applicable exit load on the redeemed amount, and deducts it before crediting net proceeds to the client.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Redemption statement or computation sheet for each part or full redemption showing the exit load applied in line with the prescribed schedule"
+        },
+        {
+          "kind": "data-check",
+          "description": "Reconciliation of all client portfolio redemptions in the period against the prescribed exit load schedule, confirming the correct exit load was charged on each"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-191",
+      "hash": "6a622195827e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-240",
+      "title": "Discretionary PM client agreement must cap client liability at amount invested",
+      "summary": "A discretionary portfolio manager must ensure that the client agreement contains a condition that the client's liability does not exceed the client's investment with the portfolio manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.6.1",
+        "excerpt": "the agreement between the portfolio manager and the client shall, inter alia, contain, in case of a discretionary portfolio manager, a condition that the liability of a client shall not exceed his investment with the portfolio manager.",
+        "charStart": 32,
+        "charEnd": 267
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-240",
+        "name": "Client agreement liability-cap clause check",
+        "description": "At onboarding of a discretionary client, verify the executed client agreement (and the standard agreement template) includes the condition that the client's liability shall not exceed his investment with the portfolio manager; block execution of any discretionary agreement lacking this condition.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Executed discretionary client agreement showing the clause limiting client liability to the amount invested with the portfolio manager."
+        },
+        {
+          "kind": "data-check",
+          "description": "Register of discretionary client agreements flagging each record as containing the liability-cap condition."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-195",
+      "hash": "51fc2fb5a2f9",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-242",
+      "title": "Refer fee and charge disputes to arbitration",
+      "summary": "Any dispute regarding fees and charges must be referred to arbitration for settlement in accordance with the terms of the agreement and the Arbitration and Conciliation Act, 1996.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-7",
+        "para": "7.1.2",
+        "excerpt": "In case of any dispute regarding fees and charges, the same shall be referred to arbitration for settlement as per the terms of the agreement, under the Arbitration and Conciliation Act, 1996.",
+        "charStart": 0,
+        "charEnd": 192
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-242",
+        "name": "Arbitration referral for fee disputes",
+        "description": "When a dispute concerning fees or charges arises, the portfolio manager refers the matter to arbitration as provided in the agreement, conducting the proceedings under the Arbitration and Conciliation Act, 1996.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Notice or record of arbitration referral for the fee/charge dispute, together with the arbitration proceedings or award"
+        },
+        {
+          "kind": "data-check",
+          "description": "Dispute register entry showing each fee and charge dispute logged and its arbitration status"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-197",
+      "hash": "24350486f282",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-246",
+      "title": "Maintain adequate infrastructure for portfolio management activities",
+      "summary": "The applicant must have the necessary infrastructure, including adequate office space, equipment and manpower, to effectively discharge the activities of a portfolio manager.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "the applicant has the necessary infrastructure like adequate office space, equipment and the manpower to effectively discharge the activities of a portfolio manager",
+        "charStart": 143,
+        "charEnd": 307
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-246",
+        "name": "Infrastructure adequacy review",
+        "description": "Periodically assess office space, equipment and staffing against the scale of portfolio management activities, and maintain documented premises arrangements, equipment inventory and organisational headcount demonstrating adequacy.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Office premises lease or ownership documents and floor plan evidencing adequate office space"
+        },
+        {
+          "kind": "document",
+          "description": "Equipment inventory and organisation chart or headcount record evidencing adequate equipment and manpower"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-204",
+      "hash": "67167ab5a690",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-248",
+      "title": "Ensure principal officer meets qualification, experience and NISM certification norms",
+      "summary": "The principal officer must hold a professional qualification in finance, law, accountancy or business management (or a NISM Post Graduate Program in Securities Market of at least one year, or a CFA charter), have at least five years' securities-market experience of which at least two years are in portfolio management, investment advisory or fund management, and hold the relevant NISM certification. Portfolio managers registered before the 2020 Regulations had to meet the qualification and experience criteria within thirty-six months of commencement.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "(d) the principal officer of the applicant has– [(i) a professional qualification in finance, law, accountancy or business management from a university or an institution recognized by the Central Government or any State Government or a foreign university or a professional qualification by completing a Post Graduate Program in the Securities Market (Portfolio Management) from NISM of a duration not less than one year or a professional qualification by obtaining a CFA charter from the CFA institute;] (ii) experience of at least five years in related activities in the securities market including in a portfolio manager, stock broker, investment advisor, research analyst or as a fund manager; and (iii) the relevant NISM certification as specified by the Board from time to time",
+        "charStart": 363,
+        "charEnd": 1145
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-248",
+        "name": "Principal officer eligibility verification",
+        "description": "On appointment and on any change of principal officer, verify the professional qualification, at least five years of securities-market experience including two years in portfolio management, investment advisory or fund management, and a valid NISM certification.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Principal officer's degree, CFA charter or NISM program certificate together with experience certificates evidencing five years in securities-market activities"
+        },
+        {
+          "kind": "data-check",
+          "description": "Principal officer record shows the required qualification, five years' experience including two years in portfolio management or investment advisory or fund management, and a valid NISM certification"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-204",
+      "hash": "9fa522b436a0",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-249",
+      "title": "Employ at least one suitably qualified and experienced employee",
+      "summary": "In addition to the principal officer and compliance officer, the firm must employ at least one person holding a recognised graduation and at least two years' experience in securities-market related activities. Firms registered before the 2020 Regulations had twelve months from commencement to meet this staffing requirement.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "In addition to the Principal Officer and Compliance Officer, the applicant has in its employment at least one person with the following qualifications :- (i) graduation from a university or an institution recognized by the Central Government or any State Government or a foreign university; and (ii) an experience of at least two years in related activities in the securities market including in a portfolio manager, stock broker, investment advisor or as a fund manager",
+        "charStart": 2292,
+        "charEnd": 2762
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-249",
+        "name": "Minimum staffing qualification check",
+        "description": "Maintain at least one employee, besides the principal officer and compliance officer, who holds a recognised graduation and at least two years of related securities-market experience, and track this headcount requirement on an ongoing basis.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Degree certificate and experience letters for the qualifying employee"
+        },
+        {
+          "kind": "data-check",
+          "description": "HR record confirms at least one employee meeting the graduation and two-year experience criteria"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-204",
+      "hash": "a0a6efaba62a",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-250",
+      "title": "Ensure fund-management decision makers meet principal officer criteria",
+      "summary": "Any employee of the portfolio manager who has decision-making authority related to fund management must hold the same minimum qualifications, experience and certification as specified for the principal officer.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "Provided that any employee of the Portfolio Manager who has decision making authority related to fund management shall have the same [minimum qualifications, experience and certification] as specified for the Principal Officer in clause (d) of sub- regulation (2) of regulation 7",
+        "charStart": 2775,
+        "charEnd": 3054
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-250",
+        "name": "Decision-authority mapping and qualification verification",
+        "description": "Identify every employee with decision-making authority over fund management and verify that each holds the minimum qualifications, experience and NISM certification required of the principal officer; re-verify whenever such roles are assigned or changed.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Mapping of fund-management decision-making roles to personnel whose qualification, experience and certification records match principal officer requirements"
+        },
+        {
+          "kind": "document",
+          "description": "Qualification and certification documents for each identified decision maker"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-204",
+      "hash": "1c36bb12e451",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-251",
+      "title": "Renew NISM certification before expiry of existing certification",
+      "summary": "A fresh NISM certification must be obtained before the validity of the existing certification expires, so that compliance with the certification requirement is continuous.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "Provided further that a fresh NISM certification shall be obtained before expiry of the validity of the existing certification to ensure continuity in compliance with the certification requirements",
+        "charStart": 1658,
+        "charEnd": 1855
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-251",
+        "name": "Certification expiry tracker",
+        "description": "Track the validity dates of all NISM certifications held by the principal officer and other relevant personnel, and schedule and complete the fresh certification before each expiry date.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Fresh NISM certification obtained before expiry of the prior certification"
+        },
+        {
+          "kind": "data-check",
+          "description": "Certification tracker shows no gap, with each new certification date preceding the previous certification's expiry date"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-204",
+      "hash": "928b1e4d47c5",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-252",
+      "title": "Maintain net worth of at least five crore rupees",
+      "summary": "The portfolio manager must maintain net worth, as defined in the Explanation, of not less than five crore rupees. The Co-Investment Portfolio Manager is exempt from this requirement.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "9",
+        "excerpt": "The net worth referred to in clause (g) of regulation 7 shall not be less than five crore rupees",
+        "charStart": 0,
+        "charEnd": 96
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-252",
+        "name": "Net worth threshold monitoring",
+        "description": "Compute net worth as paid-up equity capital plus free reserves (excluding revaluation reserves) less accumulated losses and unwritten-off deferred expenditure, compare against the five crore rupee floor, and escalate and remediate any shortfall.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Net worth computation (paid-up equity capital plus free reserves excluding revaluation reserves, reduced by accumulated losses and unwritten-off deferred expenditure) showing a value of at least five crore rupees"
+        },
+        {
+          "kind": "document",
+          "description": "Chartered accountant certificate or audited statement certifying net worth of not less than five crore rupees"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-205",
+      "hash": "50b00dd0e20c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-254",
+      "title": "Fulfill net worth requirements separately from capital adequacy for each activity",
+      "summary": "The portfolio manager must meet the net worth requirements under these regulations separately and independently of any capital adequacy requirements applicable to each activity it undertakes under other relevant regulations.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "9",
+        "excerpt": "shall fulfill the net worth requirements under these regulations, separately and independently, of the capital adequacy requirements, if any, for each activity undertaken by it under the relevant regulations",
+        "charStart": 445,
+        "charEnd": 652
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-254",
+        "name": "Activity-wise segregation check",
+        "description": "Compute and evidence net worth compliance separately from, and independently of, the capital adequacy maintained for each other regulated activity, with no cross-utilisation between the two requirements.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Activity-wise compliance report demonstrating that net worth requirements are met separately and independently of capital adequacy requirements for each regulated activity"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-205",
+      "hash": "4a516e3be2f6",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-255",
+      "title": "Abide by the provisions of the Act and these regulations",
+      "summary": "The portfolio manager must conduct its business in compliance with the Act and the portfolio management regulations for as long as the registration remains valid.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall abide by the provisions of the Act and these regulations",
+        "charStart": 133,
+        "charEnd": 217
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-255",
+        "name": "Regulatory compliance framework",
+        "description": "Maintain policies, monitoring and periodic compliance certification that map operations to the Act and the regulations, detect deviations and drive remediation.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed compliance attestation confirming adherence to the Act and the regulations"
+        },
+        {
+          "kind": "data-check",
+          "description": "Register of identified regulatory deviations with remediation status"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-208",
+      "hash": "5874176d483b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-256",
+      "title": "Obtain SEBI prior approval for change in control",
+      "summary": "No change in control of the portfolio manager may take effect until prior approval of the Board has been obtained in the manner specified by it.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall obtain prior approval of the Board in case of change in control in such manner as may be specified by the Board",
+        "charStart": 225,
+        "charEnd": 364
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-256",
+        "name": "Change-in-control approval gate",
+        "description": "Screening step in corporate transaction approvals ensuring any arrangement resulting in a change in control is not executed before SEBI's prior approval is secured and filed.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "SEBI prior-approval letter for the change in control together with the related transaction documents"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-208",
+      "hash": "2e0ebf3eb274",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-257",
+      "title": "Inform SEBI forthwith of false information or material change",
+      "summary": "If any information or particulars previously submitted to SEBI are found false or misleading in a material particular, or if there is any material change in the information already submitted, the portfolio manager must inform the Board in writing forthwith.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall forthwith inform the Board in writing, if any information or particulars previously submitted to the Board are found to be false or misleading in any material particular or if there is any material change in the information already submitted",
+        "charStart": 370,
+        "charEnd": 639
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-257",
+        "name": "Material-change disclosure trigger",
+        "description": "Escalation workflow that reviews earlier filings for falsity or material change and, on detection, generates a written intimation to SEBI forthwith with dispatch proof.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Written intimation(s) to SEBI with dispatch date and the corrected or changed particulars"
+        },
+        {
+          "kind": "data-check",
+          "description": "Log of detections of false, misleading or materially changed information and corresponding SEBI intimations"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-208",
+      "hash": "c10a52b3378a",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-259",
+      "title": "Redress grievances within 21 days and report complaints to SEBI",
+      "summary": "Investor complaints must be redressed within 21 calendar days of receipt, and the portfolio manager must keep the Board informed of the number, nature and other particulars of complaints received.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall take adequate steps for redressal of grievances of the investors within [twenty-one calendar days] of the date of the receipt of the complaint and keep the Board informed about the number, nature and other particulars of the complaints received",
+        "charStart": 752,
+        "charEnd": 1024
+      },
+      "type": "event-driven",
+      "frequency": "21 days",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-259",
+        "name": "Investor grievance redressal workflow",
+        "description": "Complaint register tracking receipt and resolution dates so each complaint is closed within 21 calendar days, with complaint statistics (number, nature, particulars) compiled and filed with SEBI.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Complaint register showing date of receipt and date of redressal for each investor complaint"
+        },
+        {
+          "kind": "data-check",
+          "description": "Complaint statistics (number, nature and particulars) reported to SEBI"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-208",
+      "hash": "553906a62ca2",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-262",
+      "title": "Cease portfolio management activity while certificate is suspended",
+      "summary": "If the Board suspends the portfolio manager's certificate for failure to pay fees under Schedule II, the portfolio manager must immediately stop carrying on portfolio management activity for the entire period the suspension remains in force.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "15(2)",
+        "excerpt": "the portfolio manager shall forthwith cease to carry on the activity as a portfolio manager for the period during which the suspension subsists.",
+        "charStart": 125,
+        "charEnd": 269
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-262",
+        "name": "Suspension cessation protocol",
+        "description": "Upon receipt of notice that the Board has suspended the certificate, the firm immediately halts all portfolio management activity — no new mandates, no client transactions, no advisory or discretionary management — and maintains the halt until the suspension is lifted and formally communicated.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Activity report showing zero portfolio management transactions, new mandates, or client fee accruals from the suspension date until reinstatement."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-213",
+      "hash": "a913da5559c2",
+      "approvedBy": "Compliance Officer"
     }
   ],
   "evidence": [
@@ -7471,6 +8452,335 @@
       "status": "rejected",
       "createdByRun": "RUN-176",
       "hash": "645757776eb4"
+    },
+    {
+      "id": "OBL-241",
+      "title": "Strictly comply with the aforesaid Regulation",
+      "summary": "Portfolio managers must ensure full and strict compliance with the referenced Regulation at all times.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-6",
+        "para": "6.1.6.2",
+        "excerpt": "Portfolio managers shall strictly comply with the aforesaid Regulation.",
+        "charStart": 0,
+        "charEnd": 71
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-241",
+        "name": "Regulatory compliance monitoring",
+        "description": "Maintain a compliance register mapping the requirements of the referenced Regulation to the firm's operations, monitor ongoing adherence, and escalate any deviations or breaches for remediation.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Signed periodic compliance certificate/attestation confirming adherence to the aforesaid Regulation"
+        },
+        {
+          "kind": "data-check",
+          "description": "Breach and exception register showing no instances of non-compliance with the aforesaid Regulation, or logged remediation of any found"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-196",
+      "hash": "dd9efb4402fe"
+    },
+    {
+      "id": "OBL-243",
+      "title": "Submit certificate application in Form A with non-refundable fee",
+      "summary": "A person seeking grant of a certificate must apply to the Board using Form A of Schedule I, and the application must be accompanied by the prescribed non-refundable application fee.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "4(1)",
+        "excerpt": "An application by a person for the grant of a certificate shall be made to the Board in Form A of Schedule I and shall be accompanied by a non-refundable application fee, as specified in para (1) of Schedule II.",
+        "charStart": 0,
+        "charEnd": 211
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-243",
+        "name": "Registration application assembly and submission control",
+        "description": "Maintain a checklist-driven process that compiles the complete Form A application per Schedule I, arranges payment of the non-refundable application fee per Schedule II, verifies completeness of enclosures, and submits the application to the Board, recording the submission date and acknowledgement.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the completed Form A application as submitted to the Board"
+        },
+        {
+          "kind": "document",
+          "description": "Proof of payment of the non-refundable application fee (fee receipt or bank instrument)"
+        },
+        {
+          "kind": "data-check",
+          "description": "Board acknowledgement of receipt confirming the application was filed with fee paid"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-199",
+      "hash": "19dd18fced65"
+    },
+    {
+      "id": "OBL-244",
+      "title": "Remove objections indicated by the Board within 3 weeks",
+      "summary": "When the Board indicates objections to a registration application, the applicant must be given, and must use, the opportunity to remove those objections within the time specified, which cannot exceed 3 weeks, failing which the incomplete application is rejected.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "5",
+        "excerpt": "Provided that, before rejecting any such application, the applicant shall be given an opportunity to remove objections indicated by the Board, within the time specified, not later than 3 weeks.",
+        "charStart": 203,
+        "charEnd": 396
+      },
+      "type": "event-driven",
+      "frequency": "21 days",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-244",
+        "name": "Board objection remediation tracker",
+        "description": "On receipt of a communication from the Board indicating objections to the application, log the objections, assign an owner, prepare and submit the rectification to the Board within the time specified (not later than 3 weeks from the Board's communication), and track the response until the application is accepted so it is not rejected as incomplete.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board communication (letter or email) listing the objections indicated and the time specified for their removal"
+        },
+        {
+          "kind": "document",
+          "description": "Rectification submission filed with the Board removing the indicated objections, with submission date visible"
+        },
+        {
+          "kind": "data-check",
+          "description": "Date-difference check confirming the removal submission was made within 21 days (3 weeks) of the Board's objection communication"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-201",
+      "hash": "29d8fd98f667"
+    },
+    {
+      "id": "OBL-245",
+      "title": "Appear before the Board for personal representation when required",
+      "summary": "The applicant or its principal officer must appear before the SEBI Board for personal representation if the Board so requires.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "6(2)",
+        "excerpt": "The applicant or its principal officer shall, if so required, appear before the Board for personal representation.",
+        "charStart": 0,
+        "charEnd": 114
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-245",
+        "name": "Board personal representation attendance",
+        "description": "Maintain a process to track any SEBI Board requirement for personal representation, ensure the applicant or principal officer is scheduled and prepared to appear, and record the appearance.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board notice requesting personal representation together with confirmation of appearance (attendance record or minutes) for the applicant or principal officer"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-202",
+      "hash": "41985d949b94"
+    },
+    {
+      "id": "OBL-247",
+      "title": "Appoint a compliance officer",
+      "summary": "The applicant must have appointed a compliance officer, which the Board verifies as one of the conditions for grant of registration.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "7(2)",
+        "excerpt": "the applicant has appointed a compliance officer",
+        "charStart": 313,
+        "charEnd": 361
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-247",
+        "name": "Compliance officer appointment and continuity",
+        "description": "Maintain a formally appointed compliance officer through an appointment letter or board resolution and ensure the position remains filled at all times, with records of any successor appointment.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Appointment letter or board resolution designating the compliance officer"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-204",
+      "hash": "92267751f889"
+    },
+    {
+      "id": "OBL-253",
+      "title": "Raise net worth to five crore rupees within 36 months of 2020 Regulations commencement",
+      "summary": "Portfolio managers holding a certificate of registration before the commencement of the SEBI (Portfolio Managers) Regulations, 2020 must raise their net worth to at least five crore rupees within thirty-six months of that commencement.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "9",
+        "excerpt": "shall raise its net worth to not less than five crore rupees within thirty-six months from such commencement",
+        "charStart": 291,
+        "charEnd": 399
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-253",
+        "name": "Transitional capital raise plan",
+        "description": "For firms registered prior to commencement of the 2020 Regulations, maintain a board-approved capital plan and funding schedule ensuring net worth reaches five crore rupees within thirty-six months of commencement, tracked through to completion.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board-approved capital plan with funding evidence showing net worth raised to at least five crore rupees within thirty-six months of commencement of the 2020 Regulations"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-205",
+      "hash": "e65d6dbb23dd"
+    },
+    {
+      "id": "OBL-258",
+      "title": "Pay registration fees in the prescribed manner",
+      "summary": "The portfolio manager must pay the fees for registration as provided in the regulations.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall pay the fees for registration in the manner provided in these regulations",
+        "charStart": 645,
+        "charEnd": 746
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-258",
+        "name": "Registration fee payment",
+        "description": "Finance process to compute and remit registration fees through the prescribed channel and record the payment against the registration file.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Fee payment challan or confirmation evidencing payment of registration fees"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-208",
+      "hash": "c81d71aebec9"
+    },
+    {
+      "id": "OBL-260",
+      "title": "Maintain net worth specified in regulation 9 at all times",
+      "summary": "The portfolio manager must maintain the net worth prescribed in regulation 9 at all times during the period of the certificate (the clause exempts Co-investment Portfolio Managers from this condition).",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "11",
+        "excerpt": "the portfolio manager shall maintain the net worth specified in regulation 9 at all times during the period of the certificate",
+        "charStart": 1034,
+        "charEnd": 1160
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-260",
+        "name": "Net worth monitoring",
+        "description": "Periodic computation of net worth per regulation 9 with supporting certificates, breach alerts and escalation and restoration plans if net worth falls below the prescribed level.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Net worth computation showing net worth at or above the regulation 9 level at each monitoring date"
+        },
+        {
+          "kind": "document",
+          "description": "Chartered accountant or auditor certificate of net worth"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-208",
+      "hash": "c38b22792677"
+    },
+    {
+      "id": "OBL-261",
+      "title": "Pay certificate fees within 15 days of Board intimation",
+      "summary": "An applicant eligible for grant of a certificate must pay the prescribed fees within 15 days of receiving intimation from the Board, in the manner specified in Schedule II. The Board may, on sufficient cause being shown, permit payment at any time before one month from the date the fees become due.",
+      "clause": {
+        "circularId": "REG-PM-2020",
+        "chapter": "pmr-2",
+        "para": "15(1)",
+        "excerpt": "shall pay such fees within 15 days of receiving intimation from the Board and in such manner as specified in Schedule II",
+        "charStart": 52,
+        "charEnd": 172
+      },
+      "type": "event-driven",
+      "frequency": "15 days",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-261",
+        "name": "Fee payment tracking",
+        "description": "Log each intimation received from the Board regarding fees due, initiate payment in the manner specified in Schedule II, and complete and record the payment within 15 days of the intimation date, flagging any payment requiring Board's indulgence under the proviso for sufficient cause.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the Board's intimation of fees due together with the payment challan or receipt showing payment made per Schedule II"
+        },
+        {
+          "kind": "data-check",
+          "description": "Ledger or bank record confirming the fee payment date falls within 15 days of the Board intimation date"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "rejected",
+      "createdByRun": "RUN-212",
+      "hash": "dd11c89326be"
     }
   ],
   "auditEvents": [
@@ -15239,6 +16549,1161 @@
       "detail": "Rejected by Compliance Officer at the human gate — \"Apply paragraphs 5.6.1 to 5.6.6 to all performance reporting and advertising\", drafted by RUN-176 from MC-PM-2025 para 5.6.7. Not entered in the register. The draft and this decision are retained.",
       "hash": "d14ff2c90e88",
       "prevHash": "9be1eaa260b4"
+    },
+    {
+      "id": "AE-0707",
+      "at": "2026-09-11T09:12:50.362Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-228",
+      "detail": "Drafted by RUN-179 from MC-PM-2025 para 3.5.3 — \"Consent form text and figures prominently highlighted, minimum size 12 font\", grounded to chars 0–104 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "edb4a1f09818",
+      "prevHash": "d14ff2c90e88"
+    },
+    {
+      "id": "AE-0708",
+      "at": "2026-09-11T09:12:50.362Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-179",
+      "detail": "RUN-179 completed extraction and verification over MC-PM-2025 para 3.5.3 in 16s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-228.",
+      "hash": "491ec6c62c21",
+      "prevHash": "edb4a1f09818"
+    },
+    {
+      "id": "AE-0709",
+      "at": "2026-09-11T09:13:06.741Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-229",
+      "detail": "Drafted by RUN-180 from MC-PM-2025 para 4.7.1 — \"Disclose diversification policy and related-party investments in Disclosure Document\", grounded to chars 67–300 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "841084b43218",
+      "prevHash": "491ec6c62c21"
+    },
+    {
+      "id": "AE-0710",
+      "at": "2026-09-11T09:13:06.741Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-180",
+      "detail": "RUN-180 completed extraction and verification over MC-PM-2025 para 4.7.1 in 15s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-229.",
+      "hash": "ddde4f0e4706",
+      "prevHash": "841084b43218"
+    },
+    {
+      "id": "AE-0711",
+      "at": "2026-09-11T09:13:39.014Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-230",
+      "detail": "Drafted by RUN-181 from MC-PM-2025 para 5.4.4 — \"Submit data for all clients from April 01, 2023 onwards\", grounded to chars 1–88 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "dffbc7bb26e6",
+      "prevHash": "ddde4f0e4706"
+    },
+    {
+      "id": "AE-0712",
+      "at": "2026-09-11T09:13:39.014Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-181",
+      "detail": "RUN-181 completed extraction and verification over MC-PM-2025 para 5.4.4 in 29s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-230.",
+      "hash": "b2c70326261b",
+      "prevHash": "dffbc7bb26e6"
+    },
+    {
+      "id": "AE-0713",
+      "at": "2026-09-11T09:13:59.942Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-231",
+      "detail": "Drafted by RUN-182 from MC-PM-2025 para 5.6.4 — \"Disclose relative performance of investment approach in performance marketing material\", grounded to chars 0–185 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "af320c33e04d",
+      "prevHash": "b2c70326261b"
+    },
+    {
+      "id": "AE-0714",
+      "at": "2026-09-11T09:13:59.942Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-182",
+      "detail": "RUN-182 completed extraction and verification over MC-PM-2025 para 5.6.4 in 20s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-231.",
+      "hash": "604009bf9513",
+      "prevHash": "af320c33e04d"
+    },
+    {
+      "id": "AE-0715",
+      "at": "2026-09-11T09:14:38.397Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-232",
+      "detail": "Drafted by RUN-183 from MC-PM-2025 para 6.1.3.1 — \"No upfront fees charged to clients, directly or indirectly\", grounded to chars 35–141 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e297f0d24c78",
+      "prevHash": "604009bf9513"
+    },
+    {
+      "id": "AE-0716",
+      "at": "2026-09-11T09:14:38.397Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-183",
+      "detail": "RUN-183 completed extraction and verification over MC-PM-2025 para 6.1.3.1 in 13s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-232.",
+      "hash": "263dc5bfba5a",
+      "prevHash": "e297f0d24c78"
+    },
+    {
+      "id": "AE-0717",
+      "at": "2026-09-11T09:14:40.021Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-184",
+      "detail": "RUN-184 closed at applicability — MC-PM-2025 para 6.1.3.2 does not bind Molecule Ventures LLP. The clause addresses stock-broker. Molecule Ventures LLP is onboarded as portfolio-manager and aif-manager and declares no such capacity, and the clause carries no phrase addressing a capacity the firm holds. The rulebook for an intermediary the firm is not does not enter this register. No extraction call was made and no obligation was drafted.",
+      "hash": "c018c8465b1e",
+      "prevHash": "263dc5bfba5a"
+    },
+    {
+      "id": "AE-0718",
+      "at": "2026-09-11T09:14:43.048Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-185",
+      "detail": "RUN-185 closed at applicability — MC-PM-2025 para 6.1.3.3 does not bind Molecule Ventures LLP. The clause addresses stock-broker. Molecule Ventures LLP is onboarded as portfolio-manager and aif-manager and declares no such capacity, and the clause carries no phrase addressing a capacity the firm holds. The rulebook for an intermediary the firm is not does not enter this register. No extraction call was made and no obligation was drafted.",
+      "hash": "a4a404817b16",
+      "prevHash": "c018c8465b1e"
+    },
+    {
+      "id": "AE-0719",
+      "at": "2026-09-11T09:15:07.504Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-233",
+      "detail": "Drafted by RUN-186 from MC-PM-2025 para 6.1.3.4 — \"Cap charges to self/associates at 20% of transaction value per service per year\", grounded to chars 0–182 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e353dc23933f",
+      "prevHash": "a4a404817b16"
+    },
+    {
+      "id": "AE-0720",
+      "at": "2026-09-11T09:15:07.504Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-234",
+      "detail": "Drafted by RUN-186 from MC-PM-2025 para 6.1.3.4 — \"Charge self/associates no more than rates paid to non-associates for same service\", grounded to chars 183–305 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "830a2e80a179",
+      "prevHash": "e353dc23933f"
+    },
+    {
+      "id": "AE-0721",
+      "at": "2026-09-11T09:15:07.504Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-186",
+      "detail": "RUN-186 completed extraction and verification over MC-PM-2025 para 6.1.3.4 in 21s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-233, OBL-234.",
+      "hash": "1d98fca470a6",
+      "prevHash": "830a2e80a179"
+    },
+    {
+      "id": "AE-0722",
+      "at": "2026-09-11T09:15:17.334Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-187",
+      "detail": "RUN-187 completed extraction and verification over MC-PM-2025 para 6.1.3.5 in 7s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "de746fb12492",
+      "prevHash": "1d98fca470a6"
+    },
+    {
+      "id": "AE-0723",
+      "at": "2026-09-11T09:15:36.853Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-235",
+      "detail": "Drafted by RUN-188 from MC-PM-2025 para 6.1.3.7 — \"Levy all fees and charges on actual client assets under management\", grounded to chars 0–94 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "914e8a18055b",
+      "prevHash": "de746fb12492"
+    },
+    {
+      "id": "AE-0724",
+      "at": "2026-09-11T09:15:36.853Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-188",
+      "detail": "RUN-188 completed extraction and verification over MC-PM-2025 para 6.1.3.7 in 18s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-235.",
+      "hash": "4144d888320e",
+      "prevHash": "914e8a18055b"
+    },
+    {
+      "id": "AE-0725",
+      "at": "2026-09-11T09:16:09.631Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-236",
+      "detail": "Drafted by RUN-189 from MC-PM-2025 para 6.1.3.8 — \"Apply High Water Mark to discretionary and non-discretionary services only\", grounded to chars 0–116 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "470419a51f56",
+      "prevHash": "4144d888320e"
+    },
+    {
+      "id": "AE-0726",
+      "at": "2026-09-11T09:16:09.631Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-189",
+      "detail": "RUN-189 completed extraction and verification over MC-PM-2025 para 6.1.3.8 in 29s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-236.",
+      "hash": "e8fe592e9ef1",
+      "prevHash": "470419a51f56"
+    },
+    {
+      "id": "AE-0727",
+      "at": "2026-09-11T09:17:18.048Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-237",
+      "detail": "Drafted by RUN-190 from MC-PM-2025 para 6.1.3.9 — \"Provide fee calculation tool to all clients\", grounded to chars 205–423 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "68131f7e7d1e",
+      "prevHash": "e8fe592e9ef1"
+    },
+    {
+      "id": "AE-0728",
+      "at": "2026-09-11T09:17:18.048Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-238",
+      "detail": "Drafted by RUN-190 from MC-PM-2025 para 6.1.3.9 — \"Share tool link in advance with new clients\", grounded to chars 434–556 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "87b54efbccd1",
+      "prevHash": "68131f7e7d1e"
+    },
+    {
+      "id": "AE-0729",
+      "at": "2026-09-11T09:17:18.048Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-190",
+      "detail": "RUN-190 completed extraction and verification over MC-PM-2025 para 6.1.3.9 in 65s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-237, OBL-238.",
+      "hash": "721c6a74aacc",
+      "prevHash": "87b54efbccd1"
+    },
+    {
+      "id": "AE-0730",
+      "at": "2026-09-11T09:17:36.034Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-239",
+      "detail": "Drafted by RUN-191 from MC-PM-2025 para 6.1.4.1 — \"Charge prescribed exit load on part or full redemption of client portfolio\", grounded to chars 0–94 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d0738543a6a9",
+      "prevHash": "721c6a74aacc"
+    },
+    {
+      "id": "AE-0731",
+      "at": "2026-09-11T09:17:36.034Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-191",
+      "detail": "RUN-191 completed extraction and verification over MC-PM-2025 para 6.1.4.1 in 16s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-239.",
+      "hash": "d38763a658b8",
+      "prevHash": "d0738543a6a9"
+    },
+    {
+      "id": "AE-0732",
+      "at": "2026-09-11T09:17:42.565Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-192",
+      "detail": "RUN-192 completed extraction and verification over MC-PM-2025 para 6.1.4.2 in 5s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "d70d471a3c3f",
+      "prevHash": "d38763a658b8"
+    },
+    {
+      "id": "AE-0733",
+      "at": "2026-09-11T09:17:49.919Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-193",
+      "detail": "RUN-193 completed extraction and verification over MC-PM-2025 para 6.1.5 in 6s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "83127a6ea112",
+      "prevHash": "d70d471a3c3f"
+    },
+    {
+      "id": "AE-0734",
+      "at": "2026-09-11T09:18:10.394Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-194",
+      "detail": "RUN-194 completed extraction and verification over MC-PM-2025 para 6.1.5.1 in 18s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "5b78699ecb64",
+      "prevHash": "83127a6ea112"
+    },
+    {
+      "id": "AE-0735",
+      "at": "2026-09-11T09:18:27.027Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-240",
+      "detail": "Drafted by RUN-195 from MC-PM-2025 para 6.1.6.1 — \"Discretionary PM client agreement must cap client liability at amount invested\", grounded to chars 32–267 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "3d7fca39264f",
+      "prevHash": "5b78699ecb64"
+    },
+    {
+      "id": "AE-0736",
+      "at": "2026-09-11T09:18:27.027Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-195",
+      "detail": "RUN-195 completed extraction and verification over MC-PM-2025 para 6.1.6.1 in 13s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-240.",
+      "hash": "4237bd3390e1",
+      "prevHash": "3d7fca39264f"
+    },
+    {
+      "id": "AE-0737",
+      "at": "2026-09-11T09:18:49.300Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-241",
+      "detail": "Drafted by RUN-196 from MC-PM-2025 para 6.1.6.2 — \"Strictly comply with the aforesaid Regulation\", grounded to chars 0–71 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "6ff4f0edd038",
+      "prevHash": "4237bd3390e1"
+    },
+    {
+      "id": "AE-0738",
+      "at": "2026-09-11T09:18:49.300Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-196",
+      "detail": "RUN-196 completed extraction and verification over MC-PM-2025 para 6.1.6.2 in 20s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-241.",
+      "hash": "94fce622b479",
+      "prevHash": "6ff4f0edd038"
+    },
+    {
+      "id": "AE-0739",
+      "at": "2026-09-11T09:19:20.494Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-242",
+      "detail": "Drafted by RUN-197 from MC-PM-2025 para 7.1.2 — \"Refer fee and charge disputes to arbitration\", grounded to chars 0–192 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8cd30e04c2aa",
+      "prevHash": "94fce622b479"
+    },
+    {
+      "id": "AE-0740",
+      "at": "2026-09-11T09:19:20.494Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-197",
+      "detail": "RUN-197 completed extraction and verification over MC-PM-2025 para 7.1.2 in 12s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-242.",
+      "hash": "79399c5863b5",
+      "prevHash": "8cd30e04c2aa"
+    },
+    {
+      "id": "AE-0741",
+      "at": "2026-09-11T09:20:12.674Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-198",
+      "detail": "RUN-198 failed on REG-PM-2020 para 3. extraction failed after 2 attempts — response was not valid JSON: Unexpected non-whitespace character after JSON at position 1175 (line 3 column 1). Nothing was drafted and nothing entered the register.",
+      "hash": "32e7b9219233",
+      "prevHash": "79399c5863b5"
+    },
+    {
+      "id": "AE-0742",
+      "at": "2026-09-11T09:20:31.565Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-243",
+      "detail": "Drafted by RUN-199 from REG-PM-2020 para 4(1) — \"Submit certificate application in Form A with non-refundable fee\", grounded to chars 0–211 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "05279a13fd7c",
+      "prevHash": "32e7b9219233"
+    },
+    {
+      "id": "AE-0743",
+      "at": "2026-09-11T09:20:31.565Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-199",
+      "detail": "RUN-199 completed extraction and verification over REG-PM-2020 para 4(1) in 17s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-243.",
+      "hash": "ea325be37183",
+      "prevHash": "05279a13fd7c"
+    },
+    {
+      "id": "AE-0744",
+      "at": "2026-09-11T09:20:44.433Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-200",
+      "detail": "RUN-200 completed extraction and verification over REG-PM-2020 para 4(2) in 9s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "0523e775b6f8",
+      "prevHash": "ea325be37183"
+    },
+    {
+      "id": "AE-0745",
+      "at": "2026-09-11T09:21:12.980Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-244",
+      "detail": "Drafted by RUN-201 from REG-PM-2020 para 5 — \"Remove objections indicated by the Board within 3 weeks\", grounded to chars 203–396 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "a9321e7c3bd4",
+      "prevHash": "0523e775b6f8"
+    },
+    {
+      "id": "AE-0746",
+      "at": "2026-09-11T09:21:12.980Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-201",
+      "detail": "RUN-201 completed extraction and verification over REG-PM-2020 para 5 in 26s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-244.",
+      "hash": "ad11800effa3",
+      "prevHash": "a9321e7c3bd4"
+    },
+    {
+      "id": "AE-0747",
+      "at": "2026-09-11T09:21:23.804Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-245",
+      "detail": "Drafted by RUN-202 from REG-PM-2020 para 6(2) — \"Appear before the Board for personal representation when required\", grounded to chars 0–114 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d4710cf38e12",
+      "prevHash": "ad11800effa3"
+    },
+    {
+      "id": "AE-0748",
+      "at": "2026-09-11T09:21:23.805Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-202",
+      "detail": "RUN-202 completed extraction and verification over REG-PM-2020 para 6(2) in 9s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-245.",
+      "hash": "2f2046cff347",
+      "prevHash": "d4710cf38e12"
+    },
+    {
+      "id": "AE-0749",
+      "at": "2026-09-11T09:21:32.129Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-203",
+      "detail": "RUN-203 completed extraction and verification over REG-PM-2020 para 7(1) in 6s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "acece13e7178",
+      "prevHash": "2f2046cff347"
+    },
+    {
+      "id": "AE-0750",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-246",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Maintain adequate infrastructure for portfolio management activities\", grounded to chars 143–307 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8d5fd34c00fe",
+      "prevHash": "acece13e7178"
+    },
+    {
+      "id": "AE-0751",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-247",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Appoint a compliance officer\", grounded to chars 313–361 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "b7777032159f",
+      "prevHash": "8d5fd34c00fe"
+    },
+    {
+      "id": "AE-0752",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-248",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Ensure principal officer meets qualification, experience and NISM certification norms\", grounded to chars 363–1145 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c263c996c6b0",
+      "prevHash": "b7777032159f"
+    },
+    {
+      "id": "AE-0753",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-249",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Employ at least one suitably qualified and experienced employee\", grounded to chars 2292–2762 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "761e2ca1639e",
+      "prevHash": "c263c996c6b0"
+    },
+    {
+      "id": "AE-0754",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-250",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Ensure fund-management decision makers meet principal officer criteria\", grounded to chars 2775–3054 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "f14620933aa5",
+      "prevHash": "761e2ca1639e"
+    },
+    {
+      "id": "AE-0755",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-251",
+      "detail": "Drafted by RUN-204 from REG-PM-2020 para 7(2) — \"Renew NISM certification before expiry of existing certification\", grounded to chars 1658–1855 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "ac5bd29abc22",
+      "prevHash": "f14620933aa5"
+    },
+    {
+      "id": "AE-0756",
+      "at": "2026-09-11T09:23:39.885Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-204",
+      "detail": "RUN-204 completed extraction and verification over REG-PM-2020 para 7(2) in 124s. Five of five verifier checks passed. 6 obligation(s) drafted and held at the human gate: OBL-246, OBL-247, OBL-248, OBL-249, OBL-250, OBL-251.",
+      "hash": "e712ad2cbef0",
+      "prevHash": "ac5bd29abc22"
+    },
+    {
+      "id": "AE-0757",
+      "at": "2026-09-11T09:24:27.531Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-252",
+      "detail": "Drafted by RUN-205 from REG-PM-2020 para 9 — \"Maintain net worth of at least five crore rupees\", grounded to chars 0–96 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "b11f7a02712c",
+      "prevHash": "e712ad2cbef0"
+    },
+    {
+      "id": "AE-0758",
+      "at": "2026-09-11T09:24:27.531Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-253",
+      "detail": "Drafted by RUN-205 from REG-PM-2020 para 9 — \"Raise net worth to five crore rupees within 36 months of 2020 Regulations commencement\", grounded to chars 291–399 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "10d4ef64cef6",
+      "prevHash": "b11f7a02712c"
+    },
+    {
+      "id": "AE-0759",
+      "at": "2026-09-11T09:24:27.531Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-254",
+      "detail": "Drafted by RUN-205 from REG-PM-2020 para 9 — \"Fulfill net worth requirements separately from capital adequacy for each activity\", grounded to chars 445–652 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d0d40dd78acd",
+      "prevHash": "10d4ef64cef6"
+    },
+    {
+      "id": "AE-0760",
+      "at": "2026-09-11T09:24:27.531Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-205",
+      "detail": "RUN-205 completed extraction and verification over REG-PM-2020 para 9 in 46s. Five of five verifier checks passed. 3 obligation(s) drafted and held at the human gate: OBL-252, OBL-253, OBL-254.",
+      "hash": "2df717bff59f",
+      "prevHash": "d0d40dd78acd"
+    },
+    {
+      "id": "AE-0761",
+      "at": "2026-09-11T09:24:40.723Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-206",
+      "detail": "RUN-206 completed extraction and verification over REG-PM-2020 para 10(1) in 11s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "a462afa62d18",
+      "prevHash": "2df717bff59f"
+    },
+    {
+      "id": "AE-0762",
+      "at": "2026-09-11T09:24:47.022Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-207",
+      "detail": "RUN-207 completed extraction and verification over REG-PM-2020 para 10(2) in 5s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "5a5cdb674867",
+      "prevHash": "a462afa62d18"
+    },
+    {
+      "id": "AE-0763",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-255",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Abide by the provisions of the Act and these regulations\", grounded to chars 133–217 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "13438396f413",
+      "prevHash": "5a5cdb674867"
+    },
+    {
+      "id": "AE-0764",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-256",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Obtain SEBI prior approval for change in control\", grounded to chars 225–364 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "6d99faefedb5",
+      "prevHash": "13438396f413"
+    },
+    {
+      "id": "AE-0765",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-257",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Inform SEBI forthwith of false information or material change\", grounded to chars 370–639 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c8347b71aa92",
+      "prevHash": "6d99faefedb5"
+    },
+    {
+      "id": "AE-0766",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-258",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Pay registration fees in the prescribed manner\", grounded to chars 645–746 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "937b22e34b96",
+      "prevHash": "c8347b71aa92"
+    },
+    {
+      "id": "AE-0767",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-259",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Redress grievances within 21 days and report complaints to SEBI\", grounded to chars 752–1024 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "6d556dc19460",
+      "prevHash": "937b22e34b96"
+    },
+    {
+      "id": "AE-0768",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-260",
+      "detail": "Drafted by RUN-208 from REG-PM-2020 para 11 — \"Maintain net worth specified in regulation 9 at all times\", grounded to chars 1034–1160 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d6be34ff9e71",
+      "prevHash": "6d556dc19460"
+    },
+    {
+      "id": "AE-0769",
+      "at": "2026-09-11T09:30:09.003Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-208",
+      "detail": "RUN-208 completed extraction and verification over REG-PM-2020 para 11 in 321s. Five of five verifier checks passed. 6 obligation(s) drafted and held at the human gate: OBL-255, OBL-256, OBL-257, OBL-258, OBL-259, OBL-260.",
+      "hash": "25f11f7ca831",
+      "prevHash": "d6be34ff9e71"
+    },
+    {
+      "id": "AE-0770",
+      "at": "2026-09-11T09:30:12.781Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-209",
+      "detail": "RUN-209 completed extraction and verification over REG-PM-2020 para 12 in 24s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "73e74957b85a",
+      "prevHash": "25f11f7ca831"
+    },
+    {
+      "id": "AE-0771",
+      "at": "2026-09-11T09:30:39.513Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-210",
+      "detail": "RUN-210 completed extraction and verification over REG-PM-2020 para 13(2) in 23s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "15b0c633b75b",
+      "prevHash": "73e74957b85a"
+    },
+    {
+      "id": "AE-0772",
+      "at": "2026-09-11T09:31:02.886Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-211",
+      "detail": "RUN-211 failed on REG-PM-2020 para 14. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1796 (line 1 column 1797). Nothing was drafted and nothing entered the register.",
+      "hash": "645e3e6b3917",
+      "prevHash": "15b0c633b75b"
+    },
+    {
+      "id": "AE-0773",
+      "at": "2026-09-11T09:31:18.499Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-261",
+      "detail": "Drafted by RUN-212 from REG-PM-2020 para 15(1) — \"Pay certificate fees within 15 days of Board intimation\", grounded to chars 52–172 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "4a27b3011175",
+      "prevHash": "645e3e6b3917"
+    },
+    {
+      "id": "AE-0774",
+      "at": "2026-09-11T09:31:18.499Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-212",
+      "detail": "RUN-212 completed extraction and verification over REG-PM-2020 para 15(1) in 14s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-261.",
+      "hash": "c9de0efca9d0",
+      "prevHash": "4a27b3011175"
+    },
+    {
+      "id": "AE-0775",
+      "at": "2026-09-11T09:31:34.961Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-262",
+      "detail": "Drafted by RUN-213 from REG-PM-2020 para 15(2) — \"Cease portfolio management activity while certificate is suspended\", grounded to chars 125–269 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "d022ed6c75e9",
+      "prevHash": "c9de0efca9d0"
+    },
+    {
+      "id": "AE-0776",
+      "at": "2026-09-11T09:31:34.961Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-213",
+      "detail": "RUN-213 completed extraction and verification over REG-PM-2020 para 15(2) in 13s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-262.",
+      "hash": "4e1d564f9998",
+      "prevHash": "d022ed6c75e9"
+    },
+    {
+      "id": "AE-0777",
+      "at": "2026-09-11T09:38:26.604Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-228",
+      "detail": "Approved by Compliance Officer at the human gate — \"Consent form text and figures prominently highlighted, minimum size 12 font\", grounded to MC-PM-2025 para 3.5.3, chars 0–104. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-179.",
+      "hash": "35baa0984e61",
+      "prevHash": "4e1d564f9998"
+    },
+    {
+      "id": "AE-0778",
+      "at": "2026-09-11T09:38:26.623Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-229",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose diversification policy and related-party investments in Disclosure Document\", grounded to MC-PM-2025 para 4.7.1, chars 67–300. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-180.",
+      "hash": "2ba09da1cf3d",
+      "prevHash": "35baa0984e61"
+    },
+    {
+      "id": "AE-0779",
+      "at": "2026-09-11T09:38:26.634Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-230",
+      "detail": "Approved by Compliance Officer at the human gate — \"Submit data for all clients from April 01, 2023 onwards\", grounded to MC-PM-2025 para 5.4.4, chars 1–88. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-181.",
+      "hash": "b191210a17ba",
+      "prevHash": "2ba09da1cf3d"
+    },
+    {
+      "id": "AE-0780",
+      "at": "2026-09-11T09:38:26.645Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-231",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose relative performance of investment approach in performance marketing material\", grounded to MC-PM-2025 para 5.6.4, chars 0–185. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-182.",
+      "hash": "cb48c453a66e",
+      "prevHash": "b191210a17ba"
+    },
+    {
+      "id": "AE-0781",
+      "at": "2026-09-11T09:38:26.656Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-232",
+      "detail": "Approved by Compliance Officer at the human gate — \"No upfront fees charged to clients, directly or indirectly\", grounded to MC-PM-2025 para 6.1.3.1, chars 35–141. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-183.",
+      "hash": "400292f5902f",
+      "prevHash": "cb48c453a66e"
+    },
+    {
+      "id": "AE-0782",
+      "at": "2026-09-11T09:38:26.669Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-233",
+      "detail": "Approved by Compliance Officer at the human gate — \"Cap charges to self/associates at 20% of transaction value per service per year\", grounded to MC-PM-2025 para 6.1.3.4, chars 0–182. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-186.",
+      "hash": "29c5cba5958c",
+      "prevHash": "400292f5902f"
+    },
+    {
+      "id": "AE-0783",
+      "at": "2026-09-11T09:38:26.679Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-234",
+      "detail": "Approved by Compliance Officer at the human gate — \"Charge self/associates no more than rates paid to non-associates for same service\", grounded to MC-PM-2025 para 6.1.3.4, chars 183–305. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-186.",
+      "hash": "b4dcf9ebf6a3",
+      "prevHash": "29c5cba5958c"
+    },
+    {
+      "id": "AE-0784",
+      "at": "2026-09-11T09:38:26.692Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-235",
+      "detail": "Approved by Compliance Officer at the human gate — \"Levy all fees and charges on actual client assets under management\", grounded to MC-PM-2025 para 6.1.3.7, chars 0–94. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-188.",
+      "hash": "ff4db721e8f7",
+      "prevHash": "b4dcf9ebf6a3"
+    },
+    {
+      "id": "AE-0785",
+      "at": "2026-09-11T09:38:26.702Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-236",
+      "detail": "Approved by Compliance Officer at the human gate — \"Apply High Water Mark to discretionary and non-discretionary services only\", grounded to MC-PM-2025 para 6.1.3.8, chars 0–116. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-189.",
+      "hash": "f62aea4ecade",
+      "prevHash": "ff4db721e8f7"
+    },
+    {
+      "id": "AE-0786",
+      "at": "2026-09-11T09:38:26.713Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-237",
+      "detail": "Approved by Compliance Officer at the human gate — \"Provide fee calculation tool to all clients\", grounded to MC-PM-2025 para 6.1.3.9, chars 205–423. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-190.",
+      "hash": "5d97fb8b529e",
+      "prevHash": "f62aea4ecade"
+    },
+    {
+      "id": "AE-0787",
+      "at": "2026-09-11T09:38:26.722Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-238",
+      "detail": "Approved by Compliance Officer at the human gate — \"Share tool link in advance with new clients\", grounded to MC-PM-2025 para 6.1.3.9, chars 434–556. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-190.",
+      "hash": "34c9ccdb10ef",
+      "prevHash": "5d97fb8b529e"
+    },
+    {
+      "id": "AE-0788",
+      "at": "2026-09-11T09:38:26.732Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-239",
+      "detail": "Approved by Compliance Officer at the human gate — \"Charge prescribed exit load on part or full redemption of client portfolio\", grounded to MC-PM-2025 para 6.1.4.1, chars 0–94. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-191.",
+      "hash": "650ba253e8f7",
+      "prevHash": "34c9ccdb10ef"
+    },
+    {
+      "id": "AE-0789",
+      "at": "2026-09-11T09:38:26.741Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-240",
+      "detail": "Approved by Compliance Officer at the human gate — \"Discretionary PM client agreement must cap client liability at amount invested\", grounded to MC-PM-2025 para 6.1.6.1, chars 32–267. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-195.",
+      "hash": "a09001cbf71b",
+      "prevHash": "650ba253e8f7"
+    },
+    {
+      "id": "AE-0790",
+      "at": "2026-09-11T09:38:26.750Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-242",
+      "detail": "Approved by Compliance Officer at the human gate — \"Refer fee and charge disputes to arbitration\", grounded to MC-PM-2025 para 7.1.2, chars 0–192. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-197.",
+      "hash": "ff1b3d42c168",
+      "prevHash": "a09001cbf71b"
+    },
+    {
+      "id": "AE-0791",
+      "at": "2026-09-11T09:38:26.759Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-246",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain adequate infrastructure for portfolio management activities\", grounded to REG-PM-2020 para 7(2), chars 143–307. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-204.",
+      "hash": "f90ebe4df0ed",
+      "prevHash": "ff1b3d42c168"
+    },
+    {
+      "id": "AE-0792",
+      "at": "2026-09-11T09:38:26.767Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-248",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure principal officer meets qualification, experience and NISM certification norms\", grounded to REG-PM-2020 para 7(2), chars 363–1145. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-204.",
+      "hash": "27fe66c4ffd0",
+      "prevHash": "f90ebe4df0ed"
+    },
+    {
+      "id": "AE-0793",
+      "at": "2026-09-11T09:38:26.776Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-249",
+      "detail": "Approved by Compliance Officer at the human gate — \"Employ at least one suitably qualified and experienced employee\", grounded to REG-PM-2020 para 7(2), chars 2292–2762. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-204.",
+      "hash": "be01751202ce",
+      "prevHash": "27fe66c4ffd0"
+    },
+    {
+      "id": "AE-0794",
+      "at": "2026-09-11T09:38:26.784Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-250",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure fund-management decision makers meet principal officer criteria\", grounded to REG-PM-2020 para 7(2), chars 2775–3054. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-204.",
+      "hash": "5be933a2c32b",
+      "prevHash": "be01751202ce"
+    },
+    {
+      "id": "AE-0795",
+      "at": "2026-09-11T09:38:26.792Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-251",
+      "detail": "Approved by Compliance Officer at the human gate — \"Renew NISM certification before expiry of existing certification\", grounded to REG-PM-2020 para 7(2), chars 1658–1855. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-204.",
+      "hash": "0f3139dcb791",
+      "prevHash": "5be933a2c32b"
+    },
+    {
+      "id": "AE-0796",
+      "at": "2026-09-11T09:38:26.802Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-252",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain net worth of at least five crore rupees\", grounded to REG-PM-2020 para 9, chars 0–96. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-205.",
+      "hash": "3225860469f1",
+      "prevHash": "0f3139dcb791"
+    },
+    {
+      "id": "AE-0797",
+      "at": "2026-09-11T09:38:26.810Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-254",
+      "detail": "Approved by Compliance Officer at the human gate — \"Fulfill net worth requirements separately from capital adequacy for each activity\", grounded to REG-PM-2020 para 9, chars 445–652. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-205.",
+      "hash": "6eccc25154ac",
+      "prevHash": "3225860469f1"
+    },
+    {
+      "id": "AE-0798",
+      "at": "2026-09-11T09:38:26.818Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-255",
+      "detail": "Approved by Compliance Officer at the human gate — \"Abide by the provisions of the Act and these regulations\", grounded to REG-PM-2020 para 11, chars 133–217. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-208.",
+      "hash": "415619de77e0",
+      "prevHash": "6eccc25154ac"
+    },
+    {
+      "id": "AE-0799",
+      "at": "2026-09-11T09:38:26.826Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-256",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain SEBI prior approval for change in control\", grounded to REG-PM-2020 para 11, chars 225–364. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-208.",
+      "hash": "46b8e09bc7c8",
+      "prevHash": "415619de77e0"
+    },
+    {
+      "id": "AE-0800",
+      "at": "2026-09-11T09:38:26.834Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-257",
+      "detail": "Approved by Compliance Officer at the human gate — \"Inform SEBI forthwith of false information or material change\", grounded to REG-PM-2020 para 11, chars 370–639. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-208.",
+      "hash": "7f183c355410",
+      "prevHash": "46b8e09bc7c8"
+    },
+    {
+      "id": "AE-0801",
+      "at": "2026-09-11T09:38:26.843Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-259",
+      "detail": "Approved by Compliance Officer at the human gate — \"Redress grievances within 21 days and report complaints to SEBI\", grounded to REG-PM-2020 para 11, chars 752–1024. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-208.",
+      "hash": "730618466a76",
+      "prevHash": "7f183c355410"
+    },
+    {
+      "id": "AE-0802",
+      "at": "2026-09-11T09:38:26.852Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-262",
+      "detail": "Approved by Compliance Officer at the human gate — \"Cease portfolio management activity while certificate is suspended\", grounded to REG-PM-2020 para 15(2), chars 125–269. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-213.",
+      "hash": "4666674e5267",
+      "prevHash": "730618466a76"
+    },
+    {
+      "id": "AE-0803",
+      "at": "2026-09-11T09:38:27.048Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-241",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Strictly comply with the aforesaid Regulation\", drafted by RUN-196 from MC-PM-2025 para 6.1.6.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "c723c2a5d69e",
+      "prevHash": "4666674e5267"
+    },
+    {
+      "id": "AE-0804",
+      "at": "2026-09-11T09:38:27.068Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-243",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Submit certificate application in Form A with non-refundable fee\", drafted by RUN-199 from REG-PM-2020 para 4(1). Not entered in the register. The draft and this decision are retained.",
+      "hash": "28f6b3400939",
+      "prevHash": "c723c2a5d69e"
+    },
+    {
+      "id": "AE-0805",
+      "at": "2026-09-11T09:38:27.080Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-244",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Remove objections indicated by the Board within 3 weeks\", drafted by RUN-201 from REG-PM-2020 para 5. Not entered in the register. The draft and this decision are retained.",
+      "hash": "9bb1d3a6a742",
+      "prevHash": "28f6b3400939"
+    },
+    {
+      "id": "AE-0806",
+      "at": "2026-09-11T09:38:27.092Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-245",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Appear before the Board for personal representation when required\", drafted by RUN-202 from REG-PM-2020 para 6(2). Not entered in the register. The draft and this decision are retained.",
+      "hash": "b711d1ed9d1b",
+      "prevHash": "9bb1d3a6a742"
+    },
+    {
+      "id": "AE-0807",
+      "at": "2026-09-11T09:38:27.103Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-247",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Appoint a compliance officer\", drafted by RUN-204 from REG-PM-2020 para 7(2). Not entered in the register. The draft and this decision are retained.",
+      "hash": "5f0bd7373d5a",
+      "prevHash": "b711d1ed9d1b"
+    },
+    {
+      "id": "AE-0808",
+      "at": "2026-09-11T09:38:27.114Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-253",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Raise net worth to five crore rupees within 36 months of 2020 Regulations commencement\", drafted by RUN-205 from REG-PM-2020 para 9. Not entered in the register. The draft and this decision are retained.",
+      "hash": "975a63447f43",
+      "prevHash": "5f0bd7373d5a"
+    },
+    {
+      "id": "AE-0809",
+      "at": "2026-09-11T09:38:27.127Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-258",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Pay registration fees in the prescribed manner\", drafted by RUN-208 from REG-PM-2020 para 11. Not entered in the register. The draft and this decision are retained.",
+      "hash": "bad6192bb189",
+      "prevHash": "975a63447f43"
+    },
+    {
+      "id": "AE-0810",
+      "at": "2026-09-11T09:38:27.136Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-260",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Maintain net worth specified in regulation 9 at all times\", drafted by RUN-208 from REG-PM-2020 para 11. Not entered in the register. The draft and this decision are retained.",
+      "hash": "88236d69159b",
+      "prevHash": "bad6192bb189"
+    },
+    {
+      "id": "AE-0811",
+      "at": "2026-09-11T09:38:27.145Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-261",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Pay certificate fees within 15 days of Board intimation\", drafted by RUN-212 from REG-PM-2020 para 15(1). Not entered in the register. The draft and this decision are retained.",
+      "hash": "7da95f68fb75",
+      "prevHash": "88236d69159b"
     }
   ]
 }
