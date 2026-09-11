@@ -75,7 +75,10 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   REVIEW-2026-09-11-pm-6-7-pmr-2.md (26 approve / 9 reject). PMS MASTER CIRCULAR EXTRACTION COMPLETE (all 154 shall paras).
   Task 25 ACCEPTED 2026-09-11 (no code): pmr-4 -> 78 drafts, REVIEW-2026-09-11-pmr-4.md (51 approve / 27 reject, mostly
   duplicates of MC lines). Note: a reg-11 run that reported a 300s timeout still wrote drafts later -> the re-run duplicated it.
-  Task 26 ISSUED: re-run pmr-4 failures + reg 3; run pmr-1,3,5,6 (20 units) and Schedules s2,s3,s4 (23).
+  Task 26 ACCEPTED 2026-09-11 (no code): -> 60 drafts, REVIEW-2026-09-11-pmr-rest.md (41 approve / 19 reject).
+  REG-PM-2020 EXTRACTION COMPLETE except 21, 24(7), 37(1) (one more pass in task 27; 24(7) derivatives-leverage ban matters).
+  PMS related-party circular 2022 (given/sources) is NOT collected on purpose: MC 2025 ch 3.4–3.7 consolidates it.
+  Task 27 (1c) to be cut next: document vault fed from evidenceSpec of the approved register; holiday calendar.
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
 - Deployment: task 1e-i = infra STUDY (worker, no code) before any port; Pranjal schedules it.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
