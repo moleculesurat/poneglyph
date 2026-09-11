@@ -1,6 +1,6 @@
 {
   "source": "http://localhost:8787/api/state",
-  "tip": "a94246dffa92",
+  "tip": "6974c702b7d3",
   "obligations": [
     {
       "id": "OBL-001",
@@ -72,8 +72,10 @@
           "description": "Submission log evidencing that each quarterly report was filed on the SI Portal within 15 calendar days of the quarter end, beginning with the quarter ending June 2026"
         }
       ],
-      "evidenceIds": [],
-      "status": "gap",
+      "evidenceIds": [
+        "EV-002"
+      ],
+      "status": "met",
       "createdByRun": "RUN-051",
       "hash": "c9292c5f86c2",
       "approvedBy": "Compliance Officer"
@@ -3285,6 +3287,1250 @@
       "createdByRun": "RUN-166",
       "hash": "9641a8f4da40",
       "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-119",
+      "title": "Mention registration number in all correspondence",
+      "summary": "The portfolio manager must state its certificate of registration number in every piece of correspondence it sends to SEBI, other authorities, stock exchanges, and its clients.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.2",
+        "excerpt": "The portfolio manager shall mention its registration number contained in the certificate of registration in all the correspondence with SEBI, other authorities, Stock Exchanges and the clients of the portfolio manager.",
+        "charStart": 0,
+        "charEnd": 218
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-119",
+        "name": "Registration number in outbound correspondence templates",
+        "description": "Maintain standard templates for all outbound letters, emails and notices to SEBI, other authorities, stock exchanges and clients that automatically carry the portfolio manager's certificate of registration number, and verify each outgoing communication displays the number before dispatch.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Samples of outbound correspondence to SEBI, other authorities, stock exchanges and clients showing the registration number on each item"
+        },
+        {
+          "kind": "data-check",
+          "description": "Template review report confirming every approved correspondence template includes the certificate of registration number"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-051",
+      "hash": "e97aa5617573",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-120",
+      "title": "Designate a senior officer as Compliance Officer",
+      "summary": "The Portfolio Manager must appoint a senior officer to the role of Compliance Officer to oversee compliance with all Rules, Regulations, Guidelines and Notifications issued by SEBI, the Government of India and other regulatory authorities.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.3",
+        "excerpt": "the Portfolio Manager shall designate a senior officer as compliance Officer",
+        "charStart": 176,
+        "charEnd": 252
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-120",
+        "name": "Compliance Officer designation",
+        "description": "Senior management formally appoints a senior officer as Compliance Officer, recording the designation with defined seniority, reporting lines and responsibility for regulatory compliance oversight.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board or senior management approval / appointment letter designating the named senior officer as Compliance Officer"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-052",
+      "hash": "427de91a168c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-121",
+      "title": "Compliance Officer to co-ordinate with regulators and ensure internal compliance",
+      "summary": "The designated Compliance Officer must co-ordinate with regulatory authorities on various matters, provide necessary guidance, and ensure compliance internally within the firm.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.3",
+        "excerpt": "who shall co-ordinate with regulatory authorities in various matters and provide necessary guidance as also ensure compliance internally",
+        "charStart": 254,
+        "charEnd": 390
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-121",
+        "name": "Regulatory liaison and internal compliance process",
+        "description": "A defined process by which the Compliance Officer serves as the point of contact for regulator communications, disseminates regulatory guidance internally, and monitors day-to-day adherence to applicable rules and regulations.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Log of regulatory correspondence and co-ordination handled by the Compliance Officer"
+        },
+        {
+          "kind": "document",
+          "description": "Internal compliance guidance circulars or advisories issued by the Compliance Officer to staff"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-052",
+      "hash": "097ecafebbb4",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-122",
+      "title": "Ensure SEBI-observed deficiencies do not recur",
+      "summary": "The Compliance Officer must ensure that observations made and deficiencies pointed out by SEBI in the functioning of the portfolio manager are remediated and do not recur.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.3",
+        "excerpt": "The Compliance Officer shall inter alia ensure that the observations made / the deficiencies pointed out by SEBI in the functioning of the portfolio managers do not recur",
+        "charStart": 392,
+        "charEnd": 562
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-122",
+        "name": "Regulatory deficiency tracker",
+        "description": "A deficiency register in which every SEBI observation or inspection finding is recorded, assigned a corrective action with an owner, tracked to closure, and re-tested periodically to confirm the deficiency has not recurred.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Deficiency register mapping each SEBI observation to corrective action, closure status and recurrence check"
+        },
+        {
+          "kind": "document",
+          "description": "Compliance Officer's periodic report to senior management confirming remediation of SEBI observations and absence of recurrence"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-052",
+      "hash": "347f713a81b3",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-123",
+      "title": "SEBI correspondence only via principal office, not branch offices",
+      "summary": "All correspondence with SEBI relating to registration and clarifications on SEBI Guidelines/Circulars must be sent exclusively by the portfolio manager's principal office; branch offices must not make such correspondence.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.4",
+        "excerpt": "Correspondence relating to registration and clarifications on Guidelines / Circulars issued by SEBI shall be made only by the principal office of the portfolio manager and not by any of its branch offices.",
+        "charStart": 0,
+        "charEnd": 205
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-123",
+        "name": "Principal-office correspondence routing",
+        "description": "Maintain a policy and routing mechanism that directs all SEBI registration and clarification correspondence through the principal office, with checks to prevent branch offices from sending such correspondence directly to SEBI.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Correspondence policy or board-approved procedure designating the principal office as the sole authorised channel for SEBI registration and clarification correspondence"
+        },
+        {
+          "kind": "data-check",
+          "description": "Outgoing correspondence log showing that all SEBI-directed registration and clarification letters originate from the principal office address and none from branch offices"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-053",
+      "hash": "3d8d384fd87e",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-124",
+      "title": "Have a code of conduct under PIT Regulations",
+      "summary": "Portfolio managers must have a code of conduct as envisaged under the SEBI (Prohibition of Insider Trading) Regulations, 2015.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.2.5",
+        "excerpt": "The portfolio managers shall have a code of conduct as envisaged under the Securities and Exchange Board of India (Prohibition of Insider Trading) Regulations, 2015.",
+        "charStart": 0,
+        "charEnd": 165
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-124",
+        "name": "Insider trading code of conduct adoption",
+        "description": "Adopt and maintain a code of conduct conforming to the SEBI (Prohibition of Insider Trading) Regulations, 2015, approved by management and made applicable to all employees and designated persons.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the adopted code of conduct with evidence of board or management approval and version history."
+        },
+        {
+          "kind": "data-check",
+          "description": "Check that the code of conduct document references the SEBI (Prohibition of Insider Trading) Regulations, 2015 and is acknowledged by all covered persons."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-054",
+      "hash": "13c03ba41495",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-128",
+      "title": "Apply online to SEBI for prior approval via SEBI Intermediary Portal",
+      "summary": "The Portfolio Manager must submit its application for prior approval to SEBI electronically through the SEBI Intermediary Portal. The application must be made online at the specified portal rather than by any other channel.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.5.1.1",
+        "excerpt": "An online application shall be made by Portfolio Manager to SEBI for prior approval through the SEBI Intermediary Portal (https://siportal.sebi.gov.in).",
+        "charStart": 0,
+        "charEnd": 152
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-128",
+        "name": "Prior approval application submission control",
+        "description": "When the firm requires SEBI prior approval, a responsible officer prepares and files the application online through the SEBI Intermediary Portal (siportal.sebi.gov.in), verifies the submission is acknowledged, and tracks it through to receipt of approval before the underlying activity is undertaken.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the online application as filed on the SEBI Intermediary Portal, together with the portal acknowledgement/receipt and any SEBI approval communication"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-061",
+      "hash": "912f0cba7368",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-129",
+      "title": "File change-in-control approval application with SEBI before NCLT filing",
+      "summary": "When a portfolio manager seeks approval for a proposed change in control, the application under the PM Regulations must be filed with SEBI before the application is filed with the NCLT.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.5.1.5.1",
+        "excerpt": "The application seeking approval for the proposed change in control under PM Regulations shall be filed with SEBI prior to filing the application with NCLT;",
+        "charStart": 0,
+        "charEnd": 156
+      },
+      "type": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-129",
+        "name": "SEBI-first filing sequence for change in control",
+        "description": "Operate a pre-filing checkpoint so that the change-in-control approval application is completed and submitted to SEBI, with the SEBI acknowledgment captured, before the NCLT application is submitted; the NCLT filing is gated on evidence of the earlier SEBI filing.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "SEBI filing acknowledgment or submission receipt for the change-in-control application, showing the filing date"
+        },
+        {
+          "kind": "document",
+          "description": "Copy of the NCLT application with its filing date, demonstrating the SEBI filing preceded it"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-064",
+      "hash": "4ae7d3145ed9",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-130",
+      "title": "File NCLT application within three-month validity of in-principle approval",
+      "summary": "The in-principle approval remains valid for three months from its date of issue, and the relevant application must be made to NCLT within that window.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.5.1.5.3",
+        "excerpt": "The validity of such in-principle approval shall be three months from the date of such approval, within which the relevant application shall be made to NCLT;",
+        "charStart": 0,
+        "charEnd": 157
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-130",
+        "name": "In-principle approval validity tracker",
+        "description": "On receipt of an in-principle approval, log the approval date, compute the three-month expiry, prepare the NCLT application, and file it with NCLT before the approval lapses.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the in-principle approval communication showing its date of issue"
+        },
+        {
+          "kind": "document",
+          "description": "NCLT application filing receipt or acknowledged copy showing the filing date falls within three months of the approval date"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-066",
+      "hash": "bb70f655d2c1",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-131",
+      "title": "Principal officer and fund management decision-makers to pass NISM-Series-XXI-B exam",
+      "summary": "The associated persons functioning as principal officer of a Portfolio Manager, and employees with decision-making authority related to fund management, must obtain certification from the National Institute of Securities Markets by passing the NISM-Series-XXI-B: Portfolio Managers Certification Examination.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.7.1.1",
+        "excerpt": "shall obtain certification from the National Institute of Securities Markets by passing the NISM- Series-XXI-B: Portfolio Managers Certification Examination",
+        "charStart": 180,
+        "charEnd": 336
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-131",
+        "name": "Certified personnel register",
+        "description": "Maintain a register of the principal officer and all employees with fund management decision-making authority, verifying that each holds a valid NISM-Series-XXI-B certification before assuming or continuing in the role, and re-verify whenever such personnel change.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copies of NISM-Series-XXI-B certification certificates for the principal officer and each employee with fund management decision-making authority"
+        },
+        {
+          "kind": "data-check",
+          "description": "HR/personnel record check confirming every individual in a fund management decision-making role holds the NISM-Series-XXI-B certification"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-069",
+      "hash": "11884bfc943d",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-132",
+      "title": "Follow prescribed format for calculation of Net worth",
+      "summary": "Portfolio Managers must calculate Net worth in the prescribed format, i.e. a statement of networth based on audited or unaudited accounts as on a specified date.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.6.1",
+        "excerpt": "Following format shall be followed by Portfolio Managers for calculation of Net worth",
+        "charStart": 0,
+        "charEnd": 85
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-132",
+        "name": "Net worth statement format control",
+        "description": "Whenever Net worth is computed, the firm prepares the statement of networth strictly in the prescribed format, based on audited or unaudited accounts as on the relevant date, and the prepared statement is reviewed for format conformity before use or submission.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Statement of networth prepared in the prescribed format based on audited / unaudited accounts as on the stated date"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-072",
+      "hash": "92b6ee2600e4",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-133",
+      "title": "PMS distributor associated persons must pass NISM-Series-XXI-A certification exam",
+      "summary": "Associated persons engaged by a Portfolio Manager as distributors of Portfolio Management Services must obtain certification from the National Institute of Securities Markets by passing the NISM-Series-XXI-A PMS Distributors Certification Examination.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-1",
+        "para": "1.7.2.1",
+        "excerpt": "shall obtain certification from the National Institute of Securities Markets by passing the NISM-Series-XXI-A: Portfolio Management Services (PMS) Distributors Certification Examination",
+        "charStart": 110,
+        "charEnd": 295
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-133",
+        "name": "Distributor certification verification",
+        "description": "Before engaging or continuing any associated person as a distributor of Portfolio Management Services, the Portfolio Manager verifies that the person holds NISM-Series-XXI-A certification and retains a copy of the pass certificate on record.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Copy of the NISM-Series-XXI-A PMS Distributors Certification Examination pass certificate for each associated person engaged as a PMS distributor"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-073",
+      "hash": "cc9031ac42d8",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-134",
+      "title": "Segregate each client's funds and securities from own funds and securities",
+      "summary": "Each client's funds and portfolio of securities must be kept separately from the portfolio manager's own funds and securities, as mandated by the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.1",
+        "excerpt": "the portfolio manager shall segregate each client’s funds and portfolio of securities and keep them separately from his own funds and securities",
+        "charStart": 32,
+        "charEnd": 176
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-134",
+        "name": "Client asset segregation",
+        "description": "Maintain segregated accounts and ledger records so that every client's funds and securities are held distinctly from the portfolio manager's proprietary funds and securities, with regular reconciliation to confirm no commingling occurs.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Segregation reconciliation report evidencing client funds and securities balances held separately from the portfolio manager's own balances"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-074",
+      "hash": "df11a0580a5b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-135",
+      "title": "Ensure safekeeping of clients' funds and securities",
+      "summary": "The portfolio manager is responsible for the safekeeping of all client funds and securities held on behalf of clients.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.1",
+        "excerpt": "be responsible for safekeeping of clients’ funds and securities",
+        "charStart": 181,
+        "charEnd": 244
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-135",
+        "name": "Client asset safekeeping",
+        "description": "Operate custody and safeguarding arrangements for client funds and securities, including access controls, authorised-signatory oversight, and periodic verification that client holdings are intact and accounted for.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Custody and safekeeping records together with periodic client holdings verification statements"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-074",
+      "hash": "6cd89fa9c39c",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-136",
+      "title": "Maintain clear segregation of each client's funds via back office records",
+      "summary": "Each client's funds must be clearly segregated, which is to be achieved through proper and clear maintenance of back office records.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.2.1",
+        "excerpt": "There shall be a clear segregation of each client’s fund through proper and clear maintenance of back office records,",
+        "charStart": 0,
+        "charEnd": 117
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-136",
+        "name": "Client fund segregation in back office records",
+        "description": "Operate back office accounting so that every client's funds are maintained in separate, clearly identifiable records with no commingling between clients, and periodically review record-keeping to confirm segregation remains clear and proper.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Back office records/ledgers demonstrating separate fund accounting for each client"
+        },
+        {
+          "kind": "data-check",
+          "description": "Check that back office records show per-client fund segregation with no cross-client commingling"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-075",
+      "hash": "9359236cba4f",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-137",
+      "title": "Maintain short-term liquid fund deployments in line with paragraph 2.2.2",
+      "summary": "Portfolio Managers must ensure that any short-term deployment of funds in Liquid Mutual Funds for cash management, pending investment of funds, is maintained in accordance with paragraph 2.2.2 of the Master Circular.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.2.3",
+        "excerpt": "any short term deployment of funds in Liquid Mutual Funds for the purpose of cash management shall be maintained on the lines as per paragraph 2.2.2 of this Master Circular.",
+        "charStart": 134,
+        "charEnd": 307
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-137",
+        "name": "Liquid fund deployment compliance check",
+        "description": "Operate a pre-deployment validation and periodic review ensuring every short-term investment in Liquid Mutual Funds made for cash management while funds await deployment conforms to the conditions prescribed in paragraph 2.2.2 of the Master Circular.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Register of all short-term Liquid Mutual Fund deployments showing purpose (cash management, pending investment) and parameters evidencing conformity with paragraph 2.2.2 conditions"
+        },
+        {
+          "kind": "document",
+          "description": "Internal cash-management policy for deployment in liquid funds aligned to paragraph 2.2.2 of the Master Circular"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-078",
+      "hash": "b2ee99890b57",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-138",
+      "title": "Provide clients an option to be on-boarded directly without distribution intermediaries",
+      "summary": "Portfolio Managers must offer clients the option of being on-boarded directly, with no intermediation by persons engaged in distribution services.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.3.1",
+        "excerpt": "Portfolio Managers shall provide an option to clients to be on-boarded directly, without intermediation of persons engaged in distribution services.",
+        "charStart": 0,
+        "charEnd": 148
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-138",
+        "name": "Direct onboarding option in client onboarding workflow",
+        "description": "The client onboarding process includes a documented channel through which a client may elect to be on-boarded directly by the Portfolio Manager, without any person engaged in distribution services intermediating, and this option is presented to every prospective client.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Onboarding policy or account opening form capturing the direct onboarding option offered to clients and the client's election of onboarding mode."
+        },
+        {
+          "kind": "data-check",
+          "description": "Onboarding records showing that clients were offered the direct onboarding option and instances of direct onboarding completed without distributor involvement."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-079",
+      "hash": "6f1629af12d1",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-139",
+      "title": "Disclose direct on-boarding option in disclosures, marketing material and website",
+      "summary": "Portfolio Managers must prominently disclose, in their Disclosure Documents, marketing material and on their website, the availability of the option for direct on-boarding.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.3.2",
+        "excerpt": "Portfolio Managers shall prominently disclose in its Disclosure Documents, marketing material and on its website, about the option for direct on-boarding.",
+        "charStart": 0,
+        "charEnd": 154
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-139",
+        "name": "Direct on-boarding disclosure control",
+        "description": "Maintain a review process ensuring that every edition of the Disclosure Document, every piece of marketing material, and the website prominently carry the disclosure of the direct on-boarding option, with sign-off before publication and periodic checks that the disclosure remains present and prominent.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Current Disclosure Document evidencing the prominent disclosure of the direct on-boarding option"
+        },
+        {
+          "kind": "document",
+          "description": "Specimens of marketing material showing the direct on-boarding option disclosure"
+        },
+        {
+          "kind": "live-scan",
+          "description": "Website scan or capture showing the prominent direct on-boarding option disclosure"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-080",
+      "hash": "2e9bdf605087",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-140",
+      "title": "Put in place a written policy on team roles in managing client funds and securities",
+      "summary": "Portfolio Managers must adopt a written policy, compliant with the PM Regulations and circulars issued thereunder, detailing the specific activities, roles and responsibilities of teams engaged in fund management, dealing, compliance, risk management and back-office functions with regard to client funds and securities, including order placement, execution and trade allocation amongst clients.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.1",
+        "excerpt": "which inter-alia detail the specific activities, role and responsibilities of various teams engaged in fund management, dealing, compliance, risk management, back-office, etc., with regard to management of client funds and securities including the order placement, execution of order, trade allocation amongst clients and other related matters.",
+        "charStart": 143,
+        "charEnd": 487
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-140",
+        "name": "Written fund management policy",
+        "description": "Draft, approve and maintain a written policy that maps each team (fund management, dealing, compliance, risk management, back-office) to its specific activities, roles and responsibilities for handling client funds and securities, expressly covering order placement, order execution and allocation of trades amongst clients, and keep the policy aligned with the PM Regulations and related SEBI circulars.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Approved written policy document detailing team-wise activities, roles and responsibilities for management of client funds and securities, including order placement, execution and trade allocation amongst clients"
+        },
+        {
+          "kind": "document",
+          "description": "Approval or sign-off record evidencing adoption of the policy and its mapping to the PM Regulations and circulars issued thereunder"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-087",
+      "hash": "0f859c8e0fe7",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-141",
+      "title": "Put in place a specific policy compliant with PM Regulations",
+      "summary": "Portfolio Managers must establish a specific policy in compliance with the PM Regulations and the circulars issued thereunder. The policy must, among other things, provide for the matters enumerated in the following provisions.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.2",
+        "excerpt": "Portfolio Managers shall also put in place a specific policy, in compliance with the PM Regulations and circulars issued thereunder",
+        "charStart": 0,
+        "charEnd": 131
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-141",
+        "name": "Policy establishment and alignment control",
+        "description": "Draft, approve, and operationalise a firm-level specific policy covering the matters required by the PM Regulations and related circulars, with periodic review to ensure continued alignment with those regulations and circulars.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "The specific policy document approved by the firm's governing body, evidencing coverage of the PM Regulations and circulars issued thereunder."
+        },
+        {
+          "kind": "data-check",
+          "description": "Policy register entry showing the policy is in force, dated, and mapped to the relevant PM Regulations and circulars."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-088",
+      "hash": "61b1c6f96571",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-144",
+      "title": "Obtain prior written PO and Compliance Officer approval for deviations",
+      "summary": "Any deviation must arise from exigency only and requires prior written approval of the Portfolio Manager's Principal Officer and Compliance Officer, supported by a detailed rationale.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.2.4",
+        "excerpt": "Deviations, if any, shall be on account of exigency only and require prior written approval of the Principal Officer and Compliance officer of the Portfolio Manager with a detailed rationale for such deviation.",
+        "charStart": 0,
+        "charEnd": 210
+      },
+      "type": "event-driven",
+      "frequency": "event-driven",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-144",
+        "name": "Prior written deviation approval workflow",
+        "description": "Before implementing any deviation, route a request with detailed rationale to the Principal Officer and Compliance Officer; record their prior written approvals before proceeding.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Prior written approval from Principal Officer and Compliance Officer with detailed rationale for the exigency-based deviation"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-091",
+      "hash": "10850f09f6fc",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-145",
+      "title": "Obtain Board approval of policies specified in paragraphs 2.6.1 & 2.6.2",
+      "summary": "The policies required under paragraphs 2.6.1 and 2.6.2 must be approved by the Board or equivalent body of the Portfolio Manager before they take effect.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.6.3",
+        "excerpt": "The aforesaid policies as mentioned at paragraphs 2.6.1 & 2.6.2 shall be approved by the Board / equivalent body of the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 138
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-145",
+        "name": "Board approval of policies",
+        "description": "Route the policies required under paragraphs 2.6.1 and 2.6.2 to the Board or equivalent governing body for formal approval, record the approval as a resolution in the board minutes, and retain the approved policy documents.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board or equivalent body meeting agenda, minutes, and resolution recording approval of the policies referenced in paragraphs 2.6.1 & 2.6.2, together with the approved policy documents."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-092",
+      "hash": "6299ee637d0b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-146",
+      "title": "Treat all clients in a fair and equitable manner",
+      "summary": "Portfolio Managers must ensure that every client is treated fairly and equitably, without preference or discrimination, and must comply with the fair-treatment requirements set out in the items that follow this paragraph.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.1",
+        "excerpt": "Portfolio Managers shall ensure that all clients are treated in a fair and equitable manner",
+        "charStart": 0,
+        "charEnd": 91
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-146",
+        "name": "Client fair-treatment policy",
+        "description": "Maintain a documented fair-treatment policy governing allocation of investment opportunities, fee charging, transaction handling and reporting so that all clients receive uniform treatment; monitor client activity against the policy and investigate any instance of preferential or disadvantageous treatment.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board or compliance-approved client fair-treatment policy document"
+        },
+        {
+          "kind": "data-check",
+          "description": "Exception report evidencing that no client received preferential or disadvantageous treatment relative to the fair-treatment policy"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-093",
+      "hash": "4d58381d0055",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-147",
+      "title": "Constitute a dealing team for order placement and execution",
+      "summary": "Portfolio Managers must set up a dealing team that is responsible for placing and executing all orders in line with the firm's own policies. The team may optionally include the Principal Officer or the person appointed under Regulation 7(2)(e) of the PM Regulations.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.1",
+        "excerpt": "Portfolio Managers shall constitute a dealing team (DT) which shall be responsible for order placement and execution of all orders in accordance with the aforesaid policies of the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 198
+      },
+      "type": "one-time",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-147",
+        "name": "Dealing team constitution",
+        "description": "Formally designate a dealing team (with named members, which may include the Principal Officer or the Regulation 7(2)(e) appointee) and assign it sole responsibility for order placement and execution in accordance with the firm's dealing policies.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Internal policy or organisational note constituting the dealing team, listing its members and their responsibility for order placement and execution"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-094",
+      "hash": "bf61ca410c34",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-149",
+      "title": "Conduct all DT conversations only via recorded lines or authorized email ids",
+      "summary": "All conversations of DT must take place exclusively through the dedicated recorded telephone lines or through emails sent from authorized email ids. No other channel of conversation is permitted.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2.1",
+        "excerpt": "All conversations of DT shall be only through the dedicated recorded telephone lines or through emails from authorized email ids.",
+        "charStart": 0,
+        "charEnd": 129
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-149",
+        "name": "Approved communication channel enforcement",
+        "description": "Maintain a register of dedicated recorded telephone lines and authorized email ids for DT, restrict DT users to only these channels, and monitor call recordings and email logs to detect and block conversations through any other line or email id.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Call log and voice-recording coverage report showing every DT conversation took place on the dedicated recorded telephone lines"
+        },
+        {
+          "kind": "data-check",
+          "description": "Email log extract showing all DT emails were sent only from the authorized email ids"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-096",
+      "hash": "27e03b9c140b",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-150",
+      "title": "Prohibit mobile phones and other communication devices inside the dealing room",
+      "summary": "The firm must ensure that mobile phones and any communication devices other than the recorded telephone lines are not permitted inside the dealing room, and operate entry controls to enforce this prohibition.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2.2",
+        "excerpt": "Mobile phones or any other communication devices other than the recorded telephone lines shall not be allowed inside the dealing room.",
+        "charStart": 0,
+        "charEnd": 134
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-150",
+        "name": "Dealing room device entry control",
+        "description": "Maintain a standing prohibition on mobile phones and other communication devices in the dealing room: provide device deposit lockers or collection points at entry points, display signage, conduct periodic physical sweeps and spot checks of the dealing room, and record any exceptions with remediation.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "live-scan",
+          "description": "Periodic sweep log of the dealing room confirming no mobile phones or non-recorded communication devices were present during dealing hours"
+        },
+        {
+          "kind": "document",
+          "description": "Device deposit register or locker records evidencing collection of mobile phones at the dealing room entrance, along with the written dealing room device policy"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-097",
+      "hash": "395aa8a48e56",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-151",
+      "title": "Restrict internet access in dealing room to trade-execution activities only",
+      "summary": "Portfolio managers must restrict internet access on computers and other devices inside the dealing room, permitting its use solely for activities related to trade execution.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2.3",
+        "excerpt": "Access to internet facilities on computers and other devices inside the dealing room shall be restricted and shall only be used for activities related to trade execution.",
+        "charStart": 0,
+        "charEnd": 170
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-151",
+        "name": "Dealing room internet access restriction",
+        "description": "Operate a network-level restriction (e.g., firewall/allowlist configuration) on all computers and devices located inside the dealing room so that internet access is available only for trade-execution related activities, and monitor usage to detect and remediate any non-execution internet use.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Dealing room IT/network access policy and firewall configuration records showing internet access restrictions on dealing room computers and devices"
+        },
+        {
+          "kind": "data-check",
+          "description": "Periodic review of internet access logs from dealing room devices confirming usage is confined to trade execution activities"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-098",
+      "hash": "f961b7351dc3",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-152",
+      "title": "Restrict dealing room entry/access to authorized employees only",
+      "summary": "The Portfolio Manager must ensure that only employees designated as authorized in its own policies may enter or access the dealing room.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2.4",
+        "excerpt": "Entry/access to the dealing room shall be restricted to authorized employees as defined in the aforementioned policies of the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 144
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-152",
+        "name": "Dealing room access control",
+        "description": "Maintain a documented list of authorized employees per the PM's policies; enforce physical and electronic access restrictions to the dealing room (access cards, biometric or key control, visitor prohibition); update the authorized list on joinings, exits and role changes; periodically reconcile entry logs against the authorized list and escalate any unauthorized access.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Dealing room access policy and the current list of authorized employees it defines"
+        },
+        {
+          "kind": "data-check",
+          "description": "Dealing room entry/access logs reconciled against the authorized employee list, showing no entries by non-authorized personnel"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-099",
+      "hash": "550ceab22d51",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-153",
+      "title": "No sharing of information except for approved trade execution",
+      "summary": "Portfolio Managers must not share information through any mode; the only permitted exception is sharing for trade execution carried out under the approved policies of the Portfolio Manager.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.2.2.5",
+        "excerpt": "There shall be no sharing of information through any mode, except for trade execution under the approved policies of the Portfolio Manager.",
+        "charStart": 0,
+        "charEnd": 139
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-153",
+        "name": "Information sharing prohibition control",
+        "description": "Operate channel monitoring and data-loss-prevention controls across all communication and data-transfer modes to block information sharing, with an allow-list limited to trade execution flows defined in the approved policies of the Portfolio Manager.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "live-scan",
+          "description": "Monitoring logs of communication and data-transfer channels showing no information sharing outside the approved trade execution exception"
+        },
+        {
+          "kind": "document",
+          "description": "Approved policies of the Portfolio Manager defining the permitted trade execution information flows"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-100",
+      "hash": "943e66dde7d8",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-154",
+      "title": "Automated funds and securities management system for AUM of INR 1000 crores or more",
+      "summary": "Portfolio Managers managing INR 1000 crores or more under discretionary and non-discretionary services must operate an automated system, with minimal manual intervention, for effective funds and securities management, including order management and allocation of securities to each client.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.3.1",
+        "excerpt": "Portfolio Managers with assets under management of INR 1000 crores or more under discretionary and non-discretionary services, shall have in place an automated system with minimal manual intervention for ensuring effective funds and securities management including order management and allocation of securities to each client.",
+        "charStart": 0,
+        "charEnd": 326
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-154",
+        "name": "Automated funds and securities management platform",
+        "description": "Operate and maintain an automated system with minimal manual intervention that covers funds and securities management, order management, and allocation of securities to each client, applied whenever discretionary and non-discretionary AUM reaches INR 1000 crores or more.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "System documentation describing the automated funds and securities management workflow, including order management and client-level allocation modules"
+        },
+        {
+          "kind": "live-scan",
+          "description": "Screenshots or walkthrough of the live automated system showing order capture and allocation of securities to individual clients"
+        },
+        {
+          "kind": "data-check",
+          "description": "Sample order and allocation records demonstrating automated, minimally manual processing across clients"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-101",
+      "hash": "8b40ab88629d",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-155",
+      "title": "System must capture pre-order and final trade allocation details with deviations",
+      "summary": "The portfolio manager's system must clearly record, for trades, the client-wise allocation determined before order placement as well as the final allocation to clients, along with any instances of deviation between the two.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.7.3.2",
+        "excerpt": "The aforesaid system shall inter-alia clearly capture details with respect to pre-order placement allocation as well as final allocation of trades to clients along with instances of deviation, if any, as mentioned at paragraph 2.6.2.4 above.",
+        "charStart": 0,
+        "charEnd": 241
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-155",
+        "name": "Pre- and post-trade allocation logging control",
+        "description": "Operate an order and trade management system that, for every trade, logs the client-wise allocation determined prior to order placement and the final allocation actually executed, automatically flags and records any deviation between the intended and final allocations, and retains these records for review and reporting.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "data-check",
+          "description": "Extract a sample of executed trades from the system showing, per trade, the recorded pre-order placement allocation, the final client allocation, and any flagged deviation instances between them."
+        },
+        {
+          "kind": "document",
+          "description": "System functional specification or configuration document evidencing that the system captures pre-order placement allocation, final allocation to clients, and deviation instances as required."
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-102",
+      "hash": "f7e633a55b52",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-156",
+      "title": "Comply with the Cybersecurity and Cyber Resilience Framework (CSCRF)",
+      "summary": "All portfolio managers must comply with the applicable provisions of the Cybersecurity and Cyber Resilience Framework for SEBI Regulated Entities specified in SEBI circular SEBI/HO/ITD-1/ITD_CSC_EXT/P/CIR/2024/113 dated August 20, 2024, along with any subsequent directions issued on the subject.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.8.1",
+        "excerpt": "All Portfolio Managers shall comply with the applicable provisions of Cybersecurity and Cyber Resilience Framework (CSCRF) for SEBI Regulated Entities (REs), specified vide SEBI Circular no. SEBI/HO/ITD- 1/ITD_CSC_EXT/P/CIR/2024/113 dated August 20, 2024, including any subsequent directions in this regard.",
+        "charStart": 0,
+        "charEnd": 307
+      },
+      "type": "ongoing",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-156",
+        "name": "CSCRF compliance programme",
+        "description": "Operate a firm-wide cybersecurity and cyber resilience programme that implements the applicable CSCRF controls under the August 20, 2024 circular, tracks subsequent SEBI directions on the framework, and reviews implementation status against the framework's requirements.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Board/committee-approved cybersecurity policy and CSCRF implementation roadmap or gap-remediation plan"
+        },
+        {
+          "kind": "document",
+          "description": "CSCRF compliance status report or self-assessment submissions made to SEBI/regulatory systems as required by the circular"
+        },
+        {
+          "kind": "live-scan",
+          "description": "Ongoing monitoring record showing applicable CSCRF controls (governance, incident reporting, audits, VAPT/CERT-in requirements) remain operational and current"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-104",
+      "hash": "3fe8f095fddb",
+      "approvedBy": "Compliance Officer"
+    },
+    {
+      "id": "OBL-157",
+      "title": "Value portfolio debt and money market securities per APMI standardized norms",
+      "summary": "Portfolio managers must carry out valuation of all portfolio debt and money market securities in accordance with the standardized valuation norms prescribed by APMI, which mirror the corresponding Mutual Fund norms.",
+      "clause": {
+        "circularId": "MC-PM-2025",
+        "chapter": "pm-2",
+        "para": "2.9.1",
+        "excerpt": "Valuation of the portfolio debt and money market securities by portfolio managers shall be carried out in accordance with these standardized valuation norms prescribed by APMI.",
+        "charStart": 138,
+        "charEnd": 314
+      },
+      "type": "ongoing",
+      "frequency": "continuous",
+      "appliesTo": [
+        "portfolio-manager"
+      ],
+      "control": {
+        "id": "CTL-157",
+        "name": "APMI norm-aligned securities valuation",
+        "description": "Operate a valuation process for all debt and money market securities held in managed portfolios that applies the APMI-prescribed standardized valuation methodology (aligned to Mutual Fund norms). The valuation policy and pricing engine are mapped to the APMI norms, each security's valuation is produced by the approved methodology, and any deviation or manual override is flagged, reviewed and escalated.",
+        "owner": "Compliance Officer"
+      },
+      "evidenceSpec": [
+        {
+          "kind": "document",
+          "description": "Valuation policy document explicitly referencing the APMI standardized valuation norms and their application to portfolio debt and money market securities"
+        },
+        {
+          "kind": "data-check",
+          "description": "Sample of valued debt and money market securities with computed prices traced back to the APMI standardized valuation methodology, showing conformity for each instrument"
+        }
+      ],
+      "evidenceIds": [],
+      "status": "gap",
+      "createdByRun": "RUN-105",
+      "hash": "6be35bb2b791",
+      "approvedBy": "Compliance Officer"
     }
   ],
   "evidence": [
@@ -3308,6 +4554,28 @@
       ],
       "detail": {
         "docExcerpt": "ev.txt · sha256 f2ca1bb6c7e907d06dafe4687e579fce76b37e4e93b7605022da52e6ccc26fd2"
+      }
+    },
+    {
+      "id": "EV-002",
+      "kind": "document",
+      "title": "testing",
+      "description": "testing",
+      "connector": "manual-upload",
+      "obligationIds": [
+        "OBL-002"
+      ],
+      "capturedAt": "2026-09-11T07:23:20.461Z",
+      "hash": "2011d4d40f7d",
+      "history": [
+        {
+          "at": "2026-09-11T07:23:20.461Z",
+          "event": "captured",
+          "hash": "2011d4d40f7d"
+        }
+      ],
+      "detail": {
+        "docExcerpt": "DetailedStatement (68).xlsx · sha256 98ef208e87c5701b3db5ef19b4442d193c305a293da58afb1a04fab20e55d45f"
       }
     }
   ],
@@ -7216,6 +8484,1524 @@
       "detail": "Evidence EV-001 (document) bound to OBL-001 by Compliance Officer: \"Aug 2026 monthly report — SI Portal acknowledgement\", file ev.txt sha256 f2ca1bb6c7e907d06dafe4687e579fce76b37e4e93b7605022da52e6ccc26fd2. Status gap → met.",
       "hash": "a94246dffa92",
       "prevHash": "0f50b24363a6"
+    },
+    {
+      "id": "AE-0356",
+      "at": "2026-09-10T18:05:30.876Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-118",
+      "detail": "Drafted by RUN-050 from MC-PM-2025 para 1.1.3 — \"Submit full and complete information to SEBI at the time of registration\", grounded to chars 0–105 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "44a25b10261c",
+      "prevHash": "a94246dffa92"
+    },
+    {
+      "id": "AE-0357",
+      "at": "2026-09-10T18:05:30.876Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-050",
+      "detail": "RUN-050 completed extraction and verification over MC-PM-2025 para 1.1.3 in 11s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-118.",
+      "hash": "2bccf2d2c258",
+      "prevHash": "44a25b10261c"
+    },
+    {
+      "id": "AE-0358",
+      "at": "2026-09-10T18:06:24.450Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-119",
+      "detail": "Drafted by RUN-051 from MC-PM-2025 para 1.2.2 — \"Mention registration number in all correspondence\", grounded to chars 0–218 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "54dfcff36f08",
+      "prevHash": "2bccf2d2c258"
+    },
+    {
+      "id": "AE-0359",
+      "at": "2026-09-10T18:06:24.450Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-051",
+      "detail": "RUN-051 completed extraction and verification over MC-PM-2025 para 1.2.2 in 50s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-119.",
+      "hash": "49469a1b18b6",
+      "prevHash": "54dfcff36f08"
+    },
+    {
+      "id": "AE-0360",
+      "at": "2026-09-10T18:06:38.637Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-120",
+      "detail": "Drafted by RUN-052 from MC-PM-2025 para 1.2.3 — \"Designate a senior officer as Compliance Officer\", grounded to chars 176–252 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "f3fda114fad7",
+      "prevHash": "49469a1b18b6"
+    },
+    {
+      "id": "AE-0361",
+      "at": "2026-09-10T18:06:38.637Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-121",
+      "detail": "Drafted by RUN-052 from MC-PM-2025 para 1.2.3 — \"Compliance Officer to co-ordinate with regulators and ensure internal compliance\", grounded to chars 254–390 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c499f88b7ed4",
+      "prevHash": "f3fda114fad7"
+    },
+    {
+      "id": "AE-0362",
+      "at": "2026-09-10T18:06:38.637Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-122",
+      "detail": "Drafted by RUN-052 from MC-PM-2025 para 1.2.3 — \"Ensure SEBI-observed deficiencies do not recur\", grounded to chars 392–562 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "948a8a426d6e",
+      "prevHash": "c499f88b7ed4"
+    },
+    {
+      "id": "AE-0363",
+      "at": "2026-09-10T18:06:38.637Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-052",
+      "detail": "RUN-052 completed extraction and verification over MC-PM-2025 para 1.2.3 in 13s. Five of five verifier checks passed. 3 obligation(s) drafted and held at the human gate: OBL-120, OBL-121, OBL-122.",
+      "hash": "eb139eee2015",
+      "prevHash": "948a8a426d6e"
+    },
+    {
+      "id": "AE-0364",
+      "at": "2026-09-10T18:07:07.372Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-123",
+      "detail": "Drafted by RUN-053 from MC-PM-2025 para 1.2.4 — \"SEBI correspondence only via principal office, not branch offices\", grounded to chars 0–205 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "fb97b494f990",
+      "prevHash": "eb139eee2015"
+    },
+    {
+      "id": "AE-0365",
+      "at": "2026-09-10T18:07:07.372Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-053",
+      "detail": "RUN-053 completed extraction and verification over MC-PM-2025 para 1.2.4 in 26s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-123.",
+      "hash": "86a715dd10a4",
+      "prevHash": "fb97b494f990"
+    },
+    {
+      "id": "AE-0366",
+      "at": "2026-09-10T18:07:19.549Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-124",
+      "detail": "Drafted by RUN-054 from MC-PM-2025 para 1.2.5 — \"Have a code of conduct under PIT Regulations\", grounded to chars 0–165 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "37a55115a266",
+      "prevHash": "86a715dd10a4"
+    },
+    {
+      "id": "AE-0367",
+      "at": "2026-09-10T18:07:19.549Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-054",
+      "detail": "RUN-054 completed extraction and verification over MC-PM-2025 para 1.2.5 in 8s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-124.",
+      "hash": "d40ef91d996b",
+      "prevHash": "37a55115a266"
+    },
+    {
+      "id": "AE-0368",
+      "at": "2026-09-10T18:07:28.624Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-055",
+      "detail": "RUN-055 completed extraction and verification over MC-PM-2025 para 1.3.2.2 in 5s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "3f7b4f5addc6",
+      "prevHash": "d40ef91d996b"
+    },
+    {
+      "id": "AE-0369",
+      "at": "2026-09-10T18:07:39.484Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-056",
+      "detail": "RUN-056 completed extraction and verification over MC-PM-2025 para 1.3.2.3 in 7s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "c022c600f795",
+      "prevHash": "3f7b4f5addc6"
+    },
+    {
+      "id": "AE-0370",
+      "at": "2026-09-10T18:07:49.320Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-057",
+      "detail": "RUN-057 completed extraction and verification over MC-PM-2025 para 1.4.1 in 8s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "a28a557dac8b",
+      "prevHash": "c022c600f795"
+    },
+    {
+      "id": "AE-0371",
+      "at": "2026-09-10T18:08:07.367Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-125",
+      "detail": "Drafted by RUN-058 from MC-PM-2025 para 1.4.1.1 — \"Prior intimation to SEBI before offering co-investment services\", grounded to chars 0–295 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "cdf3c972e55f",
+      "prevHash": "a28a557dac8b"
+    },
+    {
+      "id": "AE-0372",
+      "at": "2026-09-10T18:08:07.367Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-058",
+      "detail": "RUN-058 completed extraction and verification over MC-PM-2025 para 1.4.1.1 in 17s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-125.",
+      "hash": "397ac7f9e17e",
+      "prevHash": "cdf3c972e55f"
+    },
+    {
+      "id": "AE-0373",
+      "at": "2026-09-10T18:08:52.556Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-126",
+      "detail": "Drafted by RUN-059 from MC-PM-2025 para 1.4.1.2 — \"Seek SEBI registration as Portfolio Manager to offer co-investment services\", grounded to chars 0–311 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "7b5a7309dace",
+      "prevHash": "397ac7f9e17e"
+    },
+    {
+      "id": "AE-0374",
+      "at": "2026-09-10T18:08:52.556Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-127",
+      "detail": "Drafted by RUN-059 from MC-PM-2025 para 1.4.1.2 — \"Obtain SEBI prior approval before offering PMS other than co-investment\", grounded to chars 312–607 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "684a33d0bd6c",
+      "prevHash": "7b5a7309dace"
+    },
+    {
+      "id": "AE-0375",
+      "at": "2026-09-10T18:08:52.556Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-059",
+      "detail": "RUN-059 completed extraction and verification over MC-PM-2025 para 1.4.1.2 in 44s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-126, OBL-127.",
+      "hash": "d1ab5d9708fb",
+      "prevHash": "684a33d0bd6c"
+    },
+    {
+      "id": "AE-0376",
+      "at": "2026-09-10T18:09:35.400Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-060",
+      "detail": "RUN-060 was stopped by the verifier on MC-PM-2025 para 1.5.1. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "ea17607610d0",
+      "prevHash": "d1ab5d9708fb"
+    },
+    {
+      "id": "AE-0377",
+      "at": "2026-09-10T18:09:51.773Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-128",
+      "detail": "Drafted by RUN-061 from MC-PM-2025 para 1.5.1.1 — \"Apply online to SEBI for prior approval via SEBI Intermediary Portal\", grounded to chars 0–152 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "ec46492a6f93",
+      "prevHash": "ea17607610d0"
+    },
+    {
+      "id": "AE-0378",
+      "at": "2026-09-10T18:09:51.773Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-061",
+      "detail": "RUN-061 completed extraction and verification over MC-PM-2025 para 1.5.1.1 in 13s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-128.",
+      "hash": "a42be5cb7ee5",
+      "prevHash": "ec46492a6f93"
+    },
+    {
+      "id": "AE-0379",
+      "at": "2026-09-10T18:10:00.949Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-062",
+      "detail": "RUN-062 completed extraction and verification over MC-PM-2025 para 1.5.1.2 in 7s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "517d1aa15fa7",
+      "prevHash": "a42be5cb7ee5"
+    },
+    {
+      "id": "AE-0380",
+      "at": "2026-09-10T18:10:08.893Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-063",
+      "detail": "RUN-063 completed extraction and verification over MC-PM-2025 para 1.5.1.5 in 6s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "2a7bc315cfea",
+      "prevHash": "517d1aa15fa7"
+    },
+    {
+      "id": "AE-0381",
+      "at": "2026-09-10T18:10:42.507Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-129",
+      "detail": "Drafted by RUN-064 from MC-PM-2025 para 1.5.1.5.1 — \"File change-in-control approval application with SEBI before NCLT filing\", grounded to chars 0–156 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "0c8547f23c3c",
+      "prevHash": "2a7bc315cfea"
+    },
+    {
+      "id": "AE-0382",
+      "at": "2026-09-10T18:10:42.507Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-064",
+      "detail": "RUN-064 completed extraction and verification over MC-PM-2025 para 1.5.1.5.1 in 30s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-129.",
+      "hash": "e6d5d9623a44",
+      "prevHash": "0c8547f23c3c"
+    },
+    {
+      "id": "AE-0383",
+      "at": "2026-09-10T18:10:57.842Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-065",
+      "detail": "RUN-065 completed extraction and verification over MC-PM-2025 para 1.5.1.5.2 in 13s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "84f792c229df",
+      "prevHash": "e6d5d9623a44"
+    },
+    {
+      "id": "AE-0384",
+      "at": "2026-09-10T18:11:43.308Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-130",
+      "detail": "Drafted by RUN-066 from MC-PM-2025 para 1.5.1.5.3 — \"File NCLT application within three-month validity of in-principle approval\", grounded to chars 0–157 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c9dc52df8f51",
+      "prevHash": "84f792c229df"
+    },
+    {
+      "id": "AE-0385",
+      "at": "2026-09-10T18:11:43.308Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-066",
+      "detail": "RUN-066 completed extraction and verification over MC-PM-2025 para 1.5.1.5.3 in 43s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-130.",
+      "hash": "586261905fe7",
+      "prevHash": "c9dc52df8f51"
+    },
+    {
+      "id": "AE-0386",
+      "at": "2026-09-10T18:11:53.807Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-067",
+      "detail": "RUN-067 completed extraction and verification over MC-PM-2025 para 1.5.1.5.5 in 8s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "cd20d7412ee3",
+      "prevHash": "586261905fe7"
+    },
+    {
+      "id": "AE-0387",
+      "at": "2026-09-10T18:13:57.985Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-068",
+      "detail": "RUN-068 failed on MC-PM-2025 para 1.6.1. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1319 (line 1 column 1320). Nothing was drafted and nothing entered the register.",
+      "hash": "8ab7d040e86c",
+      "prevHash": "cd20d7412ee3"
+    },
+    {
+      "id": "AE-0388",
+      "at": "2026-09-10T18:14:37.147Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-131",
+      "detail": "Drafted by RUN-069 from MC-PM-2025 para 1.7.1.1 — \"Principal officer and fund management decision-makers to pass NISM-Series-XXI-B exam\", grounded to chars 180–336 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "1d087de603ab",
+      "prevHash": "8ab7d040e86c"
+    },
+    {
+      "id": "AE-0389",
+      "at": "2026-09-10T18:14:37.147Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-069",
+      "detail": "RUN-069 completed extraction and verification over MC-PM-2025 para 1.7.1.1 in 39s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-131.",
+      "hash": "9a6d4190e6db",
+      "prevHash": "1d087de603ab"
+    },
+    {
+      "id": "AE-0390",
+      "at": "2026-09-10T18:15:11.759Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-070",
+      "detail": "RUN-070 was stopped by the verifier on MC-PM-2025 para 1.7.2.1. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "c19e4c1bd049",
+      "prevHash": "9a6d4190e6db"
+    },
+    {
+      "id": "AE-0391",
+      "at": "2026-09-11T05:37:41.498Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-071",
+      "detail": "RUN-071 was stopped by the verifier on MC-PM-2025 para 1.5.1. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "d7dd1409cbad",
+      "prevHash": "c19e4c1bd049"
+    },
+    {
+      "id": "AE-0392",
+      "at": "2026-09-11T05:38:01.578Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-132",
+      "detail": "Drafted by RUN-072 from MC-PM-2025 para 1.6.1 — \"Follow prescribed format for calculation of Net worth\", grounded to chars 0–85 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9b4c002fb285",
+      "prevHash": "d7dd1409cbad"
+    },
+    {
+      "id": "AE-0393",
+      "at": "2026-09-11T05:38:01.578Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-072",
+      "detail": "RUN-072 completed extraction and verification over MC-PM-2025 para 1.6.1 in 18s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-132.",
+      "hash": "153161fe4906",
+      "prevHash": "9b4c002fb285"
+    },
+    {
+      "id": "AE-0394",
+      "at": "2026-09-11T05:38:48.002Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-133",
+      "detail": "Drafted by RUN-073 from MC-PM-2025 para 1.7.2.1 — \"PMS distributor associated persons must pass NISM-Series-XXI-A certification exam\", grounded to chars 110–295 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "4696ee21a4e4",
+      "prevHash": "153161fe4906"
+    },
+    {
+      "id": "AE-0395",
+      "at": "2026-09-11T05:38:48.002Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-073",
+      "detail": "RUN-073 completed extraction and verification over MC-PM-2025 para 1.7.2.1 in 43s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-133.",
+      "hash": "30bfffb761aa",
+      "prevHash": "4696ee21a4e4"
+    },
+    {
+      "id": "AE-0396",
+      "at": "2026-09-11T05:39:39.944Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-134",
+      "detail": "Drafted by RUN-074 from MC-PM-2025 para 2.2.1 — \"Segregate each client's funds and securities from own funds and securities\", grounded to chars 32–176 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "7abacd5c3c20",
+      "prevHash": "30bfffb761aa"
+    },
+    {
+      "id": "AE-0397",
+      "at": "2026-09-11T05:39:39.944Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-135",
+      "detail": "Drafted by RUN-074 from MC-PM-2025 para 2.2.1 — \"Ensure safekeeping of clients' funds and securities\", grounded to chars 181–244 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "cc0324b74d02",
+      "prevHash": "7abacd5c3c20"
+    },
+    {
+      "id": "AE-0398",
+      "at": "2026-09-11T05:39:39.944Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-074",
+      "detail": "RUN-074 completed extraction and verification over MC-PM-2025 para 2.2.1 in 36s. Five of five verifier checks passed. 2 obligation(s) drafted and held at the human gate: OBL-134, OBL-135.",
+      "hash": "e976350e52ff",
+      "prevHash": "cc0324b74d02"
+    },
+    {
+      "id": "AE-0399",
+      "at": "2026-09-11T05:40:00.436Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-136",
+      "detail": "Drafted by RUN-075 from MC-PM-2025 para 2.2.2.1 — \"Maintain clear segregation of each client's funds via back office records\", grounded to chars 0–117 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "165ca0620e4a",
+      "prevHash": "e976350e52ff"
+    },
+    {
+      "id": "AE-0400",
+      "at": "2026-09-11T05:40:00.436Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-075",
+      "detail": "RUN-075 completed extraction and verification over MC-PM-2025 para 2.2.2.1 in 17s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-136.",
+      "hash": "68fb2777b791",
+      "prevHash": "165ca0620e4a"
+    },
+    {
+      "id": "AE-0401",
+      "at": "2026-09-11T05:40:31.802Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-076",
+      "detail": "RUN-076 failed on MC-PM-2025 para 2.2.2.2. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1182 (line 1 column 1183). Nothing was drafted and nothing entered the register.",
+      "hash": "c6c6f54b0e2d",
+      "prevHash": "68fb2777b791"
+    },
+    {
+      "id": "AE-0402",
+      "at": "2026-09-11T05:40:54.267Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-077",
+      "detail": "RUN-077 was stopped by the verifier on MC-PM-2025 para 2.2.2.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "fe8cc1add951",
+      "prevHash": "c6c6f54b0e2d"
+    },
+    {
+      "id": "AE-0403",
+      "at": "2026-09-11T05:41:24.790Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-137",
+      "detail": "Drafted by RUN-078 from MC-PM-2025 para 2.2.3 — \"Maintain short-term liquid fund deployments in line with paragraph 2.2.2\", grounded to chars 134–307 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "52e6eee4eee2",
+      "prevHash": "fe8cc1add951"
+    },
+    {
+      "id": "AE-0404",
+      "at": "2026-09-11T05:41:24.790Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-078",
+      "detail": "RUN-078 completed extraction and verification over MC-PM-2025 para 2.2.3 in 29s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-137.",
+      "hash": "34dc0ed41ec0",
+      "prevHash": "52e6eee4eee2"
+    },
+    {
+      "id": "AE-0405",
+      "at": "2026-09-11T05:41:48.357Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-138",
+      "detail": "Drafted by RUN-079 from MC-PM-2025 para 2.3.1 — \"Provide clients an option to be on-boarded directly without distribution intermediaries\", grounded to chars 0–148 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "01d961cf7dda",
+      "prevHash": "34dc0ed41ec0"
+    },
+    {
+      "id": "AE-0406",
+      "at": "2026-09-11T05:41:48.357Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-079",
+      "detail": "RUN-079 completed extraction and verification over MC-PM-2025 para 2.3.1 in 20s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-138.",
+      "hash": "e8a11d60e3dc",
+      "prevHash": "01d961cf7dda"
+    },
+    {
+      "id": "AE-0407",
+      "at": "2026-09-11T05:42:18.586Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-139",
+      "detail": "Drafted by RUN-080 from MC-PM-2025 para 2.3.2 — \"Disclose direct on-boarding option in disclosures, marketing material and website\", grounded to chars 0–154 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "adf48474198c",
+      "prevHash": "e8a11d60e3dc"
+    },
+    {
+      "id": "AE-0408",
+      "at": "2026-09-11T05:42:18.586Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-080",
+      "detail": "RUN-080 completed extraction and verification over MC-PM-2025 para 2.3.2 in 29s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-139.",
+      "hash": "865e1b756c22",
+      "prevHash": "adf48474198c"
+    },
+    {
+      "id": "AE-0409",
+      "at": "2026-09-11T05:42:53.004Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-081",
+      "detail": "RUN-081 failed on MC-PM-2025 para 2.3.3. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1077 (line 1 column 1078). Nothing was drafted and nothing entered the register.",
+      "hash": "5805539a9210",
+      "prevHash": "865e1b756c22"
+    },
+    {
+      "id": "AE-0410",
+      "at": "2026-09-11T05:42:56.757Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-082",
+      "detail": "RUN-082 completed extraction and verification over MC-PM-2025 para 2.3.4 in 4s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "6453ea591722",
+      "prevHash": "5805539a9210"
+    },
+    {
+      "id": "AE-0411",
+      "at": "2026-09-11T05:43:09.919Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-083",
+      "detail": "RUN-083 completed extraction and verification over MC-PM-2025 para 2.4.1 in 11s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "f17f637c60c8",
+      "prevHash": "6453ea591722"
+    },
+    {
+      "id": "AE-0412",
+      "at": "2026-09-11T05:43:57.051Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-084",
+      "detail": "RUN-084 was stopped by the verifier on MC-PM-2025 para 2.4.1.2. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "1a16cb4df07f",
+      "prevHash": "f17f637c60c8"
+    },
+    {
+      "id": "AE-0413",
+      "at": "2026-09-11T05:44:04.830Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-085",
+      "detail": "RUN-085 completed extraction and verification over MC-PM-2025 para 2.5.1 in 5s. Five of five verifier checks passed. 0 obligation(s) drafted and held at the human gate: none.",
+      "hash": "6ba0e2ec70d1",
+      "prevHash": "1a16cb4df07f"
+    },
+    {
+      "id": "AE-0414",
+      "at": "2026-09-11T05:44:36.990Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-086",
+      "detail": "RUN-086 failed on MC-PM-2025 para 2.5.1.2. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 1096 (line 1 column 1097). Nothing was drafted and nothing entered the register.",
+      "hash": "22e5242a55a6",
+      "prevHash": "6ba0e2ec70d1"
+    },
+    {
+      "id": "AE-0415",
+      "at": "2026-09-11T05:45:25.423Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-140",
+      "detail": "Drafted by RUN-087 from MC-PM-2025 para 2.6.1 — \"Put in place a written policy on team roles in managing client funds and securities\", grounded to chars 143–487 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "0cc174d88d74",
+      "prevHash": "22e5242a55a6"
+    },
+    {
+      "id": "AE-0416",
+      "at": "2026-09-11T05:45:25.423Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-087",
+      "detail": "RUN-087 completed extraction and verification over MC-PM-2025 para 2.6.1 in 47s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-140.",
+      "hash": "c0db1ba19b9e",
+      "prevHash": "0cc174d88d74"
+    },
+    {
+      "id": "AE-0417",
+      "at": "2026-09-11T05:45:35.767Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-141",
+      "detail": "Drafted by RUN-088 from MC-PM-2025 para 2.6.2 — \"Put in place a specific policy compliant with PM Regulations\", grounded to chars 0–131 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "143d322bae04",
+      "prevHash": "c0db1ba19b9e"
+    },
+    {
+      "id": "AE-0418",
+      "at": "2026-09-11T05:45:35.767Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-088",
+      "detail": "RUN-088 completed extraction and verification over MC-PM-2025 para 2.6.2 in 9s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-141.",
+      "hash": "ee7fbe59b1bd",
+      "prevHash": "143d322bae04"
+    },
+    {
+      "id": "AE-0419",
+      "at": "2026-09-11T05:46:27.990Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-142",
+      "detail": "Drafted by RUN-089 from MC-PM-2025 para 2.6.2.1 — \"Place orders individually per client or pooled from PM account in specific situations\", grounded to chars 0–150 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "b0d6391b16fd",
+      "prevHash": "ee7fbe59b1bd"
+    },
+    {
+      "id": "AE-0420",
+      "at": "2026-09-11T05:46:27.990Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-089",
+      "detail": "RUN-089 completed extraction and verification over MC-PM-2025 para 2.6.2.1 in 49s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-142.",
+      "hash": "b3eb25518a93",
+      "prevHash": "b0d6391b16fd"
+    },
+    {
+      "id": "AE-0421",
+      "at": "2026-09-11T05:47:15.648Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-143",
+      "detail": "Drafted by RUN-090 from MC-PM-2025 para 2.6.2.3 — \"Disclose how margins/collaterals are segregated among clients\", grounded to chars 135–281 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "b86afb8460d1",
+      "prevHash": "b3eb25518a93"
+    },
+    {
+      "id": "AE-0422",
+      "at": "2026-09-11T05:47:15.648Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-090",
+      "detail": "RUN-090 completed extraction and verification over MC-PM-2025 para 2.6.2.3 in 46s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-143.",
+      "hash": "ed0e58cd8ba9",
+      "prevHash": "b86afb8460d1"
+    },
+    {
+      "id": "AE-0423",
+      "at": "2026-09-11T05:47:51.747Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-144",
+      "detail": "Drafted by RUN-091 from MC-PM-2025 para 2.6.2.4 — \"Obtain prior written PO and Compliance Officer approval for deviations\", grounded to chars 0–210 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "2623e3ba7549",
+      "prevHash": "ed0e58cd8ba9"
+    },
+    {
+      "id": "AE-0424",
+      "at": "2026-09-11T05:47:51.747Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-091",
+      "detail": "RUN-091 completed extraction and verification over MC-PM-2025 para 2.6.2.4 in 34s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-144.",
+      "hash": "b3c5a14d1d65",
+      "prevHash": "2623e3ba7549"
+    },
+    {
+      "id": "AE-0425",
+      "at": "2026-09-11T05:48:02.196Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-145",
+      "detail": "Drafted by RUN-092 from MC-PM-2025 para 2.6.3 — \"Obtain Board approval of policies specified in paragraphs 2.6.1 & 2.6.2\", grounded to chars 0–138 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e05b27b11159",
+      "prevHash": "b3c5a14d1d65"
+    },
+    {
+      "id": "AE-0426",
+      "at": "2026-09-11T05:48:02.196Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-092",
+      "detail": "RUN-092 completed extraction and verification over MC-PM-2025 para 2.6.3 in 8s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-145.",
+      "hash": "fb9e684d26aa",
+      "prevHash": "e05b27b11159"
+    },
+    {
+      "id": "AE-0427",
+      "at": "2026-09-11T05:48:30.163Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-146",
+      "detail": "Drafted by RUN-093 from MC-PM-2025 para 2.7.1 — \"Treat all clients in a fair and equitable manner\", grounded to chars 0–91 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "3b71355c4949",
+      "prevHash": "fb9e684d26aa"
+    },
+    {
+      "id": "AE-0428",
+      "at": "2026-09-11T05:48:30.163Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-093",
+      "detail": "RUN-093 completed extraction and verification over MC-PM-2025 para 2.7.1 in 27s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-146.",
+      "hash": "d1ba06545a25",
+      "prevHash": "3b71355c4949"
+    },
+    {
+      "id": "AE-0429",
+      "at": "2026-09-11T05:48:53.827Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-147",
+      "detail": "Drafted by RUN-094 from MC-PM-2025 para 2.7.2.1 — \"Constitute a dealing team for order placement and execution\", grounded to chars 0–198 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "202188f9730f",
+      "prevHash": "d1ba06545a25"
+    },
+    {
+      "id": "AE-0430",
+      "at": "2026-09-11T05:48:53.827Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-094",
+      "detail": "RUN-094 completed extraction and verification over MC-PM-2025 para 2.7.2.1 in 20s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-147.",
+      "hash": "2df9488eea30",
+      "prevHash": "202188f9730f"
+    },
+    {
+      "id": "AE-0431",
+      "at": "2026-09-11T05:49:28.213Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-148",
+      "detail": "Drafted by RUN-095 from MC-PM-2025 para 2.7.2.2 — \"Ensure the dealing terminal (DT) is suitably staffed\", grounded to chars 25–59 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "77b1aa37c94d",
+      "prevHash": "2df9488eea30"
+    },
+    {
+      "id": "AE-0432",
+      "at": "2026-09-11T05:49:28.213Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-095",
+      "detail": "RUN-095 completed extraction and verification over MC-PM-2025 para 2.7.2.2 in 31s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-148.",
+      "hash": "88473df0facc",
+      "prevHash": "77b1aa37c94d"
+    },
+    {
+      "id": "AE-0433",
+      "at": "2026-09-11T05:49:54.698Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-149",
+      "detail": "Drafted by RUN-096 from MC-PM-2025 para 2.7.2.2.1 — \"Conduct all DT conversations only via recorded lines or authorized email ids\", grounded to chars 0–129 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c7ebde3bc2f6",
+      "prevHash": "88473df0facc"
+    },
+    {
+      "id": "AE-0434",
+      "at": "2026-09-11T05:49:54.698Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-096",
+      "detail": "RUN-096 completed extraction and verification over MC-PM-2025 para 2.7.2.2.1 in 24s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-149.",
+      "hash": "45b201f4d19a",
+      "prevHash": "c7ebde3bc2f6"
+    },
+    {
+      "id": "AE-0435",
+      "at": "2026-09-11T05:50:28.833Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-150",
+      "detail": "Drafted by RUN-097 from MC-PM-2025 para 2.7.2.2.2 — \"Prohibit mobile phones and other communication devices inside the dealing room\", grounded to chars 0–134 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "e6d8e4cb3312",
+      "prevHash": "45b201f4d19a"
+    },
+    {
+      "id": "AE-0436",
+      "at": "2026-09-11T05:50:28.833Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-097",
+      "detail": "RUN-097 completed extraction and verification over MC-PM-2025 para 2.7.2.2.2 in 31s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-150.",
+      "hash": "fc4f6b589543",
+      "prevHash": "e6d8e4cb3312"
+    },
+    {
+      "id": "AE-0437",
+      "at": "2026-09-11T05:50:37.944Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-151",
+      "detail": "Drafted by RUN-098 from MC-PM-2025 para 2.7.2.2.3 — \"Restrict internet access in dealing room to trade-execution activities only\", grounded to chars 0–170 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "fbcc614610fa",
+      "prevHash": "fc4f6b589543"
+    },
+    {
+      "id": "AE-0438",
+      "at": "2026-09-11T05:50:37.944Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-098",
+      "detail": "RUN-098 completed extraction and verification over MC-PM-2025 para 2.7.2.2.3 in 7s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-151.",
+      "hash": "ac04dfee3969",
+      "prevHash": "fbcc614610fa"
+    },
+    {
+      "id": "AE-0439",
+      "at": "2026-09-11T05:51:06.823Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-152",
+      "detail": "Drafted by RUN-099 from MC-PM-2025 para 2.7.2.2.4 — \"Restrict dealing room entry/access to authorized employees only\", grounded to chars 0–144 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "9571c26b5a87",
+      "prevHash": "ac04dfee3969"
+    },
+    {
+      "id": "AE-0440",
+      "at": "2026-09-11T05:51:06.823Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-099",
+      "detail": "RUN-099 completed extraction and verification over MC-PM-2025 para 2.7.2.2.4 in 27s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-152.",
+      "hash": "3ddf42c59450",
+      "prevHash": "9571c26b5a87"
+    },
+    {
+      "id": "AE-0441",
+      "at": "2026-09-11T05:52:20.446Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-153",
+      "detail": "Drafted by RUN-100 from MC-PM-2025 para 2.7.2.2.5 — \"No sharing of information except for approved trade execution\", grounded to chars 0–139 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8aa2bf02a755",
+      "prevHash": "3ddf42c59450"
+    },
+    {
+      "id": "AE-0442",
+      "at": "2026-09-11T05:52:20.446Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-100",
+      "detail": "RUN-100 completed extraction and verification over MC-PM-2025 para 2.7.2.2.5 in 70s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-153.",
+      "hash": "69023500eb07",
+      "prevHash": "8aa2bf02a755"
+    },
+    {
+      "id": "AE-0443",
+      "at": "2026-09-11T05:52:41.746Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-154",
+      "detail": "Drafted by RUN-101 from MC-PM-2025 para 2.7.3.1 — \"Automated funds and securities management system for AUM of INR 1000 crores or more\", grounded to chars 0–326 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "105c5a46bb58",
+      "prevHash": "69023500eb07"
+    },
+    {
+      "id": "AE-0444",
+      "at": "2026-09-11T05:52:41.746Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-101",
+      "detail": "RUN-101 completed extraction and verification over MC-PM-2025 para 2.7.3.1 in 19s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-154.",
+      "hash": "71deb0cd0683",
+      "prevHash": "105c5a46bb58"
+    },
+    {
+      "id": "AE-0445",
+      "at": "2026-09-11T05:53:11.852Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-155",
+      "detail": "Drafted by RUN-102 from MC-PM-2025 para 2.7.3.2 — \"System must capture pre-order and final trade allocation details with deviations\", grounded to chars 0–241 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "8fd3c425bb49",
+      "prevHash": "71deb0cd0683"
+    },
+    {
+      "id": "AE-0446",
+      "at": "2026-09-11T05:53:11.852Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-102",
+      "detail": "RUN-102 completed extraction and verification over MC-PM-2025 para 2.7.3.2 in 28s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-155.",
+      "hash": "fbcd9133eae5",
+      "prevHash": "8fd3c425bb49"
+    },
+    {
+      "id": "AE-0447",
+      "at": "2026-09-11T05:53:50.308Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-103",
+      "detail": "RUN-103 was stopped by the verifier on MC-PM-2025 para 2.7.4. Failed checks: schema-valid. 1 of 5. No obligation was drafted into the register.",
+      "hash": "1e0bc3909d1b",
+      "prevHash": "fbcd9133eae5"
+    },
+    {
+      "id": "AE-0448",
+      "at": "2026-09-11T05:54:49.294Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-156",
+      "detail": "Drafted by RUN-104 from MC-PM-2025 para 2.8.1 — \"Comply with the Cybersecurity and Cyber Resilience Framework (CSCRF)\", grounded to chars 0–307 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "bc8d23052cdd",
+      "prevHash": "1e0bc3909d1b"
+    },
+    {
+      "id": "AE-0449",
+      "at": "2026-09-11T05:54:49.294Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-104",
+      "detail": "RUN-104 completed extraction and verification over MC-PM-2025 para 2.8.1 in 57s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-156.",
+      "hash": "797c5f4ef9e2",
+      "prevHash": "bc8d23052cdd"
+    },
+    {
+      "id": "AE-0450",
+      "at": "2026-09-11T05:55:22.469Z",
+      "actor": "agent:extraction",
+      "action": "obligation.drafted",
+      "subjectType": "obligation",
+      "subjectId": "OBL-157",
+      "detail": "Drafted by RUN-105 from MC-PM-2025 para 2.9.1 — \"Value portfolio debt and money market securities per APMI standardized norms\", grounded to chars 138–314 of the clause text. Status pending-review; not in the register and not counted as an obligation until a compliance officer decides.",
+      "hash": "c46cea1efdca",
+      "prevHash": "797c5f4ef9e2"
+    },
+    {
+      "id": "AE-0451",
+      "at": "2026-09-11T05:55:22.469Z",
+      "actor": "system:pipeline",
+      "action": "run.completed",
+      "subjectType": "run",
+      "subjectId": "RUN-105",
+      "detail": "RUN-105 completed extraction and verification over MC-PM-2025 para 2.9.1 in 30s. Five of five verifier checks passed. 1 obligation(s) drafted and held at the human gate: OBL-157.",
+      "hash": "a28bef4ed6fd",
+      "prevHash": "c46cea1efdca"
+    },
+    {
+      "id": "AE-0452",
+      "at": "2026-09-11T05:56:35.049Z",
+      "actor": "system:pipeline",
+      "action": "run.failed",
+      "subjectType": "run",
+      "subjectId": "RUN-106",
+      "detail": "RUN-106 failed on MC-PM-2025 para 2.9.2. extraction failed after 2 attempts — response was not valid JSON: Expected ',' or '}' after property value in JSON at position 2643 (line 1 column 2644). Nothing was drafted and nothing entered the register.",
+      "hash": "ba53d0fb8950",
+      "prevHash": "a28bef4ed6fd"
+    },
+    {
+      "id": "AE-0453",
+      "at": "2026-09-11T07:22:04.586Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-119",
+      "detail": "Approved by Compliance Officer at the human gate — \"Mention registration number in all correspondence\", grounded to MC-PM-2025 para 1.2.2, chars 0–218. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-051.",
+      "hash": "f66348c661c3",
+      "prevHash": "ba53d0fb8950"
+    },
+    {
+      "id": "AE-0454",
+      "at": "2026-09-11T07:22:04.601Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-120",
+      "detail": "Approved by Compliance Officer at the human gate — \"Designate a senior officer as Compliance Officer\", grounded to MC-PM-2025 para 1.2.3, chars 176–252. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-052.",
+      "hash": "9290f3936b97",
+      "prevHash": "f66348c661c3"
+    },
+    {
+      "id": "AE-0455",
+      "at": "2026-09-11T07:22:04.615Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-121",
+      "detail": "Approved by Compliance Officer at the human gate — \"Compliance Officer to co-ordinate with regulators and ensure internal compliance\", grounded to MC-PM-2025 para 1.2.3, chars 254–390. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-052.",
+      "hash": "f22099878450",
+      "prevHash": "9290f3936b97"
+    },
+    {
+      "id": "AE-0456",
+      "at": "2026-09-11T07:22:04.622Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-122",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure SEBI-observed deficiencies do not recur\", grounded to MC-PM-2025 para 1.2.3, chars 392–562. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-052.",
+      "hash": "bb47b1b01542",
+      "prevHash": "f22099878450"
+    },
+    {
+      "id": "AE-0457",
+      "at": "2026-09-11T07:22:04.629Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-123",
+      "detail": "Approved by Compliance Officer at the human gate — \"SEBI correspondence only via principal office, not branch offices\", grounded to MC-PM-2025 para 1.2.4, chars 0–205. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-053.",
+      "hash": "5c5253bbc237",
+      "prevHash": "bb47b1b01542"
+    },
+    {
+      "id": "AE-0458",
+      "at": "2026-09-11T07:22:04.637Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-124",
+      "detail": "Approved by Compliance Officer at the human gate — \"Have a code of conduct under PIT Regulations\", grounded to MC-PM-2025 para 1.2.5, chars 0–165. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-054.",
+      "hash": "3570aeb49ab5",
+      "prevHash": "5c5253bbc237"
+    },
+    {
+      "id": "AE-0459",
+      "at": "2026-09-11T07:22:04.646Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-128",
+      "detail": "Approved by Compliance Officer at the human gate — \"Apply online to SEBI for prior approval via SEBI Intermediary Portal\", grounded to MC-PM-2025 para 1.5.1.1, chars 0–152. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-061.",
+      "hash": "5188982faf65",
+      "prevHash": "3570aeb49ab5"
+    },
+    {
+      "id": "AE-0460",
+      "at": "2026-09-11T07:22:04.654Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-129",
+      "detail": "Approved by Compliance Officer at the human gate — \"File change-in-control approval application with SEBI before NCLT filing\", grounded to MC-PM-2025 para 1.5.1.5.1, chars 0–156. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-064.",
+      "hash": "5aa32cc68d9b",
+      "prevHash": "5188982faf65"
+    },
+    {
+      "id": "AE-0461",
+      "at": "2026-09-11T07:22:04.662Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-130",
+      "detail": "Approved by Compliance Officer at the human gate — \"File NCLT application within three-month validity of in-principle approval\", grounded to MC-PM-2025 para 1.5.1.5.3, chars 0–157. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-066.",
+      "hash": "6c5125cbff95",
+      "prevHash": "5aa32cc68d9b"
+    },
+    {
+      "id": "AE-0462",
+      "at": "2026-09-11T07:22:04.670Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-131",
+      "detail": "Approved by Compliance Officer at the human gate — \"Principal officer and fund management decision-makers to pass NISM-Series-XXI-B exam\", grounded to MC-PM-2025 para 1.7.1.1, chars 180–336. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-069.",
+      "hash": "528d61fe11f4",
+      "prevHash": "6c5125cbff95"
+    },
+    {
+      "id": "AE-0463",
+      "at": "2026-09-11T07:22:04.844Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-118",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Submit full and complete information to SEBI at the time of registration\", drafted by RUN-050 from MC-PM-2025 para 1.1.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "ccbd49876351",
+      "prevHash": "528d61fe11f4"
+    },
+    {
+      "id": "AE-0464",
+      "at": "2026-09-11T07:22:04.860Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-125",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Prior intimation to SEBI before offering co-investment services\", drafted by RUN-058 from MC-PM-2025 para 1.4.1.1. Not entered in the register. The draft and this decision are retained.",
+      "hash": "0506f796928f",
+      "prevHash": "ccbd49876351"
+    },
+    {
+      "id": "AE-0465",
+      "at": "2026-09-11T07:22:04.870Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-126",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Seek SEBI registration as Portfolio Manager to offer co-investment services\", drafted by RUN-059 from MC-PM-2025 para 1.4.1.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "f61f7c120c94",
+      "prevHash": "0506f796928f"
+    },
+    {
+      "id": "AE-0466",
+      "at": "2026-09-11T07:22:04.877Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-127",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Obtain SEBI prior approval before offering PMS other than co-investment\", drafted by RUN-059 from MC-PM-2025 para 1.4.1.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "6e7d43062a88",
+      "prevHash": "f61f7c120c94"
+    },
+    {
+      "id": "AE-0467",
+      "at": "2026-09-11T07:22:05.047Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-132",
+      "detail": "Approved by Compliance Officer at the human gate — \"Follow prescribed format for calculation of Net worth\", grounded to MC-PM-2025 para 1.6.1, chars 0–85. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-072.",
+      "hash": "90c002ea3a30",
+      "prevHash": "6e7d43062a88"
+    },
+    {
+      "id": "AE-0468",
+      "at": "2026-09-11T07:22:05.064Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-133",
+      "detail": "Approved by Compliance Officer at the human gate — \"PMS distributor associated persons must pass NISM-Series-XXI-A certification exam\", grounded to MC-PM-2025 para 1.7.2.1, chars 110–295. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-073.",
+      "hash": "e3b1d1b1b38a",
+      "prevHash": "90c002ea3a30"
+    },
+    {
+      "id": "AE-0469",
+      "at": "2026-09-11T07:22:05.074Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-134",
+      "detail": "Approved by Compliance Officer at the human gate — \"Segregate each client's funds and securities from own funds and securities\", grounded to MC-PM-2025 para 2.2.1, chars 32–176. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-074.",
+      "hash": "dc83db27d7dc",
+      "prevHash": "e3b1d1b1b38a"
+    },
+    {
+      "id": "AE-0470",
+      "at": "2026-09-11T07:22:05.082Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-135",
+      "detail": "Approved by Compliance Officer at the human gate — \"Ensure safekeeping of clients' funds and securities\", grounded to MC-PM-2025 para 2.2.1, chars 181–244. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-074.",
+      "hash": "dbf538f53a95",
+      "prevHash": "dc83db27d7dc"
+    },
+    {
+      "id": "AE-0471",
+      "at": "2026-09-11T07:22:05.090Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-136",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain clear segregation of each client's funds via back office records\", grounded to MC-PM-2025 para 2.2.2.1, chars 0–117. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-075.",
+      "hash": "727daeeeed65",
+      "prevHash": "dbf538f53a95"
+    },
+    {
+      "id": "AE-0472",
+      "at": "2026-09-11T07:22:05.099Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-137",
+      "detail": "Approved by Compliance Officer at the human gate — \"Maintain short-term liquid fund deployments in line with paragraph 2.2.2\", grounded to MC-PM-2025 para 2.2.3, chars 134–307. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-078.",
+      "hash": "a1da12774751",
+      "prevHash": "727daeeeed65"
+    },
+    {
+      "id": "AE-0473",
+      "at": "2026-09-11T07:22:05.108Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-138",
+      "detail": "Approved by Compliance Officer at the human gate — \"Provide clients an option to be on-boarded directly without distribution intermediaries\", grounded to MC-PM-2025 para 2.3.1, chars 0–148. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-079.",
+      "hash": "c8471e6cb6bd",
+      "prevHash": "a1da12774751"
+    },
+    {
+      "id": "AE-0474",
+      "at": "2026-09-11T07:22:05.118Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-139",
+      "detail": "Approved by Compliance Officer at the human gate — \"Disclose direct on-boarding option in disclosures, marketing material and website\", grounded to MC-PM-2025 para 2.3.2, chars 0–154. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-080.",
+      "hash": "4803719e9aa7",
+      "prevHash": "c8471e6cb6bd"
+    },
+    {
+      "id": "AE-0475",
+      "at": "2026-09-11T07:22:05.126Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-140",
+      "detail": "Approved by Compliance Officer at the human gate — \"Put in place a written policy on team roles in managing client funds and securities\", grounded to MC-PM-2025 para 2.6.1, chars 143–487. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-087.",
+      "hash": "7e2585c3bd96",
+      "prevHash": "4803719e9aa7"
+    },
+    {
+      "id": "AE-0476",
+      "at": "2026-09-11T07:22:05.134Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-141",
+      "detail": "Approved by Compliance Officer at the human gate — \"Put in place a specific policy compliant with PM Regulations\", grounded to MC-PM-2025 para 2.6.2, chars 0–131. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-088.",
+      "hash": "acf431c70bdb",
+      "prevHash": "7e2585c3bd96"
+    },
+    {
+      "id": "AE-0477",
+      "at": "2026-09-11T07:22:05.145Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-144",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain prior written PO and Compliance Officer approval for deviations\", grounded to MC-PM-2025 para 2.6.2.4, chars 0–210. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-091.",
+      "hash": "251047803a9a",
+      "prevHash": "acf431c70bdb"
+    },
+    {
+      "id": "AE-0478",
+      "at": "2026-09-11T07:22:05.152Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-145",
+      "detail": "Approved by Compliance Officer at the human gate — \"Obtain Board approval of policies specified in paragraphs 2.6.1 & 2.6.2\", grounded to MC-PM-2025 para 2.6.3, chars 0–138. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-092.",
+      "hash": "a5d6bba3fece",
+      "prevHash": "251047803a9a"
+    },
+    {
+      "id": "AE-0479",
+      "at": "2026-09-11T07:22:05.158Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-146",
+      "detail": "Approved by Compliance Officer at the human gate — \"Treat all clients in a fair and equitable manner\", grounded to MC-PM-2025 para 2.7.1, chars 0–91. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-093.",
+      "hash": "b4f4e8f0d0dc",
+      "prevHash": "a5d6bba3fece"
+    },
+    {
+      "id": "AE-0480",
+      "at": "2026-09-11T07:22:05.165Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-147",
+      "detail": "Approved by Compliance Officer at the human gate — \"Constitute a dealing team for order placement and execution\", grounded to MC-PM-2025 para 2.7.2.1, chars 0–198. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-094.",
+      "hash": "f520a767e0c0",
+      "prevHash": "b4f4e8f0d0dc"
+    },
+    {
+      "id": "AE-0481",
+      "at": "2026-09-11T07:22:05.173Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-149",
+      "detail": "Approved by Compliance Officer at the human gate — \"Conduct all DT conversations only via recorded lines or authorized email ids\", grounded to MC-PM-2025 para 2.7.2.2.1, chars 0–129. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-096.",
+      "hash": "7b68f5ef1818",
+      "prevHash": "f520a767e0c0"
+    },
+    {
+      "id": "AE-0482",
+      "at": "2026-09-11T07:22:05.179Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-150",
+      "detail": "Approved by Compliance Officer at the human gate — \"Prohibit mobile phones and other communication devices inside the dealing room\", grounded to MC-PM-2025 para 2.7.2.2.2, chars 0–134. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-097.",
+      "hash": "d5ed540a05f4",
+      "prevHash": "7b68f5ef1818"
+    },
+    {
+      "id": "AE-0483",
+      "at": "2026-09-11T07:22:05.186Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-151",
+      "detail": "Approved by Compliance Officer at the human gate — \"Restrict internet access in dealing room to trade-execution activities only\", grounded to MC-PM-2025 para 2.7.2.2.3, chars 0–170. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-098.",
+      "hash": "b3ce5d23cbc3",
+      "prevHash": "d5ed540a05f4"
+    },
+    {
+      "id": "AE-0484",
+      "at": "2026-09-11T07:22:05.192Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-152",
+      "detail": "Approved by Compliance Officer at the human gate — \"Restrict dealing room entry/access to authorized employees only\", grounded to MC-PM-2025 para 2.7.2.2.4, chars 0–144. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-099.",
+      "hash": "b27539399b46",
+      "prevHash": "b3ce5d23cbc3"
+    },
+    {
+      "id": "AE-0485",
+      "at": "2026-09-11T07:22:05.203Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-153",
+      "detail": "Approved by Compliance Officer at the human gate — \"No sharing of information except for approved trade execution\", grounded to MC-PM-2025 para 2.7.2.2.5, chars 0–139. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-100.",
+      "hash": "353bc667697f",
+      "prevHash": "b27539399b46"
+    },
+    {
+      "id": "AE-0486",
+      "at": "2026-09-11T07:22:05.211Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-154",
+      "detail": "Approved by Compliance Officer at the human gate — \"Automated funds and securities management system for AUM of INR 1000 crores or more\", grounded to MC-PM-2025 para 2.7.3.1, chars 0–326. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-101.",
+      "hash": "36ade08b6c5c",
+      "prevHash": "353bc667697f"
+    },
+    {
+      "id": "AE-0487",
+      "at": "2026-09-11T07:22:05.218Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-155",
+      "detail": "Approved by Compliance Officer at the human gate — \"System must capture pre-order and final trade allocation details with deviations\", grounded to MC-PM-2025 para 2.7.3.2, chars 0–241. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-102.",
+      "hash": "85b85f2d166d",
+      "prevHash": "36ade08b6c5c"
+    },
+    {
+      "id": "AE-0488",
+      "at": "2026-09-11T07:22:05.225Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-156",
+      "detail": "Approved by Compliance Officer at the human gate — \"Comply with the Cybersecurity and Cyber Resilience Framework (CSCRF)\", grounded to MC-PM-2025 para 2.8.1, chars 0–307. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-104.",
+      "hash": "ce88783ffcf7",
+      "prevHash": "85b85f2d166d"
+    },
+    {
+      "id": "AE-0489",
+      "at": "2026-09-11T07:22:05.231Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.approved",
+      "subjectType": "obligation",
+      "subjectId": "OBL-157",
+      "detail": "Approved by Compliance Officer at the human gate — \"Value portfolio debt and money market securities per APMI standardized norms\", grounded to MC-PM-2025 para 2.9.1, chars 138–314. Entered the register with no evidence bound; opens as a gap pending evidence. Drafted by RUN-105.",
+      "hash": "7665ac450b1b",
+      "prevHash": "ce88783ffcf7"
+    },
+    {
+      "id": "AE-0490",
+      "at": "2026-09-11T07:22:05.412Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-142",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Place orders individually per client or pooled from PM account in specific situations\", drafted by RUN-089 from MC-PM-2025 para 2.6.2.1. Not entered in the register. The draft and this decision are retained.",
+      "hash": "ec172459941a",
+      "prevHash": "7665ac450b1b"
+    },
+    {
+      "id": "AE-0491",
+      "at": "2026-09-11T07:22:05.429Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-143",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Disclose how margins/collaterals are segregated among clients\", drafted by RUN-090 from MC-PM-2025 para 2.6.2.3. Not entered in the register. The draft and this decision are retained.",
+      "hash": "4763b15f3f71",
+      "prevHash": "ec172459941a"
+    },
+    {
+      "id": "AE-0492",
+      "at": "2026-09-11T07:22:05.440Z",
+      "actor": "human:Compliance Officer",
+      "action": "obligation.rejected",
+      "subjectType": "obligation",
+      "subjectId": "OBL-148",
+      "detail": "Rejected by Compliance Officer at the human gate — \"Ensure the dealing terminal (DT) is suitably staffed\", drafted by RUN-095 from MC-PM-2025 para 2.7.2.2. Not entered in the register. The draft and this decision are retained.",
+      "hash": "94d68a87e5b5",
+      "prevHash": "4763b15f3f71"
+    },
+    {
+      "id": "AE-0493",
+      "at": "2026-09-11T07:23:20.461Z",
+      "actor": "human:Compliance Officer",
+      "action": "evidence.bound",
+      "subjectType": "evidence",
+      "subjectId": "EV-002",
+      "detail": "Evidence EV-002 (document) bound to OBL-002 by Compliance Officer: \"testing\", file DetailedStatement (68).xlsx sha256 98ef208e87c5701b3db5ef19b4442d193c305a293da58afb1a04fab20e55d45f. Status gap → met.",
+      "hash": "6974c702b7d3",
+      "prevHash": "94d68a87e5b5"
     }
   ]
 }
