@@ -41,7 +41,9 @@ origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status bo
 
 ## Pranjal's facts/decisions so far
 Discretionary PMS only; distributors YES; ETCD no; CDS no; real-estate investees no; overseas limit YES;
-co-investment PMS no; NO debt / money-market securities (2026-09-11 -> withdraw OBL-157); placeholders for names OK for now;
+co-investment PMS no; NO debt / money-market securities (2026-09-11 -> withdraw OBL-157); NO investments in associates /
+related parties (2026-09-11; limits OBL-178/179/189 stay, complied at zero; consent-form lines OBL-181..188 stay as agreement
+template duties — Pranjal may withdraw later); placeholders for names OK for now;
 OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Cloudflare (2026-09-11).
 
 ## Open on PRANJAL's side
@@ -68,6 +70,8 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   lead-ins — 2.2.2.2, 2.3.3, 2.5.1.2, 2.9.2, 2.2.2.4, 2.4.1.2, 2.7.4 + re-run 2.7.2.2 (mis-titled). Task 22 ACCEPTED 2026-09-11 (9f09f5f): withdraw route, `rejected` persisted, OBL-157 withdrawn, pm-3 run -> 38 drafts,
   REVIEW-2026-09-11-pm-3.md (20 approve / 18 reject: debt/CB, ETCD, non-discretionary, advisory not applicable).
   Task 23 ISSUED: extract.ts retry-on-invalid-JSON; re-run 3.5.3; run pm-4 (16) + pm-5 (28).
+- Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
+- Deployment: task 1e-i = infra STUDY (worker, no code) before any port; Pranjal schedules it.
 - Task 20 was: run-paras `shall[:<chapter>]` selector + S2.5 leading-marker nit; then run MC-PM-2025 pm-1.
   PMS shall inventory: MC-PM 154 paras (pm-1 26, pm-2 35, pm-3 32, pm-4 16, pm-5 28, pm-6 15, pm-7 2), REG-PM 114
   (pmr-2 16, pmr-3 4, pmr-4 55, pmr-5 9, pmr-6 5, s2 5, s3 12, s4 6, pmr-1 2). 24 + 26 of these are shall+cadence.

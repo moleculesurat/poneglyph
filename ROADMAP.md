@@ -58,12 +58,14 @@ BUILD ORDER — PMS first, end to end; then AIF; then the rest
                                          calendar for working-day due dates; real officer names.
     1d  watchtower on real sources       RSS + the four listing pages; catch → work item (fetch, pdftotext,
                                          collect, re-run changed paragraphs, review, gate).
-    1e  deployment on Molecule's AWS    Pranjal's call 2026-09-11: Molecule runs AWS, not Cloudflare. Port is
-                                         small — the worker touches only KV get/put (14 call sites), fetch, Web
-                                         Crypto, a cron hook and static assets: Lambda (function URL) + DynamoDB
-                                         shim for `PONEGLYPH_STATE` + EventBridge hourly rule + S3/CloudFront
-                                         for `out/`. Secrets in SSM/Secrets Manager. [PRANJAL: account/region,
-                                         Lambda or container, IaC tool, who deploys]. Then `npm run pull -- <url>`.
+    1e  deployment on Molecule's infra   Pranjal's call 2026-09-11: Molecule runs AWS, not Cloudflare. Two steps:
+        1e-i  STUDY (worker task, no code)  inventory Molecule's AWS: account/region, how services run today
+                                         (Lambda / ECS / EC2), IaC tool, secrets store, DNS/domain, who deploys,
+                                         any India-residency or access rules. Report back; I size the port.
+        1e-ii PORT                       the worker touches only KV get/put (14 sites), fetch, Web Crypto, a cron
+                                         hook and static assets. Likely shape: Lambda (function URL) + DynamoDB
+                                         shim for `PONEGLYPH_STATE` + EventBridge hourly rule + S3/CloudFront for
+                                         `out/`; secrets in SSM. Final shape follows 1e-i. Then `npm run pull -- <url>`.
     done looks like: every PMS duty SEBI wrote is in the register or ruled out with a reason; dates,
     proof and gaps are live; the watchtower catches the next PMS circular and hands it to the pipeline.
 
@@ -111,7 +113,7 @@ OPEN ON PRANJAL'S SIDE — phase 1 first
   1  browser test of attach-evidence on /register, then `npm run pull` + commit register.json
   2  PM Regulations PDF into given/, or a yes to fetch it (1a); version: Feb 2025 as linked, or Sep 2025
   3  yes/no on the remaining ~445 "shall" paragraphs (1b)
-  4  real Compliance Officer / Principal Officer names (1c)
-  5  Molecule's AWS: account/region, Lambda vs container, IaC tool, domain (1e)
+  4  Compliance Officer and Principal Officer: names, appointment dates, PO's NISM XXI-B certificate (1c)
+  5  1e-i infra study report (worker task, when Pranjal schedules it)
   later: order of the three AIF tracks; stage of each category; AIF Regulations PDF; MCP client
 ```
