@@ -8,6 +8,7 @@
     "paras": "node scripts/run-paras.mjs",
     "decide": "node scripts/decide.mjs",
     "attach": "node scripts/attach.mjs",
+    "watch": "node scripts/watch.mjs",
     "dev": "next dev",
     "build": "next build",
     "preview": "npx serve out -l 3000",

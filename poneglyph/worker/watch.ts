@@ -1,10 +1,12 @@
 /* ══════════════════════════════════════════════════════════════════════
-   The watchtower — a REAL poll of SEBI's public RSS feed.
+   The watchtower — a REAL poll of SEBI's public surfaces.
 
-   https://www.sebi.gov.in/sebirss.xml is plain RSS 2.0 with <ttl>60</ttl>.
-   The link path encodes the document category (/legal/circulars/,
-   /enforcement/orders/, /enforcement/recovery-proceedings/ …), so docType
-   is read off the URL rather than inferred.
+   Five sources (see SOURCES): the RSS feed (plain RSS 2.0, <ttl>60</ttl>,
+   enforcement-heavy) plus the circulars, master-circulars and regulations
+   listing tables where binding instruments actually appear. The link path
+   encodes the document category (/legal/circulars/, /legal/master-circulars/,
+   /legal/regulations/, /enforcement/orders/ …), so docType is read off the
+   URL rather than inferred.
 
    Three disciplines hold everything here together:
      · HONEST FAILURE — if the fetch fails from the edge, the recorded
@@ -30,18 +32,29 @@ import type {
   WatchDocType,
   WatchFeedState,
   WatchPollResult,
+  WatchSourceStatus,
   WatchTriage,
 } from "./types";
 
-export const FEED_URL = "https://www.sebi.gov.in/sebirss.xml";
-const SOURCE = "sebi.gov.in/sebirss.xml";
+/** Every public SEBI surface we watch. The RSS feed is enforcement-heavy;
+    the three listing tables are where circulars, master circulars and
+    regulations that actually bind an intermediary appear. */
+export const SOURCES: { id: string; url: string; kind: "rss" | "listing" }[] = [
+  { id: "rss", url: "https://www.sebi.gov.in/sebirss.xml", kind: "rss" },
+  { id: "circulars", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7&smid=0", kind: "listing" },
+  { id: "circulars-afd", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7&smid=0&deptId=75", kind: "listing" },
+  { id: "master-circulars", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=6&smid=0", kind: "listing" },
+  { id: "regulations", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=3&smid=0", kind: "listing" },
+];
 
 const FETCH_TIMEOUT_MS = 15_000;
-/** the feed declares <ttl>60</ttl>; a 5-minute floor keeps manual pollers
+/** the RSS feed declares <ttl>60</ttl>; a 5-minute floor keeps manual pollers
     from hammering the origin while still letting a judge force a refresh */
 const MIN_POLL_GAP_MS = 5 * 60 * 1000;
-const MAX_CATCHES = 100;
-const MAX_SEEN = 500;
+/** five sources of ~25–42 rows each: the caps must clear one full poll or the
+    first run drops most of what it fetched */
+const MAX_CATCHES = 300;
+const MAX_SEEN = 1000;
 
 const STATE_KEY = "watch:state";
 const SEEN_KEY = "watch:seen";
@@ -58,6 +71,7 @@ const EMPTY_STATE: WatchFeedState = {
   lastBuildDate: null,
   fetchOk: false,
   lastError: null,
+  sources: {},
 };
 
 async function readState(env: Env): Promise<WatchFeedState> {
@@ -136,6 +150,39 @@ export function parseRss(xml: string): { items: FeedItem[]; lastBuildDate: strin
      precedes any item block in a well-formed feed */
   const channelHead = xml.slice(0, xml.search(/<item[\s>]/) === -1 ? xml.length : xml.search(/<item[\s>]/));
   return { items, lastBuildDate: tagContent(channelHead, "lastBuildDate") };
+}
+
+/* ── Listing parsing — the circular/regulation tables, hand-rolled ──────
+   Each data row is <tr>…<td>date</td>…<td><a href=".../legal/…">title</a>…</tr>.
+   The circulars/master-circulars anchors carry title="…" class="points"; the
+   regulations anchors carry neither and the date cell is a bare year — so the
+   link filter is the /legal/ href (not the class), the title falls back to the
+   anchor text, and the date is whatever the first cell holds. */
+export function parseListing(html: string): FeedItem[] {
+  const items: FeedItem[] = [];
+  const rowRe = /<tr(?:\s[^>]*)?>([\s\S]*?)<\/tr>/gi;
+  let row: RegExpExecArray | null;
+  while ((row = rowRe.exec(html)) !== null) {
+    const block = row[1];
+    /* first anchor whose href is a /legal/ document; rows without one are skipped */
+    const anchor = block.match(
+      /<a\b([^>]*?)href="(https:\/\/www\.sebi\.gov\.in\/legal\/[^"]+)"([^>]*)>([\s\S]*?)<\/a>/i,
+    );
+    if (!anchor) continue;
+    const link = anchor[2];
+    const attrs = `${anchor[1]} ${anchor[3]}`;
+    const titleAttr = attrs.match(/\btitle="([^"]*)"/i);
+    const anchorText = decodeEntities(anchor[4].replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim();
+    const title =
+      titleAttr && titleAttr[1].trim() ? decodeEntities(titleAttr[1]).trim() : anchorText;
+    const dateCell = block.match(/<td(?:\s[^>]*)?>([\s\S]*?)<\/td>/i);
+    const pubDate = dateCell
+      ? decodeEntities(dateCell[1].replace(/<[^>]*>/g, " ")).replace(/\s+/g, " ").trim() || null
+      : null;
+    if (!title) continue; // an item we cannot cite is not a catch
+    items.push({ title, link, pubDate });
+  }
+  return items;
 }
 
 /* ── docType from the link path — SEBI encodes the category there ───── */
@@ -295,6 +342,63 @@ export async function getWatch(env: Env): Promise<WatchView> {
 
 /* ── POST /api/watch/poll and the hourly cron ───────────────────────── */
 
+interface SourceResult {
+  id: string;
+  fetchOk: boolean;
+  httpStatus: number | null;
+  items: FeedItem[];
+  lastBuildDate: string | null;
+  lastError: string | null;
+}
+
+/** Fetch one source and parse it, applying the honest-failure rule per source:
+    a network error, a non-2xx, or a 200 that parses to nothing all record the
+    real reason and yield no items. Never throws. */
+async function fetchSource(src: (typeof SOURCES)[number]): Promise<SourceResult> {
+  let httpStatus: number | null = null;
+  try {
+    const response = await fetch(src.url, {
+      headers: {
+        "user-agent": USER_AGENT,
+        accept: "application/rss+xml, application/xml, text/xml, text/html, */*;q=0.8",
+      },
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+    httpStatus = response.status;
+    if (!response.ok) {
+      throw new Error(`upstream returned HTTP ${response.status} ${response.statusText}`.trim());
+    }
+    const body = await response.text();
+    let items: FeedItem[];
+    let lastBuildDate: string | null = null;
+    if (src.kind === "rss") {
+      const parsed = parseRss(body);
+      items = parsed.items;
+      lastBuildDate = parsed.lastBuildDate;
+    } else {
+      items = parseListing(body);
+    }
+    if (items.length === 0) {
+      return {
+        id: src.id,
+        fetchOk: false,
+        httpStatus,
+        items: [],
+        lastBuildDate,
+        lastError: `HTTP ${httpStatus} but no items parsed (${body.length} bytes)`,
+      };
+    }
+    return { id: src.id, fetchOk: true, httpStatus, items, lastBuildDate, lastError: null };
+  } catch (e) {
+    const err = e as Error;
+    const lastError =
+      err.name === "TimeoutError" || err.name === "AbortError"
+        ? `${new URL(src.url).host} did not respond within ${FETCH_TIMEOUT_MS / 1000}s`
+        : err.message || "fetch failed";
+    return { id: src.id, fetchOk: false, httpStatus, items: [], lastBuildDate: null, lastError };
+  }
+}
+
 export async function pollWatch(env: Env, force: boolean): Promise<WatchPollResult> {
   const state = await readState(env);
 
@@ -308,69 +412,61 @@ export async function pollWatch(env: Env, force: boolean): Promise<WatchPollResu
         newCount: 0,
         totalItems: catches.length,
         skipped: true,
+        sources: state.sources,
         ...(state.lastError ? { lastError: state.lastError } : {}),
       };
     }
   }
 
   const polledAt = new Date().toISOString();
-  let httpStatus: number | null = null;
-  let xml = "";
+  const results = await Promise.all(SOURCES.map(fetchSource));
 
-  try {
-    const response = await fetch(FEED_URL, {
-      headers: {
-        "user-agent": USER_AGENT,
-        accept: "application/rss+xml, application/xml, text/xml, */*;q=0.8",
-      },
-      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-    });
-    httpStatus = response.status;
-    if (!response.ok) {
-      throw new Error(`upstream returned HTTP ${response.status} ${response.statusText}`.trim());
-    }
-    xml = await response.text();
-  } catch (e) {
-    /* HONEST FAILURE — the real error, recorded and returned verbatim */
-    const err = e as Error;
-    const lastError =
-      err.name === "TimeoutError" || err.name === "AbortError"
-        ? `sebi.gov.in did not respond within ${FETCH_TIMEOUT_MS / 1000}s`
-        : err.message || "fetch failed";
+  const sources: Record<string, WatchSourceStatus> = {};
+  for (const r of results) {
+    sources[r.id] = { fetchOk: r.fetchOk, httpStatus: r.httpStatus, items: r.items.length, lastError: r.lastError };
+  }
+  const anyOk = results.some((r) => r.fetchOk);
+  const failing = results.filter((r) => !r.fetchOk);
+  const lastError = failing.length ? failing.map((r) => `${r.id}: ${r.lastError}`).join("; ") : null;
+  const lastBuildDate = results.find((r) => r.id === "rss")?.lastBuildDate ?? state.lastBuildDate ?? null;
+
+  /* HONEST FAILURE — every source failed; record the joined reasons, keep the
+     existing catches, and say so */
+  if (!anyOk) {
     await env.PONEGLYPH_STATE.put(
       STATE_KEY,
-      JSON.stringify({ ...state, lastPolledAt: polledAt, fetchOk: false, lastError }),
+      JSON.stringify({ lastPolledAt: polledAt, lastBuildDate, fetchOk: false, lastError, sources }),
     );
     const catches = await readCatches(env);
-    return { fetchOk: false, httpStatus, newCount: 0, totalItems: catches.length, lastError };
+    return { fetchOk: false, httpStatus: null, newCount: 0, totalItems: catches.length, lastError: lastError ?? undefined, sources };
   }
 
-  const { items, lastBuildDate } = parseRss(xml);
-  if (items.length === 0) {
-    /* a 200 with no parseable items is a failure of the parse contract,
-       not a success — say so */
-    const lastError = `feed returned HTTP ${httpStatus} but no <item> blocks parsed (${xml.length} bytes)`;
-    await env.PONEGLYPH_STATE.put(
-      STATE_KEY,
-      JSON.stringify({ lastPolledAt: polledAt, lastBuildDate, fetchOk: false, lastError }),
-    );
-    const catches = await readCatches(env);
-    return { fetchOk: false, httpStatus, newCount: 0, totalItems: 0, lastError };
+  /* merge every source's items, deduping on link across sources (first source
+     wins, so a circular seen in both circulars and circulars-afd is one catch) */
+  const combined: { item: FeedItem; sourceId: string }[] = [];
+  const linkSet = new Set<string>();
+  for (const r of results) {
+    if (!r.fetchOk) continue;
+    for (const item of r.items) {
+      if (linkSet.has(item.link)) continue;
+      linkSet.add(item.link);
+      combined.push({ item, sourceId: r.id });
+    }
   }
 
   const seen = await readSeen(env);
   const seenSet = new Set(seen);
-  const fresh = items.filter((item) => !seenSet.has(item.link));
+  const fresh = combined.filter(({ item }) => !seenSet.has(item.link));
 
   const newCatches: WatchCatch[] = [];
-  for (const item of fresh) {
+  for (const { item, sourceId } of fresh) {
     const docType = classifyDocType(item.link);
     const publishedMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
     newCatches.push({
       id: `WT-${(await sha256Hex(item.link)).slice(0, 10)}`,
       title: item.title,
       url: item.link,
-      source: SOURCE,
+      source: sourceId,
       docType,
       publishedAt: Number.isNaN(publishedMs)
         ? (item.pubDate ?? "")
@@ -381,20 +477,25 @@ export async function pollWatch(env: Env, force: boolean): Promise<WatchPollResu
   }
 
   const existing = await readCatches(env);
-  /* the feed is newest-first; keep that order — new items in front, cap 100 */
+  /* listings and the feed are newest-first; keep new items in front, cap MAX_CATCHES */
   const catches = [...newCatches, ...existing].slice(0, MAX_CATCHES);
-  const nextSeen = [...fresh.map((i) => i.link), ...seen].slice(0, MAX_SEEN);
+  const nextSeen = [...fresh.map(({ item }) => item.link), ...seen].slice(0, MAX_SEEN);
 
-  /* three different keys, one write each — inside KV's one-write-per-key-
-     per-second budget without needing the run-writer's pacing */
   await env.PONEGLYPH_STATE.put(
     STATE_KEY,
-    JSON.stringify({ lastPolledAt: polledAt, lastBuildDate, fetchOk: true, lastError: null }),
+    JSON.stringify({ lastPolledAt: polledAt, lastBuildDate, fetchOk: true, lastError, sources }),
   );
   if (newCatches.length > 0) {
     await env.PONEGLYPH_STATE.put(SEEN_KEY, JSON.stringify(nextSeen));
     await env.PONEGLYPH_STATE.put(CATCHES_KEY, JSON.stringify(catches));
   }
 
-  return { fetchOk: true, httpStatus, newCount: newCatches.length, totalItems: items.length };
+  return {
+    fetchOk: true,
+    httpStatus: null,
+    newCount: newCatches.length,
+    totalItems: combined.length,
+    sources,
+    ...(lastError ? { lastError } : {}),
+  };
 }

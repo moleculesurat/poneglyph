@@ -105,7 +105,8 @@ async function handleApi(
   if (path === "/api/watch/poll") {
     if (method !== "POST") return error(request, 405, "POST only");
     const body = await readJson(request);
-    return json(request, await pollWatch(env, body?.force === true));
+    const force = url.searchParams.get("force") === "1" || body?.force === true;
+    return json(request, await pollWatch(env, force));
   }
 
   const state = await resolveSession(env);

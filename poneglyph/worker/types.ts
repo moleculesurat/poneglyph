@@ -98,12 +98,23 @@ export interface WatchCatch {
   triage: WatchTriage;
 }
 
+/** per-source outcome of the last poll, recorded verbatim */
+export interface WatchSourceStatus {
+  fetchOk: boolean;
+  httpStatus: number | null;
+  items: number;
+  lastError: string | null;
+}
+
 export interface WatchFeedState {
   lastPolledAt: string | null;
   lastBuildDate: string | null;
+  /** true when at least one source succeeded */
   fetchOk: boolean;
-  /** the REAL error from the last poll, verbatim — never a canned success */
+  /** the REAL error from the last poll, verbatim — failing sources joined; never a canned success */
   lastError: string | null;
+  /** status of each polled source, keyed by source id */
+  sources: Record<string, WatchSourceStatus>;
 }
 
 export interface WatchPollResult {
@@ -113,6 +124,7 @@ export interface WatchPollResult {
   totalItems: number;
   skipped?: boolean;
   lastError?: string;
+  sources?: Record<string, WatchSourceStatus>;
 }
 
 /* ── Live run ───────────────────────────────────────────────────────── */

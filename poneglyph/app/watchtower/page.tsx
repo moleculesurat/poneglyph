@@ -183,10 +183,11 @@ export default function Watchtower() {
                 </span>
               ))}
             </div>
-            <WatchTerminal run={pollRun} nextPoll={nextPoll} obligationCount={obligations.length} />
+            <WatchTerminal nextPoll={nextPoll} obligationCount={obligations.length} />
             <span className="small dim60">
-              This is a replay of the recorded {pollRun.id} trace — the sandbox does not poll SEBI
-              live. Every session, no-op or not, is hash-chained into the{" "}
+              Live per-source status from the worker&rsquo;s last poll of SEBI&rsquo;s RSS feed and
+              its circulars, master-circulars and regulations listings. Every poll, no-op or not, is
+              hash-chained into the{" "}
               <Link href="/audit" style={{ textDecoration: "underline" }}>
                 audit trail
               </Link>
