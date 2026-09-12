@@ -9,6 +9,7 @@
     "decide": "node scripts/decide.mjs",
     "attach": "node scripts/attach.mjs",
     "watch": "node scripts/watch.mjs",
+    "watch:selftest": "npx -y tsx scripts/watch-selftest.mjs",
     "dev": "next dev",
     "build": "next build",
     "preview": "npx serve out -l 3000",

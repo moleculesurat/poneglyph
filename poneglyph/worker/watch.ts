@@ -39,12 +39,14 @@ import type {
 /** Every public SEBI surface we watch. The RSS feed is enforcement-heavy;
     the three listing tables are where circulars, master circulars and
     regulations that actually bind an intermediary appear. */
-export const SOURCES: { id: string; url: string; kind: "rss" | "listing" }[] = [
+export const SOURCES: { id: string; url: string; kind: "rss" | "listing" | "apmi" }[] = [
   { id: "rss", url: "https://www.sebi.gov.in/sebirss.xml", kind: "rss" },
   { id: "circulars", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7&smid=0", kind: "listing" },
   { id: "circulars-afd", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=7&smid=0&deptId=75", kind: "listing" },
   { id: "master-circulars", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=6&smid=0", kind: "listing" },
   { id: "regulations", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=3&smid=0", kind: "listing" },
+  { id: "press-releases", url: "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=6&ssid=23&smid=0", kind: "listing" },
+  { id: "apmi", url: "https://www.apmiindia.org/", kind: "apmi" },
 ];
 
 const FETCH_TIMEOUT_MS = 15_000;
@@ -156,17 +158,19 @@ export function parseRss(xml: string): { items: FeedItem[]; lastBuildDate: strin
    Each data row is <tr>…<td>date</td>…<td><a href=".../legal/…">title</a>…</tr>.
    The circulars/master-circulars anchors carry title="…" class="points"; the
    regulations anchors carry neither and the date cell is a bare year — so the
-   link filter is the /legal/ href (not the class), the title falls back to the
-   anchor text, and the date is whatever the first cell holds. */
+   link filter is the document href (not the class), the title falls back to the
+   anchor text, and the date is whatever the first cell holds. Circulars,
+   master-circulars and regulations live under /legal/; press releases under
+   /media-and-notifications/, so both prefixes count as a document link. */
 export function parseListing(html: string): FeedItem[] {
   const items: FeedItem[] = [];
   const rowRe = /<tr(?:\s[^>]*)?>([\s\S]*?)<\/tr>/gi;
   let row: RegExpExecArray | null;
   while ((row = rowRe.exec(html)) !== null) {
     const block = row[1];
-    /* first anchor whose href is a /legal/ document; rows without one are skipped */
+    /* first anchor whose href is a SEBI document; rows without one are skipped */
     const anchor = block.match(
-      /<a\b([^>]*?)href="(https:\/\/www\.sebi\.gov\.in\/legal\/[^"]+)"([^>]*)>([\s\S]*?)<\/a>/i,
+      /<a\b([^>]*?)href="(https:\/\/www\.sebi\.gov\.in\/(?:legal|media-and-notifications)\/[^"]+)"([^>]*)>([\s\S]*?)<\/a>/i,
     );
     if (!anchor) continue;
     const link = anchor[2];
@@ -181,6 +185,36 @@ export function parseListing(html: string): FeedItem[] {
       : null;
     if (!title) continue; // an item we cannot cite is not a catch
     items.push({ title, link, pubDate });
+  }
+  return items;
+}
+
+/* ── APMI parsing — the SRO's circulars are a flat list of PDF links ────
+   apmiindia.org's home page links each circular as
+   <a href="/storagebox/images/Circulars/<file>.pdf">; there is no date column,
+   so the title is the file name (folder and .pdf stripped, percent- and
+   entity-decoded) and pubDate is null. Links are deduped here too. */
+function percentDecode(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value; // a stray % that is not a valid escape — leave it be
+  }
+}
+
+export function parseApmi(html: string): FeedItem[] {
+  const items: FeedItem[] = [];
+  const seen = new Set<string>();
+  const re = /href="((?:https?:\/\/www\.apmiindia\.org)?\/storagebox\/images\/Circulars\/[^"]*?\.pdf)"/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html)) !== null) {
+    const raw = decodeEntities(m[1]);
+    const link = raw.startsWith("http") ? raw : `https://www.apmiindia.org${raw}`;
+    if (seen.has(link)) continue;
+    seen.add(link);
+    const file = link.slice(link.lastIndexOf("/") + 1).replace(/\.pdf$/i, "");
+    const title = decodeEntities(percentDecode(file)).trim();
+    items.push({ title, link, pubDate: null });
   }
   return items;
 }
@@ -213,6 +247,10 @@ const TENANT_TERMS = [
   "alternative investment funds",
   "aif",
   "aifs",
+  /* APMI is the SRO for portfolio managers; its circulars bind this tenant even
+     when the title is only a date, so the source id carries the match — see the
+     apmi-prefixed triage input in pollWatch */
+  "apmi",
 ];
 
 /** domain terms that touch the tenant's rulebooks without naming the capacity */
@@ -375,6 +413,8 @@ async function fetchSource(src: (typeof SOURCES)[number]): Promise<SourceResult>
       const parsed = parseRss(body);
       items = parsed.items;
       lastBuildDate = parsed.lastBuildDate;
+    } else if (src.kind === "apmi") {
+      items = parseApmi(body);
     } else {
       items = parseListing(body);
     }
@@ -462,6 +502,10 @@ export async function pollWatch(env: Env, force: boolean): Promise<WatchPollResu
   for (const { item, sourceId } of fresh) {
     const docType = classifyDocType(item.link);
     const publishedMs = item.pubDate ? Date.parse(item.pubDate) : NaN;
+    /* APMI titles are bare file names/dates; prefix the source id so the "apmi"
+       tenant term matches and the catch triages as applies rather than a bare
+       monitor. Only the triage input is prefixed — the stored title stays clean. */
+    const triageTitle = sourceId === "apmi" ? `${sourceId}: ${item.title}` : item.title;
     newCatches.push({
       id: `WT-${(await sha256Hex(item.link)).slice(0, 10)}`,
       title: item.title,
@@ -472,7 +516,7 @@ export async function pollWatch(env: Env, force: boolean): Promise<WatchPollResu
         ? (item.pubDate ?? "")
         : new Date(publishedMs).toISOString(),
       fetchedAt: polledAt,
-      triage: triageItem(item.title, docType),
+      triage: triageItem(triageTitle, docType),
     });
   }
 
