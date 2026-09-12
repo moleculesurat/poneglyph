@@ -6,10 +6,10 @@ until a named person at Molecule signs it; what we cannot prove shows as a gap.
 
 ```
 WHERE WE ARE (2026-09-11)
-  PMS          register 168 approved (122 PMS / 46 AIF post-registration), 28 rejected or withdrawn, all decided by
+  PMS          register 286 approved (240 PMS / 46 AIF post-registration), 83 rejected or withdrawn, all decided by
                Pranjal from review sheets; 2 evidence files bound. Corpus = PMS master circular (287 paras) + PM
-               Regulations 2020 incl. Schedules II–IV (144 units). Extraction: MC chapters 1–5 done (all "shall"
-               paragraphs run, decided); chapters 6–7 and the Regulations queued (task 24). Runs locally only.
+               Regulations 2020 incl. Schedules II–IV (144 units). Extraction COMPLETE for both sources (every "shall" paragraph run and decided; 2 model holdouts
+               closed as covered). Document vault derived from the register (284 asks). Runs locally only.
   AIF          nothing on registration — AIF Regulations 2012 not in the corpus. Category I and III paragraphs
                were never drafted; applicability rejects anything not Category II. Waits for phase 2.
   WATCHTOWER   hourly RSS poll. Works, but the feed is 29/30 enforcement orders and missed this month's AIF

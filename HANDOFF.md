@@ -78,7 +78,10 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   Task 26 ACCEPTED 2026-09-11 (no code): -> 60 drafts, REVIEW-2026-09-11-pmr-rest.md (41 approve / 19 reject).
   REG-PM-2020 EXTRACTION COMPLETE except 21, 24(7), 37(1) (one more pass in task 27; 24(7) derivatives-leverage ban matters).
   PMS related-party circular 2022 (given/sources) is NOT collected on purpose: MC 2025 ch 3.4–3.7 consolidates it.
-  Task 27 (1c) ISSUED 2026-09-11: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
+  Task 27 (1c) ACCEPTED 2026-09-12 (a01a9ee): document vault = 284 requirements from evidenceSpec, EV-002 bound, EV-001
+  volunteered (OBL-001 has only a data-check spec — correct). 24(7) drafted (OBL-401, approve). Holdouts 21 (code-of-conduct
+  pointer, covered by S3 lines) and 37(1) (produce books on inspection, covered by OBL-360–363) are CLOSED, not chased.
+  Task 28 (1d) ISSUED: watchtower listing sources. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
   evidenceSpec (kind document) and companyDocuments from bound evidence; no new UI. Holiday calendar deferred to hardening
   (only a handful of 'working days' duties; a day's drift changes nothing yet).
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
