@@ -85,7 +85,12 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   ("internal error; reference = …" on every source, reproduced by me on a fresh port; curl and Node fetch get 200). Parser +
   triage verified offline against the real pages: 112 unique items, 104323 monitor, 101817 applies, _96560 applies. The live
   poll works only from a runtime that can reach SEBI — the AWS port (Node fetch) removes the blocker; Cloudflare edge untested.
-  Pranjal's 8787 dev server is on old code with two workerd processes — restart it. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
+  Pranjal's 8787 dev server is on old code with two workerd processes — restart it.
+- Task 29 ACCEPTED 2026-09-12 (82cd8d0): + SEBI press releases (links live under /media-and-notifications/, filter widened)
+  + APMI circular PDFs (131 on the home page, diffed by link). `npm run watch:selftest` runs the parsers on fixtures.
+  Hardening note: worker/__fixtures__/apmi.html is 1.5 MB; trim to the circulars block when convenient.
+- PHASE 1 STATUS 2026-09-12: 1a done, 1b done, 1c done (vault) minus officer names, 1d done minus live poll (workerd blocker),
+  1e waiting on Pranjal's infra study. Everything left in phase 1 is on Pranjal's side; phase 2 (AIF) not started. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
   evidenceSpec (kind document) and companyDocuments from bound evidence; no new UI. Holiday calendar deferred to hardening
   (only a handful of 'working days' duties; a day's drift changes nothing yet).
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
