@@ -65,10 +65,22 @@ BUILD ORDER — PMS first, end to end; then AIF; then the rest
         1e-i  STUDY (worker task, no code)  inventory Molecule's AWS: account/region, how services run today
                                          (Lambda / ECS / EC2), IaC tool, secrets store, DNS/domain, who deploys,
                                          any India-residency or access rules. Report back; I size the port.
-        1e-ii PORT                       the worker touches only KV get/put (14 sites), fetch, Web Crypto, a cron
-                                         hook and static assets. Likely shape: Lambda (function URL) + DynamoDB
-                                         shim for `PONEGLYPH_STATE` + EventBridge hourly rule + S3/CloudFront for
-                                         `out/`; secrets in SSM. Final shape follows 1e-i. Then `npm run pull -- <url>`.
+        1e-ii PORT (sized 2026-09-12 from INFRA-2026-09.md in the infra repo)
+              Molecule = one AWS account, ap-south-1, ECS Fargate, Terraform + GitHub Actions OIDC -> ECR/ECS,
+              RDS Postgres, Secrets Manager, Route53 with a wildcard cert; frontends on Vercel; no NAT
+              (public-subnet tasks reach the internet directly). Compliance app -> compliance.moleculeatomsapis.com.
+              The worker's platform surface is tiny: env.PONEGLYPH_STATE.get/put, three env strings
+              (GATE_TOKEN, OPEN_ROUTER_KEY, MODEL), ctx.waitUntil, fetch(Request)->Response, scheduled().
+              Shape: ONE Node container. server.mjs wraps the existing worker: http.createServer ->
+              Request/Response adapter -> worker.fetch; static `out/` served by the same process; hourly
+              setInterval calls scheduled(); waitUntil = fire-and-forget. State store = node:sqlite file
+              (Node 22.5+, zero deps) on an EFS volume; register.json in git stays the durable truth.
+              [PRANJAL: sqlite+EFS (recommended, zero deps, same code locally) or a Postgres table (`pg` dep,
+              RDS already there)?] Secrets from Secrets Manager into the task env via Terraform. Side effect:
+              `node server.mjs` replaces wrangler dev locally and the watchtower poll works from the laptop.
+              Steps: 31a adapter + sqlite store + Dockerfile, run locally, live poll passes; 31b Terraform in
+              the infra repo (ECR, task def, service, ALB rule, EFS, secrets, GH Actions job); 31c cut over:
+              deploy, `npm run pull -- https://compliance.moleculeatomsapis.com`, retire wrangler.
     done looks like: every PMS duty SEBI wrote is in the register or ruled out with a reason; dates,
     proof and gaps are live; the watchtower catches the next PMS circular and hands it to the pipeline.
 
@@ -117,6 +129,6 @@ OPEN ON PRANJAL'S SIDE — phase 1 first
   2  PM Regulations PDF into given/, or a yes to fetch it (1a); version: Feb 2025 as linked, or Sep 2025
   3  yes/no on the remaining ~445 "shall" paragraphs (1b)
   4  Compliance Officer and Principal Officer: names, appointment dates, PO's NISM XXI-B certificate (1c)
-  5  1e-i infra study report (worker task, when Pranjal schedules it)
+  5  state store for AWS: sqlite on EFS (recommended) or Postgres table (1e-ii)
   later: order of the three AIF tracks; stage of each category; AIF Regulations PDF; MCP client
 ```
