@@ -12,8 +12,9 @@ WHERE WE ARE (2026-09-11)
                closed as covered). Document vault derived from the register (284 asks). Runs locally only.
   AIF          nothing on registration — AIF Regulations 2012 not in the corpus. Category I and III paragraphs
                were never drafted; applicability rejects anything not Category II. Waits for phase 2.
-  WATCHTOWER   hourly RSS poll. Works, but the feed is 29/30 enforcement orders and missed this month's AIF
-               circular. Nothing happens after a catch. Real sources listed below, not yet wired (1d).
+  WATCHTOWER   polls RSS + 4 SEBI listing pages, per-source status, watch CLI (task 28). BLOCKED locally: workerd
+               cannot reach sebi.gov.in (TLS-level failure); parser proven offline. Runs for real once on AWS (1e).
+               Catch -> work item (fetch, pdftotext, collect, re-run) still manual.
   ELSE         runs locally (wrangler dev); target is Molecule's AWS, study first (1e-i); officer names are
                placeholders; no MCP.
 

@@ -81,7 +81,11 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   Task 27 (1c) ACCEPTED 2026-09-12 (a01a9ee): document vault = 284 requirements from evidenceSpec, EV-002 bound, EV-001
   volunteered (OBL-001 has only a data-check spec — correct). 24(7) drafted (OBL-401, approve). Holdouts 21 (code-of-conduct
   pointer, covered by S3 lines) and 37(1) (produce books on inspection, covered by OBL-360–363) are CLOSED, not chased.
-  Task 28 (1d) ISSUED: watchtower listing sources. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
+  Task 28 (1d) ACCEPTED 2026-09-12 (c2e3b1e) with a BLOCKER: workerd (wrangler dev, local) cannot fetch sebi.gov.in at all
+  ("internal error; reference = …" on every source, reproduced by me on a fresh port; curl and Node fetch get 200). Parser +
+  triage verified offline against the real pages: 112 unique items, 104323 monitor, 101817 applies, _96560 applies. The live
+  poll works only from a runtime that can reach SEBI — the AWS port (Node fetch) removes the blocker; Cloudflare edge untested.
+  Pranjal's 8787 dev server is on old code with two workerd processes — restart it. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
   evidenceSpec (kind document) and companyDocuments from bound evidence; no new UI. Holiday calendar deferred to hardening
   (only a handful of 'working days' duties; a day's drift changes nothing yet).
 - Register in git after pm-3: 138 approved, 26 rejected/withdrawn, tip 39fbe1ebd00a.
