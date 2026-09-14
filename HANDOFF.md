@@ -1,6 +1,6 @@
 # HANDOFF — Molecule compliance pipeline (read this first after /clear)
 
-Updated 2026-09-10 (session 3; the plan is ROADMAP.md, one version). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
+Updated 2026-09-14 (end of session 3; the plan is ROADMAP.md, one version; review sheets REVIEW-*.md). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
 origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status board; REVIEW-2026-09-10.md the draft review.
 
 ## Roles (do not drift)
@@ -46,7 +46,12 @@ related parties (2026-09-11; limits OBL-178/179/189 stay, complied at zero; cons
 template duties — Pranjal may withdraw later); placeholders for names OK for now;
 OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Cloudflare (2026-09-11).
 
-## Open on PRANJAL's side
+## Open on PRANJAL's side (as of 2026-09-14)
+- Officer names + appointment dates (CO, PO, the 7(2)(e) person); performance fees y/n; superseded 'absolute and final'
+  clause y/n; books-location intimation y/n; last 3-yearly registration fee date (OBL-368); sqlite+EFS vs Postgres (1e-ii).
+- Task 31a report pending (Node runtime). Approve OBL-401 + pull if not done (expect 287 approved).
+
+### Older items (kept for history; all resolved)
 1. Browser test of Task 17: open localhost:8787/register/, expand an approved row, attach a real file (hash only is
    sent), gate token in the password box; row flips to Met without rebuild; then `npm run pull` + commit register.json.
 2. YES/NO on extracting the other ~445 "shall" paragraphs (ongoing duties, e.g. PMS MC 2.7.3.1 automated order
