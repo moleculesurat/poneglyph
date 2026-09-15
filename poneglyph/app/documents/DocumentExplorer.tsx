@@ -364,6 +364,13 @@ function SuppliedDocument({ d }: { d: CompanyDocument }) {
             {d.kindId ? <span className="dim60"> · {d.kindId} {kindById(d.kindId)?.name}</span> : null}
             {d.pages ? <span className="dim60"> · {d.pages} pages</span> : null}
           </KV>
+          {d.classification?.kindId ? (
+            <KV k="Kind">
+              {d.classification.kindId} {kindById(d.classification.kindId)?.name} · machine-classified — {d.classification.reason}
+            </KV>
+          ) : d.classification ? (
+            <KV k="Kind">no kind fits (machine) — {d.classification.reason}</KV>
+          ) : null}
           <KV k="Supplied">
             {d.uploadedAt ? fmtStamp(d.uploadedAt) : "—"}
             {d.uploadedBy ? <span className="dim60"> · {d.uploadedBy}</span> : null}

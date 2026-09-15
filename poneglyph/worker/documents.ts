@@ -11,7 +11,7 @@
 
 import type { CompanyDocument, DocumentRequirement, ExtractedField } from "../lib/schema";
 import { documentRequirements, requirementOf } from "../data/documents";
-import { kindById } from "../data/catalogue";
+import { catalogue, kindById } from "../data/catalogue";
 import { appendEvent } from "./audit";
 import { bindEvidenceMany } from "./evidence";
 import { chatJson } from "./extract";
@@ -232,6 +232,16 @@ const isRec = (v: unknown): v is Record<string, unknown> =>
   typeof v === "object" && v !== null && !Array.isArray(v);
 const str = (v: unknown): string => (typeof v === "string" ? v : "");
 
+/** The verbatim-grounding predicate the read and classify verifiers share:
+    collapse whitespace runs on both sides, then require the needle to be a
+    substring of the document text. One miss discards the whole reply, so the two
+    verifiers must ground identically — hence one helper, not two copies. */
+function grounded(text: string): (s: string) => boolean {
+  const norm = (s: string) => s.replace(/\s+/g, " ");
+  const hay = norm(text);
+  return (s) => hay.includes(norm(s));
+}
+
 function buildReadPrompt(asks: DocumentRequirement[], text: string): string {
   const askBlock = asks.length
     ? asks
@@ -267,9 +277,7 @@ export function verifyProposal(raw: string, text: string, reqIds: string[]): str
   }
   if (!isRec(parsed)) return "top level of the reply was not a JSON object";
 
-  const norm = (s: string) => s.replace(/\s+/g, " ");
-  const hay = norm(text);
-  const grounded = (s: string) => hay.includes(norm(s));
+  const isGrounded = grounded(text);
 
   const verdicts = parsed.verdicts;
   if (!Array.isArray(verdicts)) return 'reply had no "verdicts" array';
@@ -289,7 +297,7 @@ export function verifyProposal(raw: string, text: string, reqIds: string[]): str
     const quotes = Array.isArray(v.quotes) ? v.quotes : [];
     for (let q = 0; q < quotes.length; q++) {
       const quote = quotes[q];
-      if (typeof quote !== "string" || !grounded(quote)) {
+      if (typeof quote !== "string" || !isGrounded(quote)) {
         return `verdicts[${i}].quotes[${q}] is not a verbatim substring of the document text: ${JSON.stringify(quote)}`;
       }
     }
@@ -298,12 +306,12 @@ export function verifyProposal(raw: string, text: string, reqIds: string[]): str
   for (let i = 0; i < fields.length; i++) {
     const f = fields[i];
     if (!isRec(f)) return `fields[${i}] was not an object`;
-    if (!grounded(str(f.value))) {
+    if (!isGrounded(str(f.value))) {
       return `fields[${i}].value is not a verbatim substring of the document text: ${JSON.stringify(str(f.value))}`;
     }
     const locator = f.locator;
     if (locator !== undefined && locator !== null) {
-      if (typeof locator !== "string" || !grounded(locator)) {
+      if (typeof locator !== "string" || !isGrounded(locator)) {
         return `fields[${i}].locator is not a verbatim substring of the document text: ${JSON.stringify(locator)}`;
       }
     }
@@ -319,7 +327,7 @@ export function verifyProposal(raw: string, text: string, reqIds: string[]): str
     if (typeof iso !== "string" || !isoRe.test(iso)) {
       return `${key}.iso must be an ISO date YYYY-MM-DD; got ${JSON.stringify(iso)}`;
     }
-    if (typeof source !== "string" || !grounded(source)) {
+    if (typeof source !== "string" || !isGrounded(source)) {
       return `${key}.source is not a verbatim substring of the document text: ${JSON.stringify(source)}`;
     }
   }
@@ -367,6 +375,24 @@ function parseProposal(raw: string): ReadProposal {
   return { verdicts, fields, ...(validFrom ? { validFrom } : {}), ...(validUntil ? { validUntil } : {}) };
 }
 
+/** One model call at a time per session — the provider rejects concurrent
+    requests, so a read or a classify is refused while a pipeline run is still in
+    flight. Returns the 409 to send, or null when the session is free. */
+async function busyRun(request: Request, env: Env, state: SessionState): Promise<Response | null> {
+  const lastRunId = state.runIds[state.runIds.length - 1];
+  if (!lastRunId) return null;
+  const last = await loadRun(env, state.sessionId, lastRunId);
+  if (last?.status === "running") {
+    return error(
+      request,
+      409,
+      `${last.id} is still running in this session. Extraction calls are serialised because the provider rejects concurrent requests; wait for it to finish or reset the session.`,
+      { runId: last.id },
+    );
+  }
+  return null;
+}
+
 export async function handleDocumentRead(
   request: Request,
   env: Env,
@@ -393,20 +419,8 @@ export async function handleDocumentRead(
     return error(request, 400, "officer is required and must be 1–120 characters — an unsigned read is not a read");
   }
 
-  /* one model call at a time per session — the provider rejects concurrent
-     requests, so refuse a read while a pipeline run is still in flight */
-  const lastRunId = state.runIds[state.runIds.length - 1];
-  if (lastRunId) {
-    const last = await loadRun(env, state.sessionId, lastRunId);
-    if (last?.status === "running") {
-      return error(
-        request,
-        409,
-        `${last.id} is still running in this session. Extraction calls are serialised because the provider rejects concurrent requests; wait for it to finish or reset the session.`,
-        { runId: last.id },
-      );
-    }
-  }
+  const busy = await busyRun(request, env, state);
+  if (busy) return busy;
 
   let text: string;
   try {
@@ -465,6 +479,189 @@ export async function handleDocumentRead(
     detail: `Document ${id} read against its asks by ${officer}: ${verdictStr}; ${proposal.fields.length} field${
       proposal.fields.length === 1 ? "" : "s"
     } extracted${truncated ? ` (text truncated to 60,000 of ${text.length} chars)` : ""}.`,
+  });
+
+  await saveSession(env, state);
+
+  return json(request, {
+    document: doc,
+    auditEvent: event,
+    chainTip: chainTip(state.chain),
+    usage: chosen.usage,
+  });
+}
+
+/* ── POST /api/documents/:id/classify (gated) ───────────────────────────
+   The machine's kind proposal for a volunteered document: one grounded pass over
+   the stored text against the 43-kind catalogue, returning the single kind whose
+   description names this document — or null when none does, recorded not guessed.
+   Same verbatim-grounding discipline as the read; a reply that cannot be grounded
+   twice is a 422 and the document is left untouched. */
+
+const CLASSIFY_SYSTEM_PROMPT = `You are the document-classification agent of Poneglyph, an agentic compliance engine for Indian securities-market intermediaries. You are given ONE of the firm's own documents as extracted text, together with the catalogue of document KINDS a portfolio manager keeps. You decide which single kind THIS document is — entirely from the text in front of you.
+
+OUTPUT
+Reply with ONE JSON object and nothing else. No prose before or after it. No markdown code fence.
+
+{
+  "kindId": one of the catalogue ids given below, or null,
+  "reason": string, at most 300 characters,
+  "quotes": [string], one to three quotes, each copied verbatim from the document text
+}
+
+GROUNDING — the rule that matters most
+Every quote MUST be an exact, character-for-character substring of the DOCUMENT TEXT the user supplies. Copy the characters out of it. Never paraphrase, correct, translate, summarise, join separated fragments, or invent. Each is checked with an exact string search; one that is not found verbatim discards the entire reply.
+
+CHOOSING THE KIND
+Return the id of the kind whose description names THIS document. Return null when no kind fits — a document the catalogue does not describe is "no kind fits", recorded, not forced. NEVER pick the closest kind when none actually fits. When you choose a kind, carry one to three verbatim quotes that show why; a null answer may carry none.
+
+No prose outside the JSON.`;
+
+function buildClassifyPrompt(text: string): string {
+  const kindBlock = catalogue.map((k) => `- ${k.id}  ${k.name} — ${k.what}`).join("\n");
+  return `DOCUMENT KINDS
+${kindBlock}
+
+DOCUMENT TEXT (every quote must be an exact substring of everything between the delimiters):
+"""
+${text}
+"""`;
+}
+
+/** Deterministic check on the classify reply — the same grounding discipline as
+    the read: a JSON object; kindId either null or a real catalogue id; reason a
+    string; quotes an array, non-empty when a kind was chosen, each a verbatim
+    substring of the document text. Returns a complaint the model can act on, or
+    null when the reply is clean. */
+export function verifyClassification(raw: string, text: string): string | null {
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (e) {
+    return `reply was not valid JSON: ${(e as Error).message}`;
+  }
+  if (!isRec(parsed)) return "top level of the reply was not a JSON object";
+
+  const kindId = parsed.kindId;
+  if (kindId !== null && (typeof kindId !== "string" || !kindById(kindId))) {
+    return `kindId ${JSON.stringify(kindId)} is not one of the catalogue ids, and is not null`;
+  }
+  if (typeof parsed.reason !== "string") return 'reply had no string "reason"';
+
+  const quotes = parsed.quotes;
+  if (!Array.isArray(quotes)) return 'reply had no "quotes" array';
+  if (kindId !== null && quotes.length === 0) {
+    return "a chosen kindId must carry at least one verbatim quote";
+  }
+  const isGrounded = grounded(text);
+  for (let q = 0; q < quotes.length; q++) {
+    const quote = quotes[q];
+    if (typeof quote !== "string" || !isGrounded(quote)) {
+      return `quotes[${q}] is not a verbatim substring of the document text: ${JSON.stringify(quote)}`;
+    }
+  }
+  return null;
+}
+
+export async function handleDocumentClassify(
+  request: Request,
+  env: Env,
+  state: SessionState,
+  id: string,
+): Promise<Response> {
+  /* unknown id is a 404 BEFORE the gate, a known id without the token a 401 —
+     the same ordering as /read */
+  const doc = state.documents.find((d) => d.id === id);
+  if (!doc || !doc.hash) {
+    return error(request, 404, `no document ${id} in this session`);
+  }
+  if (!gateAllowed(request, env)) {
+    return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+  }
+  if (!env.PDFTEXT) {
+    return error(request, 503, "file store not available in this runtime");
+  }
+
+  const body = await readJson(request);
+  if (!body) return error(request, 400, "expected a JSON object body");
+  const officer = asString(body.officer);
+  if (!officer || officer.length > 120) {
+    return error(request, 400, "officer is required and must be 1–120 characters — an unsigned read is not a read");
+  }
+
+  if (doc.kindId) {
+    return error(
+      request,
+      409,
+      `${id} already has kind ${doc.kindId} — a kind is set at intake or by one classification`,
+    );
+  }
+  if (doc.decision) {
+    return error(request, 409, `${id} is already decided`);
+  }
+
+  const busy = await busyRun(request, env, state);
+  if (busy) return busy;
+
+  let text: string;
+  try {
+    text = await env.PDFTEXT(doc.hash);
+  } catch (e) {
+    return error(request, 502, (e as Error).message || "pdftotext failed");
+  }
+  const sent = text.slice(0, 60000);
+  const prompt = buildClassifyPrompt(sent);
+
+  /* attempt, then — on a grounding failure — exactly one correction round, the
+     same discipline the read uses; a reply that cannot be grounded twice is a
+     422 and the document is left untouched. */
+  let chosen: { raw: string; model: string; usage?: unknown };
+  let complaint: string | null;
+  try {
+    chosen = await chatJson(env, CLASSIFY_SYSTEM_PROMPT, prompt);
+    complaint = verifyClassification(chosen.raw, sent);
+    if (complaint) {
+      chosen = await chatJson(env, CLASSIFY_SYSTEM_PROMPT, prompt, complaint);
+      complaint = verifyClassification(chosen.raw, sent);
+    }
+  } catch (e) {
+    return error(request, 502, (e as Error).message || "the model call failed");
+  }
+  if (complaint) {
+    return error(request, 422, complaint, { attempt: 2 });
+  }
+
+  const parsed = JSON.parse(chosen.raw) as Record<string, unknown>;
+  const proposedId = typeof parsed.kindId === "string" ? parsed.kindId : null;
+  const reason = str(parsed.reason);
+  const quotes = (Array.isArray(parsed.quotes) ? parsed.quotes : []).filter(
+    (q): q is string => typeof q === "string",
+  );
+  const kind = proposedId ? kindById(proposedId) : undefined;
+
+  doc.classification = {
+    at: new Date().toISOString(),
+    model: chosen.model,
+    kindId: kind ? kind.id : null,
+    reason,
+    quotes,
+  };
+  if (kind) {
+    doc.kindId = kind.id;
+    doc.requirementIds = kind.askIds;
+    doc.requirementId = kind.askIds[0];
+    const firstReq = requirementOf(kind.askIds[0]);
+    if (firstReq) doc.category = firstReq.category;
+  }
+
+  const event = await appendEvent(state, {
+    actor: `human:${officer}`,
+    action: "document.classified",
+    subjectType: "document",
+    subjectId: id,
+    detail: `Document ${id} classified by machine, confirmed ${officer}: ${
+      kind ? `${kind.id} ${kind.name}` : "no kind fits"
+    }; ${reason}`,
   });
 
   await saveSession(env, state);

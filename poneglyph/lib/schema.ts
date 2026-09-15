@@ -421,6 +421,15 @@ export interface CompanyDocument {
     validFrom?: { iso: string; source: string };
     validUntil?: { iso: string; source: string };
   };
+  /** the machine's kind proposal for a volunteered document (task 40) — grounded
+      verbatim like the read; a null kindId is "no kind fits", recorded not guessed. */
+  classification?: {
+    at: string;
+    model: string;
+    kindId: string | null;
+    reason: string;
+    quotes: string[];
+  };
   /** the officer's call on this document — verify (binds one evidence artefact
       to every unlocked duty) or reject (kept for the trail). Once set, final. */
   decision?: {
