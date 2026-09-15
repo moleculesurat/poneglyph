@@ -22,6 +22,10 @@ export function kindOf(reqId: string): DocumentKind | undefined {
   return KIND_BY_REQ.get(reqId);
 }
 
+export function kindById(id: string): DocumentKind | undefined {
+  return catalogue.find((k) => k.id === id);
+}
+
 /* Build-time invariant: every register ask maps to exactly one kind. Runs on
    import, so a drift between the catalogue and the register fails the prerender
    rather than shipping a Collect page with orphaned asks. */

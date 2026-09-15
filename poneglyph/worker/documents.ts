@@ -11,6 +11,7 @@
 
 import type { CompanyDocument, DocumentRequirement, ExtractedField } from "../lib/schema";
 import { documentRequirements, requirementOf } from "../data/documents";
+import { kindById } from "../data/catalogue";
 import { appendEvent } from "./audit";
 import { bindEvidenceMany } from "./evidence";
 import { chatJson } from "./extract";
@@ -62,7 +63,7 @@ export async function handleDocumentUpload(
 
   /* comma-separated asks; empty ⇒ volunteered. Every id must exist. */
   const reqIdsRaw = form.get("requirementIds");
-  const requirementIds =
+  let requirementIds =
     typeof reqIdsRaw === "string"
       ? reqIdsRaw.split(",").map((s) => s.trim()).filter((s) => s.length > 0)
       : [];
@@ -70,6 +71,18 @@ export async function handleDocumentUpload(
     if (!documentRequirements.some((r) => r.id === rid)) {
       return error(request, 400, `unknown requirement id ${rid} — not in the document requirements`);
     }
+  }
+
+  /* optional catalogue kind (task 39): a document dropped into a kind folder
+     carries that kind, and when no asks were named the kind's asks become the
+     document's asks */
+  const kindId = asString(form.get("kindId"));
+  const kind = kindId ? kindById(kindId) : undefined;
+  if (kindId && !kind) {
+    return error(request, 400, `unknown kind id ${kindId} — not in the catalogue`);
+  }
+  if (kind && requirementIds.length === 0) {
+    requirementIds = kind.askIds;
   }
 
   const name = asString(form.get("name")) ?? file.name;
@@ -108,6 +121,7 @@ export async function handleDocumentUpload(
     id,
     ...(requirementIds.length ? { requirementId: requirementIds[0] } : {}),
     requirementIds,
+    ...(kind ? { kindId: kind.id } : {}),
     name,
     category: firstReq ? firstReq.category : "operational",
     status: "received",
@@ -128,7 +142,9 @@ export async function handleDocumentUpload(
     action: "document.received",
     subjectType: "document",
     subjectId: id,
-    detail: `Document ${id} received: ${file.name} (sha256 ${sha}), ${
+    detail: `Document ${id} received: ${file.name}${
+      kind ? `, kind ${kind.id} ${kind.name}` : ""
+    } (sha256 ${sha}), ${
       requirementIds.length ? `against ${requirementIds.join(", ")}` : "volunteered"
     }, uploaded by ${officer}.`,
   });

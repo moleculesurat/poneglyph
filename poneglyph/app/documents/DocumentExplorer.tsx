@@ -29,6 +29,7 @@ import {
   type StateResponse,
 } from "@/app/live/api";
 import { documentRequirements } from "@/data/documents";
+import { kindById } from "@/data/catalogue";
 import { tenant } from "@/data/tenant";
 import { partLabel } from "@/lib/domains";
 import type {
@@ -360,6 +361,7 @@ function SuppliedDocument({ d }: { d: CompanyDocument }) {
             <span className="mono-value" style={{ wordBreak: "break-all" }}>
               {d.fileName ?? "—"}
             </span>
+            {d.kindId ? <span className="dim60"> · {d.kindId} {kindById(d.kindId)?.name}</span> : null}
             {d.pages ? <span className="dim60"> · {d.pages} pages</span> : null}
           </KV>
           <KV k="Supplied">
@@ -826,6 +828,7 @@ function DocumentPanel({ doc }: { doc: CompanyDocument }) {
             <span className="mono-value" style={{ wordBreak: "break-all" }}>
               {doc.fileName ?? "—"}
             </span>
+            {doc.kindId ? <span className="dim60"> · {doc.kindId} {kindById(doc.kindId)?.name}</span> : null}
             {doc.pages ? <span className="dim60"> · {doc.pages} pages</span> : null}
           </KV>
           <KV k="Content hash">

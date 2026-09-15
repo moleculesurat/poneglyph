@@ -385,6 +385,8 @@ export interface CompanyDocument {
   requirementId?: string;
   /** every ask this upload was made against; requirementId stays the first, for the UI */
   requirementIds?: string[];
+  /** the catalogue kind chosen at intake (task 39); joined to the catalogue by id at render */
+  kindId?: string;
   name: string;
   category: DocumentCategory;
   status: DocumentStatus;
