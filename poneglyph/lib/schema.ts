@@ -356,6 +356,19 @@ export interface DocumentRequirement {
   acceptedFormats: string[];
   /** how often it must be refreshed, where the circular says so */
   refreshCadence?: string;
+  /** the document-catalogue kind that covers this ask (task 38); joined by id at render */
+  kindId?: string;
+}
+
+/** A document-catalogue kind: one real-world document a portfolio manager keeps,
+    and the register asks that document evidences (task 38). Committed as
+    data/catalogue.json, generated once from the reviewed sheet. */
+export interface DocumentKind {
+  id: string;
+  folder: string;
+  name: string;
+  what: string;
+  askIds: string[];
 }
 
 export interface ExtractedField {

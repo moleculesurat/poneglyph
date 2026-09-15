@@ -20,6 +20,7 @@ export const NAV_ITEMS: NavItem[] = [
   { href: "/watchtower", label: "Watchtower · Scraper", group: "Oversight", inspector: false },
   { href: "/register", label: "Obligation Register", group: "Compliance", inspector: true },
   { href: "/documents", label: "Document Vault", group: "Compliance", inspector: true },
+  { href: "/collect", label: "Collect", group: "Compliance", inspector: false },
   { href: "/amendments", label: "Amendments", group: "Compliance", inspector: true },
   { href: "/evidence", label: "Evidence Vault", group: "Compliance", inspector: true },
   { href: "/remediation", label: "Remediation", group: "Compliance", inspector: false },

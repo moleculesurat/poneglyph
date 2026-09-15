@@ -1,0 +1,583 @@
+[
+  {
+    "id": "K01",
+    "folder": "1 Registration",
+    "name": "SEBI registration certificate and renewal fee receipts",
+    "what": "The PM certificate INP000007216 and the five-lakh fee receipt for each three-year block.",
+    "askIds": [
+      "DOC-REQ-OBL-368-1"
+    ]
+  },
+  {
+    "id": "K02",
+    "folder": "1 Registration",
+    "name": "Books-and-records place intimation to SEBI",
+    "what": "The letter telling SEBI where books are kept, with SEBI's acknowledgement.",
+    "askIds": [
+      "DOC-REQ-OBL-326-1",
+      "DOC-REQ-OBL-326-2"
+    ]
+  },
+  {
+    "id": "K03",
+    "folder": "1 Registration",
+    "name": "Change-in-control / management change file",
+    "what": "Prior-approval application, in-principle approval, NCLT papers, client notices and exit offers. Event-driven: if no change has occurred since registration, waived with that reason.",
+    "askIds": [
+      "DOC-REQ-OBL-003-1",
+      "DOC-REQ-OBL-004-1",
+      "DOC-REQ-OBL-004-2",
+      "DOC-REQ-OBL-084-1",
+      "DOC-REQ-OBL-085-1",
+      "DOC-REQ-OBL-128-1",
+      "DOC-REQ-OBL-129-1",
+      "DOC-REQ-OBL-129-2",
+      "DOC-REQ-OBL-130-1",
+      "DOC-REQ-OBL-130-2",
+      "DOC-REQ-OBL-256-1"
+    ]
+  },
+  {
+    "id": "K04",
+    "folder": "1 Registration",
+    "name": "SEBI intimations of material change",
+    "what": "Letters correcting particulars or announcing a change of Principal Officer, with dispatch dates.",
+    "askIds": [
+      "DOC-REQ-OBL-257-1",
+      "DOC-REQ-OBL-288-1"
+    ]
+  },
+  {
+    "id": "K05",
+    "folder": "1 Registration",
+    "name": "Office infrastructure file",
+    "what": "Lease or ownership papers, floor plan, equipment inventory, organisation chart and headcount.",
+    "askIds": [
+      "DOC-REQ-OBL-246-1",
+      "DOC-REQ-OBL-246-2",
+      "DOC-REQ-OBL-167-1"
+    ]
+  },
+  {
+    "id": "K06",
+    "folder": "2 People",
+    "name": "Principal Officer and decision-maker qualification file",
+    "what": "Degrees, CFA or NISM programme certificate, experience letters for the PO, the qualifying employee and each fund-management decision-maker.",
+    "askIds": [
+      "DOC-REQ-OBL-248-1",
+      "DOC-REQ-OBL-249-1",
+      "DOC-REQ-OBL-250-1"
+    ]
+  },
+  {
+    "id": "K07",
+    "folder": "2 People",
+    "name": "NISM-Series-XXI-B certificates and decision-maker register",
+    "what": "Certificates for the PO and each decision-maker, joining dates, renewals before expiry.",
+    "askIds": [
+      "DOC-REQ-OBL-055-1",
+      "DOC-REQ-OBL-056-1",
+      "DOC-REQ-OBL-131-1",
+      "DOC-REQ-OBL-251-1"
+    ]
+  },
+  {
+    "id": "K08",
+    "folder": "2 People",
+    "name": "NISM-Series-XXI-A distributor certificates",
+    "what": "Pass certificates for every associated person acting as PMS distributor. Waived with reason if the firm engages no distributors.",
+    "askIds": [
+      "DOC-REQ-OBL-057-1",
+      "DOC-REQ-OBL-058-1",
+      "DOC-REQ-OBL-133-1"
+    ]
+  },
+  {
+    "id": "K09",
+    "folder": "2 People",
+    "name": "Compliance Officer designation letter",
+    "what": "Partners' approval or appointment letter naming the Compliance Officer and the Master Circular responsibility.",
+    "askIds": [
+      "DOC-REQ-OBL-120-1",
+      "DOC-REQ-OBL-215-1"
+    ]
+  },
+  {
+    "id": "K10",
+    "folder": "3 Governance",
+    "name": "Partners' meeting minutes and resolutions",
+    "what": "Minutes approving policies, reviewing strategy and benchmark selection, receiving the internal audit report, authorising certifiers.",
+    "askIds": [
+      "DOC-REQ-OBL-092-1",
+      "DOC-REQ-OBL-145-1",
+      "DOC-REQ-OBL-217-1"
+    ]
+  },
+  {
+    "id": "K11",
+    "folder": "3 Governance",
+    "name": "Compliance manual",
+    "what": "The written policy on PM Regulations compliance: team roles, order placement and allocation, correspondence channel, due diligence, service standards, records retention.",
+    "askIds": [
+      "DOC-REQ-OBL-140-1",
+      "DOC-REQ-OBL-140-2",
+      "DOC-REQ-OBL-141-1",
+      "DOC-REQ-OBL-123-1",
+      "DOC-REQ-OBL-218-1",
+      "DOC-REQ-OBL-385-1",
+      "DOC-REQ-OBL-346-1"
+    ]
+  },
+  {
+    "id": "K12",
+    "folder": "3 Governance",
+    "name": "Client funds and securities operations policy",
+    "what": "Segregation, cash management in liquid funds, fiduciary conduct, no borrowing or lending, no speculation, no off-market transfers, permitted information flows, fair treatment, no scheme-like products.",
+    "askIds": [
+      "DOC-REQ-OBL-158-1",
+      "DOC-REQ-OBL-137-1",
+      "DOC-REQ-OBL-295-1",
+      "DOC-REQ-OBL-300-1",
+      "DOC-REQ-OBL-299-1",
+      "DOC-REQ-OBL-317-1",
+      "DOC-REQ-OBL-153-1",
+      "DOC-REQ-OBL-146-1",
+      "DOC-REQ-OBL-196-1"
+    ]
+  },
+  {
+    "id": "K13",
+    "folder": "3 Governance",
+    "name": "Investment policy",
+    "what": "Investment universe, the four Strategies, restricted list (no other PM's portfolios), own-research rule.",
+    "askIds": [
+      "DOC-REQ-OBL-307-1",
+      "DOC-REQ-OBL-089-1",
+      "DOC-REQ-OBL-315-1"
+    ]
+  },
+  {
+    "id": "K14",
+    "folder": "3 Governance",
+    "name": "Dealing room policy and records",
+    "what": "Dealing team constitution, authorised access list, device deposit register, IT and firewall restrictions.",
+    "askIds": [
+      "DOC-REQ-OBL-147-1",
+      "DOC-REQ-OBL-150-1",
+      "DOC-REQ-OBL-151-1",
+      "DOC-REQ-OBL-152-1"
+    ]
+  },
+  {
+    "id": "K15",
+    "folder": "3 Governance",
+    "name": "Code of conduct and employee attestations",
+    "what": "PIT code, Schedule III conduct, confidentiality, conflicts, proprietary trading, fair competition, UPSI undertakings, media-advice register and disclosure forms.",
+    "askIds": [
+      "DOC-REQ-OBL-124-1",
+      "DOC-REQ-OBL-371-1",
+      "DOC-REQ-OBL-372-1",
+      "DOC-REQ-OBL-373-1",
+      "DOC-REQ-OBL-375-1",
+      "DOC-REQ-OBL-376-1",
+      "DOC-REQ-OBL-377-1",
+      "DOC-REQ-OBL-380-1",
+      "DOC-REQ-OBL-392-1",
+      "DOC-REQ-OBL-255-1",
+      "DOC-REQ-OBL-386-1",
+      "DOC-REQ-OBL-387-1",
+      "DOC-REQ-OBL-388-1",
+      "DOC-REQ-OBL-389-1"
+    ]
+  },
+  {
+    "id": "K16",
+    "folder": "3 Governance",
+    "name": "Cybersecurity policy and CSCRF self-assessment",
+    "what": "Board-approved cyber policy, CSCRF roadmap, the self-assessment or status report submitted.",
+    "askIds": [
+      "DOC-REQ-OBL-156-1",
+      "DOC-REQ-OBL-156-2"
+    ]
+  },
+  {
+    "id": "K17",
+    "folder": "3 Governance",
+    "name": "Order and allocation system documentation",
+    "what": "Workflow documentation, allocation capture spec, alert configuration, audit-trail and time-stamp samples.",
+    "askIds": [
+      "DOC-REQ-OBL-154-1",
+      "DOC-REQ-OBL-155-1",
+      "DOC-REQ-OBL-310-1",
+      "DOC-REQ-OBL-165-1",
+      "DOC-REQ-OBL-166-1"
+    ]
+  },
+  {
+    "id": "K18",
+    "folder": "4 Operations",
+    "name": "Accounting and back-office records",
+    "what": "Client-wise accounting configuration and ledgers showing separate fund accounting.",
+    "askIds": [
+      "DOC-REQ-OBL-059-1",
+      "DOC-REQ-OBL-136-1"
+    ]
+  },
+  {
+    "id": "K19",
+    "folder": "4 Operations",
+    "name": "Daily reconciliation statements",
+    "what": "Signed daily client-wise funds vs bank reconciliations.",
+    "askIds": [
+      "DOC-REQ-OBL-162-1"
+    ]
+  },
+  {
+    "id": "K20",
+    "folder": "4 Operations",
+    "name": "Client funds bank account",
+    "what": "Bank confirmation letter and statement for the separate client-funds account with a scheduled commercial bank.",
+    "askIds": [
+      "DOC-REQ-OBL-297-1"
+    ]
+  },
+  {
+    "id": "K21",
+    "folder": "4 Operations",
+    "name": "Custodian agreement and custody records",
+    "what": "Executed custodian agreement, safekeeping records, holdings verification, demat statements in client names.",
+    "askIds": [
+      "DOC-REQ-OBL-345-1",
+      "DOC-REQ-OBL-135-1",
+      "DOC-REQ-OBL-323-1"
+    ]
+  },
+  {
+    "id": "K22",
+    "folder": "5 Clients",
+    "name": "Disclosure Document",
+    "what": "Current DD with Form C CA certificate, filing acknowledgement, website publication record, every revision filed within 7 working days.",
+    "askIds": [
+      "DOC-REQ-OBL-095-1",
+      "DOC-REQ-OBL-139-1",
+      "DOC-REQ-OBL-229-1",
+      "DOC-REQ-OBL-277-1",
+      "DOC-REQ-OBL-278-1",
+      "DOC-REQ-OBL-279-1",
+      "DOC-REQ-OBL-281-1",
+      "DOC-REQ-OBL-282-1",
+      "DOC-REQ-OBL-283-1",
+      "DOC-REQ-OBL-284-1",
+      "DOC-REQ-OBL-286-1",
+      "DOC-REQ-OBL-287-1",
+      "DOC-REQ-OBL-290-1",
+      "DOC-REQ-OBL-207-1"
+    ]
+  },
+  {
+    "id": "K23",
+    "folder": "5 Clients",
+    "name": "Client agreement and annexure template",
+    "what": "Current PMS agreement template: Schedule IV particulars, fees and charges annexure with illustrations, liability cap, conflict clause, consent form template, termination and renewal terms.",
+    "askIds": [
+      "DOC-REQ-OBL-182-1",
+      "DOC-REQ-OBL-183-1",
+      "DOC-REQ-OBL-228-1",
+      "DOC-REQ-OBL-197-1",
+      "DOC-REQ-OBL-198-1",
+      "DOC-REQ-OBL-199-1",
+      "DOC-REQ-OBL-200-1",
+      "DOC-REQ-OBL-202-1",
+      "DOC-REQ-OBL-203-1",
+      "DOC-REQ-OBL-206-1",
+      "DOC-REQ-OBL-240-1",
+      "DOC-REQ-OBL-298-1",
+      "DOC-REQ-OBL-374-1",
+      "DOC-REQ-OBL-394-1",
+      "DOC-REQ-OBL-396-1",
+      "DOC-REQ-OBL-397-1",
+      "DOC-REQ-OBL-400-1"
+    ]
+  },
+  {
+    "id": "K24",
+    "folder": "5 Clients",
+    "name": "Client onboarding files",
+    "what": "Per client: executed agreement, signed fees annexure with note of understanding, Annexure 3A consent, supplementary agreement, MITC acknowledgement, DD delivery acknowledgement, declaration of interests, onboarding-mode election, minimum-investment check, fee-tool link, amendments, renewals.",
+    "askIds": [
+      "DOC-REQ-OBL-270-1",
+      "DOC-REQ-OBL-276-1",
+      "DOC-REQ-OBL-181-1",
+      "DOC-REQ-OBL-184-1",
+      "DOC-REQ-OBL-185-1",
+      "DOC-REQ-OBL-096-1",
+      "DOC-REQ-OBL-204-1",
+      "DOC-REQ-OBL-205-1",
+      "DOC-REQ-OBL-201-1",
+      "DOC-REQ-OBL-138-1",
+      "DOC-REQ-OBL-294-1",
+      "DOC-REQ-OBL-238-1",
+      "DOC-REQ-OBL-379-1",
+      "DOC-REQ-OBL-342-1",
+      "DOC-REQ-OBL-305-1",
+      "DOC-REQ-OBL-398-1"
+    ]
+  },
+  {
+    "id": "K25",
+    "folder": "5 Clients",
+    "name": "Client statements and reports",
+    "what": "Monthly statements with dispatch logs, quarterly Annexure 5D reports, performance reports with XIRR, TWRR, benchmark and disclaimer, portfolio details on request.",
+    "askIds": [
+      "DOC-REQ-OBL-060-1",
+      "DOC-REQ-OBL-012-1",
+      "DOC-REQ-OBL-209-1",
+      "DOC-REQ-OBL-210-1",
+      "DOC-REQ-OBL-221-1",
+      "DOC-REQ-OBL-223-1",
+      "DOC-REQ-OBL-224-1",
+      "DOC-REQ-OBL-336-1"
+    ]
+  },
+  {
+    "id": "K26",
+    "folder": "5 Clients",
+    "name": "Performance master and marketing materials",
+    "what": "Version-controlled master performance figures, Investment Approach master and descriptions, marketing samples with approval and pre-clearance records, pre-investment disclosure pack.",
+    "askIds": [
+      "DOC-REQ-OBL-289-1",
+      "DOC-REQ-OBL-212-1",
+      "DOC-REQ-OBL-213-1",
+      "DOC-REQ-OBL-220-1",
+      "DOC-REQ-OBL-231-1",
+      "DOC-REQ-OBL-139-2",
+      "DOC-REQ-OBL-227-1",
+      "DOC-REQ-OBL-225-1",
+      "DOC-REQ-OBL-378-1",
+      "DOC-REQ-OBL-211-1",
+      "DOC-REQ-OBL-383-1"
+    ]
+  },
+  {
+    "id": "K27",
+    "folder": "5 Clients",
+    "name": "Fees and charges records",
+    "what": "Fee statements and calculation configuration, HWM policy, quarterly fee policy, no-upfront-fee evidence, rate comparison with associates, redemption exit-load sheets, direct-plan and direct-onboarding schedules.",
+    "askIds": [
+      "DOC-REQ-OBL-235-1",
+      "DOC-REQ-OBL-234-1",
+      "DOC-REQ-OBL-236-1",
+      "DOC-REQ-OBL-017-1",
+      "DOC-REQ-OBL-232-1",
+      "DOC-REQ-OBL-239-1",
+      "DOC-REQ-OBL-313-1",
+      "DOC-REQ-OBL-159-1"
+    ]
+  },
+  {
+    "id": "K28",
+    "folder": "5 Clients",
+    "name": "Distributor file",
+    "what": "APMI registration certificates, annual code-of-conduct self-certifications, trail-only remuneration agreements, payout ledgers, oversight reviews. Waived with reason if no distributors.",
+    "askIds": [
+      "DOC-REQ-OBL-088-1",
+      "DOC-REQ-OBL-087-1",
+      "DOC-REQ-OBL-163-1",
+      "DOC-REQ-OBL-164-1",
+      "DOC-REQ-OBL-302-1"
+    ]
+  },
+  {
+    "id": "K29",
+    "folder": "6 Investing",
+    "name": "Related-party and associates register with consents",
+    "what": "Register of related parties, client consents before related-party investments, off-market consents, breach and waiver logs, credit ratings on investment date.",
+    "askIds": [
+      "DOC-REQ-OBL-189-1",
+      "DOC-REQ-OBL-187-1",
+      "DOC-REQ-OBL-188-1",
+      "DOC-REQ-OBL-320-1",
+      "DOC-REQ-OBL-190-1"
+    ]
+  },
+  {
+    "id": "K30",
+    "folder": "6 Investing",
+    "name": "Investment decision records",
+    "what": "Rationale records signed by the PO, advice records, client instructions on corporate actions, entitlements records, rebalancing records, prudential-limit monitoring, RFQ confirmations, exigency deviation approvals.",
+    "askIds": [
+      "DOC-REQ-OBL-325-1",
+      "DOC-REQ-OBL-316-1",
+      "DOC-REQ-OBL-384-1",
+      "DOC-REQ-OBL-382-1",
+      "DOC-REQ-OBL-381-1",
+      "DOC-REQ-OBL-007-1",
+      "DOC-REQ-OBL-177-1",
+      "DOC-REQ-OBL-005-1",
+      "DOC-REQ-OBL-144-1"
+    ]
+  },
+  {
+    "id": "K31",
+    "folder": "6 Investing",
+    "name": "Benchmark and strategy change register",
+    "what": "Entries with justification, subscriber exit notices, annual audit verification of changes.",
+    "askIds": [
+      "DOC-REQ-OBL-208-1",
+      "DOC-REQ-OBL-208-2",
+      "DOC-REQ-OBL-094-1",
+      "DOC-REQ-OBL-093-1"
+    ]
+  },
+  {
+    "id": "K32",
+    "folder": "7 Filings and audits",
+    "name": "SEBI and APMI periodic filings",
+    "what": "Monthly report with AUM, quarterly client data files, annual compliance report, APMI monthly report, each with acknowledgement.",
+    "askIds": [
+      "DOC-REQ-OBL-214-1",
+      "DOC-REQ-OBL-011-1",
+      "DOC-REQ-OBL-230-1",
+      "DOC-REQ-OBL-009-1",
+      "DOC-REQ-OBL-009-2",
+      "DOC-REQ-OBL-014-1"
+    ]
+  },
+  {
+    "id": "K33",
+    "folder": "7 Filings and audits",
+    "name": "Annual firm-level performance audit (APMI ToR)",
+    "what": "Engagement letter, audit report, verification annex, SEBI submission and acknowledgement, compliance confirmation with certifier page and partners' authorisation.",
+    "askIds": [
+      "DOC-REQ-OBL-010-1",
+      "DOC-REQ-OBL-010-2",
+      "DOC-REQ-OBL-013-1",
+      "DOC-REQ-OBL-061-1",
+      "DOC-REQ-OBL-061-2",
+      "DOC-REQ-OBL-097-1",
+      "DOC-REQ-OBL-098-1",
+      "DOC-REQ-OBL-099-1",
+      "DOC-REQ-OBL-100-1",
+      "DOC-REQ-OBL-100-2",
+      "DOC-REQ-OBL-101-1",
+      "DOC-REQ-OBL-101-2"
+    ]
+  },
+  {
+    "id": "K34",
+    "folder": "7 Filings and audits",
+    "name": "Internal audit by practising CA or CS",
+    "what": "Engagement letter and internal audit report.",
+    "askIds": [
+      "DOC-REQ-OBL-216-1"
+    ]
+  },
+  {
+    "id": "K35",
+    "folder": "7 Filings and audits",
+    "name": "Statutory audit and financial statements",
+    "what": "Balance sheet, P&L, auditor's report, submission to SEBI with acknowledgement, audit certificate within six months.",
+    "askIds": [
+      "DOC-REQ-OBL-324-1",
+      "DOC-REQ-OBL-327-1",
+      "DOC-REQ-OBL-330-1",
+      "DOC-REQ-OBL-331-1"
+    ]
+  },
+  {
+    "id": "K36",
+    "folder": "7 Filings and audits",
+    "name": "Net worth certificate",
+    "what": "CA certificate in the prescribed format, activity-wise where applicable.",
+    "askIds": [
+      "DOC-REQ-OBL-132-1",
+      "DOC-REQ-OBL-252-1",
+      "DOC-REQ-OBL-254-1",
+      "DOC-REQ-OBL-329-1"
+    ]
+  },
+  {
+    "id": "K37",
+    "folder": "7 Filings and audits",
+    "name": "Portfolio accounts audit by independent CA",
+    "what": "Annual audit report on portfolio accounts, certificate delivered to clients, cooperation with client-appointed auditors.",
+    "askIds": [
+      "DOC-REQ-OBL-350-1",
+      "DOC-REQ-OBL-351-1",
+      "DOC-REQ-OBL-352-1",
+      "DOC-REQ-OBL-352-2"
+    ]
+  },
+  {
+    "id": "K38",
+    "folder": "7 Filings and audits",
+    "name": "Auditor deficiency rectification",
+    "what": "Auditor's report under Regulation 30(2) and the action-taken log within two months.",
+    "askIds": [
+      "DOC-REQ-OBL-337-1",
+      "DOC-REQ-OBL-337-2"
+    ]
+  },
+  {
+    "id": "K39",
+    "folder": "8 Compliance office",
+    "name": "Compliance Officer reports and attestations",
+    "what": "Periodic compliance report to management, Master Circular self-assessment, remediation of SEBI observations, internal circulars, immediate non-compliance reports, prohibited-avenues certificate, periodic attestations.",
+    "askIds": [
+      "DOC-REQ-OBL-121-1",
+      "DOC-REQ-OBL-122-1",
+      "DOC-REQ-OBL-215-2",
+      "DOC-REQ-OBL-339-1",
+      "DOC-REQ-OBL-314-1",
+      "DOC-REQ-OBL-292-1",
+      "DOC-REQ-OBL-344-1"
+    ]
+  },
+  {
+    "id": "K40",
+    "folder": "8 Compliance office",
+    "name": "Investor grievance file",
+    "what": "Complaint register with dates, monthly website complaint disclosure (Annexure 7A), dispute resolution procedure, arbitration records, Investor Charter.",
+    "askIds": [
+      "DOC-REQ-OBL-259-1",
+      "DOC-REQ-OBL-019-1",
+      "DOC-REQ-OBL-291-1",
+      "DOC-REQ-OBL-242-1",
+      "DOC-REQ-OBL-303-1"
+    ]
+  },
+  {
+    "id": "K41",
+    "folder": "8 Compliance office",
+    "name": "Client termination and withdrawal records",
+    "what": "Statements of account on termination, settlement confirmations, premature withdrawal requests and trigger documents.",
+    "askIds": [
+      "DOC-REQ-OBL-334-1",
+      "DOC-REQ-OBL-335-1",
+      "DOC-REQ-OBL-306-1",
+      "DOC-REQ-OBL-306-2"
+    ]
+  },
+  {
+    "id": "K42",
+    "folder": "8 Compliance office",
+    "name": "SEBI inspection and requisition file",
+    "what": "Inspection access log, documents handed over, employee circular on assisting inspectors, Board requisitions and responses, regulation 37 investigation file. Waived with reason if never inspected.",
+    "askIds": [
+      "DOC-REQ-OBL-360-1",
+      "DOC-REQ-OBL-362-1",
+      "DOC-REQ-OBL-363-1",
+      "DOC-REQ-OBL-364-1",
+      "DOC-REQ-OBL-328-1"
+    ]
+  },
+  {
+    "id": "K43",
+    "folder": "8 Compliance office",
+    "name": "Correspondence samples",
+    "what": "Outbound letters to SEBI, exchanges and clients showing the registration number.",
+    "askIds": [
+      "DOC-REQ-OBL-119-1"
+    ]
+  }
+]
