@@ -673,7 +673,7 @@ export function DocumentExplorer() {
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   Persona-gated actions. Everything here is sandbox-disabled — the
+   Persona-gated actions. Everything here is disabled until built — the
    inspector never sees a control that could change the firm's record.
    ══════════════════════════════════════════════════════════════════════ */
 
@@ -681,7 +681,7 @@ export function AddDocumentCta() {
   const { persona } = usePersona();
   if (persona === "inspector") return null;
   return (
-    <Cta variant="ghost" toastMsg="Sandbox — volunteering a document is disabled in the demo">
+    <Cta variant="ghost" toastMsg="Volunteering a document — not available yet">
       Volunteer a document
     </Cta>
   );
@@ -698,10 +698,10 @@ export function UploadAskCta({ reqId }: { reqId: string }) {
   }
   return (
     <div className="row wrap" style={{ gap: 12 }}>
-      <Cta variant="orange" toastMsg={`Sandbox — uploads are disabled in the demo (${reqId})`}>
+      <Cta variant="orange" toastMsg={`Upload — not available yet (${reqId}); attach the proof from the register row`}>
         Supply this document
       </Cta>
-      <Cta variant="ghost" toastMsg={`Sandbox — waivers are disabled in the demo (${reqId})`}>
+      <Cta variant="ghost" toastMsg={`Waiver — not available yet (${reqId})`}>
         Claim a waiver
       </Cta>
     </div>
@@ -712,7 +712,7 @@ export function ReviewCta({ count }: { count: number }) {
   const { persona } = usePersona();
   if (persona === "inspector") return null;
   return (
-    <Cta variant="ghost" toastMsg="Sandbox — extraction review is disabled in the demo">
+    <Cta variant="ghost" toastMsg="Extraction review — not available yet">
       Send {count} {count === 1 ? "reading" : "readings"} to review
     </Cta>
   );
@@ -728,7 +728,7 @@ export function VolunteerCta() {
     );
   }
   return (
-    <Cta toastMsg="Sandbox — volunteering a document is disabled in the demo">
+    <Cta toastMsg="Volunteering a document — not available yet">
       Submit an unrequested document
     </Cta>
   );

@@ -42,7 +42,7 @@ export default function RegisterPage() {
             <b>Expand a row for the full walk-back; open the clause to read it in the corpus.</b>
           </>
         }
-        right={<Cta variant="ghost">Export filtered view</Cta>}
+        right={<Cta variant="ghost" toastMsg="Export — not available yet">Export filtered view</Cta>}
       />
 
       {/* ── posture strip ── */}

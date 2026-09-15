@@ -357,7 +357,7 @@ export default function DocumentsPage() {
       {/* ── provenance discipline ── */}
       <section style={{ marginTop: 26 }}>
         <div className="panel pad">
-          <span className="mono-label dim">Provenance — real and simulated content on this page</span>
+          <span className="mono-label dim">Provenance — where each item on this page comes from</span>
           <p className="small dim60" style={{ marginTop: 8, lineHeight: 1.6, maxWidth: "96ch" }}>
             {molecule.legalName} is a SEBI-registered portfolio manager; every fact on this page
             carries its provenance.

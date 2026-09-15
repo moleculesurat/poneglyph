@@ -79,10 +79,10 @@ export default function Overview() {
             SEBI-registered portfolio manager. <b>Orange marks an item requiring attention.</b>
           </>
         }
-        right={<Cta variant="ghost">Export register</Cta>}
+        right={<Cta variant="ghost" toastMsg="Export — not available yet">Export register</Cta>}
       />
 
-      {/* ── tenant line — real entity, simulated posture ── */}
+      {/* ── tenant line — real entity, live posture from the register ── */}
       <div className="panel" style={{ padding: "13px 18px", marginBottom: 26 }}>
         <div className="row between wrap" style={{ gap: 12 }}>
           <div className="stack" style={{ gap: 6, minWidth: 0 }}>

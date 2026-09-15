@@ -10,8 +10,8 @@ import { auditEvents } from "@/data/audit";
 import { LiveConsole } from "./LiveConsole";
 import { PendingQueue } from "./PendingQueue";
 
-/* Every other route in this sandbox renders authored TypeScript. This one
-   renders what the engine did on the request, including when that is nothing. */
+/* Every other route renders the register seeded from register.json at build.
+   This one renders what the engine did on the request, including when that is nothing. */
 
 const REAL_HERE = [
   {
@@ -36,18 +36,18 @@ const REAL_HERE = [
   },
 ];
 
-const SIMULATED_ELSEWHERE = [
+const HOW_FED = [
   {
     k: "Seeded register",
-    v: `The ${obligations.length} obligations, ${evidence.length} evidence artifacts, ${tasks.length} remediation tasks, ${documentRequirements.length} document requirements and ${runs.length} historical runs on the other routes are authored fixtures. They are illustrative compliance posture, not observations about any firm.`,
+    v: `The ${obligations.length} obligations, ${evidence.length} evidence artifacts, ${tasks.length} remediation tasks, ${documentRequirements.length} document requirements and ${runs.length} historical runs on the other routes are seeded from register.json at build — the register pulled from this API and committed to git.`,
   },
   {
     k: "Seeded audit trail",
-    v: `The ${auditEvents.length} audit events that pre-date the session were authored as content. They are re-hashed on seeding, so the chain arithmetic is genuine — the events themselves describe a simulated history.`,
+    v: `The ${auditEvents.length} audit events that pre-date the session are re-hashed on seeding, so the chain arithmetic is genuine — every stored hash is recomputed from the event's own content.`,
   },
   {
     k: "Watchtower catches",
-    v: "The scraper catches are fixtures. Nothing on this route polls sebi.gov.in.",
+    v: "The catches on the Watchtower route are whatever the SEBI poll has fetched into the shared store; this route does not poll — it runs the pipeline on a submitted clause.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function LivePage() {
         }
         sub={
           <>
-            Every other route in this sandbox renders seeded data. On this route the pipeline
+            Every other route renders seeded data. On this route the pipeline
             executes, the hashes are computed with SHA-256, and an approval writes state. A submitted
             clause is processed by the engine as received; latency and failures are reported as they
             occur rather than smoothed.
@@ -92,7 +92,7 @@ export default function LivePage() {
             <p className="small dim60" style={{ margin: 0, lineHeight: 1.7 }}>
               {tenant.name} is a SEBI-registered portfolio manager; every fact carries its
               provenance. All compliance posture produced on this route is illustrative. An
-              obligation drafted from a pasted clause demonstrates the engine and is not a statement
+              obligation drafted from a pasted clause exercises the engine and is not a statement
               about the firm.
             </p>
           </div>
@@ -137,10 +137,10 @@ export default function LivePage() {
             <MarkedCard pad={22}>
               <div className="stack" style={{ gap: 14 }}>
                 <div className="row wrap between" style={{ gap: 10 }}>
-                  <span className="mono-label dim">simulated elsewhere</span>
+                  <span className="mono-label dim">how the rest of the app is fed</span>
                   <Chip tone="info">seeded</Chip>
                 </div>
-                {SIMULATED_ELSEWHERE.map((row) => (
+                {HOW_FED.map((row) => (
                   <div key={row.k} className="stack" style={{ gap: 5 }}>
                     <span className="mono-value" style={{ color: "var(--ink)" }}>
                       {row.k}
@@ -163,7 +163,7 @@ export default function LivePage() {
 
           <p className="small dim60" style={{ margin: 0, lineHeight: 1.7, maxWidth: "82ch" }}>
             Nothing on this route asserts that {tenant.name} is or is not compliant with anything. No
-            finding, inspection outcome or penalty is depicted anywhere in this sandbox, and the only
+            finding, inspection outcome or penalty is depicted anywhere on this site, and the only
             registration number it will print is the one the firm publishes itself — held as declared
             until a certificate is read.
           </p>

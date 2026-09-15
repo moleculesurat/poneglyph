@@ -2,8 +2,8 @@
 
 /* Deadline runway — horizontally draggable timeline (embla-carousel,
    dragFree). Milestones are the computed due dates passed in from the
-   dashboard; nothing is anchored by hand. Wide inner canvas; drag during a
-   demo to walk the months ahead. */
+   dashboard; nothing is anchored by hand. Wide inner canvas; drag to walk
+   the months ahead. */
 
 import Link from "next/link";
 import useEmblaCarousel from "embla-carousel-react";

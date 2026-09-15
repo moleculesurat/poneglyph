@@ -223,7 +223,7 @@ export default function InspectorPage() {
                 <Chip tone="info">depository-participant × 1</Chip>
               </div>
               <span className="mono-label dim" style={{ fontSize: 9.5 }}>
-                Sandbox note — cross-entity view simulated; this session renders one tenant
+                One tenant — this view renders Molecule Ventures LLP only
               </span>
             </div>
           </div>

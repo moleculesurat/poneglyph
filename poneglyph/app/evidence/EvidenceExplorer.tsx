@@ -351,5 +351,5 @@ export function EvidenceExplorer() {
 export function UploadCta() {
   const { persona } = usePersona();
   if (persona === "inspector") return null;
-  return <Cta variant="ghost">Upload artifact</Cta>;
+  return <Cta variant="ghost" toastMsg="Upload — not available yet; attach the proof from the register row">Upload artifact</Cta>;
 }

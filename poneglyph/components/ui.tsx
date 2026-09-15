@@ -131,7 +131,7 @@ export function StatTile({
   );
 }
 
-/* CTA — signature chip; sandbox-disabled by default (fires toast) */
+/* CTA — signature chip; disabled by default (fires toast) */
 export function Cta({
   children,
   variant,

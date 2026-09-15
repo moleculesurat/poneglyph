@@ -16,7 +16,7 @@ import { SEBI_DOMAINS, CSCRF_GRADE_LABEL } from "@/lib/domains";
 const netWorth = factOf("aum");
 const clientBase = factOf("clients");
 
-/* Four lines of proof that the demo tenant is a real filed entity, not a
+/* Four lines of proof that the tenant is a real filed entity, not a
    mock. Every figure is read from data/entity.ts with its provenance —
    none of it is typed here. */
 const PROOF: { k: string; v: string; note: string }[] = [
@@ -87,7 +87,7 @@ export default function EntryGate() {
         </div>
 
         <span className="mono-label dim60" style={{ fontSize: 10.5, letterSpacing: "0.16em" }}>
-          Regulatory obligation management · sandbox environment
+          Regulatory obligation management · obligation register
         </span>
 
         {/* ── what the system is ──────────────────────────────────────── */}
@@ -109,12 +109,8 @@ export default function EntryGate() {
         </p>
 
         <p className="small dim60" style={{ maxWidth: "70ch", marginTop: 20, lineHeight: 1.65 }}>
-          Built for the SEBI Securities Market TechSprint at Global Fintech Fest 2026 —{" "}
-          <b style={{ color: "var(--ink)", fontWeight: 600 }}>
-            Problem Statement 2, Agentic Compliance
-          </b>
-          . This is the frontend sandbox: the whole engine is walkable, and nothing in it is
-          actionable.
+          Built for Molecule Ventures LLP: the register, the evidence and the audit chain on this
+          site are the firm&rsquo;s own record.
         </p>
 
         <Hairline />
@@ -209,7 +205,7 @@ export default function EntryGate() {
           {molecule.legalName}&rsquo;s registration {tenant.sebiRegNo} is declared, not yet
           documented — held as{" "}
           <b style={{ color: "var(--ink)", fontWeight: 600 }}>declared</b>, not verified, until its
-          certificate is read. All compliance posture in this sandbox — obligations met or gapped,
+          certificate is read. All compliance posture in this obligation register — obligations met or gapped,
           evidence, remediation, audit events, every trace — is{" "}
           <b style={{ color: "var(--ink)", fontWeight: 600 }}>illustrative</b>
           {" "}and asserts nothing whatsoever about the firm&rsquo;s actual compliance.

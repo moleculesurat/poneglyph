@@ -25,9 +25,9 @@ const azeret = Azeret_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Poneglyph — Agentic Compliance Sandbox",
+  title: "Molecule Compliance",
   description:
-    "From regulatory text to operational action. An agentic compliance engine for SEBI market intermediaries — sandbox edition, simulated data, real architecture.",
+    "Regulatory obligation register for Molecule Ventures LLP — every duty grounded to the sentence SEBI wrote, gated by a named officer, proven by evidence.",
 };
 
 export default function RootLayout({

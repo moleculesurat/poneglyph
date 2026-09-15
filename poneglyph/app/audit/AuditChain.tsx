@@ -321,8 +321,8 @@ export function AuditChain({ events }: { events: AuditEvent[] }) {
 
       <p className="small dim60" style={{ marginTop: 12, maxWidth: "72ch" }}>
         Verification replays the recorded chain in this browser: for each event, prevHash is
-        compared against the hash of the event before it. No write path exists here — the sandbox
-        register is read-only.
+        compared against the hash of the event before it. Writes happen only through the API behind
+        the gate token; this page is read-only.
       </p>
     </section>
   );

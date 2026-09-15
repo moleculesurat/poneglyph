@@ -58,38 +58,10 @@ export function AppShell({ children }: { children: ReactNode }) {
     };
   }, [menuOpen]);
 
-  /* The sandbox declaration rides above everything, gate included — it is
-     the first sentence a judge reads and it must never be conditional. */
-  const sandboxStrip = (
-    <div
-      style={{
-        background: "var(--ink)",
-        color: "rgba(255,255,255,0.85)",
-        padding: "7px 18px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 12,
-        position: "relative",
-        zIndex: 56,
-      }}
-    >
-      <span style={{ width: 18, height: 8, borderRadius: 2, background: "var(--orange)", flex: "none" }} />
-      <span className="mono-label" style={{ fontSize: 10, letterSpacing: "0.12em" }}>
-        Sandbox environment — realistic simulated data · everything is explorable, nothing is actionable
-      </span>
-    </div>
-  );
-
   /* ── entry gate: full-bleed, no sidebar, no breadcrumb header ──
      "/" is the cover of the product, not a console route. */
   if (pathname === ENTRY_GATE) {
-    return (
-      <>
-        {sandboxStrip}
-        {children}
-      </>
-    );
+    return <>{children}</>;
   }
 
   const items = persona === "inspector"
@@ -127,9 +99,6 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {/* ── sandbox strip ── */}
-      {sandboxStrip}
-
       <div className="app-row">
         {/* ── sidebar ── */}
         <aside className="sidebar" data-open={sideOpen}>
@@ -223,7 +192,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <button className="menu-item" onClick={() => { setMenuOpen(false); toast(); }}>
                   Account settings
                 </button>
-                <button className="menu-item" onClick={() => { setMenuOpen(false); toast("Sandbox — sessions are simulated"); }}>
+                <button className="menu-item" onClick={() => { setMenuOpen(false); toast("Sessions — not available yet"); }}>
                   Sign out
                 </button>
               </div>

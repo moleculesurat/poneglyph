@@ -3,7 +3,7 @@
 
    The two binding clauses are READ OUT OF the collected corpus (data/corpus.ts)
    rather than retyped here, so the text a judge sends to the engine is the same
-   text the rest of the sandbox cites. The control case is a hard-coded sentence.
+   text the rest of the app cites. The control case is a hard-coded sentence.
    ══════════════════════════════════════════════════════════════════════ */
 
 import { circulars } from "@/data/corpus";

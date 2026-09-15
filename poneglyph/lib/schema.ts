@@ -3,7 +3,7 @@
    One structure for any SEBI obligation: where it came from (clause),
    who it binds (applicability), what fulfils it (control + evidence),
    and how we know (hash-chained audit events + replayable agent runs).
-   The sandbox's simulated data files implement exactly these types.
+   The data files in data/ implement exactly these types.
    ══════════════════════════════════════════════════════════════════════ */
 
 export type IntermediaryType =
@@ -245,7 +245,7 @@ export interface Tenant {
   type: IntermediaryType;
   city: string;
   team: TeamMember[];
-  /** the sandbox's pinned "today" — keeps '9 days ago' true forever */
+  /** the pinned "today" (the build date) — keeps '9 days ago' true forever */
   simToday: string;
 }
 
@@ -296,7 +296,7 @@ export interface EntityFact {
 export interface RegistrationLine {
   category: string; // "Stock Broker", "Depository Participant", "Research Analyst"
   authority: string; // "SEBI", "NSE", "BSE", "CDSL"
-  number: string; // masked in the sandbox — never a fabricated live number
+  number: string; // masked — never a fabricated live number
   masked: boolean;
 }
 

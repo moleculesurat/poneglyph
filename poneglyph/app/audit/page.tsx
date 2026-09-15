@@ -42,7 +42,7 @@ export default function AuditPage() {
             <b>Any alteration is detectable by recomputing the chain.</b>
           </>
         }
-        right={<Cta variant="ghost" toastMsg="Export is disabled in the sandbox.">Export chain</Cta>}
+        right={<Cta variant="ghost" toastMsg="Export — not available yet">Export chain</Cta>}
       />
 
       {/* ── posture ── */}

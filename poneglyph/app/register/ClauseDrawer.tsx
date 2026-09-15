@@ -199,7 +199,7 @@ export function ClauseDrawer({
             {`Grounding — ${obligation.id} (${obligation.title}) is extracted from para ${clause.para} above. The highlighted span is the verbatim excerpt the extraction agent pinned; the register entry hashes to ${obligation.hash}.`}
           </p>
           <p className="mono-label dim" style={{ marginTop: 12 }}>
-            Sandbox corpus — realistic paraphrase of public SEBI material
+            Corpus — verbatim text of the SEBI circular / regulation
           </p>
         </div>
       </aside>

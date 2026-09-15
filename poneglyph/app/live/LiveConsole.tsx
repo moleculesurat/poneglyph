@@ -684,7 +684,7 @@ export function LiveConsole() {
             <div className="stack" style={{ gap: 10 }}>
               <span className="mono-label dim">no run recorded</span>
               <p className="small dim60" style={{ margin: 0, lineHeight: 1.7, maxWidth: "76ch" }}>
-                This sandbox has no run yet. <b>Run the pipeline</b> above starts one, and each step
+                No run has been started yet. <b>Run the pipeline</b> above starts one, and each step
                 — watcher, applicability, extraction, verifier, gate — appears here as the Worker
                 writes it.
               </p>
@@ -753,10 +753,10 @@ export function LiveConsole() {
                   <b>Extraction latency — expected range.</b> The extraction model runs on free-tier
                   capacity and is a reasoning model, so most of its wall clock is spent on reasoning
                   tokens before the first character of the answer is emitted. Successful calls
-                  measured in this sandbox have completed between a few seconds and two minutes
+                  measured on this route have completed between a few seconds and two minutes
                   forty-seven; one call reached the four-minute ceiling and returned nothing, and a
                   concurrent second call was rejected by the provider within seconds. Calls are
-                  therefore serialised, one per sandbox, and timed out rather than left hanging. The
+                  therefore serialised, one at a time, and timed out rather than left hanging. The
                   run id is held in this tab, so navigating away and returning resumes polling.
                 </Notice>
               ) : null}
@@ -831,7 +831,7 @@ export function LiveConsole() {
                   {approved.length === 1 ? "It opens" : "They open"} as{" "}
                   {approved.length === 1 ? "a gap" : "gaps"} because no evidence is bound yet;
                   recording a newly drafted duty as met would be a claim the engine has no basis for.
-                  These rows are scoped to this sandbox and served by{" "}
+                  These rows are served live by{" "}
                   <span className="mono-value">/api/state</span>. The{" "}
                   <Link href="/register">Obligation Register</Link> route continues to show the
                   seeded corpus.

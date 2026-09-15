@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useState, type ReactNode } from
 
 const ToastContext = createContext<(msg?: string) => void>(() => {});
 
-/** Fire the sandbox toast from any client component:
+/** Fire the disabled-action toast from any client component:
  *  const toast = useSandboxToast(); … onClick={() => toast()} */
 export function useSandboxToast() {
   return useContext(ToastContext);
@@ -15,7 +15,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const push = useCallback((msg?: string) => {
     const id = Date.now() + Math.random();
-    const text = msg ?? "Sandbox — this action is disabled in the demo";
+    const text = msg ?? "Not available yet";
     setToasts((t) => [...t.slice(-2), { id, msg: text }]);
     setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 2600);
   }, []);
