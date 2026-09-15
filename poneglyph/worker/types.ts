@@ -9,6 +9,7 @@
 
 import type {
   AuditEvent,
+  CompanyDocument,
   EvidenceArtifact,
   Obligation,
   TraceStep,
@@ -44,6 +45,14 @@ export interface KVNamespace {
   list(options?: { prefix?: string; limit?: number; cursor?: string }): Promise<KVListResult>;
 }
 
+/** The firm's file vault — the PDF stays on the runtime's disk; only its sha
+    and metadata enter the register. Node-only, so it lives in server.mjs behind
+    this binding, exactly like ASSETS and PONEGLYPH_STATE. */
+export interface FileStore {
+  put(sha: string, bytes: Uint8Array, ext: string): Promise<void>;
+  has(sha: string, ext: string): Promise<boolean>;
+}
+
 export interface Env {
   ASSETS: Fetcher;
   PONEGLYPH_STATE: KVNamespace;
@@ -54,6 +63,10 @@ export interface Env {
   /** the shared-register write gate — required to start a run or record a
       decision. Optional at the type level so an unset gate is a handled 401. */
   GATE_TOKEN?: string;
+  /* Node-only file work — absent on workerd, so the document routes 503 there
+     rather than throw. Provided by server.mjs, like ASSETS. */
+  FILES?: FileStore;
+  PDFTEXT?: (sha: string) => Promise<string>;
 }
 
 /** what the cron trigger hands to scheduled() — structurally exact */
@@ -190,9 +203,12 @@ export interface SessionState {
   runIds: string[];
   /** artefacts bound to approved duties; the file stays with the firm, only its hash is kept */
   evidence: EvidenceArtifact[];
+  /** documents supplied to the firm's vault — the PDF stays in FILES, only its sha and text stats are kept */
+  documents: CompanyDocument[];
   /** id allocation, so live records never collide with the seeded ones */
   nextRunSeq: number;
   nextObligationSeq: number;
   nextEventSeq: number;
   nextEvidenceSeq: number;
+  nextDocumentSeq: number;
 }

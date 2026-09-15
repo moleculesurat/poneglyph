@@ -38,6 +38,15 @@ export async function sha256Hex(input: string): Promise<string> {
   return out;
 }
 
+/** SHA-256 of raw bytes — the 64-hex digest of an uploaded file. */
+export async function sha256HexBytes(input: Uint8Array<ArrayBuffer>): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", input);
+  const bytes = new Uint8Array(digest);
+  let out = "";
+  for (const b of bytes) out += b.toString(16).padStart(2, "0");
+  return out;
+}
+
 /** first 12 hex chars of SHA-256 over the canonical string */
 export async function eventHash(
   e: Pick<AuditEvent, "id" | "at" | "actor" | "action" | "subjectType" | "subjectId" | "detail">,

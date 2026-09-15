@@ -20,7 +20,7 @@ import { rejected as seededRejected } from "../data/rejected";
 import { evidence as seededEvidence } from "../data/evidence";
 import { tasks as seededTasks } from "../data/tasks";
 import { runs as seededRuns } from "../data/runs";
-import { documentRequirements } from "../data/documents";
+import { companyDocumentsSeeded, documentRequirements } from "../data/documents";
 import { rechain } from "./hash";
 import type { Env, LiveRun, SessionState } from "./types";
 
@@ -72,6 +72,10 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
     (max, e) => Math.max(max, Number(e.id.split("-").pop()) || 0),
     0,
   );
+  const maxDocumentSeq = companyDocumentsSeeded.reduce(
+    (max, d) => Math.max(max, Number(d.id.split("-").pop()) || 0),
+    0,
+  );
   return {
     sessionId,
     createdAt: new Date().toISOString(),
@@ -83,10 +87,12 @@ export async function seedSession(sessionId: string): Promise<SessionState> {
     decisions: [],
     runIds: [],
     evidence: [...seededEvidence],
+    documents: [...companyDocumentsSeeded],
     nextRunSeq: LIVE_RUN_SEQ_START,
     nextObligationSeq: seededObligations.length ? maxObligationSeq + 1 : LIVE_OBLIGATION_SEQ_START,
     nextEventSeq: LIVE_EVENT_SEQ_START,
     nextEvidenceSeq: maxEvidenceSeq + 1,
+    nextDocumentSeq: maxDocumentSeq + 1,
   };
 }
 
@@ -113,6 +119,9 @@ export async function resolveSession(env: Env): Promise<SessionState> {
     /* older KV sessions predate the evidence vault; backfill in place */
     existing.evidence ??= [];
     existing.nextEvidenceSeq ??= 1;
+    /* older sessions predate the document vault too */
+    existing.documents ??= [];
+    existing.nextDocumentSeq ??= 1;
     return existing;
   }
   const state = await seedSession(TENANT_SID);

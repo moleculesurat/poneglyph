@@ -168,7 +168,7 @@ export async function runPipeline(env: Env, sid: string, run: LiveRun): Promise<
     const state = await loadSession(env, sid);
     if (!state) {
       run.status = "failed";
-      run.error = "the sandbox for this session expired while the run was in flight";
+      run.error = "the session expired while the run was in flight";
       await finish(env, sid, run, write, null);
       return;
     }

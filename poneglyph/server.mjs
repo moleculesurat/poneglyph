@@ -11,8 +11,10 @@
 import http from "node:http";
 import path from "node:path";
 import { Readable } from "node:stream";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { readFileSync, existsSync } from "node:fs";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import { openStore } from "./store.mjs";
 
 /* .dev.vars — KEY=VALUE lines; blanks and # skipped; never override a
@@ -43,6 +45,55 @@ const PORT = Number(process.env.PORT ?? 8787);
 const STATE_DIR = process.env.STATE_DIR ?? ".state";
 const stateFile = path.join(STATE_DIR, "poneglyph.sqlite");
 const OUT_DIR = path.resolve("out");
+const FILES_DIR = path.join(STATE_DIR, "files");
+const pexecFile = promisify(execFile);
+
+/* FILES — the firm's PDF vault on disk; only the sha and metadata leave it.
+   bytes is a Uint8Array. Node-only, handed to the worker as a binding. */
+const FILES = {
+  async put(sha, bytes, ext) {
+    await mkdir(FILES_DIR, { recursive: true });
+    const p = path.join(FILES_DIR, `${sha}.${ext}`);
+    try {
+      await access(p);
+      return; // already stored — skip the rewrite
+    } catch {}
+    await writeFile(p, bytes);
+  },
+  async has(sha, ext) {
+    try {
+      await access(path.join(FILES_DIR, `${sha}.${ext}`));
+      return true;
+    } catch {
+      return false;
+    }
+  },
+};
+
+/* PDFTEXT — cached `pdftotext -layout`. Returns the .txt sidecar if present,
+   else runs pdftotext (cwd = FILES_DIR so the bare <sha>.pdf resolves) and
+   writes the sidecar. A missing binary throws "pdftotext unavailable …". */
+async function PDFTEXT(sha) {
+  const txtPath = path.join(FILES_DIR, `${sha}.txt`);
+  try {
+    return await readFile(txtPath, "utf8");
+  } catch {}
+  let stdout;
+  try {
+    ({ stdout } = await pexecFile("pdftotext", ["-layout", `${sha}.pdf`, "-"], {
+      cwd: FILES_DIR,
+      maxBuffer: 64 * 1024 * 1024,
+    }));
+  } catch (e) {
+    if (e?.code === "ENOENT")
+      throw new Error(
+        "pdftotext unavailable — install poppler (brew install poppler / apt-get install poppler-utils)",
+      );
+    throw new Error(`pdftotext failed: ${String(e?.stderr || e?.message || e).trim()}`);
+  }
+  await writeFile(txtPath, stdout, "utf8");
+  return stdout;
+}
 
 const env = {
   GATE_TOKEN: process.env.GATE_TOKEN,
@@ -50,6 +101,8 @@ const env = {
   MODEL: process.env.MODEL,
   PONEGLYPH_STATE: openStore(stateFile),
   ASSETS: { fetch: serveStatic },
+  FILES,
+  PDFTEXT,
 };
 
 const ctx = {

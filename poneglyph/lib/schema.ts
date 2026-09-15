@@ -326,6 +326,7 @@ export type DocumentStatus =
   | "received" // supplied, not yet parsed/verified
   | "verified" // parsed and accepted
   | "expired" // supplied but past its refresh cadence
+  | "rejected" // supplied but turned down at review
   | "waived"; // not applicable to this firm, with a reason
 
 export type DocumentCategory =
@@ -369,11 +370,15 @@ export interface CompanyDocument {
   id: string; // "DOC-021"
   /** the requirement this answers; absent ⇒ volunteered by the firm */
   requirementId?: string;
+  /** every ask this upload was made against; requirementId stays the first, for the UI */
+  requirementIds?: string[];
   name: string;
   category: DocumentCategory;
   status: DocumentStatus;
   fileName?: string;
   pages?: number;
+  /** characters of extracted text (pdftotext -layout) */
+  textChars?: number;
   uploadedAt?: string;
   uploadedBy?: string;
   /** validity window, where the document expires */

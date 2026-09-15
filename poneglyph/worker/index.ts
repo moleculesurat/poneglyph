@@ -17,6 +17,7 @@
 import type { AuditEvent } from "../lib/schema";
 import { bindEvidence, type EvidenceInput } from "./evidence";
 import { modelOf } from "./extract";
+import { handleDocumentText, handleDocumentUpload } from "./documents";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { asString, error, gateAllowed, json, preflight, readJson } from "./http";
@@ -120,12 +121,28 @@ async function handleApi(
       obligations: [...state.pending, ...state.register],
       rejected: state.rejected,
       evidence: state.evidence,
+      documents: state.documents,
       decisions: state.decisions,
       auditEvents: state.chain,
       chainTip: chainTip(state.chain),
       runs,
       counts: stateCounts(state, runs),
     });
+  }
+
+  if (path === "/api/documents") {
+    if (method !== "POST") return error(request, 405, "POST only");
+    if (!gateAllowed(request, env))
+      return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+    return handleDocumentUpload(request, env, state);
+  }
+
+  const docTextMatch = path.match(/^\/api\/documents\/([A-Za-z0-9-]{1,32})\/text$/);
+  if (docTextMatch) {
+    if (method !== "GET") return error(request, 405, "GET only");
+    if (!gateAllowed(request, env))
+      return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+    return handleDocumentText(request, env, state, docTextMatch[1]);
   }
 
   if (path === "/api/audit") {
@@ -163,7 +180,7 @@ async function handleApi(
   if (runMatch) {
     if (method !== "GET") return error(request, 405, "GET only");
     const run = await loadRun(env, state.sessionId, runMatch[1]);
-    if (!run) return error(request, 404, `no run ${runMatch[1]} in this sandbox`);
+    if (!run) return error(request, 404, `no run ${runMatch[1]} in this session`);
 
     /* Staleness reconciliation, done at READ time on purpose.
        The pipeline runs inside ctx.waitUntil(), and the edge may evict that
@@ -324,7 +341,7 @@ async function startRun(
     return error(
       request,
       413,
-      `clauseText is ${clauseText.length} characters; this sandbox extracts one paragraph at a time, up to ${MAX_CLAUSE_CHARS}`,
+      `clauseText is ${clauseText.length} characters; this session extracts one paragraph at a time, up to ${MAX_CLAUSE_CHARS}`,
     );
   }
   if (!para) return error(request, 400, "para is required, e.g. \"46.3\"");
@@ -342,7 +359,7 @@ async function startRun(
       return error(
         request,
         409,
-        `${last.id} is still running in this sandbox. Extraction calls are serialised because the provider rejects concurrent requests; wait for it to finish or reset the session.`,
+        `${last.id} is still running in this session. Extraction calls are serialised because the provider rejects concurrent requests; wait for it to finish or reset the session.`,
         { runId: last.id },
       );
     }
@@ -421,7 +438,7 @@ async function handleDecision(
   const result = await decide(state, obligationId, decision, officer, reason);
 
   if (result === "not-found") {
-    return error(request, 404, `no obligation ${obligationId} awaiting decision in this sandbox`, {
+    return error(request, 404, `no obligation ${obligationId} awaiting decision in this session`, {
       hint: "Only obligations drafted by a run in this session pass through the gate. The seeded register is read-only.",
     });
   }
@@ -429,7 +446,7 @@ async function handleDecision(
     return error(
       request,
       409,
-      `${obligationId} is not pending-review — it has already been decided in this sandbox`,
+      `${obligationId} is not pending-review — it has already been decided in this session`,
     );
   }
 

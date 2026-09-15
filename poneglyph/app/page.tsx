@@ -205,10 +205,8 @@ export default function EntryGate() {
           {molecule.legalName}&rsquo;s registration {tenant.sebiRegNo} is declared, not yet
           documented — held as{" "}
           <b style={{ color: "var(--ink)", fontWeight: 600 }}>declared</b>, not verified, until its
-          certificate is read. All compliance posture in this obligation register — obligations met or gapped,
-          evidence, remediation, audit events, every trace — is{" "}
-          <b style={{ color: "var(--ink)", fontWeight: 600 }}>illustrative</b>
-          {" "}and asserts nothing whatsoever about the firm&rsquo;s actual compliance.
+          certificate is read. Met and gap on this site reflect only the evidence bound so far; every
+          duty is the firm&rsquo;s real obligation.
         </p>
       </div>
     </div>

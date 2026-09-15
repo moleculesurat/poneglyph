@@ -65,6 +65,7 @@ export const STATUS_LABEL: Record<DocumentStatus, string> = {
   received: "Received",
   required: "Required",
   expired: "Expired",
+  rejected: "Rejected",
   waived: "Waived",
 };
 
@@ -74,6 +75,7 @@ export const STATUS_TONE: Record<DocumentStatus, Tone> = {
   received: "pending",
   required: "gap",
   expired: "at-risk",
+  rejected: "gap",
   waived: "info",
 };
 
@@ -82,6 +84,7 @@ export const STATUS_HINT: Record<DocumentStatus, string> = {
   received: "parsed, awaiting the officer's sign-off",
   required: "asked for — nothing supplied",
   expired: "supplied once, now past its refresh cadence",
+  rejected: "supplied but turned down at review — a fresh document is needed",
   waived: "evaluated and not asked for, with the reason filed",
 };
 

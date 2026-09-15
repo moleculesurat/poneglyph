@@ -1,6 +1,7 @@
 import type { CompanyDocument, DocumentCategory, DocumentRequirement } from "@/lib/schema";
 import { obligations } from "./obligations";
 import { evidence } from "./evidence";
+import register from "./collected/register.json";
 
 /* Document management — derived, never hand-typed.
    Requirements come from every `document` evidenceSpec on an approved obligation;
@@ -59,6 +60,13 @@ export const companyDocuments: CompanyDocument[] = evidence
       supportsObligations: a.obligationIds,
     };
   });
+
+/* Documents supplied through POST /api/documents and pulled back into the
+   register by `npm run pull`. Seeds a fresh store; absent until the first pull,
+   hence the cast (register.json carries no `documents` key yet). module 2
+   reconciles these with the evidence-derived companyDocuments above. */
+export const companyDocumentsSeeded: CompanyDocument[] =
+  (register as { documents?: CompanyDocument[] }).documents ?? [];
 
 /* ── Lookups ───────────────────────────────────────────────────────── */
 
