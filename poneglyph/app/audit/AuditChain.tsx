@@ -18,6 +18,7 @@ const SUBJECT_ROUTE: Record<AuditEvent["subjectType"], string> = {
   task: "/remediation",
   run: "/agents",
   corpus: "/amendments",
+  document: "/documents",
 };
 
 const SUBJECT_TYPES: AuditEvent["subjectType"][] = [
@@ -26,6 +27,7 @@ const SUBJECT_TYPES: AuditEvent["subjectType"][] = [
   "evidence",
   "task",
   "run",
+  "document",
 ];
 
 const fmt = (iso: string) => `${iso.slice(0, 10)} ${iso.slice(11, 16)} IST`;

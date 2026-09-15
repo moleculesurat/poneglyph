@@ -224,7 +224,7 @@ export interface AuditEvent {
   at: string;
   actor: string; // "agent:extraction" | "human:Priya Nair" | "system"
   action: string; // "obligation.created" | "evidence.bound" | …
-  subjectType: "obligation" | "evidence" | "task" | "run" | "corpus";
+  subjectType: "obligation" | "evidence" | "task" | "run" | "corpus" | "document";
   subjectId: string;
   detail: string;
   hash: string;
@@ -389,6 +389,23 @@ export interface CompanyDocument {
   extracted: ExtractedField[];
   /** obligations this document now supports */
   supportsObligations: string[];
+  /** the machine read — a verbatim-grounded proposal from POST /api/documents/:id/read.
+      Every value, quote, locator and date source is copied character-for-character
+      out of the document text; a deterministic verifier rejects anything that is not. */
+  proposal?: {
+    at: string;
+    model: string;
+    truncated: boolean;
+    verdicts: {
+      requirementId: string;
+      verdict: "satisfies" | "partial" | "no";
+      reason: string;
+      quotes: string[];
+    }[];
+    fields: ExtractedField[];
+    validFrom?: { iso: string; source: string };
+    validUntil?: { iso: string; source: string };
+  };
   /** reason, when status is `waived` */
   waivedReason?: string;
   notes?: string;

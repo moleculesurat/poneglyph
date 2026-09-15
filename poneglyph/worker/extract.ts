@@ -217,15 +217,23 @@ interface CallResult {
   usage: ChatResponse["usage"];
 }
 
-async function callOnce(
+/** One chat call to OpenRouter that must return a JSON object. Builds the
+    messages (system, user, and — on a correction round — the verifier's
+    complaint), posts with the configured model, token budget and 240s timeout,
+    and returns the outermost JSON object of the reply as a string. Throws on an
+    HTTP failure, empty content, or a reply carrying no JSON object — the exact
+    failures callOnce raised before this was factored out, tagged the same way,
+    so the extraction path is unchanged. Also drives the document-read path. */
+export async function chatJson(
   env: Env,
-  input: RunInput,
-  correction: string | undefined,
-): Promise<CallResult> {
+  system: string,
+  user: string,
+  correction?: string,
+): Promise<{ raw: string; model: string; usage?: unknown }> {
   const model = modelOf(env);
   const messages: { role: string; content: string }[] = [
-    { role: "system", content: SYSTEM_PROMPT },
-    { role: "user", content: userPrompt(input) },
+    { role: "system", content: system },
+    { role: "user", content: user },
   ];
   if (correction) {
     messages.push({
@@ -274,13 +282,13 @@ async function callOnce(
     );
   }
 
-  let raw: RawObligation[];
+  let raw: string;
   try {
-    raw = parseObligations(extractJsonObject(content));
+    raw = extractJsonObject(content);
   } catch (e) {
-    /* a parse or shape error is the model's fault and the model can fix it —
-       tag it so the retry loop feeds the complaint back, and name a truncated
-       reply as such (finish_reason "length" means the token budget was hit) */
+    /* no JSON object at all is the model's fault and the model can fix it — tag
+       it so the retry loop feeds the complaint back, and name a truncated reply
+       as such (finish_reason "length" means the token budget was hit) */
     const err = e as Error;
     err.name = "ExtractionParseError";
     if (choice?.finish_reason === "length") {
@@ -289,6 +297,25 @@ async function callOnce(
     throw err;
   }
   return { raw, model: body.model ?? model, usage: body.usage };
+}
+
+async function callOnce(
+  env: Env,
+  input: RunInput,
+  correction: string | undefined,
+): Promise<CallResult> {
+  const { raw, model, usage } = await chatJson(env, SYSTEM_PROMPT, userPrompt(input), correction);
+  let obligations: RawObligation[];
+  try {
+    obligations = parseObligations(raw);
+  } catch (e) {
+    /* a parse or shape error is the model's fault and the model can fix it —
+       tag it so the retry loop feeds the complaint back */
+    const err = e as Error;
+    err.name = "ExtractionParseError";
+    throw err;
+  }
+  return { raw: obligations, model, usage: usage as ChatResponse["usage"] };
 }
 
 /** Run the extraction. `precheck` lets the pipeline reject a first attempt on

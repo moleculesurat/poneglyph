@@ -17,7 +17,7 @@
 import type { AuditEvent } from "../lib/schema";
 import { bindEvidence, type EvidenceInput } from "./evidence";
 import { modelOf } from "./extract";
-import { handleDocumentText, handleDocumentUpload } from "./documents";
+import { handleDocumentRead, handleDocumentText, handleDocumentUpload } from "./documents";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { asString, error, gateAllowed, json, preflight, readJson } from "./http";
@@ -143,6 +143,14 @@ async function handleApi(
     if (!gateAllowed(request, env))
       return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
     return handleDocumentText(request, env, state, docTextMatch[1]);
+  }
+
+  const docReadMatch = path.match(/^\/api\/documents\/([A-Za-z0-9-]{1,32})\/read$/);
+  if (docReadMatch) {
+    if (method !== "POST") return error(request, 405, "POST only");
+    /* gate is checked INSIDE the handler, after the unknown-id 404, so an
+       unknown id is a 404 and a known id without the token is a 401 */
+    return handleDocumentRead(request, env, state, docReadMatch[1]);
   }
 
   if (path === "/api/audit") {
