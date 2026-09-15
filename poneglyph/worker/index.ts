@@ -17,7 +17,12 @@
 import type { AuditEvent } from "../lib/schema";
 import { bindEvidence, type EvidenceInput } from "./evidence";
 import { modelOf } from "./extract";
-import { handleDocumentRead, handleDocumentText, handleDocumentUpload } from "./documents";
+import {
+  handleDocumentDecision,
+  handleDocumentRead,
+  handleDocumentText,
+  handleDocumentUpload,
+} from "./documents";
 import { decide } from "./gate";
 import { chainTip, verifyChain } from "./hash";
 import { asString, error, gateAllowed, json, preflight, readJson } from "./http";
@@ -151,6 +156,13 @@ async function handleApi(
     /* gate is checked INSIDE the handler, after the unknown-id 404, so an
        unknown id is a 404 and a known id without the token is a 401 */
     return handleDocumentRead(request, env, state, docReadMatch[1]);
+  }
+
+  const docDecisionMatch = path.match(/^\/api\/documents\/([A-Za-z0-9-]{1,32})\/decision$/);
+  if (docDecisionMatch) {
+    if (method !== "POST") return error(request, 405, "POST only");
+    /* gate checked in the handler, after the 404, same as /read */
+    return handleDocumentDecision(request, env, state, docDecisionMatch[1]);
   }
 
   if (path === "/api/audit") {

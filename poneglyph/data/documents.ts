@@ -45,7 +45,9 @@ export const documentRequirements: DocumentRequirement[] = obligations.flatMap((
 );
 
 export const companyDocuments: CompanyDocument[] = evidence
-  .filter((a) => a.kind === "document")
+  /* vault-upload artefacts are the verify path's own binds — those documents are
+     already in register.documents, so module 2 merges, it does not double-count */
+  .filter((a) => a.kind === "document" && a.connector !== "vault-upload")
   .map((a) => {
     const req = documentRequirements.find((r) => r.unlocks.some((id) => a.obligationIds.includes(id)));
     return {

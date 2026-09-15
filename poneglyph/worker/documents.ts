@@ -12,6 +12,7 @@
 import type { CompanyDocument, DocumentRequirement, ExtractedField } from "../lib/schema";
 import { documentRequirements, requirementOf } from "../data/documents";
 import { appendEvent } from "./audit";
+import { bindEvidenceMany } from "./evidence";
 import { chatJson } from "./extract";
 import { chainTip, sha256HexBytes } from "./hash";
 import { asString, corsHeaders, error, gateAllowed, json, readJson } from "./http";
@@ -457,5 +458,166 @@ export async function handleDocumentRead(
     auditEvent: event,
     chainTip: chainTip(state.chain),
     usage: chosen.usage,
+  });
+}
+
+/* ── POST /api/documents/:id/decision (gated) ───────────────────────────
+   The officer's call on a document in the vault. verify accepts it and binds
+   ONE evidence artefact to every duty its asks unlock — the document becomes
+   the proof and each duty flips to met, under one document.verified + one
+   evidence.bound audit pair. reject turns it down and keeps the trail, binding
+   nothing. A decided document is final; a re-upload is a new document. */
+
+export async function handleDocumentDecision(
+  request: Request,
+  env: Env,
+  state: SessionState,
+  id: string,
+): Promise<Response> {
+  /* unknown id is a 404 before the gate, a known id without the token a 401 */
+  const doc = state.documents.find((d) => d.id === id);
+  if (!doc) {
+    return error(request, 404, `no document ${id} in this session`);
+  }
+  if (!gateAllowed(request, env)) {
+    return error(request, 401, "x-gate-token header missing or wrong; the gate signs nothing unauthenticated");
+  }
+
+  const body = await readJson(request);
+  if (!body) return error(request, 400, "expected a JSON object body");
+
+  const decision = asString(body.decision);
+  if (decision !== "verify" && decision !== "reject") {
+    return error(request, 400, 'decision must be "verify" or "reject"');
+  }
+  const officer = asString(body.officer);
+  if (!officer || officer.length > 120) {
+    return error(request, 400, "officer is required and must be 1–120 characters — an unsigned decision is not a decision");
+  }
+  const reason = asString(body.reason);
+
+  if (doc.decision) {
+    return error(
+      request,
+      409,
+      `${id} is already ${doc.decision.decision === "verify" ? "verified" : "rejected"} — a decided document is final; a new upload is a new document`,
+      { decision: doc.decision.decision },
+    );
+  }
+
+  /* requirementIds in the body replaces the document's asks — how a volunteered
+     document gets its asks at decision time. Each must exist. */
+  if (body.requirementIds !== undefined) {
+    const raw = body.requirementIds;
+    if (!Array.isArray(raw) || raw.some((x) => typeof x !== "string")) {
+      return error(request, 400, "requirementIds, if given, must be an array of ask ids");
+    }
+    for (const rid of raw as string[]) {
+      if (!requirementOf(rid)) {
+        return error(request, 400, `unknown requirement id ${rid} — not in the document requirements`);
+      }
+    }
+    doc.requirementIds = raw as string[];
+    if ((raw as string[]).length > 0) doc.requirementId = (raw as string[])[0];
+  }
+  const asks = doc.requirementIds ?? [];
+
+  if (decision === "reject") {
+    if (!reason) {
+      return error(request, 400, "reason is required to reject a document");
+    }
+    doc.status = "rejected";
+    doc.decision = { at: new Date().toISOString(), by: officer, decision: "reject", reason };
+    const event = await appendEvent(state, {
+      actor: `human:${officer}`,
+      action: "document.rejected",
+      subjectType: "document",
+      subjectId: id,
+      detail: `Document ${id} rejected by ${officer}: ${reason}.`,
+    });
+    await saveSession(env, state);
+    return json(request, { document: doc, auditEvents: [event], chainTip: chainTip(state.chain) });
+  }
+
+  /* verify */
+  if (asks.length === 0) {
+    return error(request, 400, "name at least one ask (requirementIds) to verify against");
+  }
+  const proposal = doc.proposal;
+  const satisfiesEvery =
+    !!proposal &&
+    asks.every((a) => proposal.verdicts.some((v) => v.requirementId === a && v.verdict === "satisfies"));
+  if (!reason && !satisfiesEvery) {
+    return error(
+      request,
+      400,
+      'reason is required to verify, unless the machine read returned "satisfies" for every ask',
+    );
+  }
+
+  /* the duties the asks unlock — register order, deduplicated */
+  const unlocked = new Set<string>();
+  for (const rid of asks) {
+    const req = requirementOf(rid);
+    if (req) for (const oid of req.unlocks) unlocked.add(oid);
+  }
+  const supportsObligations = state.register.filter((o) => unlocked.has(o.id)).map((o) => o.id);
+
+  doc.status = "verified";
+  const validFrom = asString(body.validFrom) ?? proposal?.validFrom?.iso;
+  const validUntil = asString(body.validUntil) ?? proposal?.validUntil?.iso;
+  if (validFrom) doc.validFrom = validFrom;
+  if (validUntil) doc.validUntil = validUntil;
+  doc.supportsObligations = supportsObligations;
+
+  /* document.verified is appended BEFORE evidence.bound and names the evidence
+     id, so the id is predicted here — exactly the next EV id bindEvidenceMany
+     will allocate (mirrors session.nextEvidenceId; appendEvent never touches the
+     evidence sequence, so the prediction holds) */
+  const evidenceId = `EV-${String(state.nextEvidenceSeq).padStart(3, "0")}`;
+  const verifiedEvent = await appendEvent(state, {
+    actor: `human:${officer}`,
+    action: "document.verified",
+    subjectType: "document",
+    subjectId: id,
+    detail: `Document ${id} verified by ${officer} against ${asks.join(", ")} (dut${
+      supportsObligations.length === 1 ? "y" : "ies"
+    } ${supportsObligations.join(", ")}); evidence ${evidenceId} bound.`,
+  });
+
+  const bound = await bindEvidenceMany(
+    state,
+    supportsObligations,
+    {
+      kind: "document",
+      title: doc.name,
+      description: reason ?? `machine read: satisfies every ask; verified by ${officer}`,
+      fileName: doc.fileName,
+      sha256: doc.hash,
+      connector: "vault-upload",
+    },
+    officer,
+  );
+  if ("notFound" in bound) {
+    /* unreachable: supportsObligations was filtered to register members */
+    return error(request, 500, `unlocked duty ${bound.notFound} is not on the register`);
+  }
+
+  doc.decision = {
+    at: verifiedEvent.at,
+    by: officer,
+    decision: "verify",
+    ...(reason ? { reason } : {}),
+    evidenceId: bound.evidence.id,
+  };
+
+  await saveSession(env, state);
+  const boundEvent = state.chain.find((e) => e.id === bound.auditEventId);
+  return json(request, {
+    document: doc,
+    evidence: bound.evidence,
+    obligations: bound.obligations.map((o) => ({ id: o.id, status: o.status })),
+    auditEvents: [verifiedEvent, boundEvent],
+    chainTip: chainTip(state.chain),
   });
 }

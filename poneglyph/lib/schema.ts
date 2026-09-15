@@ -406,6 +406,15 @@ export interface CompanyDocument {
     validFrom?: { iso: string; source: string };
     validUntil?: { iso: string; source: string };
   };
+  /** the officer's call on this document — verify (binds one evidence artefact
+      to every unlocked duty) or reject (kept for the trail). Once set, final. */
+  decision?: {
+    at: string;
+    by: string;
+    decision: "verify" | "reject";
+    reason?: string;
+    evidenceId?: string;
+  };
   /** reason, when status is `waived` */
   waivedReason?: string;
   notes?: string;
