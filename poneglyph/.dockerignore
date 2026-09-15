@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+dist
+.state
+.wrangler
+.dev.vars*
+.git
+*.tsbuildinfo

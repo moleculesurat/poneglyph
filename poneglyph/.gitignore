@@ -44,6 +44,10 @@ next-env.d.ts
 out/
 .wrangler/
 
+# node runtime (task 31a): worker bundle + local sqlite state
+dist/
+.state/
+
 # cloudflare worker local secrets
 .dev.vars
 .dev.vars.*
