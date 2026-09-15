@@ -838,6 +838,13 @@ function DocumentPanel({ doc }: { doc: CompanyDocument }) {
             {doc.kindId ? <span className="dim60"> · {doc.kindId} {kindById(doc.kindId)?.name}</span> : null}
             {doc.pages ? <span className="dim60"> · {doc.pages} pages</span> : null}
           </KV>
+          {doc.classification?.kindId ? (
+            <KV k="Kind">
+              {doc.classification.kindId} {kindById(doc.classification.kindId)?.name} · machine-classified — {doc.classification.reason}
+            </KV>
+          ) : doc.classification ? (
+            <KV k="Kind">no kind fits (machine) — {doc.classification.reason}</KV>
+          ) : null}
           <KV k="Content hash">
             <span className="hash">{doc.hash ? doc.hash.slice(0, 12) : "—"}</span>
           </KV>
