@@ -15,7 +15,7 @@
 
 import type { AuditEvent } from "../lib/schema";
 import { auditEvents } from "../data/audit";
-import { obligations as seededObligations } from "../data/obligations";
+import { allObligations as seededObligations } from "../data/obligations";
 import { rejected as seededRejected } from "../data/rejected";
 import { evidence as seededEvidence } from "../data/evidence";
 import { tasks as seededTasks } from "../data/tasks";

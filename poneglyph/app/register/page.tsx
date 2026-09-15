@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { PageHead, StatTile, Cta, Hairline } from "@/components/ui";
-import { obligations } from "@/data/obligations";
+import { obligations, parkedObligations } from "@/data/obligations";
 import { tenant } from "@/data/tenant";
 import { SEBI_DOMAINS } from "@/lib/domains";
 import type { ObligationStatus } from "@/lib/schema";
@@ -50,7 +50,7 @@ export default function RegisterPage() {
         <StatTile
           label="On register"
           value={obligations.length}
-          hint={`${countFor("MC-PM-2025")} PMS · ${countFor("MC-AIF-2026")} AIF`}
+          hint={`${countFor("MC-PM-2025")} MC 2025 · ${countFor("REG-PM-2020")} PM Regulations · AIF parked (${parkedObligations.length}), not available yet`}
         />
         <StatTile
           label="Met with evidence"
@@ -61,7 +61,7 @@ export default function RegisterPage() {
           label="Open gaps"
           value={counts.gap ?? 0}
           accent
-          hint={`${gaps.filter((o) => o.clause.circularId === "MC-PM-2025").length} PMS · ${gaps.filter((o) => o.clause.circularId === "MC-AIF-2026").length} AIF`}
+          hint={`${gaps.filter((o) => o.clause.circularId === "MC-PM-2025").length} MC 2025 · ${gaps.filter((o) => o.clause.circularId === "REG-PM-2020").length} PM Regulations`}
         />
         <StatTile
           label="Pending review"

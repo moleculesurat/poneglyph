@@ -18,7 +18,7 @@ const counts = obligations.reduce(
 
 const total = obligations.length;
 const baseCount = obligations.filter((o) => o.clause.circularId === "MC-PM-2025").length;
-const deltaCount = total - baseCount;
+const regCount = obligations.filter((o) => o.clause.circularId === "REG-PM-2020").length;
 const approvedCount = obligations.filter((o) => o.approvedBy).length;
 const evidencedCount = obligations.filter((o) => o.evidenceIds.length > 0).length;
 
@@ -37,7 +37,7 @@ const WALK_BACK = [
       "Each of the " +
       total +
       " register entries carries a verbatim clause excerpt with character offsets into the circular text. Open any row, open the cited paragraph, and confirm the obligation says what the regulation says — no paraphrase stands between them.",
-    foot: `${total} entries · clause-grounded · ${baseCount} PMS rulebook · ${deltaCount} AIF rulebook`,
+    foot: `${total} entries · clause-grounded · ${baseCount} MC 2025 · ${regCount} PM Regulations · AIF parked, not available yet`,
   },
   {
     step: "02",
@@ -123,7 +123,7 @@ export default function InspectorPage() {
           <StatTile
             label="Obligations in scope"
             value={total}
-            hint={`${baseCount} from PMS rulebook · ${deltaCount} from AIF rulebook`}
+            hint={`${baseCount} MC 2025 · ${regCount} PM Regulations · AIF parked, not available yet`}
           />
           <StatTile
             label="Met with bound evidence"

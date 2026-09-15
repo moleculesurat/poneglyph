@@ -55,7 +55,7 @@ export default function DocumentsPage() {
             material the engine learns the firm <i>from</i> — {documentRequirements.length}{" "}
             requirements, each naming the profile fact that produced the ask and the clause behind
             it, each parsed into the extractions that populate the entity profile and unlock
-            obligations. <b>Orange marks a requirement with nothing supplied against it.</b>
+            obligations. AIF parked — those asks are not available yet. <b>Orange marks a requirement with nothing supplied against it.</b>
           </>
         }
         right={<AddDocumentCta />}
