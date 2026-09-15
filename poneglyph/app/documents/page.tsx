@@ -25,7 +25,6 @@ import {
   REVIEW_THRESHOLD,
   STATUS_COUNTS,
   STATUS_HINT,
-  VOLUNTEERED,
   WAIVED_REQS,
   docFor,
 } from "./shared";
@@ -344,9 +343,8 @@ export default function DocumentsPage() {
                 No document reaches the register without passing that gate.
               </p>
               <p className="small dim60" style={{ lineHeight: 1.6 }}>
-                {VOLUNTEERED.length === 0
-                  ? "Nothing volunteered yet — every document in this vault arrived against an ask."
-                  : `${VOLUNTEERED.length} volunteered so far.`}
+                Volunteered documents appear, live, in the Volunteered section of the requirement
+                matrix below — this button opens the same supply form there.
               </p>
             </div>
             <VolunteerCta />

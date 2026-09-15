@@ -46,7 +46,7 @@ out/
 
 # node runtime (task 31a): worker bundle + local sqlite state
 dist/
-.state/
+.state*/
 
 # cloudflare worker local secrets
 .dev.vars

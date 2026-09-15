@@ -13,13 +13,23 @@
    ?req= expands that requirement and scrolls to it.
    ══════════════════════════════════════════════════════════════════════ */
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Chip, Cta, Hairline, KV, MarkedCard } from "@/components/ui";
 import { usePersona } from "@/components/persona";
+import { Signer } from "@/components/Signer";
+import {
+  apiCall,
+  decideDocument,
+  readDocument,
+  uploadDocument,
+  type DecideBody,
+  type StateResponse,
+} from "@/app/live/api";
 import { documentRequirements } from "@/data/documents";
+import { tenant } from "@/data/tenant";
 import { partLabel } from "@/lib/domains";
 import type {
   CompanyDocument,
@@ -42,6 +52,7 @@ import {
   STATUS_HINT,
   STATUS_LABEL,
   STATUS_TONE,
+  VOLUNTEERED,
   docFor,
   fmtStamp,
   hasLapsed,
@@ -49,6 +60,42 @@ import {
   statusOf,
   validityNote,
 } from "./shared";
+
+/* ── the vault write bus ──────────────────────────────────────────────
+   Supply forms and decision buttons live in several client islands, but the
+   live document list lives only in DocumentExplorer. Rather than thread a
+   refresh callback through every one, a mutation announces itself and the
+   explorer re-pulls /api/state. `volunteer` opens the one volunteer form. */
+const VAULT_CHANGED = "vault:changed";
+const VAULT_VOLUNTEER = "vault:volunteer";
+
+function signalVaultChanged() {
+  try {
+    window.dispatchEvent(new Event(VAULT_CHANGED));
+  } catch {
+    /* no window (SSR) — nothing is mounted to hear it anyway */
+  }
+}
+
+const inputStyle: CSSProperties = {
+  border: "1.5px solid var(--ink-10)",
+  background: "var(--white)",
+  padding: "9px 11px",
+  color: "var(--ink)",
+};
+
+/** newest first — real uploads carry an ISO uploadedAt; ties break on id */
+function byNewest(a: CompanyDocument, b: CompanyDocument): number {
+  return (b.uploadedAt ?? "").localeCompare(a.uploadedAt ?? "") || b.id.localeCompare(a.id);
+}
+
+/** the ask's live status: the newest live document's, with rejected reading as
+    a still-open `required` (a turned-down document does not satisfy the ask) */
+function askStatusOf(docs: CompanyDocument[] | undefined, fallback: DocumentStatus): DocumentStatus {
+  if (!docs || docs.length === 0) return fallback;
+  const s = docs[0].status;
+  return s === "rejected" ? "required" : s;
+}
 
 /* ── URL param validation ─────────────────────────────────────────────── */
 
@@ -363,6 +410,471 @@ function SuppliedDocument({ d }: { d: CompanyDocument }) {
   );
 }
 
+/* ── ask picker: chosen asks as chips, a substring filter over the rest ── */
+
+function AskPicker({ value, onChange }: { value: string[]; onChange: (ids: string[]) => void }) {
+  const [q, setQ] = useState("");
+  const matches = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    if (!needle) return [];
+    return documentRequirements
+      .filter((r) => !value.includes(r.id))
+      .filter((r) => r.id.toLowerCase().includes(needle) || r.name.toLowerCase().includes(needle))
+      .slice(0, 8);
+  }, [q, value]);
+
+  return (
+    <div className="stack" style={{ gap: 8 }}>
+      {value.length ? (
+        <div className="row wrap" style={{ gap: 6 }}>
+          {value.map((id) => (
+            <button
+              key={id}
+              type="button"
+              className="chip"
+              data-tone="live"
+              onClick={() => onChange(value.filter((x) => x !== id))}
+              style={{ cursor: "pointer" }}
+              title={documentRequirements.find((r) => r.id === id)?.name ?? id}
+            >
+              {id} ✕
+            </button>
+          ))}
+        </div>
+      ) : null}
+      <input
+        style={inputStyle}
+        className="mono-value"
+        placeholder="add an ask — id or name"
+        value={q}
+        onChange={(e) => setQ(e.target.value)}
+      />
+      {matches.length ? (
+        <div className="stack" style={{ gap: 3 }}>
+          {matches.map((r) => (
+            <button
+              key={r.id}
+              type="button"
+              className="small"
+              onClick={() => {
+                onChange([...value, r.id]);
+                setQ("");
+              }}
+              style={{
+                textAlign: "left",
+                cursor: "pointer",
+                padding: "5px 9px",
+                border: "1px solid var(--ink-10)",
+                background: "var(--paper)",
+              }}
+            >
+              <span className="mono-value" style={{ fontSize: 10.5 }}>
+                {r.id}
+              </span>{" "}
+              · {r.name}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/* ── supply a document: one PDF, its asks, a signer ───────────────────── */
+
+function SupplyForm({ reqIds, onSupplied }: { reqIds: string[]; onSupplied?: () => void }) {
+  const { persona } = usePersona();
+  const [file, setFile] = useState<File | null>(null);
+  const [name, setName] = useState("");
+  const [notes, setNotes] = useState("");
+  const [asks, setAsks] = useState<string[]>(reqIds);
+  const [signer, setSigner] = useState(tenant.team[0].name);
+  const [token, setToken] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const [ok, setOk] = useState<string | null>(null);
+
+  if (persona === "inspector") {
+    return (
+      <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+        supply reserved for the intermediary
+      </span>
+    );
+  }
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!file) {
+      setErr("choose a PDF to supply");
+      return;
+    }
+    setBusy(true);
+    setErr(null);
+    setOk(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("officer", signer);
+      fd.append("name", name.trim() || file.name);
+      if (notes.trim()) fd.append("notes", notes.trim());
+      fd.append("requirementIds", asks.join(",")); // the Worker splits on commas
+      const r = await uploadDocument(fd, token);
+      setOk(`${r.document.id} received`);
+      signalVaultChanged();
+      onSupplied?.();
+    } catch (e2) {
+      setErr((e2 as Error).message); // the Worker's own words (409 duplicate included)
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <form className="stack" style={{ gap: 10 }} onSubmit={submit}>
+      <input
+        type="file"
+        accept="application/pdf"
+        onChange={(e) => {
+          const f = e.target.files?.[0] ?? null;
+          setFile(f);
+          if (f && !name.trim()) setName(f.name);
+        }}
+      />
+      <input
+        style={inputStyle}
+        className="mono-value"
+        placeholder="document name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        style={inputStyle}
+        className="small"
+        placeholder="notes (optional)"
+        value={notes}
+        onChange={(e) => setNotes(e.target.value)}
+      />
+      <div className="stack" style={{ gap: 4 }}>
+        <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+          asks this answers{asks.length ? "" : " — none, volunteered"}
+        </span>
+        <AskPicker value={asks} onChange={setAsks} />
+      </div>
+      <Signer signer={signer} onSigner={setSigner} token={token} onToken={setToken} />
+      <div className="row wrap" style={{ gap: 10, alignItems: "center" }}>
+        <button
+          type="submit"
+          className="mono-value"
+          style={{ ...inputStyle, cursor: "pointer", color: "var(--orange-deep)" }}
+          disabled={busy || !file}
+        >
+          {busy ? "supplying…" : "Supply document"}
+        </button>
+        {ok ? (
+          <span className="mono-value" style={{ color: "var(--orange-deep)" }}>
+            {ok}
+          </span>
+        ) : null}
+      </div>
+      {err ? (
+        <span className="small" style={{ color: "var(--orange-deep)" }}>
+          {err}
+        </span>
+      ) : null}
+    </form>
+  );
+}
+
+/* ── the machine read, shown per ask ──────────────────────────────────── */
+
+function VerdictLines({ doc }: { doc: CompanyDocument }) {
+  const p = doc.proposal;
+  if (!p) return null;
+  return (
+    <div className="stack" style={{ gap: 10 }}>
+      <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+        machine read · {p.model}
+      </span>
+      {p.verdicts.length === 0 ? (
+        <span className="small dim60">
+          No asks to judge — the fields below are what the engine read.
+        </span>
+      ) : (
+        p.verdicts.map((v) => (
+          <div key={v.requirementId} className="stack" style={{ gap: 5 }}>
+            <div className="row wrap" style={{ gap: 8, alignItems: "baseline" }}>
+              <span className="mono-value" style={{ fontSize: 11 }}>
+                {v.requirementId}
+              </span>
+              <Chip tone={v.verdict === "satisfies" ? "met" : v.verdict === "partial" ? "at-risk" : "gap"}>
+                {v.verdict}
+              </Chip>
+              <span className="small" style={{ lineHeight: 1.5 }}>
+                {v.reason}
+              </span>
+            </div>
+            {v.quotes.map((q, i) => (
+              <span
+                key={i}
+                className="mono-value dim60"
+                style={{ fontSize: 10.5, lineHeight: 1.5, paddingLeft: 12, borderLeft: "2px solid var(--ink-10)" }}
+              >
+                “{q}”
+              </span>
+            ))}
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+function DecisionMeta({ doc }: { doc: CompanyDocument }) {
+  const d = doc.decision;
+  if (!d) return null;
+  return (
+    <div className="stack" style={{ gap: 6 }}>
+      <KV k="Decision">
+        <span className="mono-value">{d.decision === "verify" ? "verified" : "rejected"}</span> by {d.by} ·{" "}
+        {fmtStamp(d.at)}
+      </KV>
+      {d.reason ? (
+        <KV k="Reason">
+          <span className="small">{d.reason}</span>
+        </KV>
+      ) : null}
+      {d.evidenceId ? (
+        <KV k="Evidence">
+          <span className="mono-value">{d.evidenceId}</span>
+        </KV>
+      ) : null}
+    </div>
+  );
+}
+
+/* received → read, then verify or reject. Every success announces itself so
+   the explorer re-pulls; the Worker's own error text shows verbatim. */
+function ReceivedActions({ doc }: { doc: CompanyDocument }) {
+  const [signer, setSigner] = useState(tenant.team[0].name);
+  const [token, setToken] = useState("");
+  const [reading, setReading] = useState(false);
+  const [verifyReason, setVerifyReason] = useState("");
+  const [rejectReason, setRejectReason] = useState("");
+  const [pickAsks, setPickAsks] = useState<string[]>([]);
+  const [busy, setBusy] = useState<"" | "verify" | "reject">("");
+  const [msg, setMsg] = useState<string | null>(null);
+
+  const asks = doc.requirementIds ?? (doc.requirementId ? [doc.requirementId] : []);
+  const hasAsks = asks.length > 0;
+  const satisfiesEvery =
+    !!doc.proposal &&
+    hasAsks &&
+    asks.every((a) => doc.proposal!.verdicts.some((v) => v.requirementId === a && v.verdict === "satisfies"));
+  const canVerify =
+    busy === "" && (satisfiesEvery || verifyReason.trim().length > 0) && (hasAsks || pickAsks.length > 0);
+
+  const read = async () => {
+    setReading(true);
+    setMsg(null);
+    try {
+      await readDocument(doc.id, signer, token);
+      signalVaultChanged();
+    } catch (e) {
+      setMsg((e as Error).message);
+    } finally {
+      setReading(false);
+    }
+  };
+
+  const decide = async (e: React.FormEvent, which: "verify" | "reject") => {
+    e.preventDefault();
+    setBusy(which);
+    setMsg(null);
+    try {
+      const body: DecideBody =
+        which === "reject"
+          ? { decision: "reject", officer: signer, reason: rejectReason.trim() }
+          : {
+              decision: "verify",
+              officer: signer,
+              ...(verifyReason.trim() ? { reason: verifyReason.trim() } : {}),
+              ...(hasAsks ? {} : { requirementIds: pickAsks }),
+            };
+      await decideDocument(doc.id, body, token);
+      signalVaultChanged();
+    } catch (e2) {
+      setMsg((e2 as Error).message);
+    } finally {
+      setBusy("");
+    }
+  };
+
+  return (
+    <div className="stack" style={{ gap: 14 }}>
+      {!doc.proposal ? (
+        <div className="row wrap" style={{ gap: 10, alignItems: "center" }}>
+          <button
+            type="button"
+            onClick={read}
+            disabled={reading}
+            className="mono-value"
+            style={{ ...inputStyle, cursor: "pointer", color: "var(--orange-deep)" }}
+          >
+            {reading ? "reading…" : "Read with the model"}
+          </button>
+          {reading ? (
+            <span className="small dim60">reading… the model can take up to four minutes</span>
+          ) : null}
+        </div>
+      ) : null}
+
+      <Signer signer={signer} onSigner={setSigner} token={token} onToken={setToken} />
+
+      <div className="grid cols-2" style={{ gap: 14, alignItems: "start" }}>
+        <form className="stack" style={{ gap: 8 }} onSubmit={(e) => decide(e, "verify")}>
+          <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+            verify — binds one evidence artefact to every unlocked duty
+          </span>
+          {!hasAsks ? (
+            <div className="stack" style={{ gap: 4 }}>
+              <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+                name the asks to verify against
+              </span>
+              <AskPicker value={pickAsks} onChange={setPickAsks} />
+            </div>
+          ) : null}
+          <textarea
+            style={inputStyle}
+            className="small"
+            rows={2}
+            placeholder={satisfiesEvery ? "reason (optional — the read satisfies every ask)" : "reason (required)"}
+            value={verifyReason}
+            onChange={(e) => setVerifyReason(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="mono-value"
+            style={{ ...inputStyle, cursor: "pointer", color: "var(--orange-deep)" }}
+            disabled={!canVerify}
+          >
+            {busy === "verify" ? "verifying…" : "Verify"}
+          </button>
+        </form>
+
+        <form className="stack" style={{ gap: 8 }} onSubmit={(e) => decide(e, "reject")}>
+          <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+            reject — turned down, kept for the trail
+          </span>
+          <textarea
+            style={inputStyle}
+            className="small"
+            rows={2}
+            placeholder="reason (required)"
+            value={rejectReason}
+            onChange={(e) => setRejectReason(e.target.value)}
+            required
+          />
+          <button
+            type="submit"
+            className="mono-value"
+            style={{ ...inputStyle, cursor: "pointer", color: "var(--orange-deep)" }}
+            disabled={busy !== "" || !rejectReason.trim()}
+          >
+            {busy === "reject" ? "rejecting…" : "Reject"}
+          </button>
+        </form>
+      </div>
+      {msg ? (
+        <span className="small" style={{ color: "var(--orange-deep)" }}>
+          {msg}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+/* one live vault document — the full lifecycle: received (read + decide),
+   verified (the binding), rejected (the trail). Seeded/evidence documents keep
+   the static SuppliedDocument view; only real uploads land here. */
+function DocumentPanel({ doc }: { doc: CompanyDocument }) {
+  const { persona } = usePersona();
+  const border =
+    doc.status === "verified"
+      ? "var(--ink-10)"
+      : doc.status === "rejected"
+        ? "var(--orange)"
+        : "var(--ink-20)";
+  return (
+    <div className="panel" style={{ padding: "16px 18px", borderLeft: `3px solid ${border}` }}>
+      <div className="stack" style={{ gap: 12 }}>
+        <div className="row between wrap" style={{ gap: 10 }}>
+          <div className="row wrap" style={{ gap: 8, alignItems: "baseline" }}>
+            <span className="mono-value">{doc.id}</span>
+            <DocStatusChip status={doc.status} />
+            <span className="small" style={{ fontWeight: 500 }}>
+              {doc.name}
+            </span>
+          </div>
+          <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+            {doc.uploadedBy ? `by ${doc.uploadedBy}` : ""}
+            {doc.uploadedAt ? ` · ${fmtStamp(doc.uploadedAt)}` : ""}
+          </span>
+        </div>
+
+        <div className="grid cols-2" style={{ gap: 12, alignItems: "start" }}>
+          <KV k="File">
+            <span className="mono-value" style={{ wordBreak: "break-all" }}>
+              {doc.fileName ?? "—"}
+            </span>
+            {doc.pages ? <span className="dim60"> · {doc.pages} pages</span> : null}
+          </KV>
+          <KV k="Content hash">
+            <span className="hash">{doc.hash ? doc.hash.slice(0, 12) : "—"}</span>
+          </KV>
+        </div>
+        {doc.notes ? (
+          <p className="small dim60" style={{ lineHeight: 1.6 }}>
+            {doc.notes}
+          </p>
+        ) : null}
+
+        {doc.proposal ? (
+          <>
+            <Hairline dashed />
+            <VerdictLines doc={doc} />
+          </>
+        ) : null}
+        {doc.extracted.length ? <Extractions d={doc} /> : null}
+
+        {doc.decision?.decision === "verify" ? (
+          <>
+            <Hairline dashed />
+            <div className="stack" style={{ gap: 8 }}>
+              <DecisionMeta doc={doc} />
+              <div className="row wrap" style={{ gap: 10, alignItems: "baseline" }}>
+                <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+                  duties now met
+                </span>
+                <ObligationLinks ids={doc.supportsObligations} />
+              </div>
+            </div>
+          </>
+        ) : doc.decision?.decision === "reject" ? (
+          <>
+            <Hairline dashed />
+            <DecisionMeta doc={doc} />
+          </>
+        ) : doc.status === "received" && persona !== "inspector" ? (
+          <>
+            <Hairline dashed />
+            <ReceivedActions doc={doc} />
+          </>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 /* ── the empty state that matters: an ask with nothing against it ─────── */
 
 function OpenAskDetail({ r }: { r: DocumentRequirement }) {
@@ -411,13 +923,16 @@ function RequirementCard({
   r,
   open,
   onToggle,
+  status,
+  liveDocs,
 }: {
   r: DocumentRequirement;
   open: boolean;
   onToggle: () => void;
+  status: DocumentStatus;
+  liveDocs: CompanyDocument[] | null;
 }) {
   const d = docFor(r.id);
-  const status = statusOf(r);
   const attention = status === "required" || status === "expired";
 
   return (
@@ -496,7 +1011,25 @@ function RequirementCard({
       {open ? (
         <div className="stack" style={{ gap: 16, marginTop: 18 }}>
           <Hairline />
-          {d ? <SuppliedDocument d={d} /> : <OpenAskDetail r={r} />}
+          {liveDocs && liveDocs.length > 0 ? (
+            <div className="stack" style={{ gap: 14 }}>
+              {liveDocs.map((ld) => (
+                <DocumentPanel key={ld.id} doc={ld} />
+              ))}
+              {status === "required" || status === "expired" ? (
+                <div className="stack" style={{ gap: 8 }}>
+                  <span className="mono-label dim" style={{ fontSize: 9.5 }}>
+                    supply a fresh document
+                  </span>
+                  <SupplyForm reqIds={[r.id]} />
+                </div>
+              ) : null}
+            </div>
+          ) : d ? (
+            <SuppliedDocument d={d} />
+          ) : (
+            <OpenAskDetail r={r} />
+          )}
         </div>
       ) : null}
     </article>
@@ -509,6 +1042,7 @@ export function DocumentExplorer() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const { persona } = usePersona();
 
   const [part, setPart] = useState<SebiPart | "all">(() => {
     const v = searchParams.get("part");
@@ -526,6 +1060,71 @@ export function DocumentExplorer() {
     const v = searchParams.get("req");
     return isReqId(v) ? v : null;
   });
+
+  /* live overlay: the matrix first paints from static data (SSR and hydration
+     must agree), then we pull the real document store and let it supersede. Any
+     write in the vault announces itself on VAULT_CHANGED so we re-pull;
+     VAULT_VOLUNTEER opens the one volunteer form. On failure we keep static. */
+  const [documents, setDocuments] = useState<CompanyDocument[] | null>(null);
+  const [liveError, setLiveError] = useState(false);
+  const [showVolunteer, setShowVolunteer] = useState(false);
+  const volunteerRef = useRef<HTMLDivElement>(null);
+
+  const refresh = useCallback(() => {
+    apiCall<StateResponse>("/api/state")
+      .then((s) => {
+        setDocuments(s.documents);
+        setLiveError(false);
+      })
+      .catch(() => {
+        setDocuments(null);
+        setLiveError(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    refresh();
+    const onChanged = () => refresh();
+    const onVolunteer = () => {
+      setShowVolunteer(true);
+      requestAnimationFrame(() =>
+        volunteerRef.current?.scrollIntoView({ block: "center", behavior: "smooth" }),
+      );
+    };
+    window.addEventListener(VAULT_CHANGED, onChanged);
+    window.addEventListener(VAULT_VOLUNTEER, onVolunteer);
+    return () => {
+      window.removeEventListener(VAULT_CHANGED, onChanged);
+      window.removeEventListener(VAULT_VOLUNTEER, onVolunteer);
+    };
+  }, [refresh]);
+
+  const liveDocsByReq = useMemo(() => {
+    const m = new Map<string, CompanyDocument[]>();
+    for (const doc of documents ?? []) {
+      const ids = doc.requirementIds ?? (doc.requirementId ? [doc.requirementId] : []);
+      for (const id of ids) {
+        const arr = m.get(id);
+        if (arr) arr.push(doc);
+        else m.set(id, [doc]);
+      }
+    }
+    for (const arr of m.values()) arr.sort(byNewest);
+    return m;
+  }, [documents]);
+
+  const displayedStatus = useCallback(
+    (r: DocumentRequirement): DocumentStatus => askStatusOf(liveDocsByReq.get(r.id), statusOf(r)),
+    [liveDocsByReq],
+  );
+
+  const liveVolunteered = useMemo(
+    () =>
+      (documents ?? [])
+        .filter((d) => !(d.requirementIds && d.requirementIds.length) && !d.requirementId)
+        .sort(byNewest),
+    [documents],
+  );
 
   /* deep-link landing: scroll the ?req= card into view once, post-hydration */
   useEffect(() => {
@@ -558,9 +1157,9 @@ export function DocumentExplorer() {
         (r) =>
           (part === "all" || r.part === part) &&
           (category === "all" || r.category === category) &&
-          (status === "all" || statusOf(r) === status)
+          (status === "all" || displayedStatus(r) === status)
       ),
-    [part, category, status]
+    [part, category, status, displayedStatus]
   );
 
   const filtersActive = part !== "all" || category !== "all" || status !== "all";
@@ -621,6 +1220,41 @@ export function DocumentExplorer() {
         </div>
       </MarkedCard>
 
+      {liveError ? (
+        <div className="mono-label dim" style={{ marginBottom: 8, fontSize: 9.5 }}>
+          live state unavailable — showing the last pulled vault
+        </div>
+      ) : null}
+
+      <div ref={volunteerRef} className="stack" style={{ gap: 12, marginBottom: 18 }}>
+        <div className="row between wrap" style={{ gap: 10 }}>
+          <span className="eyebrow">
+            Volunteered — {liveVolunteered.length + VOLUNTEERED.length} outside the ask matrix
+          </span>
+          {persona !== "inspector" ? (
+            <button
+              type="button"
+              className="mono-label"
+              onClick={() => setShowVolunteer((v) => !v)}
+              style={{ color: "var(--orange-deep)", cursor: "pointer" }}
+            >
+              {showVolunteer ? "close ✕" : "Volunteer a document +"}
+            </button>
+          ) : null}
+        </div>
+        {showVolunteer ? (
+          <MarkedCard pad={16}>
+            <SupplyForm reqIds={[]} />
+          </MarkedCard>
+        ) : null}
+        {liveVolunteered.map((d) => (
+          <DocumentPanel key={d.id} doc={d} />
+        ))}
+        {VOLUNTEERED.map((d) => (
+          <SuppliedDocument key={d.id} d={d} />
+        ))}
+      </div>
+
       <div className="row between wrap" style={{ marginBottom: 12, gap: 10 }}>
         <span className="mono-label dim">
           showing {rows.length} of {documentRequirements.length} requirements
@@ -664,6 +1298,8 @@ export function DocumentExplorer() {
               r={r}
               open={expandedId === r.id}
               onToggle={() => setExpandedId(expandedId === r.id ? null : r.id)}
+              status={displayedStatus(r)}
+              liveDocs={liveDocsByReq.get(r.id) ?? null}
             />
           ))
         )}
@@ -673,15 +1309,17 @@ export function DocumentExplorer() {
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   Persona-gated actions. Everything here is disabled until built — the
-   inspector never sees a control that could change the firm's record.
+   Persona-gated actions. Supply and volunteer open the real form (a write
+   goes only through the gated API); the waiver and extraction-review controls
+   are still stubs, each labelled as not yet built. The inspector never sees a
+   control that could change the firm's record.
    ══════════════════════════════════════════════════════════════════════ */
 
 export function AddDocumentCta() {
   const { persona } = usePersona();
   if (persona === "inspector") return null;
   return (
-    <Cta variant="ghost" toastMsg="Volunteering a document — not available yet">
+    <Cta variant="ghost" onClick={() => window.dispatchEvent(new Event(VAULT_VOLUNTEER))}>
       Volunteer a document
     </Cta>
   );
@@ -689,6 +1327,7 @@ export function AddDocumentCta() {
 
 export function UploadAskCta({ reqId }: { reqId: string }) {
   const { persona } = usePersona();
+  const [open, setOpen] = useState(false);
   if (persona === "inspector") {
     return (
       <span className="mono-label dim" style={{ fontSize: 9.5 }}>
@@ -697,13 +1336,20 @@ export function UploadAskCta({ reqId }: { reqId: string }) {
     );
   }
   return (
-    <div className="row wrap" style={{ gap: 12 }}>
-      <Cta variant="orange" toastMsg={`Upload — not available yet (${reqId}); attach the proof from the register row`}>
-        Supply this document
-      </Cta>
-      <Cta variant="ghost" toastMsg={`Waiver — not available yet (${reqId})`}>
-        Claim a waiver
-      </Cta>
+    <div className="stack" style={{ gap: 10 }}>
+      <div className="row wrap" style={{ gap: 12 }}>
+        <Cta variant="orange" onClick={() => setOpen((v) => !v)}>
+          Supply this document
+        </Cta>
+        <Cta variant="ghost" toastMsg={`Waiver — not available yet (${reqId})`}>
+          Claim a waiver
+        </Cta>
+      </div>
+      {open ? (
+        <MarkedCard pad={16}>
+          <SupplyForm reqIds={[reqId]} onSupplied={() => setOpen(false)} />
+        </MarkedCard>
+      ) : null}
     </div>
   );
 }
@@ -728,7 +1374,7 @@ export function VolunteerCta() {
     );
   }
   return (
-    <Cta toastMsg="Volunteering a document — not available yet">
+    <Cta onClick={() => window.dispatchEvent(new Event(VAULT_VOLUNTEER))}>
       Submit an unrequested document
     </Cta>
   );

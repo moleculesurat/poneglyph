@@ -14,5 +14,8 @@ export const tenant: Tenant = {
   team: [
     { name: "Compliance Officer", role: "Compliance Officer", initials: "CO" },
     { name: "Principal Officer", role: "Principal Officer", initials: "PO" },
+    // appended, not prepended: Signer defaults to team[0], so the register's
+    // default signer stays the Compliance Officer
+    { name: "Operations", role: "Operations", initials: "OP" },
   ],
 };

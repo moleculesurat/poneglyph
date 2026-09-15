@@ -5,12 +5,12 @@
    the firm keeps its own document. The gate token is shared with the console's
    GateCard through sessionStorage; apiCall reads it from there. */
 
-import { useEffect, useState } from "react";
-import { apiCall, EvidenceResponse, GATE_TOKEN_KEY } from "@/app/live/api";
+import { useState } from "react";
+import { apiCall, EvidenceResponse } from "@/app/live/api";
+import { Signer } from "@/components/Signer";
 import { tenant } from "@/data/tenant";
 import type { EvidenceKind } from "@/lib/schema";
 
-const OFFICER = tenant.team[0].name;
 const KINDS: EvidenceKind[] = ["document", "data-check", "live-scan"];
 
 const field: React.CSSProperties = {
@@ -30,18 +30,11 @@ export function AttachEvidence({ obligationId, onBound }: { obligationId: string
   const [kind, setKind] = useState<EvidenceKind>("document");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState<{ name: string; hex: string } | null>(null);
+  const [signer, setSigner] = useState(tenant.team[0].name);
   const [token, setToken] = useState("");
   const [busy, setBusy] = useState(false);
   const [ok, setOk] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      setToken(sessionStorage.getItem(GATE_TOKEN_KEY) ?? "");
-    } catch {
-      /* sessionStorage unavailable — leave the field empty */
-    }
-  }, []);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,7 +44,7 @@ export function AttachEvidence({ obligationId, onBound }: { obligationId: string
     try {
       const r = await apiCall<EvidenceResponse>(`/api/obligations/${obligationId}/evidence`, {
         method: "POST",
-        body: { kind, title, description, fileName: file?.name, sha256: file?.hex, officer: OFFICER },
+        body: { kind, title, description, fileName: file?.name, sha256: file?.hex, officer: signer },
       });
       setOk(`${r.evidence.id} bound · chain ${r.chainTip.slice(0, 12)}`);
       onBound();
@@ -85,20 +78,11 @@ export function AttachEvidence({ obligationId, onBound }: { obligationId: string
         </span>
       </div>
       <div className="row wrap" style={{ gap: 10, alignItems: "center" }}>
-        <input type="password" style={field} className="mono-value" placeholder="gate token" value={token}
-          onChange={(e) => {
-            setToken(e.target.value);
-            try {
-              sessionStorage.setItem(GATE_TOKEN_KEY, e.target.value);
-            } catch {
-              /* sessionStorage unavailable — the header just won't be sent */
-            }
-          }} />
+        <Signer signer={signer} onSigner={setSigner} token={token} onToken={setToken} />
         <button type="submit" className="mono-value" style={{ ...field, cursor: "pointer", color: "var(--orange-deep)" }}
           disabled={busy || !title.trim()}>
           {busy ? "binding…" : "Bind evidence"}
         </button>
-        <span className="mono-label dim" style={{ fontSize: 9.5 }}>signs as {OFFICER}</span>
       </div>
       {ok ? <span className="mono-value" style={{ color: "var(--orange-deep)" }}>{ok}</span> : null}
       {err ? <span className="small" style={{ color: "var(--orange-deep)" }}>{err}</span> : null}
