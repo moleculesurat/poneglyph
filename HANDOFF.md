@@ -1,6 +1,6 @@
 # HANDOFF — Molecule compliance pipeline (read this first after /clear)
 
-Updated 2026-09-14 (end of session 3; the plan is ROADMAP.md, one version; review sheets REVIEW-*.md). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
+Updated 2026-09-15 (session 4; the plan is ROADMAP.md, one version; review sheets REVIEW-*.md). Repo /Users/pranjal/Code/poneglyph (app in poneglyph/), branch `molecule`,
 origin = github.com/moleculesurat/poneglyph. ROADMAP.md has the plan + status board; REVIEW-2026-09-10.md the draft review.
 
 ## Roles (do not drift)
@@ -49,7 +49,10 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
 ## Open on PRANJAL's side (as of 2026-09-14)
 - Officer names + appointment dates (CO, PO, the 7(2)(e) person); performance fees y/n; superseded 'absolute and final'
   clause y/n; books-location intimation y/n; last 3-yearly registration fee date (OBL-368); sqlite+EFS vs Postgres (1e-ii).
-- Task 31a report pending (Node runtime). Approve OBL-401 + pull if not done (expect 287 approved).
+- Approve OBL-401 + pull if not done (expect 287 approved). Kill the leftover `node server.mjs` on :8788 (PID 68004,
+  the worker's 31a test instance) and Pranjal's wrangler dev on :8787 — `npm run serve` (port 8787 by default) replaces it.
+- Create the Secrets Manager secret `compliance-secrets` before 31b's plan (the task prompt says how).
+- Task 31b ISSUED 2026-09-15 (verbatim prompt at the bottom of this file, so a lost paste can be re-sent).
 
 ### Older items (kept for history; all resolved)
 1. Browser test of Task 17: open localhost:8787/register/, expand an approved row, attach a real file (hash only is
@@ -95,7 +98,16 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   + APMI circular PDFs (131 on the home page, diffed by link). `npm run watch:selftest` runs the parsers on fixtures.
   Hardening note: worker/__fixtures__/apmi.html is 1.5 MB; trim to the circulars block when convenient.
 - Task 30 (1e-i) ACCEPTED 2026-09-12: INFRA-2026-09.md committed in the INFRA repo (58611bd on master), not here. Port
-  sized in ROADMAP 1e-ii. Task 31a ISSUED: Node server adapter + node:sqlite store + Dockerfile; local live watch poll.
+  sized in ROADMAP 1e-ii. Infra repo on disk: /Users/pranjal/Code/Molecule/molecule_infra (Terraform, S3 backend, admin profile).
+- Task 31a ACCEPTED 2026-09-15 (f1d8889): server.mjs (http -> Request -> worker.fetch; static out/ with auto-trailing-slash;
+  hourly scheduled()), store.mjs (KV shim on node:sqlite, no WAL), Dockerfile (node:26-slim, bundle via wrangler's esbuild,
+  runtime stage has no node_modules), `npm run bundle` / `npm run serve`. Verified by me on :8790 with a fresh store: health
+  seeded 286/2/1198, /register 200, /nope 404, traversal 404, /api/state 286/83 tip 689d4373bb9c, LIVE POLL from Node all
+  SEVEN sources HTTP 200 (rss 30, circulars 25, afd 25, master 25, regulations 42, press 25, apmi 131 = 295 catches),
+  persisted across restart, audit verify intact. Pull round-trip: only line 2 (`source` URL, carries the port) differs —
+  my acceptance was wrong, the data is byte-stable. The workerd->sebi blocker is closed by the Node runtime.
+  FOUND (pre-existing, not 31a): POST /api/watch/poll is NOT behind the gate token (worker/index.ts ~105); watch.mjs sends
+  the token but the worker never checks it. Public on AWS = anyone can make us hit SEBI x7 on demand. Fix in 31c/31d.
 - PHASE 1 STATUS 2026-09-12: 1a done, 1b done, 1c done (vault) minus officer names, 1d done minus live poll (workerd blocker),
   1e waiting on Pranjal's infra study. Everything left in phase 1 is on Pranjal's side; phase 2 (AIF) not started. Task 27 was: retry 21, 24(7), 37(1); document vault requirements derived from the approved register's
   evidenceSpec (kind document) and companyDocuments from bound evidence; no new UI. Holiday calendar deferred to hardening
@@ -124,3 +136,224 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   probe caught (started from the current period, skipped an open window).
 - Read the chapter title, not only the paragraph: AIF chapter 7 is Category III throughout.
 - One task per prompt; the worker executes literally; a `[PRANJAL: …]` slot beats an invented fact.
+- An issued prompt that lives only in chat gets lost (31a had to be re-derived from the code). Paste the verbatim prompt of
+  the in-flight task at the bottom of HANDOFF.md when issuing it; delete it on acceptance.
+- Before running acceptance curls, `lsof -nP -iTCP:<port> -sTCP:LISTEN`: a leftover server on the port silently answers
+  for the one you think you started (my first 31a run hit the worker's stale instance and read newCount 0).
+- `npm run pull` stamps the base URL into register.json line 2 — compare from line 3 on, or pull from the same port.
+
+## In-flight task prompt (verbatim) — delete on acceptance
+
+### Task 31b — Terraform for the compliance service (infra repo) + deploy workflow (this repo)
+
+Two repos. Infra: /Users/pranjal/Code/Molecule/molecule_infra (Terraform, master, S3 backend, AWS profile `admin`,
+region ap-south-1). App: /Users/pranjal/Code/poneglyph, branch `molecule`, app dir `poneglyph/` (Dockerfile there, task 31a).
+Read INFRA-2026-09.md in the infra repo first. No `terraform apply` in this task — plan only; Pranjal applies in 31c.
+Expected counts below are claims, not targets: if the plan disagrees, report the plan, do not change resources to hit a number.
+The infra repo has two untracked files (bonkers_egress.tf, scripts/bonkers-nat-user-data.sh) — leave them alone, do not commit them.
+Every `aws` command on this machine needs `--profile admin` (a shell guard refuses unnamed profiles).
+
+**0. Baseline** (before any edit): `cd molecule_infra && AWS_PROFILE=admin terraform init -input=false && AWS_PROFILE=admin terraform plan -no-color -input=false | tail -3`.
+Record the summary line verbatim (the untracked bonkers file may already show adds; that is the baseline, not yours).
+
+**1. Secret** (out of band, as every other secret here). If `aws --profile admin --region ap-south-1 secretsmanager describe-secret --secret-id compliance-secrets` fails, create it:
+```
+aws --profile admin --region ap-south-1 secretsmanager create-secret --name compliance-secrets --description "poneglyph compliance app (mv-compliance)" \
+  --secret-string "{\"GATE_TOKEN\":\"$(openssl rand -hex 24)\",\"OPEN_ROUTER_KEY\":\"$(grep '^OPEN_ROUTER_KEY=' /Users/pranjal/Code/poneglyph/poneglyph/.dev.vars | cut -d= -f2-)\",\"MODEL\":\"z-ai/glm-5.3-flash\"}"
+```
+Never print the values. Report only the key list:
+```
+aws --profile admin --region ap-south-1 secretsmanager get-secret-value --secret-id compliance-secrets --query SecretString --output text | python3 -c 'import json,sys;print(sorted(json.load(sys.stdin)))'
+#   ['GATE_TOKEN', 'MODEL', 'OPEN_ROUTER_KEY']
+```
+
+**2. Module: EFS volumes** — `modules/ecs-service-on-alb/variables.tf` add
+```
+variable "efs_volumes" {
+  type    = list(object({ name = string, file_system_id = string }))
+  default = []
+}
+```
+and in `main.tf`'s `aws_ecs_task_definition.task_definition`, after `container_definitions`:
+```
+  dynamic "volume" {
+    for_each = var.efs_volumes
+    content {
+      name = volume.value.name
+      efs_volume_configuration {
+        file_system_id     = volume.value.file_system_id
+        transit_encryption = "ENABLED"
+      }
+    }
+  }
+```
+Default `[]` keeps every existing service's task definition unchanged (the plan must show no diff on them).
+
+**3. `ecr_repos.tf`** — `module "mv_compliance_ecr" { source = "./modules/ecr-repo"  name = "mv-compliance-images" }`, same shape as mv_governor_ecr.
+
+**4. `secrets-manager.tf`** — `data "aws_secretsmanager_secret" "compliance_secrets" { name = "compliance-secrets" }` with a one-line comment: keys GATE_TOKEN, OPEN_ROUTER_KEY, MODEL.
+**`iam.tf`** — append `data.aws_secretsmanager_secret.compliance_secrets.arn` to the Resource list of `aws_iam_policy.read_sm_secrets_policy` (the execution role cannot read the secret otherwise; this is the one expected "change").
+
+**5. New file `compliance_state.tf`** — the sqlite file's home:
+```
+# mv-compliance keeps its working state (a node:sqlite file) here; data/collected/register.json in git is the durable truth.
+resource "aws_efs_file_system" "compliance_state" {
+  encrypted = true
+  tags      = { Name = "mv-compliance-state" }
+}
+
+resource "aws_security_group" "compliance_efs_sg" {
+  name        = "mv-compliance-efs-sg"
+  description = "NFS from the mv-compliance service only"
+  vpc_id      = aws_vpc.main.id
+  tags        = { Name = "mv-compliance-efs-sg" }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "compliance_efs_from_service" {
+  security_group_id            = aws_security_group.compliance_efs_sg.id
+  referenced_security_group_id = module.mv_compliance.security_group_id
+  description                  = "Allow NFS from mv-compliance service"
+  from_port                    = 2049
+  to_port                      = 2049
+  ip_protocol                  = "tcp"
+}
+
+resource "aws_efs_mount_target" "compliance_state" {
+  for_each        = { primary = aws_subnet.public_subnet.id, secondary = aws_subnet.public_subnet_secondary.id }
+  file_system_id  = aws_efs_file_system.compliance_state.id
+  subnet_id       = each.value
+  security_groups = [aws_security_group.compliance_efs_sg.id]
+}
+```
+
+**6. `ecs_services.tf`** — add `compliance = "latest"` to `local.latest_image_tags`, then append, modelled on `module "mv_governor"`:
+```
+module "mv_compliance" {
+  source     = "./modules/ecs-service-on-alb"
+  depends_on = [aws_efs_mount_target.compliance_state] # a task cannot mount a volume whose targets do not exist yet
+
+  service_name       = "mv-compliance"
+  task_def_family    = "mv-compliance-task-def"
+  execution_role_arn = module.ecs_default_task_execution_role.role_arn
+  ecs_cluster_id     = aws_ecs_cluster.mv_ecs_cluster.id
+
+  cpu                = "256"
+  memory             = "512"
+  desired_task_count = 1
+
+  container_name = "compliance"
+  container_port = 8080
+
+  efs_volumes = [{ name = "state", file_system_id = aws_efs_file_system.compliance_state.id }]
+
+  container_definitions_json = jsonencode([
+    {
+      name  = "compliance"
+      image = "${module.mv_compliance_ecr.ecr_repository.repository_url}:${local.latest_image_tags.compliance}"
+      portMappings = [{ containerPort = 8080, protocol = "tcp", appProtocol = "http" }]
+      environment = [
+        { name = "PORT", value = "8080" },
+        { name = "STATE_DIR", value = "/data" }
+      ]
+      # every key must exist in compliance-secrets before this task def references it, or the container cannot start
+      secrets = [for key in ["GATE_TOKEN", "OPEN_ROUTER_KEY", "MODEL"] : {
+        name      = key
+        valueFrom = "${data.aws_secretsmanager_secret.compliance_secrets.arn}:${key}::"
+      }]
+      mountPoints = [{ sourceVolume = "state", containerPath = "/data", readOnly = false }]
+      essential   = true
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-group         = "/ecs/mv-compliance"
+          mode                  = "non-blocking"
+          awslogs-create-group  = "true"
+          max-buffer-size       = "25m"
+          awslogs-region        = "ap-south-1"
+          awslogs-stream-prefix = "ecs"
+        }
+      }
+    }
+  ])
+
+  health_check = { path = "/api/health", matcher = "200" }
+
+  vpc_id           = aws_vpc.main.id
+  subnet_ids       = [aws_subnet.public_subnet.id, aws_subnet.public_subnet_secondary.id]
+  assign_public_ip = true
+
+  ingress_rules = [{ name = "allow-alb", source_sg = aws_security_group.moleculeatomsapis_alb_sg.id, port = 8080, protocol = "tcp" }]
+}
+```
+
+**7. `lb_moleculeatomsapis.tf`** — listener rule `mv_compliance`, priority 1070, forward to `module.mv_compliance.lb_target_group_arn`,
+path `/*`, host `compliance.moleculeatomsapis.com`, same shape as the mcp connector rule. No DNS change: `*.moleculeatomsapis.com` already aliases the ALB.
+**README.md** — one line under Backends: `compliance.moleculeatomsapis.com`: Compliance register (poneglyph).
+
+**8. App repo — `.github/workflows/deploy.yml`** at /Users/pranjal/Code/poneglyph (repo root, not poneglyph/). The `aws` calls below run on the GitHub runner, where the OIDC role is the only credential, so they take no profile:
+```
+name: Deploy compliance
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [molecule]
+    paths:
+      - "poneglyph/**"
+      - "!poneglyph/**/*.md"
+      - ".github/workflows/deploy.yml"
+
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: mv-compliance-images
+  ECS_CLUSTER: mv-ecs-cluster
+  ECS_SERVICE: mv-compliance
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@0e613a0980cbf65ed5b322eb7a1e075d28913a83
+        with:
+          role-to-assume: arn:aws:iam::484907499667:role/github-actions-role
+          aws-region: ${{ env.AWS_REGION }}
+      - id: login-ecr
+        uses: aws-actions/amazon-ecr-login@62f4f872db3836360b72999f4b87f1ff13310f3a
+      - name: Build and push
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest -t $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }} poneglyph
+          docker push --all-tags $ECR_REGISTRY/$ECR_REPOSITORY
+      - name: Roll the service
+        run: aws ecs update-service --cluster $ECS_CLUSTER --service $ECS_SERVICE --force-new-deployment --region $AWS_REGION
+      - name: Wait for the rollout
+        run: aws ecs wait services-stable --cluster $ECS_CLUSTER --service $ECS_SERVICE --region $AWS_REGION
+```
+The OIDC role already trusts `repo:moleculesurat/*:*` (github.tf), so no IAM change. The workflow will fail until 31c applies the
+Terraform (no ECR repo yet) — expected; do not run it.
+
+**Acceptance** (infra repo, `AWS_PROFILE=admin`):
+```
+terraform fmt -check -recursive                 # no output
+terraform validate                              # Success! The configuration is valid.
+terraform plan -no-color -input=false -out=/tmp/31b.plan | tail -3
+#   Plan: <baseline adds + 13 or 14> to add, <baseline changes + 1> to change, 0 to destroy.
+#   the 13: task def, service, target group, service SG, its ingress + egress rules, listener rule, EFS fs, EFS SG,
+#   EFS ingress rule, 2 mount targets, ECR repo; 14 if modules/ecr-repo also emits a lifecycle policy. The 1 change =
+#   aws_iam_policy.read_sm_secrets_policy. 0 to destroy is a hard requirement.
+terraform show -no-color /tmp/31b.plan | grep -E "^  # .* will be (created|updated|destroyed|replaced)" | sort
+#   paste this list verbatim; no existing service's task definition may appear in it
+grep -c compliance ecr_repos.tf secrets-manager.tf iam.tf ecs_services.tf lb_moleculeatomsapis.tf README.md   # each >= 1
+git status --short                              # your files + the two pre-existing untracked bonkers files, nothing else
+```
+App repo: `git status --short` shows only `.github/workflows/deploy.yml`; `python3 -c 'import yaml,sys;yaml.safe_load(open(".github/workflows/deploy.yml"));print("yaml ok")'` (if PyYAML is missing, say so and skip).
+
+Commit infra on master: `Add mv-compliance: Fargate service + EFS state + ALB rule (task 31b)`; push if origin is configured, else say so.
+Commit app on molecule: `molecule: deploy workflow for mv-compliance (task 31b)`; push. Report the verbatim output of every acceptance
+command, the baseline plan line, the secret's key list, and anything that deviated. Skipped on purpose: EFS backup policy (register.json
+in git is the truth), autoscaling (one task), a task role (the app touches no AWS API).

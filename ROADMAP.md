@@ -5,18 +5,18 @@ live. Three rules never change: every duty points to the exact sentence SEBI wro
 until a named person at Molecule signs it; what we cannot prove shows as a gap.
 
 ```
-WHERE WE ARE (2026-09-11)
+WHERE WE ARE (2026-09-15)
   PMS          register 286 approved (240 PMS / 46 AIF post-registration), 83 rejected or withdrawn, all decided by
                Pranjal from review sheets; 2 evidence files bound. Corpus = PMS master circular (287 paras) + PM
                Regulations 2020 incl. Schedules II–IV (144 units). Extraction COMPLETE for both sources (every "shall" paragraph run and decided; 2 model holdouts
                closed as covered). Document vault derived from the register (284 asks). Runs locally only.
   AIF          nothing on registration — AIF Regulations 2012 not in the corpus. Category I and III paragraphs
                were never drafted; applicability rejects anything not Category II. Waits for phase 2.
-  WATCHTOWER   polls RSS + 4 SEBI listing pages, per-source status, watch CLI (task 28). BLOCKED locally: workerd
-               cannot reach sebi.gov.in (TLS-level failure); parser proven offline. Runs for real once on AWS (1e).
-               Catch -> work item (fetch, pdftotext, collect, re-run) still manual.
-  ELSE         runs locally (wrangler dev); target is Molecule's AWS, study first (1e-i); officer names are
-               placeholders; no MCP.
+  WATCHTOWER   polls RSS + 5 SEBI listing pages + APMI (7 sources), per-source status, watch CLI. Live poll WORKS from
+               the Node runtime (31a, 2026-09-15: 295 catches, all sources 200); the workerd blocker is moot.
+               Catch -> work item (fetch, pdftotext, collect, re-run) still manual. /api/watch/poll is ungated (fix 31c).
+  ELSE         runs locally on `npm run serve` (Node, sqlite in .state/); wrangler dev no longer needed. AWS port:
+               31a done, 31b Terraform in flight, 31c cut-over next; officer names are placeholders; no MCP.
 
 THE SECTIONS — in the order of the firm's life
   0 PROFILE            who Molecule is. Adds one fact per AIF category: stage of Cat I, Cat II, Cat III
