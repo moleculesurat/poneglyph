@@ -83,6 +83,31 @@ BUILD ORDER — PMS first, end to end; then AIF; then the rest
               deploy, `npm run pull -- https://compliance.moleculeatomsapis.com`, retire wrangler.
     done looks like: every PMS duty SEBI wrote is in the register or ruled out with a reason; dates,
     proof and gaps are live; the watchtower catches the next PMS circular and hands it to the pipeline.
+    1e STATUS 2026-09-15: 31a done (Node runtime). 31b/31c PARKED by Pranjal — laptop first, the Fargate port later.
+
+  PHASE 1-OPS  PMS READY FOR THE OPERATIONS TEAM, ON PRANJAL'S LAPTOP (Pranjal's call 2026-09-15)
+    What ops does with it: see what is due (dashboard) -> do the duty -> attach the proof (register row, gate token,
+    signs with their name) -> gaps close; read the watchtower list weekly; the inspector view for SEBI. The server is
+    `npm run serve` on the laptop (Node + sqlite in .state/), reached over the LAN; register.json in git is the truth.
+    32  one surface            delete the demo shell: persona toggle, sandbox strip, entry gate (/ -> /dashboard/),
+                               empty pages (agents, remediation, amendments), dead "Export" buttons, pitch deck, wording.
+    33  AIF rows as reference  46 AIF duties stop counting as PMS gaps: while the entity's aif-status fact is not
+                               "registered" they render greyed "switches on at AIF registration" and leave every count.
+    34  attach from the vault  the document vault's "Supply this document" posts to the same evidence API as the
+                               register row (title, file -> sha256 in the browser, officer, token); the ask flips to
+                               supplied. Bulk: one document bound to many duties in one go [needs Pranjal's answer on
+                               what evidences the 132 ongoing prohibitions — quarterly compliance certificate? internal
+                               audit report? board minutes?].
+    35  fresh every morning    `npm run refresh` = pull -> build -> commit register.json; launchd: serve at login on
+                               :8787, refresh daily 06:00 IST. Pages are static, so the dashboard's dates and statuses
+                               are as fresh as the last refresh; the page says "as of <refresh time>".
+    36  OPS.md runbook         start/stop, the LAN URL, who holds the gate token, attach flow, weekly watch list,
+                               what to do when the watchtower says "applies" (fetch -> pdftotext -> collect -> run ->
+                               review sheet -> decide), where the evidence files live (a folder the firm owns).
+    Pranjal's side: officer names + appointment dates into data/tenant.ts and entity.ts; gate token handed to the
+    ops lead; laptop hostname/IP for the LAN URL; the evidence-for-prohibitions answer (34).
+    done looks like: an ops person opens the LAN URL, sees the PMS duties due this month with dates, attaches a proof
+    and watches the gap close, and nothing on any page is a placeholder, a demo, or an AIF duty counted as a gap.
 
   PHASE 2  AIF
     2a  profile stage facts + nav split  sections PMS · AIF Onboarding · AIF Rules.

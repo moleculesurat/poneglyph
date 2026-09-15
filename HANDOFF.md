@@ -48,11 +48,23 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
 
 ## Open on PRANJAL's side (as of 2026-09-14)
 - Officer names + appointment dates (CO, PO, the 7(2)(e) person); performance fees y/n; superseded 'absolute and final'
-  clause y/n; books-location intimation y/n; last 3-yearly registration fee date (OBL-368); sqlite+EFS vs Postgres (1e-ii).
+  clause y/n; books-location intimation y/n; last 3-yearly registration fee date (OBL-368).
+- For task 34: what document evidences the 132 ongoing prohibitions (quarterly compliance certificate? internal audit
+  report? board minutes?) — I do not invent this. Who on the ops team holds the gate token; the laptop's LAN hostname/IP.
 - Approve OBL-401 + pull if not done (expect 287 approved). Kill the leftover `node server.mjs` on :8788 (PID 68004,
   the worker's 31a test instance) and Pranjal's wrangler dev on :8787 — `npm run serve` (port 8787 by default) replaces it.
 - Create the Secrets Manager secret `compliance-secrets` before 31b's plan (the task prompt says how).
-- Task 31b ISSUED 2026-09-15 (verbatim prompt at the bottom of this file, so a lost paste can be re-sent).
+- 2026-09-15 PIVOT (Pranjal): finish PMS end to end on the laptop for the operations team; the Fargate port waits.
+  31b PARKED, not issued to the worker — its prompt stays at the bottom of this file for when the port resumes.
+  New block ROADMAP "PHASE 1-OPS": tasks 32 (demo shell out) -> 33 (AIF rows as reference) -> 34 (attach from the vault
+  + bulk) -> 35 (refresh + launchd) -> 36 (OPS.md). Task 32 ISSUED 2026-09-15 (verbatim at the bottom).
+- Survey facts behind the plan (2026-09-15): only RegisterTable, AttachEvidence, PendingQueue/LiveConsole and WatchTerminal
+  read the live API; dashboard, documents, evidence, audit and the watchtower summary are built from register.json at
+  `next build` time and lib/schedule TODAY is the build date -> a daily rebuild is the freshness mechanism (task 35).
+  Register: 41 periodic / 93 event-driven / 132 ongoing / 20 one-time; 284 gap + 2 met; 46 rows are AIF-only
+  (appliesTo aif-manager) and count as gaps today. Evidence bind takes a free-text officer name (1–120 chars) + gate
+  token; file hash computed in the browser. Fixture files (data/watchtower, tasks, runs) are EMPTY — no fake catches.
+  Document vault CTAs are toast-only ("disabled in the demo") — wired in task 34.
 
 ### Older items (kept for history; all resolved)
 1. Browser test of Task 17: open localhost:8787/register/, expand an approved row, attach a real file (hash only is
@@ -142,7 +154,7 @@ OpenRouter + GLM; no reasoning cap; deployment target = Molecule's AWS, not Clou
   for the one you think you started (my first 31a run hit the worker's stale instance and read newCount 0).
 - `npm run pull` stamps the base URL into register.json line 2 — compare from line 3 on, or pull from the same port.
 
-## In-flight task prompt (verbatim) — delete on acceptance
+## Parked task prompt (verbatim) — 31b, resume with the Fargate port
 
 ### Task 31b — Terraform for the compliance service (infra repo) + deploy workflow (this repo)
 
@@ -357,3 +369,66 @@ Commit infra on master: `Add mv-compliance: Fargate service + EFS state + ALB ru
 Commit app on molecule: `molecule: deploy workflow for mv-compliance (task 31b)`; push. Report the verbatim output of every acceptance
 command, the baseline plan line, the secret's key list, and anything that deviated. Skipped on purpose: EFS backup policy (register.json
 in git is the truth), autoscaling (one task), a task role (the app touches no AWS API).
+
+## In-flight task prompt (verbatim) — delete on acceptance
+
+### Task 32 — one surface for the operations team: delete the demo shell
+
+Repo /Users/pranjal/Code/poneglyph, branch `molecule`, app dir `poneglyph/` (paths below relative to it unless they start with `../`).
+Pull first. Pure deletion and re-pointing; no new features, no new deps, no changes under `worker/`, `lib/schedule.ts`, `lib/schema.ts`,
+`scripts/`, `data/`. The operations team will use this UI on Pranjal's laptop; every demo/sandbox/persona artefact goes.
+
+**1. Persona and sandbox strip go.** Delete `components/persona.tsx`. In `app/layout.tsx` drop `PersonaProvider` (keep `AppShell`).
+In `components/AppShell.tsx`: delete the `sandboxStrip` element and both places it is rendered, the `usePersona` import and state,
+`switchPersona`, `INSPECTOR_PROFILE`, the persona menu items and the `persona === "inspector"` branches; `profile` is always
+`tenant.team[0]`; the nav list is always `NAV_ITEMS`; the home link is always `/dashboard`. Remove the `ENTRY_GATE` full-bleed special
+case. In `app/evidence/EvidenceExplorer.tsx` and `app/documents/DocumentExplorer.tsx` remove the `usePersona` imports and the
+inspector branches (`AddDocumentCta`, `UploadAskCta` always render their controls). Change the three toast texts in DocumentExplorer
+from "Sandbox — … disabled in the demo …" to "Not wired yet — attach the proof from the register row" (uploads are wired in task 34).
+Delete `UploadCta` in EvidenceExplorer (a button that does nothing) and its use in `app/evidence/page.tsx`.
+
+**2. Entry gate goes.** Delete `app/page.tsx`. In `server.mjs` `serveStatic`, before the candidates lookup:
+`if (pathname === "/") return new Response(null, { status: 302, headers: { location: "/dashboard/" } });`.
+
+**3. Empty demo pages go.** Delete the directories `app/agents`, `app/remediation`, `app/amendments`. Re-point every link to them:
+`app/register/page.tsx` CROSS_LINKS keeps only the evidence vault entry (add `{ href: "/documents", label: "Document vault" }`);
+`app/evidence/page.tsx` two `/remediation` links → `/register?status=gap` (check RegisterTable reads a `status` search param; if it
+does not, link to `/register` and say so); `app/watchtower/page.tsx` three `/agents` links and `app/dashboard/page.tsx` two → `/live`.
+
+**4. Nav.** `lib/nav.ts` becomes: type `NavGroup = "Oversight" | "Compliance" | "Engine" | "Inspection"`; `NavItem { href; label; group }`
+(no `inspector` flag); `NAV_ITEMS` = Dashboard, Entity profile, Watchtower (label "Watchtower", not "Watchtower · Scraper") under
+Oversight; Obligation Register, Document Vault, Evidence Vault under Compliance; Live Pipeline, Audit Trail under Engine; Inspection
+Session (`/inspector`) under Inspection. Delete `ENTRY_GATE`, `BROKER_HOME`, `INSPECTOR_HOME`, `INSPECTOR_ITEM`; `findCrumb` falls back to
+the first item. Fix every import that breaks.
+
+**5. Dead export buttons go.** Remove the `right={<Cta …>Export …</Cta>}` props in `app/register/page.tsx`, `app/dashboard/page.tsx`,
+`app/audit/page.tsx`. Leave `Cta`s that have an `href`, `onClick` or a `toastMsg` that tells the truth.
+
+**6. Hackathon files go.** `git rm public/pitch-deck.html public/pitch-deck.pdf ../DEMO-SCRIPT.txt ../chat.txt`.
+
+**7. Wording sweep.** `grep -rniE "sandbox|demo|hackathon|techsprint|broker" app components lib --include=*.tsx --include=*.ts`
+→ delete or reword every hit that is user-visible text (report the list you changed and any hit you left, with a reason).
+Do not touch `worker/`.
+
+**Acceptance** (from `poneglyph/`):
+```
+npx tsc --noEmit                                                        # no output
+npm run build 2>&1 | grep -E "^[○●] |Route|/"                            # route list: no /, /agents, /remediation, /amendments; /inspector present
+grep -rn "persona\|Persona" app components lib | wc -l                  # 0
+grep -rniE "sandbox|hackathon|techsprint|broker" app components lib | wc -l   # 0
+grep -rn '"/agents"\|"/remediation"\|"/amendments"' app components lib | wc -l   # 0
+grep -n "ENTRY_GATE\|BROKER_HOME\|INSPECTOR_HOME\|INSPECTOR_ITEM" -r app components lib | wc -l   # 0
+ls public                                                                # poneglyph-mark.svg
+ls ..                                                                    # no DEMO-SCRIPT.txt, no chat.txt
+export GATE_TOKEN=$(grep '^GATE_TOKEN=' .dev.vars | cut -d= -f2)
+lsof -nP -iTCP:8791 -sTCP:LISTEN                                         # nothing — the port is free before you start
+PORT=8791 STATE_DIR=.state-32 npm run serve &   # wait for /api/health
+curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' localhost:8791/          # 302 http://localhost:8791/dashboard/
+for p in /dashboard/ /register/ /documents/ /evidence/ /watchtower/ /live/ /audit/ /inspector/ /onboarding/; do printf "%-14s %s\n" $p $(curl -s -o /dev/null -w '%{http_code}' localhost:8791$p); done   # all 200
+for p in /agents/ /remediation/ /amendments/; do printf "%-14s %s\n" $p $(curl -s -o /dev/null -w '%{http_code}' localhost:8791$p); done   # all 404
+curl -s localhost:8791/dashboard/ | grep -ci "sandbox"                  # 0
+kill %1; rm -rf .state-32
+git status --short                                                       # only the files named above
+```
+Commit `molecule: one surface for ops — persona, sandbox strip, entry gate, empty demo pages and dead exports removed (task 32)`,
+push `molecule`, report the verbatim output of every acceptance command plus the wording-sweep list.
