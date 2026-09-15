@@ -29,14 +29,15 @@ Done looks like: an ops person opens the LAN URL, sees the PMS duties due this m
 and watches the gap close; nothing on any page is a placeholder, a demo, or an AIF duty counted as a gap.
 
 Steps, one task each:
-1. One surface — delete the demo shell (persona toggle, sandbox strip, entry gate, empty pages, dead buttons).
+1. Honest surface — demo wording out (sandbox strip, "disabled in the demo" toasts); controls without a backend
+   yet stay, disabled and labelled "not available yet". Nothing planned is deleted.
 2. AIF rows as reference — greyed, out of every count, until the aif-status fact says registered.
 3. Attach from the vault — "Supply this document" posts to the evidence API; one document to many duties in one go.
 4. Fresh every morning — `npm run refresh` (pull -> build -> commit) and launchd (serve at login, refresh daily).
 5. OPS.md — the runbook for the ops team.
 
-Pranjal's inputs for this module: officer names + appointment dates; what document evidences the ongoing
-prohibitions (for step 3); who holds the gate token; the laptop's LAN address.
+Decided: officers appear by alias (Compliance Officer, Principal Officer) for now; Anchal holds the gate token.
+Pranjal's inputs still open: what document evidences the ongoing prohibitions (step 3); the laptop's LAN address.
 
 ## Order after module 3
 
